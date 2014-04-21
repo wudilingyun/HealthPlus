@@ -56,9 +56,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 
 		new InstallSataUtil(this).serverStat(MyApplication.CHANNEL_ID);
 	}
-
-	
-
+ 
 	private void initDefaultUserInfo() {
 		new HP_DBHelper(this, HP_DBCommons.DBNAME, null, 1);
 		HP_User user = new HP_User();
@@ -68,7 +66,9 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 				true);
 		HP_User.setOnLineUserId(this, 0);
 	}
-
+  
+	
+	
 	private void updateFragmentToStack(FragmentMsg fMsg) {
 		android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
 				.beginTransaction();
