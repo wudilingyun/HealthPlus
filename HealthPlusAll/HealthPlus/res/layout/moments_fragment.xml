@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <ImageButton 
+            android:id="@+id/newmoments"
+            android:layout_width="100dip"
+            android:layout_height="72dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/moments_new_selector"/>
+        <Button 
+            android:id="@+id/friendlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/momentsfriendlist"/>
+        
+        <TextView
+            android:id="@+id/momentstitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/momentstitle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/momentsheading" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView 
+            android:id="@+id/cover"
+            android:layout_width="match_parent"
+            android:clickable="true"
+            android:layout_height="100dip"
+            android:background="@drawable/u840"/>
+        <ImageView 
+            android:id="@+id/mymoments"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="-20dip"
+            android:src="@drawable/u93"
+            android:layout_below="@id/cover"
+           android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/nomoments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <TextView 
+            android:id="@+id/strnomoments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:text="@string/strnomoments"/>
+        <TextView 
+            android:id="@+id/straddfriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:text="@string/straddfriend"/>
+        <ImageView 
+            android:id="@+id/addfriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:src="@drawable/u852"/>
+    </LinearLayout>
+    
+    <ListView 
+        android:id="@+id/momentslistfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="#00000000"
+        android:cacheColorHint="#00000000">
+        
+    </ListView>
+    
+
+</LinearLayout>

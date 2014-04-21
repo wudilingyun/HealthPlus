@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.vee.healthplus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.vee.healthplus.widget.HeaderView
+        android:id="@+id/setting_feadback_header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:headerLeftBtn="back"
+        app:headerRightBtn="none"
+        app:headerText="@string/setting_feedback" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/feedback_mainbg" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/setting_choicequestiontype"
+                    android:textColor="@color/feedback_gray_hard"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:id="@+id/setting_feedback_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView1" >
+
+                    <CheckBox
+                        android:id="@+id/setting_feedback_question1"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/setting_feedback_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/setting_feedback_questiontype0"
+                        android:textColor="@color/feedback_gray_middle"
+                        android:textSize="16sp"
+                        android:checked="false" />
+
+                    <CheckBox
+                        android:id="@+id/setting_feedback_question3"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/setting_feedback_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/setting_feedback_questiontype2"
+                        android:textColor="@color/feedback_gray_middle"
+                        android:textSize="16sp" />
+
+                    <CheckBox
+                        android:id="@+id/setting_feedback_question4"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/setting_feedback_question1"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/setting_feedback_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/setting_feedback_questiontype3"
+                        android:textColor="@color/feedback_gray_middle"
+                        android:textSize="16sp" />
+
+                    <CheckBox
+                        android:id="@+id/setting_feedback_question5"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/setting_feedback_question2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/setting_feedback_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/setting_feedback_questiontype4"
+                        android:textColor="@color/feedback_gray_middle"
+                        android:textSize="16sp" />
+
+                    <CheckBox
+                        android:id="@+id/setting_feedback_question6"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/setting_feedback_question3"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/setting_feedback_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/setting_feedback_questiontype5"
+                        android:textColor="@color/feedback_gray_middle"
+                        android:textSize="16sp" />
+
+                    <CheckBox
+                        android:id="@+id/setting_feedback_question2"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/setting_feedback_selector"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/setting_feedback_questiontype1"
+                        android:textColor="@color/feedback_gray_middle"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/setting_feedback_type"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/feedback_gray_light" />
+
+                <EditText
+                    android:id="@+id/setting_feedback_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/setting_feedback_type"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/setting_feedback_edittextbg"
+                    android:ems="200"
+                    android:hint="@string/setting_feedback_questionhintcontent"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:minLines="5"
+                    android:textColor="@color/feedback_gray_hard"
+                    android:textSize="14sp" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/setting_feedback_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/setting_feedback_content"
+                    android:layout_alignRight="@+id/setting_feedback_content"
+                    android:layout_below="@+id/setting_feedback_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/setting_feedback_edittextbg"
+                    android:ems="100"
+                    android:hint="@string/wf_questioncontactway"
+                    android:maxLines="2"
+                    android:textColor="@color/feedback_gray_hard"
+                    android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:id="@+id/setting_feedback_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/setting_feedback_contact"
+                    android:layout_margin="10dp" >
+
+                    <Button
+                        android:id="@+id/setting_feedback_send"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/dialog_ok_button_selector"
+                        android:text="@string/setting_feedback_sendbtn"
+                        android:textColor="@color/hp_w_header_view_white"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/setting_feedback_rl"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/feedback_gray_light" />
+
+                <LinearLayout
+                    android:id="@+id/setting_feedback_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/setting_feedback_rl"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_feedback_contactserviceqq"
+                        android:textColor="@color/feedback_gray_hard"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/setting_feedback_qqnumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_feedback_contactserviceqq1"
+                        android:textColor="@color/feedback_gray_hard"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/setting_feedback_copynumber"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/setting_feedback_ll"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/dialog_cancel_button_selector"
+                    android:text="@string/setting_feedback_copynumber"
+                    android:textColor="@color/feedback_gray_middle"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

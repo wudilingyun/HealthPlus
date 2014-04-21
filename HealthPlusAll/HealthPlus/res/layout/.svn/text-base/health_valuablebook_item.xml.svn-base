@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white"
+    android:padding="@dimen/news_padding" >
+
+    <ImageView
+        android:id="@+id/imageView_healthnews"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/newstitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imageView_healthnews"
+        android:lines="1"
+        android:maxEms="10"
+        android:text="2013.4.20•正在进行"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/health_textsize_4" />
+
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="1"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/health_textsize_4"
+        android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/imageView_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/newstitle"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="2dp"
+        android:layout_toLeftOf="@+id/comment"
+        android:background="@drawable/pinglun" />
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView_icon"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/newstitle"
+        android:lines="1"
+        android:maxEms="6"
+        android:text="3.11"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/health_textsize_3" />
+
+</RelativeLayout>

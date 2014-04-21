@@ -1,0 +1,257 @@
+package com.vee.myhealth.activity;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import android.R.string;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AbsListView.OnScrollListener;
+
+import com.vee.easyting.activity.BaseActivity;
+import com.vee.healthplus.R;
+import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.util.user.ICallBack;
+import com.vee.healthplus.widget.PinnedHeaderListView;
+import com.vee.healthplus.widget.PinnedHeaderListView.PinnedHeaderAdapter;
+import com.vee.myhealth.bean.HealthQuestionEntity;
+import com.vee.myhealth.bean.HealthResultEntity;
+import com.vee.myhealth.bean.Health_Report;
+import com.vee.myhealth.bean.ResultEntity;
+import com.vee.myhealth.bean.TZtest;
+import com.vee.myhealth.util.SqlDataCallBack;
+import com.vee.myhealth.util.SqlForTest;
+import com.yunfox.s4aservicetest.response.Exam;
+
+public class TiZhiResultActivity extends BaseFragmentActivity implements
+		SqlDataCallBack<Health_Report> {
+
+	private HashMap<HealthQuestionEntity, Integer> scoremMap = new HashMap<HealthQuestionEntity, Integer>();
+	private HashMap<TZtest, Integer> tzscoremMap = new HashMap<TZtest, Integer>();
+	private CalculateScore calculateScore;
+	private String result = "";// 测试结果
+	private List<Health_Report> test;
+	private SqlForTest sqlForTest;
+	private TextView temp_text;
+	private ArrayList<ResultEntity> reArrayList = new ArrayList<ResultEntity>();
+	private ResultEntity resultEntity;
+	private TestAdapter adapter;
+	private PinnedHeaderListView section_list_view;
+
+	@SuppressLint("ResourceAsColor")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		View view = View.inflate(this, R.layout.health_tizhi_result, null);
+		setContainer(view);
+		getHeaderView().setHeaderTitle("体质测试结果");
+		getHeaderView().setBackGroundColor(R.color.blue);
+		setRightBtnVisible(View.GONE);
+		setLeftBtnVisible(View.VISIBLE);
+		setLeftBtnType(1);
+		init();
+		getData();
+
+	}
+
+	void init() {
+		temp_text = (TextView) findViewById(R.id.temp_text);
+		adapter = new TestAdapter(LayoutInflater.from(this));
+		section_list_view = (PinnedHeaderListView) findViewById(R.id.section_list_view);
+		section_list_view.setAdapter(adapter);
+		calculateScore = new CalculateScore();
+
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	//
+	void getData() {
+		sqlForTest = new SqlForTest(this);
+		Intent intent = getIntent();
+		String flag = intent.getStringExtra("flag");
+		String type = intent.getStringExtra("type");
+		System.out.println("当前flag多少" + flag);
+		@SuppressWarnings("rawtypes")
+		Serializable data = intent.getExtras().getSerializable("tzscore");
+
+		if (flag.equals("110")) {
+			tzscoremMap = (HashMap<TZtest, Integer>) data;
+			result = calculateScore.getScore(tzscoremMap);
+			sqlForTest.getResultFromDB(result);
+		} else if (flag.equals("111") || flag.equals("112")) {
+			scoremMap = (HashMap<HealthQuestionEntity, Integer>) data;
+			result = getScore(scoremMap);
+			sqlForTest.getHealthResult(flag, Integer.parseInt(result));
+		} else if (flag.equals("113")) {
+			result = type;
+			sqlForTest.getWeightLossResult(flag, result);
+		}
+
+	}
+
+	String getScore(HashMap<HealthQuestionEntity, Integer> data) {
+		if (data != null) {
+			int score = 0;
+			Iterator<HealthQuestionEntity> i = data.keySet().iterator();
+			while (i.hasNext()) {
+				HealthQuestionEntity id = (HealthQuestionEntity) i.next();
+				score += data.get(id);
+
+			}
+			return score + "";
+		}
+		return null;
+
+	}
+
+	@Override
+	public void getData(List<Health_Report> test) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void getResult(Object c) {
+		// TODO Auto-generated method stub
+		if (c instanceof Health_Report) {
+			Health_Report hReport = (Health_Report) c;
+			String[] strings = { "总体特征", "心里特征", "易患病", "外界环境影响", "饮食保健", "运动",
+					"预防" };
+			String[] name = { hReport.getFeature(), hReport.getHeart_feature(),
+					hReport.getEasy_sicken(),
+					hReport.getEnvironment_ataptation(), hReport.getBite_sup(),
+					hReport.getSport(), hReport.getInterest() };
+			temp_text.setText(hReport.getName());
+
+			for (int i = 0; i < strings.length; i++) {
+				resultEntity = new ResultEntity();
+				resultEntity.setTitle(strings[i]);
+				resultEntity.setName(name[i]);
+				reArrayList.add(resultEntity);
+			}
+		} else if (c instanceof HealthResultEntity) {
+			HealthResultEntity hResultEntity = (HealthResultEntity) c;
+			temp_text.setText(hResultEntity.getType());
+			String[] strings = { "", "健康贴士", "饮食", "运动", "预防" };
+			String[] name = { hResultEntity.getResult(),
+					hResultEntity.getTips(), hResultEntity.getEat(),
+					hResultEntity.getSport(), hResultEntity.getPrevent() };
+			for (int i = 0; i < strings.length; i++) {
+
+				resultEntity = new ResultEntity();
+				resultEntity.setTitle(strings[i]);
+				resultEntity.setName(name[i]);
+				reArrayList.add(resultEntity);
+			}
+		}
+
+		adapter.addList(reArrayList);
+		adapter.notifyDataSetChanged();
+
+	}
+
+	public class TestAdapter extends BaseAdapter implements
+			PinnedHeaderAdapter, OnScrollListener {
+
+		private LayoutInflater inflater;
+
+		private ArrayList<ResultEntity> datas = new ArrayList<ResultEntity>();
+		private int lastItem = 0;
+
+		public TestAdapter(final LayoutInflater inflater) {
+			this.inflater = inflater;
+		}
+
+		public void addList(List<ResultEntity> entities) {
+			datas = (ArrayList<ResultEntity>) entities;
+		}
+
+		@Override
+		public int getCount() {
+			return datas.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			View view = convertView;
+			if (view == null) {
+				view = inflater.inflate(R.layout.section_list_item, null);
+			}
+			final ResultEntity content = datas.get(position);
+			final TextView header = (TextView) view
+					.findViewById(R.id.header_tv);
+			final TextView textView = (TextView) view
+					.findViewById(R.id.example_text_view);
+
+			/*if (lastItem == position) {
+				header.setVisibility(View.INVISIBLE);
+			} else {
+				header.setVisibility(View.VISIBLE);
+			}*/
+			if (content.getName() == null) {
+				textView.setVisibility(View.GONE);
+				header.setVisibility(View.GONE);
+			} else {
+				textView.setText(content.getName());
+				header.setText(content.getTitle());
+			}
+			return view;
+		}
+
+		@Override
+		public int getPinnedHeaderState(int position) {
+			// TODO Auto-generated method stub
+			return PINNED_HEADER_PUSHED_UP;
+		}
+
+		@Override
+		public void configurePinnedHeader(View header, int position) {
+			// TODO Auto-generated method stub
+			if (lastItem != position) {
+				notifyDataSetChanged();
+			}
+			((TextView) header.findViewById(R.id.header_text)).setText(datas
+					.get(position).getName());
+			lastItem = position;
+		}
+
+		@Override
+		public void onScroll(AbsListView view, int firstVisibleItem,
+				int visibleItemCount, int totalItemCount) {
+			if (view instanceof PinnedHeaderListView) {
+				((PinnedHeaderListView) view)
+						.configureHeaderView(firstVisibleItem);
+			}
+		}
+
+		@Override
+		public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+		}
+
+	}
+
+}

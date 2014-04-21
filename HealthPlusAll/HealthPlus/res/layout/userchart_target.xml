@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+       android:visibility="gone">
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="距离"
+            android:textColor="@color/hp_w_target_week"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="时间"
+            android:textColor="@color/hp_w_target_week"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/calory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="卡路里"
+            android:textColor="@color/hp_w_target_week"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <com.vee.healthplus.widget.chart.StickChart
+        android:id="@+id/chart"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:background="@color/hp_w_userweightchart_bg" 
+      />
+
+</LinearLayout>

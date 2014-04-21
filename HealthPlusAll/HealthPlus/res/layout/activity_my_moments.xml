@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:id="@+id/momentsheading" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView 
+            android:id="@+id/mydetail"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u93"
+           android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/textViewUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26dp"
+            android:layout_toRightOf="@+id/mydetail"
+            android:text="username" />
+
+    </RelativeLayout>
+    
+    <ListView 
+        android:id="@+id/momentslist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="#00000000"
+        android:cacheColorHint="#00000000">
+        
+    </ListView>
+    
+
+</LinearLayout>

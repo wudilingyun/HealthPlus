@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <GridView
+        android:id="@+id/shop_product_gridview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:listSelector="@color/transparent"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:numColumns="2" >
+    </GridView>
+    
+</RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/allcomment_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/distach_frame"
+        android:layout_gravity="top"
+        android:background="#ffe4e2d7"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@null"
+        android:dividerHeight="0dip"
+        android:listSelector="#0fff" >
+    </ListView>
+
+    <FrameLayout
+        android:id="@+id/distach_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="#fff"
+        android:minHeight="30dp"
+        android:padding="6dp" >
+
+        <EditText
+            android:id="@+id/setting_feedback_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/edittext_default"
+            android:hint="评论"
+            android:maxLines="3"
+            android:textColor="#000" />
+
+        <Button
+            android:id="@+id/dispatch_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_comment_submit"
+            android:maxWidth="70dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="提交"
+            android:textColor="#fff" />
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/editTextThisMoment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/momentsthismomentsthinking" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutFirstRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageViewFirst"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+
+        <ImageView
+            android:id="@+id/imageViewSecond"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+
+        <ImageView
+            android:id="@+id/imageViewThird"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+
+        <ImageView
+            android:id="@+id/imageViewFouth"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSecondRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageViewFifth"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+
+        <ImageView
+            android:id="@+id/imageViewSixth"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+
+        <ImageView
+            android:id="@+id/imageViewSeventh"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+
+        <ImageView
+            android:id="@+id/imageViewEighth"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutThirdRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageViewNineth"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:clickable="true"
+            android:src="@drawable/u852" />
+    </LinearLayout>
+
+</LinearLayout>

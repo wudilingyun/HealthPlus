@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f7f7f5" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20.0dip"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="30dip"
+                        android:background="@drawable/health_plus_input_bg0" 
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="46dip"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/health_plus_register_uname_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:src="@drawable/health_plus_uname_normal" />
+
+                            <View
+                                android:layout_width="1dip"
+                                android:layout_height="22dip"
+                                android:layout_marginLeft="10dip"
+                                android:background="#88C3C3C3" />
+
+                            <EditText
+                                android:id="@+id/health_plus_register_uname_input_et"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:background="@null"
+                                android:hint="手机号码"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:textColor="#838383"
+                                android:textColorHint="#C3C3C3"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:background="#C3C3C3" />
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="46dip"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/health_plus_register_pwd_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:src="@drawable/health_plus_pwd_normal" />
+
+                            <View
+                                android:layout_width="1dip"
+                                android:layout_height="22dip"
+                                android:layout_marginLeft="10dip"
+                                android:background="#88C3C3C3" />
+
+                            <EditText
+                                android:id="@+id/health_plus_register_pwd_input_et"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:background="@null"
+                                android:hint="设置登录密码"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:textColor="#838383"
+                                android:textColorHint="#C3C3C3"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:background="#C3C3C3" />
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="46dip"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/health_plus_register_pwd_confirm_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:src="@drawable/health_plus_pwd_normal" />
+
+                            <View
+                                android:layout_width="1dip"
+                                android:layout_height="22dip"
+                                android:layout_marginLeft="10dip"
+                                android:background="#88C3C3C3" />
+
+                            <EditText
+                                android:id="@+id/health_plus_register_pwd_confirm_input_et"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:background="@null"
+                                android:hint="再输一次密码"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:textColor="#838383"
+                                android:textColorHint="#C3C3C3"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/health_plus_register_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="48dip"
+                        android:layout_marginLeft="20.0dip"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="10.0dip"
+                        android:background="@drawable/health_plus_find_submit_btn_selector"
+                        android:text="注册"
+                        android:textColor="#ffffff" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dip"
+                        android:layout_marginLeft="20.0dip"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="10.0dip"
+                        android:gravity="center_horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentLeft="true"
+                            android:gravity="center" >
+
+                            <CheckBox
+                                android:id="@+id/health_plus_register_agree_box"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:button="@drawable/checkbox_btn_selector"
+                                android:checked="false"
+                                android:padding="10dip"
+                                android:text="同意注册协议"
+                                android:textColor="#9d9d9d"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center" >
+
+                            <Button
+                                android:id="@+id/health_plus_register_read"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:text="阅读注册协议"
+                                android:textColor="#9d9d9d"
+                                android:textSize="12sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout>

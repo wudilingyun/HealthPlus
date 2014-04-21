@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.ScrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_address_consignee"
+            style="@style/Widget.Item.ListView.Label"
+            android:paddingTop="0dp"
+            android:text="@string/shop_label_address_consignee" />
+
+        <EditText
+            android:id="@+id/address_consignee"
+            style="@style/Widget.EditText"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/label_address_consignee"
+            android:hint="@string/shop_hint_address_consignee"
+            android:maxLength="15" />
+
+        <TextView
+            android:id="@+id/label_address"
+            style="@style/Widget.Item.ListView.Label"
+            android:layout_below="@+id/address_consignee"
+            android:text="@string/shop_label_address" />
+
+        <LinearLayout
+            android:id="@+id/address_province_city"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/label_address" >
+
+            <Spinner
+                android:id="@+id/address_province"
+                style="@style/Widget.Spinner"
+                android:layout_width="0.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_weight="2.0" />
+
+            <Spinner
+                android:id="@+id/address_city"
+                style="@style/Widget.Spinner"
+                android:layout_width="0.0dip"
+                android:layout_weight="3.0" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/address_district"
+            style="@style/Widget.Spinner"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/address_province_city"
+            android:layout_marginTop="10.0dip" />
+
+        <EditText
+            android:id="@+id/address_location"
+            style="@style/Widget.EditText.Multi"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address_district"
+            android:layout_marginTop="12.0dip"
+            android:hint="@string/shop_hint_address_location"
+            android:inputType="textPostalAddress"
+            android:maxLength="35" />
+
+        <TextView
+            android:id="@+id/address_label_zipcode"
+            style="@style/Widget.Item.ListView.Label"
+            android:layout_below="@+id/address_location"
+            android:text="@string/shop_label_address_zipcode" />
+
+        <EditText
+            android:id="@+id/address_zipcode"
+            style="@style/Widget.EditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address_label_zipcode"
+            android:hint="@string/shop_hint_address_zipcode"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <TextView
+            android:id="@+id/address_label_tel"
+            style="@style/Widget.Item.ListView.Label"
+            android:layout_below="@+id/address_zipcode"
+            android:text="@string/shop_label_address_tel" />
+
+        <EditText
+            android:id="@+id/address_tel"
+            style="@style/Widget.EditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address_label_tel"
+            android:hint="@string/shop_hint_address_tel"
+            android:inputType="number"
+            android:maxLength="11" />
+
+        <Button
+            android:id="@+id/address_submit"
+            style="@style/Widget.Button.Main"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@color/healthplus_text"
+            android:layout_below="@+id/address_tel"
+            android:layout_marginTop="24.0dip"
+            android:text="@string/shop_submit" />
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,46 @@
+10
+
+dir
+677
+svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/easyting
+svn://192.168.23.204/mobileapp/mobilesafe
+
+
+
+2014-03-28T07:56:35.417049Z
+658
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+73ffb375-b3dc-4891-aa82-bc0e46b602ab
+
+adapter
+dir
+
+service
+dir
+
+utils
+dir
+
+domain
+dir
+
+activity
+dir
+
+parser
+dir
+

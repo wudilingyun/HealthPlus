@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vee.healthplus"
+    android:versionCode="106"
+    android:versionName="1.0.6" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="14" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </permission>
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" >
+    </uses-permission>
+    <!-- <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应�? -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+
+    <!-- 心率监测开启摄像头 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.autofocus" />
+
+    <application
+        android:name="com.vee.healthplus.common.MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/hp_app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        <activity
+            android:name="com.vee.healthplus.ui.main.LoginMain"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.main.MainPage"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.sportmode.HP_Target"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.sporttrack.SportTrackMain"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.achievement.Achievement"
+            android:configChanges="orientation"
+            android:label="BaiduMapSDKDemo"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.setting.Setting"
+            android:configChanges="orientation"
+            android:label="BaiduMapSDKDemo"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.sportmode.SportResultFragment"
+            android:configChanges="orientation"
+            android:label="BaiduMapSDKDemo"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+        <!-- wjf add userreg -->
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.setting.SettingShare"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.vee.healthplus.ui.setting.UpdateActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Dialog" >
+        </activity>
+        <activity android:name="com.vee.healthplus.ui.user.UserInfoEdit" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.setting.AboutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.healthplus.ui.setting.SettingFeedBack"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+        <!-- Health -->
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_exam.HealthHeartActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_exam.HealthExamActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_exam.ExamTypeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_exam.ExamInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_exam.StartExamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_exam.ExamResultActivity"
+            android:screenOrientation="portrait" />
+
+        <receiver
+            android:name="com.vee.healthplus.service.AlarmService$BootCompletedBroadcast"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            <intent-filter android:priority="0x7fffffff" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.vee.healthplus.util.alarm.AlarmReceiver" />
+
+        <service android:name="com.vee.healthplus.service.AlarmService" />
+        <service
+            android:name="com.vee.healthplus.service.SportEngine"
+            android:enabled="true" >
+        </service>
+        <!-- for shop -->
+        <activity
+            android:name="com.vee.shop.activity.ProductDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.AccountActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.ShoppingActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.AddressActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.ServiceStationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.CheckoutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.PaymentActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.OrderListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.PointActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.shop.activity.NewProductDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <!-- for shop -->
+
+
+        <!-- for analysis -->
+        <activity
+            android:name="com.vee.healthplus.ui.analysis.AnalysisHistoryActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- for analysis -->
+
+
+        <!-- for forum -->
+        <activity
+            android:name="com.vee.forum.CategoryActivity"
+            android:label="@string/title_activity_category" >
+        </activity>
+        <activity
+            android:name="com.vee.forum.TopicActivity"
+            android:label="@string/title_activity_topic" >
+        </activity>
+        <activity
+            android:name="com.vee.forum.PostActivity"
+            android:label="@string/title_activity_post" >
+        </activity>
+        <activity
+            android:name="com.vee.forum.TopicDetailActivity"
+            android:label="@string/title_activity_topic_detail" >
+        </activity>
+        <activity
+            android:name="com.vee.forum.ReplyPostActivity"
+            android:label="@string/title_activity_reply_post" >
+        </activity>
+        <!-- for forum -->
+
+
+        <!-- health news -->
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_news.Health_ValuableBook_Fragment"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_news.Health_news_detailsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+        <!--  -->
+
+
+        <!-- health heart -->
+
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_heart.HeartRateActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+        <service android:name="com.vee.easyting.service.MusicService" >
+        </service>
+
+        <!-- music -->
+        <activity
+            android:name="com.vee.easyting.activity.LocalSongsActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.vee.easyting.activity.PlayerActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+
+        <receiver
+            android:name="com.vee.easyting.activity.BaseActivity$BaseBroadCastReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.easyting.progress" />
+                <action android:name="com.easyting.button" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.vee.easyting.receiver.ShutdownReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <action android:name="android.intent.action.QUICKBOOT_POWEROFF" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.vee.healthplus.receiver.CompleteReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- share -->
+        <activity
+            android:name="com.vee.healthplus.ui.setting.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.askweakness.ui.MyXmlActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.askweakness.ui.MySymptomActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.healthplus.ui.heahth_news.Health_ValueBook_commentList_activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.MyHealthUsersGroupActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.MyHealthAddUsers"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.OxygenTestActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.TemperatureTestActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.BodyFatTestActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.HeartRateTestActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.EcgTestActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.ui.NewTestResultActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.HealthPlusLoginActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.user.HealthPlusRegisterActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.HealthPlusFindPwdActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.StatementDetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.myhealth.activity.TiZhiActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.activity.TiZhiResultActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.activity.SubHealthActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.activity.MentalityActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.myhealth.activity.WeightLossActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.moments.NewMomentsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:label="@string/title_activity_new_moments"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.moments.UserMomentsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:label="@string/title_activity_my_moments"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.moments.AddFriendActivity"
+            android:label="@string/title_activity_add_friend" >
+        </activity>
+        <activity
+            android:name="com.vee.moments.SearchPhoneActivity"
+            android:label="@string/title_activity_search_phone" >
+        </activity>
+        <activity
+            android:name="com.vee.moments.AddContsctsActivity"
+            android:label="@string/title_activity_add_contscts" >
+        </activity>
+        <activity
+            android:name="com.vee.moments.FriendDetailActivity"
+            android:label="@string/title_activity_friend_detail" >
+        </activity>
+        <activity
+            android:name="com.vee.moments.FriendMomentsActivity"
+            android:label="@string/title_activity_friend_moments" >
+        </activity>
+        <activity
+            android:name="com.vee.moments.FriendListActivity"
+            android:label="@string/title_activity_friend_list" >
+        </activity>
+    </application>
+
+</manifest>

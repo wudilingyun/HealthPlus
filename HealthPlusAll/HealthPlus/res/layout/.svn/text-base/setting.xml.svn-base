@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hp_main_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@drawable/item_background">
+
+        <ImageView
+            android:id="@+id/header"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/setting_unregist"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/login_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/header"
+            android:layout_centerInParent="true"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/hp_font_midblack"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="未登录"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imgLogin"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@drawable/setting_unregist_arrow"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/hp_userreg_logout"
+            android:textSize="18sp"
+            android:layout_height="38dp"
+            android:background="@drawable/hp_w_target_setbtn_selector"
+            android:visibility="visible"
+            android:textColor="@color/hp_w_header_view_white"
+            android:layout_gravity="left|center_vertical" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/setting_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/item_background"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="3dp"
+        style="@style/setting_list_item" />
+
+</LinearLayout>

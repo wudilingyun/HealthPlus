@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/news_padding"
+    android:background="@drawable/white" >
+
+    <ImageView
+        android:id="@+id/imageView_healthnews"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/news_padding" >
+
+        <TextView
+            android:id="@+id/newstitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中国开发者大会.广州站"
+            android:textColor="@drawable/black"
+            android:textSize="@dimen/health_textsize_4" />
+
+        <TextView
+            android:id="@+id/newsbrief"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:paddingTop="@dimen/news_padding"
+            android:text="2013.4.20•正在进行"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/health_textsize_5" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_pub_backgroud"
+    android:orientation="vertical"
+    android:padding="@dimen/heart_padding_medium" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:background="@drawable/bg_vision_center"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/heart_padding_medium"
+            android:background="@drawable/bg_heart_beat_top" >
+
+            <ImageView
+                android:id="@+id/hearrbeat_img_rotate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/heart_padding_little"
+                android:src="@drawable/img_heart_beat_rotate" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/heart_padding_little"
+                android:background="@drawable/bg_heart_beat_showcenter" >
+
+                <LinearLayout
+                    android:id="@+id/heartbeat_linear_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/heartbeat_tv_show_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/heartbeat_txt"
+                        android:textColor="@drawable/heart_count"
+                        android:textSize="@dimen/heart_count_txt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/heartbeat_init_unit"
+                        android:textColor="@drawable/vision_pub_color"
+                        android:textSize="@dimen/heart_count_unit" />
+                </LinearLayout>
+            </FrameLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/heartbeat_tv_show_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="检测"
+                android:textColor="@drawable/heart_count"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/togglebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_heartbeat_start_or_stop_selector"
+                android:layout_marginTop="7.0dip"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/heart_padding_medium"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="说明：把拇指放于摄像头处。"
+            android:textColor="#ff474747"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="5dip"
+            android:text="本应用不可替代专业心率检测设备,检测的结果仅供参考" />
+    </LinearLayout>
+
+</LinearLayout>

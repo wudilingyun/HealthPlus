@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="211dp"
+            android:background="@drawable/main_totaldistance_bg"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/toplayout"
+                android:layout_width="match_parent"
+                android:layout_height="157dp"
+                android:layout_marginTop="-5dp" >
+
+                <com.vee.healthplus.widget.ShadowTextView
+                    android:id="@+id/distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="654"
+                    android:textColor="@color/hp_font_darkblack"
+                    android:textSize="115sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    style="@style/txt_shadow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/distance"
+                    android:layout_alignBottom="@+id/distance"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@+id/distance"
+                    android:text="@string/sportmode_kilometer"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/hp_font_middle" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/midlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toplayout"
+                android:background="@drawable/hp_main__middle_item_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="6dp" >
+
+                <include
+                    android:id="@+id/calory"
+                    layout="@layout/sportmode_middle_item" />
+
+                <include
+                    android:id="@+id/duration"
+                    layout="@layout/sportmode_middle_item" />
+
+                <include
+                    android:id="@+id/count"
+                    layout="@layout/sportmode_middle_item" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_achievement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/achievement_shorcut_bottom"
+            android:layout_marginTop="@dimen/achievement_shorcut_top"
+            android:paddingLeft="@dimen/achievement_shorcut_left"
+            android:paddingRight="@dimen/achievement_shorcut_right" >
+
+            <LinearLayout
+                android:id="@+id/ll_last"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lastSportTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center_vertical"
+                    android:text="完成最后一次运动在2013-12-01"
+                    android:textColor="@color/little_little_gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lastSportDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="上次运动距离"
+                    android:textColor="@color/little_little_gray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/last_sport_type"
+                android:layout_width="27dp"
+                android:layout_height="23dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/imageToRight"
+                android:layout_toRightOf="@+id/ll_last"
+                android:src="@drawable/main_bike_imge" />
+
+            <ImageView
+                android:id="@+id/imageToRight"
+                android:layout_width="15dp"
+                android:layout_height="21dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingRight="5dp"
+                android:src="@drawable/youjiantou" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottomlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/midlayout"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/btnGo"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/start_btn_selector" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/btnGo"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/hp_w_line_lv_50" />
+
+                <include
+                    android:id="@+id/mode"
+                    layout="@layout/sportmode_bottom_item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/hp_w_line_lv_50" />
+
+                <include
+                    android:id="@+id/sporttype"
+                    layout="@layout/sportmode_bottom_item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/hp_w_line_lv_50" />
+
+                <include
+                    android:id="@+id/mood"
+                    layout="@layout/sportmode_bottom_item"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

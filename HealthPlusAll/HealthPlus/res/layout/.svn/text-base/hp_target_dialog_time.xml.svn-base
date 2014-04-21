@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/hp_w_dialogbg"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+
+    <kankan.wheel.widget.WheelView
+        android:id="@+id/time_wv"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <com.vee.healthplus.widget.NumberPicker
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/htime_np" />
+
+        <com.vee.healthplus.widget.NumberPicker
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/mtime_np" />
+    </LinearLayout>
+
+    <Button
+        style="@style/settargetbtn"
+        android:id="@+id/setTimeTarget_btn"
+        android:text="@string/hp_target_modelsettarget" />
+</LinearLayout>

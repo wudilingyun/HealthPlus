@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.vee.healthplus"
+    xmlns:panel="http://schemas.android.com/apk/res/com.vee.healthplus"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.vee.healthplus.widget.MyRelativeLayout
+        android:id="@+id/child_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.vee.healthplus.widget.HeaderView
+            android:id="@+id/header"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            app:headerRightBtn="none"
+            app:headerLeftBtn="none"
+            app:headerText="@string/hp_app_name" />
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/header"
+            android:orientation="vertical" />
+    </com.vee.healthplus.widget.MyRelativeLayout>
+
+    <com.vee.healthplus.widget.Panel
+        android:id="@+id/rightPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right"
+        panel:animationDuration="1000"
+        panel:closedHandle="@drawable/right_switcher_collapsed_background"
+        panel:content="@+id/panelContent"
+        panel:handle="@+id/panelHandle"
+        panel:openedHandle="@drawable/right_switcher_expanded_background"
+        panel:position="right"
+        panel:weight="75%p">
+
+        <Button
+            android:id="@+id/panelHandle"
+            android:layout_width="33dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="50dip"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/panelContent"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black"
+            android:gravity="center"
+            android:padding="4dip"
+            android:textColor="#eee"
+            android:textStyle="bold" />
+    </com.vee.healthplus.widget.Panel>
+
+    <TextView
+        android:id="@+id/startNum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:textSize="100sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="#df000000"
+        android:visibility="gone" />
+</FrameLayout>

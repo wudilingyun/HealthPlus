@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vee.healthplus.ui.user.ResizeLayout xmlns:app="http://http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loginRootLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/health_plus_login_background" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/health_plus_login_input_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="180dip"
+            android:gravity="bottom"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="55dip"
+                android:src="@drawable/health_plus_logo" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="46dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:background="@drawable/health_plus_input_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/health_plus_uname_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:src="@drawable/health_plus_uname_normal" />
+
+                <View
+                    android:layout_width="1dip"
+                    android:layout_height="22dip"
+                    android:layout_marginLeft="10dip"
+                    android:background="#88C3C3C3" />
+
+                <EditText
+                    android:id="@+id/health_plus_uname_input_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:background="@null"
+                    android:hint="登陆手机号码"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColor="#838383"
+                    android:textColorHint="#C3C3C3"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="46dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="7dip"
+                android:background="@drawable/health_plus_input_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/health_plus_pwd_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:src="@drawable/health_plus_pwd_normal" />
+
+                <View
+                    android:layout_width="1dip"
+                    android:layout_height="22dip"
+                    android:layout_marginLeft="10dip"
+                    android:background="#88C3C3C3" />
+
+                <EditText
+                    android:id="@+id/health_plus_pwd_input_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:background="@null"
+                    android:hint="登陆密码"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="#838383"
+                    android:textColorHint="#C3C3C3"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/health_plus_login_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="48dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/health_plus_login_btn_selector"
+                android:text="登陆"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/health_plus_forgetPwd_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginBottom="15.0dip"
+                android:background="#0000"
+                android:padding="10dip"
+                android:text="找回密码"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="48dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="13.329987dip"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/health_plus_register_text"
+                android:layout_width="fill_parent"
+                android:layout_height="38.0dip"
+                android:layout_weight="0.35"
+                android:gravity="center|left"
+                android:paddingRight="5dip"
+                android:singleLine="true"
+                android:text="我是新用户，没有云医生账号"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/health_plus_goto_register_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="48.0dip"
+                android:layout_weight="0.65"
+                android:background="@drawable/health_plus_goto_register_btn_selector"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip"
+                android:text="立即注册 >>"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</com.vee.healthplus.ui.user.ResizeLayout>

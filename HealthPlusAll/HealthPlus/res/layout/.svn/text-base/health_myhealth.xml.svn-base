@@ -1,0 +1,134 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/themelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dip"
+        android:background="@drawable/homepage_bac"
+        android:padding="15dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/user_head_img"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/myhealth_users_avatar" />
+
+            <TextView
+                android:id="@+id/age_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/user_head_img"
+                android:layout_toRightOf="@+id/user_head_img"
+                android:text="22"
+                android:textColor="#7ab7dd"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/temperature_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/city_txt"
+                android:layout_alignBottom="@+id/city_txt"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:textColor="#7ab7dd"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/weight_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/age_txt"
+                android:layout_alignBottom="@+id/age_txt"
+                android:layout_alignLeft="@+id/sex_txt"
+                android:text="体重适中"
+                android:textColor="#7ab7dd"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/weather_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignRight="@+id/city_txt"
+                android:layout_alignTop="@+id/weight_txt"
+                android:background="@drawable/blue_2" 
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/little_head_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignRight="@+id/user_head_img"
+                android:background="@drawable/myhealth_users_avatar" />
+
+            <TextView
+                android:id="@+id/city_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/temperature_txt"
+                android:textColor="#7ab7dd"
+                android:text="北京"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/weather_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/weather_img"
+                android:layout_below="@+id/city_txt"
+                android:layout_toRightOf="@+id/weight_txt"
+                android:layout_marginLeft="30dp"
+                android:text="天气晴"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/sex_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/username_txt"
+                 android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/sex_female"
+                android:textColor="#7ab7dd"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/username_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/user_head_img"
+                android:singleLine="true"
+                android:text="都教授"
+                android:textColor="#fff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/health_test_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:horizontalSpacing="10dp"
+        android:listSelector="@null"
+        android:numColumns="3"
+        android:verticalSpacing="30dp" />
+
+</LinearLayout>

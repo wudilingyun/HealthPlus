@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hp_main_bg">
+
+    <com.vee.healthplus.widget.HeaderView
+        android:id="@+id/hp_main_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:headerLeftBtn="none"
+        app:headerRightBtn="none"
+        app:headerText="@string/hp_userinfo_edittitle" />
+
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <ImageView
+                    android:id="@+id/userAvatao_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/userdefaultavatar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_userreg_accountshint"
+                    android:id="@+id/userName_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/userAvatao_iv"
+                    style="@style/userregister_userinfotitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_userinfo_pwdmotify"
+                    android:id="@+id/pwdmotify_tv"
+                    android:textColor="@color/motifypwd"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/userName_tv"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignBaseline="@+id/userAvatao_iv" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/userinfoeditwhite">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_userreg_nick"
+                    style="@style/userregister_userinfotitle" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/hp_userinfo_noset"
+                    android:gravity="right|center"
+                    style="@style/userregister_accountscontent"
+                    android:id="@+id/userNick_et" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/userinfoeditwhite">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_personaledit_userage"
+                    style="@style/userregister_userinfotitle"
+                    android:layout_margin="@dimen/hp_personaledit_widgetmargin"
+                    android:layout_gravity="left|center_vertical" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/hp_personaledit_widgetmargin"
+                    android:inputType="number"
+                    android:id="@+id/userAge_et"
+                    android:background="@android:color/transparent"
+                    style="@style/userregister_userinfocontent"
+                    android:gravity="right|center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/userregister_userinfotitle"
+                    android:text="@string/hp_personaledit_usersex"
+                    android:layout_margin="@dimen/hp_personaledit_widgetmargin"
+                    android:layout_gravity="left|center_vertical" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sex_rg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        style="@style/userregister_userinfotitle"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="10dp"
+                        android:paddingLeft="20dp"
+                        android:checked="true"
+                        android:id="@+id/male_rb"
+                        android:gravity="center|right"
+                        android:button="@drawable/radio_btn_selector"
+                        android:text="@string/hp_personaledit_male" />
+
+                    <RadioButton
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:gravity="center|right"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/female_rb"
+                        style="@style/userregister_userinfotitle"
+                        android:button="@drawable/radio_btn_selector"
+                        android:text="@string/hp_personaledit_female" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/userinfoeditwhite"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/userregister_userinfotitle"
+                    android:text="@string/hp_personaledit_userheight"
+                    android:layout_margin="@dimen/hp_personaledit_widgetmargin"
+                    android:layout_gravity="left|center_vertical" />
+
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/hp_personaledit_widgetmargin"
+                        android:inputType="number"
+                        android:background="@android:color/transparent"
+                        style="@style/userregister_userinfocontent"
+                        android:gravity="right|center"
+                        android:layout_weight="1"
+                        android:id="@+id/userHeight_et" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="cm"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/hp_w_target_week"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/userinfoeditwhite"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_personaledit_userweight"
+                    style="@style/userregister_userinfotitle"
+                    android:layout_margin="@dimen/hp_personaledit_widgetmargin"
+                    android:layout_gravity="left|center_vertical" />
+
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/hp_personaledit_widgetmargin"
+                        style="@style/userregister_userinfocontent"
+                        android:inputType="number"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/userWeight_et"
+                        android:layout_weight="1"
+                        android:gravity="right|center" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="kg"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/hp_w_target_week"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/userinfoeditwhite">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_userinfo_phonebound"
+                    style="@style/userregister_userinfotitle" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/hp_userinfo_noset"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                     android:numeric="integer"    
+                    style="@style/userregister_accountscontent"
+                    android:gravity="right|center"
+                    android:id="@+id/userPhone_et" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/userinfoeditwhite">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_userinfo_emailbound"
+                    style="@style/userregister_userinfotitle" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/hp_userinfo_noset"
+                    style="@style/userregister_accountscontent"
+                    android:gravity="right|center"
+                    android:id="@+id/userEmail_et" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/hp_userinfo_save"
+                android:id="@+id/save_btn"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:background="@drawable/hp_w_target_setbtn_selector"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

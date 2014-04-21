@@ -1,0 +1,91 @@
+10
+
+dir
+677
+svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res
+svn://192.168.23.204/mobileapp/mobilesafe
+
+
+
+2014-04-18T08:42:54.761952Z
+676
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+73ffb375-b3dc-4891-aa82-bc0e46b602ab
+
+values-sw720dp-land
+dir
+
+values-w360dp
+dir
+
+values-hdpi
+dir
+
+drawable
+dir
+
+layout-small
+dir
+
+drawable-xxhdpi
+dir
+
+anim
+dir
+
+raw
+dir
+
+drawable-xhdpi
+dir
+
+layout-w360dp
+dir
+
+values
+dir
+
+values-sw600dp
+dir
+
+drawable-w360dp
+dir
+
+drawable-hdpi
+dir
+
+menu
+dir
+
+drawable-ldpi
+dir
+
+drawable-mdpi
+dir
+
+values-xhdpi
+dir
+
+layout
+dir
+
+color
+dir
+
+values-zh
+dir
+

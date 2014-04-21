@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white"
+        android:orientation="vertical" 
+        android:layout_margin="@dimen/heart_marging">
+
+        <TextView
+            android:id="@+id/heart_select_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="@string/heart_select_title"
+            android:textColor="@color/hp_w_target_title"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginLeft="@dimen/hp_main_padding_few"
+            android:layout_marginRight="@dimen/hp_main_padding_few"
+            android:background="@color/hp_w_target_title" />
+
+        <TextView
+            android:id="@+id/select_1"
+            style="@style/dialog_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/calorie_grayiconsmall"
+            android:text="@string/heart_select_1" />
+
+        <TextView
+            android:id="@+id/select_2"
+            style="@style/dialog_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/calorie_grayiconsmall"
+            android:text="@string/heart_select_2" />
+
+        <TextView
+            android:id="@+id/select_3"
+            style="@style/dialog_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/calorie_grayiconsmall"
+            android:text="@string/heart_select_3" />
+    </LinearLayout>
+</LinearLayout>

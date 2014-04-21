@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shop_order_view_header"
+            android:paddingBottom="5.0dip"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="15.0dip"
+            android:paddingTop="15.0dip" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/order_id"
+                    style="@style/TextAppearance.Title.List"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <TextView
+                    android:id="@+id/order_point"
+                    style="@style/TextAppearance.Title.List"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5.0dip"
+                    android:textSize="@dimen/text_size_medium" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/cancel_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                android:src="@drawable/shop_rubbish_bg"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:padding="0.0dip" >
+
+            <!--
+             <RelativeLayout
+            android:id="@+id/order_express_info"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/order_view_body"
+            android:paddingBottom="@dimen/list_item_padding"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="15.0dip"
+            android:paddingTop="0.0dip"
+            android:visibility="gone" >
+
+            <include
+                android:id="@+id/action_divider"
+                android:layout_alignParentTop="true"
+                layout="@layout/horizontal_divider" />
+
+            <TableLayout
+                android:id="@+id/order_express_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/action_divider"
+                android:layout_marginTop="@dimen/list_item_padding"
+                android:shrinkColumns="1"
+                android:stretchColumns="1" >
+
+                <TableRow>
+
+                    <TextView
+                        style="@style/Widget.Item.Table"
+                        android:layout_gravity="top"
+                        android:layout_marginRight="5.0dip"
+                        android:paddingLeft="0.0dip"
+                        android:text="@string/order_express_info"
+                        android:textColor="@color/primary_text" />
+
+                    <TextView
+                        android:id="@+id/order_express_text"
+                        style="@style/Widget.Item.Table"
+                        android:textColor="@color/primary_text" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        style="@style/Widget.Item.Table"
+                        android:layout_gravity="top"
+                        android:layout_marginRight="5.0dip"
+                        android:paddingLeft="0.0dip"
+                        android:text="@string/order_express_sn_label"
+                        android:textColor="@color/primary_text" />
+
+                    <TextView
+                        android:id="@+id/order_express_sn"
+                        style="@style/Widget.Item.Table"
+                        android:textColor="@color/primary_text" />
+                </TableRow>
+            </TableLayout>
+
+            <ImageView
+                android:id="@+id/arrow_right"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/btn_next" />
+        </RelativeLayout>
+            -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shop_order_view_body"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/list_item_padding"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:paddingTop="0.0dip" >
+
+                <include
+                    android:id="@+id/action_divider"
+                    layout="@layout/shop_horizontal_divider" />
+
+                <TextView
+                    android:id="@+id/order_information"
+                    style="@style/Widget.Item.Table"
+                    android:layout_marginTop="@dimen/list_item_padding"
+                    android:text="@string/order_information"
+                    android:visibility="gone" />
+
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/list_item_padding"
+                    android:shrinkColumns="1"
+                    android:stretchColumns="1" >
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/Widget.Item.Table"
+                            android:layout_gravity="top"
+                            android:layout_marginRight="5.0dip"
+                            android:paddingLeft="0.0dip"
+                            android:text="@string/order_add_time"
+                            android:textColor="@color/shop_primary_text" />
+
+                        <TextView
+                            android:id="@+id/add_time"
+                            style="@style/Widget.Item.Table"
+                            android:textColor="@color/shop_primary_text" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/Widget.Item.Table"
+                            android:layout_gravity="top"
+                            android:layout_marginRight="5.0dip"
+                            android:paddingLeft="0.0dip"
+                            android:text="@string/order_view_id"
+                            android:textColor="@color/shop_primary_text" />
+
+                        <TextView
+                            android:id="@+id/order_id"
+                            style="@style/Widget.Item.Table"
+                            android:textColor="@color/shop_primary_text" />
+                    </TableRow>
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/express_btn"
+                    style="@style/Widget.Button.Main"
+                    android:layout_width="fill_parent"
+                    android:layout_marginRight="@dimen/list_item_padding"
+                    android:layout_weight="1.0"
+                    android:text="@string/order_see_express"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/status_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TableLayout
+                    android:id="@+id/receive_info"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:shrinkColumns="1"
+                    android:stretchColumns="1" >
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/Widget.Item.Table"
+                            android:layout_gravity="top"
+                            android:layout_marginRight="5.0dip"
+                            android:paddingLeft="0.0dip"
+                            android:text="@string/order_view_address_label"
+                            android:textColor="@color/shop_primary_text" />
+
+                        <TextView
+                            android:id="@+id/receive_address"
+                            style="@style/Widget.Item.Table"
+                            android:textColor="@color/shop_primary_text" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/receive_time_label"
+                            style="@style/Widget.Item.Table"
+                            android:layout_gravity="top"
+                            android:paddingLeft="0.0dip"
+                            android:text="@string/order_view_address_time_label"
+                            android:textColor="@color/shop_primary_text" />
+
+                        <TextView
+                            android:id="@+id/receive_time"
+                            style="@style/Widget.Item.Table"
+                            android:textColor="@color/shop_primary_text" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/Widget.Item.Table"
+                            android:layout_gravity="top"
+                            android:paddingLeft="0.0dip"
+                            android:text="@string/order_invoice_information"
+                            android:textColor="@color/shop_primary_text" />
+
+                        <TextView
+                            android:id="@+id/invoice_info"
+                            style="@style/Widget.Item.Table"
+                            android:textColor="@color/shop_primary_text" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/point_order_fragment_listview"
+            style="@style/Widget.ListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+        <Button
+            android:id="@+id/pay_btn"
+            style="@style/Widget.Button.Main"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/shop_order_pay"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</ScrollView>
