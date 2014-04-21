@@ -1,42 +1,43 @@
 package com.vee.healthplus.ui.user;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.http.conn.ConnectTimeoutException;
-import org.springframework.http.HttpStatus;
 import org.springframework.social.connect.DuplicateConnectionException;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.DigitsKeyListener;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.util.user.HP_DBModel;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.RegisterTask;
 import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
 
 @SuppressLint("ResourceAsColor")
-public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity implements
-		View.OnClickListener, RegisterTask.RegisterCallBack,
+public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
+		implements View.OnClickListener, RegisterTask.RegisterCallBack,
 		SignInTask.SignInCallBack {
 
-	private EditText userName_et, userPwd_et, userPwdConfirm_et;
-	private CheckBox agreeBox;
-	private Button readBtn, register_btn;
+	private ListView mListView;
+	private Button saveBtn;
+	private ArrayList<ListElement> infoList;
+	private PersonalInfoAdapter mAdapter;
+	private HP_User user;
 
 	private CustomProgressDialog progressDialog = null;
 
@@ -48,95 +49,61 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity imp
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		View view = View.inflate(this, R.layout.healthplus_regsiter_layout,
-				null);
+		View view = View
+				.inflate(this, R.layout.personal_info_edit_layout, null);
 		setContainer(view);
-		getHeaderView().setHeaderTitle("注册");
-		getHeaderView().setHeaderTitleColor(R.color.register_headview_text_color_white);
-		getHeaderView().setBackGroundColor(R.color.register_headview_bg_color_black);
+		getHeaderView().setHeaderTitle("个人信息");
+		getHeaderView().setHeaderTitleColor(
+				R.color.register_headview_text_color_white);
+		getHeaderView().setBackGroundColor(
+				R.color.register_headview_bg_color_black);
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
+		user = HP_DBModel.getInstance(this).queryUserInfoByUserId(
+				HP_User.getOnLineUserId(this), true);
 		initView(view);
+		initData();
 	}
 
 	private void initView(View view) {
 
-		userName_et = (EditText) view
-				.findViewById(R.id.health_plus_register_uname_input_et);
-		userPwd_et = (EditText) view
-				.findViewById(R.id.health_plus_register_pwd_input_et);
-		userPwdConfirm_et = (EditText) view
-				.findViewById(R.id.health_plus_register_pwd_confirm_input_et);
-		register_btn = (Button) view
-				.findViewById(R.id.health_plus_register_btn);
-		register_btn.setEnabled(false);
-		readBtn = (Button) view.findViewById(R.id.health_plus_register_read);
-		register_btn.setOnClickListener(this);
-		readBtn.setOnClickListener(this);
-		agreeBox = (CheckBox) view
-				.findViewById(R.id.health_plus_register_agree_box);
-		agreeBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
-				register_btn.setEnabled(isChecked ? true : false);
-
-			}
-		});
+		mListView = (ListView) view
+				.findViewById(R.id.health_plus_personal_info_edit_lv);
+		saveBtn = (Button) view
+				.findViewById(R.id.health_plus_personal_info_edit_sava_btn);
 		String digits = getResources().getString(R.string.user_resgiter_edit);
-		//userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
-		//userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
+		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
+		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
+	}
+
+	private void initData() {
+		infoList = new ArrayList<ListElement>();
+		mAdapter = new PersonalInfoAdapter(this);
+		ImageListViewItem imageItem = new ImageListViewItem();
+		infoList.add(imageItem);
+		for (int i = 0; i < 7; i++) {
+			infoList.add(new TextListViewItem());
+		}
+		
+		infoList.get(0).setText("头像");
+		infoList.get(1).setText("用户名").setValue(user.userName);
+		infoList.get(2).setText("密码").setValue(user.phone);
+		infoList.get(3).setText("性别").setValue(user.userSex==-1?"男":"女");
+		infoList.get(4).setText("年龄").setValue(""+user.userAge+"岁");
+		infoList.get(5).setText("邮箱").setValue(user.email);
+		infoList.get(6).setText("身高").setValue(user.userHeight+"cm");
+		infoList.get(7).setText("体重").setValue(user.userWeight+"kg");
+
+		mAdapter.setList(infoList);
+		mListView.setAdapter(mAdapter);
+
 	}
 
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-		case R.id.health_plus_register_btn:
-			int s = userPwd_et.getText().toString().length();
-			Pattern p = Pattern.compile("[0-9]*");
-			Matcher m = p.matcher(userPwd_et.getText().toString());
-			Pattern p1 = Pattern.compile("[a-zA-Z]*");
-			Matcher m1 = p1.matcher(userPwd_et.getText().toString());
-
-			int s1 = userName_et.getText().toString().length();
-
-			if (s1 >= 6 && s1 <= 15) {
-				if (userPwd_et.getText().toString()
-						.equals(userPwdConfirm_et.getText().toString())) {
-					if (!m.matches() && !m1.matches()) {
-						if (s >= 6 && s <= 15) {
-							new RegisterTask(this, userName_et.getText()
-									.toString(), userPwd_et.getText()
-									.toString(), "", this, this).execute();
-							progressDialog.show();
-						} else {
-							Toast.makeText(
-									this,
-									getResources()
-											.getString(
-													R.string.user_password_length_toast),
-									Toast.LENGTH_SHORT).show();
-						}
-					} else {
-						Toast.makeText(
-								this,
-								getResources().getString(
-										R.string.user_password_toast),
-								Toast.LENGTH_SHORT).show();
-					}
-				} else {
-					Toast.makeText(this, "两次密码不一致", Toast.LENGTH_SHORT).show();
-				}
-			} else {
-				Toast.makeText(
-						this,
-						getResources().getString(
-								R.string.user_name_length_toast),
-						Toast.LENGTH_SHORT).show();
-			}
-
+		case R.id.health_plus_personal_info_edit_sava_btn:
 			break;
 		case R.id.cannel_btn:
 			finish();

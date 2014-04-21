@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
+import com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity;
 import com.vee.healthplus.util.SystemMethod;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
@@ -33,6 +35,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	private ListView mListView;
 	private RelativeLayout rl_login_done;
 	private TextView tv_user_name, user_login_tv;
+	private Button edit;
 	private RelativeLayout rl_login_none;
 
 	public static UserPageFragment newInstance() {
@@ -95,7 +98,10 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 				.findViewById(R.id.userpage_loginbar_none);
 		user_login_tv = (TextView) localView
 				.findViewById(R.id.user_log_item_text);
+
+		edit = (Button) rl_login_done.findViewById(R.id.user_log_item_edit);
 		user_login_tv.setOnClickListener(this);
+		edit.setOnClickListener(this);
 		return localView;
 	}
 
@@ -139,7 +145,12 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 					HealthPlusLoginActivity.class);
 			startActivity(intent);
 			break;
+		case R.id.user_log_item_edit:
+			Intent intent2 = new Intent(getActivity(),
+					HealthPlusPersonalInfoEditActivity.class);
+			startActivity(intent2);
+			break;
 		}
-	}
 
+	}
 }
