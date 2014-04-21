@@ -27,7 +27,7 @@ import com.vee.shop.http.GetCartTask;
 
 public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 
-	private Fragment curFragment;
+	private Fragment curFragment;//lingyun
 	
 
 	@Override
