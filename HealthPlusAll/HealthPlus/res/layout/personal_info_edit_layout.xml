@@ -23,7 +23,8 @@
         android:layout_height="fill_parent"
         android:layout_marginRight="16dip"
         android:layout_marginLeft="16dip" 
-        android:divider="@drawable/personal_info_edit_divider"
+        android:divider="#dfdfde"
+        android:dividerHeight="0.5dip"
         android:background="#f7f7f5"/>
 
 </RelativeLayout>

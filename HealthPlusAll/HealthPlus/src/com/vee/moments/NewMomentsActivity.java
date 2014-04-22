@@ -57,14 +57,14 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		setRightBtnVisible(View.VISIBLE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(HeaderView.HEADER_BACK);
-		getHeaderView().setRightOption(HeaderView.HEADER_SETTING);
+		getHeaderView().setRightOption(HeaderView.HEADER_CAMERA);
 
 		setHeaderClickListener(new OnHeaderClickListener() {
 
 			@Override
 			public void OnHeaderClick(View v, int option) {
 				// TODO Auto-generated method stub
-				if (option == HeaderView.HEADER_SETTING) {
+				if (option == HeaderView.HEADER_CAMERA) {
 					Toast.makeText(NewMomentsActivity.this, "setting",
 							Toast.LENGTH_SHORT).show();
 					if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)

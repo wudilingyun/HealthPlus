@@ -19,7 +19,7 @@
             android:layout_height="45dp"
             android:layout_alignParentTop="true"
             app:headerRightBtn="none"
-            app:headerLeftBtn="none"
+            app:headerLeftBtn="logo"
             app:headerText="@string/hp_app_name" />
 
         <FrameLayout

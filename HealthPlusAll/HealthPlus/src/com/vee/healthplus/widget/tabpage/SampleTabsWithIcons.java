@@ -115,7 +115,7 @@ public class SampleTabsWithIcons extends Fragment {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
 						((BaseFragmentActivity) activity).getHeaderView()
-								.setRightOption(HeaderView.HEADER_SHOP_USER);
+								.setRightOption(HeaderView.HEADER_ADD);
 						((BaseFragmentActivity) activity)
 								.setRightBtnVisible(View.VISIBLE);
 						((BaseFragmentActivity) activity)
@@ -128,7 +128,7 @@ public class SampleTabsWithIcons extends Fragment {
 						Activity activity = getActivity();
 						((BaseFragmentActivity) activity).getHeaderView()
 								.setRightOption(
-										HeaderView.HEADER_ANALYSIS_HISTORY);
+										HeaderView.HEADER_MENU);
 						((BaseFragmentActivity) activity)
 								.setRightBtnVisible(View.GONE);
 						((BaseFragmentActivity) activity)
@@ -147,7 +147,7 @@ public class SampleTabsWithIcons extends Fragment {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
 						((BaseFragmentActivity) activity).getHeaderView()
-								.setRightOption(HeaderView.HEADER_SETTING);
+								.setRightOption(HeaderView.HEADER_MENU);
 						((BaseFragmentActivity) activity)
 								.setRightBtnVisible(View.GONE);
 					}

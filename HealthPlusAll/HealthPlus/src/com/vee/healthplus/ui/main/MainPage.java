@@ -14,6 +14,7 @@ import com.vee.healthplus.common.FragmentMsg;
 import com.vee.healthplus.common.IFragmentMsg;
 import com.vee.healthplus.common.MyApplication;
 import com.vee.healthplus.service.AlarmService;
+import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.ui.user.UserRegister_Activity;
 import com.vee.healthplus.util.AppPreferencesUtil;
@@ -27,25 +28,23 @@ import com.vee.shop.http.GetCartTask;
 
 public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 
-	private Fragment curFragment;//lingyun modify on github
-	
+	private Fragment curFragment;// lingyun modify on github
 
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		updateFragmentToStack(SampleTabsWithIcons.newInstance());
-		setLeftBtnVisible(View.GONE);
-		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)) {
-			//initDefaultUserInfo();
+		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)
+				&& HP_User.getOnLineUserId(this) == 0) {
+			// initDefaultUserInfo();
 			// 暂时将第一次运行的注册界面改成登陆界面
 			// new UserRegister_Activity().show(getSupportFragmentManager(),
 			// "");
-			//new UserLogin_Activity(null).show(getSupportFragmentManager(), "");
-			//AppPreferencesUtil.setBooleanPref(this, "isFirst", false);
-		} else if (HP_User.getOnLineUserId(this) == 0) {
-			//new UserLogin_Activity(null).show(getSupportFragmentManager(), "");
-			Log.e("lingyun","HP_User.getOnLineUserId(this) == 0");
+			// new UserLogin_Activity(null).show(getSupportFragmentManager(),
+			// "");
+			AppPreferencesUtil.setBooleanPref(this, "isFirst", false);
+			startActivity(new Intent(this, HealthPlusLoginActivity.class));
 		} else {
 			new GetCartTask(null, null, MainPage.this, MainPage.this).execute();
 		}
@@ -56,7 +55,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 
 		new InstallSataUtil(this).serverStat(MyApplication.CHANNEL_ID);
 	}
- 
+
 	private void initDefaultUserInfo() {
 		new HP_DBHelper(this, HP_DBCommons.DBNAME, null, 1);
 		HP_User user = new HP_User();
@@ -66,9 +65,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 				true);
 		HP_User.setOnLineUserId(this, 0);
 	}
-  
-	
-	
+
 	private void updateFragmentToStack(FragmentMsg fMsg) {
 		android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
 				.beginTransaction();

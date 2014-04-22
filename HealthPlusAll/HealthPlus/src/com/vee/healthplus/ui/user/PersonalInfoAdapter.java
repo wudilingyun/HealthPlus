@@ -53,5 +53,11 @@ public class PersonalInfoAdapter extends BaseAdapter {
 	public void setList(ArrayList<ListElement> infoList) {
 		this.infoList=infoList;
 	}
+	
+	@Override
+	public boolean isEnabled(int position) {
+		// TODO Auto-generated method stub
+		return super.isEnabled(position);
+	}
 
 }

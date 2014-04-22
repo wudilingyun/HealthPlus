@@ -29,7 +29,7 @@ public class TextListViewItem implements ListElement {
 	@Override
 	public int getLayoutId() {
 		// TODO Auto-generated method stub
-		return R.layout.health_plus_personal_info_edit_text_item;
+		return R.layout.healthplus_personal_info_edit_text_item;
 
 	}
 
@@ -54,6 +54,24 @@ public class TextListViewItem implements ListElement {
 		// TODO Auto-generated method stub
 		return this;
 
+	}
+
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return value;
+	}
+
+	@Override
+	public Bitmap getPhoto() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

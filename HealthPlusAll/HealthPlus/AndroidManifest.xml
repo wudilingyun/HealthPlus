@@ -101,6 +101,11 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/StyledIndicators" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.vee.healthplus.ui.sportmode.HP_Target"
@@ -440,22 +445,20 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.vee.healthplus.ui.user.HealthPlusLoginActivity"
-            android:launchMode="singleInstance"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.vee.healthplus.ui.user.HealthPlusRegisterActivity"
-            android:launchMode="singleInstance"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.vee.healthplus.ui.user.HealthPlusFindPwdActivity"
-            android:launchMode="singleInstance"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.vee.healthplus.ui.user.StatementDetailsActivity"
@@ -464,6 +467,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.UsernameEditActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />

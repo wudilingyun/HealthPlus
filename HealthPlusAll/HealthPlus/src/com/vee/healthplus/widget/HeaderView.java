@@ -16,18 +16,14 @@ import com.vee.healthplus.R;
 public class HeaderView extends LinearLayout implements OnClickListener {
 	public static final int HEADER_NONE = 0;
 	public static final int HEADER_BACK = 1;
-	public static final int HEADER_HOME = 2;
-	public static final int HEADER_SETTING = 3;
-	public static final int HEADER_EDIT = 4;
-	public static final int HEADER_SHARE = 5;
-	public static final int HEADER_INFO = 6;
-	public static final int HEADER_MORE = 7;
-	public static final int HEADER_DOWNLOAD = 8;
-	public static final int HEADER_COMMIT = 9;
-	public static final int HEADER_TRADE = 10;
-	public static final int HEADER_BACK_REPLACE = 11;
-	public static final int HEADER_SHOP_USER = 12;
-	public static final int HEADER_ANALYSIS_HISTORY = 13;
+	public static final int HEADER_LOGO = 2;
+	public static final int HEADER_FRIENDS = 3;
+	public static final int HEADER_OK = 4;
+	public static final int HEADER_EDIT = 5;
+	public static final int HEADER_ADD = 6;
+	public static final int HEADER_CAMERA = 7;
+	public static final int HEADER_CLEAR = 8;
+	public static final int HEADER_MENU = 9;
 
 	private Integer mLOption;
 	private Integer mROption;
@@ -87,10 +83,10 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 
 		case 1:
 			rbtnImg.setImageResource(R.drawable.header_view_right_bt_selector);
-			mROption = HEADER_SETTING;
+			mROption = HEADER_ADD;
 			break;
 		case 5:
-			mROption = HEADER_SHARE;
+			mROption = HEADER_MENU;
 			break;
 		default:
 			break;
@@ -149,4 +145,9 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 	public void setRightRes(int id) {
 		rbtnImg.setImageResource(id);
 	}
+	
+	public void setLeftRes(int id) {
+		lbtnImg.setImageResource(id);
+	}
+	
 }

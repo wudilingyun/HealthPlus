@@ -12,5 +12,8 @@ public interface ListElement {
 	public ListElement setPhoto(Bitmap photo);
 	public ListElement setValue(String value);
 	public ListElement setText(String text);
+	public String getText();
+	public String getValue();
+	public Bitmap getPhoto();
 
 }

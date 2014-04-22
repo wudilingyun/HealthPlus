@@ -30,7 +30,7 @@ public class ImageListViewItem implements ListElement {
 	@Override
 	public int getLayoutId() {
 		// TODO Auto-generated method stub
-		return R.layout.health_plus_personal_info_edit_image_item;
+		return R.layout.healthplus_personal_info_edit_image_item;
 	}
 
 	@Override
@@ -55,5 +55,25 @@ public class ImageListViewItem implements ListElement {
 		return this;
 
 	}
+
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Bitmap getPhoto() {
+		// TODO Auto-generated method stub
+		return photo;
+	}
+	
+	
 
 }

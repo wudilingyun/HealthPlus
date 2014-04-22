@@ -75,7 +75,7 @@ public class StatementDetailsActivity extends BaseFragmentActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 
-		View view = View.inflate(this, R.layout.health_plus_statement_webview, null);
+		View view = View.inflate(this, R.layout.healthplus_statement_webview, null);
 		setContainer(view);
 
 		getHeaderView().setHeaderTitle("声明条款");

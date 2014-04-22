@@ -107,16 +107,6 @@ public class HealthPlusLoginActivity extends Activity implements
 		progressDialog.setCanceledOnTouchOutside(false);
 	}
 
-	@Override
-	public void onBackPressed() {
-		// TODO Auto-generated method stub
-		Intent intent = new Intent();
-		intent.setClass(this, MainPage.class);
-		startActivity(intent);
-		progressDialog.dismiss();
-		finish();
-	}
-
 	private void initView() {
 		root_layout = (ResizeLayout) findViewById(R.id.loginRootLayout);
 		root_layout.setHandler(mHandler);
@@ -286,9 +276,6 @@ public class HealthPlusLoginActivity extends Activity implements
 		if (callBack != null) {
 			callBack.onChange();
 		}
-		Intent intent = new Intent();
-		intent.setClass(this, MainPage.class);
-		startActivity(intent);
 		finish();
 	}
 

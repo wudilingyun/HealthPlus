@@ -1,8 +1,6 @@
 package com.vee.healthplus.ui.user;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.springframework.social.connect.DuplicateConnectionException;
@@ -12,11 +10,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -40,6 +36,37 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 	private HP_User user;
 
 	private CustomProgressDialog progressDialog = null;
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		switch (resultCode) {
+		case 0:
+			break;
+		case 1:
+			Bundle b = data.getExtras();
+			String uname = b.getString("uname");
+			if (uname != null && !uname.equals("")) {
+				infoList.get(1).setValue(uname);
+			}
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+
+		}
+
+		super.onActivityResult(requestCode, resultCode, data);
+	}
 
 	public HealthPlusPersonalInfoEditActivity() {
 		// TODO Auto-generated constructor stub
@@ -85,18 +112,55 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		for (int i = 0; i < 7; i++) {
 			infoList.add(new TextListViewItem());
 		}
-		
+
 		infoList.get(0).setText("头像");
-		infoList.get(1).setText("用户名").setValue(user.userName);
+		infoList.get(1).setText("用户名").setValue(user.userNick);
 		infoList.get(2).setText("密码").setValue(user.phone);
-		infoList.get(3).setText("性别").setValue(user.userSex==-1?"男":"女");
-		infoList.get(4).setText("年龄").setValue(""+user.userAge+"岁");
+		infoList.get(3).setText("性别").setValue(user.userSex == -1 ? "男" : "女");
+		infoList.get(4).setText("年龄").setValue("" + user.userAge + "岁");
 		infoList.get(5).setText("邮箱").setValue(user.email);
-		infoList.get(6).setText("身高").setValue(user.userHeight+"cm");
-		infoList.get(7).setText("体重").setValue(user.userWeight+"kg");
+		infoList.get(6).setText("身高").setValue(user.userHeight + "cm");
+		infoList.get(7).setText("体重").setValue(user.userWeight + "kg");
 
 		mAdapter.setList(infoList);
 		mListView.setAdapter(mAdapter);
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				switch (position) {
+				case 0:
+
+					break;
+				case 1:
+					Bundle extras = new Bundle();
+					Intent intent1=new Intent();
+					extras.putString("uname", infoList.get(1).getValue());
+					intent1.putExtras(extras);
+					intent1.setClass(HealthPlusPersonalInfoEditActivity.this, UsernameEditActivity.class);
+					startActivityForResult(intent1, 1);
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+				case 7:
+					break;
+				case 8:
+					break;
+
+				}
+
+			}
+		});
 
 	}
 
