@@ -30,9 +30,10 @@ public class MyhealthMainAdapter extends BaseAdapter {
 	protected LayoutInflater _mInflater;
 	private static Context ctx;
 
-	private int icon[] = { R.drawable.hm_xinlv, R.drawable.hm_ceshi,
-			R.drawable.hm_zhifang, R.drawable.hm_tiwen, R.drawable.hm_xueyang,
-			R.drawable.hm_stature };
+	private int icon[] = { R.drawable.home_jiankang, R.drawable.home_tizhi,
+			R.drawable.home_heart, R.drawable.home_gaoxuezhi, R.drawable.home_xuetang,
+			R.drawable.home_jianfei };
+
 	private static int[] name = { R.string.yajiankang, R.string.tizhiceshi,
 			R.string.xinli, R.string.xuezhi, R.string.tangniaobing,
 			R.string.jianfei };
@@ -70,25 +71,26 @@ public class MyhealthMainAdapter extends BaseAdapter {
 			holder.name = (TextView) view.findViewById(R.id.item_name);
 			holder.lltestItem = (LinearLayout) view
 					.findViewById(R.id.ll_test_item);
-			holder.rl = (RelativeLayout) view.findViewById(R.id.rl);
+			//holder.rl = (RelativeLayout) view.findViewById(R.id.rl);
 			view.setTag(holder);
+		
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
 		holder.icon.setImageResource(icon[i]);
 		holder.name.setText(ctx.getResources().getString(name[i]));
-		if (i == selectItem) {
+/*	if (i == selectItem) {
 			holder.lltestItem
 					.setBackgroundResource(R.drawable.test_item_selector_selected);
 		} else {
 			holder.lltestItem
 					.setBackgroundResource(R.drawable.test_item_selector);
-		}
+		}*/
 		DisplayMetrics dm = new DisplayMetrics();
 		((Activity) ctx).getWindowManager().getDefaultDisplay().getMetrics(dm);
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
 				dm.widthPixels / 3, dm.widthPixels / 3);
-		holder.rl.setLayoutParams(lp);
+		//holder.rl.setLayoutParams(lp);
 		return view;
 	}
 

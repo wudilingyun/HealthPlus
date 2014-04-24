@@ -196,7 +196,7 @@ public class SqlForTest<T> {
 
 		try {
 			String sql = "select * from " + DBManager.HEALTH_RESULT
-					+ " where maxscore>=" + score + " and minscore<" + score
+					+ " where maxscore>=" + score + " and minscore<=" + score
 					+ " and name_id=" + name_id;
 			System.out.println("sql" + sql);
 			Cursor cursor = database.rawQuery(sql, null);

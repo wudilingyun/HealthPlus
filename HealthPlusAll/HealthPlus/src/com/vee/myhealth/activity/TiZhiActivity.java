@@ -79,7 +79,6 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		testListView.setOnItemClickListener(this);
 		testAdapter = new TestAdapter(this);
 		testListView.setAdapter(testAdapter);
-
 	}
 
 	void getData() {

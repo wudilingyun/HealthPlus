@@ -2,10 +2,6 @@ package com.vee.healthplus.ui.user;
 
 import java.util.ArrayList;
 
-import org.apache.http.conn.ConnectTimeoutException;
-import org.springframework.social.connect.DuplicateConnectionException;
-import org.springframework.web.client.ResourceAccessException;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,14 +16,15 @@ import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
-import com.vee.healthplus.util.user.RegisterTask;
-import com.vee.healthplus.util.user.SignInTask;
+import com.vee.healthplus.util.user.ICallBack;
+import com.vee.healthplus.util.user.SaveProfileTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
+import com.vee.healthplus.widget.HeaderView;
 
 @SuppressLint("ResourceAsColor")
 public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
-		implements View.OnClickListener, RegisterTask.RegisterCallBack,
-		SignInTask.SignInCallBack {
+		implements View.OnClickListener, ICallBack,
+		SaveProfileTask.SaveProfileCallBack {
 
 	private ListView mListView;
 	private Button saveBtn;
@@ -44,8 +41,8 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		case 0:
 			break;
 		case 1:
-			Bundle b = data.getExtras();
-			String uname = b.getString("uname");
+			Bundle b1 = data.getExtras();
+			String uname = b1.getString("uname");
 			if (uname != null && !uname.equals("")) {
 				infoList.get(1).setValue(uname);
 			}
@@ -53,18 +50,43 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		case 2:
 			break;
 		case 3:
+			Bundle b3 = data.getExtras();
+			String sex = b3.getString("sex");
+			if (sex != null && !sex.equals("")) {
+				infoList.get(3).setValue(sex);
+			}
 			break;
 		case 4:
+			Bundle b4 = data.getExtras();
+			String age = b4.getString("age");
+			if (age != null && !age.equals("")) {
+				infoList.get(4).setValue(age);
+			}
 			break;
 		case 5:
+			Bundle b5 = data.getExtras();
+			String email = b5.getString("email");
+			if (email != null && !email.equals("")) {
+				infoList.get(5).setValue(email);
+			}
 			break;
 		case 6:
+			Bundle b6 = data.getExtras();
+			String height = b6.getString("height");
+			if (height != null && !height.equals("")) {
+				infoList.get(6).setValue(height + "cm");
+			}
 			break;
 		case 7:
+			Bundle b7 = data.getExtras();
+			String weight = b7.getString("weight");
+			if (weight != null && !weight.equals("")) {
+				infoList.get(7).setValue(weight + "kg");
+			}
 			break;
 
 		}
-
+		mAdapter.notifyDataSetChanged();
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
@@ -86,7 +108,8 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 				R.color.register_headview_bg_color_black);
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
-		setLeftBtnType(1);
+		setLeftBtnRes(R.drawable.healthplus_headview_back_btn);
+		setLeftBtnType(HeaderView.HEADER_BACK);
 		user = HP_DBModel.getInstance(this).queryUserInfoByUserId(
 				HP_User.getOnLineUserId(this), true);
 		initView(view);
@@ -99,6 +122,7 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 				.findViewById(R.id.health_plus_personal_info_edit_lv);
 		saveBtn = (Button) view
 				.findViewById(R.id.health_plus_personal_info_edit_sava_btn);
+		saveBtn.setOnClickListener(this);
 		String digits = getResources().getString(R.string.user_resgiter_edit);
 		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
@@ -115,7 +139,7 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 
 		infoList.get(0).setText("头像");
 		infoList.get(1).setText("用户名").setValue(user.userNick);
-		infoList.get(2).setText("密码").setValue(user.phone);
+		infoList.get(2).setText("密码").setValue("未绑定");
 		infoList.get(3).setText("性别").setValue(user.userSex == -1 ? "男" : "女");
 		infoList.get(4).setText("年龄").setValue("" + user.userAge + "岁");
 		infoList.get(5).setText("邮箱").setValue(user.email);
@@ -135,24 +159,60 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 
 					break;
 				case 1:
-					Bundle extras = new Bundle();
-					Intent intent1=new Intent();
-					extras.putString("uname", infoList.get(1).getValue());
-					intent1.putExtras(extras);
-					intent1.setClass(HealthPlusPersonalInfoEditActivity.this, UsernameEditActivity.class);
+					Bundle extras1 = new Bundle();
+					Intent intent1 = new Intent();
+					extras1.putString("uname", infoList.get(1).getValue());
+					intent1.putExtras(extras1);
+					intent1.setClass(HealthPlusPersonalInfoEditActivity.this,
+							UsernameEditActivity.class);
 					startActivityForResult(intent1, 1);
 					break;
 				case 2:
 					break;
 				case 3:
+					Bundle extras3 = new Bundle();
+					Intent intent3 = new Intent();
+					extras3.putString("sex", infoList.get(3).getValue());
+					intent3.putExtras(extras3);
+					intent3.setClass(HealthPlusPersonalInfoEditActivity.this,
+							SexEditActivity.class);
+					startActivityForResult(intent3, 3);
 					break;
 				case 4:
+					Bundle extras4 = new Bundle();
+					Intent intent4 = new Intent();
+					extras4.putString("age", infoList.get(4).getValue());
+					intent4.putExtras(extras4);
+					intent4.setClass(HealthPlusPersonalInfoEditActivity.this,
+							AgeEditActivity.class);
+					startActivityForResult(intent4, 4);
 					break;
 				case 5:
+					Bundle extras5 = new Bundle();
+					Intent intent5 = new Intent();
+					extras5.putString("email", infoList.get(5).getValue());
+					intent5.putExtras(extras5);
+					intent5.setClass(HealthPlusPersonalInfoEditActivity.this,
+							EmailEditActivity.class);
+					startActivityForResult(intent5, 5);
 					break;
 				case 6:
+					Bundle extras6 = new Bundle();
+					Intent intent6 = new Intent();
+					extras6.putString("height", infoList.get(6).getValue());
+					intent6.putExtras(extras6);
+					intent6.setClass(HealthPlusPersonalInfoEditActivity.this,
+							HeightEditActivity.class);
+					startActivityForResult(intent6, 6);
 					break;
 				case 7:
+					Bundle extras7 = new Bundle();
+					Intent intent7 = new Intent();
+					extras7.putString("weight", infoList.get(7).getValue());
+					intent7.putExtras(extras7);
+					intent7.setClass(HealthPlusPersonalInfoEditActivity.this,
+							WeightEditActivity.class);
+					startActivityForResult(intent7, 7);
 					break;
 				case 8:
 					break;
@@ -168,6 +228,42 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.health_plus_personal_info_edit_sava_btn:
+			user.userNick = infoList.get(1).getValue();
+			user.email = infoList.get(5).getValue();
+			String str = infoList.get(6).getValue();
+			user.userHeight = Integer
+					.valueOf(str.substring(0, str.length() - 2));
+			str = infoList.get(7).getValue();
+			user.userWeight = Float.valueOf(str.substring(0, str.length() - 2));
+			str = infoList.get(4).getValue();
+			user.userAge = Integer.valueOf(str.substring(0, str.length() - 1));
+			str = infoList.get(3).getValue();
+			user.userSex = str.equals("男") ? -1 : 0;
+
+			if (user.userHeight < 1 || user.userHeight > 245) {
+				displayResult(getResources().getString(
+						R.string.hp_userinfoediterror_height));
+				return;
+			} else if (user.userWeight < 1 || user.userWeight > 250) {
+				displayResult(getResources().getString(
+						R.string.hp_userinfoediterror_weight));
+				return;
+			} else if (user.userAge < 1 || user.userAge > 200) {
+				displayResult(getResources().getString(
+						R.string.hp_userinfoediterror_age));
+				return;
+			}
+			if (HP_User.getOnLineUserId(this) != 0) {
+				try {
+					new SaveProfileTask(
+							HealthPlusPersonalInfoEditActivity.this, user,
+							HealthPlusPersonalInfoEditActivity.this).execute();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+			HP_DBModel.getInstance(this).updateUserInfo(user, true);
+			finish();
 			break;
 		case R.id.cannel_btn:
 			finish();
@@ -183,98 +279,38 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		progressDialog.setCanceledOnTouchOutside(false);
 	}
 
-	private void displayRegisterError(String message) {
-		// new
-		// AlertDialog.Builder(mContext).setMessage(message).setCancelable(false)
-		// .setPositiveButton("OK", null).create().show();
-	}
-
-	private void displayRegisterResult(String msg) {
+	private void displayResult(String msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
 	}
 
 	@Override
-	public void onFinishRegister(int reflag) {
-		switch (reflag) {
-		case 8:
-			// 注册成功
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userreg_success));
-			break;
-		case 102:
-			// 注册帐号长度非法
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error102));
-			progressDialog.dismiss();
-			break;
-		case 103:
-			// 通信密钥不正确
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error103));
-			progressDialog.dismiss();
-			break;
-		case 104:
-			// 注册帐号非法，注册帐号必须是数字和字母组合，不能包含非法字符,@除外
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error104));
-			progressDialog.dismiss();
-			break;
-		case 1:
-			// 用户名或邮箱存在，无法注册
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error1));
-			progressDialog.dismiss();
-			break;
-		case 5:
-			// 用户基本信息写入失败
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error5));
-			progressDialog.dismiss();
-			break;
-		case 7:
-			// 用户扩展信息写入失败
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error7));
-			progressDialog.dismiss();
-			break;
-		default:
-			// 服务器内部错误
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_errorother));
-			progressDialog.dismiss();
-			break;
+	public void onChange() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onCancel() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onFinishSaveProfile(int reflag) {
+		// TODO Auto-generated method stub
+		if (reflag == 200) {
+			Toast.makeText(
+					this,
+					getResources()
+							.getString(R.string.hp_userinfo_motifysuccess),
+					Toast.LENGTH_SHORT).show();
+			// finish();
 		}
 	}
 
 	@Override
-	public void onErrorRegister(Exception exception) {
-		progressDialog.dismiss();
+	public void onErrorSaveProfile(Exception e) {
+		// TODO Auto-generated method stub
 
-		if (exception != null) {
-			String message;
-			if (exception instanceof ResourceAccessException
-					&& exception.getCause() instanceof ConnectTimeoutException) {
-				message = "连接超时";
-			} else if (exception instanceof DuplicateConnectionException) {
-				message = "连接已存在";
-			} else {
-				message = "网络连接错误";
-			}
-			displayRegisterResult(message);
-		}
-	}
-
-	@Override
-	public void onFinishSignIn() {
-		displayRegisterResult(getResources().getString(
-				R.string.hp_userlogin_success));
-		progressDialog.dismiss();
-		startActivity(new Intent(this, UserInfoEdit.class));
-		finish();
-	}
-
-	@Override
-	public void onErrorSignIn(Exception e) {
-		progressDialog.dismiss();
 	}
 }

@@ -21,8 +21,6 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 
 	private EditText unameEt;
 	private ImageView clearBtn;
-	private HP_User user;
-
 	private OnHeaderClickListener headerClickListener = new OnHeaderClickListener() {
 
 		@Override
@@ -40,16 +38,12 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 		}
 	};
 
-	public UsernameEditActivity() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		View view = View
-				.inflate(this, R.layout.username_edit_layout, null);
+		View view = View.inflate(this,
+				R.layout.personal_info_username_edit_layout, null);
 		setContainer(view);
 		getHeaderView().setHeaderTitle("用户名");
 		getHeaderView().setHeaderTitleColor(
@@ -63,26 +57,20 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 		setLeftBtnType(HeaderView.HEADER_BACK);
 		setLeftBtnRes(R.drawable.healthplus_headview_back_btn);
 		setHeaderClickListener(headerClickListener);
-		user = HP_DBModel.getInstance(this).queryUserInfoByUserId(
-				HP_User.getOnLineUserId(this), true);
 		initView(view);
-		initData();
 	}
 
 	private void initView(View view) {
 
 		unameEt = (EditText) view
 				.findViewById(R.id.personal_info_uname_edit_et);
+		unameEt.setText(getIntent().getExtras().getString("uname"));
 		clearBtn = (ImageView) view
 				.findViewById(R.id.personal_info_uname_edit_clear_img);
 		clearBtn.setOnClickListener(this);
 		String digits = getResources().getString(R.string.user_resgiter_edit);
 		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
-	}
-
-	private void initData() {
-		unameEt.setText(getIntent().getExtras().getString("uname"));
 	}
 
 	@Override

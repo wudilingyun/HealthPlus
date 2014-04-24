@@ -18,6 +18,7 @@ package com.vee.healthplus.widget.tabpage;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -83,6 +84,7 @@ public class TabPageIndicator extends HorizontalScrollView implements
 		this(context, null);
 	}
 
+	@SuppressLint("ResourceAsColor")
 	public TabPageIndicator(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		setHorizontalScrollBarEnabled(false);
@@ -158,13 +160,15 @@ public class TabPageIndicator extends HorizontalScrollView implements
 		}
 	}
 
+	@SuppressLint({ "ResourceAsColor", "NewApi" })
 	private void addTab(int index, CharSequence text, int iconResId) {
 		final TabView tabView = new TabView(getContext());
 		tabView.mIndex = index;
 		tabView.setFocusable(true);
 		tabView.setOnClickListener(mTabClickListener);
 		tabView.setText(text);
-		tabView.setPadding(0, 15, 0, 0);
+		tabView.setTextSize(12);
+		tabView.setPadding(0, 5, 0, 0);
 
 		if (iconResId != 0) {
 			tabView.setCompoundDrawablesWithIntrinsicBounds(0, iconResId, 0, 0);
@@ -276,6 +280,8 @@ public class TabPageIndicator extends HorizontalScrollView implements
 		public TabView(Context context) {
 			super(context, null, R.attr.vpiTabPageIndicatorStyle);
 		}
+	
+		
 
 		@Override
 		public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

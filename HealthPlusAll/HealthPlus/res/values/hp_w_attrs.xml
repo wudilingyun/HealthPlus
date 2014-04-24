@@ -3,18 +3,18 @@
     <declare-styleable name="HeaderView">
         <attr name="headerText" format="string" />
         <attr name="headerLeftBtn">
-            <enum name="logo" value="0" />
+            <enum name="logo" value="2" />
             <enum name="back" value="1" />
-            <enum name="friends" value="2" />
+            <enum name="friends" value="3" />
         </attr>
         <attr name="headerRightBtn">
             <enum name="none" value="0" />
-            <enum name="edit" value="1" />
-            <enum name="ok" value="2" />
-            <enum name="camera" value="3" />
-            <enum name="clear" value="4" />
-            <enum name="add" value="5" />
-            <enum name="menu" value="6" />
+            <enum name="edit" value="5" />
+            <enum name="ok" value="4" />
+            <enum name="camera" value="7" />
+            <enum name="clear" value="8" />
+            <enum name="add" value="6" />
+            <enum name="menu" value="9" />
         </attr>
     </declare-styleable>
     <declare-styleable name="Panel">

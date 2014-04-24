@@ -45,7 +45,9 @@ public class MyHealthUsersGroupActivity extends Activity implements
 		int userid = HP_User.getOnLineUserId(this);
 		HP_User user = HP_DBModel.getInstance(this)
 				.queryUserInfoByUserId(userid, true);
-		usernameList.add(user.userName);
+		if(user.userName!=null){
+			usernameList.add(user.userName);
+		}
 		usernameList.add("爸爸");
 		usernameList.add("妈妈");
 		usernameList.add("爷爷");

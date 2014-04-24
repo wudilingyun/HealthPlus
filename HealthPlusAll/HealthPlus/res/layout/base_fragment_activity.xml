@@ -5,21 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/home_background">
 
     <com.vee.healthplus.widget.MyRelativeLayout
         android:id="@+id/child_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
         <com.vee.healthplus.widget.HeaderView
             android:id="@+id/header"
-            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="46dip"
             android:layout_alignParentTop="true"
-            app:headerRightBtn="none"
+            android:gravity="center_vertical"
             app:headerLeftBtn="logo"
+            app:headerRightBtn="none"
             app:headerText="@string/hp_app_name" />
 
         <FrameLayout
@@ -42,7 +42,7 @@
         panel:handle="@+id/panelHandle"
         panel:openedHandle="@drawable/right_switcher_expanded_background"
         panel:position="right"
-        panel:weight="75%p">
+        panel:weight="75%p" >
 
         <Button
             android:id="@+id/panelHandle"
@@ -68,10 +68,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:textStyle="bold"
-        android:textSize="100sp"
+        android:background="#df000000"
         android:gravity="center"
         android:textColor="@color/white"
-        android:background="#df000000"
+        android:textSize="100sp"
+        android:textStyle="bold"
         android:visibility="gone" />
+
 </FrameLayout>

@@ -63,8 +63,12 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 			break;
 
 		case 1:
-			lbtnImg.setImageResource(R.drawable.header_view_left_bt_selector);
+			lbtnImg.setImageResource(R.drawable.healthplus_headview_back_btn);
 			mLOption = HEADER_BACK;
+			break;
+		case 2:
+			lbtnImg.setImageResource(R.drawable.healthplus_headview_logo_btn);
+			mLOption = HEADER_LOGO;
 			break;
 		default:
 			break;
@@ -81,12 +85,9 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 			rbtnImg.setVisibility(View.INVISIBLE);
 			break;
 
-		case 1:
-			rbtnImg.setImageResource(R.drawable.header_view_right_bt_selector);
-			mROption = HEADER_ADD;
-			break;
-		case 5:
-			mROption = HEADER_MENU;
+		case 4:
+			rbtnImg.setImageResource(R.drawable.healthplus_headview_ok_btn);
+			mROption = HEADER_OK;
 			break;
 		default:
 			break;
@@ -145,9 +146,9 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 	public void setRightRes(int id) {
 		rbtnImg.setImageResource(id);
 	}
-	
+
 	public void setLeftRes(int id) {
 		lbtnImg.setImageResource(id);
 	}
-	
+
 }

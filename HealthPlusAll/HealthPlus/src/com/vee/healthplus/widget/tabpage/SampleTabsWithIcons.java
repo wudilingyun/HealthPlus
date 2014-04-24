@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.vee.askweakness.ui.AskWeaknessFragment;
 import com.vee.forum.ForumFragment;
@@ -209,6 +210,7 @@ public class SampleTabsWithIcons extends Fragment {
 			return mContent[position % mContent.length].toUpperCase();
 		}
 
+		
 		@Override
 		public int getIconResId(int index) {
 			return getNewId("drawable", mIcon[index]);

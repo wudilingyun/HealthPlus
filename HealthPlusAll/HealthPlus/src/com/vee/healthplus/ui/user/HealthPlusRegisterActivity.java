@@ -26,6 +26,7 @@ import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.util.user.RegisterTask;
 import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
+import com.vee.healthplus.widget.HeaderView;
 
 @SuppressLint("ResourceAsColor")
 public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
@@ -57,7 +58,8 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				R.color.register_headview_bg_color_black);
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
-		setLeftBtnType(1);
+		setLeftBtnType(HeaderView.HEADER_BACK);
+		setLeftBtnRes(R.drawable.healthplus_headview_back_btn);
 		initView(view);
 	}
 
@@ -152,7 +154,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			break;
 		case R.id.health_plus_register_read:
 			Intent intent = new Intent(HealthPlusRegisterActivity.this,
-					StatementDetailsActivity.class);
+					StatementDetailsTextActivity.class);
 			startActivity(intent);
 			break;
 		}

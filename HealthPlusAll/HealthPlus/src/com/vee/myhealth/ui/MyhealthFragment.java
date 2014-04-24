@@ -5,6 +5,8 @@ import java.util.HashMap;
 import android.R.string;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -51,9 +53,9 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		android.view.View.OnClickListener {
 
 	private GridView gv;
-	private TextView username_txt, age_txt, sex_txt, city_txt, temperature_txt,
+	private TextView username_txt, age_txt, city_txt, temperature_txt,
 			weight_txt, weather_content;
-	private ImageView little_head_img, head_img, weather_img;
+	private ImageView head_img, weather_img, sex_txt;
 	private Button close_bt;
 	private MyhealthMainAdapter gvAdapter;
 	private View view;
@@ -132,25 +134,23 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		gv = (GridView) view.findViewById(R.id.health_test_item);
 		username_txt = (TextView) view.findViewById(R.id.username_txt);
 		age_txt = (TextView) view.findViewById(R.id.age_txt);
-		sex_txt = (TextView) view.findViewById(R.id.sex_txt);
+		sex_txt = (ImageView) view.findViewById(R.id.sex_txt);
 		city_txt = (TextView) view.findViewById(R.id.city_txt);
 		temperature_txt = (TextView) view.findViewById(R.id.temperature_txt);
 		weight_txt = (TextView) view.findViewById(R.id.weight_txt);
 		weather_content = (TextView) view.findViewById(R.id.weather_content);
 
-		little_head_img = (ImageView) view.findViewById(R.id.little_head_img);
 		head_img = (ImageView) view.findViewById(R.id.user_head_img);
-		little_head_img.setOnClickListener(this);
 		head_img.setOnClickListener(this);
 		weather_img = (ImageView) view.findViewById(R.id.weather_img);
-
+		gv.setSelector(new ColorDrawable(Color.TRANSPARENT));
 		int userid = HP_User.getOnLineUserId(getActivity());
 		if (userid == 0) {
 
 			username_txt.setText("未登录");
-			age_txt.setVisibility(View.INVISIBLE);
-			sex_txt.setVisibility(View.INVISIBLE);
-			weight_txt.setVisibility(View.INVISIBLE);
+			age_txt.setVisibility(View.GONE);
+			sex_txt.setVisibility(View.GONE);
+			weight_txt.setVisibility(View.GONE);
 		} else {
 			HP_User user = HP_DBModel.getInstance(getActivity())
 					.queryUserInfoByUserId(userid, true);
@@ -246,12 +246,12 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.little_head_img:
+		/*case R.id.little_head_img:
 			Intent intent = new Intent(getActivity(),
 					MyHealthUsersGroupActivity.class);
 			startActivity(intent);
 
-			break;
+			break;*/
 		case R.id.close_bt:
 
 		default:

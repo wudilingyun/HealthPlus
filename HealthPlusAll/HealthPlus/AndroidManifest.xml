@@ -407,6 +407,8 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- animation start -->
         <activity
             android:name="com.vee.myhealth.ui.OxygenTestActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -443,6 +445,10 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- animation end -->
+        <!-- login and register start -->
+
         <activity
             android:name="com.vee.healthplus.ui.user.HealthPlusLoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -466,6 +472,15 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.vee.healthplus.ui.user.StatementDetailsTextActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <!-- login and register end -->
+        <!-- personal info edit start -->
+
+        <activity
             android:name="com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
@@ -475,6 +490,36 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.AgeEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/myDialog" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.SexEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.EmailEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.HeightEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.WeightEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <!-- personal info edit end -->
+
         <activity
             android:name="com.vee.myhealth.activity.TiZhiActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

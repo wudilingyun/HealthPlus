@@ -149,7 +149,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 			System.out.println("platform2 valid " + p2.isValid());
 			break;
 		case 3:
-			/*WechatMoments.ShareParams sp3 = new WechatMoments.ShareParams();
+			WechatMoments.ShareParams sp3 = new WechatMoments.ShareParams();
 			sp3.title = content;
 			sp3.text = content;
 			sp3.shareType = type;
@@ -164,7 +164,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 			} else {
 				p3.setPlatformActionListener(this);
 				p3.share(sp3);
-			}*/
+			}
 			
 			
 			
