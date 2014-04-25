@@ -58,6 +58,7 @@ public class BaseFragmentActivity extends FragmentActivity implements
 				MyApplication.shareBySystem(getApplication(), sendMsg, "", "",
 						"", "");
 			} else if (option == HeaderView.HEADER_MENU) {
+				//宝典分类
 				Intent intent = new Intent();
 				intent.setClass(BaseFragmentActivity.this,
 						AnalysisHistoryActivity.class);

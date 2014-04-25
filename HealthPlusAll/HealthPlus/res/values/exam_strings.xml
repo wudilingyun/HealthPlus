@@ -29,12 +29,12 @@
     <string name="zhifang">脂肪</string>
     <string name="ceshi">测试</string>
     <string name="zixun">资讯</string>
-    <string name="yajiankang">亚健康</string>
+    <string name="yajiankang">亚健康测试</string>
     <string name="tizhiceshi">体质测试</string>
     <string name="xuezhi">血脂测试</string>
     <string name="tangniaobing">血糖测试</string>
-    <string name="jianfei">减肥</string>
-    <string name="xinli">心里</string>
+    <string name="jianfei">减肥测试</string>
+    <string name="xinli">心理测试</string>
     <string name="heart_hint_1">请将食指按住摄像头，点击开始测试</string>
     <string name="heart_select_title">选择你要测试的设备</string>
     <string name="heart_select_1">手环</string>
@@ -51,4 +51,15 @@
 	    <string name="user_password_length_toast">密码长度不符合 </string>
 	    <string name="user_name_toast">用户名格式不符合 </string>
 	    <string name="user_name_length_toast">用户名长度应大于5位</string>
+	    
+	    <string name="yundong">运动</string>
+	    <string name="jianya">减压</string>
+	    <string name="yingyang">营养</string>
+	    <string name="xiuxi">休息</string>
+	    <string name="yongyao">用药</string>
+	    <string name="shejiao">社交</string>
+	    <string name="baojian">保健</string>
+	    <string name="bingzheng">病症</string>
+	    <string name="jijiu">急救</string>
+	    <string name="tizhi">体质</string>
 </resources>

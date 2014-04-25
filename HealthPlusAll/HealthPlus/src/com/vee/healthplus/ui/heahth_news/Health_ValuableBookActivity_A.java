@@ -1,5 +1,6 @@
-package com.vee.healthplus.ui.heahth_news;
-
+/*package com.vee.healthplus.ui.heahth_news;
+//这里面是老版本的估计没用了
+ * 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,6 +21,7 @@ import com.google.gson.Gson;
 import com.vee.healthplus.R;
 import com.vee.healthplus.TaskCallBack.TaskCallback;
 import com.vee.healthplus.TaskCallBack.TaskResult;
+import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_beans.Doc;
 import com.vee.healthplus.heahth_news_beans.Root;
 import com.vee.healthplus.heahth_news_http.Contact;
@@ -32,6 +34,7 @@ import com.vee.healthplus.heahth_news_utils.XiaoMuZhuang;
 import com.vee.healthplus.heahth_news_utils.XiaoMuZhuang.OnUpdatingListener;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.Response;
+import com.vee.healthplus.widget.HeaderView.OnHeaderClickListener;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 import android.annotation.SuppressLint;
@@ -47,12 +50,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.ContactsContract.CommonDataKinds.Event;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -71,8 +76,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("NewApi")
-public class Health_ValuableBook_Fragment extends Fragment implements
-		TaskCallback {
+public class Health_ValuableBookActivity_A extends FragmentActivity implements
+		TaskCallback, OnClickListener {
 
 	private ListView listView_news;
 	private List<Doc> all_news;
@@ -104,34 +109,48 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 	private LinearLayout loFrameLayout;
 	private ImageView loadImageView;
 	private Animation news_loadAaAnimation;
-	public static Health_ValuableBook_Fragment newInstance() {
-		return new Health_ValuableBook_Fragment();
+	private TextView header_text;
+	private ImageView header_lbtn_img, header_rbtn_img;
+
+	public static Health_ValuableBookActivity_A newInstance() {
+		return new Health_ValuableBookActivity_A();
 	}
 
 	@SuppressLint("NewApi")
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.health_news_main, container,
-				false);
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+		View view = View.inflate(this, R.layout.health_news_main, null);
+		setContentView(view);
 		url = Contact.HealthNES_URL;
 		jsonCache = JsonCache.getInstance();
 		getdata(view);
+		gettitle();
 		init(view);
 		getViewPagerData(view);
 
-		if (CheckNetWorkStatus.Status(getActivity())) {
+		if (CheckNetWorkStatus.Status(this)) {
 			flag = true;
 			new GetNewsListTask().execute(url, hasNet);
 			System.out.println("当前地址" + url);
 
 		} else {
-			Toast.makeText(getActivity(), "请检查网络连接", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 			new GetNewsListTask().execute(url, JsonCach);
 		}
-		iFromHttp = new ImageLoaderFromHttp(getActivity(), Myadapter, viewPager);
+		iFromHttp = new ImageLoaderFromHttp(this, Myadapter, viewPager);
 		iFromHttp.GetNews(this);
-		return view;
+	}
+
+	void gettitle() {
+
+		header_text = (TextView) findViewById(R.id.header_text);
+		header_lbtn_img = (ImageView) findViewById(R.id.header_lbtn_img);
+		header_rbtn_img = (ImageView) findViewById(R.id.header_rbtn_img);
+		header_text.setOnClickListener(this);
+		header_lbtn_img.setOnClickListener(this);
+		header_rbtn_img.setOnClickListener(this);
 	}
 
 	void init(View view) {
@@ -141,15 +160,14 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 				viewPager.setCurrentItem(currentItem);// 切换当前显示的图片
 			};
 		};
-		news_loadAaAnimation = AnimationUtils.loadAnimation(getActivity(),
+		news_loadAaAnimation = AnimationUtils.loadAnimation(this,
 				R.anim.wait_heart_result);
 		loFrameLayout = (LinearLayout) view.findViewById(R.id.loading_frame);
 		loadImageView = (ImageView) view.findViewById(R.id.img_rotate);
 		loadImageView.setAnimation(news_loadAaAnimation);
 		all_news = new ArrayList<Doc>();
-		imageLoader = ImageLoader.getInstance(getActivity());
-		adapter = new Health_ValuableBook_NewsAdapter(getActivity(),
-				imageLoader);
+		imageLoader = ImageLoader.getInstance(this);
+		adapter = new Health_ValuableBook_NewsAdapter(this, imageLoader);
 		listView_news = (ListView) view.findViewById(R.id.listView_news);
 		listView_news.setAdapter(adapter);
 		listView_news.setOnItemClickListener(new OnItemClickListener() {
@@ -165,7 +183,8 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 				if (img.getTag() != null) {
 					String imgurlString = (String) img.getTag();
 					// 跳转后显示内容
-					Intent intent = new Intent(getActivity(),
+					Intent intent = new Intent(
+							Health_ValuableBookActivity_A.this,
 							Health_news_detailsActivity.class);
 					intent.putExtra("imgurl", imgurlString);
 					Bundle bundle = new Bundle();
@@ -241,7 +260,7 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 			}
 		});
 		scrollToBottom(scrollAll, layoutIner);
-		xiaoMuZuang = new XiaoMuZhuang(scrollAll, layoutIner, getActivity());
+		xiaoMuZuang = new XiaoMuZhuang(scrollAll, layoutIner, this);
 		xiaoMuZuang.setOnHeaderUpdatingListener(new OnUpdatingListener() {
 
 			@Override
@@ -270,7 +289,7 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 						page++;
 						String rows = page * 20 + "";
 
-						if (CheckNetWorkStatus.Status(getActivity())) {
+						if (CheckNetWorkStatus.Status(getApplication())) {
 							new GetNewsListTask().execute(
 									Contact.HealthNES_URL_a + rows
 											+ Contact.HealthNES_URL_b, hasNet);
@@ -278,7 +297,7 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 									+ Contact.HealthNES_URL_a + rows
 									+ Contact.HealthNES_URL_b);
 						} else {
-							Toast.makeText(getActivity(), "错误",
+							Toast.makeText(getApplication(), "错误",
 									Toast.LENGTH_SHORT).show();
 						}
 						// adapter.notifyDataSetChanged();
@@ -306,7 +325,7 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 		// tv_title.setText(tiList.get(0));//
 
 		viewPager = (ViewPager) view.findViewById(R.id.vp);
-		Myadapter = new MyNewsPagerAdapter(getActivity(), imageLoader, tv_title);
+		Myadapter = new MyNewsPagerAdapter(this, imageLoader, tv_title);
 
 		// 设置一个监听器，当ViewPager中的页面改变时调用
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
@@ -327,12 +346,12 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 		super.onStop();
 	}
 
-	/**
+	*//**
 	 * 换行切换任务
 	 * 
 	 * @author Administrator
 	 * 
-	 */
+	 *//*
 	private class ScrollTask implements Runnable {
 
 		public void run() {
@@ -345,19 +364,19 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 
 	}
 
-	/**
+	*//**
 	 * 当ViewPager中页面的状态发生改变时调用
 	 * 
 	 * @author Administrator
 	 * 
-	 */
+	 *//*
 	private class MyPageChangeListener implements OnPageChangeListener {
 		private int oldPosition = 0;
 
-		/**
+		*//**
 		 * This method will be invoked when a new page becomes selected.
 		 * position: Position index of the new selected page.
-		 */
+		 *//*
 		public void onPageSelected(int position) {
 			currentItem = position;
 			tv_title.setText(tiList.get(position));
@@ -385,10 +404,10 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 		protected void onPreExecute() {
 			super.onPreExecute();
 			if (flag) {
-				/*
+				
 				 * progressDiaog.showProgressDialog(getResources().getString(
 				 * R.string.healthexam_download));
-				 */
+				 
 				loadImageView.startAnimation(news_loadAaAnimation);
 			}
 		}
@@ -438,10 +457,10 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 								.getStatusCode() == HttpStatus.UNAUTHORIZED)) {
 					message = "unauthorized,signout and signin again";
 
-					SpringAndroidService.getInstance(
-							getActivity().getApplication()).signOut();
+					SpringAndroidService.getInstance(getApplication())
+							.signOut();
 
-					// getActivity().finish();
+					// this.finish();
 				}
 				if (exception instanceof DuplicateConnectionException) {
 					message = "The connection already exists.";
@@ -453,11 +472,11 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 				} else {
 					message = "error";
 				}
-				/*
+				
 				 * progressDiaog.dismissProgressDialog();
 				 * Toast.makeText(getApplication(), message, Toast.LENGTH_SHORT)
 				 * .show();
-				 */
+				 
 			} else {
 
 				if (data != null && data.length() > 0) {
@@ -484,4 +503,21 @@ public class Health_ValuableBook_Fragment extends Fragment implements
 		tv_title.setText(tiList.get(0));
 	}
 
+	@Override
+	public void onClick(View view) {
+		// TODO Auto-generated method stub
+		switch (view.getId()) {
+		case R.id.header_lbtn_img:
+			this.finish();
+			break;
+		case R.id.header_rbtn_img:
+			
+			break;
+
+		default:
+			break;
+		}
+	}
+
 }
+*/

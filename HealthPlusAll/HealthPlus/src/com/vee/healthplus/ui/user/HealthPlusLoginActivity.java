@@ -87,12 +87,6 @@ public class HealthPlusLoginActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		if (HP_User.getOnLineUserId(HealthPlusLoginActivity.this) != 0) {
-			Intent intent = new Intent();
-			intent.setClass(HealthPlusLoginActivity.this, MainPage.class);
-			startActivity(intent);
-			finish();
-		}
 		setContentView(R.layout.healthplus_login_layout);
 		initView();
 		addTiZhiDB();
@@ -102,6 +96,9 @@ public class HealthPlusLoginActivity extends Activity implements
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		if (HP_User.getOnLineUserId(HealthPlusLoginActivity.this) != 0) {
+			finish();
+		}
 		progressDialog = CustomProgressDialog.createDialog(this);
 		progressDialog.setMessage("正在登陆...");
 		progressDialog.setCanceledOnTouchOutside(false);

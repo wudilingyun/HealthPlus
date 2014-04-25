@@ -10,11 +10,14 @@ import android.R.string;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +38,7 @@ import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
 import com.yunfox.s4aservicetest.response.Exam;
 
-public class TiZhiResultActivity extends BaseFragmentActivity implements
+public class TiZhiResultActivity extends FragmentActivity implements
 		SqlDataCallBack<Health_Report> {
 
 	private HashMap<HealthQuestionEntity, Integer> scoremMap = new HashMap<HealthQuestionEntity, Integer>();
@@ -50,18 +53,12 @@ public class TiZhiResultActivity extends BaseFragmentActivity implements
 	private TestAdapter adapter;
 	private PinnedHeaderListView section_list_view;
 
-	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		View view = View.inflate(this, R.layout.health_tizhi_result, null);
-		setContainer(view);
-		getHeaderView().setHeaderTitle("体质测试结果");
-		getHeaderView().setBackGroundColor(R.color.blue);
-		setRightBtnVisible(View.GONE);
-		setLeftBtnVisible(View.VISIBLE);
-		setLeftBtnType(1);
+		setContentView(view);
 		init();
 		getData();
 
@@ -73,6 +70,17 @@ public class TiZhiResultActivity extends BaseFragmentActivity implements
 		section_list_view = (PinnedHeaderListView) findViewById(R.id.section_list_view);
 		section_list_view.setAdapter(adapter);
 		calculateScore = new CalculateScore();
+		ImageView lefImageView = (ImageView)findViewById(R.id.header_lbtn_img);
+		TextView textView  = (TextView)findViewById(R.id.header_text);
+		textView.setText("测试报告");
+		lefImageView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 
 	}
 
@@ -144,7 +152,7 @@ public class TiZhiResultActivity extends BaseFragmentActivity implements
 		} else if (c instanceof HealthResultEntity) {
 			HealthResultEntity hResultEntity = (HealthResultEntity) c;
 			temp_text.setText(hResultEntity.getType());
-			String[] strings = { "", "健康贴士", "饮食", "运动", "预防" };
+			String[] strings = { "总体特征", "健康贴士", "饮食", "运动", "预防" };
 			String[] name = { hResultEntity.getResult(),
 					hResultEntity.getTips(), hResultEntity.getEat(),
 					hResultEntity.getSport(), hResultEntity.getPrevent() };
@@ -206,11 +214,10 @@ public class TiZhiResultActivity extends BaseFragmentActivity implements
 			final TextView textView = (TextView) view
 					.findViewById(R.id.example_text_view);
 
-			/*if (lastItem == position) {
-				header.setVisibility(View.INVISIBLE);
-			} else {
-				header.setVisibility(View.VISIBLE);
-			}*/
+			/*
+			 * if (lastItem == position) { header.setVisibility(View.INVISIBLE);
+			 * } else { header.setVisibility(View.VISIBLE); }
+			 */
 			if (content.getName() == null) {
 				textView.setVisibility(View.GONE);
 				header.setVisibility(View.GONE);

@@ -28,7 +28,6 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 	private List<Bitmap> imgbitmap;// 要加载的图片
 	private Context context;
 	List<Bitmap> bitmaps;
-
 	public Health_ValuableBook_NewsAdapter(Context context,
 			ImageLoader imageLoader) {
 		super();

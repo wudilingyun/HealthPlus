@@ -34,7 +34,7 @@
         android:paddingBottom="3dp"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/header_lbtn_img"
-        android:text="默认"
+        android:text=""
         android:layout_height="wrap_content" />
 
 </RelativeLayout>

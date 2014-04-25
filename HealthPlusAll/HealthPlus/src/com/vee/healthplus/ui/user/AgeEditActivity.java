@@ -51,7 +51,7 @@ public class AgeEditActivity extends Activity implements View.OnClickListener {
 		age = Integer.valueOf(str.substring(0,str.length()-1));
 		
 		yearWv.setCurrentItem(currentYear - age-1900);
-		monthWv.setCurrentItem(1);
+		monthWv.setCurrentItem(0);
 		okBtn = (Button) findViewById(R.id.age_edit_ok_btn);
 		okBtn.setOnClickListener(this);
 

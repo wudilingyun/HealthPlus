@@ -308,7 +308,7 @@
 
         <!-- health news -->
         <activity
-            android:name="com.vee.healthplus.ui.heahth_news.Health_ValuableBook_Fragment"
+            android:name="com.vee.healthplus.ui.heahth_news.Health_ValuableBookActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -517,6 +517,12 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.PhotoEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/myDialog" />
 
         <!-- personal info edit end -->
 

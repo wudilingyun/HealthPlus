@@ -23,7 +23,8 @@ import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.common.IFragmentMsg;
 import com.vee.healthplus.ui.analysis.AnalysisFragment;
 import com.vee.healthplus.ui.heahth_exam.HealthFragment;
-import com.vee.healthplus.ui.heahth_news.Health_ValuableBook_Fragment;
+import com.vee.healthplus.ui.heahth_news.Health_ValuableBookActivity;
+import com.vee.healthplus.ui.heahth_news.Health_ValueBookListFragment;
 import com.vee.healthplus.ui.setting.SettingListActivity;
 import com.vee.healthplus.ui.setting.UserPageFragment;
 import com.vee.healthplus.ui.sportmode.SportModeFragment;
@@ -115,8 +116,6 @@ public class SampleTabsWithIcons extends Fragment {
 				if (position == 4) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setRightOption(HeaderView.HEADER_ADD);
 						((BaseFragmentActivity) activity)
 								.setRightBtnVisible(View.VISIBLE);
 						((BaseFragmentActivity) activity)
@@ -127,9 +126,6 @@ public class SampleTabsWithIcons extends Fragment {
 				} else if (position == 2) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setRightOption(
-										HeaderView.HEADER_MENU);
 						((BaseFragmentActivity) activity)
 								.setRightBtnVisible(View.GONE);
 						((BaseFragmentActivity) activity)
@@ -147,8 +143,6 @@ public class SampleTabsWithIcons extends Fragment {
 				} else {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setRightOption(HeaderView.HEADER_MENU);
 						((BaseFragmentActivity) activity)
 								.setRightBtnVisible(View.GONE);
 					}
@@ -195,7 +189,8 @@ public class SampleTabsWithIcons extends Fragment {
 				fragment = new MomentsFragment();
 				break;
 			case 2:
-				fragment = Health_ValuableBook_Fragment.newInstance();
+				// fragment = Health_ValuableBook_Fragment.newInstance();
+				fragment = Health_ValueBookListFragment.newInstance();
 				break;
 			case 3:
 				fragment = UserPageFragment.newInstance();
@@ -210,7 +205,6 @@ public class SampleTabsWithIcons extends Fragment {
 			return mContent[position % mContent.length].toUpperCase();
 		}
 
-		
 		@Override
 		public int getIconResId(int index) {
 			return getNewId("drawable", mIcon[index]);

@@ -35,25 +35,33 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		updateFragmentToStack(SampleTabsWithIcons.newInstance());
-		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)
-				&& HP_User.getOnLineUserId(this) == 0) {
+		setLeftBtnVisible(View.VISIBLE);
+		setLeftBtnRes(R.drawable.healthplus_headview_logo_btn);
+		setLeftBtnType(2);
+		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)) {
 			// initDefaultUserInfo();
-			// 暂时将第一次运行的注册界面改成登陆界面
-			// new UserRegister_Activity().show(getSupportFragmentManager(),
-			// "");
-			// new UserLogin_Activity(null).show(getSupportFragmentManager(),
-			// "");
-			AppPreferencesUtil.setBooleanPref(this, "isFirst", false);
-			startActivity(new Intent(this, HealthPlusLoginActivity.class));
-		} else {
-			new GetCartTask(null, null, MainPage.this, MainPage.this).execute();
+			if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)
+					&& HP_User.getOnLineUserId(this) == 0) {
+				// initDefaultUserInfo();
+				// 暂时将第一次运行的注册界面改成登陆界面
+				// new UserRegister_Activity().show(getSupportFragmentManager(),
+				// "");
+				// new
+				// UserLogin_Activity(null).show(getSupportFragmentManager(),
+				// "");
+				AppPreferencesUtil.setBooleanPref(this, "isFirst", false);
+				startActivity(new Intent(this, HealthPlusLoginActivity.class));
+			} /*
+			 * else { new GetCartTask(null, null, MainPage.this,
+			 * MainPage.this).execute(); }
+			 */
+
+			startService();
+
+			ShareSDK.initSDK(this);
+
+			new InstallSataUtil(this).serverStat(MyApplication.CHANNEL_ID);
 		}
-
-		startService();
-
-		ShareSDK.initSDK(this);
-
-		new InstallSataUtil(this).serverStat(MyApplication.CHANNEL_ID);
 	}
 
 	private void initDefaultUserInfo() {

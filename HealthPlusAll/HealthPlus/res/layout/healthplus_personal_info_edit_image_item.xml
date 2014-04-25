@@ -32,7 +32,7 @@
                 android:id="@+id/health_plus_personal_info_edit_image_item_photo_iv"
                 android:layout_width="60dip"
                 android:layout_height="60dip"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/healthplus_personal_info_default_photo" />
         </LinearLayout>
     </LinearLayout>
 

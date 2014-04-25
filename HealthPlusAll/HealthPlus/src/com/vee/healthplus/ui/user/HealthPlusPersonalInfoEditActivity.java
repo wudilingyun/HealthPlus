@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -156,7 +157,10 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 				// TODO Auto-generated method stub
 				switch (position) {
 				case 0:
-
+					Intent intent0 = new Intent();
+					intent0.setClass(HealthPlusPersonalInfoEditActivity.this,
+							PhotoEditActivity.class);
+					startActivityForResult(intent0, 0);
 					break;
 				case 1:
 					Bundle extras1 = new Bundle();
@@ -238,7 +242,9 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 			str = infoList.get(4).getValue();
 			user.userAge = Integer.valueOf(str.substring(0, str.length() - 1));
 			str = infoList.get(3).getValue();
+			Log.i("lingyun","str="+str);
 			user.userSex = str.equals("男") ? -1 : 0;
+			Log.i("lingyun","user.userSex="+user.userSex);
 
 			if (user.userHeight < 1 || user.userHeight > 245) {
 				displayResult(getResources().getString(

@@ -14,9 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
-import com.vee.healthplus.ui.heahth_heart.HeartRateActivity;
-import com.vee.healthplus.ui.heahth_news.Health_ValuableBook_Fragment;
 import com.vee.myhealth.activity.MentalityActivity;
 import com.vee.myhealth.activity.SubHealthActivity;
 import com.vee.myhealth.activity.TiZhiActivity;
@@ -31,14 +28,14 @@ public class MyhealthMainAdapter extends BaseAdapter {
 	private static Context ctx;
 
 	private int icon[] = { R.drawable.home_jiankang, R.drawable.home_tizhi,
-			R.drawable.home_heart, R.drawable.home_gaoxuezhi, R.drawable.home_xuetang,
-			R.drawable.home_jianfei };
+			R.drawable.home_heart, R.drawable.home_gaoxuezhi,
+			R.drawable.home_xuetang, R.drawable.home_jianfei };
 
-	private static int[] name = { R.string.yajiankang, R.string.tizhiceshi,
+	public static int[] name = { R.string.yajiankang, R.string.tizhiceshi,
 			R.string.xinli, R.string.xuezhi, R.string.tangniaobing,
 			R.string.jianfei };
 	private Class target[] = { SubHealthActivity.class, TiZhiActivity.class,
-			MentalityActivity.class, null, null, WeightLossActivity.class };
+			MentalityActivity.class, null, null, null };
 	private int selectItem = 0;
 
 	public MyhealthMainAdapter(Context ctx) {
@@ -71,26 +68,25 @@ public class MyhealthMainAdapter extends BaseAdapter {
 			holder.name = (TextView) view.findViewById(R.id.item_name);
 			holder.lltestItem = (LinearLayout) view
 					.findViewById(R.id.ll_test_item);
-			//holder.rl = (RelativeLayout) view.findViewById(R.id.rl);
+			// holder.rl = (RelativeLayout) view.findViewById(R.id.rl);
 			view.setTag(holder);
-		
+
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
 		holder.icon.setImageResource(icon[i]);
 		holder.name.setText(ctx.getResources().getString(name[i]));
-/*	if (i == selectItem) {
-			holder.lltestItem
-					.setBackgroundResource(R.drawable.test_item_selector_selected);
-		} else {
-			holder.lltestItem
-					.setBackgroundResource(R.drawable.test_item_selector);
-		}*/
+		/*
+		 * if (i == selectItem) { holder.lltestItem
+		 * .setBackgroundResource(R.drawable.test_item_selector_selected); }
+		 * else { holder.lltestItem
+		 * .setBackgroundResource(R.drawable.test_item_selector); }
+		 */
 		DisplayMetrics dm = new DisplayMetrics();
 		((Activity) ctx).getWindowManager().getDefaultDisplay().getMetrics(dm);
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
 				dm.widthPixels / 3, dm.widthPixels / 3);
-		//holder.rl.setLayoutParams(lp);
+		// holder.rl.setLayoutParams(lp);
 		return view;
 	}
 

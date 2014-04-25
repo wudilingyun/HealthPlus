@@ -30,7 +30,7 @@ import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
 import com.vee.healthplus.ui.heahth_heart.HeartRateActivity;
-import com.vee.healthplus.ui.heahth_news.Health_ValuableBook_Fragment;
+import com.vee.healthplus.ui.heahth_news.Health_ValuableBookActivity;
 import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.util.GpsUitl;
@@ -180,39 +180,31 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 					int i, long l) {
 				Class target = gvAdapter.getTargetClass(i);
 				if (target != null) {
-					if (target.getName().equals(
-							ExamTypeActivity.class.getName())) {
-						if (HP_User.getOnLineUserId(getActivity()) == 0) {
-							new UserLogin_Activity(MyhealthFragment.this).show(
-									getActivity().getSupportFragmentManager(),
-									"");
-							return;
+					/*
+					 * if (target.getName().equals(
+					 * SubHealthActivity.class.getName())) { Intent intent5 =
+					 * new Intent(getActivity(), target);
+					 * intent5.putExtra("name", value) startActivity(intent5);
+					 * 
+					 * return; } else if (target.getName().equals(
+					 * TiZhiActivity.class.getName())) { Intent intent6 = new
+					 * Intent(getActivity(), target); startActivity(intent6); }
+					 * else if (target.getName().equals(
+					 * MentalityActivity.class.getName())) { Intent intent6 =
+					 * new Intent(getActivity(), target);
+					 * startActivity(intent6); }else if
+					 * (target.getName().equals(
+					 * WeightLossActivity.class.getName())) { Intent intent7 =
+					 * new Intent(getActivity(), target);
+					 * startActivity(intent7); }
+					 */
+					TextView textView = (TextView) view
+							.findViewById(R.id.item_name);
+					String name = textView.getText().toString().trim();
+					Intent intent = new Intent(getActivity(), target);
+					intent.putExtra("name", name);
+					startActivity(intent);
 
-						} else if (HP_User.getOnLineUserId(getActivity()) != 0) {
-							Intent intent3 = new Intent(getActivity(), target);
-							startActivity(intent3);
-							return;
-						}
-
-					} else if (target.getName().equals(
-							SubHealthActivity.class.getName())) {
-						Intent intent5 = new Intent(getActivity(), target);
-						startActivity(intent5);
-
-						return;
-					} else if (target.getName().equals(
-							TiZhiActivity.class.getName())) {
-						Intent intent6 = new Intent(getActivity(), target);
-						startActivity(intent6);
-					} else if (target.getName().equals(
-							MentalityActivity.class.getName())) {
-						Intent intent6 = new Intent(getActivity(), target);
-						startActivity(intent6);
-					}else if (target.getName().equals(
-							WeightLossActivity.class.getName())) {
-						Intent intent7 = new Intent(getActivity(), target);
-						startActivity(intent7);
-					}
 				}
 			}
 		});
@@ -221,7 +213,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	@Override
 	public void onResume() {
 		super.onResume();
-
+		updateView(new TrackEntity(), true);
 	}
 
 	@Override
@@ -246,12 +238,12 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		/*case R.id.little_head_img:
-			Intent intent = new Intent(getActivity(),
-					MyHealthUsersGroupActivity.class);
-			startActivity(intent);
-
-			break;*/
+		/*
+		 * case R.id.little_head_img: Intent intent = new Intent(getActivity(),
+		 * MyHealthUsersGroupActivity.class); startActivity(intent);
+		 * 
+		 * break;
+		 */
 		case R.id.close_bt:
 
 		default:

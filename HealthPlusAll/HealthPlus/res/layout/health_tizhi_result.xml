@@ -2,13 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical" 
+    android:background="@drawable/white">
+	
+    <include
+        android:id="@+id/ceshi_result_title"
+        layout="@layout/include_header" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/white"
+        android:background="@drawable/Grey"
         android:orientation="horizontal"
         android:padding="10dp" >
 
@@ -26,10 +30,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/red"
+            android:textColor="@drawable/green"
             android:padding="5dp"
-            android:text="气虚质"
-            android:textSize="18sp" />
+            android:text=""
+            android:textSize="20sp" />
     </LinearLayout>
 
     <com.vee.healthplus.widget.PinnedHeaderListView

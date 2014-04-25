@@ -57,7 +57,7 @@ public class MomentsFragment extends Fragment {
 	ListView listViewMonentsList;
 	private MomentsAdapter momentsAdapter;
 	private ExecutorService executorService;
-	private ImageLoader restImageLoader;
+	private ImageLoader imageLoader;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -65,7 +65,8 @@ public class MomentsFragment extends Fragment {
 		View view = inflater.inflate(R.layout.moments_fragment, container,
 				false);
 		
-		restImageLoader = ImageLoader.getInstance(getActivity());
+		imageLoader = ImageLoader.getInstance(getActivity());
+		executorService = Executors.newCachedThreadPool();
 		
 		ImageButton imageButtonNewMoments = (ImageButton) view
 				.findViewById(R.id.newmoments);
@@ -173,7 +174,8 @@ public class MomentsFragment extends Fragment {
 		
 		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
 		{
-			new GetMomentsTimelineTask().executeOnExecutor(Executors.newCachedThreadPool());
+			//new GetMomentsTimelineTask().executeOnExecutor(executorService);
+			new GetMomentsTimelineTask().execute();
 		}
 		else
 		{
@@ -223,7 +225,7 @@ public class MomentsFragment extends Fragment {
 			// TODO Auto-generated method stub
 			dialog.dismiss();
 			if (exception != null) {
-
+				System.out.println("what a big problem");
 			}
 
 			if (myMomentsList != null) {
@@ -275,26 +277,40 @@ public class MomentsFragment extends Fragment {
 			View view = null;
 			if (convertView != null) {
 				view = convertView;
+				System.out.println("***---***--- not create a new view");
 			} else {
 				view = (View) inflater.inflate(R.layout.moments_list_item,
 						parent, false);
+				
 			}
 			TextView textViewMessage = (TextView) view
 					.findViewById(R.id.momentsmessage);
 			ImageView imageViewMoments = (ImageView) view
 					.findViewById(R.id.momentsimage);
 			Moments moments = momentsList.get(position);
+			System.out.println("position" + position);
+			System.out.println("moments" + moments);
+			System.out.println("***********image1************" + moments.getImage1() + "---");
+			System.out.println("***********image2************" + moments.getImage2() + "---");
+			System.out.println("***********image3************" + moments.getImage3() + "---");
+			System.out.println("***********image4************" + moments.getImage4() + "---");
+			System.out.println("***********image5************" + moments.getImage5() + "---");
+			System.out.println("***********image6************" + moments.getImage6() + "---");
+			System.out.println("***********image7************" + moments.getImage7() + "---");
+			System.out.println("***********image8************" + moments.getImage8() + "---");
+			System.out.println("***********image9************" + moments.getImage9() + "---" );
 			textViewMessage.setText(moments.getMessage());
 
 			ImageViewGet imageViewGet = new ImageViewGet();
 			imageViewGet.setImageurl(moments.getImage1());
 			imageViewGet.setImageViewMoments(imageViewMoments);
 			System.out.println(imageViewMoments);
-			restImageLoader.addTask(moments.getImage1(), imageViewMoments);
+			imageLoader.addTask(moments.getImage1(), imageViewMoments);
 			/*if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
 			{
-				new GetImageTask().executeOnExecutor(Executors.newSingleThreadExecutor(),imageViewGet);
-				System.out.println("executorService");
+				new GetImageTask().executeOnExecutor(executorService,imageViewGet);
+				//System.out.println("executorService");
+				//new GetImageTask().execute(imageViewGet);
 			}
 			else
 			{
@@ -343,23 +359,19 @@ public class MomentsFragment extends Fragment {
 		protected byte[] doInBackground(ImageViewGet... params) {
 			// TODO Auto-generated method stub
 			imageViewGet = params[0];
-			//String imageUrl = imageViewGet.getImageurl();
-			String imageUrl = "http://ww2.sinaimg.cn/bmiddle/66a36aa8jw1efbpnrdo04j20hs0hsmyj.jpg";
+			String imageUrl = imageViewGet.getImageurl();
+			//String imageUrl = "http://ww2.sinaimg.cn/bmiddle/66a36aa8jw1efbpnrdo04j20hs0hsmyj.jpg";
 			System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+			System.out.println("imageViewGet = " + imageViewGet.getImageurl());
+			
 			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			/*try {
 				byte[] response = SpringAndroidService.getInstance(
 						getActivity().getApplication()).downloadImageByUrl(
 						imageUrl);
 				return response;
 			} catch (Exception e) {
 				this.exception = e;
-			}*/
+			}
 
 			return null;
 		}

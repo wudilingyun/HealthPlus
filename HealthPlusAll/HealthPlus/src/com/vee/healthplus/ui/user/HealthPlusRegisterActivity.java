@@ -33,12 +33,12 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		View.OnClickListener, RegisterTask.RegisterCallBack,
 		SignInTask.SignInCallBack, OnFocusChangeListener {
 
-	private EditText userName_et, userPwd_et, userPwdConfirm_et;
+	private EditText userName_et, userPwd_et, userPwdConfirm_et,yz_et;
 	private CheckBox agreeBox;
 	private Button readBtn, register_btn;
 
 	private CustomProgressDialog progressDialog = null;
-	ImageView uname_img, pwd_img1, pwd_img2;
+	ImageView uname_img, pwd_img1, pwd_img2,yz_img;
 
 	public HealthPlusRegisterActivity() {
 		// TODO Auto-generated constructor stub
@@ -71,6 +71,8 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				.findViewById(R.id.health_plus_register_pwd_input_et);
 		userPwdConfirm_et = (EditText) view
 				.findViewById(R.id.health_plus_register_pwd_confirm_input_et);
+		yz_et = (EditText) view
+				.findViewById(R.id.health_plus_register_yz_input_et);
 		register_btn = (Button) view
 				.findViewById(R.id.health_plus_register_btn);
 		register_btn.setEnabled(false);
@@ -86,9 +88,12 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				.findViewById(R.id.health_plus_register_pwd_img);
 		pwd_img2 = (ImageView) view
 				.findViewById(R.id.health_plus_register_pwd_confirm_img);
+		yz_img = (ImageView) view
+				.findViewById(R.id.health_plus_register_yz_img);
 		userName_et.setOnFocusChangeListener(this);
 		userPwd_et.setOnFocusChangeListener(this);
 		userPwdConfirm_et.setOnFocusChangeListener(this);
+		yz_et.setOnFocusChangeListener(this);
 
 		agreeBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -254,7 +259,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		displayRegisterResult(getResources().getString(
 				R.string.hp_userlogin_success));
 		progressDialog.dismiss();
-		startActivity(new Intent(this, MainPage.class));
+		//startActivity(new Intent(this, MainPage.class));
 		finish();
 	}
 
@@ -272,6 +277,14 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				uname_img.setImageResource(R.drawable.health_plus_uname_focus);
 			} else {
 				uname_img.setImageResource(R.drawable.health_plus_uname_normal);
+			}
+			break;
+			
+		case R.id.health_plus_register_yz_input_et:
+			if (hasFocus) {
+				yz_img.setImageResource(R.drawable.health_plus_yz_focus);
+			} else {
+				yz_img.setImageResource(R.drawable.health_plus_yz_normal);
 			}
 			break;
 		case R.id.health_plus_register_pwd_input_et:

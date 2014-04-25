@@ -78,11 +78,11 @@
                             android:orientation="horizontal" >
 
                             <ImageView
-                                android:id="@+id/health_plus_register_pwd_img"
+                                android:id="@+id/health_plus_register_yz_img"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dip"
-                                android:src="@drawable/health_plus_pwd_normal" />
+                                android:src="@drawable/health_plus_yz_normal" />
 
                             <View
                                 android:layout_width="1dip"

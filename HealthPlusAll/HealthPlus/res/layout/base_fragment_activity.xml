@@ -4,7 +4,7 @@
     xmlns:panel="http://schemas.android.com/apk/res/com.vee.healthplus"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" 
     android:background="@drawable/home_background">
 
     <com.vee.healthplus.widget.MyRelativeLayout

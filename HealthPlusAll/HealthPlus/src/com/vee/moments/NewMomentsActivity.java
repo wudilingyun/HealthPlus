@@ -64,29 +64,28 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 			@Override
 			public void OnHeaderClick(View v, int option) {
 				// TODO Auto-generated method stub
-				if (option == HeaderView.HEADER_CAMERA) {
-					Toast.makeText(NewMomentsActivity.this, "setting",
-							Toast.LENGTH_SHORT).show();
-					if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-					{
-						new UploadMomentsPhotoTask().executeOnExecutor(Executors.newCachedThreadPool());
+				if (option == HeaderView.HEADER_OK) {
+					if (option == HeaderView.HEADER_CAMERA) {
+						Toast.makeText(NewMomentsActivity.this, "setting",
+								Toast.LENGTH_SHORT).show();
+						if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+							new UploadMomentsPhotoTask()
+									.executeOnExecutor(Executors
+											.newCachedThreadPool());
+						} else {
+							new UploadMomentsPhotoTask().execute();
+						}
+					} else if (option == HeaderView.HEADER_BACK) {
+						NewMomentsActivity.this.finish();
 					}
-					else
-					{
-						new UploadMomentsPhotoTask().execute();
-					}
-				} else if (option == HeaderView.HEADER_BACK) {
-					NewMomentsActivity.this.finish();
 				}
 			}
 		});
-		
-		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-		{
-			new CompressPhotoTask().executeOnExecutor(Executors.newCachedThreadPool());
-		}
-		else
-		{
+
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+			new CompressPhotoTask().executeOnExecutor(Executors
+					.newCachedThreadPool());
+		} else {
 			new CompressPhotoTask().execute();
 		}
 	}
@@ -119,41 +118,41 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 
 		return BitmapFactory.decodeFile(filePath, options);
 	}
-	
+
 	public static int readPictureDegree(String path) {
-        int degree = 0;
-        try {
-            ExifInterface exifInterface = new ExifInterface(path);
-            int orientation = exifInterface.getAttributeInt(
-                    ExifInterface.TAG_ORIENTATION,
-                    ExifInterface.ORIENTATION_NORMAL);
-            switch (orientation) {
-            case ExifInterface.ORIENTATION_ROTATE_90:
-                degree = 90;
-                break;
-            case ExifInterface.ORIENTATION_ROTATE_180:
-                degree = 180;
-                break;
-            case ExifInterface.ORIENTATION_ROTATE_270:
-                degree = 270;
-                break;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return degree;
-    }
-	
-	public static Bitmap rotateBitmap(Bitmap bitmap,int degress) {
-        if (bitmap != null) {
-            Matrix m = new Matrix();
-            m.postRotate(degress); 
-            bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
-                    bitmap.getHeight(), m, true);
-            return bitmap;
-        }
-        return bitmap;
-    }
+		int degree = 0;
+		try {
+			ExifInterface exifInterface = new ExifInterface(path);
+			int orientation = exifInterface.getAttributeInt(
+					ExifInterface.TAG_ORIENTATION,
+					ExifInterface.ORIENTATION_NORMAL);
+			switch (orientation) {
+			case ExifInterface.ORIENTATION_ROTATE_90:
+				degree = 90;
+				break;
+			case ExifInterface.ORIENTATION_ROTATE_180:
+				degree = 180;
+				break;
+			case ExifInterface.ORIENTATION_ROTATE_270:
+				degree = 270;
+				break;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return degree;
+	}
+
+	public static Bitmap rotateBitmap(Bitmap bitmap, int degress) {
+		if (bitmap != null) {
+			Matrix m = new Matrix();
+			m.postRotate(degress);
+			bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
+					bitmap.getHeight(), m, true);
+			return bitmap;
+		}
+		return bitmap;
+	}
 
 	// ***************************************
 	// Private classes
@@ -219,22 +218,21 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 			// TODO Auto-generated method stub
 			Bitmap bm = getSmallBitmap(bitmap1path);
 			int degree = readPictureDegree(bitmap1path);
-			if(degree != 0)
-			{
-				bm=rotateBitmap(bm,degree);
+			if (degree != 0) {
+				bm = rotateBitmap(bm, degree);
 			}
 
 			bitmap1smallpath = bitmap1path.replace(".jpg", "_small.jpg");
-	        File file = new File(bitmap1smallpath);
+			File file = new File(bitmap1smallpath);
 			try {
 				file.createNewFile();
 				OutputStream out = new FileOutputStream(file);
 				// 声明写入的格式 ，质量 ，写入到哪里
-				System.out.println("bm+"+bm);
+				System.out.println("bm+" + bm);
 				bm.compress(Bitmap.CompressFormat.JPEG, 30, out);
 				out.flush();
 				out.close();
-				
+
 				return bm;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

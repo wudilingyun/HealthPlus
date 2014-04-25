@@ -167,7 +167,6 @@ public class SettingShare extends Activity implements OnItemClickListener,
 			}
 			
 			
-			
 			break;
 		}
 
