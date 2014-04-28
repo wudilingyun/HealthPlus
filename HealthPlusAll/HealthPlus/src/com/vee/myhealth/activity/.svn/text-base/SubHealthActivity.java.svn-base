@@ -51,8 +51,7 @@ public class SubHealthActivity extends BaseFragmentActivity implements
 		super.onCreate(arg0);
 		View view = View.inflate(this, R.layout.health_tizhi_list, null);
 		setContainer(view);
-		getHeaderView().setHeaderTitle("健康测试");
-		getHeaderView().setBackGroundColor(R.color.blue);
+		getHeaderView().setHeaderTitle("亚健康测试");
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);

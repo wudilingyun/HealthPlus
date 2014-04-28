@@ -2,11 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/white"
     android:orientation="vertical" >
 
     <include
         android:id="@+id/loading_frame_webview"
-        layout="@layout/health_loading_data" />
+        layout="@layout/health_loading_data"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,32 +30,35 @@
             android:orientation="horizontal"
             android:padding="14dp" >
 
-            <Button
+            <ImageView
                 android:id="@+id/comment_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/valuebook_comment_selector"
-                android:gravity="center" />
+                android:gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/valuebook_comment_selector" />
 
-            <Button
+            <ImageView
                 android:id="@+id/collect_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/valuebook_collect_selector"
-                android:gravity="center" />
+                android:src="@drawable/valuebook_collect_selector"
+                android:gravity="center"
+                android:padding="5dp" />
 
-            <Button
+            <ImageView
                 android:id="@+id/share_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/valuebook_share_selector"
-                android:gravity="center" />
+                android:src="@drawable/valuebook_share_selector"
+                android:gravity="center"
+                android:padding="5dp" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -61,26 +66,27 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="20dp" >
 
-                <Button
+                <ImageView
                     android:id="@+id/support_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/valuebook_support_selector" />
+                    android:src="@drawable/valuebook_support_selector"
+                    android:padding="5dp" />
 
                 <TextView
                     android:id="@+id/support_count_img"
-                    android:layout_width="10dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="10dp"
                     android:layout_alignRight="@+id/support_img"
                     android:layout_alignTop="@+id/support_img"
                     android:layout_marginRight="-14dp"
                     android:gravity="right"
-                    android:text="+1"
+                    android:text=""
                     android:textColor="#0f0"
-                    android:textSize="6sp" />
+                    android:visibility="gone"
+                    android:textSize="12sp" />
             </RelativeLayout>
         </LinearLayout>
-
     </RelativeLayout>
 
 </RelativeLayout>

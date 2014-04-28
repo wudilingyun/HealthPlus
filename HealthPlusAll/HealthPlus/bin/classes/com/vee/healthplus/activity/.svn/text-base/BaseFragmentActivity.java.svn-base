@@ -39,25 +39,26 @@ public class BaseFragmentActivity extends FragmentActivity implements
 		@Override
 		public void OnHeaderClick(View v, int option) {
 			// TODO Auto-generated method stub
-			if (option == HeaderView.HEADER_SETTING) {
+			if (option == HeaderView.HEADER_MENU) {
 				Intent intent = new Intent();
 				intent.setClass(BaseFragmentActivity.this, Setting.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 			} else if (option == HeaderView.HEADER_BACK) {
 				finish();
-			} else if (option == HeaderView.HEADER_SHOP_USER) {
+			} else if (option == HeaderView.HEADER_ADD) {
 				Intent intent = new Intent();
 				intent.setClass(BaseFragmentActivity.this,
 						AccountActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
-			} else if (option == HeaderView.HEADER_SHARE) {
+			} else if (option == HeaderView.HEADER_ADD) {
 				String sendMsg = getResources().getString(
 						R.string.hp_share_invite);
-				MyApplication.shareBySystem(getApplication(), sendMsg, "", "", "",
-						"");
-			} else if (option == HeaderView.HEADER_ANALYSIS_HISTORY) {
+				MyApplication.shareBySystem(getApplication(), sendMsg, "", "",
+						"", "");
+			} else if (option == HeaderView.HEADER_MENU) {
+				//宝典分类
 				Intent intent = new Intent();
 				intent.setClass(BaseFragmentActivity.this,
 						AnalysisHistoryActivity.class);
@@ -102,14 +103,27 @@ public class BaseFragmentActivity extends FragmentActivity implements
 		leftBtn.setVisibility(visibility);
 	}
 
+	public void setLeftBtnRes(int id) {
+		hv.setLeftRes(id);
+	}
+
 	public void setRightBtnVisible(int visibility) {
 		rightBtn.setVisibility(visibility);
+	}
+
+	public void setRightBtnRes(int id) {
+		hv.setRightRes(id);
+	}
+
+	public void setRightBtnType(int type) {
+		hv.setRightOption(type);
 	}
 
 	public HeaderView getHeaderView() {
 		return hv;
 	}
-	public void setLeftBtnForExam(OnClickListener clickListener){
+
+	public void setLeftBtnForExam(OnClickListener clickListener) {
 		leftBtn.setOnClickListener(clickListener);
 	}
 

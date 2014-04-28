@@ -1,14 +1,14 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/anim
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-18T08:42:42.972857Z
-675
+2014-04-24T08:23:10.040540Z
+680
 lingyun
 
 
@@ -467,6 +467,74 @@ lingyun
 
 
 321
+
+dialog_exit_up2down.xml
+file
+
+
+
+
+2014-04-23T03:34:40.406250Z
+ee073a164ef8fbc8114632c74e74364b
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+195
+
+dialog_enter_down2up.xml
+file
+
+
+
+
+2014-04-23T03:34:33.281250Z
+f0cbd9e7e4d0b7ed29b370e90f8e308f
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+197
 
 slide_out_to_top.xml
 file

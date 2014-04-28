@@ -1,5 +1,6 @@
 package com.vee.healthplus.ui.user;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -19,70 +20,76 @@ import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
 /**
  * Created by zhou on 13-10-28.
  */
-public class UserSexPickDialog extends DialogFragment implements View.OnClickListener {
-    private WheelView age_wv;
-    private HP_User user;
-    private ICallBack callBack;
-    
-    public UserSexPickDialog(){
-    	
-    }
+@SuppressLint("ValidFragment")
+public class UserSexPickDialog extends DialogFragment implements
+		View.OnClickListener {
+	private WheelView age_wv;
+	private HP_User user;
+	private ICallBack callBack;
 
-    /*public UserSexPickDialog(HP_User user, ICallBack callBack) {
-        this.user = user;
-        this.callBack = callBack;
-    }*/
+	public UserSexPickDialog() {
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        CustomDialog.Builder builder = new CustomDialog.Builder(getActivity());
-        builder.setTitle(R.string.hp_userinfotitle_sex);
-        View layout = View.inflate(getActivity(), R.layout.hp_userinfodialog_age, null);
-        initView(layout);
-        builder.setContentView(layout);
-        return builder.create();
-    }
+	}
 
-    private void initView(View layout) {
-        age_wv = (WheelView) layout.findViewById(R.id.age_wv);
-        age_wv.setViewAdapter(new Age_Adapter(getActivity()));
-        age_wv.setCurrentItem(user.userSex);
-        Button setDistanceTarget_btn = (Button) layout.findViewById(R.id.ok_btn);
-        setDistanceTarget_btn.setOnClickListener(this);
-    }
+	public UserSexPickDialog(HP_User user, ICallBack callBack) {
+		this.user = user;
+		this.callBack = callBack;
+	}
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ok_btn:
-                user.userSex = age_wv.getCurrentItem();
-                HP_DBModel.getInstance(getActivity()).updateUserInfo(user, true);
-                callBack.onChange();
-                this.dismiss();
-                break;
-        }
-    }
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		CustomDialog.Builder builder = new CustomDialog.Builder(getActivity());
+		builder.setTitle(R.string.hp_userinfotitle_sex);
+		View layout = View.inflate(getActivity(),
+				R.layout.hp_userinfodialog_age, null);
+		initView(layout);
+		builder.setContentView(layout);
+		return builder.create();
+	}
 
-    private class Age_Adapter extends AbstractWheelTextAdapter {
+	private void initView(View layout) {
+		age_wv = (WheelView) layout.findViewById(R.id.age_wv);
+		age_wv.setViewAdapter(new Age_Adapter(getActivity()));
+		age_wv.setCurrentItem(user.userSex);
+		Button setDistanceTarget_btn = (Button) layout
+				.findViewById(R.id.ok_btn);
+		setDistanceTarget_btn.setOnClickListener(this);
+	}
 
-        private int maxAge = 2;
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.ok_btn:
+			user.userSex = age_wv.getCurrentItem();
+			HP_DBModel.getInstance(getActivity()).updateUserInfo(user, true);
+			callBack.onChange();
+			this.dismiss();
+			break;
+		}
+	}
 
-        protected Age_Adapter(Context context) {
-            super(context);
-        }
+	private class Age_Adapter extends AbstractWheelTextAdapter {
 
-        @Override
-        protected CharSequence getItemText(int index) {
-            if (index==0){
-                return getActivity().getResources().getString(R.string.hp_personaledit_female);
-            }else {
-                return getActivity().getResources().getString(R.string.hp_personaledit_male);
-            }
-        }
+		private int maxAge = 2;
 
-        @Override
-        public int getItemsCount() {
-            return maxAge;
-        }
-    }
+		protected Age_Adapter(Context context) {
+			super(context);
+		}
+
+		@Override
+		protected CharSequence getItemText(int index) {
+			if (index == 0) {
+				return getActivity().getResources().getString(
+						R.string.hp_personaledit_female);
+			} else {
+				return getActivity().getResources().getString(
+						R.string.hp_personaledit_male);
+			}
+		}
+
+		@Override
+		public int getItemsCount() {
+			return maxAge;
+		}
+	}
 }

@@ -1,15 +1,15 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/myhealth/activity
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
 
 
 
@@ -32,10 +32,10 @@ file
 
 
 
-2014-04-18T07:56:57.328125Z
-f7ab3ccb26183bc70c70c29d961136f9
-2014-04-18T07:04:00.749800Z
-669
+2014-04-25T06:11:48.281250Z
+34f0576c98a8038533cdc5a24ead0c37
+2014-04-25T06:04:30.251153Z
+686
 zhaoyouliang
 
 
@@ -58,7 +58,7 @@ zhaoyouliang
 
 
 
-8029
+7976
 
 TiZhiResultActivity.java
 file
@@ -66,10 +66,10 @@ file
 
 
 
-2014-04-18T07:56:57.343750Z
-4415f5aeba4e1249a9f43120ac3e4d91
-2014-04-18T07:04:00.749800Z
-669
+2014-04-25T06:11:48.312500Z
+ebb9fdbd482daa41e51c80967c826332
+2014-04-25T06:04:30.251153Z
+686
 zhaoyouliang
 
 
@@ -92,7 +92,7 @@ zhaoyouliang
 
 
 
-8001
+8264
 
 TiZhiActivity.java
 file
@@ -100,44 +100,10 @@ file
 
 
 
-2014-04-18T08:42:00.421875Z
-45c6e34a3aeb69baea76efc7ba457a8d
-2014-04-18T08:42:42.972857Z
-675
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9307
-
-WeightLossActivity.java
-file
-
-
-
-
-2014-04-18T07:56:57.359375Z
-014af635ccdf691585498d0ab8459cda
-2014-04-18T07:04:00.749800Z
-669
+2014-04-25T06:11:48.328125Z
+d3c47acfeea7498d2b30c7fdb83f3e75
+2014-04-25T06:04:30.251153Z
+686
 zhaoyouliang
 
 
@@ -160,7 +126,75 @@ zhaoyouliang
 
 
 
-4045
+9494
+
+WeightLossActivity.java
+file
+
+
+
+
+2014-04-25T06:11:48.343750Z
+4d05b515c54ef684d2c9358c637e9e47
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7629
+
+WeightLossActivity_A.java
+file
+
+
+
+
+2014-04-25T06:11:48.359375Z
+f15fbcb4785bc9157f52c26a0c65f832
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6851
 
 CalculateScore.java
 file
@@ -202,10 +236,10 @@ file
 
 
 
-2014-04-18T07:56:57.390625Z
-de79dfb6ce75b53922dd03d7cc6b1c20
-2014-04-18T07:04:00.749800Z
-669
+2014-04-25T06:11:48.375000Z
+41d4f53dff32f42016e7840dd0d5cb47
+2014-04-25T06:04:30.251153Z
+686
 zhaoyouliang
 
 
@@ -228,5 +262,5 @@ zhaoyouliang
 
 
 
-7796
+7746
 

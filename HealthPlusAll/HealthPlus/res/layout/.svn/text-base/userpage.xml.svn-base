@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="top"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -11,9 +12,7 @@
         <RelativeLayout
             android:id="@+id/userpage_loginbar_none"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:visibility="gone" >
+            android:layout_height="124dip" >
 
             <ImageView
                 android:id="@+id/user_log_item_icon"
@@ -21,40 +20,30 @@
                 android:layout_height="96dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:adjustViewBounds="true"
                 android:clickable="false"
                 android:focusable="false"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/healthplus_wo_default_photo" />
 
             <TextView
                 android:id="@+id/user_log_item_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/user_log_item_icon"
+                android:padding="15dip"
                 android:text="登陆"
                 android:textColor="@color/primary_text_color"
-                android:textSize="@dimen/text_size_medium" />
-
-            <ImageView
-                android:id="@+id/user_log_item_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:clickable="false"
-                android:focusable="false"
-                android:scaleType="centerInside"
-                android:src="@drawable/shop_btn_next" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/userpage_loginbar_done"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
+            android:layout_height="124dip"
+            android:visibility="gone" >
 
             <ImageView
                 android:id="@+id/user_list_item_icon"
@@ -62,11 +51,11 @@
                 android:layout_height="96dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:adjustViewBounds="true"
                 android:clickable="false"
                 android:focusable="false"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/healthplus_wo_default_photo" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -79,7 +68,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="horizontal" >
@@ -88,157 +77,144 @@
                         android:id="@+id/user_login_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lily"
-                        android:textColor="@color/primary_text_color" />
+                        android:text="Sinly"
+                        android:textColor="#ffffff" />
 
                     <TextView
+                        android:id="@+id/user_login_sex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Female"
-                        android:textColor="@color/primary_text_color" />
+                        android:layout_marginLeft="5dp"
+                        android:text="女"
+                        android:textColor="#ffffff" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/user_login_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20"
-                        android:textColor="@color/primary_text_color" />
+                        android:textColor="#ffffff" />
 
                     <TextView
+                        android:id="@+id/user_login_weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Good"
-                        android:textColor="@color/primary_text_color" />
+                        android:layout_marginLeft="5dp"
+                        android:text="体重适中"
+                        android:textColor="#ffffff" />
                 </LinearLayout>
             </LinearLayout>
 
-            <Button
+            <TextView
                 android:id="@+id/user_log_item_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="40dp"
-                android:background="@drawable/analysis_bottom_bg"
-                android:clickable="false"
-                android:focusable="false"
-                android:scaleType="centerInside"
-                android:text="编辑" />
+                android:clickable="true"
+                android:padding="15dip"
+                android:text="编辑"
+                android:textColor="#f5f5f5"
+                android:textSize="16sp" />
         </RelativeLayout>
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:baselineAligned="false"
+        android:background="#66000000"
+        android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="2dp"
-                android:text="关注"
-                android:textColor="@color/primary_text_color" />
+                android:text="5"
+                android:textColor="#ffffff"
+                android:textSize="32sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="2dp"
-                android:text="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="2dp"
                 android:text="资讯"
-                android:textColor="@color/primary_text_color" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="2dp"
-                android:text="3"
-                android:textColor="@drawable/red" />
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="2dp"
+                android:text="10"
+                android:textColor="#ffffff"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="消息"
-                android:textColor="@color/primary_text_color" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="2dp"
-                android:text="2"
-                android:textColor="@drawable/red" />
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6"
+                android:textColor="#ffffff"
+                android:textSize="32sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="收藏"
-                android:textColor="@color/primary_text_color" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textColor="@drawable/red"
-                android:visibility="gone" />
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
     <ListView
-        android:divider="@null"
         android:id="@+id/user_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
         android:cacheColorHint="#00000000"
-         >
+        android:divider="#66dfdfde"
+        android:dividerHeight="0.5dip" >
     </ListView>
 
 </LinearLayout>

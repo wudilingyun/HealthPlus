@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,10 +54,9 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 	private TestAdapter testAdapter;
 	private ListView testListView;
 	private Button submit_butt;
-
+	private int selectId = 0;
 	private List<TZtest> tsList;
 
-	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -63,7 +64,6 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		View view = View.inflate(this, R.layout.health_tizhi_list, null);
 		setContainer(view);
 		getHeaderView().setHeaderTitle("体质测试");
-		getHeaderView().setBackGroundColor(R.color.blue);
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
@@ -79,7 +79,6 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		testListView.setOnItemClickListener(this);
 		testAdapter = new TestAdapter(this);
 		testListView.setAdapter(testAdapter);
-
 	}
 
 	void getData() {
@@ -161,7 +160,6 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		@Override
 		public View getView(final int position, View convertView,
 				ViewGroup parent) {
-			System.out.println("position============" + position);
 			final TZtest tZtest = (TZtest) getItem(position);
 			View view = null;
 			if (convertView != null) {
@@ -187,7 +185,6 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 
 				view.setTag(v);
 			}
-			
 
 			final ViewHolder v = (ViewHolder) view.getTag();
 			v.content.setText(newslist.get(position).getQuestion());
@@ -197,15 +194,14 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 			v.rb4.setTag(4);
 			v.rb5.setTag(5);
 			v.radioGroup.setId(position);
-			/*if (0 == position) {
-				System.out.println(position);
-				v.radioGroup.setVisibility(View.VISIBLE);
-			}else{
-				v.radioGroup.setVisibility(View.GONE);
-			}*/
-			
-			System.out.println("当前id"+testListView.getSelectedItemPosition());
-			
+			/*
+			 * if (0 == position) { System.out.println(position);
+			 * v.radioGroup.setVisibility(View.VISIBLE); }else{
+			 * v.radioGroup.setVisibility(View.GONE); }
+			 */
+
+			System.out.println("当前id" + testListView.getSelectedItemPosition());
+
 			if (cheMap.size() > 0) {
 				Iterator it = cheMap.keySet().iterator();
 				while (it.hasNext()) {
@@ -229,17 +225,27 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 					}
 				}
 			}
-				
+
 			v.radioGroup
 					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 						@Override
 						public void onCheckedChanged(RadioGroup radioGroup,
 								int checkedId) {
-							//testListView.setSelection(position + 1);
-							//View vcview=testListView.getChildAt(position);
+						/*	selectId = testListView.getFirstVisiblePosition();
+							Log.v("selectId", selectId + "");
+							if (selectId > 3) {
+								testListView.setSelection(position+1);
+							}
+							// View view = testListView.getChildAt(position +
+							// 1);
+							// view.setBackgroundResource(R.color.blue);
+						//	testListView.setf
+							*/
+							
 							int id = radioGroup.getId();
 							if (checkedId != -1) {
+
 								RadioButton tempButton = (RadioButton) findViewById(checkedId);
 								scoremMap.put(tZtest,
 										(Integer) tempButton.getTag());
@@ -273,7 +279,6 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 			return view;
 		}
 
-		
 		public class ViewHolder {
 
 			private int position;
@@ -306,7 +311,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 				startActivity(intent);
 				this.finish();
 			} else {
-				Toast.makeText(this, "没打完亲", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "没答完亲", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

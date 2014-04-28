@@ -20,7 +20,7 @@ import com.vee.healthplus.heahth_news_http.Contact;
 import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.ui.heahth_heart.HeartRateActivity;
-import com.vee.healthplus.ui.heahth_news.Health_ValuableBook_Fragment;
+import com.vee.healthplus.ui.heahth_news.Health_ValuableBookActivity;
 import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.util.user.HP_User;
@@ -82,7 +82,7 @@ public class HealthFragment extends Fragment implements ICallBack {
 							return;
 						}
 					} else if (target.getName().equals(
-							Health_ValuableBook_Fragment.class.getName())) {
+							Health_ValuableBookActivity.class.getName())) {
 
 						if ((JsonCache.getInstance()
 								.getJson(Contact.HealthNES_URL)) == ""

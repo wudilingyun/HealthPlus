@@ -30,8 +30,8 @@
                         android:layout_marginLeft="20.0dip"
                         android:layout_marginRight="20.0dip"
                         android:layout_marginTop="30dip"
-                        android:background="@drawable/health_plus_input_bg0" 
-                        android:orientation="vertical">
+                        android:background="@drawable/health_plus_input_bg0"
+                        android:orientation="vertical" >
 
                         <LinearLayout
                             android:layout_width="fill_parent"
@@ -70,6 +70,60 @@
                             android:layout_width="fill_parent"
                             android:layout_height="1dip"
                             android:background="#C3C3C3" />
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="46dip"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/health_plus_register_yz_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:src="@drawable/health_plus_yz_normal" />
+
+                            <View
+                                android:layout_width="1dip"
+                                android:layout_height="22dip"
+                                android:layout_marginLeft="10dip"
+                                android:background="#88C3C3C3" />
+
+                            <EditText
+                                android:id="@+id/health_plus_register_yz_input_et"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dip"
+                                android:background="@null"
+                                android:hint="输入验证码"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:textColor="#838383"
+                                android:textColorHint="#C3C3C3"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/health_plus_register_get_yz_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="48dip"
+                        android:layout_marginLeft="20.0dip"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="10.0dip"
+                        android:background="@drawable/health_plus_find_get_btn_selector"
+                        android:text="获取验证码"
+                        android:textColor="#ffffff" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20.0dip"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="10dip"
+                        android:background="@drawable/health_plus_input_bg0"
+                        android:orientation="vertical" >
 
                         <LinearLayout
                             android:layout_width="fill_parent"
@@ -143,6 +197,17 @@
                         </LinearLayout>
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/health_plus_register_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20.0dip"
+                        android:layout_marginRight="20.0dip"
+                        android:layout_marginTop="5.0dip"
+                        android:text="提示：密码由6-12位英文字母、数字或符号组成。"
+                        android:textColor="#C3C3C3"
+                        android:textSize="12sp" />
+
                     <Button
                         android:id="@+id/health_plus_register_btn"
                         android:layout_width="fill_parent"
@@ -159,7 +224,7 @@
                         android:layout_height="50dip"
                         android:layout_marginLeft="20.0dip"
                         android:layout_marginRight="20.0dip"
-                        android:layout_marginTop="10.0dip"
+                        android:layout_marginTop="5.0dip"
                         android:gravity="center_horizontal" >
 
                         <LinearLayout

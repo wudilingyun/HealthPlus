@@ -73,9 +73,9 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 
 	private LinearLayout loFrameLayout;
 	private ImageView loadImageView;
-	private Button share_img, support_img, comment_img;
+	private ImageView share_img, support_img, comment_img;
 	private TextView support_count_img;
-	private Button collect_img;
+	private ImageView collect_img;
 	private Animation news_loadAaAnimation;
 	private BadgeView badgeView, badgeView_support;
 	private SharedPreferences settings;
@@ -83,6 +83,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 	private int i = 0;
 	private Bitmap shareimg_bitmap;
 	private ImageView img;
+
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -91,9 +92,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 
 		View view = View.inflate(this, R.layout.health_news_webview, null);
 		setContainer(view);
-
-		getHeaderView().setHeaderTitle("健康资讯");
-		getHeaderView().setBackGroundColor(R.color.blue);
+		getHeaderView().setHeaderTitle(getIntent().getStringExtra("name"));
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
@@ -120,16 +119,16 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		loadImageView = (ImageView) findViewById(R.id.img_rotate);
 		loadImageView.setAnimation(news_loadAaAnimation);
 
-		comment_img = (Button) findViewById(R.id.comment_img);
-		support_img = (Button) findViewById(R.id.support_img);
-		share_img = (Button) findViewById(R.id.share_img);
-		collect_img = (Button) findViewById(R.id.collect_img);
+		comment_img = (ImageView) findViewById(R.id.comment_img);
+		support_img = (ImageView) findViewById(R.id.support_img);
+		share_img = (ImageView) findViewById(R.id.share_img);
+		collect_img = (ImageView) findViewById(R.id.collect_img);
 		support_count_img = (TextView) findViewById(R.id.support_count_img);
 		share_img.setOnClickListener(this);
 		support_img.setOnClickListener(this);
 		comment_img.setOnClickListener(this);
 		collect_img.setOnClickListener(this);
-		
+
 	}
 
 	void getData() {
@@ -235,7 +234,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 					if (root != null) {
 						all_news = root.getResponse().getDocs();
 						newscontent = all_news.get(0).getContent();
-						System.out.println(newscontent);
+						System.out.println("newscontent："+newscontent);
 						webView.loadDataWithBaseURL(null, newscontent,
 								"text/html", "utf-8", null);
 						ProgressDiaog.dismissProgressDialog();
@@ -246,6 +245,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 						Toast.makeText(getApplication(), "请检查网络连接",
 								Toast.LENGTH_SHORT).show();
 					}
+					
 				}
 			}
 		}

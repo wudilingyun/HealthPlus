@@ -14,6 +14,12 @@ public class UserPageAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private String[] sTitles;
+	private int icons[] = { R.drawable.healthplus_wo_item_testdata_icon,
+			R.drawable.healthplus_wo_item_friends_icon,
+			R.drawable.healthplus_wo_item_setting_icon,
+			R.drawable.healthplus_wo_item_device_icon,
+			R.drawable.shop_search_order_icon };
+
 	protected LayoutInflater _mInflater;
 
 	public UserPageAdapter(Context mContext, String[] strings) {
@@ -55,6 +61,7 @@ public class UserPageAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.title.setText(sTitles[position]);
+		holder.icon.setImageResource(icons[position]);
 		return convertView;
 	}
 

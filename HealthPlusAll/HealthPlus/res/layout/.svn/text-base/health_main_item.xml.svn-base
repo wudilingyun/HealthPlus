@@ -1,41 +1,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white" >
+    android:id="@+id/rl" >
 
-    <RelativeLayout
-        android:id="@+id/rl"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_centerInParent="true" >
+    <LinearLayout
+        android:id="@+id/ll_test_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/test_item_selector_selected"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/ll_test_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:background="@drawable/test_item_selector"
+        <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp" />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/item_icon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:src="@drawable/hm_xinlv" />
-
-            <TextView
-                android:id="@+id/item_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="123"
-                android:textColor="@color/lightgray"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-       
-    </RelativeLayout>
+            android:text="123"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+    </LinearLayout>
 
 </RelativeLayout>

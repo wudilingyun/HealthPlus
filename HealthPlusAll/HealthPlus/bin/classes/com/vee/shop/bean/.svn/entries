@@ -1,7 +1,7 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/shop/bean
 svn://192.168.23.204/mobileapp/mobilesafe
 
@@ -60,40 +60,6 @@ wangfeng
 
 2100
 
-OrderBean.java
-file
-
-
-
-
-2014-03-28T08:27:48.500000Z
-896356f96fcf261545bbee8091e1e232
-2013-12-17T10:16:36.499243Z
-554
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2261
-
 AddressInfo.java
 file
 
@@ -127,6 +93,40 @@ wangfeng
 
 
 1296
+
+OrderBean.java
+file
+
+
+
+
+2014-03-28T08:27:48.500000Z
+896356f96fcf261545bbee8091e1e232
+2013-12-17T10:16:36.499243Z
+554
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2261
 
 ServerOrder.java
 file
@@ -196,40 +196,6 @@ wangfeng
 
 784
 
-ProductBean.java
-file
-
-
-
-
-2014-03-28T08:27:48.546875Z
-8b90f008b6b95de72e6987e08ce6bb8d
-2013-12-17T10:16:36.499243Z
-554
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1174
-
 ParameterBean.java
 file
 
@@ -263,6 +229,40 @@ wangfeng
 
 
 1304
+
+ProductBean.java
+file
+
+
+
+
+2014-03-28T08:27:48.546875Z
+8b90f008b6b95de72e6987e08ce6bb8d
+2013-12-17T10:16:36.499243Z
+554
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1174
 
 StationBean.java
 file
@@ -332,40 +332,6 @@ wangfeng
 
 1161
 
-OrderPointBean.java
-file
-
-
-
-
-2014-03-28T08:27:48.578125Z
-ed1453f0675c5db7db654ce55ed428e9
-2013-12-17T10:16:36.499243Z
-554
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-792
-
 AddressBean.java
 file
 
@@ -399,6 +365,40 @@ wangfeng
 
 
 2853
+
+OrderPointBean.java
+file
+
+
+
+
+2014-03-28T08:27:48.578125Z
+ed1453f0675c5db7db654ce55ed428e9
+2013-12-17T10:16:36.499243Z
+554
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+792
 
 PointBean.java
 file

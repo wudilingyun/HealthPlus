@@ -1,15 +1,15 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/libs
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-18T05:42:10.225275Z
-667
-heda
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
 
 
 
@@ -94,40 +94,6 @@ has-props
 
 190418
 
-spring-social-core-1.0.2.RELEASE.jar
-file
-
-
-
-
-2014-03-28T08:27:51.515625Z
-bb1b52b6c4ffb462dc78a6913cdbe18b
-2013-11-14T09:24:22.391490Z
-458
-wangjiafeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-116441
-
 jackson-mapper-asl-1.9.10.jar
 file
 
@@ -161,6 +127,40 @@ has-props
 
 
 780421
+
+spring-social-core-1.0.2.RELEASE.jar
+file
+
+
+
+
+2014-03-28T08:27:51.515625Z
+bb1b52b6c4ffb462dc78a6913cdbe18b
+2013-11-14T09:24:22.391490Z
+458
+wangjiafeng
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+116441
 
 spring-android-rest-template-1.0.0.RELEASE.jar
 file
@@ -196,40 +196,6 @@ has-props
 
 183233
 
-spring-android-core-1.0.0.RELEASE.jar
-file
-
-
-
-
-2014-03-28T08:27:51.562500Z
-15f885ac1c4198bf8c728c6cf45d567e
-2013-11-14T09:24:22.391490Z
-458
-wangjiafeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-113140
-
 jackson-core-asl-1.9.10.jar
 file
 
@@ -264,17 +230,17 @@ has-props
 
 232119
 
-springandroid4healthplus.jar
+spring-android-core-1.0.0.RELEASE.jar
 file
 
 
 
 
-2014-04-18T07:56:59.484375Z
-e9ddb5cb9ede245092e113f071bcc887
-2014-04-18T05:42:10.225275Z
-667
-heda
+2014-03-28T08:27:51.562500Z
+15f885ac1c4198bf8c728c6cf45d567e
+2013-11-14T09:24:22.391490Z
+458
+wangjiafeng
 has-props
 
 
@@ -296,7 +262,7 @@ has-props
 
 
 
-104037
+113140
 
 android-support-v4.jar
 file
@@ -332,17 +298,17 @@ has-props
 
 556198
 
-baidumapapi_v2_2_0.jar
+springandroid4healthplus.jar
 file
 
 
 
 
-2014-03-28T08:27:51.625000Z
-87cdc8e6c655812e27c986287f996140
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
+2014-04-25T04:37:25.625000Z
+f13496e2f9036add68ca80f28ab5ff17
+2014-04-25T01:25:41.393654Z
+682
+heda
 has-props
 
 
@@ -364,7 +330,7 @@ has-props
 
 
 
-856168
+108154
 
 android-query.jar
 file
@@ -399,6 +365,40 @@ has-props
 
 
 98859
+
+baidumapapi_v2_2_0.jar
+file
+
+
+
+
+2014-03-28T08:27:51.625000Z
+87cdc8e6c655812e27c986287f996140
+2013-10-30T01:32:51.046476Z
+396
+xujizhe
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+856168
 
 armeabi
 dir
@@ -436,6 +436,108 @@ has-props
 
 
 22245
+
+tempfile.tmp
+file
+
+
+
+
+2014-04-25T06:11:50.156250Z
+f13496e2f9036add68ca80f28ab5ff17
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+108154
+
+tempfile.2.tmp
+file
+
+
+
+
+2014-04-25T06:11:50.171875Z
+f13496e2f9036add68ca80f28ab5ff17
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+108154
+
+tempfile.3.tmp
+file
+
+
+
+
+2014-04-25T06:11:50.187500Z
+f13496e2f9036add68ca80f28ab5ff17
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+108154
 
 alipay_msp.jar
 file

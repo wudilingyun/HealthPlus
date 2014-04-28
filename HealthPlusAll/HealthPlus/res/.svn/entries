@@ -1,14 +1,14 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-18T08:42:54.761952Z
-676
+2014-04-25T06:04:30.251153Z
+686
 zhaoyouliang
 
 
@@ -32,16 +32,16 @@ dir
 values-w360dp
 dir
 
-values-hdpi
-dir
-
 drawable
 dir
 
-layout-small
+values-hdpi
 dir
 
 drawable-xxhdpi
+dir
+
+layout-small
 dir
 
 anim

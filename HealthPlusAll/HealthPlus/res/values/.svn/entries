@@ -1,15 +1,15 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/values
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
 
 
 
@@ -168,11 +168,11 @@ file
 
 
 
-2014-03-28T08:27:55.593750Z
-8a2ea76c1e8a9b211f005ad275bf194d
-2014-01-21T08:01:45.680287Z
-630
-xujizhe
+2014-04-23T09:12:09.484375Z
+925f3e606ba233af0ea9d5e71b34bda6
+2014-04-22T09:10:52.459308Z
+678
+zhaoyouliang
 
 
 
@@ -194,7 +194,7 @@ xujizhe
 
 
 
-2943
+3041
 
 analysis_strings.xml
 file
@@ -372,11 +372,11 @@ file
 
 
 
-2014-04-15T08:23:39.437500Z
-3ba47997c31e3ef0088f329b8a8f4b50
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-04-25T06:11:49.937500Z
+272e36a194bdec6776c56b3334d8d460
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
 
 
 
@@ -398,7 +398,7 @@ lingyun
 
 
 
-12907
+13511
 
 forum_strings.xml
 file
@@ -468,40 +468,6 @@ wangfeng
 
 1851
 
-exam_strings.xml
-file
-
-
-
-
-2014-04-18T07:57:00.453125Z
-0af1c8e49ec7ae60bd0a3de8eb7a9edb
-2014-04-03T09:45:51.993340Z
-664
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2971
-
 health_color.xml
 file
 
@@ -570,6 +536,74 @@ heda
 
 729
 
+exam_strings.xml
+file
+
+
+
+
+2014-04-25T06:11:49.968750Z
+2b4723f950e6c5db788c505f402a8a01
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3442
+
+hp_w_attrs.xml
+file
+
+
+
+
+2014-04-23T07:20:42.781250Z
+18e23f9c3644bb1f0eb11a4206a52749
+2014-04-23T07:27:45.174766Z
+679
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7751
+
 ting_strings.xml
 file
 
@@ -603,40 +637,6 @@ xujizhe
 
 
 3744
-
-hp_w_attrs.xml
-file
-
-
-
-
-2014-03-28T08:27:55.687500Z
-5590a09902101833e272a78f0736c635
-2014-01-09T07:40:03.101068Z
-601
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7806
 
 attrs_pulltorefresh.xml
 file
@@ -842,40 +842,6 @@ zhaoyouliang
 
 947
 
-exam_dimens.xml
-file
-
-
-
-
-2014-03-28T08:27:55.562500Z
-bccc67679e0a2ecd37447dcf26934036
-2014-01-26T07:06:02.593340Z
-638
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1743
-
 strings.xml
 file
 
@@ -909,6 +875,40 @@ heda
 
 
 789
+
+exam_dimens.xml
+file
+
+
+
+
+2014-03-28T08:27:55.562500Z
+bccc67679e0a2ecd37447dcf26934036
+2014-01-26T07:06:02.593340Z
+638
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1743
 
 shop_colors.xml
 file
@@ -944,40 +944,6 @@ wangfeng
 
 2104
 
-hp_w_array.xml
-file
-
-
-
-
-2014-04-18T06:47:15.562500Z
-4734f6a8a814bdc28221d652c155f881
-2014-04-18T08:42:42.972857Z
-675
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1429
-
 moments_strings.xml
 file
 
@@ -1011,6 +977,40 @@ heda
 
 
 933
+
+hp_w_array.xml
+file
+
+
+
+
+2014-04-18T06:47:15.562500Z
+4734f6a8a814bdc28221d652c155f881
+2014-04-18T08:42:42.972857Z
+675
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1429
 
 ids_pulltorefresh.xml
 file

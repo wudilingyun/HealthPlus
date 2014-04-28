@@ -8,9 +8,10 @@ package kankan.wheel;
 
 public final class R {
 	public static final class drawable {
-		public static final int hp_w_targetcountbg = 0x7f0200d1;
-		public static final int hp_w_targetcountcurbg = 0x7f0200d2;
-		public static final int wheel_bg = 0x7f020260;
-		public static final int wheel_val = 0x7f020261;
+		public static final int age_edit_wheel_bg = 0x7f020004;
+		public static final int hp_w_targetcountbg = 0x7f0200ea;
+		public static final int hp_w_targetcountcurbg = 0x7f0200eb;
+		public static final int wheel_bg = 0x7f02028b;
+		public static final int wheel_val = 0x7f02028c;
 	}
 }

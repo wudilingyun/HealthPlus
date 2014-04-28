@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
-
-        import com.vee.healthplus.R;
+ import com.vee.healthplus.R;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.util.DBManager;

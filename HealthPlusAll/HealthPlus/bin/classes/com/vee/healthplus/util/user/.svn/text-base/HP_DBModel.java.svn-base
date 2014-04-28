@@ -45,7 +45,7 @@ public class HP_DBModel {
             values.put(HP_DBCommons.USERHEIGHT, user.userHeight);
         if (user.userWeight > 0)
             values.put(HP_DBCommons.USERWEIGHT, user.userWeight);
-        if (user.userSex > -1)
+        if (user.userSex > -2)
             values.put(HP_DBCommons.USERSEX, user.userSex);
         values.put(HP_DBCommons.UPDATETIME, user.updateTime);
         values.put(HP_DBCommons.USERNICK, user.userNick);

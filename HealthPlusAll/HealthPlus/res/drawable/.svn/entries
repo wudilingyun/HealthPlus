@@ -1,15 +1,15 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/drawable
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
 
 
 
@@ -60,40 +60,6 @@ zhaoyouliang
 
 401
 
-header_view_left_bt_selector.xml
-file
-
-
-
-
-2014-03-28T08:27:52.703125Z
-5a0f1e6ce86e37a7e54f4842bc7650b5
-2013-11-01T07:38:09.801076Z
-406
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-474
-
 text_border.xml
 file
 
@@ -127,6 +93,40 @@ heda
 
 
 276
+
+header_view_left_bt_selector.xml
+file
+
+
+
+
+2014-03-28T08:27:52.703125Z
+5a0f1e6ce86e37a7e54f4842bc7650b5
+2013-11-01T07:38:09.801076Z
+406
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+474
 
 hp_w_target_setbtn_selector.xml
 file
@@ -230,16 +230,50 @@ zhaoyouliang
 
 326
 
+personal_info_edit_save_btn.xml
+file
+
+
+
+
+2014-04-21T10:39:43.640625Z
+1e11d2719c82556d528ac55787c83a28
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+310
+
 radio_test_option.xml
 file
 
 
 
 
-2014-04-18T07:56:59.781250Z
-a40fb51c4daa0e547bfe65a09dc50d79
-2014-04-18T07:04:00.749800Z
-669
+2014-04-23T09:12:11.140625Z
+cb22f66ecae25f0d9316a9f419966e7f
+2014-04-22T09:10:52.459308Z
+678
 zhaoyouliang
 
 
@@ -262,7 +296,7 @@ zhaoyouliang
 
 
 
-298
+318
 
 list_item_topic_select.xml
 file
@@ -332,40 +366,6 @@ lingyun
 
 300
 
-dotted_line.xml
-file
-
-
-
-
-2014-03-28T08:27:52.734375Z
-04d7951b03d38c45bb0c871f8f29cfb8
-2014-01-03T02:03:03.430994Z
-592
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-497
-
 btn_top_pressed.xml
 file
 
@@ -400,17 +400,17 @@ zhaoyouliang
 
 273
 
-shop_list_item_single_bg.xml
+dotted_line.xml
 file
 
 
 
 
-2014-03-28T08:27:52.750000Z
-9aa58b98e409f2644523752ab85f3814
-2009-01-02T02:38:52.163835Z
-579
-wangfeng
+2014-03-28T08:27:52.734375Z
+04d7951b03d38c45bb0c871f8f29cfb8
+2014-01-03T02:03:03.430994Z
+592
+zhaoyouliang
 
 
 
@@ -432,7 +432,7 @@ wangfeng
 
 
 
-294
+497
 
 shop_productdetail_count_down_selector.xml
 file
@@ -468,17 +468,17 @@ wangfeng
 
 405
 
-custom_tab_indicator.xml
+shop_list_item_single_bg.xml
 file
 
 
 
 
-2014-03-28T08:27:52.765625Z
-5654a8a0d3cd14f6c933c3f1f69bf066
-2013-12-20T01:32:59.617565Z
-569
-xujizhe
+2014-03-28T08:27:52.750000Z
+9aa58b98e409f2644523752ab85f3814
+2009-01-02T02:38:52.163835Z
+579
+wangfeng
 
 
 
@@ -500,7 +500,7 @@ xujizhe
 
 
 
-2232
+294
 
 shop_category_item_bg.xml
 file
@@ -535,6 +535,40 @@ wangfeng
 
 
 288
+
+custom_tab_indicator.xml
+file
+
+
+
+
+2014-03-28T08:27:52.765625Z
+5654a8a0d3cd14f6c933c3f1f69bf066
+2013-12-20T01:32:59.617565Z
+569
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2232
 
 dot_focused.xml
 file
@@ -978,6 +1012,40 @@ wangfeng
 
 294
 
+personal_info_edit_divider.xml
+file
+
+
+
+
+2014-04-21T11:06:36.171875Z
+2d0c833388c28fc2c765611d5a35183a
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+298
+
 shop_btn_next.xml
 file
 
@@ -1250,6 +1318,40 @@ zhaoyouliang
 
 341
 
+news_item_selector.xml
+file
+
+
+
+
+2014-04-25T06:11:49.015625Z
+e428648c2905c79afd94ae1b970bd29e
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+288
+
 right_switcher_expanded_background.xml
 file
 
@@ -1290,44 +1392,10 @@ file
 
 
 
-2014-03-28T08:27:52.921875Z
-78cb51a378ce2e1877759259e969abc9
-2014-01-09T07:40:03.101068Z
-601
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-223
-
-edittext_default.xml
-file
-
-
-
-
-2014-03-28T08:27:52.937500Z
-2ea70634a1e1bc02b3a82438508ec092
-2014-03-28T07:56:35.417049Z
-658
+2014-04-23T09:12:11.156250Z
+14b8b7a3911df49ef14c90c355e4c0a1
+2014-04-22T09:10:52.459308Z
+678
 zhaoyouliang
 
 
@@ -1350,7 +1418,7 @@ zhaoyouliang
 
 
 
-599
+217
 
 dot_normal.xml
 file
@@ -1386,18 +1454,17 @@ zhaoyouliang
 
 229
 
-shop_rubbish_n.9.png
+edittext_default.xml
 file
 
 
 
 
-2014-03-28T08:27:52.953125Z
-d14e95ebb88a124788d9698693947405
-2009-01-02T02:38:52.163835Z
-579
-wangfeng
-has-props
+2014-03-28T08:27:52.937500Z
+2ea70634a1e1bc02b3a82438508ec092
+2014-03-28T07:56:35.417049Z
+658
+zhaoyouliang
 
 
 
@@ -1418,7 +1485,8 @@ has-props
 
 
 
-764
+
+599
 
 shop_rubbish_bg.xml
 file
@@ -1454,6 +1522,40 @@ wangfeng
 
 270
 
+shop_rubbish_n.9.png
+file
+
+
+
+
+2014-03-28T08:27:52.953125Z
+d14e95ebb88a124788d9698693947405
+2009-01-02T02:38:52.163835Z
+579
+wangfeng
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+764
+
 shop_headview_back_button.xml
 file
 
@@ -1487,6 +1589,40 @@ wangfeng
 
 
 298
+
+shape.xml
+file
+
+
+
+
+2014-04-23T09:12:11.171875Z
+b5ed18160427c579586dec3ebce761ab
+2014-04-22T09:10:52.459308Z
+678
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+490
 
 shop_rubbish_p.9.png
 file
@@ -1556,51 +1692,17 @@ wangfeng
 
 697
 
-bg_pub_backgroud.png
+news_list_ring_press.xml
 file
 
 
 
 
-2014-03-28T08:27:53.000000Z
-9289fd46a367c886feb0503dc53e44cb
-2013-12-19T09:04:46.510520Z
-565
+2014-04-25T06:11:49.015625Z
+960e25e1350d2acf2abff961e2a56a40
+2014-04-25T06:04:30.251153Z
+686
 zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-85014
-
-progressbar_frame.xml
-file
-
-
-
-
-2014-03-28T08:27:53.000000Z
-156a755f888559fdb6fdd54dd2222e91
-2013-12-30T06:32:56.470048Z
-587
-silian
 
 
 
@@ -1622,7 +1724,7 @@ silian
 
 
 
-1176
+497
 
 health_plus_login_btn_selector.xml
 file
@@ -1658,17 +1760,17 @@ lingyun
 
 316
 
-test_item_selector_selected.xml
+progressbar_frame.xml
 file
 
 
 
 
-2014-03-28T08:27:53.015625Z
-2edb0cc72e169a421607f96425a8c6c9
-2014-01-09T07:40:03.101068Z
-601
-xujizhe
+2014-03-28T08:27:53.000000Z
+156a755f888559fdb6fdd54dd2222e91
+2013-12-30T06:32:56.470048Z
+587
+silian
 
 
 
@@ -1690,7 +1792,41 @@ xujizhe
 
 
 
-412
+1176
+
+bg_pub_backgroud.png
+file
+
+
+
+
+2014-03-28T08:27:53.000000Z
+9289fd46a367c886feb0503dc53e44cb
+2013-12-19T09:04:46.510520Z
+565
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+85014
 
 test_result_btn_reminder.xml
 file
@@ -1726,17 +1862,17 @@ lingyun
 
 298
 
-health_plus_goto_register_btn_selector.xml
+test_item_selector_selected.xml
 file
 
 
 
 
-2014-04-15T02:34:12.187500Z
-daa2fa1857445e13d7744ea933d481c8
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-04-23T09:12:11.171875Z
+eec34c930e8c6bdbc6a6e73c5002c8a6
+2014-04-22T09:10:52.459308Z
+678
+zhaoyouliang
 
 
 
@@ -1758,7 +1894,41 @@ lingyun
 
 
 
-322
+263
+
+btn_heartbeat_stop_selector.xml
+file
+
+
+
+
+2014-03-28T08:27:53.031250Z
+a681b48ffbcc5772a708d05ea5ed76fd
+2013-12-19T09:04:46.510520Z
+565
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+325
 
 health_heart_device.xml
 file
@@ -1794,17 +1964,17 @@ zhaoyouliang
 
 328
 
-btn_heartbeat_stop_selector.xml
+health_plus_goto_register_btn_selector.xml
 file
 
 
 
 
-2014-03-28T08:27:53.031250Z
-a681b48ffbcc5772a708d05ea5ed76fd
-2013-12-19T09:04:46.510520Z
-565
-zhaoyouliang
+2014-04-15T02:34:12.187500Z
+daa2fa1857445e13d7744ea933d481c8
+2014-04-18T08:42:42.972857Z
+675
+lingyun
 
 
 
@@ -1826,7 +1996,7 @@ zhaoyouliang
 
 
 
-325
+322
 
 valuebook_share_selector.xml
 file
@@ -2032,6 +2202,40 @@ xujizhe
 
 474
 
+btn_shape_untransparent.xml
+file
+
+
+
+
+2014-04-23T09:12:11.187500Z
+f3083da53b815435e856291027ca79fd
+2014-04-22T09:10:52.459308Z
+678
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+713
+
 text_border_normal.xml
 file
 
@@ -2100,6 +2304,40 @@ wangfeng
 
 288
 
+shape_black.xml
+file
+
+
+
+
+2014-04-25T06:11:49.031250Z
+2e78d412af006bd4594aeb22e97a95dd
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+499
+
 title_bk.xml
 file
 
@@ -2133,6 +2371,40 @@ zhaoyouliang
 
 
 273
+
+news_list_ring_normal.xml
+file
+
+
+
+
+2014-04-25T06:11:49.046875Z
+5b4c874de2407acd4f43f96b0ec1ad2b
+2014-04-25T06:04:30.251153Z
+686
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+493
 
 test_result_btn_comment.xml
 file
@@ -2712,6 +2984,74 @@ wangfeng
 
 298
 
+btn_shape_transparent.xml
+file
+
+
+
+
+2014-04-23T09:12:11.203125Z
+f8e7ff6e8857bf98a1aa4d7d256833c5
+2014-04-22T09:10:52.459308Z
+678
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+710
+
+personal_info_item_bg_selector.xml
+file
+
+
+
+
+2014-04-24T06:17:46.765625Z
+aa7913cdecf904f8d96d095ba600e953
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+418
+
 progressbar_img.xml
 file
 
@@ -2950,6 +3290,40 @@ xujizhe
 
 270
 
+age_edit_wheel_bg.xml
+file
+
+
+
+
+2014-04-24T02:48:04.546000Z
+99400a166ad8bb724d0836d11e3c6db8
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+317
+
 shop_headview_cart.xml
 file
 
@@ -2990,10 +3364,10 @@ file
 
 
 
-2014-04-15T08:33:58.812500Z
-215fddb813863388f2fe919d84fb326e
-2014-04-18T08:42:42.972857Z
-675
+2014-04-24T09:38:13.562500Z
+4a4fe02b24b4e10ac3a7ebe617c8f3ab
+2014-04-25T05:13:58.990258Z
+685
 lingyun
 
 
@@ -3016,7 +3390,7 @@ lingyun
 
 
 
-429
+430
 
 dialog_cancel_button_selector.xml
 file

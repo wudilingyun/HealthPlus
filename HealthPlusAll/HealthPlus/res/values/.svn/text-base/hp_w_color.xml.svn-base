@@ -51,4 +51,6 @@
     <color name="black_black">#404040</color>
     <color name="gray_balck">#696969</color>
     <color name="little_gray">#8c8c8c</color>
+    <color name="trans_gray">#33000000</color>
+    <color name="trans_2_gray">#55000000</color>
 </resources>

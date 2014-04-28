@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.ui.heahth_heart.HeartRateActivity;
-import com.vee.healthplus.ui.heahth_news.Health_ValuableBook_Fragment;
+import com.vee.healthplus.ui.heahth_news.Health_ValuableBookActivity;
 
 /**
  * Created by xujizhe on 13-12-25.
@@ -27,7 +27,7 @@ public class HealthMainAdapter extends BaseAdapter {
 
     private int icon[] = {R.drawable.hm_xinlv, R.drawable.hm_xueyang, R.drawable.hm_zhifang, R.drawable.hm_tiwen, R.drawable.hm_zixun, R.drawable.hm_ceshi};
     private static int[] name = {R.string.xinlv, R.string.xueyang, R.string.zhifang, R.string.tiwen, R.string.zixun, R.string.ceshi};
-    private Class target[] = {HeartRateActivity.class, null, null, null, Health_ValuableBook_Fragment.class, ExamTypeActivity.class};
+    private Class target[] = {HeartRateActivity.class, null, null, null, Health_ValuableBookActivity.class, ExamTypeActivity.class};
     private int selectItem = 0;
 
     public HealthMainAdapter(Context ctx) {
@@ -59,7 +59,7 @@ public class HealthMainAdapter extends BaseAdapter {
             holder.icon = (ImageView) view.findViewById(R.id.item_icon);
             holder.name = (TextView) view.findViewById(R.id.item_name);
             holder.lltestItem = (LinearLayout) view.findViewById(R.id.ll_test_item);
-            holder.rl = (RelativeLayout) view.findViewById(R.id.rl);
+         //   holder.rl = (RelativeLayout) view.findViewById(R.id.rl);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();

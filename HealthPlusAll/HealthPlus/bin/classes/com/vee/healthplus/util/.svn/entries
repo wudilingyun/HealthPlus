@@ -1,7 +1,7 @@
 10
 
 dir
-677
+686
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus/util
 svn://192.168.23.204/mobileapp/mobilesafe
 
@@ -131,6 +131,9 @@ xujizhe
 baidumap
 dir
 
+analysis
+dir
+
 SharedPreferenceUtil.java
 file
 
@@ -164,9 +167,6 @@ xujizhe
 
 
 2444
-
-analysis
-dir
 
 pedometer
 dir
@@ -273,10 +273,10 @@ xujizhe
 
 9551
 
-alarm
+sporttrack
 dir
 
-sporttrack
+alarm
 dir
 
 InstallSataUtil.java
