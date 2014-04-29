@@ -33,7 +33,7 @@ public class WeightEditActivity extends BaseFragmentActivity implements
 				Bundle bundle = data.getExtras();
 				bundle.putString("weight", weightEt.getText().toString());
 				data.putExtras(bundle);
-				WeightEditActivity.this.setResult(7, data);
+				WeightEditActivity.this.setResult(RESULT_OK, data);
 				finish();
 			}
 		}

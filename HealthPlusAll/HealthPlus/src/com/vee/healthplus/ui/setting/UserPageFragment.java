@@ -2,6 +2,7 @@ package com.vee.healthplus.ui.setting;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.heahth_news_http.ImageGetFromHttp;
+import com.vee.healthplus.heahth_news_utils.ImageFileCache;
+import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity;
 import com.vee.healthplus.util.SystemMethod;
@@ -38,6 +42,8 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			user_login_sex;
 	private TextView edit;
 	private RelativeLayout rl_login_none;
+	private ImageFileCache fileCache;
+	private ImageMemoryCache memoryCache;
 
 	public static UserPageFragment newInstance() {
 		return new UserPageFragment();
@@ -105,6 +111,8 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 		edit = (TextView) rl_login_done.findViewById(R.id.user_log_item_edit);
 		user_login_tv.setOnClickListener(this);
 		edit.setOnClickListener(this);
+		memoryCache = new ImageMemoryCache(mContext);
+		fileCache = new ImageFileCache();
 		return localView;
 	}
 
@@ -125,10 +133,29 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			user_login_sex.setText(user.userSex == -1 ? "男" : "女");
 			user_login_age.setText(""+user.userAge);
 			rl_login_none.setVisibility(View.GONE);
+			Toast.makeText(getActivity(), "user.photourl="+user.photourl, 1).show();
 		} else {
 			rl_login_done.setVisibility(View.GONE);
 			rl_login_none.setVisibility(View.VISIBLE);
 		}
+	}
+	
+	private Bitmap getBitmap(String url) {
+		Bitmap result = memoryCache.getBitmapFromCache(url);
+
+		if (result == null) {
+			result = fileCache.getImage(url);
+			if (result == null) {
+				result = ImageGetFromHttp.downloadBitmap(url);
+				if (result != null) {
+					fileCache.saveBitmap(result, url);
+					memoryCache.addBitmapToCache(url, result);
+				} else {
+					memoryCache.addBitmapToCache(url, result);
+				}
+			}
+		}
+		return result;
 	}
 
 	@Override

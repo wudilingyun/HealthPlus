@@ -33,7 +33,7 @@ public class EmailEditActivity extends BaseFragmentActivity implements
 				Bundle bundle = data.getExtras();
 				bundle.putString("email", emailEt.getText().toString());
 				data.putExtras(bundle);
-				EmailEditActivity.this.setResult(5, data);
+				EmailEditActivity.this.setResult(RESULT_OK, data);
 				finish();
 			}
 		}

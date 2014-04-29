@@ -24,4 +24,5 @@ public class HP_DBCommons {
     public static final String PHONE = "PHONE";
     public static final String REMARK = "REMARK";
     public static final String UPDATETIME = "UPDATE_TIME";
+    public static final String PHOTO = "PHOTO";
 }

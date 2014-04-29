@@ -1,10 +1,17 @@
 package com.vee.healthplus.ui.user;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +22,10 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.heahth_news_http.ImageGetFromHttp;
+import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.heahth_news_utils.ImageFileCache;
+import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
@@ -32,61 +43,80 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 	private ArrayList<ListElement> infoList;
 	private PersonalInfoAdapter mAdapter;
 	private HP_User user;
+	private Bitmap head = null;
+	private ImageFileCache fileCache;
+	private ImageMemoryCache memoryCache;
 
 	private CustomProgressDialog progressDialog = null;
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		switch (resultCode) {
-		case 0:
-			break;
-		case 1:
-			Bundle b1 = data.getExtras();
-			String uname = b1.getString("uname");
-			if (uname != null && !uname.equals("")) {
-				infoList.get(1).setValue(uname);
-			}
-			break;
-		case 2:
-			break;
-		case 3:
-			Bundle b3 = data.getExtras();
-			String sex = b3.getString("sex");
-			if (sex != null && !sex.equals("")) {
-				infoList.get(3).setValue(sex);
-			}
-			break;
-		case 4:
-			Bundle b4 = data.getExtras();
-			String age = b4.getString("age");
-			if (age != null && !age.equals("")) {
-				infoList.get(4).setValue(age);
-			}
-			break;
-		case 5:
-			Bundle b5 = data.getExtras();
-			String email = b5.getString("email");
-			if (email != null && !email.equals("")) {
-				infoList.get(5).setValue(email);
-			}
-			break;
-		case 6:
-			Bundle b6 = data.getExtras();
-			String height = b6.getString("height");
-			if (height != null && !height.equals("")) {
-				infoList.get(6).setValue(height + "cm");
-			}
-			break;
-		case 7:
-			Bundle b7 = data.getExtras();
-			String weight = b7.getString("weight");
-			if (weight != null && !weight.equals("")) {
-				infoList.get(7).setValue(weight + "kg");
-			}
-			break;
+		if (resultCode == RESULT_OK) {
+			switch (requestCode) {
+			case 0:
+				String uri = data.getStringExtra("hd");
+				Log.i("lingyun", "uri=" + uri);
+				try {
+					head = MediaStore.Images.Media.getBitmap(
+							this.getContentResolver(), Uri.parse(uri));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				infoList.get(0).setPhoto(head);
+				break;
+			case 1:
+				Bundle b1 = data.getExtras();
+				String uname = b1.getString("uname");
+				if (uname != null && !uname.equals("")) {
+					infoList.get(1).setValue(uname);
+				}
+				break;
+			case 2:
+				break;
+			case 3:
+				Bundle b3 = data.getExtras();
+				String sex = b3.getString("sex");
+				if (sex != null && !sex.equals("")) {
+					infoList.get(3).setValue(sex);
+				}
+				break;
+			case 4:
+				Bundle b4 = data.getExtras();
+				String age = b4.getString("age");
+				if (age != null && !age.equals("")) {
+					infoList.get(4).setValue(age);
+				}
+				break;
+			case 5:
+				Bundle b5 = data.getExtras();
+				String email = b5.getString("email");
+				if (email != null && !email.equals("")) {
+					infoList.get(5).setValue(email);
+				}
+				break;
+			case 6:
+				Bundle b6 = data.getExtras();
+				String height = b6.getString("height");
+				if (height != null && !height.equals("")) {
+					infoList.get(6).setValue(height + "cm");
+				}
+				break;
+			case 7:
+				Bundle b7 = data.getExtras();
+				String weight = b7.getString("weight");
+				if (weight != null && !weight.equals("")) {
+					infoList.get(7).setValue(weight + "kg");
+				}
+				break;
 
+			}
 		}
+
 		mAdapter.notifyDataSetChanged();
 		super.onActivityResult(requestCode, resultCode, data);
 	}
@@ -113,6 +143,7 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		setLeftBtnType(HeaderView.HEADER_BACK);
 		user = HP_DBModel.getInstance(this).queryUserInfoByUserId(
 				HP_User.getOnLineUserId(this), true);
+
 		initView(view);
 		initData();
 	}
@@ -129,7 +160,27 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 	}
 
+	private Bitmap getBitmap(String url) {
+		Bitmap result = memoryCache.getBitmapFromCache(url);
+
+		if (result == null) {
+			result = fileCache.getImage(url);
+			if (result == null) {
+				result = ImageGetFromHttp.downloadBitmap(url);
+				if (result != null) {
+					fileCache.saveBitmap(result, url);
+					memoryCache.addBitmapToCache(url, result);
+				} else {
+					memoryCache.addBitmapToCache(url, result);
+				}
+			}
+		}
+		return result;
+	}
+
 	private void initData() {
+		memoryCache = new ImageMemoryCache(this);
+		fileCache = new ImageFileCache();
 		infoList = new ArrayList<ListElement>();
 		mAdapter = new PersonalInfoAdapter(this);
 		ImageListViewItem imageItem = new ImageListViewItem();
@@ -137,7 +188,11 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		for (int i = 0; i < 7; i++) {
 			infoList.add(new TextListViewItem());
 		}
-
+		new Thread() {
+			public void run() {
+				infoList.get(0).setPhoto(getBitmap(user.photourl));
+			};
+		}.start();
 		infoList.get(0).setText("头像");
 		infoList.get(1).setText("用户名").setValue(user.userNick);
 		infoList.get(2).setText("密码").setValue("未绑定");
@@ -157,7 +212,10 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 				// TODO Auto-generated method stub
 				switch (position) {
 				case 0:
+					Bundle extras0 = new Bundle();
+					extras0.putInt("id", user.userId);
 					Intent intent0 = new Intent();
+					intent0.putExtras(extras0);
 					intent0.setClass(HealthPlusPersonalInfoEditActivity.this,
 							PhotoEditActivity.class);
 					startActivityForResult(intent0, 0);
@@ -242,9 +300,9 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 			str = infoList.get(4).getValue();
 			user.userAge = Integer.valueOf(str.substring(0, str.length() - 1));
 			str = infoList.get(3).getValue();
-			Log.i("lingyun","str="+str);
+			Log.i("lingyun", "str=" + str);
 			user.userSex = str.equals("男") ? -1 : 0;
-			Log.i("lingyun","user.userSex="+user.userSex);
+			Log.i("lingyun", "user.userSex=" + user.userSex);
 
 			if (user.userHeight < 1 || user.userHeight > 245) {
 				displayResult(getResources().getString(
@@ -258,6 +316,10 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 				displayResult(getResources().getString(
 						R.string.hp_userinfoediterror_age));
 				return;
+			}
+			if (head != null) {
+				fileCache.saveBitmap(head, user.photourl);
+				memoryCache.addBitmapToCache(user.photourl, head);
 			}
 			if (HP_User.getOnLineUserId(this) != 0) {
 				try {
@@ -283,6 +345,15 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		progressDialog = CustomProgressDialog.createDialog(this);
 		progressDialog.setMessage(this.getString(R.string.registing));
 		progressDialog.setCanceledOnTouchOutside(false);
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (head != null) {
+			head.recycle();
+		}
 	}
 
 	private void displayResult(String msg) {

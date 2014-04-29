@@ -33,7 +33,7 @@ public class HeightEditActivity extends BaseFragmentActivity implements
 				Bundle bundle = data.getExtras();
 				bundle.putString("height", heightEt.getText().toString());
 				data.putExtras(bundle);
-				HeightEditActivity.this.setResult(6, data);
+				HeightEditActivity.this.setResult(RESULT_OK, data);
 				finish();
 			}
 		}

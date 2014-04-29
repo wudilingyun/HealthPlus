@@ -75,7 +75,7 @@ public class AgeEditActivity extends Activity implements View.OnClickListener {
 			age = currentYear - 1900-yearWv.getCurrentItem();
 			bundle.putString("age", age + "岁");
 			data.putExtras(bundle);
-			AgeEditActivity.this.setResult(4, data);
+			AgeEditActivity.this.setResult(RESULT_OK, data);
 			finish();
 			break;
 		}

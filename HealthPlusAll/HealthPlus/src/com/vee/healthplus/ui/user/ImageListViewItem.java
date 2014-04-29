@@ -18,12 +18,12 @@ public class ImageListViewItem implements ListElement {
 	private ImageView ivPhoto;
 
 	public ListElement setText(String text) {
-		this.name=text;
+		this.name = text;
 		return this;
 	}
 
 	public ListElement setPhoto(Bitmap photo) {
-		this.photo=photo;
+		this.photo = photo;
 		return this;
 	}
 
@@ -45,7 +45,9 @@ public class ImageListViewItem implements ListElement {
 		textView.setText(name);
 		ivPhoto = (ImageView) layout
 				.findViewById(R.id.health_plus_personal_info_edit_image_item_photo_iv);
-		//ivPhoto.setImageBitmap(photo);
+		if (photo != null) {
+			ivPhoto.setImageBitmap(photo);
+		}
 		return layout;
 	}
 
@@ -73,7 +75,5 @@ public class ImageListViewItem implements ListElement {
 		// TODO Auto-generated method stub
 		return photo;
 	}
-	
-	
 
 }

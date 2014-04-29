@@ -32,7 +32,7 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 				Bundle bundle = data.getExtras();
 				bundle.putString("uname", unameEt.getText().toString());
 				data.putExtras(bundle);
-				UsernameEditActivity.this.setResult(1, data);
+				UsernameEditActivity.this.setResult(RESULT_OK, data);
 				finish();
 			}
 		}

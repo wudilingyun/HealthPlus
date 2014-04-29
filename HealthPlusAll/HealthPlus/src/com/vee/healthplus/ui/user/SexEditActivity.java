@@ -57,7 +57,7 @@ public class SexEditActivity extends Activity implements View.OnClickListener {
 			data.putExtras(bundle);
 			break;
 		}
-		SexEditActivity.this.setResult(3, data);
+		SexEditActivity.this.setResult(RESULT_OK, data);
 		finish();
 	}
 
