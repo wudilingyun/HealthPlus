@@ -83,7 +83,7 @@ public class ImageFileCache {
 	@SuppressWarnings("unused")
 	public Bitmap getImage(final String url) {
 		final String path = getCachDirectory() + "/"
-				+ convertUrltoFileName(url);
+				+ url;
 		File file = new File(path);
 		if (file.exists()) {
 			Bitmap bitmap = BitmapFactory.decodeFile(path);
@@ -107,7 +107,7 @@ public class ImageFileCache {
 		if (FRRE_SD_SPACE_NEED_TO_CACHE > freeSpaceOnSd()) {
 			return;
 		}
-		String filename = convertUrltoFileName(url);// 找到文件名
+		String filename = url;// 找到文件名
 		String dir = getCachDirectory();
 		File dirFile = new File(dir);
 		// 判断缓存目录dirFile是否存在

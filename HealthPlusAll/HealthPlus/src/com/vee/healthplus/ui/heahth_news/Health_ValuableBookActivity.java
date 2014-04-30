@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.http.conn.ConnectTimeoutException;
@@ -14,6 +17,10 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
 import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.vee.healthplus.R;
 import com.vee.healthplus.TaskCallBack.TaskCallback;
 import com.vee.healthplus.TaskCallBack.TaskResult;
@@ -26,6 +33,8 @@ import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.Response;
+import com.yunfox.s4aservicetest.response.Answer;
+import com.yunfox.s4aservicetest.response.YysNewsResponse;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 import android.R.integer;
@@ -51,15 +60,15 @@ import android.widget.Toast;
 public class Health_ValuableBookActivity extends FragmentActivity implements
 		TaskCallback, OnClickListener {
 
-	private ListView listView_news;
-	private List<Doc> all_news;
+	private PullToRefreshListView listView_news;
+	private List<YysNewsResponse> all_news;
 	private Health_ValuableBook_NewsAdapter adapter;
 	private ViewPager viewPager;
 	private MyNewsPagerAdapter Myadapter;
 	private ImageLoader imageLoader;
 	private ImageLoaderFromHttp iFromHttp;
 	// 切换当前显示的图片
-	private String hasNet = "1", JsonCach = "2";
+	private String hasNet = "1", JsonCach = "2", pull = "3", down = "4";
 	private JsonCache jsonCache;
 	private String url;
 	private boolean flag = true;
@@ -68,7 +77,8 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 	private Animation news_loadAaAnimation;
 	private TextView header_text;
 	private ImageView header_lbtn_img, header_rbtn_img;
-
+	private List<YysNewsResponse> yysNewsResponseList, yysNewsResponseList_new,
+			yysNewsResponseList_old;
 	private String name;
 	private int id;
 
@@ -88,12 +98,11 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 
 		if (CheckNetWorkStatus.Status(this)) {
 			flag = true;
-			new GetNewsListTask().execute(url, hasNet);
-			System.out.println("当前地址" + url);
+			new GetNewsListTask().execute(hasNet);
 
 		} else {
 			Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
-			new GetNewsListTask().execute(url, JsonCach);
+			new GetNewsListTask().execute(JsonCach);
 		}
 	}
 
@@ -111,7 +120,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 
 	void getData() {
 		name = getIntent().getStringExtra("name");
-		id = getIntent().getIntExtra("id", 0);
+		id = getIntent().getIntExtra("id", 1);
 	}
 
 	void init(View view) {
@@ -121,11 +130,44 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 		loFrameLayout = (LinearLayout) view.findViewById(R.id.loading_frame);
 		loadImageView = (ImageView) view.findViewById(R.id.img_rotate);
 		loadImageView.setAnimation(news_loadAaAnimation);
-		all_news = new ArrayList<Doc>();
+		all_news = new ArrayList<YysNewsResponse>();
 		imageLoader = ImageLoader.getInstance(this);
 		adapter = new Health_ValuableBook_NewsAdapter(this, imageLoader);
-		listView_news = (ListView) view.findViewById(R.id.listView_news);
+		listView_news = (PullToRefreshListView) view
+				.findViewById(R.id.listView_news);
 		listView_news.setAdapter(adapter);
+
+		//listView_news.getRefreshableView().setDivider(null);
+		listView_news.getRefreshableView().setSelector(
+				android.R.color.transparent);
+		listView_news.setMode(Mode.BOTH);
+		listView_news.getLoadingLayoutProxy(false, true).setPullLabel(
+				getString(R.string.pull_to_load));
+		listView_news.getLoadingLayoutProxy(false, true).setRefreshingLabel(
+				getString(R.string.loading));
+		listView_news.getLoadingLayoutProxy(false, true).setReleaseLabel(
+				getString(R.string.release_to_load));
+
+		listView_news.setOnRefreshListener(new OnRefreshListener<ListView>() {
+			@Override
+			public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+				// Do work to refresh the list here.
+				if (listView_news.isHeaderShown()) {
+					System.out.println("最大" + all_news.get(0).getNewsid());
+					
+					new GetNewsListTask().execute(down, all_news.get(0)
+							.getNewsid() + "");
+					// 下拉刷新接口
+				} else if (listView_news.isFooterShown()) {
+					System.out.println("最小"
+							+ all_news.get(all_news.size() - 1).getNewsid());
+					new GetNewsListTask().execute(pull,
+							all_news.get(all_news.size() - 1).getNewsid() + "");
+					// 上拉刷新接口
+				}
+			}
+		});
+
 		listView_news.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -134,23 +176,27 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 
 				ImageView img = (ImageView) view
 						.findViewById(R.id.imageView_healthnews);
-				img.setDrawingCacheEnabled(true);
-
-				if (img.getTag() != null) {
+				TextView tvView = (TextView) view.findViewById(R.id.newstitle);
+				System.out.println("传过来web"+tvView.getTag().toString());
 					String imgurlString = (String) img.getTag();
 					// 跳转后显示内容
 					Intent intent = new Intent(
 							Health_ValuableBookActivity.this,
 							Health_news_detailsActivity.class);
-					intent.putExtra("name", name);
+					intent.putExtra("title", tvView.getText().toString());
+					intent.putExtra("weburl", tvView.getTag().toString());
 					intent.putExtra("imgurl", imgurlString);
+					intent.putExtra("name", name);
 					Bundle bundle = new Bundle();
 					intent.putExtra("bundle", bundle);
 					startActivity(intent);
-				}
 
 			}
 		});
+	}
+
+	void getMinNewsId() {
+
 	}
 
 	@Override
@@ -163,7 +209,8 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 		super.onStop();
 	}
 
-	private class GetNewsListTask extends AsyncTask<String, Void, String> {
+	private class GetNewsListTask extends
+			AsyncTask<String, Void, List<YysNewsResponse>> {
 		// private MultiValueMap<String, String> formData;
 		private Exception exception;
 		private HttpClient httpClient = new HttpClient();
@@ -178,41 +225,50 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 		}
 
 		@Override
-		protected String doInBackground(String... params) {
+		protected List<YysNewsResponse> doInBackground(String... params) {
 			try {
-				switch (Integer.parseInt(params[1])) {
+				switch (Integer.parseInt(params[0])) {
 				case 1:
 
-					Response response = httpClient.get(params[0]);
-					InputStream isInputStream = response.asStream();
-
-					BufferedReader reader = new BufferedReader(
-							new InputStreamReader(isInputStream));
-
-					String line = null;
-
-					while ((line = reader.readLine()) != null) {
-						stringBuffer.append(line);
+					yysNewsResponseList = SpringAndroidService.getInstance(
+							getApplication()).firstGetNewsList(id, 0, 40);
+					if (yysNewsResponseList.size() > 0
+							&& yysNewsResponseList != null) {
+						jsonCache
+								.saveObject(yysNewsResponseList, "cluddoctor"+id);
+						System.out.println("缓存成功");
 					}
-					jsonCache.saveJson(stringBuffer.toString(), params[0]);
-					return stringBuffer.toString();
+					return yysNewsResponseList;
+
 				case 2:
-					String jsonCacheData = jsonCache.getJson(params[0]);
-					return jsonCacheData;
-				default:
-					return null;
+					yysNewsResponseList = jsonCache.getObject("cluddoctor"+id);
+
+					return yysNewsResponseList;
+
+				case 3:
+					yysNewsResponseList_old = SpringAndroidService.getInstance(
+							getApplication()).getMoreNewsList(id,
+							Integer.parseInt(params[1]), 20);
+					return yysNewsResponseList_old;
+				case 4:
+
+					yysNewsResponseList_new = SpringAndroidService.getInstance(
+							getApplication()).getNewestNewsList(id,
+							Integer.parseInt(params[1]));
+					return yysNewsResponseList_new;
 
 				}
 
 			} catch (Exception e) {
 				this.exception = e;
+				System.out.println("exception==" + exception.getMessage());
 			}
 			return null;
 
 		}
 
 		@Override
-		protected void onPostExecute(String data) {
+		protected void onPostExecute(List<YysNewsResponse> data) {
 			if (exception != null) {
 				String message;
 
@@ -236,17 +292,20 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 				} else {
 					message = "error";
 				}
+				System.out.println("异常====" + exception.getMessage());
 			} else {
-
-				if (data != null && data.length() > 0) {
-					Gson gson = new Gson();
-					Root root = gson.fromJson(data, Root.class);
-					all_news = root.getResponse().getDocs();
-					adapter.listaddAdapter(all_news);
-					adapter.notifyDataSetChanged();
+				if (data != null && data.size() > 0) {
 					loFrameLayout.setVisibility(View.GONE);
 					loadImageView.clearAnimation();
+					all_news = data;
+					adapter.listaddAdapter(all_news);
+					adapter.notifyDataSetChanged();
+					
+					listView_news.onRefreshComplete();
+				} else {
 
+					Toast.makeText(getApplication(), "空的", Toast.LENGTH_SHORT)
+							.show();
 				}
 			}
 		}

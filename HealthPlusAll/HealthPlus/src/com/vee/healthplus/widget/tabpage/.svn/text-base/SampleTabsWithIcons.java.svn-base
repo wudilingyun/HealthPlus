@@ -29,6 +29,7 @@ import com.vee.healthplus.ui.setting.SettingListActivity;
 import com.vee.healthplus.ui.setting.UserPageFragment;
 import com.vee.healthplus.ui.sportmode.SportModeFragment;
 import com.vee.healthplus.util.SystemMethod;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.HeaderView;
 import com.vee.moments.MomentsFragment;
 import com.vee.myhealth.ui.MyhealthFragment;
@@ -113,17 +114,17 @@ public class SampleTabsWithIcons extends Fragment {
 			public void onPageSelected(int position) {
 				((BaseFragmentActivity) getActivity())
 						.setRightBtnVisible(View.GONE);
-				if (position == 4) {
-					if ((getActivity()) instanceof BaseFragmentActivity) {
-						Activity activity = getActivity();
-						((BaseFragmentActivity) activity)
-								.setRightBtnVisible(View.VISIBLE);
-						((BaseFragmentActivity) activity)
-								.getHeaderView()
-								.setRightRes(
-										R.drawable.header_view_right_bt_selector);
-					}
-				} else if (position == 2) {
+				((BaseFragmentActivity) getActivity())
+						.setRightTvVisible(View.GONE);
+				((BaseFragmentActivity) getActivity()).getHeaderView()
+						.setLeftOption(HeaderView.HEADER_LOGO);
+				((BaseFragmentActivity) getActivity()).getHeaderView()
+						.setLeftRes(R.drawable.healthplus_headview_logo_btn);
+				((BaseFragmentActivity) getActivity()).getHeaderView()
+						.setHeaderTitle(
+								getActivity().getString(R.string.hp_app_name));
+
+				if (position == 2) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
 						((BaseFragmentActivity) activity)
@@ -132,13 +133,39 @@ public class SampleTabsWithIcons extends Fragment {
 								.getHeaderView()
 								.setRightRes(
 										R.drawable.header_view_right_bt_history_selector);
-
 					}
 				} else if (position == 1) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
+						((BaseFragmentActivity) activity)
+								.setRightBtnVisible(View.VISIBLE);
 						((BaseFragmentActivity) activity).getHeaderView()
-								.setVisibility(View.VISIBLE);
+								.setRightRes(R.drawable.moments_camera);
+						((BaseFragmentActivity) activity).getHeaderView()
+								.setLeftRes(R.drawable.moments_friends);
+						((BaseFragmentActivity) activity).getHeaderView()
+								.setHeaderTitle(
+										getActivity().getString(
+												R.string.momentsfriendlist));
+						((BaseFragmentActivity) activity).getHeaderView()
+								.setLeftOption(
+										HeaderView.HEADER_MOMENTS_FRIENDS);
+						((BaseFragmentActivity) activity).getHeaderView()
+								.setRightOption(
+										HeaderView.HEADER_MOMENTS_CAMERA);
+					}
+				} else if (position == 3) {
+					if ((getActivity()) instanceof BaseFragmentActivity) {
+						Activity activity = getActivity();
+						if (HP_User.getOnLineUserId(activity) != 0) {
+							((BaseFragmentActivity) activity)
+									.setRightTvVisible(View.VISIBLE);
+						}
+						((BaseFragmentActivity) activity).setRightTvText("编辑");
+						((BaseFragmentActivity) activity).getHeaderView()
+								.setHeaderTitle("我");
+						((BaseFragmentActivity) activity).getHeaderView()
+								.setRightOption(HeaderView.HEADER_EDIT);
 					}
 				} else {
 					if ((getActivity()) instanceof BaseFragmentActivity) {

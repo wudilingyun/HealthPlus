@@ -12,9 +12,9 @@
         <RelativeLayout
             android:id="@+id/userpage_loginbar_none"
             android:layout_width="match_parent"
-            android:layout_height="124dip" >
+            android:layout_height="140dip" >
 
-            <ImageView
+            <com.vee.healthplus.widget.RoundImageView
                 android:id="@+id/user_log_item_icon"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -43,10 +43,10 @@
         <RelativeLayout
             android:id="@+id/userpage_loginbar_done"
             android:layout_width="match_parent"
-            android:layout_height="124dip"
+            android:layout_height="140dip"
             android:visibility="gone" >
 
-            <ImageView
+            <com.vee.healthplus.widget.RoundImageView
                 android:id="@+id/user_list_item_icon"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -125,7 +125,8 @@
                 android:padding="15dip"
                 android:text="编辑"
                 android:textColor="#f5f5f5"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
         </RelativeLayout>
     </RelativeLayout>
 

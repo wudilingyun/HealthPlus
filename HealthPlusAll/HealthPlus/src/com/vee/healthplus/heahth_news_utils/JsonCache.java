@@ -8,9 +8,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
+
+import com.yunfox.s4aservicetest.response.YysNewsResponse;
 
 import android.R.integer;
 import android.R.string;
@@ -21,8 +26,6 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.StaticLayout;
 
-
-
 public class JsonCache {
 	private static final String TAG = "FileCache";
 	private static final String CACHDIR = "GsonCach";// 指定缓存目录名字
@@ -31,6 +34,7 @@ public class JsonCache {
 	private static final int MB = 1024 * 1024;
 	private static final int MAX_SIZE = 10;
 	private static final int FRRE_SD_SPACE_NEED_TO_CACHE = 10; // sd的最小可用于分配给缓存空间。
+	private List<YysNewsResponse> s;
 
 	// 1 初始化缓存，首先移除原来的缓存。防止空间不够。
 	private JsonCache() {
@@ -169,6 +173,77 @@ public class JsonCache {
 			e.printStackTrace();
 		}
 
+	}
+
+	// 8.1 写入序列化过的对象
+
+	public void saveObject(List<YysNewsResponse> o, String name) {
+
+		if (o == null) {
+			return;
+		}
+		// 如果SD卡的剩余空间小于 文件缓存所需要最小空间
+		if (FRRE_SD_SPACE_NEED_TO_CACHE > freeSpaceOnSd()) {
+			System.out.println("剩余空间" + freeSpaceOnSd());
+			System.out.println("准备向文件中写入数据");
+			return;
+		}
+		String filename = convertUrltoFileName(name);// 找到文件名
+		String dir = getCachDirectory();
+		File dirFile = new File(dir);
+
+		// 判断缓存目录dirFile是否存在
+		if (!dirFile.exists()) {
+			dirFile.mkdir();// 不存在就把这个目录创建出来。
+		}
+		// 创建SdCard缓存文件的路径
+		File file = new File(dir + "/" + filename);
+
+		FileOutputStream fos;
+		try {
+			fos = new FileOutputStream(file);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			
+			oos.writeObject(o);// 写入
+			System.out.println("写入成功");
+			fos.close(); // 关闭输出流
+			oos.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// 8.1获取 序列化对象
+	@SuppressWarnings({ "unused", "unchecked" })
+	public List<YysNewsResponse> getObject(final String url) {
+		final String path = getCachDirectory() + "/"
+				+ convertUrltoFileName(url);
+		File file = new File(path);
+		if (file.exists()) {
+			String result = "";
+			try {
+				InputStream in = new FileInputStream(file);
+
+				ObjectInputStream ois = new ObjectInputStream(in);
+				s = (List<YysNewsResponse>) ois.readObject();
+				in.close();
+				ois.close();
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (path == null) {
+				file.delete();// 不存在删除这个目录
+			} else {
+				updateFileTime(path);
+				return s;
+			}
+		}
+
+		return s;
 	}
 
 	// 9.已文件最后修改时间进行升序排序

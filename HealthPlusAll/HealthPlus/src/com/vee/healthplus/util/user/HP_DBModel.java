@@ -1,5 +1,10 @@
 package com.vee.healthplus.util.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -188,4 +193,109 @@ public class HP_DBModel {
 		if (used)
 			database.close();
 	}
+
+	/*
+	 * 添加收藏
+	 */
+	public void insertUserCollect(int userId, String title, String imgurl,
+			String weburl) {
+		try {
+			String insertUserCollect = "INSERT INTO "
+					+ HP_DBCommons.USERCOLLECT_TABLENAME + " ("
+					+ HP_DBCommons.USERID + "," + HP_DBCommons.TITLE + ","
+					+ HP_DBCommons.IMGURL + "," + HP_DBCommons.WEBURL
+					+ ") VALUES (" + userId + ",'" + title + "','" + imgurl
+					+ "','" + weburl + "')";
+			System.out.println("添加收藏=" + insertUserCollect);
+			database.execSQL(insertUserCollect);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+	}
+
+	/*
+	 * 取消收藏
+	 */
+
+	public void deletUserCollect(int userId, String title, String imgurl,
+			String weburl) {
+		try {
+			String delUserinfor = "DELETE FROM "
+					+ HP_DBCommons.USERCOLLECT_TABLENAME + " WHERE "
+					+ HP_DBCommons.USERID + " =" + userId + " and "
+					+ HP_DBCommons.TITLE + "='" + title + "' and "
+					+ HP_DBCommons.IMGURL + "='" + imgurl + "'";
+			System.out.println("删除语句" + delUserinfor);
+			database.execSQL(delUserinfor);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+	}
+
+	/*
+	 * 查看收藏状态
+	 */
+
+	public Boolean queryUserBooleanCollectInfor(int userId, String title,
+			String imgurl) {
+		String sql = "SELECT * FROM " + HP_DBCommons.USERCOLLECT_TABLENAME
+				+ " WHERE " + HP_DBCommons.USERID + " =" + userId + " and "
+				+ HP_DBCommons.TITLE + "='" + title + "'" + " and "
+				+ HP_DBCommons.IMGURL + "='" + imgurl + "'";
+		System.out.println("查询状态语句=" + sql);
+		Cursor cursor = database.rawQuery(sql, null);
+
+		if (cursor != null && cursor.getCount() > 0) {
+
+			cursor.close();
+			database.close();
+			System.out.println("已经有了");
+			return true;
+		} else {
+			cursor.close();
+			database.close();
+			return false;
+		}
+
+	}
+
+	/*
+	 * 获得收藏列表
+	 */
+
+	public List<NewsCollectinfor> queryUserCollectInfor(int userId) {
+		List<NewsCollectinfor> newslist = new ArrayList<NewsCollectinfor>();
+		String sql = "SELECT * FROM " + HP_DBCommons.USERCOLLECT_TABLENAME
+				+ " WHERE " + HP_DBCommons.USERID + " =" + userId;
+		System.out.println("获得收藏列表=" + sql);
+		Cursor cursor = database.rawQuery(sql, null);
+		if (cursor != null && cursor.getCount() > 0) {
+			while (cursor.moveToNext()) {
+
+				String title = cursor.getString(1);
+				String imgurl = cursor.getString(2);
+				String weburl = cursor.getString(3);
+				NewsCollectinfor newsCollectinfor = new NewsCollectinfor();
+				newsCollectinfor.setTitle(title);
+				newsCollectinfor.setImgurl(imgurl);
+				newsCollectinfor.setWeburl(weburl);
+				newslist.add(newsCollectinfor);
+			}
+			cursor.close();
+			database.close();
+			return newslist;
+		} else {
+			cursor.close();
+			database.close();
+			return null;
+		}
+
+	}
+
 }

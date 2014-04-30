@@ -1,14 +1,14 @@
 10
 
 dir
-686
+700
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus/ui/user
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-25T05:13:58.990258Z
-685
+2014-04-30T06:38:24.347068Z
+694
 lingyun
 
 
@@ -25,108 +25,6 @@ lingyun
 
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
-
-UserRegister_Activity.java
-file
-
-
-
-
-2014-03-28T08:27:43.515625Z
-33330fe0ab3501cfc7dd96078f4d6675
-2014-03-06T06:27:34.463051Z
-651
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6125
-
-ResizeLayout.java
-file
-
-
-
-
-2014-04-18T06:15:13.328125Z
-12ed41ac84527bef4b1f3c4318318e5c
-2014-04-18T08:42:42.972857Z
-675
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1240
-
-PersonalInfoAdapter.java
-file
-
-
-
-
-2014-04-22T02:16:04.906250Z
-2d9a84882e46a6162098ee91867023b4
-2014-04-24T08:23:10.040540Z
-680
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1524
 
 UserInfoEdit.java
 file
@@ -162,6 +60,74 @@ zhaoyouliang
 
 6385
 
+PersonalInfoAdapter.java
+file
+
+
+
+
+2014-04-22T02:16:04.906250Z
+2d9a84882e46a6162098ee91867023b4
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1524
+
+UsernameEditActivity.java
+file
+
+
+
+
+2014-04-29T02:53:54.796875Z
+e9e6c8c41513fdccc8ecefb16d91dcac
+2014-04-30T06:16:32.484400Z
+693
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3246
+
 HealthPlusFindPwdActivity.java
 file
 
@@ -196,16 +162,16 @@ lingyun
 
 5915
 
-UsernameEditActivity.java
+WeightEditActivity.java
 file
 
 
 
 
-2014-04-24T06:44:23.171875Z
-60b4864a8d4640abd1bb4d2a0cb2e75d
-2014-04-24T08:23:10.040540Z
-680
+2014-04-30T03:58:32.921875Z
+07c4c38e9f6cc6b53d3087a27969083d
+2014-04-30T06:16:32.484400Z
+693
 lingyun
 
 
@@ -228,7 +194,7 @@ lingyun
 
 
 
-3238
+3857
 
 EmailEditActivity.java
 file
@@ -236,10 +202,10 @@ file
 
 
 
-2014-04-24T06:44:07.203125Z
-a091dc7efde10806a47a71b630f9a5c5
-2014-04-24T08:23:10.040540Z
-680
+2014-04-29T02:54:47.015625Z
+84b03b726849fa53999743f1c3215453
+2014-04-30T06:16:32.484400Z
+693
 lingyun
 
 
@@ -262,52 +228,18 @@ lingyun
 
 
 
-3228
-
-WeightEditActivity.java
-file
-
-
-
-
-2014-04-24T07:02:21.515625Z
-8a1bbc628e7d363927481e5f84881792
-2014-04-24T08:23:10.040540Z
-680
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3289
+3236
 
 HealthPlusPersonalInfoEditActivity.java
 file
-687
+702
 
 
 
-2014-04-25T07:19:19.781250Z
-dae2e874c7b59cb1482cef43dac3dfc4
-2014-04-25T07:38:34.674649Z
-687
+2014-04-30T09:59:07.093750Z
+7a7843426a746930f83e5cd187e4a422
+2014-04-30T09:55:03.265987Z
+702
 lingyun
 
 
@@ -330,7 +262,7 @@ lingyun
 
 
 
-9850
+12461
 
 UserWeightPickDialog.java
 file
@@ -366,111 +298,6 @@ wangjiafeng
 
 2465
 
-HealthPlusLoginActivity.java
-file
-687
-
-
-
-2014-04-25T06:59:56.468750Z
-bc1645ac88105ba84a0d79e8a9a8fe9a
-2014-04-25T07:38:34.674649Z
-687
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-10814
-
-AgeEditActivity.java
-file
-
-
-
-
-2014-04-24T05:15:19.921875Z
-6f1b3049429dcd57ffc0e114aa299f6e
-2014-04-24T08:23:10.040540Z
-680
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3349
-
-HP_PersonalEdit.java
-file
-
-
-
-
-2014-03-28T08:27:43.531250Z
-08a3688f0294bdb00b3cd7418cb5f749
-2013-12-26T10:05:51.000978Z
-581
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6367
-
-chart
-dir
-
 UserAnalysisResult.java
 file
 
@@ -505,39 +332,8 @@ wangjiafeng
 
 2891
 
-UserPwdMotify.java
-file
-
-
-
-
-2014-03-28T08:27:43.562500Z
-f921c9443e155b89eba49b7aa050d935
-2013-12-20T01:32:59.617565Z
-569
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2842
+chart
+dir
 
 UserAgePickDialog.java
 file
@@ -572,40 +368,6 @@ wangjiafeng
 
 
 2445
-
-SexEditActivity.java
-file
-
-
-
-
-2014-04-24T06:32:49.375000Z
-acfb66d4a58eeab136b6eca8c05e811b
-2014-04-24T08:23:10.040540Z
-680
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1753
 
 UserLogin_Activity.java
 file
@@ -675,40 +437,6 @@ lingyun
 
 2442
 
-ListElement.java
-file
-
-
-
-
-2014-04-22T08:55:26.406250Z
-2aa121812ee58000ebffb90fa7a15253
-2014-04-24T08:23:10.040540Z
-680
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-550
-
 UserBaseActivity.java
 file
 
@@ -743,50 +471,16 @@ wangjiafeng
 
 2963
 
-StatementDetailsActivity.java
-file
-
-
-
-
-2014-04-22T02:47:14.140625Z
-a1e613a5e5aefc7e2ac7931e4f8531c1
-2014-04-24T08:23:10.040540Z
-680
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7563
-
 ImageListViewItem.java
 file
 
 
 
 
-2014-04-22T08:56:02.296875Z
-6af76933145d41190f6766d94ee820d7
-2014-04-24T08:23:10.040540Z
-680
+2014-04-29T10:03:17.781250Z
+c3cf1a2f8cd5673490e2def5694acc87
+2014-04-30T06:16:32.484400Z
+693
 lingyun
 
 
@@ -809,7 +503,7 @@ lingyun
 
 
 
-1779
+1805
 
 TextListViewItem.java
 file
@@ -847,14 +541,14 @@ lingyun
 
 HealthPlusRegisterActivity.java
 file
-687
 
 
 
-2014-04-25T06:52:17.203125Z
-7db168c5c9f3b659c01aa5c6e1ac2772
-2014-04-25T07:38:34.674649Z
-687
+
+2014-04-28T10:38:57.437500Z
+70f9520838977215b7b64ac5c80849a8
+2014-04-30T06:16:32.484400Z
+693
 lingyun
 
 
@@ -877,16 +571,288 @@ lingyun
 
 
 
-9819
+14194
 
-HeightEditActivity.java
+UserRegister_Activity.java
 file
 
 
 
 
-2014-04-24T07:02:21.453125Z
-28982615b2c3dc08a4a7ca347f3bb2c3
+2014-03-28T08:27:43.515625Z
+33330fe0ab3501cfc7dd96078f4d6675
+2014-03-06T06:27:34.463051Z
+651
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6125
+
+ResizeLayout.java
+file
+
+
+
+
+2014-04-18T06:15:13.328125Z
+12ed41ac84527bef4b1f3c4318318e5c
+2014-04-18T08:42:42.972857Z
+675
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1240
+
+PhotoEditActivity.java
+file
+
+
+
+
+2014-04-30T06:12:49.937500Z
+5b17ff64749e9033711603964ee20587
+2014-04-30T06:16:32.484400Z
+693
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5075
+
+HealthPlusLoginActivity.java
+file
+702
+
+
+
+2014-04-30T09:37:37.250000Z
+4bb57d42075addb4f31414ba156fe107
+2014-04-30T09:55:03.265987Z
+702
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10884
+
+AgeEditActivity.java
+file
+
+
+
+
+2014-04-29T02:54:26.890625Z
+a06499db6e2f9a2ba01abb646f1348c8
+2014-04-30T06:16:32.484400Z
+693
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3357
+
+HP_PersonalEdit.java
+file
+
+
+
+
+2014-03-28T08:27:43.531250Z
+08a3688f0294bdb00b3cd7418cb5f749
+2013-12-26T10:05:51.000978Z
+581
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6367
+
+UserPwdMotify.java
+file
+
+
+
+
+2014-03-28T08:27:43.562500Z
+f921c9443e155b89eba49b7aa050d935
+2013-12-20T01:32:59.617565Z
+569
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2842
+
+SexEditActivity.java
+file
+
+
+
+
+2014-04-29T02:54:10.781250Z
+a9e9b12f6e1acc29df07f69ec5710a35
+2014-04-30T06:16:32.484400Z
+693
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1761
+
+ListElement.java
+file
+
+
+
+
+2014-04-22T08:55:26.406250Z
+2aa121812ee58000ebffb90fa7a15253
 2014-04-24T08:23:10.040540Z
 680
 lingyun
@@ -911,7 +877,75 @@ lingyun
 
 
 
-3289
+550
+
+StatementDetailsActivity.java
+file
+
+
+
+
+2014-04-22T02:47:14.140625Z
+a1e613a5e5aefc7e2ac7931e4f8531c1
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7563
+
+HeightEditActivity.java
+file
+
+
+
+
+2014-04-30T03:59:00.609375Z
+664b955bd53cdfe81ea4e5cd337bf351
+2014-04-30T06:16:32.484400Z
+693
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3857
 
 StatementDetailsTextActivity.java
 file

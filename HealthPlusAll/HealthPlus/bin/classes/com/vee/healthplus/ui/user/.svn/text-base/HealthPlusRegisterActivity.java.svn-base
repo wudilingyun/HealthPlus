@@ -10,6 +10,7 @@ import org.springframework.web.client.ResourceAccessException;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
@@ -22,7 +23,8 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
-import com.vee.healthplus.ui.main.MainPage;
+import com.vee.healthplus.util.user.GetVerifyCodeTask;
+import com.vee.healthplus.util.user.GetVerifyCodeTask.GetVerifyCodeCallBack;
 import com.vee.healthplus.util.user.RegisterTask;
 import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
@@ -31,14 +33,14 @@ import com.vee.healthplus.widget.HeaderView;
 @SuppressLint("ResourceAsColor")
 public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		View.OnClickListener, RegisterTask.RegisterCallBack,
-		SignInTask.SignInCallBack, OnFocusChangeListener {
+		SignInTask.SignInCallBack, OnFocusChangeListener, GetVerifyCodeCallBack {
 
-	private EditText userName_et, userPwd_et, userPwdConfirm_et,yz_et;
+	private EditText userName_et, userPwd_et, userPwdConfirm_et, yz_et;
 	private CheckBox agreeBox;
-	private Button readBtn, register_btn;
+	private Button readBtn, register_btn, yzBtn;
 
 	private CustomProgressDialog progressDialog = null;
-	ImageView uname_img, pwd_img1, pwd_img2,yz_img;
+	ImageView uname_img, pwd_img1, pwd_img2, yz_img;
 
 	public HealthPlusRegisterActivity() {
 		// TODO Auto-generated constructor stub
@@ -73,10 +75,13 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				.findViewById(R.id.health_plus_register_pwd_confirm_input_et);
 		yz_et = (EditText) view
 				.findViewById(R.id.health_plus_register_yz_input_et);
+		yzBtn = (Button) view
+				.findViewById(R.id.health_plus_register_get_yz_btn);
 		register_btn = (Button) view
 				.findViewById(R.id.health_plus_register_btn);
 		register_btn.setEnabled(false);
 		readBtn = (Button) view.findViewById(R.id.health_plus_register_read);
+		yzBtn.setOnClickListener(this);
 		register_btn.setOnClickListener(this);
 		readBtn.setOnClickListener(this);
 		agreeBox = (CheckBox) view
@@ -109,9 +114,36 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 	}
 
+	public static boolean checkMobileNumber(String mobileNumber) {
+		boolean flag = false;
+		try {
+			Pattern regex = Pattern.compile("^1[3|5|8][0-9]{9}$");
+			Matcher matcher = regex.matcher(mobileNumber);
+			flag = matcher.matches();
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
+	}
+
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
+		case R.id.health_plus_register_get_yz_btn:
+			if (userName_et.getText().toString().length() != 0) {
+				if (checkMobileNumber(userName_et.getText().toString())) {
+					yzBtn.setEnabled(false);
+					yzBtn.setText("正在发送验证码...");
+					new GetVerifyCodeTask(this, userName_et.getText()
+							.toString(), this).execute();
+				} else {
+					Toast.makeText(this, "手机号不正确", Toast.LENGTH_SHORT).show();
+				}
+
+			} else {
+				Toast.makeText(this, "手机号码不能为空", Toast.LENGTH_SHORT).show();
+			}
+			break;
 		case R.id.health_plus_register_btn:
 			int s = userPwd_et.getText().toString().length();
 			Pattern p = Pattern.compile("[0-9]*");
@@ -120,15 +152,19 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			Matcher m1 = p1.matcher(userPwd_et.getText().toString());
 
 			int s1 = userName_et.getText().toString().length();
-
-			if (s1 >= 6 && s1 <= 15) {
+			if (yz_et.getText().toString().length() == 0) {
+				Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			if (checkMobileNumber(userName_et.getText().toString())) {
 				if (userPwd_et.getText().toString()
 						.equals(userPwdConfirm_et.getText().toString())) {
 					if (!m.matches() && !m1.matches()) {
 						if (s >= 6 && s <= 15) {
 							new RegisterTask(this, userName_et.getText()
 									.toString(), userPwd_et.getText()
-									.toString(), "", this, this).execute();
+									.toString(), yz_et.getText().toString(),
+									this, this).execute();
 							progressDialog.show();
 						} else {
 							Toast.makeText(
@@ -149,11 +185,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 					Toast.makeText(this, "两次密码不一致", Toast.LENGTH_SHORT).show();
 				}
 			} else {
-				Toast.makeText(
-						this,
-						getResources().getString(
-								R.string.user_name_length_toast),
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "手机号码不正确", Toast.LENGTH_SHORT).show();
 			}
 
 			break;
@@ -173,10 +205,8 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		progressDialog.setCanceledOnTouchOutside(false);
 	}
 
-	private void displayRegisterError(String message) {
-		// new
-		// AlertDialog.Builder(mContext).setMessage(message).setCancelable(false)
-		// .setPositiveButton("OK", null).create().show();
+	private void displayShortMsg(String msg) {
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 
 	private void displayRegisterResult(String msg) {
@@ -185,55 +215,92 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 
 	@Override
 	public void onFinishRegister(int reflag) {
+		/*
+		 * switch (reflag) { case 8: // 注册成功
+		 * displayRegisterResult(getResources().getString(
+		 * R.string.hp_userreg_success)); break; case 102: // 注册帐号长度非法
+		 * displayRegisterResult(getResources().getString(
+		 * R.string.hp_userregserver_error102)); progressDialog.dismiss();
+		 * break; case 103: // 通信密钥不正确
+		 * displayRegisterResult(getResources().getString(
+		 * R.string.hp_userregserver_error103)); progressDialog.dismiss();
+		 * break; case 104: // 注册帐号非法，注册帐号必须是数字和字母组合，不能包含非法字符,@除外
+		 * displayRegisterResult(getResources().getString(
+		 * R.string.hp_userregserver_error104)); progressDialog.dismiss();
+		 * break; case 1: // 用户名或邮箱存在，无法注册
+		 * displayRegisterResult(getResources().getString(
+		 * R.string.hp_userregserver_error1)); progressDialog.dismiss(); break;
+		 * case 5: // 用户基本信息写入失败 displayRegisterResult(getResources().getString(
+		 * R.string.hp_userregserver_error5)); progressDialog.dismiss(); break;
+		 * case 7: // 用户扩展信息写入失败 displayRegisterResult(getResources().getString(
+		 * R.string.hp_userregserver_error7)); progressDialog.dismiss(); break;
+		 * default: // 服务器内部错误 displayRegisterResult(getResources().getString(
+		 * R.string.hp_userregserver_errorother)); progressDialog.dismiss();
+		 * break; }
+		 */
 		switch (reflag) {
-		case 8:
-			// 注册成功
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userreg_success));
-			break;
-		case 102:
-			// 注册帐号长度非法
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error102));
-			progressDialog.dismiss();
-			break;
 		case 103:
-			// 通信密钥不正确
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error103));
-			progressDialog.dismiss();
+			displayRegisterResult("authKey出错");
 			break;
 		case 104:
-			// 注册帐号非法，注册帐号必须是数字和字母组合，不能包含非法字符,@除外
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error104));
-			progressDialog.dismiss();
+			displayRegisterResult("参数不全");
+			break;
+		case 105:
+			displayRegisterResult("手机格式错误");
+			break;
+
+		case 106:
+			displayRegisterResult("此手机号已经注册");
+			break;
+
+		case 107:
+			displayRegisterResult("此手机号不存在");
+			break;
+
+		case 108:
+			displayRegisterResult("短信发送成功");
+			break;
+		case 109:
+			displayRegisterResult("短信发送失败");
+			break;
+		case 110:
+			displayRegisterResult("短信验证码已过期，请重新获取验证码");
+			break;
+		case 111:
+			displayRegisterResult("短信验证码不正确");
+			break;
+		case 112:
+			displayRegisterResult("短信验证通过");
+			break;
+		case 202:
+			displayRegisterResult("注册帐号长度非法");
+			break;
+		case 203:
+			displayRegisterResult("通信密钥不正确");
+			break;
+		case 204:
+			displayRegisterResult("注册帐号非法，注册帐号必须是数字和字母组合，不能包含非法字符,@除外");
 			break;
 		case 1:
-			// 用户名或邮箱存在，无法注册
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error1));
-			progressDialog.dismiss();
+			displayRegisterResult("此手机号已经注册");
 			break;
+
 		case 5:
-			// 用户基本信息写入失败
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error5));
-			progressDialog.dismiss();
+			displayRegisterResult("用户基本信息写入失败");
 			break;
+
 		case 7:
-			// 用户扩展信息写入失败
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_error7));
-			progressDialog.dismiss();
+			displayRegisterResult("用户扩展信息写入失败");
+			break;
+		case 8:// 注册成功
+			displayRegisterResult("注册成功");
 			break;
 		default:
-			// 服务器内部错误
-			displayRegisterResult(getResources().getString(
-					R.string.hp_userregserver_errorother));
-			progressDialog.dismiss();
+			displayRegisterResult("服务器内部注册错误");
 			break;
 		}
+		progressDialog.dismiss();
+
 	}
 
 	@Override
@@ -250,7 +317,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			} else {
 				message = "网络连接错误";
 			}
-			displayRegisterResult(message);
+			displayShortMsg(message);
 		}
 	}
 
@@ -259,7 +326,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		displayRegisterResult(getResources().getString(
 				R.string.hp_userlogin_success));
 		progressDialog.dismiss();
-		//startActivity(new Intent(this, MainPage.class));
+		// startActivity(new Intent(this, MainPage.class));
 		finish();
 	}
 
@@ -279,7 +346,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				uname_img.setImageResource(R.drawable.health_plus_uname_normal);
 			}
 			break;
-			
+
 		case R.id.health_plus_register_yz_input_et:
 			if (hasFocus) {
 				yz_img.setImageResource(R.drawable.health_plus_yz_focus);
@@ -304,4 +371,65 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		}
 
 	}
+
+	@Override
+	public void onFinishGetVerifyCode(int reg17FoxReturn) {
+		// TODO Auto-generated method stub
+
+		switch (reg17FoxReturn) {
+		case 103:
+			displayRegisterResult("authKey出错");
+			break;
+		case 104:
+			displayRegisterResult("参数不全");
+			break;
+		case 105:
+			displayRegisterResult("手机格式错误");
+			break;
+		case 106:
+			displayRegisterResult("此手机号已经注册");
+			break;
+		case 107:
+			displayRegisterResult("此手机号不存在");
+			break;
+		case 108:
+			Toast.makeText(this, "验证短信稍后发送到您手机", Toast.LENGTH_LONG).show();
+			break;
+		case 109:
+			displayRegisterResult("短信发送失败");
+			break;
+		case 110:
+			displayRegisterResult("短信验证码超时，请重新获取验证码");
+			break;
+		case 111:
+			displayRegisterResult("短信验证码不正确");
+			break;
+		case 112:
+			displayRegisterResult("短信验证通过");
+			break;
+		default:
+			displayRegisterResult("服务器内部错误");
+		}
+		enableYzBtnHandler.sendEmptyMessageDelayed(1, 1000);
+	}
+
+	@Override
+	public void onErrorGetVerifyCode(Exception exception) {
+		// TODO Auto-generated method stub
+		if (exception.getCause() instanceof ConnectTimeoutException) {
+			System.out.println("ConnectionTimeoutException");
+		}
+		if (exception instanceof ResourceAccessException) {
+			System.out.println("ResourceAccessException");
+		}
+		displayShortMsg("网络连接出错");
+		enableYzBtnHandler.sendEmptyMessageDelayed(1, 1500);
+	}
+
+	private Handler enableYzBtnHandler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			yzBtn.setEnabled(true);
+			yzBtn.setText("获取验证码");
+		}
+	};
 }

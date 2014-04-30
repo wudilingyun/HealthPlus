@@ -25,7 +25,21 @@
         android:paddingBottom="3dp"
         android:paddingRight="15dp"
         android:paddingLeft="20dp"
-        android:src="@drawable/hp_w_header_view_back" />
+        android:src="@drawable/hp_w_header_view_back"/>
+    
+    <TextView
+        android:id="@+id/header_rbtn_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:paddingBottom="3dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:clickable="true"
+        android:textSize="18sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/header_text"

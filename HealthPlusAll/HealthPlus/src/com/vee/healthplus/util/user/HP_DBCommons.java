@@ -11,6 +11,7 @@ public class HP_DBCommons {
     //表名
     public static final String USERINFO_TABLENAME = "USER_HP";
     public static final String USERWEIGHT_TABLENAME = "USERWEIGHT_HP";
+    public static final String USERCOLLECT_TABLENAME ="USERCOLLECT_NEWS";//收藏宝典内容
 
     //字段名
     public static final String USERID = "USER_ID";
@@ -25,4 +26,12 @@ public class HP_DBCommons {
     public static final String REMARK = "REMARK";
     public static final String UPDATETIME = "UPDATE_TIME";
     public static final String PHOTO = "PHOTO";
+    
+    /* 宝典字段
+     *   user_id  索引
+     */
+   
+    public static final String TITLE = "TITLE";
+    public static final String IMGURL ="IMGURL";
+    public static final String WEBURL = "WEBURL";
 }

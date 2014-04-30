@@ -2,15 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.vee.healthplus"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/hp_main_bg" >
+    android:layout_height="match_parent" >
 
     <com.vee.shop.ui.ShopHeaderView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="60px"
-        android:gravity="center_vertical"
         android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
         app:headerText="@string/hp_app_name" />
 
     <ScrollView

@@ -3,9 +3,6 @@
      <!-- zyl -->
     <drawable name="SeaGreen1">#54FF9F</drawable>
 	
-    <color name="hp_w_userstickchart_fill">#f4a33a</color>
-    <color name="hp_w_userstickchart_fill_less">#00c4ee</color>
-    <color name="hp_w_userweightchart_bg">#f6e2ae</color>
 
     <!-- 心跳 -->
 

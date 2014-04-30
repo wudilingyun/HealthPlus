@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AndroidCharts Demo</string>
     <string name="gridchart">GridChart</string>
     <string name="machart">MAChart</string>
     <string name="stickchart">StickChart</string>

@@ -19,6 +19,7 @@ public class HP_User {
     public String email = "";
     public String phone = "";
     public String remark = "";
+    public String photourl="";
     
     public static int getOnLineUserId(Context mContext) {
         return SharedPreferenceUtil.getIntPref(mContext, "userId", 0);

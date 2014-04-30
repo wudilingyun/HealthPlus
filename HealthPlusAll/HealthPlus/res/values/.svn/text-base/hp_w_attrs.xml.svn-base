@@ -18,10 +18,12 @@
         </attr>
     </declare-styleable>
     <declare-styleable name="Panel">
+
         <!-- Defines panel animation duration in ms. -->
         <attr name="animationDuration" format="integer" />
         <!-- Defines panel position on the screen. -->
         <attr name="position">
+
             <!-- Panel placed at top of the screen. -->
             <enum name="top" value="0" />
             <!-- Panel placed at bottom of the screen. -->
@@ -45,6 +47,7 @@
         <attr name="closedHandle" format="reference|color" />
     </declare-styleable>
     <declare-styleable name="ViewPagerIndicator">
+
         <!-- Style of the circle indicator. -->
         <attr name="vpiCirclePageIndicatorStyle" format="reference" />
         <!-- Style of the icon indicator's views. -->
@@ -155,14 +158,17 @@
         <!-- View background -->
         <attr name="android:background" />
     </declare-styleable>
-
     <declare-styleable name="Chart">
         <attr name="vpiFancyChartStyle" format="reference" />
     </declare-styleable>
-
     <declare-styleable name="FancyChart">
         <attr name="lineColor" format="color" />
         <attr name="shadowColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+	</declare-styleable>
 </resources>

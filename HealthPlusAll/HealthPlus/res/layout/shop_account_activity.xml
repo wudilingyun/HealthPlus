@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res/com.vee.healthplus"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/hp_main_bg">
+    android:layout_height="match_parent" >
 
     <com.vee.healthplus.widget.MyRelativeLayout
         android:id="@+id/child_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
         <com.vee.shop.ui.ShopHeaderView
             android:id="@+id/header"
@@ -29,5 +28,4 @@
             android:orientation="vertical" />
     </com.vee.healthplus.widget.MyRelativeLayout>
 
-  
 </FrameLayout>

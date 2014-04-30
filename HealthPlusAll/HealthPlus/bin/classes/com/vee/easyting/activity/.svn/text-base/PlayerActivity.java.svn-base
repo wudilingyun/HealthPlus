@@ -95,7 +95,6 @@ public class PlayerActivity extends Activity {
 		imageBtnRandom = (ImageView) this.findViewById(R.id.music_random);
 		// lrc_view = (LrcView) findViewById(R.id.LyricShow);
 		imageCD = (ImageView) this.findViewById(R.id.imgCD);
-		imageCD.setImageResource(R.drawable.player_cd_stop);
 
 		imageBtnPrv.setOnClickListener(new MyListener());
 		imageBtnPlay.setOnClickListener(new MyListener());

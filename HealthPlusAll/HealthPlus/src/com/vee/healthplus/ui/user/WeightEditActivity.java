@@ -29,15 +29,29 @@ public class WeightEditActivity extends BaseFragmentActivity implements
 			if (option == HeaderView.HEADER_BACK) {
 				finish();
 			} else if (option == HeaderView.HEADER_OK) {
+				if(weightEt.getText().toString()==null||weightEt.getText().toString().equals("")){
+					displayResult(getResources().getString(
+							R.string.hp_userinfoediterror_weight));
+					return;
+				}
+				if (Float.parseFloat(weightEt.getText().toString())<1||Float.parseFloat(weightEt.getText().toString())>300) {
+					displayResult(getResources().getString(
+							R.string.hp_userinfoediterror_weight));
+					return;
+				}
 				Intent data = getIntent();
 				Bundle bundle = data.getExtras();
-				bundle.putString("weight", weightEt.getText().toString());
+				bundle.putString("weight", Float.parseFloat(weightEt.getText().toString())+"");
 				data.putExtras(bundle);
 				WeightEditActivity.this.setResult(RESULT_OK, data);
 				finish();
 			}
 		}
 	};
+	
+	private void displayResult(String msg) {
+		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

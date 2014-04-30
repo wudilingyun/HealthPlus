@@ -38,7 +38,7 @@ import com.yunfox.s4aservicetest.response.Moments;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class MomentsFragment extends Fragment {
-	@Override
+/*	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
@@ -48,7 +48,7 @@ public class MomentsFragment extends Fragment {
 			intent.putExtra("bitmap", u.getPath());
 			startActivity(intent);
 		}
-	}
+	}*/
 
 	Dialog custom;
 	Button photographbtn;
@@ -68,9 +68,6 @@ public class MomentsFragment extends Fragment {
 		imageLoader = ImageLoader.getInstance(getActivity());
 		executorService = Executors.newCachedThreadPool();
 		
-		ImageButton imageButtonNewMoments = (ImageButton) view
-				.findViewById(R.id.newmoments);
-		Button buttonFriendlist = (Button) view.findViewById(R.id.friendlist);
 		ImageView imageViewCover = (ImageView) view.findViewById(R.id.cover);
 		ImageView imageViewMyMoments = (ImageView) view
 				.findViewById(R.id.mymoments);
@@ -80,7 +77,7 @@ public class MomentsFragment extends Fragment {
 		momentsAdapter = new MomentsAdapter(getActivity());
 		listViewMonentsList.setAdapter(momentsAdapter);
 
-		imageButtonNewMoments.setOnClickListener(new OnClickListener() {
+/*		imageViewNewMoments.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -135,7 +132,7 @@ public class MomentsFragment extends Fragment {
 						FriendListActivity.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 
 		imageViewCover.setOnClickListener(new OnClickListener() {
 

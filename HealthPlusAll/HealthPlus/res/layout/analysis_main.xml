@@ -21,10 +21,8 @@
             android:layout_height="32dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="@color/transparent"
             android:clickable="true"
             android:scaleType="center"
-            android:contentDescription="@string/app_name"
             android:src="@drawable/analysis_pre_bt_selector" />
 
         <TextView
@@ -44,9 +42,7 @@
             android:layout_height="32dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@color/transparent"
             android:clickable="false"
-            android:contentDescription="@string/app_name"
             android:scaleType="center"
             android:src="@drawable/analysis_next_bt_selector" />
     </RelativeLayout>
@@ -162,7 +158,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:contentDescription="@string/app_name"
                 android:src="@drawable/analysis_bottom_down_arrow" />
         </RelativeLayout>
 

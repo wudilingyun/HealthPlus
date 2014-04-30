@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,9 +12,9 @@
         <RelativeLayout
             android:id="@+id/userpage_loginbar_none"
             android:layout_width="match_parent"
-            android:layout_height="124dip" >
+            android:layout_height="140dip" >
 
-            <ImageView
+            <com.vee.healthplus.widget.RoundImageView
                 android:id="@+id/user_log_item_icon"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -31,21 +31,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/user_log_item_icon"
-                android:padding="15dip"
+                android:padding="5dip"
                 android:text="登陆"
-                android:textColor="@color/primary_text_color"
+                android:textColor="#ffffff"
+                android:background="#33000000"
                 android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/userpage_loginbar_done"
             android:layout_width="match_parent"
-            android:layout_height="124dip"
+            android:layout_height="140dip"
             android:visibility="gone" >
 
-            <ImageView
+            <com.vee.healthplus.widget.RoundImageView
                 android:id="@+id/user_list_item_icon"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -68,7 +69,6 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="horizontal" >
@@ -125,7 +125,8 @@
                 android:padding="15dip"
                 android:text="编辑"
                 android:textColor="#f5f5f5"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
         </RelativeLayout>
     </RelativeLayout>
 

@@ -57,7 +57,6 @@ public class NotificationSystem implements Handler.Callback {
 				intent, 0);
 
 		notification = new Notification();
-		notification.icon = R.drawable.ic_pic;
 		notification.tickerText = "您有目标尚未完成";
 		notification.defaults = Notification.DEFAULT_SOUND;
 		notification.setLatestEventInfo(context, "您有目标尚未完成", "您有目标尚未完成",
@@ -67,7 +66,7 @@ public class NotificationSystem implements Handler.Callback {
 	private void getOngoingNoti() {
 		contentView = new RemoteViews(context.getPackageName(),
 				R.layout.hp_notification);
-		notification = new Notification(R.drawable.ic_pic, "您有目标尚未完成",
+		notification = new Notification(R.drawable.ic_launcher, "您有目标尚未完成",
 				System.currentTimeMillis());
 		notification.contentView = contentView;
 		addPendingIntent(MainPage.class);

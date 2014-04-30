@@ -1,5 +1,7 @@
 package com.vee.healthplus.heahth_news_http;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -14,15 +16,16 @@ import android.graphics.BitmapFactory;
 
 public class ImageGetFromHttp {
 	public static Bitmap downloadBitmap(String url){
-		String imgurl =Contact.HEALTHNES_IMG_URL+url; 
 		final HttpClient httpClient = new DefaultHttpClient();
-		final HttpGet httpGet = new HttpGet(imgurl);
+		final HttpGet httpGet = new HttpGet(url);
 		InputStream inputStream = null;
+		Bitmap bitmap =null;
 		try {
 			HttpResponse response = httpClient.execute(httpGet);
 			if(response.getStatusLine().getStatusCode()==200){
 				inputStream =response.getEntity().getContent();
-				Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+				 bitmap = BitmapFactory.decodeStream(inputStream);
+				
 				return bitmap;
 			}
 		} catch (IOException e) {
@@ -30,6 +33,23 @@ public class ImageGetFromHttp {
 			System.out.println("��ȡͼƬ�쳣");
 		}
 		
-		return null;
+		return compressImage(bitmap);
 	}
+	
+	public static  Bitmap compressImage(Bitmap image) {
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		image.compress(Bitmap.CompressFormat.JPEG, 30, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+		int options = 100;
+		while (baos.toByteArray().length / 1024 > 10) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+			baos.reset();// 重置baos即清空baos
+			image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
+			options -= 10;// 每次都减少10
+		}
+		System.out.println("压缩后大小"+baos.toByteArray().length/1024);
+		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+		Bitmap bitmap1 = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
+		return bitmap1;
+	}
+
 }

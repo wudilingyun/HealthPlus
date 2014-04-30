@@ -8,15 +8,13 @@
         android:id="@+id/analysis_type_fake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/fake_dark"
-        android:contentDescription="@string/app_name" />
+        android:background="@drawable/fake_dark"/>
 
     <ImageView
         android:id="@+id/analysis_type_fake_cover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/fake_cover"
-        android:contentDescription="@string/app_name"
         android:visibility="invisible" />
     
     <TextView 

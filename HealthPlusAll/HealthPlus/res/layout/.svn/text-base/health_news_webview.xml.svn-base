@@ -8,7 +8,7 @@
     <include
         android:id="@+id/loading_frame_webview"
         layout="@layout/health_loading_data"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,69 +23,69 @@
 
         <LinearLayout
             android:id="@+id/lin_bottom"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:orientation="horizontal"
-            android:padding="14dp" >
+            android:padding="14dp"
+            android:background="@drawable/valuebook_webview_bottom" >
 
-            <ImageView
+            <com.vee.healthplus.widget.DrawableCenterTextView
                 android:id="@+id/comment_img"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/comment_normal"
                 android:padding="5dp"
-                android:src="@drawable/valuebook_comment_selector" />
+                android:text="评论"
+                android:textColor="#9d9d9d"
+                android:textSize="16sp" />
 
-            <ImageView
+            <View
+                android:id="@+id/view_divider_1"
+                style="@style/view_divider" />
+
+            <com.vee.healthplus.widget.DrawableCenterTextView
                 android:id="@+id/collect_img"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/valuebook_collect_selector"
-                android:gravity="center"
-                android:padding="5dp" />
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/collect_normal"
+                android:padding="5dp"
+                android:text="收藏"
+                android:textColor="#9d9d9d"
+                android:textSize="16sp" />
 
-            <ImageView
+            <View
+                android:id="@+id/view_divider_1"
+                style="@style/view_divider" />
+
+            <com.vee.healthplus.widget.DrawableCenterTextView
                 android:id="@+id/share_img"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/valuebook_share_selector"
-                android:gravity="center"
-                android:padding="5dp" />
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/share_normal"
+                android:padding="5dp"
+                android:text="分享"
+                android:textColor="#9d9d9d"
+                android:textSize="16sp" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
+            <View
+                android:id="@+id/view_divider_1"
+                style="@style/view_divider" />
+
+            <com.vee.healthplus.widget.DrawableCenterTextView
+                android:id="@+id/support_img"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="20dp" >
-
-                <ImageView
-                    android:id="@+id/support_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/valuebook_support_selector"
-                    android:padding="5dp" />
-
-                <TextView
-                    android:id="@+id/support_count_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_alignRight="@+id/support_img"
-                    android:layout_alignTop="@+id/support_img"
-                    android:layout_marginRight="-14dp"
-                    android:gravity="right"
-                    android:text=""
-                    android:textColor="#0f0"
-                    android:visibility="gone"
-                    android:textSize="12sp" />
-            </RelativeLayout>
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/support_icon_normal"
+                android:padding="5dp"
+                android:text="赞"
+                android:textColor="#9d9d9d"
+                android:textSize="16sp" />
         </LinearLayout>
     </RelativeLayout>
 

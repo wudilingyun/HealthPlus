@@ -156,10 +156,12 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 					.queryUserInfoByUserId(userid, true);
 			username_txt.setText(user.userName);
 			age_txt.setText(user.userAge + "");
-			/*
-			 * if (user.userSex == -1) { sex_txt.setText("男"); } else {
-			 * sex_txt.setText("女"); }
-			 */
+
+			if (user.userSex == -1) {
+				sex_txt.setImageResource(R.drawable.boy_icon);
+			} else {
+				sex_txt.setImageResource(R.drawable.girl_icon);
+			}
 
 			weight_txt.setText(user.userWeight + "");
 			age_txt.setVisibility(View.VISIBLE);

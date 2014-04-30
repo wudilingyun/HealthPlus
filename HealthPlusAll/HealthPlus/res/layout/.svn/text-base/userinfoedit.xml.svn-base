@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hp_main_bg">
+    android:orientation="vertical" >
 
     <com.vee.healthplus.widget.HeaderView
         android:id="@+id/hp_main_header"
@@ -15,21 +14,20 @@
         app:headerText="@string/hp_userinfo_edittitle" />
 
     <ScrollView
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
             <RelativeLayout
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp" >
 
                 <ImageView
                     android:id="@+id/userAvatao_iv"
@@ -39,82 +37,82 @@
                     android:src="@drawable/userdefaultavatar" />
 
                 <TextView
+                    android:id="@+id/userName_tv"
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp_userreg_accountshint"
-                    android:id="@+id/userName_tv"
-                    android:layout_centerHorizontal="true"
                     android:layout_below="@+id/userAvatao_iv"
-                    style="@style/userregister_userinfotitle" />
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/hp_userreg_accountshint" />
 
                 <TextView
+                    android:id="@+id/pwdmotify_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp_userinfo_pwdmotify"
-                    android:id="@+id/pwdmotify_tv"
-                    android:textColor="@color/motifypwd"
-                    android:textSize="16sp"
-                    android:layout_below="@+id/userName_tv"
+                    android:layout_alignBaseline="@+id/userAvatao_iv"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignBaseline="@+id/userAvatao_iv" />
+                    android:layout_below="@+id/userName_tv"
+                    android:text="@string/hp_userinfo_pwdmotify"
+                    android:textColor="@color/motifypwd"
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/userinfoeditwhite"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/userinfoeditwhite">
+                android:paddingRight="10dp" >
 
                 <TextView
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp_userreg_nick"
-                    style="@style/userregister_userinfotitle" />
+                    android:text="@string/hp_userreg_nick" />
 
                 <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:hint="@string/hp_userinfo_noset"
-                    android:gravity="right|center"
+                    android:id="@+id/userNick_et"
                     style="@style/userregister_accountscontent"
-                    android:id="@+id/userNick_et" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:gravity="right|center"
+                    android:hint="@string/hp_userinfo_noset" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/userinfoeditwhite"
+                android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/userinfoeditwhite">
+                android:paddingRight="10dp" >
 
                 <TextView
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp_personaledit_userage"
-                    style="@style/userregister_userinfotitle"
+                    android:layout_gravity="left|center_vertical"
                     android:layout_margin="@dimen/hp_personaledit_widgetmargin"
-                    android:layout_gravity="left|center_vertical" />
+                    android:text="@string/hp_personaledit_userage" />
 
                 <EditText
+                    android:id="@+id/userAge_et"
+                    style="@style/userregister_userinfocontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/hp_personaledit_widgetmargin"
-                    android:inputType="number"
-                    android:id="@+id/userAge_et"
                     android:background="@android:color/transparent"
-                    style="@style/userregister_userinfocontent"
-                    android:gravity="right|center" />
+                    android:gravity="right|center"
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
@@ -122,96 +120,94 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:gravity="center_vertical">
+                android:paddingRight="10dp" >
 
                 <TextView
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/userregister_userinfotitle"
-                    android:text="@string/hp_personaledit_usersex"
+                    android:layout_gravity="left|center_vertical"
                     android:layout_margin="@dimen/hp_personaledit_widgetmargin"
-                    android:layout_gravity="left|center_vertical" />
+                    android:text="@string/hp_personaledit_usersex" />
 
                 <RadioGroup
+                    android:id="@+id/sex_rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sex_rg"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal" >
 
                     <RadioButton
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
+                        android:id="@+id/male_rb"
                         style="@style/userregister_userinfotitle"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="10dp"
-                        android:paddingLeft="20dp"
-                        android:checked="true"
-                        android:id="@+id/male_rb"
-                        android:gravity="center|right"
+                        android:layout_weight="1"
                         android:button="@drawable/radio_btn_selector"
+                        android:checked="true"
+                        android:gravity="center|right"
+                        android:paddingLeft="20dp"
                         android:text="@string/hp_personaledit_male" />
 
                     <RadioButton
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:paddingLeft="20dp"
-                        android:gravity="center|right"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="10dp"
                         android:id="@+id/female_rb"
                         style="@style/userregister_userinfotitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
                         android:button="@drawable/radio_btn_selector"
+                        android:gravity="center|right"
+                        android:paddingLeft="20dp"
                         android:text="@string/hp_personaledit_female" />
-
                 </RadioGroup>
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
                 android:background="@drawable/userinfoeditwhite"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
 
                 <TextView
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/userregister_userinfotitle"
-                    android:text="@string/hp_personaledit_userheight"
+                    android:layout_gravity="left|center_vertical"
                     android:layout_margin="@dimen/hp_personaledit_widgetmargin"
-                    android:layout_gravity="left|center_vertical" />
+                    android:text="@string/hp_personaledit_userheight" />
 
                 <LinearLayout
-                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
 
                     <EditText
+                        android:id="@+id/userHeight_et"
+                        style="@style/userregister_userinfocontent"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/hp_personaledit_widgetmargin"
-                        android:inputType="number"
+                        android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        style="@style/userregister_userinfocontent"
                         android:gravity="right|center"
-                        android:layout_weight="1"
-                        android:id="@+id/userHeight_et" />
+                        android:inputType="number" />
 
                     <TextView
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="cm"
+                        android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
+                        android:text="cm"
                         android:textColor="@color/hp_w_target_week"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -223,40 +219,40 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
                 android:background="@drawable/userinfoeditwhite"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
 
                 <TextView
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp_personaledit_userweight"
-                    style="@style/userregister_userinfotitle"
+                    android:layout_gravity="left|center_vertical"
                     android:layout_margin="@dimen/hp_personaledit_widgetmargin"
-                    android:layout_gravity="left|center_vertical" />
+                    android:text="@string/hp_personaledit_userweight" />
 
                 <LinearLayout
-                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
 
                     <EditText
+                        android:id="@+id/userWeight_et"
+                        style="@style/userregister_userinfocontent"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/hp_personaledit_widgetmargin"
-                        style="@style/userregister_userinfocontent"
-                        android:inputType="number"
-                        android:background="@android:color/transparent"
-                        android:id="@+id/userWeight_et"
                         android:layout_weight="1"
-                        android:gravity="right|center" />
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center"
+                        android:inputType="number" />
 
                     <TextView
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="kg"
+                        android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
+                        android:text="kg"
                         android:textColor="@color/hp_w_target_week"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -265,73 +261,73 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/userinfoeditwhite"
+                android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/userinfoeditwhite">
+                android:paddingRight="10dp" >
 
                 <TextView
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp_userinfo_phonebound"
-                    style="@style/userregister_userinfotitle" />
+                    android:text="@string/hp_userinfo_phonebound" />
 
                 <EditText
+                    android:id="@+id/userPhone_et"
+                    style="@style/userregister_accountscontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
+                    android:gravity="right|center"
                     android:hint="@string/hp_userinfo_noset"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                     android:numeric="integer"    
-                    style="@style/userregister_accountscontent"
-                    android:gravity="right|center"
-                    android:id="@+id/userPhone_et" />
+                    android:numeric="integer"
+                    android:singleLine="true" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/userinfoeditwhite"
+                android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/userinfoeditwhite">
+                android:paddingRight="10dp" >
 
                 <TextView
+                    style="@style/userregister_userinfotitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp_userinfo_emailbound"
-                    style="@style/userregister_userinfotitle" />
+                    android:text="@string/hp_userinfo_emailbound" />
 
                 <EditText
+                    android:id="@+id/userEmail_et"
+                    style="@style/userregister_accountscontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
-                    android:hint="@string/hp_userinfo_noset"
-                    style="@style/userregister_accountscontent"
                     android:gravity="right|center"
-                    android:id="@+id/userEmail_et" />
+                    android:hint="@string/hp_userinfo_noset" />
             </LinearLayout>
 
             <Button
+                android:id="@+id/save_btn"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
-                android:text="@string/hp_userinfo_save"
-                android:id="@+id/save_btn"
-                android:textSize="24sp"
-                android:textColor="@color/white"
                 android:background="@drawable/hp_w_target_setbtn_selector"
-                android:layout_gravity="center_horizontal" />
-
+                android:text="@string/hp_userinfo_save"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

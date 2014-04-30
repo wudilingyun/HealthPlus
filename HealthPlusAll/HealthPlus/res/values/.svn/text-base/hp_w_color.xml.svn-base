@@ -5,7 +5,7 @@
     <color name="hp_font_lightblack">#acacac</color>
     <color name="hp_font_darkblack">#5d5d5d</color>
     <color name="hp_font_midblack">#4a4949</color>
-    <color name="little_gray">#6c6c6c</color>
+    <color name="transparent">#00ffffff</color>
     <color name="blue">#25acca</color>
     <color name="blue_light">#01d3ff</color>
     <color name="gray">#9b9b9b</color>
@@ -26,7 +26,7 @@
     <color name="hp_w_line_lv_50">#32a2a2a2</color>
     <color name="hp_w_line_lv_80">#50a2a2a2</color>
     <color name="hp_w_dialogbg">#fff3f3f3</color>
-    <color name="white">#f4f4f4</color>
+
     <color name="hp_w_userweightchart_line">#d83c2f</color>
     <color name="hp_w_userweightchart_lonline">#4c4c4c</color>
     <color name="hp_w_userweightchart_xline">#6e6e6e</color>

@@ -35,7 +35,7 @@
     <dimen name="health_main_padding_big">8dp</dimen>
 
     <!-- 新闻 -->
-    <dimen name="news_padding">5.0dip</dimen>
+    <dimen name="news_padding">10.0dip</dimen>
     <dimen name="news_marging_top">5.0dip</dimen>
     <dimen name="heart_marging">8.0dip</dimen>
     <dimen name="heart_padding">10.0dip</dimen>

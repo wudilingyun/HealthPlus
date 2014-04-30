@@ -151,7 +151,6 @@ public class HeartRateActivity extends BaseFragmentActivity implements
 				if (isChecked) {
 					if (getflashLight()) {
 
-						heart_icon.setBackgroundResource(R.anim.heart_test);
 						heartAnimation = (AnimationDrawable) heart_icon
 								.getBackground();
 						heartAnimation.setOneShot(false);

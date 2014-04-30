@@ -14,12 +14,14 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +29,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_beans.FeedComment;
@@ -34,19 +40,23 @@ import com.vee.healthplus.heahth_news_beans.Root;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.Response;
+import com.vee.healthplus.util.user.HP_DBModel;
+import com.vee.healthplus.util.user.HP_User;
 import com.yunfox.s4aservicetest.response.GeneralResponse;
 import com.yunfox.s4aservicetest.response.NewsComment;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		implements android.view.View.OnClickListener {
-	private ListView comment_listView;
+	private PullToRefreshListView comment_listView;
 	private Health_ValueBook_Comment_Adapter myAdapter;
 	private ImageLoader imageLoader;
-	private List<NewsComment> commentlist = new ArrayList<NewsComment>();
+	private List<NewsComment> commentlist;
 	private EditText editText;
 	private String content;
 	private Button submitButton;
+	private String normal = "1", pull = "2", down = "3";
+	private List<NewsComment> newscomment, newsComment_new, newsComment_old;
 
 	@SuppressLint("ResourceAsColor")
 	@Override
@@ -58,22 +68,53 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		setContainer(view);
 		getHeaderView().setHeaderTitle("评论");
 		setRightBtnVisible(View.GONE);
-		getHeaderView().setBackGroundColor(R.color.blue);
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
 		init();
-		new getCommentsAsync().execute();
+		new getCommentsAsync().execute(normal);
 	}
 
 	void init() {
 		imageLoader = ImageLoader.getInstance(this);
-		comment_listView = (ListView) findViewById(R.id.allcomment_listview);
+		comment_listView = (PullToRefreshListView) findViewById(R.id.allcomment_listview);
+
+		comment_listView.getRefreshableView().setSelector(
+				android.R.color.transparent);
+		comment_listView.setMode(Mode.BOTH);
+		comment_listView.getLoadingLayoutProxy(false, true).setPullLabel(
+				getString(R.string.pull_to_load));
+		comment_listView.getLoadingLayoutProxy(false, true).setRefreshingLabel(
+				getString(R.string.loading));
+		comment_listView.getLoadingLayoutProxy(false, true).setReleaseLabel(
+				getString(R.string.release_to_load));
+
 		editText = (EditText) findViewById(R.id.setting_feedback_content);
 		submitButton = (Button) findViewById(R.id.dispatch_comment);
 		submitButton.setOnClickListener(this);
 		myAdapter = new Health_ValueBook_Comment_Adapter(this, imageLoader);
 		comment_listView.setAdapter(myAdapter);
+
+		comment_listView
+				.setOnRefreshListener(new OnRefreshListener<ListView>() {
+					@Override
+					public void onRefresh(
+							PullToRefreshBase<ListView> refreshView) {
+						// Do work to refresh the list here.
+						if (newscomment != null && newscomment.size() > 0)
+							if (comment_listView.isHeaderShown()) {
+								// 下
+
+								new getCommentsAsync().execute(down,
+										commentlist.get(0) + "");
+							} else if (comment_listView.isFooterShown()) {
+								new getCommentsAsync().execute(pull,
+										commentlist.get(commentlist.size() - 1)
+												+ "");
+								// 上
+							}
+					}
+				});
 	}
 
 	private class getCommentsAsync extends
@@ -89,10 +130,30 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		protected List<NewsComment> doInBackground(String... params) {
 			try {
 				String url = getIntent().getStringExtra("imgurl");
-				List<NewsComment> newscomment = SpringAndroidService
-						.getInstance(getApplication()).getNewsCommentsByScope(
-								url, 0, 10);
-				return newscomment;
+				switch (Integer.parseInt(params[0])) {
+				case 1:
+					newscomment = SpringAndroidService.getInstance(
+							getApplication())
+							.getNewsCommentsByScope(url, 0, 10);
+					return newscomment;
+				case 2:
+					newsComment_old = SpringAndroidService.getInstance(
+							getApplication())
+							.getNewsCommentsByMaxCommentidScope(url,
+									Integer.parseInt(params[1]));
+					newscomment.addAll(newsComment_old);
+					return newscomment;
+				case 3:
+					newsComment_new = SpringAndroidService.getInstance(
+							getApplication())
+							.getNewsCommentsByMinCommentidScope(url,
+									Integer.parseInt(params[1]), 10);
+					newscomment.addAll(newsComment_new);
+					return newscomment;
+				default:
+					break;
+				}
+
 			} catch (Exception e) {
 				this.exception = e;
 			}
@@ -115,9 +176,11 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 					message = "A problem occurred with the network connection. Please try again in a few minutes.";
 				}
 			}
-			if (data != null&&data.size()>0) {
-				myAdapter.listaddAdapter(data);
+			if (data != null && data.size() > 0) {
+				commentlist = data;
+				myAdapter.listaddAdapter(commentlist);
 				myAdapter.notifyDataSetChanged();
+				comment_listView.onRefreshComplete();
 			} else {
 				Toast.makeText(getApplication(), "没有评论", Toast.LENGTH_SHORT)
 						.show();
@@ -224,7 +287,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 					message = "A problem occurred with the network connection. Please try again in a few minutes.";
 				}
 			}
-			if (data != null&&data.size()>0) {
+			if (data != null && data.size() > 0) {
 				myAdapter.listaddAdapter(data);
 				myAdapter.notifyDataSetChanged();
 			}

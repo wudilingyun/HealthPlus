@@ -20,16 +20,16 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
     private RegisterResponse registerResponse;
     private String username;
     private String password;
-    private String nickname;
+    private String verifycode;
     private Activity activity;
     private RegisterCallBack callBack;
     private SignInTask.SignInCallBack signInCallBack;
 
-    public RegisterTask(Activity activity, String userName, String password, String userNick, RegisterCallBack callBack, SignInTask.SignInCallBack signInCallBack) {
+    public RegisterTask(Activity activity, String userName, String password, String verifycode, RegisterCallBack callBack, SignInTask.SignInCallBack signInCallBack) {
         this.activity = activity;
         this.username = userName;
         this.password = password;
-        this.nickname = userNick;
+        this.verifycode = verifycode;
         this.callBack = callBack;
         this.signInCallBack = signInCallBack;
     }
@@ -38,7 +38,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
         this.activity = activity;
         this.username = userName;
         this.password = password;
-        this.nickname = userNick;
+        this.verifycode = verifycode;
         this.callBack = callBack;
     }
 
@@ -51,7 +51,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
     @SuppressWarnings("unchecked")
     protected Void doInBackground(Void... params) {
         try {
-            registerResponse = SpringAndroidService.getInstance(activity.getApplication()).register(username, password, nickname);
+            registerResponse = SpringAndroidService.getInstance(activity.getApplication()).registerwithverifycode(username, verifycode, password);
         } catch (Exception e) {
             this.exception = e;
         }
@@ -76,6 +76,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
             } else {
                 message = "A problem occurred with the network connection. Please try again in a few minutes.";
             }
+            registerResponse=null;
             callBack.onErrorRegister(exception);
         }
 
@@ -84,7 +85,6 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
             if (registerResponse.getReturncode() == 8) {
                 HP_User user = new HP_User();
                 user.userName = username;
-                user.userNick = nickname;
                 user.userId = Integer.valueOf(String.valueOf(registerResponse.getMemberid()));
                 HP_DBModel.getInstance(activity).insertUserInfo(user, true);
                 if (signInCallBack != null) {

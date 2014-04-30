@@ -2,20 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/white">
 
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/allcomment_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/distach_frame"
         android:layout_gravity="top"
         android:background="#ffe4e2d7"
-        android:cacheColorHint="@color/transparent"
+        android:cacheColorHint="@null"
         android:divider="@null"
-        android:dividerHeight="0dip"
+        android:dividerHeight="0.4dip"
         android:listSelector="#0fff" >
-    </ListView>
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
     <FrameLayout
         android:id="@+id/distach_frame"
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="#fff"
+        android:background="#ececec"
         android:minHeight="30dp"
         android:padding="6dp" >
 
@@ -35,9 +36,10 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="80dp"
             android:background="@drawable/edittext_default"
-            android:hint="评论"
+            android:hint="发表评论"
             android:maxLines="3"
-            android:textColor="#000" />
+            android:textSize="16sp"
+            android:textColor="#c3c3c3" />
 
         <Button
             android:id="@+id/dispatch_comment"
@@ -49,7 +51,8 @@
             android:maxWidth="70dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="提交"
+            android:text="发送"
+            android:textSize="16sp"
             android:textColor="#fff" />
     </FrameLayout>
 

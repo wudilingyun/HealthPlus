@@ -1,14 +1,14 @@
 10
 
 dir
-686
+700
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/drawable-hdpi
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-25T06:04:30.251153Z
-686
+2014-04-30T08:16:19.696414Z
+697
 zhaoyouliang
 
 
@@ -25,40 +25,6 @@ zhaoyouliang
 
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
-
-support_icon_normal.png
-file
-
-
-
-
-2014-03-28T08:28:04.750000Z
-719c22e2ac0cffa1bfa71dec8e6a63b7
-2014-03-28T07:56:35.417049Z
-658
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3292
 
 orange_2.png
 file
@@ -94,6 +60,40 @@ has-props
 
 118
 
+support_icon_normal.png
+file
+
+
+
+
+2014-04-30T08:26:06.218750Z
+ee8bdb951ca175cfedd894f5ac84d33a
+2014-04-30T08:16:19.696414Z
+697
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3146
+
 home_tizhi.png
 file
 
@@ -127,40 +127,6 @@ has-props
 
 
 3858
-
-tab_more_selected.png
-file
-
-
-
-
-2014-04-23T09:12:10.656250Z
-c06a5522a406847cad568ce312099f5b
-2014-04-22T09:10:52.459308Z
-678
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3229
 
 health_heart_history_paper.png
 file
@@ -196,17 +162,17 @@ has-props
 
 44563
 
-hm_zixun.png
+tab_more_selected.png
 file
 
 
 
 
-2014-03-28T08:28:04.781250Z
-35392b49d2d416e54c58aa4ac6358547
-2013-12-27T08:32:37.617368Z
-585
-xujizhe
+2014-04-23T09:12:10.656250Z
+c06a5522a406847cad568ce312099f5b
+2014-04-22T09:10:52.459308Z
+678
+zhaoyouliang
 has-props
 
 
@@ -228,7 +194,7 @@ has-props
 
 
 
-7790
+3229
 
 ic_notifiaction.png
 file
@@ -264,17 +230,17 @@ has-props
 
 10359
 
-u852.png
+hm_zixun.png
 file
 
 
 
 
-2014-04-18T07:57:01.421875Z
-ada56ce3634c0b9f55707a04e99a04d0
-2014-04-17T01:46:39.182565Z
-665
-heda
+2014-03-28T08:28:04.781250Z
+35392b49d2d416e54c58aa4ac6358547
+2013-12-27T08:32:37.617368Z
+585
+xujizhe
 has-props
 
 
@@ -296,7 +262,7 @@ has-props
 
 
 
-5406
+7790
 
 news_loading_roate.png
 file
@@ -331,6 +297,40 @@ has-props
 
 
 3175
+
+u852.png
+file
+
+
+
+
+2014-04-18T07:57:01.421875Z
+ada56ce3634c0b9f55707a04e99a04d0
+2014-04-17T01:46:39.182565Z
+665
+heda
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5406
 
 btn_heartbeat_start_pressed.png
 file
@@ -400,40 +400,6 @@ has-props
 
 3343
 
-heart_d.png
-file
-
-
-
-
-2014-03-28T08:28:04.828125Z
-80a1bfb2ddf514c1386e5f03973d48e9
-2014-01-03T02:03:03.430994Z
-592
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3700
-
 notif_download.png
 file
 
@@ -467,6 +433,40 @@ has-props
 
 
 428
+
+heart_d.png
+file
+
+
+
+
+2014-03-28T08:28:04.828125Z
+80a1bfb2ddf514c1386e5f03973d48e9
+2014-01-03T02:03:03.430994Z
+592
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3700
 
 edittext_normal_focus.9.png
 file
@@ -610,10 +610,10 @@ file
 
 
 
-2014-03-28T08:28:04.890625Z
-8ba095b496cdc7b51c39da07ecb11f49
-2014-03-28T07:56:35.417049Z
-658
+2014-04-30T08:26:06.234375Z
+ae3a086cf126b9fa5a01590046c63ea6
+2014-04-30T08:16:19.696414Z
+697
 zhaoyouliang
 has-props
 
@@ -636,7 +636,7 @@ has-props
 
 
 
-3069
+3098
 
 hm_stature.png
 file
@@ -1080,40 +1080,6 @@ has-props
 
 1835
 
-test_result_call_btn_nat.9.png
-file
-
-
-
-
-2014-04-08T03:56:09.984375Z
-6ca41d9ec513fa5d0ef4a5b9aaadfb89
-2014-04-18T08:42:42.972857Z
-675
-lingyun
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8543
-
 userregeditview.9.png
 file
 
@@ -1148,17 +1114,17 @@ has-props
 
 162
 
-start_btn_pressed.png
+test_result_call_btn_nat.9.png
 file
 
 
 
 
-2014-03-28T08:28:05.015625Z
-7dda665f333072deaeeb6251bb2b8f73
-2013-12-20T01:32:59.617565Z
-569
-xujizhe
+2014-04-08T03:56:09.984375Z
+6ca41d9ec513fa5d0ef4a5b9aaadfb89
+2014-04-18T08:42:42.972857Z
+675
+lingyun
 has-props
 
 
@@ -1180,7 +1146,41 @@ has-props
 
 
 
-17716
+8543
+
+collect.png
+file
+
+
+
+
+2014-03-28T08:28:05.000000Z
+8d5c2d56e6147385da65236291352aa3
+2014-03-28T07:56:35.417049Z
+658
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1429
 
 hp_main__middle_item_bg.9.png
 file
@@ -1216,17 +1216,17 @@ has-props
 
 191
 
-collect.png
+start_btn_pressed.png
 file
 
 
 
 
-2014-03-28T08:28:05.000000Z
-8d5c2d56e6147385da65236291352aa3
-2014-03-28T07:56:35.417049Z
-658
-zhaoyouliang
+2014-03-28T08:28:05.015625Z
+7dda665f333072deaeeb6251bb2b8f73
+2013-12-20T01:32:59.617565Z
+569
+xujizhe
 has-props
 
 
@@ -1248,7 +1248,7 @@ has-props
 
 
 
-1429
+17716
 
 top_item_checked.png
 file
@@ -1318,40 +1318,6 @@ has-props
 
 5144
 
-main_settings_pressed.png
-file
-
-
-
-
-2014-03-28T08:28:05.031250Z
-639ab034829892066c59a9a5232a1f2c
-2013-12-30T06:32:56.470048Z
-587
-silian
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4329
-
 shop_btn_next_p.png
 file
 
@@ -1386,17 +1352,17 @@ has-props
 
 475
 
-health_plus_login_btn_bg_pressed.png.9.png
+main_settings_pressed.png
 file
 
 
 
 
-2014-04-15T02:18:51.468750Z
-231453225d08b2fc138ca2fa44673bb6
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-03-28T08:28:05.031250Z
+639ab034829892066c59a9a5232a1f2c
+2013-12-30T06:32:56.470048Z
+587
+silian
 has-props
 
 
@@ -1418,7 +1384,7 @@ has-props
 
 
 
-182
+4329
 
 right_switcher_collapsed_focused.9.png
 file
@@ -1453,6 +1419,40 @@ has-props
 
 
 1518
+
+health_plus_login_btn_bg_pressed.png.9.png
+file
+
+
+
+
+2014-04-15T02:18:51.468750Z
+231453225d08b2fc138ca2fa44673bb6
+2014-04-18T08:42:42.972857Z
+675
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+182
 
 home_icon_xuezhi.png
 file
@@ -1624,40 +1624,6 @@ has-props
 
 3244
 
-processing_blue_box.9.png
-file
-
-
-
-
-2014-04-02T02:11:54.390625Z
-4074daac25b0c22231bf8d5d05532433
-2014-04-18T08:42:42.972857Z
-675
-lingyun
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-969
-
 wait_dialog_bg.9.png
 file
 
@@ -1691,6 +1657,40 @@ has-props
 
 
 902
+
+processing_blue_box.9.png
+file
+
+
+
+
+2014-04-02T02:11:54.390625Z
+4074daac25b0c22231bf8d5d05532433
+2014-04-18T08:42:42.972857Z
+675
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+969
 
 custom_tab_indicator_unselected_pressed.9.png
 file
@@ -1760,17 +1760,17 @@ has-props
 
 4230
 
-setting_serviceicon.png
+health_plus_input_bg.9.png
 file
 
 
 
 
-2014-03-28T08:28:05.125000Z
-53589862e58d1cfa031cfc41fa276cd7
-2013-11-21T09:44:47.403575Z
-489
-xujizhe
+2014-04-15T02:18:51.562500Z
+367530f3fce96892b9ab93d51b6a1898
+2014-04-18T08:42:42.972857Z
+675
+lingyun
 has-props
 
 
@@ -1792,7 +1792,7 @@ has-props
 
 
 
-4729
+215
 
 analysis_next_bt.png
 file
@@ -1828,17 +1828,17 @@ has-props
 
 3186
 
-health_plus_input_bg.9.png
+setting_serviceicon.png
 file
 
 
 
 
-2014-04-15T02:18:51.562500Z
-367530f3fce96892b9ab93d51b6a1898
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-03-28T08:28:05.125000Z
+53589862e58d1cfa031cfc41fa276cd7
+2013-11-21T09:44:47.403575Z
+489
+xujizhe
 has-props
 
 
@@ -1860,7 +1860,7 @@ has-props
 
 
 
-215
+4729
 
 shop_productdetail_count_down_n.png
 file
@@ -1896,17 +1896,17 @@ has-props
 
 3074
 
-share_normal.png
+main_totaldistance_bg.png
 file
 
 
 
 
-2014-03-28T08:28:05.156250Z
-e84a1ccb9b3bbc5d8fd7f92719d2b367
-2014-03-28T07:56:35.417049Z
-658
-zhaoyouliang
+2014-03-28T08:28:05.171875Z
+00993824c75e45555b957972f1d7f0cf
+2013-12-20T01:32:59.617565Z
+569
+xujizhe
 has-props
 
 
@@ -1928,7 +1928,7 @@ has-props
 
 
 
-3403
+121839
 
 easygame_dialog_ok.9.png
 file
@@ -1964,17 +1964,17 @@ has-props
 
 1049
 
-main_totaldistance_bg.png
+share_normal.png
 file
 
 
 
 
-2014-03-28T08:28:05.171875Z
-00993824c75e45555b957972f1d7f0cf
-2013-12-20T01:32:59.617565Z
-569
-xujizhe
+2014-04-30T08:26:06.250000Z
+ad5c3a6b5beaa88ce12f99c2f5e45c61
+2014-04-30T08:16:19.696414Z
+697
+zhaoyouliang
 has-props
 
 
@@ -1996,7 +1996,7 @@ has-props
 
 
 
-121839
+3236
 
 ic_launcher.png
 file
@@ -2032,40 +2032,6 @@ has-props
 
 8256
 
-progressbar_progress.png
-file
-
-
-
-
-2014-03-28T08:28:05.203125Z
-aad78ac01b7f291b8f9ec17a730b0321
-2013-12-30T06:32:56.470048Z
-587
-silian
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2979
-
 health_plus_login_btn_bg_normal.png.9.png
 file
 
@@ -2100,17 +2066,17 @@ has-props
 
 182
 
-btn_heartbeat_stop_normal.png
+progressbar_progress.png
 file
 
 
 
 
 2014-03-28T08:28:05.203125Z
-2a357ec0ef9c1b64437ec3d7ca799d37
-2013-12-19T09:04:46.510520Z
-565
-zhaoyouliang
+aad78ac01b7f291b8f9ec17a730b0321
+2013-12-30T06:32:56.470048Z
+587
+silian
 has-props
 
 
@@ -2132,7 +2098,7 @@ has-props
 
 
 
-4620
+2979
 
 bg_pub_backgroud.png
 file
@@ -2167,6 +2133,40 @@ has-props
 
 
 85014
+
+btn_heartbeat_stop_normal.png
+file
+
+
+
+
+2014-03-28T08:28:05.203125Z
+2a357ec0ef9c1b64437ec3d7ca799d37
+2013-12-19T09:04:46.510520Z
+565
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4620
 
 u93.png
 file
@@ -4106,6 +4106,40 @@ has-props
 
 3642
 
+valuebook_webview_bottom.png
+file
+
+
+
+
+2014-04-30T08:26:06.265625Z
+687cea3d642e5c7287b44f75e1b582e5
+2014-04-30T08:16:19.696414Z
+697
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3215
+
 result_bac_3.png
 file
 
@@ -4378,40 +4412,6 @@ has-props
 
 2892
 
-shop_btn_secondary_bg_n.9.png
-file
-
-
-
-
-2014-03-28T08:28:05.812500Z
-8d54c99bae470251af5d8ac32dc33047
-2013-12-17T10:16:36.499243Z
-554
-wangfeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1261
-
 bg_vision_center.png
 file
 
@@ -4446,17 +4446,17 @@ has-props
 
 1340
 
-personal_info_edit_save_btn_pressed.9.png
+shop_btn_secondary_bg_n.9.png
 file
 
 
 
 
-2014-04-21T08:47:33.250000Z
-975b86b19ca456f233b96d05f763e035
-2014-04-24T08:23:10.040540Z
-680
-lingyun
+2014-03-28T08:28:05.812500Z
+8d54c99bae470251af5d8ac32dc33047
+2013-12-17T10:16:36.499243Z
+554
+wangfeng
 has-props
 
 
@@ -4478,7 +4478,7 @@ has-props
 
 
 
-220
+1261
 
 hp_main_duration.png
 file
@@ -4513,6 +4513,40 @@ has-props
 
 
 3736
+
+personal_info_edit_save_btn_pressed.9.png
+file
+
+
+
+
+2014-04-21T08:47:33.250000Z
+975b86b19ca456f233b96d05f763e035
+2014-04-24T08:23:10.040540Z
+680
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+220
 
 shop_prodoctpara_tabbg_p.png
 file
@@ -4616,40 +4650,6 @@ has-props
 
 191
 
-support_icon_selected.png
-file
-
-
-
-
-2014-03-28T08:28:05.875000Z
-b3b17c1c84bac5ab26dfb5f11450182d
-2014-03-28T07:56:35.417049Z
-658
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-861
-
 logo.jpg
 file
 
@@ -4684,16 +4684,16 @@ has-props
 
 51556
 
-hp_main_popmenu_bg.9.png
+support_icon_selected.png
 file
 
 
 
 
-2014-03-28T08:28:05.906250Z
-8df13573b284fe7cc0298e3af3c5ad88
-2014-01-15T08:09:48.309437Z
-614
+2014-03-28T08:28:05.875000Z
+b3b17c1c84bac5ab26dfb5f11450182d
+2014-03-28T07:56:35.417049Z
+658
 zhaoyouliang
 has-props
 
@@ -4716,41 +4716,7 @@ has-props
 
 
 
-382
-
-local_list_add.png
-file
-
-
-
-
-2014-03-28T08:28:05.890625Z
-11b3fe652d24b50f5f23be13d168478d
-2013-12-30T06:32:56.470048Z
-587
-silian
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-856
+861
 
 orange_3.png
 file
@@ -4786,17 +4752,17 @@ has-props
 
 118
 
-setting_share_sinaweibo.png
+local_list_add.png
 file
 
 
 
 
-2014-03-28T08:28:05.921875Z
-8d2cedf4a5deb6b05bb609b57fbfe4b0
-2013-11-21T09:44:47.403575Z
-489
-xujizhe
+2014-03-28T08:28:05.890625Z
+11b3fe652d24b50f5f23be13d168478d
+2013-12-30T06:32:56.470048Z
+587
+silian
 has-props
 
 
@@ -4818,7 +4784,41 @@ has-props
 
 
 
-17463
+856
+
+hp_main_popmenu_bg.9.png
+file
+
+
+
+
+2014-03-28T08:28:05.906250Z
+8df13573b284fe7cc0298e3af3c5ad88
+2014-01-15T08:09:48.309437Z
+614
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+382
 
 player_cd_pause.png
 file
@@ -4854,14 +4854,14 @@ has-props
 
 11249
 
-setting_feedback_selector_bg.9.png
+setting_share_sinaweibo.png
 file
 
 
 
 
-2014-03-28T08:28:05.937500Z
-d01d826e3458b21b9aae36f8bc2442ed
+2014-03-28T08:28:05.921875Z
+8d2cedf4a5deb6b05bb609b57fbfe4b0
 2013-11-21T09:44:47.403575Z
 489
 xujizhe
@@ -4886,7 +4886,7 @@ has-props
 
 
 
-165
+17463
 
 tab_more_normal.png
 file
@@ -4922,17 +4922,17 @@ has-props
 
 3382
 
-checkbox_press.png
+setting_feedback_selector_bg.9.png
 file
 
 
 
 
-2014-04-15T09:19:51.171875Z
-0961d23173d24325da74d3f5323b952f
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-03-28T08:28:05.937500Z
+d01d826e3458b21b9aae36f8bc2442ed
+2013-11-21T09:44:47.403575Z
+489
+xujizhe
 has-props
 
 
@@ -4954,7 +4954,7 @@ has-props
 
 
 
-3049
+165
 
 health_plus_yz_normal.png
 file
@@ -4990,17 +4990,17 @@ has-props
 
 3761
 
-heart_a.png
+checkbox_press.png
 file
 
 
 
 
-2014-03-28T08:28:05.968750Z
-f94435df43c0bf58cbc7661f839273b9
-2014-01-03T02:03:03.430994Z
-592
-zhaoyouliang
+2014-04-15T09:19:51.171875Z
+0961d23173d24325da74d3f5323b952f
+2014-04-18T08:42:42.972857Z
+675
+lingyun
 has-props
 
 
@@ -5022,7 +5022,7 @@ has-props
 
 
 
-3432
+3049
 
 red_flag.png
 file
@@ -5058,17 +5058,17 @@ has-props
 
 3170
 
-panel_provious.png
+heart_a.png
 file
 
 
 
 
 2014-03-28T08:28:05.968750Z
-d707b77fbd41f7aed7cb6a5cec0e1629
-2013-12-30T06:32:56.470048Z
-587
-silian
+f94435df43c0bf58cbc7661f839273b9
+2014-01-03T02:03:03.430994Z
+592
+zhaoyouliang
 has-props
 
 
@@ -5090,7 +5090,7 @@ has-props
 
 
 
-3292
+3432
 
 girl_icon.png
 file
@@ -5126,6 +5126,40 @@ has-props
 
 3558
 
+panel_provious.png
+file
+
+
+
+
+2014-03-28T08:28:05.968750Z
+d707b77fbd41f7aed7cb6a5cec0e1629
+2013-12-30T06:32:56.470048Z
+587
+silian
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3292
+
 health_plus_register_btn_bg_pressed.png.9.png
 file
 
@@ -5159,40 +5193,6 @@ has-props
 
 
 272
-
-player_title_left.png
-file
-
-
-
-
-2014-03-28T08:28:05.984375Z
-d10bf89b484cf0c507e958482222142b
-2013-12-30T06:32:56.470048Z
-587
-silian
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1179
 
 heart_e.png
 file
@@ -5228,48 +5228,14 @@ has-props
 
 3728
 
-sex_female.png
+player_title_left.png
 file
 
 
 
 
-2014-04-18T07:57:01.515625Z
-e089fdda989798f5376e41cd848b5471
-2014-03-28T09:57:53.815501Z
-660
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3525
-
-sportrack_music.png
-file
-
-
-
-
-2014-03-28T08:28:06.015625Z
-94ca5021c7473cb2f3f5eee824a991aa
+2014-03-28T08:28:05.984375Z
+d10bf89b484cf0c507e958482222142b
 2013-12-30T06:32:56.470048Z
 587
 silian
@@ -5294,41 +5260,7 @@ has-props
 
 
 
-4855
-
-health_rate_middle_left.png
-file
-
-
-
-
-2014-03-28T08:28:06.000000Z
-5b4e928768d224c9adff8399608e7e1f
-2014-01-03T02:03:03.430994Z
-592
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3336
+1179
 
 userinfoeditwhite.9.png
 file
@@ -5364,6 +5296,108 @@ has-props
 
 137
 
+health_rate_middle_left.png
+file
+
+
+
+
+2014-03-28T08:28:06.000000Z
+5b4e928768d224c9adff8399608e7e1f
+2014-01-03T02:03:03.430994Z
+592
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3336
+
+sportrack_music.png
+file
+
+
+
+
+2014-03-28T08:28:06.015625Z
+94ca5021c7473cb2f3f5eee824a991aa
+2013-12-30T06:32:56.470048Z
+587
+silian
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4855
+
+sex_female.png
+file
+
+
+
+
+2014-04-18T07:57:01.515625Z
+e089fdda989798f5376e41cd848b5471
+2014-03-28T09:57:53.815501Z
+660
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3525
+
 calendar_backgroud_header.9.png
 file
 
@@ -5397,40 +5431,6 @@ has-props
 
 
 6126
-
-radiobtn_normal.png
-file
-
-
-
-
-2014-03-28T08:28:06.046875Z
-33d5569e371cce6061f9849a8aa3a9fd
-2013-11-05T09:08:21.155503Z
-414
-wangjiafeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4261
 
 health_bac.png
 file
@@ -5466,17 +5466,17 @@ has-props
 
 69170
 
-test_result_share_btn_nat.9.png
+radiobtn_normal.png
 file
 
 
 
 
-2014-04-08T03:56:09.953125Z
-b195109acc4f61dd90c97c701a77b540
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-03-28T08:28:06.046875Z
+33d5569e371cce6061f9849a8aa3a9fd
+2013-11-05T09:08:21.155503Z
+414
+wangjiafeng
 has-props
 
 
@@ -5498,7 +5498,7 @@ has-props
 
 
 
-9902
+4261
 
 wait_dialog_round_2.png
 file
@@ -5534,14 +5534,14 @@ has-props
 
 3582
 
-temperature_full.png
+test_result_share_btn_nat.9.png
 file
 
 
 
 
-2014-04-02T05:40:16.375000Z
-d9c9f29066ea32418531c2c6a7b23530
+2014-04-08T03:56:09.953125Z
+b195109acc4f61dd90c97c701a77b540
 2014-04-18T08:42:42.972857Z
 675
 lingyun
@@ -5566,7 +5566,7 @@ has-props
 
 
 
-79307
+9902
 
 wait_dialog_round_6.png
 file
@@ -5601,6 +5601,40 @@ has-props
 
 
 3572
+
+temperature_full.png
+file
+
+
+
+
+2014-04-02T05:40:16.375000Z
+d9c9f29066ea32418531c2c6a7b23530
+2014-04-18T08:42:42.972857Z
+675
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+79307
 
 health_plus_find_submit_bg_normal.9.png
 file
@@ -5670,40 +5704,6 @@ has-props
 
 2995
 
-shop_productdetail_count_up_n.png
-file
-
-
-
-
-2014-03-28T08:28:06.093750Z
-5d07b55ef91801c8e60eef66efc58e67
-2013-12-19T08:04:38.957872Z
-559
-wangfeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3424
-
 hp_main_distance.png
 file
 
@@ -5737,6 +5737,40 @@ has-props
 
 
 3952
+
+shop_productdetail_count_up_n.png
+file
+
+
+
+
+2014-03-28T08:28:06.093750Z
+5d07b55ef91801c8e60eef66efc58e67
+2013-12-19T08:04:38.957872Z
+559
+wangfeng
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3424
 
 icon.png
 file
@@ -5806,40 +5840,6 @@ has-props
 
 146
 
-hp_target_bikegray.png
-file
-
-
-
-
-2014-03-28T08:28:06.125000Z
-d94fbbe4ca5bf471f126c9b6d20a0b6d
-2014-01-20T08:26:02.580722Z
-628
-xujizhe
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3748
-
 health_plus_pwd_normal.png
 file
 
@@ -5874,17 +5874,17 @@ has-props
 
 3569
 
-rege_songs.png
+hp_target_bikegray.png
 file
 
 
 
 
 2014-03-28T08:28:06.125000Z
-996cebb997f8872b8e1130f89b3d401e
-2013-12-30T06:32:56.470048Z
-587
-silian
+d94fbbe4ca5bf471f126c9b6d20a0b6d
+2014-01-20T08:26:02.580722Z
+628
+xujizhe
 has-props
 
 
@@ -5906,7 +5906,7 @@ has-props
 
 
 
-5708
+3748
 
 heart_result_share_normal.png
 file
@@ -5941,6 +5941,40 @@ has-props
 
 
 3381
+
+rege_songs.png
+file
+
+
+
+
+2014-03-28T08:28:06.125000Z
+996cebb997f8872b8e1130f89b3d401e
+2013-12-30T06:32:56.470048Z
+587
+silian
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5708
 
 item.png
 file
@@ -6214,40 +6248,6 @@ has-props
 
 2982
 
-shop_productdetail_count_bg.png
-file
-
-
-
-
-2014-03-28T08:28:06.218750Z
-efcb6c8de83268712635629ff06600e0
-2013-12-19T08:04:38.957872Z
-559
-wangfeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2880
-
 progressbar_waiting10.png
 file
 
@@ -6281,6 +6281,40 @@ has-props
 
 
 3625
+
+shop_productdetail_count_bg.png
+file
+
+
+
+
+2014-03-28T08:28:06.218750Z
+efcb6c8de83268712635629ff06600e0
+2013-12-19T08:04:38.957872Z
+559
+wangfeng
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2880
 
 hp_target_walkgray.png
 file
@@ -6554,17 +6588,17 @@ has-props
 
 4313
 
-u9.png
+test_result_share_btn_prs.9.png
 file
 
 
 
 
-2014-03-28T08:28:06.312500Z
-24673dc5655709642398fd66e006a2d4
-2013-12-19T09:04:46.510520Z
-565
-zhaoyouliang
+2014-04-08T03:56:09.968750Z
+d0f6a0714479031ccc6c7a221420a6fd
+2014-04-18T08:42:42.972857Z
+675
+lingyun
 has-props
 
 
@@ -6586,7 +6620,7 @@ has-props
 
 
 
-324
+4967
 
 sportrack_music_pressed.png
 file
@@ -6622,17 +6656,17 @@ has-props
 
 4845
 
-test_result_share_btn_prs.9.png
+u9.png
 file
 
 
 
 
-2014-04-08T03:56:09.968750Z
-d0f6a0714479031ccc6c7a221420a6fd
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-03-28T08:28:06.312500Z
+24673dc5655709642398fd66e006a2d4
+2013-12-19T09:04:46.510520Z
+565
+zhaoyouliang
 has-props
 
 
@@ -6654,41 +6688,7 @@ has-props
 
 
 
-4967
-
-setting_update_btnbg.9.png
-file
-
-
-
-
-2014-03-28T08:28:06.343750Z
-47dd09e09a744f827ce93ce5ddc3992c
-2013-11-21T09:44:47.403575Z
-489
-xujizhe
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-857
+324
 
 achievement_calendar_selector_backgroud.png
 file
@@ -6724,6 +6724,40 @@ has-props
 
 4189
 
+setting_update_btnbg.9.png
+file
+
+
+
+
+2014-03-28T08:28:06.343750Z
+47dd09e09a744f827ce93ce5ddc3992c
+2013-11-21T09:44:47.403575Z
+489
+xujizhe
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+857
+
 hp_main_sport_type.png
 file
 
@@ -6757,74 +6791,6 @@ has-props
 
 
 1380
-
-right_switcher_expanded.9.png
-file
-
-
-
-
-2014-03-28T08:28:06.375000Z
-f5f3436f09039d24023cf5d0859c78ab
-2013-11-01T07:38:09.801076Z
-406
-xujizhe
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2619
-
-fake_cover.png
-file
-
-
-
-
-2014-03-28T08:28:06.375000Z
-7d0ff4ada9c4d3bd58fc2ce5f2f95895
-2014-01-13T08:40:39.249150Z
-606
-wangfeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2958
 
 player_bg.png
 file
@@ -6860,16 +6826,50 @@ has-props
 
 85324
 
-setting_unregist_arrow.png
+fake_cover.png
 file
 
 
 
 
-2014-03-28T08:28:06.406250Z
-3c22f995ff31d014f1afe98eaa5d4b70
-2013-11-21T09:48:02.538936Z
-490
+2014-03-28T08:28:06.375000Z
+7d0ff4ada9c4d3bd58fc2ce5f2f95895
+2014-01-13T08:40:39.249150Z
+606
+wangfeng
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2958
+
+right_switcher_expanded.9.png
+file
+
+
+
+
+2014-03-28T08:28:06.375000Z
+f5f3436f09039d24023cf5d0859c78ab
+2013-11-01T07:38:09.801076Z
+406
 xujizhe
 has-props
 
@@ -6892,7 +6892,7 @@ has-props
 
 
 
-3171
+2619
 
 btn_heartbeat_stop_selector.png
 file
@@ -6927,6 +6927,40 @@ has-props
 
 
 8301
+
+setting_unregist_arrow.png
+file
+
+
+
+
+2014-03-28T08:28:06.406250Z
+3c22f995ff31d014f1afe98eaa5d4b70
+2013-11-21T09:48:02.538936Z
+490
+xujizhe
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3171
 
 userinforightbg.9.png
 file
@@ -7302,16 +7336,16 @@ has-props
 
 16387
 
-btn_chatbtn3_normal.9.png
+header.png
 file
 
 
 
 
-2014-03-28T08:28:06.531250Z
-946c8ed5fc9e4dd71860f406980af2db
-2014-03-28T07:56:35.417049Z
-658
+2014-04-30T08:26:06.281250Z
+0ed81472bdd3994533be01c1eeb11ff6
+2014-04-30T08:16:19.696414Z
+697
 zhaoyouliang
 has-props
 
@@ -7334,7 +7368,7 @@ has-props
 
 
 
-1007
+5311
 
 main_playing1.png
 file
@@ -7369,6 +7403,40 @@ has-props
 
 
 5920
+
+btn_chatbtn3_normal.9.png
+file
+
+
+
+
+2014-03-28T08:28:06.531250Z
+946c8ed5fc9e4dd71860f406980af2db
+2014-03-28T07:56:35.417049Z
+658
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1007
 
 radio_active.png
 file
@@ -7506,40 +7574,6 @@ has-props
 
 3647
 
-hp_target_bikegray_blue.png
-file
-
-
-
-
-2014-03-28T08:28:06.593750Z
-754d24c76a6cf05a7ab65d80e1e5e5ff
-2014-01-20T08:26:02.580722Z
-628
-xujizhe
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3776
-
 boy_icon.png
 file
 
@@ -7573,6 +7607,40 @@ has-props
 
 
 3493
+
+hp_target_bikegray_blue.png
+file
+
+
+
+
+2014-03-28T08:28:06.593750Z
+754d24c76a6cf05a7ab65d80e1e5e5ff
+2014-01-20T08:26:02.580722Z
+628
+xujizhe
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3776
 
 progressbar_waiting9.png
 file
@@ -7778,40 +7846,6 @@ has-props
 
 5903
 
-hm_ceshi.png
-file
-
-
-
-
-2014-04-18T07:57:01.562500Z
-8ce8af3d1d90431730d4e25c7a65d401
-2014-03-28T09:57:53.815501Z
-660
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6603
-
 healht_heart_bac_top.png
 file
 
@@ -7845,6 +7879,40 @@ has-props
 
 
 5785
+
+hm_ceshi.png
+file
+
+
+
+
+2014-04-18T07:57:01.562500Z
+8ce8af3d1d90431730d4e25c7a65d401
+2014-03-28T09:57:53.815501Z
+660
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6603
 
 healthplus_headview_ok_btn.png
 file
@@ -7948,40 +8016,6 @@ has-props
 
 2947
 
-delete_user_btn_bg_pre.9.png
-file
-
-
-
-
-2014-04-18T07:57:01.562500Z
-9f1c7382b1cbcd25fe9bb303afc0530a
-2014-04-18T07:04:00.749800Z
-669
-zhaoyouliang
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-562
-
 calendar_backgroud_foot.9.png
 file
 
@@ -8016,17 +8050,17 @@ has-props
 
 4226
 
-test_result_btn_retest_prs.png
+delete_user_btn_bg_pre.9.png
 file
 
 
 
 
-2014-04-08T06:40:29.218750Z
-2a2421cd8f2a20a83267d1ba5b1ccc4d
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-04-18T07:57:01.562500Z
+9f1c7382b1cbcd25fe9bb303afc0530a
+2014-04-18T07:04:00.749800Z
+669
+zhaoyouliang
 has-props
 
 
@@ -8048,7 +8082,7 @@ has-props
 
 
 
-40045
+562
 
 main_mymusic.png
 file
@@ -8084,6 +8118,40 @@ has-props
 
 8033
 
+test_result_btn_retest_prs.png
+file
+
+
+
+
+2014-04-08T06:40:29.218750Z
+2a2421cd8f2a20a83267d1ba5b1ccc4d
+2014-04-18T08:42:42.972857Z
+675
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+40045
+
 shop_account_head_logout.jpg
 file
 
@@ -8117,6 +8185,40 @@ has-props
 
 
 188674
+
+moments_friends.png
+file
+
+
+
+
+2014-04-30T06:18:34.015625Z
+1f2d64b18bdd059b9588fbed7866eb00
+2014-04-29T08:20:33.717331Z
+690
+heda
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3234
 
 setting_share_wechatmoments.png
 file
@@ -8152,17 +8254,17 @@ has-props
 
 15164
 
-xin_lv.png
+panel_random.png
 file
 
 
 
 
-2014-04-18T07:57:01.578125Z
-3f682ed94207d4524be123cb0e2f4368
-2014-03-28T09:57:53.815501Z
-660
-zhaoyouliang
+2014-03-28T08:28:06.765625Z
+ca79ae493a89ecc1c84c3398b5cc4bbb
+2013-12-30T06:32:56.470048Z
+587
+silian
 has-props
 
 
@@ -8184,7 +8286,7 @@ has-props
 
 
 
-5987
+3416
 
 health_plus_find_submit_bg_pressed.9.png
 file
@@ -8220,17 +8322,17 @@ has-props
 
 222
 
-panel_random.png
+xin_lv.png
 file
 
 
 
 
-2014-03-28T08:28:06.765625Z
-ca79ae493a89ecc1c84c3398b5cc4bbb
-2013-12-30T06:32:56.470048Z
-587
-silian
+2014-04-18T07:57:01.578125Z
+3f682ed94207d4524be123cb0e2f4368
+2014-03-28T09:57:53.815501Z
+660
+zhaoyouliang
 has-props
 
 
@@ -8252,7 +8354,7 @@ has-props
 
 
 
-3416
+5987
 
 userregbtnbg.9.png
 file
@@ -8322,40 +8424,6 @@ has-props
 
 4608
 
-healthplus_personal_info_default_photo.png
-file
-
-
-
-
-2014-04-25T01:52:51.296875Z
-d458e41331fae82bd1af3c15904b9907
-2014-04-25T05:13:58.990258Z
-685
-lingyun
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4676
-
 heart_b.png
 file
 
@@ -8390,17 +8458,17 @@ has-props
 
 3552
 
-u854.png
+healthplus_personal_info_default_photo.png
 file
 
 
 
 
-2014-04-18T07:57:01.609375Z
-2c63f45cc5b1837fb2eb54b4b3099c31
-2014-04-17T01:46:39.182565Z
-665
-heda
+2014-04-25T01:52:51.296875Z
+d458e41331fae82bd1af3c15904b9907
+2014-04-25T05:13:58.990258Z
+685
+lingyun
 has-props
 
 
@@ -8422,7 +8490,7 @@ has-props
 
 
 
-11281
+4676
 
 analysis_pre_bt_disabled.png
 file
@@ -8458,17 +8526,17 @@ has-props
 
 3173
 
-healthplus_wo_item_arrow.png
+u854.png
 file
 
 
 
 
-2014-04-25T02:25:20.203125Z
-d45961b36cbeaa2ba4f2012da5a492e4
-2014-04-25T05:13:58.990258Z
-685
-lingyun
+2014-04-18T07:57:01.609375Z
+2c63f45cc5b1837fb2eb54b4b3099c31
+2014-04-17T01:46:39.182565Z
+665
+heda
 has-props
 
 
@@ -8490,7 +8558,7 @@ has-props
 
 
 
-2926
+11281
 
 menu_quit.png
 file
@@ -8526,17 +8594,17 @@ has-props
 
 3888
 
-heart_f.png
+healthplus_wo_item_arrow.png
 file
 
 
 
 
-2014-03-28T08:28:06.828125Z
-a7335216b6a733a9fcb36ce611c70693
-2014-01-03T02:03:03.430994Z
-592
-zhaoyouliang
+2014-04-25T02:25:20.203125Z
+d45961b36cbeaa2ba4f2012da5a492e4
+2014-04-25T05:13:58.990258Z
+685
+lingyun
 has-props
 
 
@@ -8558,7 +8626,7 @@ has-props
 
 
 
-3778
+2926
 
 test_result_gradient_ecg.png
 file
@@ -8593,6 +8661,40 @@ has-props
 
 
 197809
+
+heart_f.png
+file
+
+
+
+
+2014-03-28T08:28:06.828125Z
+a7335216b6a733a9fcb36ce611c70693
+2014-01-03T02:03:03.430994Z
+592
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3778
 
 health_news_img_little.png
 file
@@ -15428,6 +15530,40 @@ has-props
 
 2847
 
+moments_camera.png
+file
+
+
+
+
+2014-04-30T06:18:34.031250Z
+aa850ef37441b9b7e989d9c2135970a2
+2014-04-29T08:20:33.717331Z
+690
+heda
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3167
+
 vpi__tab_selected_focused_holo.9.png
 file
 
@@ -15536,10 +15672,10 @@ file
 
 
 
-2014-03-28T08:28:08.640625Z
-948c0a2f5940d2dff581e3e515342add
-2014-03-28T07:56:35.417049Z
-658
+2014-04-30T08:26:06.296875Z
+8b9bf542f1fc1917f488e7076d67ae5d
+2014-04-30T08:16:19.696414Z
+697
 zhaoyouliang
 has-props
 
@@ -15562,7 +15698,7 @@ has-props
 
 
 
-3368
+3136
 
 test_result_comment_btn_prs.9.png
 file

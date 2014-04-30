@@ -2,28 +2,29 @@ package com.vee.healthplus.ui.user;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_http.ImageGetFromHttp;
-import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.heahth_news_utils.ImageFileCache;
 import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
 import com.vee.healthplus.util.user.HP_DBModel;
@@ -34,9 +35,8 @@ import com.vee.healthplus.widget.CustomProgressDialog;
 import com.vee.healthplus.widget.HeaderView;
 
 @SuppressLint("ResourceAsColor")
-public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
-		implements View.OnClickListener, ICallBack,
-		SaveProfileTask.SaveProfileCallBack {
+public class HealthPlusPersonalInfoEditActivity extends Activity implements
+		View.OnClickListener, ICallBack, SaveProfileTask.SaveProfileCallBack {
 
 	private ListView mListView;
 	private Button saveBtn;
@@ -46,6 +46,8 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 	private Bitmap head = null;
 	private ImageFileCache fileCache;
 	private ImageMemoryCache memoryCache;
+	private TextView header_text;
+	private ImageView header_lbtn_img, header_rbtn_img;
 
 	private CustomProgressDialog progressDialog = null;
 
@@ -129,33 +131,31 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		View view = View
-				.inflate(this, R.layout.personal_info_edit_layout, null);
-		setContainer(view);
-		getHeaderView().setHeaderTitle("个人信息");
-		getHeaderView().setHeaderTitleColor(
-				R.color.register_headview_text_color_white);
-		getHeaderView().setBackGroundColor(
-				R.color.register_headview_bg_color_black);
-		setRightBtnVisible(View.GONE);
-		setLeftBtnVisible(View.VISIBLE);
-		setLeftBtnRes(R.drawable.healthplus_headview_back_btn);
-		setLeftBtnType(HeaderView.HEADER_BACK);
+		setContentView(R.layout.personal_info_edit_layout);
+
 		user = HP_DBModel.getInstance(this).queryUserInfoByUserId(
 				HP_User.getOnLineUserId(this), true);
 
-		initView(view);
+		initView();
 		initData();
 	}
 
-	private void initView(View view) {
-
-		mListView = (ListView) view
-				.findViewById(R.id.health_plus_personal_info_edit_lv);
-		saveBtn = (Button) view
-				.findViewById(R.id.health_plus_personal_info_edit_sava_btn);
+	private void initView() {
+		View headView = findViewById(R.id.personal_info_headview);
+		header_text = (TextView) headView.findViewById(R.id.header_text);
+		header_lbtn_img = (ImageView) headView
+				.findViewById(R.id.header_lbtn_img);
+		header_rbtn_img = (ImageView) headView
+				.findViewById(R.id.header_rbtn_img);
+		header_rbtn_img.setVisibility(View.GONE);
+		header_text.setText("个人信息");
+		header_lbtn_img
+				.setImageResource(R.drawable.healthplus_headview_back_btn);
+		mListView = (ListView) findViewById(R.id.health_plus_personal_info_edit_lv);
+		saveBtn = (Button) findViewById(R.id.health_plus_personal_info_edit_sava_btn);
 		saveBtn.setOnClickListener(this);
-		String digits = getResources().getString(R.string.user_resgiter_edit);
+		header_lbtn_img.setOnClickListener(this);
+		//String digits = getResources().getString(R.string.user_resgiter_edit);
 		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 	}
@@ -165,7 +165,7 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 
 		if (result == null) {
 			result = fileCache.getImage(url);
-			if (result == null) {
+			/*if (result == null) {
 				result = ImageGetFromHttp.downloadBitmap(url);
 				if (result != null) {
 					fileCache.saveBitmap(result, url);
@@ -173,7 +173,7 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 				} else {
 					memoryCache.addBitmapToCache(url, result);
 				}
-			}
+			}*/
 		}
 		return result;
 	}
@@ -200,7 +200,12 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 		infoList.get(4).setText("年龄").setValue("" + user.userAge + "岁");
 		infoList.get(5).setText("邮箱").setValue(user.email);
 		infoList.get(6).setText("身高").setValue(user.userHeight + "cm");
-		infoList.get(7).setText("体重").setValue(user.userWeight + "kg");
+		DecimalFormat format2 = new DecimalFormat("0");
+		infoList.get(7)
+				.setText("体重")
+				.setValue(
+						Float.parseFloat(format2.format(user.userWeight))
+								+ "kg");
 
 		mAdapter.setList(infoList);
 		mListView.setAdapter(mAdapter);
@@ -302,21 +307,19 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 			str = infoList.get(3).getValue();
 			Log.i("lingyun", "str=" + str);
 			user.userSex = str.equals("男") ? -1 : 0;
-			Log.i("lingyun", "user.userSex=" + user.userSex);
-
-			if (user.userHeight < 1 || user.userHeight > 245) {
-				displayResult(getResources().getString(
-						R.string.hp_userinfoediterror_height));
-				return;
-			} else if (user.userWeight < 1 || user.userWeight > 250) {
-				displayResult(getResources().getString(
-						R.string.hp_userinfoediterror_weight));
-				return;
-			} else if (user.userAge < 1 || user.userAge > 200) {
-				displayResult(getResources().getString(
-						R.string.hp_userinfoediterror_age));
-				return;
-			}
+			/*
+			 * Log.i("lingyun", "user.userSex=" + user.userSex);
+			 * 
+			 * if (user.userHeight < 1 || user.userHeight > 245) {
+			 * displayResult(getResources().getString(
+			 * R.string.hp_userinfoediterror_height)); return; } else if
+			 * (user.userWeight < 1 || user.userWeight > 250) {
+			 * displayResult(getResources().getString(
+			 * R.string.hp_userinfoediterror_weight)); return; } else if
+			 * (user.userAge < 1 || user.userAge > 200) {
+			 * displayResult(getResources().getString(
+			 * R.string.hp_userinfoediterror_age)); return; }
+			 */
 			if (head != null) {
 				fileCache.saveBitmap(head, user.photourl);
 				memoryCache.addBitmapToCache(user.photourl, head);
@@ -333,7 +336,7 @@ public class HealthPlusPersonalInfoEditActivity extends BaseFragmentActivity
 			HP_DBModel.getInstance(this).updateUserInfo(user, true);
 			finish();
 			break;
-		case R.id.cannel_btn:
+		case R.id.header_lbtn_img:
 			finish();
 			break;
 		}

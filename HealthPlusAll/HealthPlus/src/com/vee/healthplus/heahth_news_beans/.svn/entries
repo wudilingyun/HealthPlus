@@ -1,14 +1,14 @@
 10
 
 dir
-686
+700
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus/heahth_news_beans
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-03-28T07:56:35.417049Z
-658
+2014-04-30T08:16:19.696414Z
+697
 zhaoyouliang
 
 
@@ -25,6 +25,40 @@ zhaoyouliang
 
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
+
+NewsCollectinfor.java
+file
+
+
+
+
+2014-04-30T08:26:02.890625Z
+5f5819ca40e6f05a555cf8219f9a81e6
+2014-04-30T08:16:19.696414Z
+697
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+683
 
 Root.java
 file

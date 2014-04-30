@@ -101,6 +101,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 	}
 
 	private void shareTo(int shareTo) {
+		String s ="我在使用【云医生】应用,这个新闻很不错啊,你也来看一下吧###["+content+"]#### 地址是："+url;
 		int type = Platform.SHARE_TEXT;
 		if (imgPath.length() > 0 && url.length() > 0) {
 			type = Platform.SHARE_WEBPAGE;
@@ -110,7 +111,8 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		switch (shareTo) {
 		case 0:
 			SinaWeibo.ShareParams sp = new SinaWeibo.ShareParams();
-			sp.text = content;
+			
+			sp.text = s;
 			if (imgPath.length() > 0) {
 				sp.imageUrl = imgPath;
 			}
@@ -120,10 +122,9 @@ public class SettingShare extends Activity implements OnItemClickListener,
 			break;
 		case 1:
 			TencentWeibo.ShareParams sp1 = new TencentWeibo.ShareParams();
-			sp1.text = content;
-			sp1.imageUrl= imgPath;
+			sp1.text = s+content+"#### "+url;;
 			if (imgPath.length() > 0) {
-				sp1.imagePath = imgPath;
+				sp1.imageUrl = imgPath;
 			}
 			Platform p1 = ShareSDK.getPlatform(this, TencentWeibo.NAME);
 			p1.setPlatformActionListener(this);

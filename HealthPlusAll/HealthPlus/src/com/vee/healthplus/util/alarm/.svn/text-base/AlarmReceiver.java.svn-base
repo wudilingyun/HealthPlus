@@ -72,7 +72,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 		 .setContentText(content);
 		 n  = builder.getNotification();
 		 n.defaults = Notification.DEFAULT_SOUND;
-		 n.icon = R.drawable.ic_pic;
 		 manager.notify(id, n);
 		}
 		

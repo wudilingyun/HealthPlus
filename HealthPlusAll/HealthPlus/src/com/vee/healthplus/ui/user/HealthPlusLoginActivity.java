@@ -263,7 +263,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		user.email = profile.getEmail();
 		user.phone = profile.getPhone();
 		user.remark = profile.getRemark();
-		user.photourl="/hd/"+user.userId;
+		user.photourl="http://bk.browser.mobifox.cn:6060/hd/"+user.userId;
 		HP_DBModel.getInstance(this).insertUserInfo(user, true);
 		HP_User.setOnLineUserId(this, profile.getMemberid());
 		Log.e("lingyun", "getMemberid=" + profile.getMemberid());

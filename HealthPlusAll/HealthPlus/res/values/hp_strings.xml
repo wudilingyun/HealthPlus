@@ -126,7 +126,6 @@
     <string name="hp_userinfo_bmi_fat">过重</string>
     <string name="hp_userinfo_bmi_morefat">肥胖</string>
     <string name="hp_userinfo_bmi_morefatest">非常肥胖</string>
-    <string name="hp_userinfo_pwdmotify">修改密码</string>
     <string name="hp_userinfo_emailbound">邮箱绑定:</string>
     <string name="hp_userinfo_phonebound">手机绑定:</string>
     <string name="hp_userinfo_noset">未设置</string>

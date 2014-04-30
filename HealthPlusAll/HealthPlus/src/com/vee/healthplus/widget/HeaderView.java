@@ -24,10 +24,12 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 	public static final int HEADER_CAMERA = 7;
 	public static final int HEADER_CLEAR = 8;
 	public static final int HEADER_MENU = 9;//新闻资讯下拉菜单
+	public static final int HEADER_MOMENTS_FRIENDS = 10;
+	public static final int HEADER_MOMENTS_CAMERA = 11;
 
 	private Integer mLOption;
 	private Integer mROption;
-	private TextView mHeaderTitle;
+	private TextView mHeaderTitle,rbtnTv;
 	private ImageView lbtnImg;
 	private ImageView rbtnImg;
 	private RelativeLayout relativeLayout;
@@ -51,7 +53,9 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 		LayoutInflater li = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		li.inflate(R.layout.hp_w_header_view, this);
-
+		
+		rbtnTv=(TextView) findViewById(R.id.header_rbtn_tv);
+		rbtnTv.setOnClickListener(this);
 		lbtnImg = (ImageView) findViewById(R.id.header_lbtn_img);
 		lbtnImg.setOnClickListener(this);
 
@@ -107,7 +111,11 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 				mHeaderClickListener.OnHeaderClick(this, mROption);
 			}
 			break;
-
+		case R.id.header_rbtn_tv:
+			if (null != mHeaderClickListener) {
+				mHeaderClickListener.OnHeaderClick(this, mROption);
+			}
+			break;
 		default:
 			break;
 		}

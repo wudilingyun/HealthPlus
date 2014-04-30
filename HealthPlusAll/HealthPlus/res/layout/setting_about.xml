@@ -44,7 +44,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/setting_about_logo"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/setting_about_logo_text"
             android:visibility="invisible"/>
     </RelativeLayout>
 

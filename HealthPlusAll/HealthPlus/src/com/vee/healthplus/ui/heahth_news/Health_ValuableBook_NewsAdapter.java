@@ -8,8 +8,10 @@ import javax.security.auth.PrivateCredentialPermission;
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_beans.Doc;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.widget.RoundImageView;
 import com.yunfox.s4aservicetest.response.Exam;
 import com.yunfox.s4aservicetest.response.ExamType;
+import com.yunfox.s4aservicetest.response.YysNewsResponse;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -23,7 +25,7 @@ import android.widget.TextView;
 public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 
 	LayoutInflater inflater;
-	List<Doc> newslist;
+	List<YysNewsResponse> newslist;
 	private ImageLoader imageLoader;
 	private List<Bitmap> imgbitmap;// 要加载的图片
 	private Context context;
@@ -32,13 +34,12 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 			ImageLoader imageLoader) {
 		super();
 		inflater = LayoutInflater.from(context);
-		newslist = new ArrayList<Doc>();
+		newslist = new ArrayList<YysNewsResponse>();
 		this.context = context;
 		this.imageLoader = imageLoader;
 	}
 
-	public void listaddAdapter(List<Doc> newslist) {
-		this.newslist.clear();
+	public void listaddAdapter(List<YysNewsResponse> newslist) {
 		this.newslist.addAll(newslist);
 	}
 
@@ -49,7 +50,7 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Doc getItem(int position) {
+	public YysNewsResponse getItem(int position) {
 		// TODO Auto-generated method stub
 		return newslist.get(position);
 	}
@@ -76,16 +77,18 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 
 			v.newstitle = (TextView) view.findViewById(R.id.newstitle);
 			// v.newsbrief = (TextView) view.findViewById(R.id.newsbrief);
-			v.imageView_healthnews = (ImageView) view
+			v.imageView_healthnews = (RoundImageView) view
 					.findViewById(R.id.imageView_healthnews);
 			view.setTag(v);
 		}
 
 		ViewHolder v = (ViewHolder) view.getTag();
-		v.newstitle.setText(newslist.get(position).getTitle());
+		v.newstitle.setText(newslist.get(position).getSubject());
 		// v.newsbrief.setText(newslist.get(position).getSummary());
-
-		String imgurl = newslist.get(position).getImgUrl();
+		v.newstitle.setTag(newslist.get(position).getNewsurl());
+		System.out.println("webview的网址是"+newslist.get(position).getNewsurl());
+		v.imageView_healthnews.setImageResource(R.drawable.header);
+		String imgurl = newslist.get(position).getThumbnailurl();
 		imageLoader.addTask(imgurl, v.imageView_healthnews);
 		return view;
 	}
@@ -94,7 +97,8 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 
 		private int position;
 		private TextView newstitle, newsbrief;
-		private ImageView imageView_top, imageView_healthnews;
+		private ImageView imageView_top ;
+		private RoundImageView imageView_healthnews;
 	}
 
 }

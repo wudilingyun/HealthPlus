@@ -2,7 +2,7 @@
 <resources>
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>
-    <color name="transparent">#00ffffff</color>
+
     <color name="bg_gray">#ffecedef</color>
     <color name="listview_bg_gray">#ffecedef</color>
     <color name="listview_txt_gray">#ff8a8a8a</color>

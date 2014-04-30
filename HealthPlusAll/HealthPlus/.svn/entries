@@ -1,15 +1,15 @@
 10
 
 dir
-686
+700
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-25T06:04:30.251153Z
-686
-zhaoyouliang
+2014-04-30T09:09:35.205182Z
+700
+lingyun
 has-props
 
 
@@ -100,39 +100,11 @@ xujizhe
 src
 dir
 
-hs_err_pid8964.log
-file
-
-
-
-
-2014-03-28T08:28:13.437500Z
-56a49d3b0fd75827003141110b81f47c
-2013-12-23T07:05:53.477154Z
-575
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4662
+libs
+dir
+
+res
+dir
 
 HealthPlus.iml
 file
@@ -168,11 +140,39 @@ xujizhe
 
 1985
 
-res
-dir
-
-libs
-dir
+hs_err_pid8964.log
+file
+
+
+
+
+2014-03-28T08:28:13.437500Z
+56a49d3b0fd75827003141110b81f47c
+2013-12-23T07:05:53.477154Z
+575
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4662
 
 .classpath
 file
@@ -214,10 +214,10 @@ file
 
 
 
-2014-04-21T03:15:04.203125Z
-6a15c38c12c5bd9e9ce1a9f25e5d9f42
-2014-04-24T08:23:10.040540Z
-680
+2014-04-30T08:42:49.890625Z
+67e3b724838a99fbb3aa87c8e3f17b03
+2014-04-30T09:09:35.205182Z
+700
 lingyun
 
 
@@ -240,7 +240,7 @@ lingyun
 
 
 
-736
+528
 
 assets
 dir
@@ -251,44 +251,10 @@ file
 
 
 
-2014-03-28T08:28:13.468750Z
-18bfe77c342b4698f1cef19cf8d918e2
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-781
-
-AndroidManifest.xml
-file
-
-
-
-
-2014-04-25T06:11:50.218750Z
-71f962cb78c6ae9bb536e4351e362c2b
-2014-04-25T06:04:30.251153Z
-686
+2014-04-30T08:26:06.484375Z
+d48b11658c0880092b343753c878312a
+2014-04-30T08:16:19.696414Z
+697
 zhaoyouliang
 
 
@@ -311,7 +277,41 @@ zhaoyouliang
 
 
 
-28656
+799
+
+AndroidManifest.xml
+file
+
+
+
+
+2014-04-25T09:08:51.046875Z
+53a6326c1a59032fcf873023c10d2555
+2014-04-30T06:16:32.484400Z
+693
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+28958
 
 out
 dir

@@ -29,15 +29,29 @@ public class HeightEditActivity extends BaseFragmentActivity implements
 			if (option == HeaderView.HEADER_BACK) {
 				finish();
 			} else if (option == HeaderView.HEADER_OK) {
+				if(heightEt.getText().toString()==null||heightEt.getText().toString().equals("")){
+					displayResult(getResources().getString(
+							R.string.hp_userinfoediterror_height));
+					return;
+				}
+				if (Integer.parseInt(heightEt.getText().toString())<1||Integer.parseInt(heightEt.getText().toString())>300) {
+					displayResult(getResources().getString(
+							R.string.hp_userinfoediterror_height));
+					return;
+				}
 				Intent data = getIntent();
 				Bundle bundle = data.getExtras();
-				bundle.putString("height", heightEt.getText().toString());
+				bundle.putString("height", Integer.parseInt(heightEt.getText().toString())+"");
 				data.putExtras(bundle);
 				HeightEditActivity.this.setResult(RESULT_OK, data);
 				finish();
 			}
 		}
 	};
+	
+	private void displayResult(String msg) {
+		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

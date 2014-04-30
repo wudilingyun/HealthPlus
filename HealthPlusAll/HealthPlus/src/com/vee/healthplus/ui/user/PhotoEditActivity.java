@@ -6,6 +6,8 @@ import java.io.IOException;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,6 +31,7 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 	private ICallBack callBack;
 	private static final int PHOTO_PICKED_WITH_DATA = 1020;
 	private static final int CAMERA_WITH_DATA = 1021;
+	private static final int PHOTO_CROP = 1022;
 	private int userId;
 	private String hdFileName;
 	private Uri u;
@@ -38,13 +41,16 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 		// TODO Auto-generated method stub
 		switch (requestCode) {
 		case CAMERA_WITH_DATA:
-			Log.i("lingyun", "CAMERA_WITH_DATA.resultCode=" + resultCode);
 			if (resultCode == RESULT_OK) {
-				doCropPhoto2();
+				doCropPhoto2(u);
 			}
 			break;
 		case PHOTO_PICKED_WITH_DATA:
-			Log.i("lingyun", "PHOTO_PICKED_WITH_DATA.resultCode=" + resultCode);
+			if (resultCode == RESULT_OK) {
+				doCropPhoto2(data.getData());
+			}
+			break;
+		case PHOTO_CROP:
 			if (resultCode == RESULT_OK) {
 				Intent result = new Intent();
 				result.putExtra("hd", u.toString());
@@ -61,6 +67,41 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 			}
 			break;
 		}
+	}
+	
+	public static int readPictureDegree(String path) {
+		int degree = 0;
+		try {
+			ExifInterface exifInterface = new ExifInterface(path);
+			int orientation = exifInterface.getAttributeInt(
+					ExifInterface.TAG_ORIENTATION,
+					ExifInterface.ORIENTATION_NORMAL);
+			switch (orientation) {
+			case ExifInterface.ORIENTATION_ROTATE_90:
+				degree = 90;
+				break;
+			case ExifInterface.ORIENTATION_ROTATE_180:
+				degree = 180;
+				break;
+			case ExifInterface.ORIENTATION_ROTATE_270:
+				degree = 270;
+				break;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return degree;
+	}
+
+	public static Bitmap rotateBitmap(Bitmap bitmap, int degress) {
+		if (bitmap != null) {
+			Matrix m = new Matrix();
+			m.postRotate(degress);
+			bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
+					bitmap.getHeight(), m, true);
+			return bitmap;
+		}
+		return bitmap;
 	}
 
 	@Override
@@ -107,8 +148,10 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 			startActivityForResult(intent, CAMERA_WITH_DATA);
 			break;
 		case R.id.photo_edit_pick_btn:
-			// intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			// startActivityForResult(intent, CAMERA_WITH_DATA);
+			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); 
+			innerIntent.setType("image/*"); 
+			Intent wrapperIntent = Intent.createChooser(innerIntent, null);
+			startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);
 			break;
 		}
 	}
@@ -120,18 +163,18 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 		dir.mkdir();
 	}
 
-	public void doCropPhoto2() {
+	public void doCropPhoto2(Uri uri) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
-		intent.setDataAndType(u, "image/*");
+		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");
 		intent.putExtra("aspectX", 1);
 		intent.putExtra("aspectY", 1);
 		intent.putExtra("outputX", 128);
 		intent.putExtra("outputY", 128);
 		intent.putExtra("return-data", false);
-		intent.putExtra(MediaStore.EXTRA_OUTPUT, u);
+		intent.putExtra(MediaStore.EXTRA_OUTPUT, this.u);
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-		startActivityForResult(intent, PHOTO_PICKED_WITH_DATA);
+		startActivityForResult(intent, PHOTO_CROP);
 	}
 
 }

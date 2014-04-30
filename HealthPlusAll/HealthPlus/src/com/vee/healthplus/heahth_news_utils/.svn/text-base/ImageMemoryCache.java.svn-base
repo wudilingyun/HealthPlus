@@ -111,5 +111,6 @@ public class ImageMemoryCache {
 	//清除硬缓存对象
 	public void clearCache(){
 		mSoftCache.clear();
+		
 	}
 }

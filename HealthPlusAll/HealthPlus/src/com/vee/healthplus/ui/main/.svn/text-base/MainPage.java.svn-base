@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+
 import cn.sharesdk.framework.ShareSDK;
 
 import com.vee.healthplus.R;
