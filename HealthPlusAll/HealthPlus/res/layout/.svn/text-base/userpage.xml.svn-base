@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,10 +33,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/user_log_item_icon"
+                android:background="#33000000"
                 android:padding="5dip"
                 android:text="登陆"
                 android:textColor="#ffffff"
-                android:background="#33000000"
                 android:textSize="20sp" />
         </RelativeLayout>
 
@@ -184,14 +184,19 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/user_favorite_ll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:gravity="center"
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/user_favorite_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6"

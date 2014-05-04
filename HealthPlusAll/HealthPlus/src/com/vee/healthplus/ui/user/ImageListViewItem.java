@@ -9,6 +9,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.util.user.HP_User;
 
 public class ImageListViewItem implements ListElement {
 
@@ -16,6 +18,13 @@ public class ImageListViewItem implements ListElement {
 	private Bitmap photo;
 	private TextView textView;
 	private ImageView ivPhoto;
+	private ImageLoader imageLoader;
+	private HP_User user;
+
+	public ImageListViewItem(HP_User user, ImageLoader imageLoader) {
+		this.user = user;
+		this.imageLoader = imageLoader;
+	}
 
 	public ListElement setText(String text) {
 		this.name = text;
@@ -47,6 +56,8 @@ public class ImageListViewItem implements ListElement {
 				.findViewById(R.id.health_plus_personal_info_edit_image_item_photo_iv);
 		if (photo != null) {
 			ivPhoto.setImageBitmap(photo);
+		} else {
+			imageLoader.addTask(user.photourl, ivPhoto);
 		}
 		return layout;
 	}

@@ -144,6 +144,7 @@ public class ImageLoader {
 					// 将下载的图片分别存至内存缓存和文件缓存
 					fileCache.saveBitmap(result, url);
 					memoryCache.addBitmapToCache(url, result);
+					System.out.println("写入成功");
 				} else {
 					memoryCache.addBitmapToCache(url, result);
 				}

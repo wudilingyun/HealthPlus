@@ -130,8 +130,8 @@ public class UserInfoEdit extends UserBaseActivity implements
 			}
 			if (HP_User.getOnLineUserId(mContext) != 0) {
 				try {
-					new SaveProfileTask(UserInfoEdit.this, user,
-							UserInfoEdit.this).execute();
+					/*new SaveProfileTask(UserInfoEdit.this, user,
+							UserInfoEdit.this).execute();*/
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					Log.e("xuxuxu", ex.getMessage());

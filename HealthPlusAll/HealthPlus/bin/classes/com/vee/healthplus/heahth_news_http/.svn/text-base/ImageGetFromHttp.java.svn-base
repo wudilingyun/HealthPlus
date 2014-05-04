@@ -33,7 +33,8 @@ public class ImageGetFromHttp {
 			System.out.println("��ȡͼƬ�쳣");
 		}
 		
-		return compressImage(bitmap);
+		//return compressImage(bitmap);
+		return null;
 	}
 	
 	public static  Bitmap compressImage(Bitmap image) {

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -23,8 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.activity.BaseFragmentActivity;
-import com.vee.healthplus.heahth_news_http.ImageGetFromHttp;
+import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.heahth_news_utils.ImageFileCache;
 import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
 import com.vee.healthplus.util.user.HP_DBModel;
@@ -32,7 +32,6 @@ import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.SaveProfileTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
-import com.vee.healthplus.widget.HeaderView;
 
 @SuppressLint("ResourceAsColor")
 public class HealthPlusPersonalInfoEditActivity extends Activity implements
@@ -48,6 +47,8 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	private ImageMemoryCache memoryCache;
 	private TextView header_text;
 	private ImageView header_lbtn_img, header_rbtn_img;
+	private ImageLoader imageLoader;
+	private String hdpath;
 
 	private CustomProgressDialog progressDialog = null;
 
@@ -58,6 +59,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 			switch (requestCode) {
 			case 0:
 				String uri = data.getStringExtra("hd");
+				hdpath=Uri.parse(uri).getPath();
 				Log.i("lingyun", "uri=" + uri);
 				try {
 					head = MediaStore.Images.Media.getBitmap(
@@ -135,7 +137,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 
 		user = HP_DBModel.getInstance(this).queryUserInfoByUserId(
 				HP_User.getOnLineUserId(this), true);
-
+		imageLoader=ImageLoader.getInstance(this);
 		initView();
 		initData();
 	}
@@ -177,22 +179,24 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		}
 		return result;
 	}
+	
+	private Handler h=new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			
+		};
+	};
 
 	private void initData() {
 		memoryCache = new ImageMemoryCache(this);
 		fileCache = new ImageFileCache();
 		infoList = new ArrayList<ListElement>();
 		mAdapter = new PersonalInfoAdapter(this);
-		ImageListViewItem imageItem = new ImageListViewItem();
+		ImageListViewItem imageItem = new ImageListViewItem(user,imageLoader);
 		infoList.add(imageItem);
 		for (int i = 0; i < 7; i++) {
 			infoList.add(new TextListViewItem());
 		}
-		new Thread() {
-			public void run() {
-				infoList.get(0).setPhoto(getBitmap(user.photourl));
-			};
-		}.start();
+		
 		infoList.get(0).setText("头像");
 		infoList.get(1).setText("用户名").setValue(user.userNick);
 		infoList.get(2).setText("密码").setValue("未绑定");
@@ -328,7 +332,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				try {
 					new SaveProfileTask(
 							HealthPlusPersonalInfoEditActivity.this, user,
-							HealthPlusPersonalInfoEditActivity.this).execute();
+							HealthPlusPersonalInfoEditActivity.this,hdpath).execute();
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
@@ -348,6 +352,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		progressDialog = CustomProgressDialog.createDialog(this);
 		progressDialog.setMessage(this.getString(R.string.registing));
 		progressDialog.setCanceledOnTouchOutside(false);
+		
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.vee.healthplus.ui.setting;
 
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,11 +24,12 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
 import com.vee.healthplus.heahth_news_http.ImageGetFromHttp;
 import com.vee.healthplus.heahth_news_utils.ImageFileCache;
 import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
+import com.vee.healthplus.ui.heahth_news.FavoriteNewsActivity;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
-import com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity;
 import com.vee.healthplus.util.SystemMethod;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
@@ -43,9 +47,10 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	private RelativeLayout rl_login_done;
 	private TextView tv_user_name, user_login_tv, user_login_age,
 			user_login_sex;
-	private TextView edit;
+	private TextView favoriteCountTv;
 	private ImageView photoIv;
 	private RelativeLayout rl_login_none;
+	private LinearLayout user_favorite_ll;
 	private ImageFileCache fileCache;
 	private ImageMemoryCache memoryCache;
 	private Bitmap head = null;
@@ -115,14 +120,16 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 		user_login_sex = (TextView) localView.findViewById(R.id.user_login_sex);
 		user_login_age = (TextView) localView.findViewById(R.id.user_login_age);
 		tv_user_name = (TextView) localView.findViewById(R.id.user_login_name);
+		favoriteCountTv = (TextView) localView.findViewById(R.id.user_favorite_count_tv);
+		
+		user_favorite_ll= (LinearLayout) localView.findViewById(R.id.user_favorite_ll);
 		rl_login_none = (RelativeLayout) localView
 				.findViewById(R.id.userpage_loginbar_none);
 		user_login_tv = (TextView) localView
 				.findViewById(R.id.user_log_item_text);
 		photoIv = (ImageView) localView.findViewById(R.id.user_list_item_icon);
-		//edit = (TextView) rl_login_done.findViewById(R.id.user_log_item_edit);
 		user_login_tv.setOnClickListener(this);
-		//edit.setOnClickListener(this);
+		user_favorite_ll.setOnClickListener(this);
 		memoryCache = new ImageMemoryCache(mContext);
 		fileCache = new ImageFileCache();
 		return localView;
@@ -135,6 +142,8 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	}
 
 	private void updateLoginState() {
+		Log.i("lingyun","userid="+HP_User.getOnLineUserId(getActivity())+"user="+HP_DBModel.getInstance(getActivity())
+				.queryUserInfoByUserId(HP_User.getOnLineUserId(this.mContext), true));
 		int userid = HP_User.getOnLineUserId(getActivity());
 		if (userid != 0) {
 			HP_User user = HP_DBModel.getInstance(getActivity())
@@ -150,32 +159,46 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			final String purl = user.photourl;
 			new Thread() {
 				public void run() {
+					Log.i("lingyun","head="+head+"purl="+purl);
+					if(purl!=null)
 					head = getBitmap(purl);
 					h.sendEmptyMessage(1);
+					
 				}
 			}.start();
+			List<NewsCollectinfor> list= HP_DBModel.getInstance(mContext).queryUserCollectInfor(user.userId);
+			if(list!=null){
+				favoriteCountTv.setText(list.size()+"");
+			}else{
+				favoriteCountTv.setText(0+"");
+			}
 		} else {
 			((BaseFragmentActivity) getActivity())
 			.setRightTvVisible(View.GONE);
 			rl_login_done.setVisibility(View.GONE);
 			rl_login_none.setVisibility(View.VISIBLE);
+			favoriteCountTv.setText(0+"");
 		}
 	}
 
 	private Bitmap getBitmap(String url) {
+		// 从内存缓存当中获取bitmap对象
 		Bitmap result = memoryCache.getBitmapFromCache(url);
-
 		if (result == null) {
+			// 从文件缓存当中获取bitmap对象
 			result = fileCache.getImage(url);
-			/*if (result == null) {
+			if (result == null) {
+				// 从网络当中下载数据
 				result = ImageGetFromHttp.downloadBitmap(url);
 				if (result != null) {
+					// 将下载的图片分别存至内存缓存和文件缓存
 					fileCache.saveBitmap(result, url);
 					memoryCache.addBitmapToCache(url, result);
+					System.out.println("写入成功");
 				} else {
 					memoryCache.addBitmapToCache(url, result);
 				}
-			}*/
+			}
 		}
 		return result;
 	}
@@ -200,9 +223,9 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 					HealthPlusLoginActivity.class);
 			startActivity(intent);
 			break;
-		case R.id.user_log_item_edit:
+		case R.id.user_favorite_ll:
 			Intent intent2 = new Intent(getActivity(),
-					HealthPlusPersonalInfoEditActivity.class);
+					FavoriteNewsActivity.class);
 			startActivity(intent2);
 			break;
 		}

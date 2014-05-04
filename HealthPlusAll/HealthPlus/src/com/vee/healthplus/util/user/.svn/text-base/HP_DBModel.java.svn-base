@@ -278,9 +278,9 @@ public class HP_DBModel {
 		if (cursor != null && cursor.getCount() > 0) {
 			while (cursor.moveToNext()) {
 
-				String title = cursor.getString(1);
-				String imgurl = cursor.getString(2);
-				String weburl = cursor.getString(3);
+				String title = cursor.getString(2);
+				String imgurl = cursor.getString(3);
+				String weburl = cursor.getString(4);
 				NewsCollectinfor newsCollectinfor = new NewsCollectinfor();
 				newsCollectinfor.setTitle(title);
 				newsCollectinfor.setImgurl(imgurl);

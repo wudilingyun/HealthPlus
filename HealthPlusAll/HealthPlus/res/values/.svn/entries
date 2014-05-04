@@ -1,7 +1,7 @@
 10
 
 dir
-700
+703
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/values
 svn://192.168.23.204/mobileapp/mobilesafe
 
@@ -164,14 +164,14 @@ heda
 
 hp_w_color.xml
 file
+704
 
 
 
-
-2014-04-30T08:41:22.171875Z
-cbd04c1a7998893275e6f405797cfcbc
-2014-04-30T09:09:35.205182Z
-700
+2014-04-30T10:11:19.000000Z
+197c28ecf06431ece53394f5f17bad2c
+2014-05-04T09:17:09.244802Z
+704
 lingyun
 
 
@@ -368,14 +368,14 @@ xujizhe
 
 hp_w_styles.xml
 file
+704
 
 
 
-
-2014-04-30T08:39:01.265625Z
-8bd5a879b30e8097a13c817a804f7df5
-2014-04-30T09:09:35.205182Z
-700
+2014-04-30T10:11:43.953125Z
+272e36a194bdec6776c56b3334d8d460
+2014-05-04T09:17:09.244802Z
+704
 lingyun
 
 
@@ -398,7 +398,7 @@ lingyun
 
 
 
-13498
+13511
 
 forum_strings.xml
 file
@@ -570,40 +570,6 @@ xujizhe
 
 113
 
-ting_strings.xml
-file
-
-
-
-
-2014-04-30T08:31:03.234375Z
-93792df8024eeaa4c537fc4b4c9a1ed8
-2014-04-30T09:09:35.205182Z
-700
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3041
-
 hp_w_attrs.xml
 file
 
@@ -637,6 +603,40 @@ zhaoyouliang
 
 
 8006
+
+ting_strings.xml
+file
+
+
+
+
+2014-04-30T08:31:03.234375Z
+93792df8024eeaa4c537fc4b4c9a1ed8
+2014-04-30T09:09:35.205182Z
+700
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3041
 
 attrs_pulltorefresh.xml
 file
@@ -842,40 +842,6 @@ lingyun
 
 763
 
-exam_dimens.xml
-file
-
-
-
-
-2014-04-30T08:26:05.078125Z
-ad5009a4f21cfbba7506d3b1d89412c4
-2014-04-30T08:16:19.696414Z
-697
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1744
-
 strings.xml
 file
 
@@ -909,6 +875,40 @@ lingyun
 
 
 681
+
+exam_dimens.xml
+file
+
+
+
+
+2014-04-30T08:26:05.078125Z
+ad5009a4f21cfbba7506d3b1d89412c4
+2014-04-30T08:16:19.696414Z
+697
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1744
 
 shop_colors.xml
 file
@@ -944,6 +944,40 @@ lingyun
 
 2055
 
+moments_strings.xml
+file
+704
+
+
+
+2014-05-04T01:57:18.921875Z
+5a287e7af32fb01739400828256bd48e
+2014-05-04T09:17:09.244802Z
+704
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1071
+
 hp_w_array.xml
 file
 
@@ -977,40 +1011,6 @@ lingyun
 
 
 1429
-
-moments_strings.xml
-file
-
-
-
-
-2014-04-18T07:57:00.500000Z
-ea5aca97ebdae0f495358103413aedde
-2014-04-17T01:46:39.182565Z
-665
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-933
 
 ids_pulltorefresh.xml
 file
@@ -1215,6 +1215,40 @@ wangfeng
 
 
 16236
+
+color.xml
+file
+704
+
+
+
+2014-05-04T01:56:43.875000Z
+dccb99e2aa56583e404407b0938df5f4
+2014-05-04T09:17:09.244802Z
+704
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9233
 
 dimens.xml
 file

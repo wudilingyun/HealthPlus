@@ -5,7 +5,7 @@
     <color name="hp_font_lightblack">#acacac</color>
     <color name="hp_font_darkblack">#5d5d5d</color>
     <color name="hp_font_midblack">#4a4949</color>
-    <color name="transparent">#00ffffff</color>
+    <color name="transparent">#00000000</color>
     <color name="blue">#25acca</color>
     <color name="blue_light">#01d3ff</color>
     <color name="gray">#9b9b9b</color>

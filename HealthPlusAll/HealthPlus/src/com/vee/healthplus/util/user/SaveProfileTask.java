@@ -1,33 +1,36 @@
 package com.vee.healthplus.util.user;
 
 
-import android.app.Activity;
-import android.os.AsyncTask;
-
-import com.yunfox.s4aservicetest.response.GeneralResponse;
-import com.yunfox.springandroid4healthplus.SpringAndroidService;
-
 import org.apache.http.conn.ConnectTimeoutException;
 import org.springframework.social.connect.DuplicateConnectionException;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResourceAccessException;
 
+import android.app.Activity;
+import android.os.AsyncTask;
+
+import com.yunfox.s4aservicetest.response.GeneralResponse;
+import com.yunfox.s4aservicetest.response.UploadAvatarResponse;
+import com.yunfox.springandroid4healthplus.SpringAndroidService;
+
 /**
  * Created by wangjiafeng on 13-11-14.
  */
 public class SaveProfileTask extends
-        AsyncTask<Void, Void, GeneralResponse> {
+        AsyncTask<Void, Void, Object[]> {
     private MultiValueMap<String, String> formData;
     private Exception exception;
     private Activity activity;
     private HP_User user;
     private SaveProfileCallBack callBack;
+    private String hdpath;
 
-    public SaveProfileTask(Activity activity, HP_User user, SaveProfileCallBack callBack) {
+    public SaveProfileTask(Activity activity, HP_User user, SaveProfileCallBack callBack,String hdpath) {
         this.activity = activity;
         this.user = user;
         this.callBack = callBack;
+        this.hdpath=hdpath;
     }
 
     @Override
@@ -63,12 +66,14 @@ public class SaveProfileTask extends
     }
 
     @Override
-    protected GeneralResponse doInBackground(Void... params) {
+    protected Object[] doInBackground(Void... params) {
         // TODO Auto-generated method stub
         try {
             GeneralResponse generalResponse = SpringAndroidService
                     .getInstance(activity.getApplication()).saveProfile(formData);
-            return generalResponse;
+            UploadAvatarResponse  uploadAvatarResponse=SpringAndroidService
+                    .getInstance(activity.getApplication()).uploadAvatar(hdpath);
+            return new Object[]{generalResponse,uploadAvatarResponse};
         } catch (Exception e) {
             this.exception = e;
             e.printStackTrace();
@@ -78,7 +83,7 @@ public class SaveProfileTask extends
     }
 
     @Override
-    protected void onPostExecute(GeneralResponse generalResponse) {
+    protected void onPostExecute(Object[] obs) {
         if (exception != null) {
             String message;
 
@@ -92,8 +97,8 @@ public class SaveProfileTask extends
             callBack.onErrorSaveProfile(exception);
         }
 
-        if (generalResponse != null) {
-            callBack.onFinishSaveProfile(generalResponse.getReturncode());
+        if (obs[0] != null) {
+            callBack.onFinishSaveProfile(((GeneralResponse)obs[0]).getReturncode());
         }
     }
 
