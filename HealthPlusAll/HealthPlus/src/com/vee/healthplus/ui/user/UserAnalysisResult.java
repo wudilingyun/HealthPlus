@@ -1,5 +1,6 @@
 package com.vee.healthplus.ui.user;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -19,10 +20,12 @@ import com.vee.healthplus.widget.CustomDialog;
 public class UserAnalysisResult extends DialogFragment implements View.OnClickListener {
 
     private TextView result_result, result_idealweight, result_bmi, result_bmr, result_everydayquality, result_addweight, result_subtrackweight;
-    private HP_User user;
+    @SuppressLint("ValidFragment")
+	private HP_User user;
     private Context mContext;
 
-    public UserAnalysisResult(HP_User user) {
+    @SuppressLint("ValidFragment")
+	public UserAnalysisResult(HP_User user) {
         this.user = user;
     }
 

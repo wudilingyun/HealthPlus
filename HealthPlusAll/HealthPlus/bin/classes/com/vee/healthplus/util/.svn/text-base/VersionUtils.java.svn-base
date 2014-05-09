@@ -223,6 +223,7 @@ public class VersionUtils {
 
     public boolean canUpdate(Context context) {
         String url = mServer + Common.UPDATE_VERSION_JSON;
+        System.out.println("要解析的url"+url);
         if (getServerVer(url)) {
             if (parseServerVer(context)) {
                 return true;

@@ -52,6 +52,7 @@ public class MentalityActivity extends BaseFragmentActivity implements
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
+		setLeftBtnRes(R.drawable.hp_w_header_view_back);
 		init();
 		sqlForTest = new SqlForTest(this);
 		sqlForTest.getHealthContent("112");
@@ -267,6 +268,7 @@ public class MentalityActivity extends BaseFragmentActivity implements
 				bundle.putSerializable("tzscore", myAdapter.getScoreMap());
 				intent.putExtras(bundle);
 				intent.putExtra("flag", "112");
+				intent.putExtra("testname", "心理测试");
 				startActivity(intent);
 				this.finish();
 			} else {

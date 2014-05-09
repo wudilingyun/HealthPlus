@@ -29,21 +29,24 @@
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/imageViewThird"
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/imageViewFouth"
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,28 +60,32 @@
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/imageViewSixth"
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/imageViewSeventh"
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/imageViewEighth"
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +99,22 @@
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:clickable="true"
-            android:src="@drawable/u852" />
+            android:src="@drawable/u852" 
+            android:visibility="gone"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/SaveMomentsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dip"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dip"
+        android:background="@drawable/button_comment_submit"
+        android:maxWidth="70dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/savemoments"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 
 </LinearLayout>

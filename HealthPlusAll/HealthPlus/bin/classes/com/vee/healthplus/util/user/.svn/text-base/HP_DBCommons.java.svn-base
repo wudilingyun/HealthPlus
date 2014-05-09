@@ -12,7 +12,7 @@ public class HP_DBCommons {
     public static final String USERINFO_TABLENAME = "USER_HP";
     public static final String USERWEIGHT_TABLENAME = "USERWEIGHT_HP";
     public static final String USERCOLLECT_TABLENAME ="USERCOLLECT_NEWS";//收藏宝典内容
-
+    public static final String USERTEST_TABLENAME ="USERTEST";//测试列表
     //字段名
     public static final String USERID = "USER_ID";
     public static final String USERNAME = "USER_NAME";
@@ -34,4 +34,11 @@ public class HP_DBCommons {
     public static final String TITLE = "TITLE";
     public static final String IMGURL ="IMGURL";
     public static final String WEBURL = "WEBURL";
+    
+    /*
+     * 测试列表字段
+     */
+    public static final String TESTNAME = "TESTNAME";
+    public static final String TESTRESULT ="TESTRESULT";
+    public static final String TESTTIME = "TESTTIME";
 }

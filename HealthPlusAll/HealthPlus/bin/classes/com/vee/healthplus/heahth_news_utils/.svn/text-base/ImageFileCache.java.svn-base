@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Comparator;
+
+import org.springframework.security.crypto.codec.Base64;
 
 import android.R.integer;
 import android.graphics.Bitmap;
@@ -68,8 +71,18 @@ public class ImageFileCache {
 
 	// 5 将url 转换成文件名
 	private String convertUrltoFileName(String url) {
-		String[] strs = url.split("/");
-		return strs[strs.length - 1] + WHOLESALE_CONV;// 地址最后一位+扩展名
+		byte[] result = Base64.encode(url.getBytes());  
+		String s = null;
+		try {
+			s = new String(result, "GB2312");
+			System.out.println(s);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+			return s;
+		}
+		return s;// 地址最后一位+扩展名
 	}
 
 	// 6.更新最后读取数据时间

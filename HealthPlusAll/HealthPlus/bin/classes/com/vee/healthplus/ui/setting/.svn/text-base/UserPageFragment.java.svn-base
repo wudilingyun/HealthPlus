@@ -26,14 +26,14 @@ import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
 import com.vee.healthplus.heahth_news_http.ImageGetFromHttp;
-import com.vee.healthplus.heahth_news_utils.ImageFileCache;
-import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
+import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.ui.heahth_news.FavoriteNewsActivity;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.util.SystemMethod;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
+import com.vee.healthplus.util.user.UserIndexUtils;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class UserPageFragment extends Fragment implements OnClickListener,
@@ -46,21 +46,11 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	private ListView mListView;
 	private RelativeLayout rl_login_done;
 	private TextView tv_user_name, user_login_tv, user_login_age,
-			user_login_sex;
+			user_weight_tv;
 	private TextView favoriteCountTv;
-	private ImageView photoIv;
+	private ImageView photoIv,user_login_sex;
 	private RelativeLayout rl_login_none;
 	private LinearLayout user_favorite_ll;
-	private ImageFileCache fileCache;
-	private ImageMemoryCache memoryCache;
-	private Bitmap head = null;
-	private Handler h = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			if (photoIv != null && head != null) {
-				photoIv.setImageBitmap(head);
-			}
-		};
-	};
 
 	public static UserPageFragment newInstance() {
 		return new UserPageFragment();
@@ -90,6 +80,13 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				switch (position) {
+				
+				case 0:
+					startActivity(new Intent(getActivity(),TestHistoryActivity.class));
+					break;
+				case 2:
+					startActivity(new Intent(getActivity(),HealthPlusSettingActivity.class));
+					break;
 				case 4:
 					if (HP_User.getOnLineUserId(getActivity()) == 0) {
 						Toast.makeText(getActivity(), "未登录", 0).show();
@@ -117,12 +114,16 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 
 		rl_login_done = (RelativeLayout) localView
 				.findViewById(R.id.userpage_loginbar_done);
-		user_login_sex = (TextView) localView.findViewById(R.id.user_login_sex);
+		user_login_sex = (ImageView) localView.findViewById(R.id.user_login_sex);
+		
 		user_login_age = (TextView) localView.findViewById(R.id.user_login_age);
 		tv_user_name = (TextView) localView.findViewById(R.id.user_login_name);
-		favoriteCountTv = (TextView) localView.findViewById(R.id.user_favorite_count_tv);
+		favoriteCountTv = (TextView) localView
+				.findViewById(R.id.user_favorite_count_tv);
+		user_weight_tv = (TextView) localView.findViewById(R.id.user_login_weight);
 		
-		user_favorite_ll= (LinearLayout) localView.findViewById(R.id.user_favorite_ll);
+		user_favorite_ll = (LinearLayout) localView
+				.findViewById(R.id.user_favorite_ll);
 		rl_login_none = (RelativeLayout) localView
 				.findViewById(R.id.userpage_loginbar_none);
 		user_login_tv = (TextView) localView
@@ -130,8 +131,6 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 		photoIv = (ImageView) localView.findViewById(R.id.user_list_item_icon);
 		user_login_tv.setOnClickListener(this);
 		user_favorite_ll.setOnClickListener(this);
-		memoryCache = new ImageMemoryCache(mContext);
-		fileCache = new ImageFileCache();
 		return localView;
 	}
 
@@ -142,65 +141,49 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	}
 
 	private void updateLoginState() {
-		Log.i("lingyun","userid="+HP_User.getOnLineUserId(getActivity())+"user="+HP_DBModel.getInstance(getActivity())
-				.queryUserInfoByUserId(HP_User.getOnLineUserId(this.mContext), true));
+
 		int userid = HP_User.getOnLineUserId(getActivity());
 		if (userid != 0) {
 			HP_User user = HP_DBModel.getInstance(getActivity())
 					.queryUserInfoByUserId(userid, true);
 			rl_login_done.setVisibility(View.VISIBLE);
 			tv_user_name.setText(user.userNick);
-			Log.i("lingyun", "userSex=" + user.userSex);
-			user_login_sex.setText(user.userSex == -1 ? "男" : "女");
-			user_login_age.setText("" + user.userAge);
+			if (user.userSex == -1) {
+				user_login_sex.setImageResource(R.drawable.boy_icon);
+			} else {
+				user_login_sex.setImageResource(R.drawable.girl_icon);
+			}
+			user_login_age.setText("" + user.userAge+"岁");
+			if (user.userHeight != 0 && user.userWeight != 0) {
+				user_weight_tv.setText(UserIndexUtils.getResult(getActivity(),
+						user));
+				user_weight_tv.setVisibility(View.VISIBLE);
+			} else {
+				user_weight_tv.setVisibility(View.GONE);
+			}
 			rl_login_none.setVisibility(View.GONE);
 			((BaseFragmentActivity) getActivity())
-			.setRightTvVisible(View.VISIBLE);
-			final String purl = user.photourl;
-			new Thread() {
-				public void run() {
-					Log.i("lingyun","head="+head+"purl="+purl);
-					if(purl!=null)
-					head = getBitmap(purl);
-					h.sendEmptyMessage(1);
-					
-				}
-			}.start();
-			List<NewsCollectinfor> list= HP_DBModel.getInstance(mContext).queryUserCollectInfor(user.userId);
-			if(list!=null){
-				favoriteCountTv.setText(list.size()+"");
-			}else{
-				favoriteCountTv.setText(0+"");
+					.setRightTvVisible(View.VISIBLE);
+			Log.i("lingyun", "updateLoginState.user.photourl=" + user.photourl);
+			if (user.photourl != null && !user.photourl.equals("")) {
+				ImageLoader.getInstance(getActivity()).addTask(user.photourl,
+						photoIv);
 			}
+			List<NewsCollectinfor> list = HP_DBModel.getInstance(mContext)
+					.queryUserCollectInfor(user.userId);
+			if (list != null) {
+				favoriteCountTv.setText(list.size() + "");
+			} else {
+				favoriteCountTv.setText(0 + "");
+			}
+			user_favorite_ll.setEnabled(true);
 		} else {
-			((BaseFragmentActivity) getActivity())
-			.setRightTvVisible(View.GONE);
+			((BaseFragmentActivity) getActivity()).setRightTvVisible(View.GONE);
 			rl_login_done.setVisibility(View.GONE);
 			rl_login_none.setVisibility(View.VISIBLE);
-			favoriteCountTv.setText(0+"");
+			favoriteCountTv.setText(0 + "");
+			user_favorite_ll.setEnabled(false);
 		}
-	}
-
-	private Bitmap getBitmap(String url) {
-		// 从内存缓存当中获取bitmap对象
-		Bitmap result = memoryCache.getBitmapFromCache(url);
-		if (result == null) {
-			// 从文件缓存当中获取bitmap对象
-			result = fileCache.getImage(url);
-			if (result == null) {
-				// 从网络当中下载数据
-				result = ImageGetFromHttp.downloadBitmap(url);
-				if (result != null) {
-					// 将下载的图片分别存至内存缓存和文件缓存
-					fileCache.saveBitmap(result, url);
-					memoryCache.addBitmapToCache(url, result);
-					System.out.println("写入成功");
-				} else {
-					memoryCache.addBitmapToCache(url, result);
-				}
-			}
-		}
-		return result;
 	}
 
 	@Override

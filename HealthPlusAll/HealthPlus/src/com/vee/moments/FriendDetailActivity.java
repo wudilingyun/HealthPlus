@@ -42,14 +42,7 @@ public class FriendDetailActivity extends BaseFragmentActivity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-					{
-						new AddFriendTask().executeOnExecutor(Executors.newCachedThreadPool());
-					}
-					else
-					{
-						new AddFriendTask().execute();
-					}
+					new AddFriendTask().execute();
 				}
 			});
 		} else {
@@ -59,8 +52,10 @@ public class FriendDetailActivity extends BaseFragmentActivity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					Intent intent = new Intent(FriendDetailActivity.this, UserMomentsActivity.class);
-					intent.putExtra("friendid", searchUserResponse.getFriendid());
+					Intent intent = new Intent(FriendDetailActivity.this,
+							UserMomentsActivity.class);
+					intent.putExtra("friendid",
+							searchUserResponse.getFriendid());
 					startActivity(intent);
 					FriendDetailActivity.this.finish();
 				}

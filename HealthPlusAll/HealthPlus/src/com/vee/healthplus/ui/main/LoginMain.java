@@ -43,10 +43,10 @@ public class LoginMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
         loginText = (TextView) findViewById(R.id.login_text);
-        addAskWeeknessDB();
+        HealthTestDB();
     }
     
-    void addAskWeeknessDB() {
+    void HealthTestDB() {
 		dbHelper = new DBManager(this);
 		dbHelper.openDatabase();
 		dbHelper.closeDatabase();

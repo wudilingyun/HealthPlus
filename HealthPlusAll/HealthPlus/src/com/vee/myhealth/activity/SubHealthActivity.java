@@ -55,6 +55,7 @@ public class SubHealthActivity extends BaseFragmentActivity implements
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
+		setLeftBtnRes(R.drawable.hp_w_header_view_back);
 		init();
 		sqlForTest = new SqlForTest(this);
 		sqlForTest.getHealthContent("111");
@@ -194,13 +195,15 @@ public class SubHealthActivity extends BaseFragmentActivity implements
 					}
 				}
 			}
-
+			
 			v.radioGroup
 					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 						@Override
 						public void onCheckedChanged(RadioGroup radioGroup,
 								int checkedId) {
+							
+							System.out.println("会调用我吗");
 							int id = radioGroup.getId();
 							System.out.println("radigroup---id" + id);
 							System.out.println("radigroup---check" + checkedId);
@@ -261,10 +264,11 @@ public class SubHealthActivity extends BaseFragmentActivity implements
 				bundle.putSerializable("tzscore", myAdapter.getScoreMap());
 				intent.putExtras(bundle);
 				intent.putExtra("flag", "111");
+				intent.putExtra("testname", "亚健康测试");
 				startActivity(intent);
 				this.finish();
 			} else {
-				Toast.makeText(this, "没打完亲", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "没答完亲", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

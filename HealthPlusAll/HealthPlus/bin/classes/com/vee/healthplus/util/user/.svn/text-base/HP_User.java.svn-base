@@ -1,5 +1,6 @@
 package com.vee.healthplus.util.user;
 
+import android.R.string;
 import android.content.Context;
 
 import com.vee.healthplus.util.SharedPreferenceUtil;
@@ -20,7 +21,6 @@ public class HP_User {
     public String phone = "";
     public String remark = "";
     public String photourl="";
-    
     public static int getOnLineUserId(Context mContext) {
         return SharedPreferenceUtil.getIntPref(mContext, "userId", 0);
     }

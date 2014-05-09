@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.concurrent.Executors;
 
 import org.springframework.util.MultiValueMap;
 
@@ -17,9 +16,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -54,40 +55,33 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		System.out.println("bitmap1path --- " + bitmap1path);
 		getHeaderView().setHeaderTitle("");
 		getHeaderView().setBackGroundColor(R.color.blue);
-		setRightBtnVisible(View.VISIBLE);
+		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(HeaderView.HEADER_BACK);
-		getHeaderView().setRightOption(HeaderView.HEADER_CAMERA);
+		setLeftBtnRes(R.drawable.hp_w_header_view_back);
 
 		setHeaderClickListener(new OnHeaderClickListener() {
 
 			@Override
 			public void OnHeaderClick(View v, int option) {
 				// TODO Auto-generated method stub
-				if (option == HeaderView.HEADER_OK) {
-					if (option == HeaderView.HEADER_CAMERA) {
-						Toast.makeText(NewMomentsActivity.this, "setting",
-								Toast.LENGTH_SHORT).show();
-						if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
-							new UploadMomentsPhotoTask()
-									.executeOnExecutor(Executors
-											.newCachedThreadPool());
-						} else {
-							new UploadMomentsPhotoTask().execute();
-						}
-					} else if (option == HeaderView.HEADER_BACK) {
+					if (option == HeaderView.HEADER_BACK) {
 						NewMomentsActivity.this.finish();
 					}
-				}
+			}
+		});
+		
+		Button saveMomentsButton = (Button)findViewById(R.id.SaveMomentsButton);
+		saveMomentsButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				new UploadMomentsPhotoTask().execute();
 			}
 		});
 
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
-			new CompressPhotoTask().executeOnExecutor(Executors
-					.newCachedThreadPool());
-		} else {
-			new CompressPhotoTask().execute();
-		}
+		new CompressPhotoTask().execute();
 	}
 
 	public static int calculateInSampleSize(BitmapFactory.Options options,
@@ -186,7 +180,6 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 						.insertMoments(message,
 								uploadPhotoResponse.getPhotourl(), null, null,
 								null, null, null, null, null, null);
-
 			} catch (Exception e) {
 				this.exception = e;
 			}
@@ -198,6 +191,15 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			dialog.dismiss();
+			if(exception != null)
+			{
+				System.out.println(exception.getMessage());
+				Toast.makeText(NewMomentsActivity.this, "保存失败，请重试", Toast.LENGTH_LONG).show();
+			}
+			else
+			{
+				NewMomentsActivity.this.finish();
+			}
 		}
 	}
 
@@ -223,12 +225,16 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 			}
 
 			bitmap1smallpath = bitmap1path.replace(".jpg", "_small.jpg");
-			File file = new File(bitmap1smallpath);
+			//File file = new File(bitmap1smallpath);
+			File file = new File(Environment
+					.getExternalStorageDirectory(),
+					"photograph_small.jpg");
+			bitmap1smallpath = file.getAbsolutePath();
 			try {
 				file.createNewFile();
 				OutputStream out = new FileOutputStream(file);
 				// 声明写入的格式 ，质量 ，写入到哪里
-				System.out.println("bm+" + bm);
+				System.out.println("bm+" + bm + "file" + file.getAbsolutePath());
 				bm.compress(Bitmap.CompressFormat.JPEG, 30, out);
 				out.flush();
 				out.close();

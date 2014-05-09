@@ -1,14 +1,14 @@
 10
 
 dir
-703
+721
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-04-30T09:54:11.687227Z
-701
+2014-05-09T04:44:41.603470Z
+721
 zhaoyouliang
 
 
@@ -47,6 +47,9 @@ dir
 anim
 dir
 
+layout-1280x800
+dir
+
 raw
 dir
 
@@ -72,6 +75,9 @@ menu
 dir
 
 drawable-ldpi
+dir
+
+layout-1920x1080
 dir
 
 drawable-mdpi

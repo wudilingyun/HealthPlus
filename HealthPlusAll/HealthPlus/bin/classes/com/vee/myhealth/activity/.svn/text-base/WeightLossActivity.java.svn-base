@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -26,6 +27,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+
+import cn.sharesdk.evernote.l;
 
 import com.vee.easyting.activity.BaseActivity;
 import com.vee.healthplus.R;
@@ -43,7 +46,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 	private MyAdapter<HealthQuestionEntity> myAdapter;
 	private ListView myListView;
 	private Button submit_butt;
-
+private int i=0;
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -55,6 +58,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
+		setLeftBtnRes(R.drawable.hp_w_header_view_back);
 		init();
 		sqlForTest = new SqlForTest(this);
 		sqlForTest.getHealthContent("113");
@@ -73,15 +77,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 		myAdapter = new MyAdapter<HealthQuestionEntity>(this);
 		myListView = (ListView) findViewById(R.id.tizhi_list);
 		submit_butt = (Button) findViewById(R.id.submit_butt);
-		myListView.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View view, int arg2,
-					long arg3) {
-				// TODO Auto-generated method stub
-				RadioGroup temGroup=(RadioGroup)view.findViewById(R.id.answer_radiogroup);
-			}
-		});
+		
 	}
 
 	@Override
@@ -148,6 +144,8 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 		@Override
 		public View getView(final int position, View convertView,
 				ViewGroup parent) {
+			
+			
 			final HealthQuestionEntity hqEntity = (HealthQuestionEntity) getItem(position);
 			View view = null;
 			if (convertView != null) {
@@ -169,7 +167,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 				v.rb3.setVisibility(View.GONE);
 				view.setTag(v);
 			}
-
+			
 			final ViewHolder v = (ViewHolder) view.getTag();
 			v.content.setText(hqEntity.getId() + "." + hqEntity.getQuestion());
 			v.rb1.setText("是");
@@ -200,7 +198,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 								RadioButton radioButton = (RadioButton) findViewById(checkedId);
 								String type = (String) radioButton.getTag();
 								System.out.println("跳转到" + type);
-
+								
 								if (type != null && !type.equals("A")
 										&& !type.equals("B")
 										&& !type.equals("C")
@@ -209,6 +207,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 
 									myListView.setSelection(Integer
 											.parseInt(type) - 1);
+									
 
 								} else {
 									System.out.println("当前选择" + type);

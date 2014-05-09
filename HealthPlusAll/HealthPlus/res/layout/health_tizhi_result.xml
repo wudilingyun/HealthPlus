@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@drawable/white">
-	
+    android:background="@drawable/white"
+    android:orientation="vertical" >
+
     <include
         android:id="@+id/ceshi_result_title"
         layout="@layout/include_header" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,11 +31,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:textColor="@drawable/green"
             android:padding="5dp"
             android:text=""
+            android:textColor="@drawable/green"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <Gallery
+        android:id="@+id/index_jingqiu_gallery"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="10dp"
+        android:spacing="10dp" />
 
     <com.vee.healthplus.widget.PinnedHeaderListView
         android:id="@+id/section_list_view"

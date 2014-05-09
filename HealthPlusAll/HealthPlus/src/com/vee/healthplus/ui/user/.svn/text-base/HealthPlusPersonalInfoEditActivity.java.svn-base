@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -49,6 +50,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	private ImageView header_lbtn_img, header_rbtn_img;
 	private ImageLoader imageLoader;
 	private String hdpath;
+	private ProgressDialog dialog;
 
 	private CustomProgressDialog progressDialog = null;
 
@@ -59,7 +61,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 			switch (requestCode) {
 			case 0:
 				String uri = data.getStringExtra("hd");
-				hdpath=Uri.parse(uri).getPath();
+				hdpath = Uri.parse(uri).getPath();
 				Log.i("lingyun", "uri=" + uri);
 				try {
 					head = MediaStore.Images.Media.getBitmap(
@@ -137,7 +139,9 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 
 		user = HP_DBModel.getInstance(this).queryUserInfoByUserId(
 				HP_User.getOnLineUserId(this), true);
-		imageLoader=ImageLoader.getInstance(this);
+		imageLoader = ImageLoader.getInstance(this);
+		dialog = new ProgressDialog(this);
+		dialog.setCanceledOnTouchOutside(false);
 		initView();
 		initData();
 	}
@@ -157,7 +161,8 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		saveBtn = (Button) findViewById(R.id.health_plus_personal_info_edit_sava_btn);
 		saveBtn.setOnClickListener(this);
 		header_lbtn_img.setOnClickListener(this);
-		//String digits = getResources().getString(R.string.user_resgiter_edit);
+		// String digits =
+		// getResources().getString(R.string.user_resgiter_edit);
 		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 	}
@@ -167,22 +172,20 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 
 		if (result == null) {
 			result = fileCache.getImage(url);
-			/*if (result == null) {
-				result = ImageGetFromHttp.downloadBitmap(url);
-				if (result != null) {
-					fileCache.saveBitmap(result, url);
-					memoryCache.addBitmapToCache(url, result);
-				} else {
-					memoryCache.addBitmapToCache(url, result);
-				}
-			}*/
+			/*
+			 * if (result == null) { result =
+			 * ImageGetFromHttp.downloadBitmap(url); if (result != null) {
+			 * fileCache.saveBitmap(result, url);
+			 * memoryCache.addBitmapToCache(url, result); } else {
+			 * memoryCache.addBitmapToCache(url, result); } }
+			 */
 		}
 		return result;
 	}
-	
-	private Handler h=new Handler(){
+
+	private Handler h = new Handler() {
 		public void handleMessage(android.os.Message msg) {
-			
+
 		};
 	};
 
@@ -191,15 +194,15 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		fileCache = new ImageFileCache();
 		infoList = new ArrayList<ListElement>();
 		mAdapter = new PersonalInfoAdapter(this);
-		ImageListViewItem imageItem = new ImageListViewItem(user,imageLoader);
+		ImageListViewItem imageItem = new ImageListViewItem(user, imageLoader);
 		infoList.add(imageItem);
 		for (int i = 0; i < 7; i++) {
 			infoList.add(new TextListViewItem());
 		}
-		
+
 		infoList.get(0).setText("头像");
-		infoList.get(1).setText("用户名").setValue(user.userNick);
-		infoList.get(2).setText("密码").setValue("未绑定");
+		infoList.get(1).setText("昵称").setValue(user.userNick);
+		infoList.get(2).setText("密码").setValue("点击修改密码");
 		infoList.get(3).setText("性别").setValue(user.userSex == -1 ? "男" : "女");
 		infoList.get(4).setText("年龄").setValue("" + user.userAge + "岁");
 		infoList.get(5).setText("邮箱").setValue(user.email);
@@ -239,6 +242,9 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 					startActivityForResult(intent1, 1);
 					break;
 				case 2:
+					startActivity(new Intent(
+							HealthPlusPersonalInfoEditActivity.this,
+							HealthPlusModifyPwdActivity.class));
 					break;
 				case 3:
 					Bundle extras3 = new Bundle();
@@ -311,19 +317,6 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 			str = infoList.get(3).getValue();
 			Log.i("lingyun", "str=" + str);
 			user.userSex = str.equals("男") ? -1 : 0;
-			/*
-			 * Log.i("lingyun", "user.userSex=" + user.userSex);
-			 * 
-			 * if (user.userHeight < 1 || user.userHeight > 245) {
-			 * displayResult(getResources().getString(
-			 * R.string.hp_userinfoediterror_height)); return; } else if
-			 * (user.userWeight < 1 || user.userWeight > 250) {
-			 * displayResult(getResources().getString(
-			 * R.string.hp_userinfoediterror_weight)); return; } else if
-			 * (user.userAge < 1 || user.userAge > 200) {
-			 * displayResult(getResources().getString(
-			 * R.string.hp_userinfoediterror_age)); return; }
-			 */
 			if (head != null) {
 				fileCache.saveBitmap(head, user.photourl);
 				memoryCache.addBitmapToCache(user.photourl, head);
@@ -332,13 +325,14 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				try {
 					new SaveProfileTask(
 							HealthPlusPersonalInfoEditActivity.this, user,
-							HealthPlusPersonalInfoEditActivity.this,hdpath).execute();
+							HealthPlusPersonalInfoEditActivity.this, hdpath)
+							.execute();
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
 			}
 			HP_DBModel.getInstance(this).updateUserInfo(user, true);
-			finish();
+			dialog.show();
 			break;
 		case R.id.header_lbtn_img:
 			finish();
@@ -352,16 +346,13 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		progressDialog = CustomProgressDialog.createDialog(this);
 		progressDialog.setMessage(this.getString(R.string.registing));
 		progressDialog.setCanceledOnTouchOutside(false);
-		
+
 	}
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		if (head != null) {
-			head.recycle();
-		}
 	}
 
 	private void displayResult(String msg) {
@@ -384,18 +375,23 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	public void onFinishSaveProfile(int reflag) {
 		// TODO Auto-generated method stub
 		if (reflag == 200) {
+			dialog.dismiss();
 			Toast.makeText(
 					this,
 					getResources()
 							.getString(R.string.hp_userinfo_motifysuccess),
 					Toast.LENGTH_SHORT).show();
-			// finish();
+
+			finish();
 		}
 	}
 
 	@Override
 	public void onErrorSaveProfile(Exception e) {
 		// TODO Auto-generated method stub
+		dialog.dismiss();
+		Toast.makeText(this, "保存失败", Toast.LENGTH_SHORT).show();
 
+		finish();
 	}
 }

@@ -1,14 +1,14 @@
 10
 
 dir
-703
+721
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus/ui/setting
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-04T03:30:02.634837Z
-703
+2014-05-09T04:44:41.603470Z
+721
 zhaoyouliang
 
 
@@ -25,6 +25,40 @@ zhaoyouliang
 
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
+
+UserPageFragment.java
+file
+
+
+
+
+2014-05-07T06:13:49.078125Z
+b274f42bde33fa31f146493410f70457
+2014-05-07T06:37:53.437834Z
+717
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6987
 
 UpdateActivity.java
 file
@@ -60,16 +94,50 @@ xujizhe
 
 3343
 
-UserPageFragment.java
+SettingShare.java
 file
-704
 
 
 
-2014-05-04T09:08:50.515625Z
-47b865b5c13d69453412893e871064d3
-2014-05-04T09:17:09.244802Z
-704
+
+2014-05-09T04:51:21.250000Z
+a4c5e655e94ddb8e123f3b5746f95104
+2014-05-09T04:44:41.603470Z
+721
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5605
+
+HealthPlusSettingAdapter.java
+file
+
+
+
+
+2014-05-07T02:51:27.953125Z
+5de561fe212d944857b876824af07e25
+2014-05-07T06:37:53.437834Z
+717
 lingyun
 
 
@@ -92,177 +160,7 @@ lingyun
 
 
 
-7550
-
-SettingShare.java
-file
-
-
-
-
-2014-04-30T08:26:01.328125Z
-edd1e90f2baa2fbf87fafdce909cbfef
-2014-04-30T08:16:19.696414Z
-697
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5582
-
-ShareActivityAdapter.java
-file
-
-
-
-
-2014-03-28T08:27:42.734375Z
-c954814dfaa759d816d730b60c420258
-2013-11-21T09:44:47.403575Z
-489
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2112
-
-SettingFeedBack.java
-file
-
-
-
-
-2014-03-28T08:27:42.750000Z
-23bc8309cdb27b8925fa53278826635b
-2014-03-04T07:52:52.440712Z
-648
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-10971
-
-SettingListActivity.java
-file
-
-
-
-
-2014-03-28T08:27:42.765625Z
-c872f3c3f63639dade6af9d61a1d7b73
-2014-01-26T06:30:43.339181Z
-637
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-13697
-
-AboutActivity.java
-file
-
-
-
-
-2014-03-28T08:27:42.781250Z
-b73c5abd828d1de0b99b68d08ced2f27
-2013-11-21T09:44:47.403575Z
-489
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1479
+2397
 
 TargetAlarmTimePickDialog.java
 file
@@ -366,17 +264,17 @@ zhaoyouliang
 
 4915
 
-WXEntryActivity.java
+TestHistoryActivity.java
 file
 
 
 
 
-2014-03-28T08:27:42.812500Z
-7bee368f228b1d2424d91343ca3f9ec6
-2014-02-26T08:31:47.159949Z
-644
-wangfeng
+2014-05-06T08:16:53.312500Z
+f1b016d084c893d8856d68796e11d1bb
+2014-05-07T06:37:53.437834Z
+717
+lingyun
 
 
 
@@ -398,7 +296,7 @@ wangfeng
 
 
 
-2073
+2707
 
 SettingAdapter.java
 file
@@ -433,4 +331,276 @@ xujizhe
 
 
 4638
+
+ShareActivityAdapter.java
+file
+
+
+
+
+2014-03-28T08:27:42.734375Z
+c954814dfaa759d816d730b60c420258
+2013-11-21T09:44:47.403575Z
+489
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2112
+
+HealthPlusAboutActivity.java
+file
+
+
+
+
+2014-05-07T04:56:34.328125Z
+f4ad40fa05cc4bd1737cf17435dbefd8
+2014-05-07T06:37:53.437834Z
+717
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1407
+
+SettingFeedBack.java
+file
+
+
+
+
+2014-03-28T08:27:42.750000Z
+23bc8309cdb27b8925fa53278826635b
+2014-03-04T07:52:52.440712Z
+648
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10971
+
+HealthPlusSettingActivity.java
+file
+
+
+
+
+2014-05-07T05:08:24.265625Z
+7aedbbffad322a7088eb35ff4440532a
+2014-05-07T06:37:53.437834Z
+717
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2995
+
+SettingListActivity.java
+file
+
+
+
+
+2014-03-28T08:27:42.765625Z
+c872f3c3f63639dade6af9d61a1d7b73
+2014-01-26T06:30:43.339181Z
+637
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+13697
+
+AboutActivity.java
+file
+
+
+
+
+2014-03-28T08:27:42.781250Z
+b73c5abd828d1de0b99b68d08ced2f27
+2013-11-21T09:44:47.403575Z
+489
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1479
+
+WXEntryActivity.java
+file
+
+
+
+
+2014-03-28T08:27:42.812500Z
+7bee368f228b1d2424d91343ca3f9ec6
+2014-02-26T08:31:47.159949Z
+644
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2073
+
+TestHistoryListAdapter.java
+file
+
+
+
+
+2014-05-07T06:29:09.656250Z
+23608d811a99d41bd79b9e3efddb44eb
+2014-05-07T06:37:53.437834Z
+717
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2713
 

@@ -52,6 +52,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         try {
             registerResponse = SpringAndroidService.getInstance(activity.getApplication()).registerwithverifycode(username, verifycode, password);
+            System.out.print("registerResponse="+registerResponse.getReturncode());
         } catch (Exception e) {
             this.exception = e;
         }

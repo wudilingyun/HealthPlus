@@ -101,7 +101,8 @@
             android:layout_marginLeft="@dimen/sport_result_dotted_line_margin_left"
             android:layout_marginRight="@dimen/sport_result_dotted_line_margin_right"
             android:layout_marginTop="@dimen/sport_result_dotted_line_margin_top"
-            android:background="@drawable/dotted_line_bac" />
+            android:background="@drawable/dotted_line_bac" 
+            android:orientation="horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"

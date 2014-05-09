@@ -41,13 +41,16 @@ public class SettingShare extends Activity implements OnItemClickListener,
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			loading.hide();
+			
 			switch (msg.what) {
+
 			case SUCCESS:
 				Toast.makeText(
 						mContext,
 						mContext.getResources().getString(
 								R.string.setting_share_success),
 						Toast.LENGTH_SHORT).show();
+
 				break;
 			case CANNEL:
 				Toast.makeText(
@@ -98,10 +101,12 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		// TODO Auto-generated method stub
 		loading.show(R.string.setting_share_wait);
 		shareTo(arg2);
+
 	}
 
 	private void shareTo(int shareTo) {
-		String s ="我在使用【云医生】应用,这个新闻很不错啊,你也来看一下吧###["+content+"]#### 地址是："+url;
+		String s = "我在使用【云医生】应用,这个新闻很不错啊,你也来看一下吧###[" + content + "]#### 地址是："
+				+ url;
 		int type = Platform.SHARE_TEXT;
 		if (imgPath.length() > 0 && url.length() > 0) {
 			type = Platform.SHARE_WEBPAGE;
@@ -111,7 +116,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		switch (shareTo) {
 		case 0:
 			SinaWeibo.ShareParams sp = new SinaWeibo.ShareParams();
-			
+
 			sp.text = s;
 			if (imgPath.length() > 0) {
 				sp.imageUrl = imgPath;
@@ -122,7 +127,8 @@ public class SettingShare extends Activity implements OnItemClickListener,
 			break;
 		case 1:
 			TencentWeibo.ShareParams sp1 = new TencentWeibo.ShareParams();
-			sp1.text = s+content+"#### "+url;;
+			sp1.text = s + content + "#### " + url;
+			;
 			if (imgPath.length() > 0) {
 				sp1.imageUrl = imgPath;
 			}
@@ -166,8 +172,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 				p3.setPlatformActionListener(this);
 				p3.share(sp3);
 			}
-			
-			
+
 			break;
 		}
 

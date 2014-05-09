@@ -1,11 +1,13 @@
 package com.vee.myhealth.activity;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import android.R.integer;
 import android.R.string;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,9 +29,12 @@ import android.widget.AbsListView.OnScrollListener;
 import com.vee.easyting.activity.BaseActivity;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.util.user.HP_DBModel;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.widget.PinnedHeaderListView;
 import com.vee.healthplus.widget.PinnedHeaderListView.PinnedHeaderAdapter;
+import com.vee.myhealth.adapter.IndexGalleryAdapter;
 import com.vee.myhealth.bean.HealthQuestionEntity;
 import com.vee.myhealth.bean.HealthResultEntity;
 import com.vee.myhealth.bean.Health_Report;
@@ -52,7 +58,12 @@ public class TiZhiResultActivity extends FragmentActivity implements
 	private ResultEntity resultEntity;
 	private TestAdapter adapter;
 	private PinnedHeaderListView section_list_view;
-
+	private int userid = 0;
+	private String testname;
+	private long currDate = System.currentTimeMillis();
+	private Gallery mStormGallery = null;
+	private IndexGalleryAdapter mStormAdapter = null;
+	private List<Integer>mStormListData = new ArrayList<Integer>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -60,7 +71,7 @@ public class TiZhiResultActivity extends FragmentActivity implements
 		View view = View.inflate(this, R.layout.health_tizhi_result, null);
 		setContentView(view);
 		init();
-		getData();
+		setData();
 
 	}
 
@@ -70,31 +81,42 @@ public class TiZhiResultActivity extends FragmentActivity implements
 		section_list_view = (PinnedHeaderListView) findViewById(R.id.section_list_view);
 		section_list_view.setAdapter(adapter);
 		calculateScore = new CalculateScore();
-		ImageView lefImageView = (ImageView)findViewById(R.id.header_lbtn_img);
-		TextView textView  = (TextView)findViewById(R.id.header_text);
+		ImageView lefImageView = (ImageView) findViewById(R.id.header_lbtn_img);
+		TextView textView = (TextView) findViewById(R.id.header_text);
 		textView.setText("测试报告");
+		userid = HP_User.getOnLineUserId(this);
 		lefImageView.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				finish();
 			}
 		});
+		mStormGallery = (Gallery) findViewById(R.id.index_jingqiu_gallery);
+		// ======= 初始化ViewPager ========
+		
+		mStormListData.add(R.drawable.a);
+		mStormListData.add( R.drawable.b);
+		mStormListData.add( R.drawable.c);
+		mStormAdapter = new IndexGalleryAdapter(this,
+				R.layout.activity_index_gallery_item, mStormListData,
+				new int[] { R.id.index_gallery_item_image, });
+		mStormGallery.setSelection(2);
+		mStormGallery.setAdapter(mStormAdapter);
 
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	//
-	void getData() {
+	void setData() {
 		sqlForTest = new SqlForTest(this);
 		Intent intent = getIntent();
 		String flag = intent.getStringExtra("flag");
 		String type = intent.getStringExtra("type");
-		System.out.println("当前flag多少" + flag);
 		@SuppressWarnings("rawtypes")
 		Serializable data = intent.getExtras().getSerializable("tzscore");
-
+		testname = intent.getStringExtra("testname");
 		if (flag.equals("110")) {
 			tzscoremMap = (HashMap<TZtest, Integer>) data;
 			result = calculateScore.getScore(tzscoremMap);
@@ -107,7 +129,8 @@ public class TiZhiResultActivity extends FragmentActivity implements
 			result = type;
 			sqlForTest.getWeightLossResult(flag, result);
 		}
-
+		
+		
 	}
 
 	String getScore(HashMap<HealthQuestionEntity, Integer> data) {
@@ -135,14 +158,15 @@ public class TiZhiResultActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		if (c instanceof Health_Report) {
 			Health_Report hReport = (Health_Report) c;
-			String[] strings = { "总体特征", "心里特征", "易患病", "外界环境影响", "饮食保健", "运动",
+			String[] strings = { "总体特征", "心理特征", "易患病", "外界环境影响", "饮食保健", "运动",
 					"预防" };
 			String[] name = { hReport.getFeature(), hReport.getHeart_feature(),
 					hReport.getEasy_sicken(),
 					hReport.getEnvironment_ataptation(), hReport.getBite_sup(),
 					hReport.getSport(), hReport.getInterest() };
 			temp_text.setText(hReport.getName());
-
+			HP_DBModel.getInstance(this).insertUserTest(userid, testname,
+					hReport.getName(), currDate);
 			for (int i = 0; i < strings.length; i++) {
 				resultEntity = new ResultEntity();
 				resultEntity.setTitle(strings[i]);
@@ -152,6 +176,8 @@ public class TiZhiResultActivity extends FragmentActivity implements
 		} else if (c instanceof HealthResultEntity) {
 			HealthResultEntity hResultEntity = (HealthResultEntity) c;
 			temp_text.setText(hResultEntity.getType());
+			HP_DBModel.getInstance(this).insertUserTest(userid, testname,
+					hResultEntity.getType(), currDate);
 			String[] strings = { "总体特征", "健康贴士", "饮食", "运动", "预防" };
 			String[] name = { hResultEntity.getResult(),
 					hResultEntity.getTips(), hResultEntity.getEat(),
@@ -163,6 +189,7 @@ public class TiZhiResultActivity extends FragmentActivity implements
 				resultEntity.setName(name[i]);
 				reArrayList.add(resultEntity);
 			}
+			
 		}
 
 		adapter.addList(reArrayList);

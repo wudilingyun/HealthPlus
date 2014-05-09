@@ -65,12 +65,14 @@ public class SqlForTest<T> {
 				cursor.close();
 			} else {
 				while (cursor.moveToNext()) {
+					String num = cursor.getString(0);
 					String h_id = cursor.getString(1);
 					String name = cursor.getString(2);
 					String astersk = cursor.getString(3);
 					String repeat = cursor.getString(4);
 					String repeat_astersk = cursor.getString(5);
 					test = new TZtest();
+					test.setNum(num);
 					test.setH_id(h_id);
 					test.setQuestion(name);
 					test.setAstersk(astersk);

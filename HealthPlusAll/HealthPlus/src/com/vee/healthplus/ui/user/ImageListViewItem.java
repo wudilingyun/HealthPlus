@@ -57,7 +57,9 @@ public class ImageListViewItem implements ListElement {
 		if (photo != null) {
 			ivPhoto.setImageBitmap(photo);
 		} else {
-			imageLoader.addTask(user.photourl, ivPhoto);
+			//if(user.photourl!=null&&!user.photourl.equals("")){
+				imageLoader.addTask(user.photourl, ivPhoto);
+			//}
 		}
 		return layout;
 	}

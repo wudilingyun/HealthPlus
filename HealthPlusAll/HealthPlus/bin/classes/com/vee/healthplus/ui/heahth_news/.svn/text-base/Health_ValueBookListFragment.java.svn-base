@@ -94,7 +94,10 @@ public class Health_ValueBookListFragment extends Fragment {
 				R.string.shejiao, R.string.baojian, R.string.bingzheng,
 				R.string.jijiu, R.string.tizhi };
 		private int[] nametg = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
+		private int[] egname = { R.string.egyundong, R.string.egjianya,
+				R.string.egyingyang, R.string.egxiuxi, R.string.egyongyao,
+				R.string.egshejiao, R.string.egbaojian, R.string.egbingzheng,
+				R.string.egjijiu, R.string.egtizhi };
 		private Class target[] = { SubHealthActivity.class,
 				TiZhiActivity.class, MentalityActivity.class, null, null,
 				WeightLossActivity.class };
@@ -144,6 +147,7 @@ public class Health_ValueBookListFragment extends Fragment {
 			holder.icon.setImageResource(icon[i]);
 			holder.name.setText(ctx.getResources().getString(name[i]));
 			holder.name.setTag(nametg[i]);
+			holder.egname.setText(egname[i]);
 			/*
 			 * if (i == selectItem) { holder.lltestItem
 			 * .setBackgroundResource(R.drawable.test_item_selector_selected); }

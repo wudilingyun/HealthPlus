@@ -137,7 +137,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 				.findViewById(R.id.listView_news);
 		listView_news.setAdapter(adapter);
 
-		//listView_news.getRefreshableView().setDivider(null);
+		// listView_news.getRefreshableView().setDivider(null);
 		listView_news.getRefreshableView().setSelector(
 				android.R.color.transparent);
 		listView_news.setMode(Mode.BOTH);
@@ -154,7 +154,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 				// Do work to refresh the list here.
 				if (listView_news.isHeaderShown()) {
 					System.out.println("最大" + all_news.get(0).getNewsid());
-					
+
 					new GetNewsListTask().execute(down, all_news.get(0)
 							.getNewsid() + "");
 					// 下拉刷新接口
@@ -177,19 +177,18 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 				ImageView img = (ImageView) view
 						.findViewById(R.id.imageView_healthnews);
 				TextView tvView = (TextView) view.findViewById(R.id.newstitle);
-				System.out.println("传过来web"+tvView.getTag().toString());
-					String imgurlString = (String) img.getTag();
-					// 跳转后显示内容
-					Intent intent = new Intent(
-							Health_ValuableBookActivity.this,
-							Health_news_detailsActivity.class);
-					intent.putExtra("title", tvView.getText().toString());
-					intent.putExtra("weburl", tvView.getTag().toString());
-					intent.putExtra("imgurl", imgurlString);
-					intent.putExtra("name", name);
-					Bundle bundle = new Bundle();
-					intent.putExtra("bundle", bundle);
-					startActivity(intent);
+				System.out.println("传过来web" + tvView.getTag().toString());
+				String imgurlString = (String) img.getTag();
+				// 跳转后显示内容
+				Intent intent = new Intent(Health_ValuableBookActivity.this,
+						Health_news_detailsActivity.class);
+				intent.putExtra("title", tvView.getText().toString());
+				intent.putExtra("weburl", tvView.getTag().toString());
+				intent.putExtra("imgurl", imgurlString);
+				intent.putExtra("name", name);
+				Bundle bundle = new Bundle();
+				intent.putExtra("bundle", bundle);
+				startActivity(intent);
 
 			}
 		});
@@ -232,16 +231,18 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 
 					yysNewsResponseList = SpringAndroidService.getInstance(
 							getApplication()).firstGetNewsList(id, 0, 40);
+					System.out.println("id"+id);
 					if (yysNewsResponseList.size() > 0
 							&& yysNewsResponseList != null) {
-						jsonCache
-								.saveObject(yysNewsResponseList, "cluddoctor"+id);
+						jsonCache.saveObject(yysNewsResponseList, "cluddoctor"
+								+ id);
 						System.out.println("缓存成功");
 					}
 					return yysNewsResponseList;
 
 				case 2:
-					yysNewsResponseList = jsonCache.getObject("cluddoctor"+id);
+					yysNewsResponseList = jsonCache
+							.getObject("cluddoctor" + id);
 
 					return yysNewsResponseList;
 
@@ -261,7 +262,10 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 
 			} catch (Exception e) {
 				this.exception = e;
-				System.out.println("exception==" + exception.getMessage());
+				System.out.println("message" + exception.getMessage()
+						+ "toString" + exception.toString() + "getCause"
+						+ exception.getCause() + "getLocalizedMessage"
+						+ exception.getLocalizedMessage());
 			}
 			return null;
 
@@ -300,7 +304,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 					all_news = data;
 					adapter.listaddAdapter(all_news);
 					adapter.notifyDataSetChanged();
-					
+
 					listView_news.onRefreshComplete();
 				} else {
 

@@ -33,6 +33,13 @@ public class HP_DBHelper extends SQLiteOpenHelper {
 			+ " VARCHAR, "
 			+ HP_DBCommons.IMGURL
 			+ " VARCHAR, " + HP_DBCommons.WEBURL + " VARCHAR)";
+	// 测试列表
+		private final String CREATE_TABLE_USERTEST = "CREATE TABLE IF NOT EXISTS "
+				+ HP_DBCommons.USERTEST_TABLENAME
+				+ " ( _ID INTEGER PRIMARY KEY AUTOINCREMENT," + HP_DBCommons.USERID
+				+ " INTEGER," + HP_DBCommons.TESTNAME + " VARCHAR, "
+				+ HP_DBCommons.TESTRESULT + " VARCHAR, " + HP_DBCommons.TESTTIME
+				+ " LONG)";
 
 	public HP_DBHelper(Context context, String name,
 			SQLiteDatabase.CursorFactory factory, int version) {
@@ -44,6 +51,7 @@ public class HP_DBHelper extends SQLiteOpenHelper {
 		sqLiteDatabase.execSQL(CREATE_TABLE_USER);
 		sqLiteDatabase.execSQL(CREATE_TABLE_USERWEIGHT);
 		sqLiteDatabase.execSQL(CREATE_TABLE_USERCOLLECT);
+		sqLiteDatabase.execSQL(CREATE_TABLE_USERTEST);
 	}
 
 	@Override

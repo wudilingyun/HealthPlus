@@ -4,12 +4,39 @@
     android:layout_height="match_parent"
     android:background="@drawable/white"
     android:orientation="vertical" >
-    
-    <EditText 
-        android:id="@+id/searchfriend"
+
+    <include
+        android:id="@+id/friendlist_title"
+        layout="@layout/include_header" />
+
+    <LinearLayout
+        android:id="@+id/searchfriendlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/searchfriend"/>
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/searchfriendedittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/searchfriend" />
+
+        <Button
+            android:id="@+id/searchfriendbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/button_comment_submit"
+            android:maxWidth="70dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/searchbutton"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/friendlist"
         android:layout_width="match_parent"

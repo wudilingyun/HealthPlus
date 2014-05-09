@@ -14,7 +14,7 @@ import org.springframework.web.client.ResourceAccessException;
 
 public class GetVerifyCodeTask extends AsyncTask<Void, Void, Void> {
 	private Exception exception;
-	private RegisterResponse registerResponse;
+	private RegisterResponse getVerifyCodeRegisterResponse;
 	private String phonenumber;
 	private Activity activity;
 	private GetVerifyCodeCallBack callBack;
@@ -35,9 +35,10 @@ public class GetVerifyCodeTask extends AsyncTask<Void, Void, Void> {
 	@SuppressWarnings("unchecked")
 	protected Void doInBackground(Void... params) {
 		try {
-			registerResponse = SpringAndroidService.getInstance(
+			getVerifyCodeRegisterResponse = SpringAndroidService.getInstance(
 					activity.getApplication()).getshortmessageverifycode(
 					phonenumber);
+			System.out.println("getVerifyCodeRegisterResponse="+getVerifyCodeRegisterResponse.getReturncode());
 		} catch (Exception e) {
 			this.exception = e;
 		}
@@ -47,12 +48,12 @@ public class GetVerifyCodeTask extends AsyncTask<Void, Void, Void> {
 	@Override
 	protected void onPostExecute(Void v) {
 		if (exception != null) {
-			registerResponse = null;
+			getVerifyCodeRegisterResponse = null;
 			callBack.onErrorGetVerifyCode(exception);
 		}
 
-		if (registerResponse != null) {
-			callBack.onFinishGetVerifyCode(registerResponse.getReturncode());
+		if (getVerifyCodeRegisterResponse != null) {
+			callBack.onFinishGetVerifyCode(getVerifyCodeRegisterResponse.getReturncode());
 		}
 	}
 

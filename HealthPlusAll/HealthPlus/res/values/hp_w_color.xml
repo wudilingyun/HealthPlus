@@ -6,11 +6,11 @@
     <color name="hp_font_darkblack">#5d5d5d</color>
     <color name="hp_font_midblack">#4a4949</color>
     <color name="transparent">#00000000</color>
-    <color name="blue">#25acca</color>
+
     <color name="blue_light">#01d3ff</color>
-    <color name="gray">#9b9b9b</color>
+
     <color name="little_little_gray">#7e7e7e</color>
-    <color name="yellow">#f0a138</color>
+
     <color name="vpi__background_holo_dark">#ff000000</color>
     <color name="vpi__background_holo_light">#fff3f3f3</color>
     <color name="vpi__bright_foreground_holo_dark">@color/vpi__background_holo_light</color>
@@ -42,7 +42,6 @@
     <color name="motifypwd">#F4A33A</color>
     <color name="dark_blue">#1fa1bd</color>
     <color name="sky_blue">#24acc9</color>
-    <color name="lightgray">#6c6c6c</color>
     <color name="linec">#bebebe</color>
     <color name="select_background">#d9d9d9</color>
     <!-- health main-->

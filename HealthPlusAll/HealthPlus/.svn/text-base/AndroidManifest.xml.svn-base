@@ -5,7 +5,7 @@
     android:versionName="1.0.6" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="10"
         android:targetSdkVersion="14" />
 
     <supports-screens
@@ -84,7 +84,7 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.autofocus" />
     <!-- 读取联系人 -->
- -->
+ -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
@@ -102,6 +102,12 @@
         </activity>
         <activity
             android:name="com.vee.healthplus.ui.main.MainPage"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators" >
+        </activity>
+        <activity
+            android:name="com.vee.healthplus.ui.main.FirstActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/StyledIndicators" >
@@ -376,7 +382,7 @@
 
         <!-- share -->
         <activity
-            android:name="com.vee.healthplus.ui.setting.WXEntryActivity"
+            android:name="com.vee.healthplus.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -527,16 +533,35 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/myDialog" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.HealthPlusModifyPwdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
         <!-- personal info edit end -->
         <!-- wo start -->
-        
+
         <activity
             android:name="com.vee.healthplus.ui.heahth_news.FavoriteNewsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name="com.vee.healthplus.ui.setting.TestHistoryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.setting.HealthPlusSettingActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.setting.HealthPlusAboutActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <!-- wo end -->
 
         <activity
@@ -547,6 +572,12 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.vee.myhealth.activity.TiZhiResultActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+          <activity
+            android:name="com.vee.myhealth.activity.TestResultActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -576,6 +607,12 @@
             android:label="@string/title_activity_new_moments"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.vee.moments.MomentsPhotoEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/myDialog" />
         <activity
             android:name="com.vee.moments.UserMomentsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

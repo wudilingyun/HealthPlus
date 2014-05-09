@@ -46,24 +46,10 @@ public class UserMomentsActivity extends BaseFragmentActivity {
 
 		Intent intent = getIntent();
 		int friendid = intent.getIntExtra("friendid", 0);
-		if (friendid == 0) {
-			if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-			{
-				new GetMyMomentsTask().executeOnExecutor(Executors.newCachedThreadPool());
-			}
-			else
-			{
-				new GetMyMomentsTask().execute();
-			}
+		if (friendid == 0) {			
+			new GetMyMomentsTask().execute();
 		} else {
-			if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-			{
-				new GetFriendMomentsTask().executeOnExecutor(Executors.newCachedThreadPool());
-			}
-			else
-			{
-				new GetFriendMomentsTask().execute();
-			}
+			new GetFriendMomentsTask().execute();
 		}
 	}
 
@@ -228,14 +214,8 @@ public class UserMomentsActivity extends BaseFragmentActivity {
 			ImageViewGet imageViewGet = new ImageViewGet();
 			imageViewGet.setImageurl(moments.getImage1());
 			imageViewGet.setImageViewMoments(imageViewMoments);
-			if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-			{
-				new GetImageTask().executeOnExecutor(Executors.newCachedThreadPool(),imageViewGet);
-			}
-			else
-			{
-				new GetImageTask().execute(imageViewGet);
-			}
+
+			new GetImageTask().execute(imageViewGet);
 			return view;
 		}
 	}

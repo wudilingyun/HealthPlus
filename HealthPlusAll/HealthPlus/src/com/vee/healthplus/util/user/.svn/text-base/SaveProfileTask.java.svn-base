@@ -1,6 +1,5 @@
 package com.vee.healthplus.util.user;
 
-
 import org.apache.http.conn.ConnectTimeoutException;
 import org.springframework.social.connect.DuplicateConnectionException;
 import org.springframework.util.LinkedMultiValueMap;
@@ -17,95 +16,84 @@ import com.yunfox.springandroid4healthplus.SpringAndroidService;
 /**
  * Created by wangjiafeng on 13-11-14.
  */
-public class SaveProfileTask extends
-        AsyncTask<Void, Void, Object[]> {
-    private MultiValueMap<String, String> formData;
-    private Exception exception;
-    private Activity activity;
-    private HP_User user;
-    private SaveProfileCallBack callBack;
-    private String hdpath;
+public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
+	private MultiValueMap<String, String> formData;
+	private Exception exception;
+	private Activity activity;
+	private HP_User user;
+	private SaveProfileCallBack callBack;
+	private String hdpath;
+	private GeneralResponse generalResponse;
 
-    public SaveProfileTask(Activity activity, HP_User user, SaveProfileCallBack callBack,String hdpath) {
-        this.activity = activity;
-        this.user = user;
-        this.callBack = callBack;
-        this.hdpath=hdpath;
-    }
+	public SaveProfileTask(Activity activity, HP_User user,
+			SaveProfileCallBack callBack, String hdpath) {
+		this.activity = activity;
+		this.user = user;
+		this.callBack = callBack;
+		this.hdpath = hdpath;
+	}
 
-    @Override
-    protected void onPreExecute() {
-        formData = new LinkedMultiValueMap<String, String>();
+	@Override
+	protected void onPreExecute() {
+		formData = new LinkedMultiValueMap<String, String>();
 
-        String username = user.userName;
-        formData.add("username", username);
+		String username = user.userName;
+		formData.add("username", username);
 
-        String nickname = user.userNick;
-        formData.add("nickname", nickname);
+		String nickname = user.userNick;
+		formData.add("nickname", nickname);
 
-        String email = user.email;
-        formData.add("email", email);
+		String email = user.email;
+		formData.add("email", email);
 
-        String phone = user.phone;
-        formData.add("phone", phone);
+		String phone = user.phone;
+		formData.add("phone", phone);
 
-        String weight = String.valueOf(user.userWeight);
-        formData.add("weight", weight);
+		String weight = String.valueOf(user.userWeight);
+		formData.add("weight", weight);
 
-        String height = String.valueOf(user.userHeight);
-        formData.add("height", height);
+		String height = String.valueOf(user.userHeight);
+		formData.add("height", height);
 
-        String age = String.valueOf(user.userAge);
-        formData.add("age", age);
+		String age = String.valueOf(user.userAge);
+		formData.add("age", age);
 
-        String remark = user.remark;
-        formData.add("remark", remark);
+		String remark = user.remark;
+		formData.add("remark", remark);
 
-        String gender = String.valueOf(user.userSex);
-        formData.add("gender", gender);
-    }
+		String gender = String.valueOf(user.userSex);
+		formData.add("gender", gender);
+	}
 
-    @Override
-    protected Object[] doInBackground(Void... params) {
-        // TODO Auto-generated method stub
-        try {
-            GeneralResponse generalResponse = SpringAndroidService
-                    .getInstance(activity.getApplication()).saveProfile(formData);
-            UploadAvatarResponse  uploadAvatarResponse=SpringAndroidService
-                    .getInstance(activity.getApplication()).uploadAvatar(hdpath);
-            return new Object[]{generalResponse,uploadAvatarResponse};
-        } catch (Exception e) {
-            this.exception = e;
-            e.printStackTrace();
-        }
+	@Override
+	protected Void doInBackground(Void... params) {
+		// TODO Auto-generated method stub
+		try {
+			generalResponse = SpringAndroidService.getInstance(
+					activity.getApplication()).saveProfile(formData);
+			UploadAvatarResponse uploadAvatarResponse = SpringAndroidService
+					.getInstance(activity.getApplication())
+					.uploadAvatar(hdpath);
+			return null;
+		} catch (Exception e) {
+			this.exception = e;
+			e.printStackTrace();
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    @Override
-    protected void onPostExecute(Object[] obs) {
-        if (exception != null) {
-            String message;
+	@Override
+	protected void onPostExecute(Void v) {
+		if (generalResponse != null) {
+			callBack.onFinishSaveProfile(generalResponse.getReturncode());
+		}
+	}
 
-            if (exception instanceof DuplicateConnectionException) {
-                message = "The connection already exists.";
-            } else if (exception instanceof ResourceAccessException && exception.getCause() instanceof ConnectTimeoutException) {
-                message = "connect time out";
-            } else {
-                message = "A problem occurred with the network connection. Please try again in a few minutes.";
-            }
-            callBack.onErrorSaveProfile(exception);
-        }
+	public interface SaveProfileCallBack {
+		public void onFinishSaveProfile(int reflag);
 
-        if (obs[0] != null) {
-            callBack.onFinishSaveProfile(((GeneralResponse)obs[0]).getReturncode());
-        }
-    }
-
-    public interface SaveProfileCallBack {
-        public void onFinishSaveProfile(int reflag);
-
-        public void onErrorSaveProfile(Exception e);
-    }
+		public void onErrorSaveProfile(Exception e);
+	}
 
 }

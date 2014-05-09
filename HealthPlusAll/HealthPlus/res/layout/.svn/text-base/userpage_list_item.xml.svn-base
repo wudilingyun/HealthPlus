@@ -35,10 +35,11 @@
             android:id="@+id/user_list_item_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="16dip"
             android:clickable="false"
             android:focusable="false"
             android:scaleType="centerInside"
-            android:src="@drawable/shop_btn_next" />
+            android:src="@drawable/healthplus_wo_item_arrow" />
     </LinearLayout>
 
 </RelativeLayout>

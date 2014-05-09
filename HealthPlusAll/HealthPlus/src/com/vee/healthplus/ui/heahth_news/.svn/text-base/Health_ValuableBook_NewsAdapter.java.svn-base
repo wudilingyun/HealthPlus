@@ -8,6 +8,7 @@ import javax.security.auth.PrivateCredentialPermission;
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_beans.Doc;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.RoundImageView;
 import com.yunfox.s4aservicetest.response.Exam;
 import com.yunfox.s4aservicetest.response.ExamType;

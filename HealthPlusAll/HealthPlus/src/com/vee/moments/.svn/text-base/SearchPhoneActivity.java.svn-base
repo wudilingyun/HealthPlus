@@ -39,14 +39,7 @@ public class SearchPhoneActivity extends BaseFragmentActivity {
 					Toast.makeText(SearchPhoneActivity.this,
 							"Please type something", Toast.LENGTH_SHORT).show();
 				} else {
-					if(Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB)
-					{
-						new SearchUserTask().executeOnExecutor(Executors.newCachedThreadPool());
-					}
-					else
-					{
-						new SearchUserTask().execute();
-					}
+					new SearchUserTask().execute();
 				}
 			}
 		});

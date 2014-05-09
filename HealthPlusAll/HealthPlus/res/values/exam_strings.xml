@@ -62,4 +62,17 @@
 	    <string name="bingzheng">病症</string>
 	    <string name="jijiu">急救</string>
 	    <string name="tizhi">体质</string>
+	    
+	    
+	       <string name="egyundong">sport</string>
+	    <string name="egjianya">decompression</string>
+	    <string name="egyingyang">nutrition</string>
+	    <string name="egxiuxi">rest</string>
+	    <string name="egyongyao">medication</string>
+	    <string name="egshejiao">commerce</string>
+	    <string name="egbaojian">healthcare</string>
+	    <string name="egbingzheng">disease</string>
+	    <string name="egjijiu">firstaid</string>
+	    <string name="egtizhi">physique</string>
+	    
 </resources>

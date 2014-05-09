@@ -17,9 +17,7 @@ import com.vee.healthplus.R;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 
-/**
- * Created by zhou on 13-10-28.
- */
+
 public class AgeEditActivity extends Activity implements View.OnClickListener {
 	private WheelView yearWv;
 	private WheelView monthWv;
@@ -51,7 +49,7 @@ public class AgeEditActivity extends Activity implements View.OnClickListener {
 		age = Integer.valueOf(str.substring(0,str.length()-1));
 		
 		yearWv.setCurrentItem(currentYear - age-1900);
-		monthWv.setCurrentItem(0);
+		monthWv.setCurrentItem(currentMonth);
 		okBtn = (Button) findViewById(R.id.age_edit_ok_btn);
 		okBtn.setOnClickListener(this);
 

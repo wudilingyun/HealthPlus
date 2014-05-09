@@ -51,10 +51,6 @@ public class HealthPlusFindPwdActivity extends BaseFragmentActivity implements
 		View view = View.inflate(this, R.layout.healthplus_find_layout, null);
 		setContainer(view);
 		getHeaderView().setHeaderTitle("找回密码");
-		getHeaderView().setHeaderTitleColor(
-				R.color.register_headview_text_color_white);
-		getHeaderView().setBackGroundColor(
-				R.color.register_headview_bg_color_black);
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);

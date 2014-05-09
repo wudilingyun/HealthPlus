@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -56,6 +57,9 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 	private Button submit_butt;
 	private int selectId = 0;
 	private List<TZtest> tsList;
+	private TextView qid;
+	private ProgressBar progressBar;
+	private int progresscount;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -67,6 +71,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
+		setLeftBtnRes(R.drawable.hp_w_header_view_back);
 		init();
 		sqlForTest = new SqlForTest(this);
 		getData();
@@ -79,6 +84,11 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		testListView.setOnItemClickListener(this);
 		testAdapter = new TestAdapter(this);
 		testListView.setAdapter(testAdapter);
+		qid = (TextView) findViewById(R.id.examcount);
+
+		progressBar = (ProgressBar) findViewById(R.id.exam_progressBar);
+
+		progressBar.setProgress(1);
 	}
 
 	void getData() {
@@ -100,6 +110,8 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		tsList = (List<TZtest>) test;
 		testAdapter.listaddAdapter(tsList);
 		testAdapter.notifyDataSetChanged();
+		qid.setText(0 + "/" + tsList.size());
+		progressBar.setMax(tsList.size());
 	}
 
 	private class TestAdapter extends BaseAdapter {
@@ -187,7 +199,8 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 			}
 
 			final ViewHolder v = (ViewHolder) view.getTag();
-			v.content.setText(newslist.get(position).getQuestion());
+			v.content.setText(newslist.get(position).getNum() + "."
+					+ newslist.get(position).getQuestion());
 			v.rb1.setTag(1);
 			v.rb2.setTag(2);
 			v.rb3.setTag(3);
@@ -232,23 +245,19 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 						@Override
 						public void onCheckedChanged(RadioGroup radioGroup,
 								int checkedId) {
-						/*	selectId = testListView.getFirstVisiblePosition();
-							Log.v("selectId", selectId + "");
-							if (selectId > 3) {
-								testListView.setSelection(position+1);
-							}
-							// View view = testListView.getChildAt(position +
-							// 1);
-							// view.setBackgroundResource(R.color.blue);
-						//	testListView.setf
-							*/
-							
+
 							int id = radioGroup.getId();
 							if (checkedId != -1) {
 
+								System.out.println("点击才调用");
 								RadioButton tempButton = (RadioButton) findViewById(checkedId);
 								scoremMap.put(tZtest,
 										(Integer) tempButton.getTag());
+
+								progresscount = scoremMap.values().size();
+								qid.setText(progresscount + "/" + tsList.size());
+								progressBar.setProgress(progresscount);
+
 								System.out.println("选择的分数是"
 										+ tempButton.getTag());
 							}
@@ -308,6 +317,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 				bundle.putSerializable("tzscore", testAdapter.getScoreMap());
 				intent.putExtras(bundle);
 				intent.putExtra("flag", "110");
+				intent.putExtra("testname", "体质测试");
 				startActivity(intent);
 				this.finish();
 			} else {

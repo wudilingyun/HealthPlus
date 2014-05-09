@@ -36,7 +36,8 @@ public class ImageLoader {
 	private Map<String, ImageView> taskMap;
 
 	private boolean allowLoad = true;
-
+	private String picname;
+	
 	private ImageLoader(Context context) {
 		// 获取当前Java虚拟机所需要使用到的处理器的数量
 		int cpuNums = Runtime.getRuntime().availableProcessors();
@@ -73,6 +74,7 @@ public class ImageLoader {
 	// 2.如果缓存当中没有该图片对象，则开启新线程下载
 	public void addTask(String url, ImageView img) {
 		// 根据URL查询内存缓存当中是否存在该图片
+		
 		Bitmap bitmap = memoryCache.getBitmapFromCache(url);
 		if (bitmap != null) {
 			img.setImageBitmap(bitmap);
@@ -144,7 +146,6 @@ public class ImageLoader {
 					// 将下载的图片分别存至内存缓存和文件缓存
 					fileCache.saveBitmap(result, url);
 					memoryCache.addBitmapToCache(url, result);
-					System.out.println("写入成功");
 				} else {
 					memoryCache.addBitmapToCache(url, result);
 				}

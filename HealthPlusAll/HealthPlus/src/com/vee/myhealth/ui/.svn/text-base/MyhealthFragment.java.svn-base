@@ -1,4 +1,4 @@
-package com.vee.myhealth.ui;
+﻿package com.vee.myhealth.ui;
 
 import java.util.HashMap;
 
@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.Contact;
+import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
@@ -42,10 +43,14 @@ import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.SignInTask.SignInCallBack;
+import com.vee.healthplus.util.user.UserIndexUtils;
+import com.vee.healthplus.util.user.UserInfoUtil;
+import com.vee.healthplus.widget.RoundImageView;
 import com.vee.healthplus.widget.tabpage.CirclePageIndicator;
 import com.vee.healthplus.widget.tabpage.PageIndicator;
 import com.vee.myhealth.activity.MentalityActivity;
 import com.vee.myhealth.activity.SubHealthActivity;
+import com.vee.myhealth.activity.TestResultActivity;
 import com.vee.myhealth.activity.TiZhiActivity;
 import com.vee.myhealth.activity.WeightLossActivity;
 
@@ -55,7 +60,8 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	private GridView gv;
 	private TextView username_txt, age_txt, city_txt, temperature_txt,
 			weight_txt, weather_content;
-	private ImageView head_img, weather_img, sex_txt;
+	private ImageView weather_img, sex_txt;
+	private RoundImageView head_img;
 	private Button close_bt;
 	private MyhealthMainAdapter gvAdapter;
 	private View view;
@@ -102,6 +108,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		view = inflater.inflate(R.layout.health_myhealth, container, false);
 		weatherUtil = WeatherUtil.getInstance(getActivity()
 				.getApplicationContext(), handler);
@@ -117,7 +124,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		city_txt.setText(city);
 		if (url != null && !url.equals(""))
 			weatherUtil.getWeatherImage(url, weather_img);
-		isShown = true;
+		isShown = false;
 	}
 
 	private void updateView(TrackEntity te, boolean showWeather) {
@@ -140,7 +147,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		weight_txt = (TextView) view.findViewById(R.id.weight_txt);
 		weather_content = (TextView) view.findViewById(R.id.weather_content);
 
-		head_img = (ImageView) view.findViewById(R.id.user_head_img);
+		head_img = (RoundImageView) view.findViewById(R.id.user_head_img);
 		head_img.setOnClickListener(this);
 		weather_img = (ImageView) view.findViewById(R.id.weather_img);
 		gv.setSelector(new ColorDrawable(Color.TRANSPARENT));
@@ -155,7 +162,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 			HP_User user = HP_DBModel.getInstance(getActivity())
 					.queryUserInfoByUserId(userid, true);
 			username_txt.setText(user.userName);
-			age_txt.setText(user.userAge + "");
+			age_txt.setText(user.userAge + "岁");
 
 			if (user.userSex == -1) {
 				sex_txt.setImageResource(R.drawable.boy_icon);
@@ -163,10 +170,18 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 				sex_txt.setImageResource(R.drawable.girl_icon);
 			}
 
-			weight_txt.setText(user.userWeight + "");
+			ImageLoader.getInstance(getActivity()).addTask(user.photourl,
+					head_img);
+			if (user.userHeight != 0 && user.userWeight != 0) {
+				weight_txt.setText(UserIndexUtils
+						.getResult(getActivity(), user));
+				weight_txt.setVisibility(View.VISIBLE);
+			} else {
+				weight_txt.setVisibility(View.GONE);
+			}
+
 			age_txt.setVisibility(View.VISIBLE);
 			sex_txt.setVisibility(View.VISIBLE);
-			weight_txt.setVisibility(View.VISIBLE);
 
 		}
 		updateView(new TrackEntity(), true);
@@ -207,6 +222,10 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 					intent.putExtra("name", name);
 					startActivity(intent);
 
+				} else {
+					Toast.makeText(getActivity(), "硬件暂时不支持", Toast.LENGTH_SHORT)
+							.show();
+
 				}
 			}
 		});
@@ -240,12 +259,14 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		/*
-		 * case R.id.little_head_img: Intent intent = new Intent(getActivity(),
-		 * MyHealthUsersGroupActivity.class); startActivity(intent);
-		 * 
-		 * break;
-		 */
+
+		case R.id.user_head_img:
+			Intent intent = new Intent(getActivity(),
+					TestResultActivity.class);
+			startActivity(intent);
+
+			break;
+
 		case R.id.close_bt:
 
 		default:

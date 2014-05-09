@@ -47,7 +47,7 @@ public class SampleTabsWithIcons extends Fragment {
 
 	public static FragmentPagerAdapter adapter;
 
-	public static Fragment[] fragments = new Fragment[5];
+	public static Fragment[] fragments = new Fragment[4];
 
 	private IFragmentMsg mFragmentMsgCallBack;
 
@@ -74,15 +74,16 @@ public class SampleTabsWithIcons extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View view = inflater.inflate(R.layout.simple_tabs, container, false);
+		 View view = inflater.inflate(R.layout.simple_tabs, container, false);
 		adapter = new GoogleMusicAdapter(this.getFragmentManager());
 		ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.removeAllViews();
 		pager.setAdapter(adapter);
+
 		pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
 			public void onPageScrolled(int i, float v, int i2) {
-
+				Log.i("pager", "onPageScrolled");
 			}
 
 			@Override
@@ -90,19 +91,23 @@ public class SampleTabsWithIcons extends Fragment {
 				switch (i) {
 				case 0:
 					// mFragmentMsgCallBack.updateHeaderTitle();
+					Log.i("pager", "onPageSelected=0");
 					break;
 				case 1:
+					Log.i("pager", "onPageSelected=1");
 					break;
 				case 2:
+					Log.i("pager", "onPageSelected=2");
 					break;
 				case 3:
+					Log.i("pager", "onPageSelected=3");
 					break;
 				}
 			}
 
 			@Override
 			public void onPageScrollStateChanged(int i) {
-
+				Log.i("pager", "onPageScrollStateChanged");
 			}
 		});
 		TabPageIndicator indicator = (TabPageIndicator) view
@@ -112,6 +117,7 @@ public class SampleTabsWithIcons extends Fragment {
 
 			@Override
 			public void onPageSelected(int position) {
+				Log.i("pager", "indicator.onPageSelected()" + position);
 				((BaseFragmentActivity) getActivity())
 						.setRightBtnVisible(View.GONE);
 				((BaseFragmentActivity) getActivity())
@@ -124,17 +130,7 @@ public class SampleTabsWithIcons extends Fragment {
 						.setHeaderTitle(
 								getActivity().getString(R.string.hp_app_name));
 
-				if (position == 2) {
-					if ((getActivity()) instanceof BaseFragmentActivity) {
-						Activity activity = getActivity();
-						((BaseFragmentActivity) activity)
-								.setRightBtnVisible(View.GONE);
-						((BaseFragmentActivity) activity)
-								.getHeaderView()
-								.setRightRes(
-										R.drawable.header_view_right_bt_history_selector);
-					}
-				} else if (position == 1) {
+				if (position == 1) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
 						((BaseFragmentActivity) activity)
@@ -154,7 +150,19 @@ public class SampleTabsWithIcons extends Fragment {
 								.setRightOption(
 										HeaderView.HEADER_MOMENTS_CAMERA);
 					}
-				} else if (position == 3) {
+					
+				} else if (position == 2) {
+					if ((getActivity()) instanceof BaseFragmentActivity) {
+						Activity activity = getActivity();
+						((BaseFragmentActivity) activity)
+								.setRightBtnVisible(View.GONE);
+						((BaseFragmentActivity) getActivity())
+								.setRightTvVisible(View.GONE);
+					}
+					
+				}
+
+				else if (position == 3) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
 						if (HP_User.getOnLineUserId(activity) != 0) {
@@ -163,17 +171,10 @@ public class SampleTabsWithIcons extends Fragment {
 						}
 						((BaseFragmentActivity) activity).setRightTvText("编辑");
 						((BaseFragmentActivity) activity).getHeaderView()
-								.setHeaderTitle("我");
-						((BaseFragmentActivity) activity).getHeaderView()
 								.setRightOption(HeaderView.HEADER_EDIT);
 					}
-				} else {
-					if ((getActivity()) instanceof BaseFragmentActivity) {
-						Activity activity = getActivity();
-						((BaseFragmentActivity) activity)
-								.setRightBtnVisible(View.GONE);
-					}
 				}
+				
 			}
 
 			@Override
@@ -191,22 +192,24 @@ public class SampleTabsWithIcons extends Fragment {
 			IconPagerAdapter {
 		public GoogleMusicAdapter(FragmentManager fm) {
 			super(fm);
-			FragmentTransaction fragmentTransaction = fm.beginTransaction();
-			for (int i = 0; i < fragments.length; i++) {
-				if (fragments[i] == null)
-					continue;
-				fragmentTransaction.remove(fragments[i]);
-				Log.e("xuxuxu", fragments[i].getClass() + "");
-			}
-			fragmentTransaction.commit();
+			// FragmentTransaction fragmentTransaction = fm.beginTransaction();
+			// for (int i = 0; i < fragments.length; i++) {
+			// if (fragments[i] == null)
+			// continue;
+			// fragmentTransaction.remove(fragments[i]);
+			// Log.e("xuxuxu", fragments[i].getClass() + "");
+			// }
+			// fragmentTransaction.commit();
 
 		}
 
 		@Override
 		public Fragment getItem(int position) {
 			Fragment fragment = null;
+			Log.i("pager", "GoogleMusicAdapter.getItem=" + position);
 			switch (position) {
 			case 0:
+
 				// fragment = SportModeFragment.newInstance();
 				fragment = MyhealthFragment.newInstance();
 				break;
@@ -255,6 +258,13 @@ public class SampleTabsWithIcons extends Fragment {
 			}
 			return Integer.parseInt(oj.toString());
 		}
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+
 	}
 
 }

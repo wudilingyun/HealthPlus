@@ -1,14 +1,14 @@
 10
 
 dir
-703
+721
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-04T03:30:02.634837Z
-703
+2014-05-09T04:44:41.603470Z
+721
 zhaoyouliang
 
 
@@ -26,22 +26,34 @@ zhaoyouliang
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
 
-TaskCallBack
+load
 dir
 
 http
 dir
 
-load
+TaskCallBack
 dir
 
 adapter
 dir
 
-service
+widget
 dir
 
-widget
+wxapi
+dir
+
+common
+dir
+
+heahth_news_http
+dir
+
+activity
+dir
+
+service
 dir
 
 receiver
@@ -50,21 +62,12 @@ dir
 heahth_news_beans
 dir
 
-common
-dir
-
-activity
-dir
-
-heahth_news_http
-dir
-
-heahth_news_utils
+util
 dir
 
 ui
 dir
 
-util
+heahth_news_utils
 dir
 

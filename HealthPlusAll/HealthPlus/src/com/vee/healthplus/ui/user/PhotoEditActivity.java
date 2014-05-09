@@ -22,9 +22,7 @@ import com.vee.healthplus.R;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 
-/**
- * Created by zhou on 13-10-28.
- */
+
 public class PhotoEditActivity extends Activity implements View.OnClickListener {
 	private Button cancelBtn, takeBtn, pickBtn;
 	private HP_User user;
@@ -169,8 +167,8 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 		intent.putExtra("crop", "true");
 		intent.putExtra("aspectX", 1);
 		intent.putExtra("aspectY", 1);
-		intent.putExtra("outputX", 128);
-		intent.putExtra("outputY", 128);
+		intent.putExtra("outputX", 600);
+		intent.putExtra("outputY", 600);
 		intent.putExtra("return-data", false);
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, this.u);
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());

@@ -1,5 +1,6 @@
 package com.vee.healthplus.ui.main;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,8 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 
 	private Fragment curFragment;// lingyun modify on github
 
+	
+	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -39,29 +42,17 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnRes(R.drawable.healthplus_headview_logo_btn);
 		setLeftBtnType(2);
-		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)) {
-			// initDefaultUserInfo();
-			if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)
-					&& HP_User.getOnLineUserId(this) == 0) {
-				// initDefaultUserInfo();
-				// 暂时将第一次运行的注册界面改成登陆界面
-				// new UserRegister_Activity().show(getSupportFragmentManager(),
-				// "");
-				// new
-				// UserLogin_Activity(null).show(getSupportFragmentManager(),
-				// "");
-				AppPreferencesUtil.setBooleanPref(this, "isFirst", false);
-				startActivity(new Intent(this, HealthPlusLoginActivity.class));
-			} /*
-			 * else { new GetCartTask(null, null, MainPage.this,
-			 * MainPage.this).execute(); }
-			 */
 
-			startService();
-
-			ShareSDK.initSDK(this);
-
-			new InstallSataUtil(this).serverStat(MyApplication.CHANNEL_ID);
+		// initDefaultUserInfo();
+		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)
+				|| HP_User.getOnLineUserId(this) == 0) {
+			AppPreferencesUtil.setBooleanPref(this, "isFirst", false);
+			Intent intent = new Intent(this, HealthPlusLoginActivity.class);
+			Bundle extras = new Bundle();
+			extras.putParcelable("cn", new ComponentName("com.vee.healthplus",
+					"com.vee.healthplus.ui.main.MainPage"));
+			intent.putExtras(extras);
+			startActivity(intent);
 		}
 	}
 
@@ -102,6 +93,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 		}
 		curFragment = fMsg;
 		ft.add(R.id.container, fMsg);
+		
 		ft.commit();
 	}
 

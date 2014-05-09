@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.RoundImageView;
 
 public class FavoriteNewsListAdapter extends BaseAdapter {

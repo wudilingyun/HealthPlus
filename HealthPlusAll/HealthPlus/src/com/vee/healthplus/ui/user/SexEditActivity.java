@@ -17,9 +17,7 @@ import com.vee.healthplus.R;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 
-/**
- * Created by zhou on 13-10-28.
- */
+
 public class SexEditActivity extends Activity implements View.OnClickListener {
 	private Button maleBtn;
 	private Button femaleBtn;

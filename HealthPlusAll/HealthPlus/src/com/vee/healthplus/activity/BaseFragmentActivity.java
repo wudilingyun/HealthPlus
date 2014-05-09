@@ -1,13 +1,9 @@
 package com.vee.healthplus.activity;
 
-import java.io.File;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,9 +18,11 @@ import com.vee.healthplus.ui.analysis.AnalysisFragment.OnAnalysisListener;
 import com.vee.healthplus.ui.analysis.AnalysisHistoryActivity;
 import com.vee.healthplus.ui.setting.Setting;
 import com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.HeaderView;
 import com.vee.healthplus.widget.HeaderView.OnHeaderClickListener;
 import com.vee.moments.FriendListActivity;
+import com.vee.moments.MomentsPhotoEditActivity;
 import com.vee.moments.NewMomentsActivity;
 import com.vee.shop.activity.AccountActivity;
 
@@ -53,7 +51,6 @@ public class BaseFragmentActivity extends FragmentActivity implements
 	private Button photographbtn;
 	private Button selectfromalbumbtn;
 	private Uri u;
-	private TextView rbtnTv;
 	/*moments end*/
 	
 	@Override
@@ -103,7 +100,7 @@ public class BaseFragmentActivity extends FragmentActivity implements
 				startActivity(intent);
 			}
 			else if (option == HeaderView.HEADER_MOMENTS_CAMERA) {
-				custom = new Dialog(BaseFragmentActivity.this,
+				/*custom = new Dialog(BaseFragmentActivity.this,
 						R.style.NewMomentsDialog);
 				custom.setContentView(R.layout.moments_new_dialog);
 				photographbtn = (Button) custom
@@ -140,7 +137,14 @@ public class BaseFragmentActivity extends FragmentActivity implements
 						custom.dismiss();
 					}
 				});
-				custom.show();
+				custom.show();*/
+				Bundle extras = new Bundle();
+				extras.putInt("id", HP_User.getOnLineUserId(BaseFragmentActivity.this));
+				Intent intent = new Intent();
+				intent.putExtras(extras);
+				intent.setClass(BaseFragmentActivity.this,
+						MomentsPhotoEditActivity.class);
+				startActivityForResult(intent, 0);
 			}
 			else if (option == HeaderView.HEADER_MOMENTS_FRIENDS) {
 				Intent intent = new Intent(BaseFragmentActivity.this,
@@ -162,7 +166,6 @@ public class BaseFragmentActivity extends FragmentActivity implements
 		setContentView(R.layout.base_fragment_activity);
 		mContent = (FrameLayout) findViewById(R.id.container);
 		hv = (HeaderView) findViewById(R.id.header);
-		rbtnTv=(TextView)findViewById(R.id.header_rbtn_tv);
 		leftBtn = (ImageView) findViewById(R.id.header_lbtn_img);
 		rightBtn = (ImageView) findViewById(R.id.header_rbtn_img);
 		hv.setOnHeaderClickListener(headerClickListener);
@@ -198,7 +201,6 @@ public class BaseFragmentActivity extends FragmentActivity implements
 	}
 	
 	public void setRightTvVisible(int visibility) {
-		rbtnTv.setVisibility(visibility);
 	}
 
 	public void setRightBtnRes(int id) {
@@ -206,7 +208,6 @@ public class BaseFragmentActivity extends FragmentActivity implements
 	}
 	
 	public void setRightTvText(String text) {
-		rbtnTv.setText(text);
 	}
 
 	public void setRightBtnType(int type) {

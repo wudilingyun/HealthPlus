@@ -9,6 +9,7 @@ import org.springframework.web.client.ResourceAccessException;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.util.user.GetVerifyCodeTask;
 import com.vee.healthplus.util.user.GetVerifyCodeTask.GetVerifyCodeCallBack;
 import com.vee.healthplus.util.user.RegisterTask;
@@ -79,8 +81,9 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				.findViewById(R.id.health_plus_register_get_yz_btn);
 		register_btn = (Button) view
 				.findViewById(R.id.health_plus_register_btn);
-		register_btn.setEnabled(false);
+		register_btn.setEnabled(true);
 		readBtn = (Button) view.findViewById(R.id.health_plus_register_read);
+		readBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 		yzBtn.setOnClickListener(this);
 		register_btn.setOnClickListener(this);
 		readBtn.setOnClickListener(this);
@@ -160,7 +163,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				if (userPwd_et.getText().toString()
 						.equals(userPwdConfirm_et.getText().toString())) {
 					if (!m.matches() && !m1.matches()) {
-						if (s >= 6 && s <= 15) {
+						if (s >= 6 && s <= 12) {
 							new RegisterTask(this, userName_et.getText()
 									.toString(), userPwd_et.getText()
 									.toString(), yz_et.getText().toString(),
@@ -215,29 +218,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 
 	@Override
 	public void onFinishRegister(int reflag) {
-		/*
-		 * switch (reflag) { case 8: // 注册成功
-		 * displayRegisterResult(getResources().getString(
-		 * R.string.hp_userreg_success)); break; case 102: // 注册帐号长度非法
-		 * displayRegisterResult(getResources().getString(
-		 * R.string.hp_userregserver_error102)); progressDialog.dismiss();
-		 * break; case 103: // 通信密钥不正确
-		 * displayRegisterResult(getResources().getString(
-		 * R.string.hp_userregserver_error103)); progressDialog.dismiss();
-		 * break; case 104: // 注册帐号非法，注册帐号必须是数字和字母组合，不能包含非法字符,@除外
-		 * displayRegisterResult(getResources().getString(
-		 * R.string.hp_userregserver_error104)); progressDialog.dismiss();
-		 * break; case 1: // 用户名或邮箱存在，无法注册
-		 * displayRegisterResult(getResources().getString(
-		 * R.string.hp_userregserver_error1)); progressDialog.dismiss(); break;
-		 * case 5: // 用户基本信息写入失败 displayRegisterResult(getResources().getString(
-		 * R.string.hp_userregserver_error5)); progressDialog.dismiss(); break;
-		 * case 7: // 用户扩展信息写入失败 displayRegisterResult(getResources().getString(
-		 * R.string.hp_userregserver_error7)); progressDialog.dismiss(); break;
-		 * default: // 服务器内部错误 displayRegisterResult(getResources().getString(
-		 * R.string.hp_userregserver_errorother)); progressDialog.dismiss();
-		 * break; }
-		 */
+	
 		switch (reflag) {
 		case 103:
 			displayRegisterResult("authKey出错");
@@ -327,6 +308,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				R.string.hp_userlogin_success));
 		progressDialog.dismiss();
 		// startActivity(new Intent(this, MainPage.class));
+		startActivity(new Intent(this,HealthPlusPersonalInfoEditActivity.class));
 		finish();
 	}
 

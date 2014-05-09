@@ -16,6 +16,7 @@ import org.springframework.web.client.ResourceAccessException;
 
 import android.R.integer;
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -52,6 +53,8 @@ import com.vee.healthplus.http.Response;
 import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
 import com.vee.healthplus.ui.heahth_exam.HealthFragment;
 import com.vee.healthplus.ui.heahth_exam.ProgressDiaogdownload;
+import com.vee.healthplus.ui.main.MainPage;
+import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
@@ -99,6 +102,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
+		setLeftBtnRes(R.drawable.hp_w_header_view_back);
 		webView = (WebView) findViewById(R.id.webwiewshow);
 		jsonCache = JsonCache.getInstance();
 		init();
@@ -110,6 +114,23 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		 * Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show(); new
 		 * GetNewsContactTask().execute(contentUrl, JsonCach); }
 		 */
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		if(resultCode==RESULT_OK)
+		switch (requestCode) {
+		case 1:
+			new BooleanDoSupportAsync().execute(imgurl);
+			break;
+		case 2:
+			getCollect();
+			break;
+		default:
+			break;
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	void init() {
@@ -155,38 +176,21 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 
 		case R.id.support_img:
 			if (HP_User.getOnLineUserId(this) == 0) {
-				new UserLogin_Activity(null).show(getSupportFragmentManager(),
-						"");
+				Intent intent = new Intent(this, HealthPlusLoginActivity.class);
+				this.startActivityForResult(intent, 1);
 				return;
 			}
 			new BooleanDoSupportAsync().execute(imgurl);
-
 			break;
 		case R.id.collect_img:
 			if (HP_User.getOnLineUserId(this) == 0) {
-				new UserLogin_Activity(null).show(getSupportFragmentManager(),
-						"");
+				Intent intent = new Intent(this, HealthPlusLoginActivity.class);
+				this.startActivityForResult(intent, 2);
 				return;
 
 			} else if (HP_User.getOnLineUserId(this) != 0) {
-
-				Boolean bo = HP_DBModel.getInstance(this)
-						.queryUserBooleanCollectInfor(userid, title, imgurl);
-				if (bo) {
-					// 清除数据
-					HP_DBModel.getInstance(this).deletUserCollect(userid,
-							title, imgurl, weburl);
-					Toast.makeText(getApplicationContext(), "取消收藏",
-							Toast.LENGTH_SHORT).show();
-				} else {
-					// collect_img.setBackgroundResource(R.drawable.collect_select);
-					HP_DBModel.getInstance(this).insertUserCollect(userid,
-							title, imgurl, weburl);
-
-					Toast.makeText(getApplicationContext(), "收藏成功",
-							Toast.LENGTH_SHORT).show();
-				}
-
+				getCollect();
+				
 				return;
 			}
 
@@ -198,8 +202,14 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		case R.id.comment_img:
 			// 判断用户是否登录
 			if (HP_User.getOnLineUserId(this) == 0) {
-				new UserLogin_Activity(this).show(getSupportFragmentManager(),
-						"");
+				Intent intent = new Intent(this, HealthPlusLoginActivity.class);
+				Bundle extras = new Bundle();
+				extras.putParcelable(
+						"cn",
+						new ComponentName("com.vee.healthplus",
+								"com.vee.healthplus.ui.heahth_news.Health_ValueBook_commentList_activity"));
+				intent.putExtras(extras);
+				startActivity(intent);
 				return;
 
 			} else if (HP_User.getOnLineUserId(this) != 0) {
@@ -215,6 +225,26 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		default:
 			break;
 		}
+	}
+	
+	void getCollect(){
+		Boolean bo = HP_DBModel.getInstance(this)
+				.queryUserBooleanCollectInfor(userid, title, imgurl);
+		if (bo) {
+			// 清除数据
+			HP_DBModel.getInstance(this).deletUserCollect(userid,
+					title, imgurl, weburl);
+			Toast.makeText(getApplicationContext(), "取消收藏",
+					Toast.LENGTH_SHORT).show();
+		} else {
+			// collect_img.setBackgroundResource(R.drawable.collect_select);
+			HP_DBModel.getInstance(this).insertUserCollect(userid,
+					title, imgurl, weburl);
+
+			Toast.makeText(getApplicationContext(), "收藏成功",
+					Toast.LENGTH_SHORT).show();
+		}
+
 	}
 
 	@Override

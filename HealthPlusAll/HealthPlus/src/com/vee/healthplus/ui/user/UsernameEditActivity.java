@@ -28,6 +28,13 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 			if (option == HeaderView.HEADER_BACK) {
 				finish();
 			} else if (option == HeaderView.HEADER_OK) {
+				if (unameEt.getText().toString().trim() == null
+						|| unameEt.getText().toString().trim().length() < 4
+						|| unameEt.getText().toString().trim().length() > 30) {
+					Toast.makeText(UsernameEditActivity.this, "格式不正确",
+							Toast.LENGTH_LONG).show();
+					return;
+				}
 				Intent data = getIntent();
 				Bundle bundle = data.getExtras();
 				bundle.putString("uname", unameEt.getText().toString());
@@ -45,7 +52,7 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 		View view = View.inflate(this,
 				R.layout.personal_info_username_edit_layout, null);
 		setContainer(view);
-		getHeaderView().setHeaderTitle("用户名");
+		getHeaderView().setHeaderTitle("昵称");
 		getHeaderView().setHeaderTitleColor(
 				R.color.register_headview_text_color_white);
 		getHeaderView().setBackGroundColor(

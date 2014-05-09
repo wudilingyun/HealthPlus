@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
+import com.vee.myhealth.bean.TestCollectinfor;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -298,4 +299,62 @@ public class HP_DBModel {
 
 	}
 
+	/*
+	 * 获得测试列表
+	 */
+	public List<TestCollectinfor> queryUserTestInfor(int userId) {
+		List<TestCollectinfor> testlist = new ArrayList<TestCollectinfor>();
+		String sql = "SELECT * FROM " + HP_DBCommons.USERTEST_TABLENAME
+				+ " WHERE " + HP_DBCommons.USERID + " =" + userId;
+		System.out.println("获得收藏列表=" + sql);
+		Cursor cursor = database.rawQuery(sql, null);
+		if (cursor != null && cursor.getCount() > 0) {
+			while (cursor.moveToNext()) {
+
+				String name = cursor.getString(2);
+				String result = cursor.getString(3);
+				long time = cursor.getLong(4);
+				TestCollectinfor testCollectinfor = new TestCollectinfor();
+				testCollectinfor.setName(name);
+				testCollectinfor.setResult(result);
+				testCollectinfor.setCreattime(time);
+				testlist.add(testCollectinfor);
+			}
+			cursor.close();
+			database.close();
+			return testlist;
+		} else {
+			cursor.close();
+			database.close();
+			return null;
+		}
+
+	}
+
+	/*
+	 * 添加测试列表
+	 */
+
+	public void insertUserTest(int userId, String name, String result, long time) {
+		try {
+			String insertUserCollect = "INSERT INTO "
+					+ HP_DBCommons.USERTEST_TABLENAME + " ("
+					+ HP_DBCommons.USERID + "," + HP_DBCommons.TESTNAME + ","
+					+ HP_DBCommons.TESTRESULT + "," + HP_DBCommons.TESTTIME
+					+ ") VALUES (" + userId + ",'" + name + "','" + result
+					+ "','" + time + "')";
+			System.out.println("添加测试=" + insertUserCollect);
+			database.execSQL(insertUserCollect);
+			System.out.println("成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+	}
+
+	/*
+	 * 查询是否已经测试过
+	 */
 }

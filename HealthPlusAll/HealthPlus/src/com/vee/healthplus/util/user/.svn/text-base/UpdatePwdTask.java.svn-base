@@ -40,7 +40,7 @@ public class UpdatePwdTask extends AsyncTask<Void, Void, GeneralResponse> {
         try {
             Log.i("soda_test",oldpassword+"***"+newpassword);
             GeneralResponse generalResponse = SpringAndroidService.getInstance(activity.getApplication()).updatePassword(oldpassword, newpassword);
-            Log.e("xuxuxu",generalResponse+"");
+            Log.e("xuxuxu","generalResponse="+generalResponse+"");
             return generalResponse;
         } catch (Exception e) {
             Log.e("xuxuxu", e.getMessage());

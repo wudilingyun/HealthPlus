@@ -87,6 +87,7 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 		switch (headerRightBtn) {
 		case 0:
 			rbtnImg.setVisibility(View.INVISIBLE);
+			rbtnTv.setVisibility(View.GONE);
 			break;
 
 		case 4:

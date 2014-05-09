@@ -34,7 +34,7 @@ public class HeightEditActivity extends BaseFragmentActivity implements
 							R.string.hp_userinfoediterror_height));
 					return;
 				}
-				if (Integer.parseInt(heightEt.getText().toString())<1||Integer.parseInt(heightEt.getText().toString())>300) {
+				if (Integer.parseInt(heightEt.getText().toString())<140||Integer.parseInt(heightEt.getText().toString())>274) {
 					displayResult(getResources().getString(
 							R.string.hp_userinfoediterror_height));
 					return;

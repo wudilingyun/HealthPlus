@@ -1,66 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/news_padding" >
+    android:layout_height="wrap_content" >
 
-    <com.vee.healthplus.widget.RoundImageView
-        android:id="@+id/imageView_healthnews"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp" >
 
-    <TextView
-        android:id="@+id/newstitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/imageView_healthnews"
-        android:lines="1"
-        android:maxEms="10"
-        android:text="2013.4.20•正在进行"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/health_textsize_4" />
+        <com.vee.healthplus.widget.RoundImageView
+            android:id="@+id/imageView_healthnews"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp" />
 
-    <TextView
-        android:id="@+id/comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="1"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/health_textsize_4"
-        android:visibility="gone"
-        android:textStyle="normal" />
+        <TextView
+            android:id="@+id/newstitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageView_healthnews"
+            android:lines="1"
+            android:maxEms="10"
+            android:text="2013.4.20•正在进行"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
 
-    <ImageView
-        android:id="@+id/imageView_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/newstitle"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="2dp"
-        android:layout_toLeftOf="@+id/comment"
-        android:background="@drawable/pinglun" 
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="1"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/health_textsize_4"
+            android:textStyle="normal"
+            android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView_icon"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/newstitle"
-        android:lines="1"
-        android:maxEms="6"
-        android:text=""
-        android:textColor="@color/gray"
-        android:textSize="@dimen/health_textsize_3"
-        android:visibility="gone" />
+        <ImageView
+            android:id="@+id/imageView_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/newstitle"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@+id/comment"
+            android:background="@drawable/pinglun"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView_icon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/newstitle"
+            android:lines="1"
+            android:maxEms="6"
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="@dimen/health_textsize_3"
+            android:visibility="gone" />
+    </RelativeLayout>
 
 </RelativeLayout>

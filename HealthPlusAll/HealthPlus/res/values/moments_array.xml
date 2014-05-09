@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="addfriend">
+        <item>搜号码</item>
+        <item>添加手机联系人</item>
+        <item>信息</item>
+    </string-array>
+</resources>

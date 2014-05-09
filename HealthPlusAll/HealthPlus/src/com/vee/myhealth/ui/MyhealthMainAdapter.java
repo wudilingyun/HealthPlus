@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.vee.healthplus.R;
 import com.vee.myhealth.activity.MentalityActivity;
 import com.vee.myhealth.activity.SubHealthActivity;
+import com.vee.myhealth.activity.TestActivity;
 import com.vee.myhealth.activity.TiZhiActivity;
 import com.vee.myhealth.activity.WeightLossActivity;
 

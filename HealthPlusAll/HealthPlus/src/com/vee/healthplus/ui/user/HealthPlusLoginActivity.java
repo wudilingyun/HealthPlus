@@ -15,10 +15,13 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
@@ -31,6 +34,7 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.load.DownloadData;
+import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
 import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.util.user.GetProfileTask;
 import com.vee.healthplus.util.user.HP_DBModel;
@@ -49,14 +53,14 @@ public class HealthPlusLoginActivity extends Activity implements
 	private EditText userName_et, userPwd_et;
 	private ICallBack callBack;
 	private CustomProgressDialog progressDialog = null;
-	LinearLayout input_ll;
-	ResizeLayout root_layout;
-	Button register_btn;
-	Button login_btn;
-	Button forget_btn;
-	TextView register_tv;
-	ImageView uname_img, pwd_img;
-	private DBManager dbHelper;
+	private LinearLayout input_ll;
+	private ResizeLayout root_layout;
+	private Button register_btn;
+	private Button login_btn;
+	private Button forget_btn;
+	private TextView register_tv;
+	private ImageView uname_img, pwd_img;
+
 
 	Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -89,7 +93,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.healthplus_login_layout);
 		initView();
-		addTiZhiDB();
+		
 	}
 
 	@Override
@@ -162,7 +166,7 @@ public class HealthPlusLoginActivity extends Activity implements
 						userPwd_et.getText().toString(), this).execute();
 				progressDialog.show();
 			} else {
-				displayAppAuthorizationError("Your phonenumber was entered incorrectly.");
+
 			}
 			break;
 		case R.id.health_plus_forgetPwd_btn:
@@ -175,10 +179,24 @@ public class HealthPlusLoginActivity extends Activity implements
 	private boolean validateFormData() {
 		String uname = userName_et.getText().toString().trim();
 		String password = userPwd_et.getText().toString().trim();
-		if (uname.length() > 0 && password.length() > 0) {
-			return true;
+		if (uname.length() == 0) {
+			displayAppAuthorizationError("用户名不能为空");
+			return false;
 		}
-		return false;
+		if (password.length() == 0) {
+			displayAppAuthorizationError("密码不能为空");
+			return false;
+		}
+		if (uname.length() == 11 && password.length() <= 12
+				&& password.length() >= 6) {
+			return true;
+		} else if (uname.length() != 11) {
+			displayAppAuthorizationError("用户名必须为11位手机号码");
+			return false;
+		} else {
+			displayAppAuthorizationError("用户名或密码输入不正确");
+			return false;
+		}
 	}
 
 	private void displayAppAuthorizationError(String message) {
@@ -263,19 +281,30 @@ public class HealthPlusLoginActivity extends Activity implements
 		user.email = profile.getEmail();
 		user.phone = profile.getPhone();
 		user.remark = profile.getRemark();
-		user.photourl=profile.getRawavatarurl();
-		//user.photourl="http://bk.browser.mobifox.cn:6060/hd/"+user.userId;
-		Log.i("lingyun","profile.getRawavatarurl()="+profile.getRawavatarurl()+"profile.getRemark();="+profile.getRemark());
+		user.photourl = profile.getRawavatarurl();
+		// user.photourl="http://bk.browser.mobifox.cn:6060/hd/"+user.userId;
+		Log.i("lingyun",
+				"profile.getRawavatarurl()=" + profile.getRawavatarurl()
+						+ "profile.getRemark();=" + profile.getRemark());
 		HP_DBModel.getInstance(this).insertUserInfo(user, true);
 		HP_User.setOnLineUserId(this, profile.getMemberid());
-		Log.e("lingyun", "getMemberid=" + profile.getMemberid());
-		Log.e("lingyun", "HP_User.get=" + HP_User.getOnLineUserId(this));
 		displayLoginResult(this.getResources().getString(
 				R.string.hp_userlogin_success));
 		DownloadData.getInstance(this).downloadAllData();
+		Bundle b = getIntent().getExtras();
+		if (b != null) {
+			Intent i = new Intent();
+			i.setComponent((ComponentName) b.getParcelable("cn"));
+			Log.i("lingyun",
+					"ComponentName="
+							+ ((ComponentName) b.getParcelable("cn"))
+									.toString());
+			startActivity(i);
+		}
 		if (callBack != null) {
 			callBack.onChange();
 		}
+		setResult(RESULT_OK);
 		finish();
 	}
 
@@ -283,6 +312,14 @@ public class HealthPlusLoginActivity extends Activity implements
 	public void onErrorGetProfile(Exception e) {
 
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		finish();
+	}
+	
 
 	@Override
 	public void onFinishQueryAllDayRecordByTyp(List<DayRecord> dayrecordlist) {
@@ -315,10 +352,5 @@ public class HealthPlusLoginActivity extends Activity implements
 		return (int) (dpValue * scale + 0.5f);
 	}
 
-	void addTiZhiDB() {
-		dbHelper = new DBManager(this);
-		dbHelper.openDatabase();
-		dbHelper.closeDatabase();
-	}
-
+	
 }

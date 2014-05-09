@@ -2,16 +2,20 @@ package com.vee.healthplus.util.sporttrack.weather;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -110,35 +114,36 @@ public class WeatherUtil {
 		return sb.toString();
 	}
 
-	public void getWeatherImage(String url, final ImageView view) {
-		try {
-			String urlString = "http://m.weather.com.cn/img/b" + url + ".gif";
-			ImageLoader.getInstance().loadImage(urlString,
-					DisplayImageOptionsUtils.getInstance().getOptions(),
-					new ImageLoadingListener() {
-						@Override
-						public void onLoadingStarted(String arg0, View arg1) {
-						}
-
-						public void onLoadingFailed(String arg0, View arg1,
-								FailReason arg2) {
-						}
-
-						public void onLoadingComplete(String arg0, View arg1,
-								Bitmap bitmap) {
-							view.setImageDrawable(DisplayImageOptionsUtils
-									.BitmapToDrawable(bitmap, context));
-						}
-
-						@Override
-						public void onLoadingCancelled(String arg0, View arg1) {
-						}
-					});
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+	
+	
+	public void getWeatherImage(String name, final ImageView view){
+	
+		Bitmap weatherbt=getImageFromAssetsFile("weatherPic/"+name);  
+		view.setImageBitmap(weatherbt);
+		
 	}
-
+	 /*
+	  * 从assets读取图片
+	  */
+	  private Bitmap getImageFromAssetsFile(String fileName)  
+	  {  
+	      Bitmap image = null;  
+	      AssetManager am = context.getResources().getAssets();  
+	      try  
+	      {  
+	          InputStream is = am.open(fileName);  
+	          image = BitmapFactory.decodeStream(is);  
+	          is.close();  
+	      }  
+	      catch (IOException e)  
+	      {  
+	          e.printStackTrace();  
+	      }  
+	  
+	      return image;  
+	  
+	  }  
+	
 	public void parseJsonAndShow(String jsonData, TextView textView,
 			ImageView view) {
 		StringBuffer stringBuffer = new StringBuffer();

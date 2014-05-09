@@ -4,19 +4,13 @@
     android:layout_height="match_parent"
     android:background="@color/backcolor" >
 
-    <RelativeLayout
+   <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <include layout="@layout/ting_playpanel" />
 
-        <!--
-        <com.vee.easyting.util.PlayerPanel
-            android:id="@+id/playpanel_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
-        -->
+
     </RelativeLayout>
 
 </FrameLayout>

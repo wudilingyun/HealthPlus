@@ -1,7 +1,7 @@
 10
 
 dir
-703
+721
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/shop/ui
 svn://192.168.23.204/mobileapp/mobilesafe
 
@@ -60,40 +60,6 @@ wangfeng
 
 5667
 
-AddressListFragment.java
-file
-
-
-
-
-2014-03-28T08:27:49.687500Z
-a23d9a08cecf7cd8e97fe423955b18ff
-2014-02-13T09:09:01.005065Z
-641
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-10986
-
 ProductParameterFragment.java
 file
 
@@ -127,6 +93,40 @@ wangfeng
 
 
 1739
+
+AddressListFragment.java
+file
+
+
+
+
+2014-03-28T08:27:49.687500Z
+a23d9a08cecf7cd8e97fe423955b18ff
+2014-02-13T09:09:01.005065Z
+641
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10986
 
 ShoppingListFragment.java
 file
@@ -196,40 +196,6 @@ wangfeng
 
 9470
 
-PointListFragment.java
-file
-
-
-
-
-2014-03-28T08:27:49.734375Z
-251b8c9fd85c52694b021efb52c38099
-2013-12-26T10:05:51.000978Z
-581
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7342
-
 PointOrderFragment.java
 file
 
@@ -263,6 +229,40 @@ wangfeng
 
 
 4681
+
+PointListFragment.java
+file
+
+
+
+
+2014-03-28T08:27:49.734375Z
+251b8c9fd85c52694b021efb52c38099
+2013-12-26T10:05:51.000978Z
+581
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7342
 
 ShopHeaderView.java
 file

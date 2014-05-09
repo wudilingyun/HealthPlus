@@ -95,7 +95,7 @@ public class ExamListAdapter extends BaseExpandableListAdapter {
 		return groupPosition;
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+//	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressLint("NewApi")
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,

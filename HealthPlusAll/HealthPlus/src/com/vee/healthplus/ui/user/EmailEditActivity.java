@@ -1,5 +1,8 @@
 package com.vee.healthplus.ui.user;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +13,6 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
-import com.vee.healthplus.util.user.HP_DBModel;
-import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.HeaderView;
 import com.vee.healthplus.widget.HeaderView.OnHeaderClickListener;
 
@@ -29,6 +30,13 @@ public class EmailEditActivity extends BaseFragmentActivity implements
 			if (option == HeaderView.HEADER_BACK) {
 				finish();
 			} else if (option == HeaderView.HEADER_OK) {
+				Pattern p = Pattern
+						.compile("^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\\.([a-zA-Z0-9_-])+)+$");
+				Matcher m = p.matcher(emailEt.getText().toString().trim());
+				if(!m.matches()){
+					Toast.makeText(EmailEditActivity.this, "请输入正确的邮箱地址", Toast.LENGTH_LONG).show();
+					return;
+				}
 				Intent data = getIntent();
 				Bundle bundle = data.getExtras();
 				bundle.putString("email", emailEt.getText().toString());
