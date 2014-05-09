@@ -34,6 +34,7 @@ public class ImageViewerDialogActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setWindowAnimations(R.style.dialog_updown);
 		setContentView(R.layout.image_view_dialog_layout);
 		rl = (RelativeLayout) findViewById(R.id.image_viewer_rl);
 		iv = (ImageView) findViewById(R.id.image_viewer_big_iv);

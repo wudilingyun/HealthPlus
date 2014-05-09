@@ -5,7 +5,7 @@
     android:versionName="1.0.6" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="14" />
 
     <supports-screens
@@ -186,19 +186,10 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
         <!-- Health -->
-        <activity
-            android:name="com.vee.healthplus.ui.heahth_exam.HealthHeartActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.vee.healthplus.ui.heahth_exam.HealthExamActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name="com.vee.healthplus.ui.heahth_exam.ExamTypeActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.vee.healthplus.ui.heahth_exam.ExamInfoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.vee.healthplus.ui.heahth_exam.StartExamActivity"
@@ -365,12 +356,6 @@
             <intent-filter>
                 <action android:name="com.easyting.progress" />
                 <action android:name="com.easyting.button" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.vee.easyting.receiver.ShutdownReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
-                <action android:name="android.intent.action.QUICKBOOT_POWEROFF" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.vee.healthplus.receiver.CompleteReceiver" >
@@ -562,6 +547,13 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.setting.ImageViewerDialogActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" 
+            android:theme="@style/Translucent_NoTitle" />
+        
         <!-- wo end -->
 
         <activity
@@ -635,10 +627,6 @@
         <activity
             android:name="com.vee.moments.FriendDetailActivity"
             android:label="@string/title_activity_friend_detail" >
-        </activity>
-        <activity
-            android:name="com.vee.moments.FriendMomentsActivity"
-            android:label="@string/title_activity_friend_moments" >
         </activity>
         <activity
             android:name="com.vee.moments.FriendListActivity"

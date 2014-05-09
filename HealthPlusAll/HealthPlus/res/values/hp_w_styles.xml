@@ -295,7 +295,7 @@
     <!-- health plus -->
     <style name="dialog_updown" parent="android:Animation">
         <item name="@android:windowExitAnimation">@anim/dialog_exit_up2down</item>
-        <!-- <item name="@android:windowEnterAnimation">@anim/dialog_enter_down2up</item> -->
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter_down2up</item> 
     </style>
 
     <style name="myDialog">
