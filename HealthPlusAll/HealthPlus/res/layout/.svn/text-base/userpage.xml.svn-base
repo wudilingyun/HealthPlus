@@ -58,16 +58,21 @@
                 android:adjustViewBounds="true"
                 android:clickable="false"
                 android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:src="@drawable/healthplus_wo_default_photo"
                 imagecontrol:border_outside_color="#ddffdd"
                 imagecontrol:border_thickness="1.5dp" />
 
             <LinearLayout
+                android:id="@+id/user_info_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/user_list_item_icon"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -81,6 +86,8 @@
                         android:id="@+id/user_login_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxWidth="200dp"
+                        android:singleLine="true"
                         android:text="Sinly"
                         android:textColor="#ffffff" />
 
@@ -223,7 +230,9 @@
         android:layout_marginRight="16dip"
         android:cacheColorHint="#00000000"
         android:divider="#66dfdfde"
-        android:dividerHeight="0.5dip" >
+        android:dividerHeight="0.5dip"
+        android:listSelector="@drawable/setting_list_selector"
+        android:scrollbars="none" >
     </ListView>
 
 </LinearLayout>

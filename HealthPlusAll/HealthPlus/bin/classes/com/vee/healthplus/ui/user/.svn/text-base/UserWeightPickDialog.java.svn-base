@@ -1,5 +1,8 @@
 package com.vee.healthplus.ui.user;
 
+import kankan.wheel.widget.WheelView;
+import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,18 +16,17 @@ import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.widget.CustomDialog;
 
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
-
 /**
  * Created by zhou on 13-10-28.
  */
+@SuppressLint("ValidFragment")
 public class UserWeightPickDialog extends DialogFragment implements View.OnClickListener {
     private WheelView age_wv;
     private HP_User user;
     private ICallBack callBack;
 
-    public UserWeightPickDialog(HP_User user, ICallBack callBack) {
+    @SuppressLint("ValidFragment")
+	public UserWeightPickDialog(HP_User user, ICallBack callBack) {
         this.user = user;
         this.callBack = callBack;
     }

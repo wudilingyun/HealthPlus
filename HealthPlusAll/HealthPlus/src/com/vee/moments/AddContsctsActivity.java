@@ -1,72 +1,65 @@
 package com.vee.moments;
 
-import com.vee.healthplus.R;
-import com.vee.healthplus.R.layout;
-import com.vee.healthplus.R.menu;
-import com.vee.healthplus.activity.BaseFragmentActivity;
-import com.vee.moments.adapter.ContactAdapter;
-
-
-import com.yunfox.s4aservicetest.response.PhoneContactsResponse;
-import com.yunfox.springandroid4healthplus.SpringAndroidService;
-
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.app.Activity;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.springframework.social.ExpiredAuthorizationException;
+import org.springframework.social.MissingAuthorizationException;
+import org.springframework.social.connect.DuplicateConnectionException;
+import org.springframework.web.client.ResourceAccessException;
 
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.ContactsContract;
-
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
-
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.SearchView;
-import android.widget.Toast;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.Toast;
+
+import com.vee.healthplus.R;
+import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
+import com.vee.moments.adapter.ContactAdapter;
+import com.yunfox.s4aservicetest.response.PhoneContactsResponse;
+import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 /**
  * @author wangdongsheng
  * 
  */
 public class AddContsctsActivity extends BaseFragmentActivity implements
-		OnQueryTextListener ,OnItemClickListener{
-	private static  final String TAG="AddContsctsActivity";
+		OnQueryTextListener, OnItemClickListener {
+	private static final String TAG = "AddContsctsActivity";
 	private ListView mContactsListview;
+	private ImageView loadImageView;
 	private AsyncQueryHandler mAsyncQueryHandler;
 	private LinearLayout loFrameLayout;
-    private static final int LOAD=1;
-	String contactArry[];
-	List<PhoneContactsResponse> mContactsList;
+	private static final int LOAD = 1;
+	private String contactArry[];
+	private List<PhoneContactsResponse> mContactsList;
+	private HashMap<String, String> data;
+	private Animation news_loadAaAnimation;
+
 	private Handler handler = new Handler() {
 
 		@Override
@@ -77,7 +70,8 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 			switch (msg.what) {
 
 			case LOAD:
-				setAdapter(mContactsList);
+				setAdapter(mContactsList, data);
+				loadImageView.clearAnimation();
 				loFrameLayout.setVisibility(View.GONE);
 				break;
 
@@ -90,11 +84,15 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 		super.onCreate(savedInstanceState);
 		View view = View.inflate(this, R.layout.activity_contacts_list, null);
 		setContainer(view);
-	
+
 		loFrameLayout = (LinearLayout) findViewById(R.id.loading_frame);
 		mContactsListview = (ListView) findViewById(R.id.contacts_list);
-//        LayoutAnimationController controller = creatAnimation();
-//        mContactsListview.setLayoutAnimation(controller);
+		news_loadAaAnimation = AnimationUtils.loadAnimation(this,
+				R.anim.wait_heart_result);
+		loadImageView = (ImageView) findViewById(R.id.img_rotate);
+		loadImageView.setAnimation(news_loadAaAnimation);
+		loFrameLayout.setVisibility(View.VISIBLE);
+		loadImageView.startAnimation(news_loadAaAnimation);
 		mContactsListview.setOnItemClickListener(this);
 		mAsyncQueryHandler = new ContactsAsyncQueryHandler(getContentResolver());
 		startQuery();
@@ -104,18 +102,18 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 	private LayoutAnimationController creatAnimation() {
 		AnimationSet set = new AnimationSet(true);
 
-        Animation animation = new AlphaAnimation(0.0f, 1.0f);
-        animation.setDuration(50);
-        set.addAnimation(animation);
+		Animation animation = new AlphaAnimation(0.0f, 1.0f);
+		animation.setDuration(50);
+		set.addAnimation(animation);
 
-        animation = new TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0.0f,Animation.RELATIVE_TO_SELF, 0.0f,
-            Animation.RELATIVE_TO_SELF, -1.0f,Animation.RELATIVE_TO_SELF, 0.0f
-        );
-        animation.setDuration(100);
-        set.addAnimation(animation);
+		animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				-1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+		animation.setDuration(100);
+		set.addAnimation(animation);
 
-        LayoutAnimationController controller = new LayoutAnimationController(set, 0.5f);
+		LayoutAnimationController controller = new LayoutAnimationController(
+				set, 0.5f);
 		return controller;
 	}
 
@@ -132,17 +130,17 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 
 	}
 
-//	 @Override
-//	 public void onCreateOptionsMenu(Menu menu) {
-//	  Place an action bar item for searching.
-//	  MenuItem item = menu.add("Search");
-//	  item.setIcon(android.R.drawable.ic_menu_search);
-//	  item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM
-//	  | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
-//	  SearchView sv = new SearchView(this);
-//	  sv.setOnQueryTextListener(this);
-//	  item.setActionView(sv);
-//	 }
+	// @Override
+	// public void onCreateOptionsMenu(Menu menu) {
+	// Place an action bar item for searching.
+	// MenuItem item = menu.add("Search");
+	// item.setIcon(android.R.drawable.ic_menu_search);
+	// item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM
+	// | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+	// SearchView sv = new SearchView(this);
+	// sv.setOnQueryTextListener(this);
+	// item.setActionView(sv);
+	// }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -177,7 +175,7 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 
 				cursor.moveToFirst();
 				contactArry = new String[cursor.getCount()];
-				HashMap<String, String> map = new HashMap<String, String>();
+				data = new HashMap<String, String>();
 				for (int i = 0; i < cursor.getCount(); i++) {
 					cursor.moveToPosition(i);
 					String name = cursor.getString(1);
@@ -186,10 +184,10 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 					int contactId = cursor.getInt(4);
 					Long photoId = cursor.getLong(5);
 					String lookUpKey = cursor.getString(6);
-					map.put(name, number);
+					data.put(number, name);
 					// contactArry=new String[]{name,number};
 
-					contactArry[i] = name;
+					contactArry[i] = number;
 
 					// if (number.startsWith("+86")) {//
 					// 去除多余的中国地区号码标志，对这个程序没有影响。
@@ -204,14 +202,14 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 
 					LoadThread mLoadThread = new LoadThread();
 					mLoadThread.start();
-					loFrameLayout.setVisibility(View.VISIBLE);
 				}
 			}
 		}
 	}
 
-	public void setAdapter(List<PhoneContactsResponse> list) {
-		ContactAdapter hc = new ContactAdapter(this, list);
+	public void setAdapter(List<PhoneContactsResponse> list,
+			HashMap<String, String> data) {
+		ContactAdapter hc = new ContactAdapter(this, list, data);
 		mContactsListview.setAdapter(hc);
 
 	}
@@ -231,12 +229,37 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 	class LoadThread extends Thread {
 
 		public void run() {
-			mContactsList = SpringAndroidService.getInstance(getApplication())
-					.queryPhoneContacts(contactArry);
+			try {
+				mContactsList = SpringAndroidService.getInstance(
+						getApplication()).queryPhoneContacts(contactArry);
+			} catch (Exception exception) {
+				if (exception != null) {
+					String message;
+
+					if (exception instanceof DuplicateConnectionException) {
+						message = "The connection already exists.";
+					} else if (exception instanceof ResourceAccessException
+							&& exception.getCause() instanceof ConnectTimeoutException) {
+						message = "connect time out";
+					} else if (exception instanceof MissingAuthorizationException) {
+						message = "please login first";
+					} else if (exception instanceof ExpiredAuthorizationException) {
+						message = "authorization expired";
+						SpringAndroidService.getInstance(getApplication())
+								.signOut();
+						startActivity(new Intent(AddContsctsActivity.this,
+								HealthPlusLoginActivity.class));
+						finish();
+					} else {
+						message = "A problem occurred with the network connection. Please try again in a few minutes.";
+					}
+					displayError(message);
+				}
+
+			}
 
 			Message msg = Message.obtain();
 			msg.what = LOAD;
-
 			handler.sendMessage(msg);
 
 		}
@@ -246,18 +269,16 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		Toast.makeText(this,
-				"to  FriendDetailActivity", Toast.LENGTH_SHORT).show();
-//		Intent intent = new Intent(this, FriendDetailActivity.class);
-//	
-//		startActivity(intent);
-		
+		// Toast.makeText(this, "to  FriendDetailActivity", Toast.LENGTH_SHORT)
+		// .show();
+		// Intent intent = new Intent(this, FriendDetailActivity.class);
+		//
+		// startActivity(intent);
+
 	}
 
-
-	
-	
-	
-	
+	private void displayError(String message) {
+		Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+	}
 
 }

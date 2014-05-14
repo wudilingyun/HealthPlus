@@ -9,13 +9,14 @@
         android:id="@+id/image_viewer_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000" >
+        android:background="@null" >
 
         <FrameLayout
             android:id="@+id/image_viewer_loading_fl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            android:background="@null">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
             android:layout_centerInParent="true"
             android:scaleType="centerInside"
             android:src="@drawable/healthplus_wo_default_photo" 
-            android:visibility="gone"/>
+            android:visibility="invisible"/>
     </RelativeLayout>
 
 </LinearLayout>

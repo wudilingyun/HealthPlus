@@ -14,7 +14,9 @@
         android:layout_marginLeft="16dp"
         android:cacheColorHint="#00000000"
         android:dividerHeight="1dip"
+        android:listSelector="@drawable/setting_list_selector"
         android:divider="@drawable/health_plus_setting_white_divider"
-        android:footerDividersEnabled="false"/>
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"/>
 
 </LinearLayout>

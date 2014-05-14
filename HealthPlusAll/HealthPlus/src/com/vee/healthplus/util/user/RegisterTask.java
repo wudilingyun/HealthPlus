@@ -21,15 +21,17 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
     private String username;
     private String password;
     private String verifycode;
+    private String nick;
     private Activity activity;
     private RegisterCallBack callBack;
     private SignInTask.SignInCallBack signInCallBack;
 
-    public RegisterTask(Activity activity, String userName, String password, String verifycode, RegisterCallBack callBack, SignInTask.SignInCallBack signInCallBack) {
+    public RegisterTask(Activity activity, String userName, String password, String verifycode, String nick,RegisterCallBack callBack, SignInTask.SignInCallBack signInCallBack) {
         this.activity = activity;
         this.username = userName;
         this.password = password;
         this.verifycode = verifycode;
+        this.nick=nick;
         this.callBack = callBack;
         this.signInCallBack = signInCallBack;
     }
@@ -38,7 +40,6 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
         this.activity = activity;
         this.username = userName;
         this.password = password;
-        this.verifycode = verifycode;
         this.callBack = callBack;
     }
 
@@ -51,7 +52,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
     @SuppressWarnings("unchecked")
     protected Void doInBackground(Void... params) {
         try {
-            registerResponse = SpringAndroidService.getInstance(activity.getApplication()).registerwithverifycode(username, verifycode, password);
+            registerResponse = SpringAndroidService.getInstance(activity.getApplication()).registerwithverifycodeandnickname(username, verifycode,nick, password);
             System.out.print("registerResponse="+registerResponse.getReturncode());
         } catch (Exception e) {
             this.exception = e;

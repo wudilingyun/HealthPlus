@@ -1,14 +1,14 @@
 10
 
 dir
-721
+732
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus/ui/setting
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-09T04:44:41.603470Z
-721
+2014-05-13T08:03:15.940717Z
+725
 zhaoyouliang
 
 
@@ -25,40 +25,6 @@ zhaoyouliang
 
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
-
-UserPageFragment.java
-file
-
-
-
-
-2014-05-07T06:13:49.078125Z
-b274f42bde33fa31f146493410f70457
-2014-05-07T06:37:53.437834Z
-717
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6987
 
 UpdateActivity.java
 file
@@ -94,16 +60,50 @@ xujizhe
 
 3343
 
+UserPageFragment.java
+file
+
+
+
+
+2014-05-09T09:18:45.187500Z
+58ce239eafeccb617a6d3e550cf46be4
+2014-05-12T09:59:01.127461Z
+723
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7956
+
 SettingShare.java
 file
 
 
 
 
-2014-05-09T04:51:21.250000Z
-a4c5e655e94ddb8e123f3b5746f95104
-2014-05-09T04:44:41.603470Z
-721
+2014-05-13T08:28:04.031250Z
+766712ab14f79e5a3013fe6e3bfa6008
+2014-05-13T08:03:15.940717Z
+725
 zhaoyouliang
 
 
@@ -126,7 +126,41 @@ zhaoyouliang
 
 
 
-5605
+6086
+
+ImageViewerDialogActivity.java
+file
+
+
+
+
+2014-05-12T09:58:58.015625Z
+fa9eca93732b709500a5b0a7c1a83b09
+2014-05-12T09:59:01.127461Z
+723
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4009
 
 HealthPlusSettingAdapter.java
 file
@@ -264,40 +298,6 @@ zhaoyouliang
 
 4915
 
-TestHistoryActivity.java
-file
-
-
-
-
-2014-05-06T08:16:53.312500Z
-f1b016d084c893d8856d68796e11d1bb
-2014-05-07T06:37:53.437834Z
-717
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2707
-
 SettingAdapter.java
 file
 
@@ -331,6 +331,40 @@ xujizhe
 
 
 4638
+
+TestHistoryActivity.java
+file
+
+
+
+
+2014-05-06T08:16:53.312500Z
+f1b016d084c893d8856d68796e11d1bb
+2014-05-07T06:37:53.437834Z
+717
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2707
 
 ShareActivityAdapter.java
 file
@@ -406,10 +440,10 @@ file
 
 
 
-2014-03-28T08:27:42.750000Z
-23bc8309cdb27b8925fa53278826635b
-2014-03-04T07:52:52.440712Z
-648
+2014-05-13T08:28:04.046875Z
+2a4a376988fa7324bff7dc9026ecdf41
+2014-05-13T08:03:15.940717Z
+725
 zhaoyouliang
 
 
@@ -432,7 +466,7 @@ zhaoyouliang
 
 
 
-10971
+11043
 
 HealthPlusSettingActivity.java
 file

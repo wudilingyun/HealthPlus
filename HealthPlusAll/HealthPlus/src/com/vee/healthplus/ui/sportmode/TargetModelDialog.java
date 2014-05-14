@@ -30,11 +30,11 @@ public class TargetModelDialog extends DialogFragment implements
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		CustomDialog.Builder builder = new CustomDialog.Builder(getActivity());
 		builder.setTitle(R.string.hp_sportmodel);
-		builder.setTitleBG(getResources().getColor(android.R.color.transparent));
-		builder.setViewBG(getResources().getDrawable(
-				R.drawable.hp_main_popmenu_bg));
-		builder.setTitleColor(getResources()
-				.getColor(R.color.hp_w_target_title));
+	//	builder.setTitleBG(getResources().getColor(android.R.color.transparent));
+		/*builder.setViewBG(getResources().getDrawable(
+				R.drawable.hp_main_popmenu_bg));*/
+		/*builder.setTitleColor(getResources()
+				.getColor(R.color.hp_w_target_title));*/
 		View layout = View.inflate(getActivity(),
 				R.layout.hp_targetmodel_dialog, null);
 		initView(layout);

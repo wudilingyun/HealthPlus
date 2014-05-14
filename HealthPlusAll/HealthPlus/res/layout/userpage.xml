@@ -58,6 +58,7 @@
                 android:adjustViewBounds="true"
                 android:clickable="false"
                 android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:src="@drawable/healthplus_wo_default_photo"
                 imagecontrol:border_outside_color="#ddffdd"
                 imagecontrol:border_thickness="1.5dp" />
@@ -169,7 +170,7 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <!-- LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
@@ -190,7 +191,7 @@
                 android:text="消息"
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
-        </LinearLayout>
+        </LinearLayout-->
 
         <LinearLayout
             android:id="@+id/user_favorite_ll"

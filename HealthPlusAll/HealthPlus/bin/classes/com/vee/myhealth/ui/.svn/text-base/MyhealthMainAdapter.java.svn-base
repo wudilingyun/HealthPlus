@@ -36,7 +36,7 @@ public class MyhealthMainAdapter extends BaseAdapter {
 			R.string.xinli, R.string.xuezhi, R.string.tangniaobing,
 			R.string.jianfei };
 	private Class target[] = { SubHealthActivity.class, TiZhiActivity.class,
-			MentalityActivity.class, null, null, null };
+			MentalityActivity.class, null, null, WeightLossActivity.class };
 	private int selectItem = 0;
 
 	public MyhealthMainAdapter(Context ctx) {

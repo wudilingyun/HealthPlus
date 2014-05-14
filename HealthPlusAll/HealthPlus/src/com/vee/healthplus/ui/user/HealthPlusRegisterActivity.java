@@ -37,12 +37,12 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		View.OnClickListener, RegisterTask.RegisterCallBack,
 		SignInTask.SignInCallBack, OnFocusChangeListener, GetVerifyCodeCallBack {
 
-	private EditText userName_et, userPwd_et, userPwdConfirm_et, yz_et;
+	private EditText userName_et, userPwd_et, userPwdConfirm_et, yz_et,nick_et;
 	private CheckBox agreeBox;
 	private Button readBtn, register_btn, yzBtn;
 
 	private CustomProgressDialog progressDialog = null;
-	ImageView uname_img, pwd_img1, pwd_img2, yz_img;
+	ImageView uname_img, pwd_img1, pwd_img2, yz_img,nick_iv;
 
 	public HealthPlusRegisterActivity() {
 		// TODO Auto-generated constructor stub
@@ -98,10 +98,16 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				.findViewById(R.id.health_plus_register_pwd_confirm_img);
 		yz_img = (ImageView) view
 				.findViewById(R.id.health_plus_register_yz_img);
+		nick_et=(EditText) view
+				.findViewById(R.id.health_plus_register_nick_input_et);
+		nick_iv=(ImageView) view
+				.findViewById(R.id.health_plus_register_nick_img);
 		userName_et.setOnFocusChangeListener(this);
 		userPwd_et.setOnFocusChangeListener(this);
 		userPwdConfirm_et.setOnFocusChangeListener(this);
 		yz_et.setOnFocusChangeListener(this);
+		nick_et.setOnFocusChangeListener(this);
+		
 
 		agreeBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -159,6 +165,10 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
 				return;
 			}
+			if (nick_et.getText().toString().length() == 0) {
+				Toast.makeText(this, "昵称不能为空", Toast.LENGTH_SHORT).show();
+				return;
+			}
 			if (checkMobileNumber(userName_et.getText().toString())) {
 				if (userPwd_et.getText().toString()
 						.equals(userPwdConfirm_et.getText().toString())) {
@@ -166,7 +176,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 						if (s >= 6 && s <= 12) {
 							new RegisterTask(this, userName_et.getText()
 									.toString(), userPwd_et.getText()
-									.toString(), yz_et.getText().toString(),
+									.toString(), yz_et.getText().toString(),nick_et.getText().toString().trim(),
 									this, this).execute();
 							progressDialog.show();
 						} else {
@@ -262,6 +272,12 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		case 204:
 			displayRegisterResult("注册帐号非法，注册帐号必须是数字和字母组合，不能包含非法字符,@除外");
 			break;
+		case 700:
+			displayRegisterResult("注册昵称为空");
+			break;
+		case 701:
+			displayRegisterResult("昵称已存在");
+			break;
 		case 1:
 			displayRegisterResult("此手机号已经注册");
 			break;
@@ -348,6 +364,13 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				pwd_img2.setImageResource(R.drawable.health_plus_pwd_focus);
 			} else {
 				pwd_img2.setImageResource(R.drawable.health_plus_pwd_normal);
+			}
+			break;
+		case R.id.health_plus_register_nick_input_et:
+			if (hasFocus) {
+				nick_iv.setImageResource(R.drawable.health_plus_uname_focus);
+			} else {
+				nick_iv.setImageResource(R.drawable.health_plus_uname_normal);
 			}
 			break;
 		}

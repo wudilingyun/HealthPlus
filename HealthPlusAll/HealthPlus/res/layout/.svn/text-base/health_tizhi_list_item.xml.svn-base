@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:singleLine="false"
             android:text="第一个问题是"
-            android:textColor="@drawable/white"
+            android:textColor="#383838"
             android:textSize="12sp" />
 
         <RadioGroup
@@ -34,25 +34,25 @@
             <RadioButton
                 android:id="@+id/ans1_rb"
                 style="@style/tizhi_test_answer"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="8dp"
                 android:text="没有" />
 
             <RadioButton
                 android:id="@+id/ans2_rb"
                 style="@style/tizhi_test_answer"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="8dp"
                 android:text="很少" />
 
             <RadioButton
                 android:id="@+id/ans3_rb"
                 style="@style/tizhi_test_answer"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="8dp"
                 android:text="有时" />
 
             <RadioButton
                 android:id="@+id/ans4_rb"
                 style="@style/tizhi_test_answer"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="8dp"
                 android:text="经常"
                 android:visibility="gone" />
 

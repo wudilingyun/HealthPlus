@@ -6,7 +6,8 @@ public class HealthResultEntity implements Serializable{
 	private String type;
 	private String result;
 	private String tips;
-
+	private String image_id;
+	
 	private String eat;
 	private String sport;
 	private String prevent;
@@ -57,5 +58,13 @@ public class HealthResultEntity implements Serializable{
 
 	public void setTips(String tips) {
 		this.tips = tips;
+	}
+
+	public String getImage_id() {
+		return image_id;
+	}
+
+	public void setImage_id(String image_id) {
+		this.image_id = image_id;
 	}
 }

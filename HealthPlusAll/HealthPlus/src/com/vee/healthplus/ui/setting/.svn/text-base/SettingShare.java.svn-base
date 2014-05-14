@@ -8,8 +8,11 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import cn.sharesdk.framework.Platform;
@@ -38,6 +41,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 	private String type = "";
 	private LoadingDialogUtil loading;
 	private Bitmap bitmap;
+	private Button share_edit_cancel_btn;
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			loading.hide();
@@ -86,6 +90,16 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		loading = new LoadingDialogUtil(mContext);
 		ListView shareTo_lv = (ListView) findViewById(R.id.shareTo_lv);
 		ShareActivityAdapter adapter = new ShareActivityAdapter(mContext);
+		getWindow().setWindowAnimations(R.anim.dialog_enter_down2up);
+		share_edit_cancel_btn   = (Button)findViewById(R.id.share_edit_cancel_btn);
+		share_edit_cancel_btn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		shareTo_lv.setAdapter(adapter);
 		shareTo_lv.setOnItemClickListener(this);
 	}
@@ -119,6 +133,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 
 			sp.text = s;
 			if (imgPath.length() > 0) {
+
 				sp.imageUrl = imgPath;
 			}
 			Platform p = ShareSDK.getPlatform(this, SinaWeibo.NAME);

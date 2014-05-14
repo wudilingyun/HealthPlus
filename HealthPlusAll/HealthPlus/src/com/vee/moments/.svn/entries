@@ -1,14 +1,14 @@
 10
 
 dir
-721
+732
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/moments
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-07T06:56:39.240248Z
-719
+2014-05-13T09:31:28.935975Z
+727
 heda
 
 
@@ -26,87 +26,19 @@ heda
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
 
-MomentsPhotoEditActivity.java
-file
-
-
-
-
-2014-05-07T06:21:46.375000Z
-a541a845f6b5f076171a20880885c2de
-2014-05-07T02:27:46.543430Z
-716
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5904
-
-FriendListActivity.java
-file
-
-
-
-
-2014-05-09T04:51:23.609375Z
-80304ea06607b3d12d332ea76b285632
-2014-05-07T06:56:39.240248Z
-719
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5755
-
 adapter
 dir
 
-AddFriendAdapter.java
+CoverEditActivity.java
 file
 
 
 
 
-2014-05-07T06:21:46.406250Z
-200249a3c2295982d094da9c81633544
-2014-05-07T02:27:46.543430Z
-716
+2014-05-13T08:28:02.734375Z
+38ab490b2f7bf36b8a9d423720ed99de
+2014-05-13T02:58:12.404944Z
+724
 heda
 
 
@@ -129,41 +61,7 @@ heda
 
 
 
-1834
-
-AddContsctsActivity.java
-file
-
-
-
-
-2014-05-04T09:38:54.093750Z
-149e37ccf5bd54a37c209c8f07757fc6
-2014-05-04T09:34:46.106679Z
-705
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7645
+4099
 
 MomentsFragment.java
 file
@@ -171,10 +69,10 @@ file
 
 
 
-2014-05-09T04:51:23.640625Z
-137487b92eaf9571bcdd77312b609b94
-2014-05-07T06:56:39.240248Z
-719
+2014-05-13T09:47:35.828125Z
+a50568e555f2310306c2da36453bd095
+2014-05-13T09:31:28.935975Z
+727
 heda
 
 
@@ -197,41 +95,7 @@ heda
 
 
 
-10721
-
-FriendDetailActivity.java
-file
-
-
-
-
-2014-05-07T06:21:46.453125Z
-e0879433ee38231446bde58521ce44ef
-2014-05-07T02:27:46.543430Z
-716
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3605
+18454
 
 RestImageLoader.java
 file
@@ -266,6 +130,40 @@ heda
 
 
 4946
+
+FriendDetailActivity.java
+file
+
+
+
+
+2014-05-07T06:21:46.453125Z
+e0879433ee38231446bde58521ce44ef
+2014-05-07T02:27:46.543430Z
+716
+heda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3605
 
 FriendAdapter.java
 file
@@ -335,6 +233,40 @@ heda
 
 7796
 
+SendInvitationActivity.java
+file
+
+
+
+
+2014-05-13T04:54:01.750000Z
+ad457719e5cd7c7d0c2b72854fb33617
+2014-05-13T08:59:14.856800Z
+726
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1386
+
 SearchPhoneActivity.java
 file
 
@@ -368,6 +300,142 @@ heda
 
 
 3056
+
+MomentsPhotoEditActivity.java
+file
+
+
+
+
+2014-05-13T08:28:02.718750Z
+b92b3fa905e4474d5ab56b2208d2ef13
+2014-05-13T02:58:12.404944Z
+724
+heda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6130
+
+FriendListActivity.java
+file
+
+
+
+
+2014-05-09T04:51:23.609375Z
+80304ea06607b3d12d332ea76b285632
+2014-05-07T06:56:39.240248Z
+719
+heda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5755
+
+AddFriendAdapter.java
+file
+
+
+
+
+2014-05-07T06:21:46.406250Z
+200249a3c2295982d094da9c81633544
+2014-05-07T02:27:46.543430Z
+716
+heda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1834
+
+AddContsctsActivity.java
+file
+
+
+
+
+2014-05-13T06:26:43.078125Z
+dff8a647baf0b7bc571e729645e429ac
+2014-05-13T08:59:14.856800Z
+726
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9033
 
 AddFriendActivity.java
 file
@@ -409,10 +477,10 @@ file
 
 
 
-2014-05-07T06:21:46.500000Z
-db618f7d8a9dafe43054ee2bd225cadb
-2014-05-07T02:27:46.543430Z
-716
+2014-05-13T09:47:35.843750Z
+93dbe3e4ef1a21a39038284fdbbf8760
+2014-05-13T09:31:28.935975Z
+727
 heda
 
 
@@ -435,5 +503,5 @@ heda
 
 
 
-7974
+10105
 

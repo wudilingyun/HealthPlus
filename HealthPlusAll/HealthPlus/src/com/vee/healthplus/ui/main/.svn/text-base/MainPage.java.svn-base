@@ -21,14 +21,16 @@ import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.ui.user.UserRegister_Activity;
 import com.vee.healthplus.util.AppPreferencesUtil;
 import com.vee.healthplus.util.InstallSataUtil;
+import com.vee.healthplus.util.VersionUtils;
 import com.vee.healthplus.util.user.HP_DBCommons;
 import com.vee.healthplus.util.user.HP_DBHelper;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
+import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.widget.tabpage.SampleTabsWithIcons;
 import com.vee.shop.http.GetCartTask;
 
-public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
+public class MainPage extends BaseFragmentActivity implements IFragmentMsg ,ICallBack{
 
 	private Fragment curFragment;// lingyun modify on github
 
@@ -42,7 +44,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnRes(R.drawable.healthplus_headview_logo_btn);
 		setLeftBtnType(2);
-
+		VersionUtils.getInstance().checkVersion(MainPage.this);
 		// initDefaultUserInfo();
 		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)
 				|| HP_User.getOnLineUserId(this) == 0) {
@@ -93,6 +95,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 		}
 		curFragment = fMsg;
 		ft.add(R.id.container, fMsg);
+		
 		ft.commit();
 	}
 
@@ -137,6 +140,18 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg {
 	@Override
 	protected void onResume() {
 		super.onResume();
+	}
+
+	@Override
+	public void onChange() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onCancel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

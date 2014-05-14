@@ -50,7 +50,6 @@ public class SampleTabsWithIcons extends Fragment {
 	public static Fragment[] fragments = new Fragment[4];
 
 	private IFragmentMsg mFragmentMsgCallBack;
-
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -79,7 +78,6 @@ public class SampleTabsWithIcons extends Fragment {
 		ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.removeAllViews();
 		pager.setAdapter(adapter);
-
 		pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
 			public void onPageScrolled(int i, float v, int i2) {
@@ -104,6 +102,7 @@ public class SampleTabsWithIcons extends Fragment {
 					break;
 				}
 			}
+			
 
 			@Override
 			public void onPageScrollStateChanged(int i) {
@@ -132,17 +131,14 @@ public class SampleTabsWithIcons extends Fragment {
 						.setHeaderTitle(
 								getActivity().getString(R.string.hp_app_name));
 
-				if (position == 1) {
+				if (position == 0) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
 						((BaseFragmentActivity) activity)
 								.setRightBtnVisible(View.GONE);
 						((BaseFragmentActivity) getActivity())
 								.setRightTvVisible(View.GONE);
-						((BaseFragmentActivity) activity)
-								.getHeaderView()
-								.setRightRes(
-										R.drawable.header_view_right_bt_history_selector);
+						
 					}
 				} else if (position == 1) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
@@ -246,7 +242,7 @@ public class SampleTabsWithIcons extends Fragment {
 			case 1:
 				// fragment = HealthFragment.newInstance();
 				// fragment = AskWeaknessFragment.NewInstance();
-				fragment = new MomentsFragment();
+				fragment = MomentsFragment.newInstance();
 				break;
 			case 2:
 				// fragment = Health_ValuableBook_Fragment.newInstance();
@@ -289,6 +285,8 @@ public class SampleTabsWithIcons extends Fragment {
 			return Integer.parseInt(oj.toString());
 		}
 	}
+	
+
 
 	@Override
 	public void onResume() {

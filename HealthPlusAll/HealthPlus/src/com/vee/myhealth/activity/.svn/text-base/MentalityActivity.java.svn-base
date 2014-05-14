@@ -263,7 +263,7 @@ public class MentalityActivity extends BaseFragmentActivity implements
 			// TODO 跳转页面显示最后计算完分数hou的结果
 			if (myAdapter.getScoreMap().size() == heList.size()) {
 				Intent intent = new Intent(MentalityActivity.this,
-						TiZhiResultActivity.class);
+						TestResultActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("tzscore", myAdapter.getScoreMap());
 				intent.putExtras(bundle);

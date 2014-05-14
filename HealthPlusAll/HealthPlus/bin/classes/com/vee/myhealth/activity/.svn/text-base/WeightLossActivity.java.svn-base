@@ -39,7 +39,7 @@ import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
 
 public class WeightLossActivity extends BaseFragmentActivity implements
-		SqlDataCallBack<HealthQuestionEntity>, OnCheckedChangeListener {
+		SqlDataCallBack<HealthQuestionEntity>, OnCheckedChangeListener,android.view.View.OnClickListener  {
 
 	private SqlForTest sqlForTest;
 	private List<HealthQuestionEntity> heList;
@@ -77,7 +77,7 @@ private int i=0;
 		myAdapter = new MyAdapter<HealthQuestionEntity>(this);
 		myListView = (ListView) findViewById(R.id.tizhi_list);
 		submit_butt = (Button) findViewById(R.id.submit_butt);
-		
+		submit_butt.setOnClickListener(this);
 	}
 
 	@Override
@@ -164,69 +164,19 @@ private int i=0;
 				v.rb1 = (RadioButton) view.findViewById(R.id.ans1_rb);
 				v.rb2 = (RadioButton) view.findViewById(R.id.ans2_rb);
 				v.rb3 = (RadioButton) view.findViewById(R.id.ans3_rb);
-				v.rb3.setVisibility(View.GONE);
 				view.setTag(v);
 			}
 			
 			final ViewHolder v = (ViewHolder) view.getTag();
 			v.content.setText(hqEntity.getId() + "." + hqEntity.getQuestion());
 			v.rb1.setText("是");
-			v.rb2.setText("否");
-
-			v.rb1.setTag(heList.get(position).getYesskip());
-			v.rb2.setTag(heList.get(position).getNoskip());
+			v.rb2.setText("不是");
+			v.rb3.setText("偶尔");
+			v.rb2.setVisibility(View.VISIBLE);
+			v.rb1.setTag(3);
+			v.rb2.setTag(1);
+			v.rb3.setTag(2);
 			v.radioGroup.setId(position);
-			
-			v.radioGroup
-					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-						@Override
-						public void onCheckedChanged(RadioGroup group,
-								int checkedId) {
-							// TODO Auto-generated method stub
-							int id = group.getId();
-							switch (checkedId) {
-							case R.id.ans1_rb:
-								cheMap.put(id, R.id.ans1_rb);
-								break;
-							case R.id.ans2_rb:
-								cheMap.put(id, R.id.ans2_rb);
-								break;
-							}
-
-							if (checkedId != -1) {
-								RadioButton radioButton = (RadioButton) findViewById(checkedId);
-								String type = (String) radioButton.getTag();
-								System.out.println("跳转到" + type);
-								
-								if (type != null && !type.equals("A")
-										&& !type.equals("B")
-										&& !type.equals("C")
-										&& !type.equals("D")
-										&& !type.equals("E")) {
-
-									myListView.setSelection(Integer
-											.parseInt(type) - 1);
-									
-
-								} else {
-									System.out.println("当前选择" + type);
-									Intent intent = new Intent(
-											WeightLossActivity.this,
-											TiZhiResultActivity.class);
-									Bundle bundle = new Bundle();
-									bundle.putSerializable("type", type);
-									intent.putExtras(bundle);
-									intent.putExtra("flag", "113");
-
-									startActivity(intent);
-									finish();
-
-								}
-							}
-							
-						}
-					});
 			if (cheMap.size() > 0) {
 				Iterator<Integer> it = cheMap.keySet().iterator();
 				while (it.hasNext()) {
@@ -240,12 +190,46 @@ private int i=0;
 								v.radioGroup.check(R.id.ans1_rb);
 							} else if (cheMap.get(id) == R.id.ans2_rb) {
 								v.radioGroup.check(R.id.ans2_rb);
+							}else if(cheMap.get(id) == R.id.ans3_rb){
+								v.radioGroup.check(R.id.ans3_rb);
 							}
 						}
 					}
 				}
 			}
 
+			v.radioGroup
+					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+						@Override
+						public void onCheckedChanged(RadioGroup radioGroup,
+								int checkedId) {
+							int id = radioGroup.getId();
+							if (checkedId != -1) {
+								RadioButton tempButton = (RadioButton) findViewById(checkedId);
+								scoremMap.put(hqEntity,
+										(Integer) tempButton.getTag());
+								System.out.println("选择的分数是"
+										+ tempButton.getTag());
+							}
+							switch (checkedId) {
+							case R.id.ans1_rb:
+								cheMap.put(id, R.id.ans1_rb);
+								break;
+							case R.id.ans2_rb:
+								cheMap.put(id, R.id.ans2_rb);
+								break;
+							case R.id.ans3_rb:
+								cheMap.put(id, R.id.ans3_rb);
+								break;
+							default:
+								cheMap.put(id, 0);
+								break;
+							}
+						}
+
+					});
+			
 			return view;
 		}
 
@@ -264,6 +248,28 @@ private int i=0;
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.submit_butt:
+			// TODO 跳转页面显示最后计算完分数hou的结果
+			if (myAdapter.getScoreMap().size() == heList.size()) {
+				Intent intent = new Intent(WeightLossActivity.this,
+						TestResultActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("tzscore", myAdapter.getScoreMap());
+				intent.putExtras(bundle);
+				intent.putExtra("flag", "113");
+				intent.putExtra("testname", "减肥测试");
+				startActivity(intent);
+				this.finish();
+			} else {
+				Toast.makeText(this, "没答完亲", Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 
 }

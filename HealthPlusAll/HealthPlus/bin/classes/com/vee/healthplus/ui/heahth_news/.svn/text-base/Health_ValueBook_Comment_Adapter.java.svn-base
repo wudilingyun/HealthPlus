@@ -96,7 +96,7 @@ public class Health_ValueBook_Comment_Adapter extends BaseAdapter {
 		v.time.setText(sdft.format(newslist.get(position).getCreatetime()));
 		String imgurl = newslist.get(position).getAccountavatarurl();
 		v.imghead.setImageResource(R.drawable.ic_common_def_header);
-		// TODO imageLoader.addTask(imgurl, v.imghead);
+		imageLoader.addTask(imgurl, v.imghead);
 		return view;
 	}
 

@@ -7,6 +7,7 @@ import com.vee.healthplus.service.AlarmService;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.util.AppPreferencesUtil;
 import com.vee.healthplus.util.InstallSataUtil;
+import com.vee.healthplus.util.VersionUtils;
 import com.vee.healthplus.util.user.HP_DBCommons;
 import com.vee.healthplus.util.user.HP_DBHelper;
 import com.vee.healthplus.util.user.HP_DBModel;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 
 public class FirstActivity extends Activity {
 	private DBManager dbHelper;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -27,6 +29,7 @@ public class FirstActivity extends Activity {
 		ShareSDK.initSDK(this);
 		startService();
 		addTiZhiDB();
+		
 		new InstallSataUtil(this).serverStat(MyApplication.CHANNEL_ID);
 		Intent intent = new Intent(this, MainPage.class);
 		startActivity(intent);
@@ -43,6 +46,7 @@ public class FirstActivity extends Activity {
 		dbHelper.closeDatabase();
 	}
 
+	
 
 	/*
 	 * private void initDefaultUserInfo() { new HP_DBHelper(this,

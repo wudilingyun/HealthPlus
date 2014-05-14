@@ -212,8 +212,6 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 			AsyncTask<String, Void, List<YysNewsResponse>> {
 		// private MultiValueMap<String, String> formData;
 		private Exception exception;
-		private HttpClient httpClient = new HttpClient();
-		private StringBuffer stringBuffer = new StringBuffer();
 
 		@Override
 		protected void onPreExecute() {
@@ -228,7 +226,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 			try {
 				switch (Integer.parseInt(params[0])) {
 				case 1:
-
+					System.out.println("访问网络");
 					yysNewsResponseList = SpringAndroidService.getInstance(
 							getApplication()).firstGetNewsList(id, 0, 40);
 					System.out.println("id"+id);
@@ -266,6 +264,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 						+ "toString" + exception.toString() + "getCause"
 						+ exception.getCause() + "getLocalizedMessage"
 						+ exception.getLocalizedMessage());
+				
 			}
 			return null;
 
@@ -294,9 +293,11 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 				} else if (exception instanceof MissingAuthorizationException) {
 					message = "please login first";
 				} else {
-					message = "error";
+					message = "网络连接异常。请重试";
 				}
-				System.out.println("异常====" + exception.getMessage());
+				Toast.makeText(getApplication(), message, Toast.LENGTH_SHORT).show();
+				loadImageView.clearAnimation();
+				finish();
 			} else {
 				if (data != null && data.size() > 0) {
 					loFrameLayout.setVisibility(View.GONE);

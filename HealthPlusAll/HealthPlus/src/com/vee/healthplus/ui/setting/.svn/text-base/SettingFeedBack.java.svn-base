@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.text.method.DigitsKeyListener;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -47,6 +48,7 @@ public class SettingFeedBack extends Activity implements
 		this.mContext = this;
 		HeaderView headerView = (HeaderView) findViewById(R.id.setting_feadback_header);
 		headerView.setOnHeaderClickListener(this);
+		headerView.setGravity(Gravity.CENTER);
 		feedback_question1 = (CheckBox) findViewById(R.id.setting_feedback_question1);
 		feedback_question2 = (CheckBox) findViewById(R.id.setting_feedback_question2);
 		feedback_question3 = (CheckBox) findViewById(R.id.setting_feedback_question3);

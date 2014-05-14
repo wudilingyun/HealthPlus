@@ -312,7 +312,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 			// TODO 跳转页面显示最后计算完分数hou的结果
 			if (testAdapter.getScoreMap().size() == tsList.size()) {
 				Intent intent = new Intent(TiZhiActivity.this,
-						TiZhiResultActivity.class);
+						TestResultActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("tzscore", testAdapter.getScoreMap());
 				intent.putExtras(bundle);

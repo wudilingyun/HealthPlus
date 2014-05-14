@@ -11,7 +11,7 @@
         android:dashGap="0.0dip"
         android:dashWidth="3.0dip"
         android:width="0.5dip"
-        android:color="#b4ffffff" />
+        android:color="#ffffff" />
     <!-- padding：Button里面的文字与Button边界的间隔 -->
     <padding
         android:bottom="10dp"

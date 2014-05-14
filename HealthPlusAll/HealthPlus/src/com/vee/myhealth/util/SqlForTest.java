@@ -23,7 +23,7 @@ public class SqlForTest<T> {
 	private SQLiteDatabase database;
 	private SqlDataCallBack<T> iCallBack;
 	private TZtest test;
-	private Health_Report health_Report;
+	//private Health_Report health_Report;
 	private Answer answer;
 	private List<T> testList;
 	private Context context;
@@ -36,7 +36,7 @@ public class SqlForTest<T> {
 		database = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/"
 				+ DBManager.DB_NAME, null);
 		answer = new Answer();
-		health_Report = new Health_Report();
+		//health_Report = new Health_Report();
 		healthResultEntity = new HealthResultEntity();
 		testList = new ArrayList<T>();
 		// TODO Auto-generated constructor stub
@@ -110,25 +110,16 @@ public class SqlForTest<T> {
 				while (cursor.moveToNext()) {
 					String name = cursor.getString(2);
 					String feature = cursor.getString(3);
-					String heart_feature = cursor.getString(4);
-					String easy_sicken = cursor.getString(5);
-					String environment_ataptation = cursor.getString(6);
-					String bite_sup = cursor.getString(7);
-					String sport = cursor.getString(8);
-					String interest = cursor.getString(9);
-
-					health_Report.setName(name);
-					health_Report.setFeature(feature);
-					health_Report.setHeart_feature(heart_feature);
-					health_Report.setEasy_sicken(easy_sicken);
-					health_Report
-							.setEnvironment_ataptation(environment_ataptation);
-					health_Report.setBite_sup(bite_sup);
-					health_Report.setSport(sport);
-					health_Report.setInterest(interest);
+					String img_id = cursor.getString(4);
+					
+					/*health_Report.setName(name);
+					health_Report.setFeature(feature);*/
+					healthResultEntity.setType(name);
+					healthResultEntity.setResult(feature);
+					healthResultEntity.setImage_id(img_id);
 					Log.v("查询到数据", name);
 					if (iCallBack != null) {
-						iCallBack.getResult(health_Report);
+						iCallBack.getResult(healthResultEntity);
 					}
 
 				}
@@ -162,13 +153,9 @@ public class SqlForTest<T> {
 				while (cursor.moveToNext()) {
 					int num = cursor.getInt(1);
 					String question = cursor.getString(3);
-					String yesskip = cursor.getString(4);
-					String noskip = cursor.getString(5);
 					healthQuestionEntity = new HealthQuestionEntity();
 					healthQuestionEntity.setId(num);
 					healthQuestionEntity.setQuestion(question);
-					healthQuestionEntity.setYesskip(yesskip);
-					healthQuestionEntity.setNoskip(noskip);
 					testList.add((T) healthQuestionEntity);
 
 				}
@@ -211,20 +198,21 @@ public class SqlForTest<T> {
 					String type = cursor.getString(5);
 					String result = cursor.getString(6);
 					String tips = cursor.getString(7);
+					String image_id = cursor.getString(8);
 
 					healthResultEntity.setType(type);
 					healthResultEntity.setResult(result);
 					healthResultEntity.setTips(tips);
+					healthResultEntity.setImage_id(image_id);
 				}
 
-				/*
-				 * if (iCallBack != null) {
-				 * iCallBack.getResult(healthResultEntity); }
-				 */
+				if (iCallBack != null) {
+					iCallBack.getResult(healthResultEntity);
+				}
 
 				cursor.close();
-				// database.close();
-				getHealthSuggest(name_id);
+				database.close();
+
 			}
 
 		} catch (Exception e) {
@@ -252,14 +240,13 @@ public class SqlForTest<T> {
 					healthResultEntity.setResult(result);
 				}
 
-				/*
-				 * if (iCallBack != null) {
-				 * iCallBack.getResult(healthResultEntity); }
-				 */
+				if (iCallBack != null) {
+					iCallBack.getResult(healthResultEntity);
+				}
 
 				cursor.close();
-				// database.close();
-				getHealthSuggest(name_id);
+				database.close();
+
 			}
 
 		} catch (Exception e) {

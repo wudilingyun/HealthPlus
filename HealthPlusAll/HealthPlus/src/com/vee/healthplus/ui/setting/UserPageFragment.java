@@ -35,6 +35,7 @@ import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.UserIndexUtils;
+import com.vee.healthplus.widget.HeaderView;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class UserPageFragment extends Fragment implements OnClickListener,
@@ -51,7 +52,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	private TextView favoriteCountTv;
 	private ImageView photoIv, user_login_sex;
 	private RelativeLayout rl_login_none;
-	private LinearLayout user_favorite_ll,user_info_ll;
+	private LinearLayout user_favorite_ll, user_info_ll;
 	private HP_User user = null;
 
 	public static UserPageFragment newInstance() {
@@ -65,6 +66,10 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 		if (resultCode == getActivity().RESULT_OK) {
 			((BaseFragmentActivity) getActivity())
 					.setRightBtnVisible(View.VISIBLE);
+			((BaseFragmentActivity) getActivity()).getHeaderView().setRightRes(
+					R.drawable.header_view_right_bt_history);
+			((BaseFragmentActivity) getActivity()).getHeaderView().setRightOption(
+					HeaderView.HEADER_EDIT);
 		}
 	}
 
@@ -140,8 +145,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 
 		user_favorite_ll = (LinearLayout) localView
 				.findViewById(R.id.user_favorite_ll);
-		user_info_ll= (LinearLayout) localView
-				.findViewById(R.id.user_info_ll);
+		user_info_ll = (LinearLayout) localView.findViewById(R.id.user_info_ll);
 		rl_login_none = (RelativeLayout) localView
 				.findViewById(R.id.userpage_loginbar_none);
 		user_login_tv = (TextView) localView
@@ -183,10 +187,10 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			}
 			rl_login_none.setVisibility(View.GONE);
 			Log.i("lingyun", "updateLoginState.user.photourl=" + user.photourl);
-			//if (user.photourl != null && !user.photourl.equals("")) {
-				ImageLoader.getInstance(getActivity()).addTask(user.photourl,
-						photoIv);
-			//}
+			// if (user.photourl != null && !user.photourl.equals("")) {
+			ImageLoader.getInstance(getActivity()).addTask(user.photourl,
+					photoIv);
+			// }
 			List<NewsCollectinfor> list = HP_DBModel.getInstance(mContext)
 					.queryUserCollectInfor(user.userId);
 			if (list != null) {

@@ -131,7 +131,7 @@ public class CustomDialog extends Dialog {
             TextView contentView = new TextView(context);
             //contentView.setTextColor(context.getResources().getColor(R.color.little_black));
             contentView.setPadding(5, 5, 5, 5);
-            contentView.setTextSize(16);
+            contentView.setTextSize(12);
             contentView.setText(resId);
             this.contentView = contentView;
             return this;
@@ -141,7 +141,7 @@ public class CustomDialog extends Dialog {
             TextView contentView = new TextView(context);
             //contentView.setTextColor(context.getResources().getColor(R.color.little_black));
             contentView.setPadding(30, 30,30, 40);
-            contentView.setTextSize(16);
+            contentView.setTextSize(12);
             contentView.setText(txt);
             this.contentView = contentView;
             return this;
@@ -218,6 +218,7 @@ public class CustomDialog extends Dialog {
                     R.style.Dialog);
             View layout = inflater.inflate(R.layout.custom_dialog, null);
 //            Log.e(TAG,  "width " + LayoutParams.MATCH_PARENT );
+            
             dialog.addContentView(layout, new LayoutParams(
                     (int) (LayoutParams.MATCH_PARENT), LayoutParams.WRAP_CONTENT));
             // set the dialog title
@@ -227,9 +228,9 @@ public class CustomDialog extends Dialog {
                 title_tv.setTextColor(titlecolor);
             }
             LinearLayout titlebg_ll = (LinearLayout) layout.findViewById(R.id.titlebg_ll);
-            if (titlebg != -1) {
+           /* if (titlebg != -1) {
                 titlebg_ll.setBackgroundColor(titlebg);
-            }
+            }*/
             LinearLayout mainview_ll = (LinearLayout) layout.findViewById(R.id.mainview_ll);
             if (mainviewbg != null) {
                 mainview_ll.setBackgroundDrawable(mainviewbg);

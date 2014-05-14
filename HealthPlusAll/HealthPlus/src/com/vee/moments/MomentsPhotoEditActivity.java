@@ -27,7 +27,8 @@ import com.vee.healthplus.util.user.ICallBack;
 /**
  * Created by zhou on 13-10-28.
  */
-public class MomentsPhotoEditActivity extends Activity implements View.OnClickListener {
+public class MomentsPhotoEditActivity extends Activity implements
+		View.OnClickListener {
 	private Button cancelBtn, takeBtn, pickBtn;
 	private HP_User user;
 	private ICallBack callBack;
@@ -44,23 +45,37 @@ public class MomentsPhotoEditActivity extends Activity implements View.OnClickLi
 		switch (requestCode) {
 		case CAMERA_WITH_DATA:
 			if (resultCode == RESULT_OK) {
-				Intent intent = new Intent(MomentsPhotoEditActivity.this, NewMomentsActivity.class);
+				Intent intent = new Intent(MomentsPhotoEditActivity.this,
+						NewMomentsActivity.class);
 				intent.putExtra("bitmap", u.getPath());
 				startActivity(intent);
-				finish();
+				/*
+				 * Intent intent = getIntent(); intent.putExtra("photopath",
+				 * u.getPath());
+				 */
 			}
+			finish();
 			break;
 		case PHOTO_PICKED_WITH_DATA:
-			Intent intent = new Intent(MomentsPhotoEditActivity.this, NewMomentsActivity.class);
-			Uri uri = data.getData();
-	        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-	        cursor.moveToFirst();
-	        String imgNo = cursor.getString(0); //图片编号
-	        String imgPath = cursor.getString(1); //图片文件路径
-	        String imgSize = cursor.getString(2); //图片大小
-	        String imgName = cursor.getString(3); //图片文件名 
-			intent.putExtra("bitmap", imgPath);
-			startActivity(intent);
+			if (resultCode == RESULT_OK) {
+				Intent intent = new Intent(MomentsPhotoEditActivity.this,
+						NewMomentsActivity.class);
+				Uri uri = data.getData();
+				Cursor cursor = getContentResolver().query(uri, null, null,
+						null, null);
+				cursor.moveToFirst();
+				String imgNo = cursor.getString(0); // 图片编号
+				String imgPath = cursor.getString(1); // 图片文件路径
+				String imgSize = cursor.getString(2); // 图片大小
+				String imgName = cursor.getString(3); // 图片文件名
+				intent.putExtra("bitmap", imgPath);
+				startActivity(intent);
+				/*
+				 * Intent intent = getIntent(); intent.putExtra("photopath",
+				 * imgPath);
+				 */
+			}
+
 			finish();
 			break;
 		case PHOTO_CROP:
@@ -81,7 +96,7 @@ public class MomentsPhotoEditActivity extends Activity implements View.OnClickLi
 			break;
 		}
 	}
-	
+
 	public static int readPictureDegree(String path) {
 		int degree = 0;
 		try {
@@ -145,8 +160,7 @@ public class MomentsPhotoEditActivity extends Activity implements View.OnClickLi
 			e.printStackTrace();
 		}
 		u = Uri.fromFile(temp);
-		u = Uri.fromFile(new File(Environment
-				.getExternalStorageDirectory(),
+		u = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),
 				"photograph.jpg"));
 	}
 
@@ -164,8 +178,8 @@ public class MomentsPhotoEditActivity extends Activity implements View.OnClickLi
 			startActivityForResult(intent, CAMERA_WITH_DATA);
 			break;
 		case R.id.photo_edit_pick_btn:
-			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); 
-			innerIntent.setType("image/*"); 
+			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+			innerIntent.setType("image/*");
 			Intent wrapperIntent = Intent.createChooser(innerIntent, null);
 			startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);
 			break;

@@ -73,10 +73,10 @@ public class UserRegister_Activity extends DialogFragment implements
 				if (s1 >= 6 && s1 <= 15) {
 					if (!m.matches() && !m1.matches()) {
 						if (s >= 6 && s <= 15) {
-							new RegisterTask(getActivity(), userName_et
+							/*new RegisterTask(getActivity(), userName_et
 									.getText().toString(), userPwd_et.getText()
 									.toString(), userNick_et.getText()
-									.toString(), this, this).execute();
+									.toString(), this, this).execute();*/
 							progressDialog.show();
 						} else {
 							Toast.makeText(

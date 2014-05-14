@@ -5,15 +5,13 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-    android:background="@color/hp_view_bg"
-    android:minWidth="280dip"
+        android:background="@drawable/btn_dialog_ok"
     android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/titlebg_ll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/headerviewbg"
+        android:layout_height="44dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 
@@ -27,6 +25,11 @@
             android:paddingRight="15dip"
             android:paddingTop="10dp" />
     </LinearLayout>
+     <View
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="0.3dp"
+        android:background="#bfbfbf" />
 
     <LinearLayout
         android:id="@+id/content"
@@ -47,25 +50,27 @@
             android:id="@+id/positiveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:layout_weight="1"
-            android:background="@drawable/normal_bg"
+            android:background="@drawable/dialog_btn_ok"
             android:paddingBottom="9dp"
             android:paddingTop="9dp"
             android:singleLine="true"
-            android:textColor="@color/hp_w_target_week"
-            android:textSize="20sp" />
+            android:textColor="@drawable/white"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/negativeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/normal_bg_right"
+             android:layout_margin="16dp"
             android:paddingBottom="9dp"
             android:paddingTop="9dp"
             android:singleLine="true"
-            android:textColor="@color/hp_w_target_week"
-            android:textSize="20sp"
+              android:background="@drawable/dialog_btn_cancle"
+            android:textColor="#9d9d9d"
+            android:textSize="16sp"
             />
     </LinearLayout>
 

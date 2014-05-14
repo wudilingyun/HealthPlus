@@ -15,7 +15,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="180dip"
+            android:layout_marginBottom="@dimen/health_plus_logo_margin_bottom"
             android:gravity="bottom"
             android:orientation="vertical" >
 

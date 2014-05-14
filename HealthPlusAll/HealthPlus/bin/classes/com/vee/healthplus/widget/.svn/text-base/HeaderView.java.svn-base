@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -29,7 +30,7 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 
 	private Integer mLOption;
 	private Integer mROption;
-	private TextView mHeaderTitle,rbtnTv;
+	private TextView mHeaderTitle;
 	private ImageView lbtnImg;
 	private ImageView rbtnImg;
 	private RelativeLayout relativeLayout;
@@ -54,8 +55,6 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		li.inflate(R.layout.hp_w_header_view, this);
 		
-		rbtnTv=(TextView) findViewById(R.id.header_rbtn_tv);
-		rbtnTv.setOnClickListener(this);
 		lbtnImg = (ImageView) findViewById(R.id.header_lbtn_img);
 		lbtnImg.setOnClickListener(this);
 
@@ -87,7 +86,6 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 		switch (headerRightBtn) {
 		case 0:
 			rbtnImg.setVisibility(View.INVISIBLE);
-			rbtnTv.setVisibility(View.GONE);
 			break;
 
 		case 4:
@@ -108,11 +106,6 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 			break;
 
 		case R.id.header_rbtn_img:
-			if (null != mHeaderClickListener) {
-				mHeaderClickListener.OnHeaderClick(this, mROption);
-			}
-			break;
-		case R.id.header_rbtn_tv:
 			if (null != mHeaderClickListener) {
 				mHeaderClickListener.OnHeaderClick(this, mROption);
 			}

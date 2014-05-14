@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content"
+    android:gravity="bottom" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="260dp"
+    <ListView
+        android:id="@+id/shareTo_lv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/sharebg"
-        android:orientation="vertical" >
+        android:layout_above="@+id/share_edit_cancel_btn"
+        android:background="@drawable/white"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:headerDividersEnabled="false"
+        android:listSelector="@android:color/transparent" >
+    </ListView>
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="@string/setting_share"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <ListView
-            android:id="@+id/shareTo_lv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="@null"
-            android:listSelector="@android:color/transparent" >
-        </ListView>
-    </LinearLayout>
+    <Button
+        android:id="@+id/share_edit_cancel_btn"
+        android:layout_width="fill_parent"
+          android:layout_alignParentBottom="true"
+        android:layout_height="50dip"
+        android:background="#cccccc"
+        android:text="取消"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
 
 </RelativeLayout>

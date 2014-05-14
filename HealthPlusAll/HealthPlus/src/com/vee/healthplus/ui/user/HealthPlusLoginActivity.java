@@ -15,13 +15,11 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
@@ -34,8 +32,6 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.load.DownloadData;
-import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
-import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.util.user.GetProfileTask;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
@@ -43,7 +39,6 @@ import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.QueryAllDayRecordByType;
 import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
-import com.vee.myhealth.util.DBManager;
 import com.yunfox.s4aservicetest.response.DayRecord;
 
 public class HealthPlusLoginActivity extends Activity implements
@@ -76,7 +71,7 @@ public class HealthPlusLoginActivity extends Activity implements
 				register_tv.setVisibility(View.GONE);
 				register_btn.setVisibility(View.GONE);
 			} else {
-				lp.setMargins(0, 0, 0, dip2px(180));
+				lp.setMargins(0, 0, 0, dip2px(Integer.valueOf(getResources().getString(R.string.health_plus_login_marginbottom))));
 				lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,
 						RelativeLayout.TRUE);
 				input_ll.setLayoutParams(lp);
@@ -235,7 +230,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		displayLoginResult(getResources().getString(
 				R.string.hp_userlogin_success));
 		new GetProfileTask(this, this).execute();
-		new QueryAllDayRecordByType(this, "weight", this).execute();
+		//new QueryAllDayRecordByType(this, "weight", this).execute();
 	}
 
 	@Override
@@ -282,7 +277,6 @@ public class HealthPlusLoginActivity extends Activity implements
 		user.phone = profile.getPhone();
 		user.remark = profile.getRemark();
 		user.photourl = profile.getRawavatarurl();
-		// user.photourl="http://bk.browser.mobifox.cn:6060/hd/"+user.userId;
 		Log.i("lingyun",
 				"profile.getRawavatarurl()=" + profile.getRawavatarurl()
 						+ "profile.getRemark();=" + profile.getRemark());

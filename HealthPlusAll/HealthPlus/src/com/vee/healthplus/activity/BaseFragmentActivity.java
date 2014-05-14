@@ -53,7 +53,7 @@ public class BaseFragmentActivity extends FragmentActivity implements
 	private Uri u;
 	/*moments end*/
 	
-	@Override
+/*	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
@@ -63,7 +63,7 @@ public class BaseFragmentActivity extends FragmentActivity implements
 			intent.putExtra("bitmap", u.getPath());
 			startActivity(intent);
 		}
-	}
+	}*/
 
 
 	private OnHeaderClickListener headerClickListener = new OnHeaderClickListener() {
@@ -144,7 +144,7 @@ public class BaseFragmentActivity extends FragmentActivity implements
 				intent.putExtras(extras);
 				intent.setClass(BaseFragmentActivity.this,
 						MomentsPhotoEditActivity.class);
-				startActivityForResult(intent, 0);
+				startActivityForResult(intent, 10);
 			}
 			else if (option == HeaderView.HEADER_MOMENTS_FRIENDS) {
 				Intent intent = new Intent(BaseFragmentActivity.this,

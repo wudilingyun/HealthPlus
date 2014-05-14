@@ -23,9 +23,9 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="15dp" 
-        android:layout_marginRight="10dp"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="18dp" />
 
     <TextView
         android:id="@+id/name"
@@ -35,7 +35,18 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/icon"
         android:text="name"
-        android:textColor="@color/hp_w_header_view_white"
+        android:textColor="@color/gray"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/healthplus_wo_item_arrow"
+        android:textColor="@color/gray"
         android:textSize="16sp" />
 
 </RelativeLayout>

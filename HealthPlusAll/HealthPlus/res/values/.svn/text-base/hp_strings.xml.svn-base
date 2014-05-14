@@ -147,9 +147,9 @@
     <string name="setting_share_wx">微信</string>
     <string name="setting_share_wxpy">微信朋友圈</string>
     <string name="setting_wechat_client_inavailable">目前您的微信版本过低或未安装微信，需要安装微信才能使用</string>
-    <string name="hp_share_invite">健康+是一类免费为您提供健康信息类资讯的服务工具，集运动监测、血糖检测、脂肪饱和度、心率、血氧饱和度、体重监测于一身，全面助您监测身体状况，健康+快乐到您家！欢迎下载！下载地址：www.mobifox.cn</string>
+    <string name="hp_share_invite">云医生是集用户健康检测、健康管理、健康追踪、健康资讯及用户健康交流平台于一体的健康管理软件。挺方便、实用的，推荐你用一下。下载地址：http://cdn.17vee.com/lmstation/shoujiweishi/700071/CloudDoctor.apk</string>
     <string name="update_checking">正在检查版本，请稍后...</string>
-    <string name="update_note">提示</string>
+    <string name="update_note">发现新版本，是否升级 ？</string>
     <string name="update_yes">是</string>
     <string name="update_no">否</string>
     <string name="no_sdcard">未发现SD卡或SD正在被占用！</string>
@@ -236,7 +236,7 @@
     <string name="loading_text">加载中...</string>
     <!-- 云医生 -->
     <string name="doctor_main_txt">首页</string>
-    <string name="doctor_circle_txt">健康圈</string>
+    <string name="doctor_circle_txt">好友</string>
     <string name="doctor_test_txt">测试</string>
     <string name="doctor_ask_txt">问病</string>
     <string name="doctor_exchange_txt">交流</string>

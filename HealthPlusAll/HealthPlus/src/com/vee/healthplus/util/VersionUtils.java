@@ -107,7 +107,7 @@ public class VersionUtils {
                 getServerAddress();
 
                 if (canUpdate(context)) {
-                    handler.sendEmptyMessage(UPDATE_YES_OUT);
+                    handler.sendEmptyMessage(UPDATE_YES_IN);
                 } else
                     handler.sendEmptyMessage(UPDATE_NO_OUT);
             }
@@ -133,6 +133,8 @@ public class VersionUtils {
         CustomDialog.Builder customBuilder = new CustomDialog.Builder(context);
         if (ret) {
             customBuilder.setTitle(R.string.update_note);
+            //customBuilder.setTitleBG(R.drawable.white);
+            
             if (jsa != null) {
                 try {
                     StringBuffer updateInfor = new StringBuffer();
@@ -238,7 +240,9 @@ public class VersionUtils {
             return false;
         }
         try {
+        	
             mVersionJSONArray = response.asJSONArray();
+            System.out.println("就要看看这个"+mVersionJSONArray.toString());
             if (mVersionJSONArray == null) {
                 return false;
             }

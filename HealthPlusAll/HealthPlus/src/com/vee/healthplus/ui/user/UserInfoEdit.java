@@ -199,4 +199,10 @@ public class UserInfoEdit extends UserBaseActivity implements
 			break;
 		}
 	}
+
+	@Override
+	public void onFinishUploadAvatar(int reflag) {
+		// TODO Auto-generated method stub
+		
+	}
 }
