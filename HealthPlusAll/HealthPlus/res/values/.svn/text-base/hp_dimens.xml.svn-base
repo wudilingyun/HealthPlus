@@ -52,4 +52,8 @@
     <dimen name="sport_result_dotted_line_margin_right">5dp</dimen>
     <dimen name="sport_result_dotted_line_margin_top">8dp</dimen>
     
+        <!-- 登陆注册界面 -->
+    <dimen name="health_plus_logo_margin_bottom">180dip</dimen>
+    <dimen name="health_plus_agree_margin_left">15dip</dimen>
+    
 </resources>

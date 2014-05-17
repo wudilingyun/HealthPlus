@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
+import com.vee.healthplus.ui.heahth_heart.DataForSQL;
+import com.vee.healthplus.util.analysis.AnalysisConst;
+import com.vee.healthplus.util.analysis.AnalysisUtil;
+import com.vee.healthplus.util.sporttrack.HealthDBConst;
+import com.vee.myhealth.bean.JPushBean;
 import com.vee.myhealth.bean.TestCollectinfor;
 
 import android.content.ContentValues;
@@ -354,7 +359,233 @@ public class HP_DBModel {
 		}
 	}
 
+	/************************************* 以下数据库用于推送功能添加标签使用 *****************/
 	/*
-	 * 查询是否已经测试过
+	 * 查询测试题是否存在
 	 */
+
+	public Boolean queryTestResultDate(int userId, String name) {
+
+		try {
+			String sql = "select * from "
+					+ HP_DBCommons.USERTEST_TABLENAME_COVER + " WHERE "
+					+ HP_DBCommons.USERID + " =" + userId + " and "
+					+ HP_DBCommons.TESTNAME + " ='" + name + "'";
+			System.out.println("sql" + sql);
+			Cursor cursor = database.rawQuery(sql, null);
+			if (cursor.getCount() < 1) {
+				cursor.close();
+				return false;
+			} else {
+				cursor.close();
+				return true;
+
+			}
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+
+	/*
+	 * 如果不存在插入新的测试结果
+	 */
+	public void insertUserTestByCover(int userId, String name, String result,
+			long time) {
+		try {
+			String insertUserCollect = "INSERT INTO "
+					+ HP_DBCommons.USERTEST_TABLENAME_COVER + " ("
+					+ HP_DBCommons.USERID + "," + HP_DBCommons.TESTNAME + ","
+					+ HP_DBCommons.TESTRESULT + "," + HP_DBCommons.TESTTIME
+					+ ") VALUES (" + userId + ",'" + name + "','" + result
+					+ "','" + time + "')";
+			System.out.println("添加测试=" + insertUserCollect);
+			database.execSQL(insertUserCollect);
+			System.out.println("成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+	}
+
+	/*
+	 * 若是已经存在就更新这条数据
+	 */
+
+	public void updateTestResult(int userId, String name, String result,
+			long time) {
+
+		try {
+			String sql = "update " + HP_DBCommons.USERTEST_TABLENAME_COVER
+					+ " set " + HP_DBCommons.TESTRESULT + "=?" + " , "
+					+ HP_DBCommons.TESTTIME + "=?" + " WHERE "
+					+ HP_DBCommons.USERID + " =" + userId + " and "
+					+ HP_DBCommons.TESTNAME + " ='" + name + "'";
+			Object[] params = new Object[2];
+			params[0] = result;
+			params[1] = time;
+			database.execSQL(sql, params);
+			System.out.println("sql成功" + sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			database.close();
+		}
+
+	}
+
+	/*
+	 * 获得测试列表-覆盖的
+	 */
+	public List<TestCollectinfor> queryUserTestList(int userId) {
+		List<TestCollectinfor> testlist = new ArrayList<TestCollectinfor>();
+		String sql = "SELECT * FROM " + HP_DBCommons.USERTEST_TABLENAME_COVER
+				+ " WHERE " + HP_DBCommons.USERID + " =" + userId;
+		Cursor cursor = database.rawQuery(sql, null);
+		try {
+
+			if (cursor != null && cursor.getCount() > 0) {
+				while (cursor.moveToNext()) {
+
+					String name = cursor.getString(2);
+					String result = cursor.getString(3);
+					long time = cursor.getLong(4);
+					TestCollectinfor testCollectinfor = new TestCollectinfor();
+					testCollectinfor.setName(name);
+					testCollectinfor.setResult(result);
+					testCollectinfor.setCreattime(time);
+					testlist.add(testCollectinfor);
+				}
+				return testlist;
+			} else {
+
+				return null;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			cursor.close();
+			database.close();
+		}
+		return null;
+
+	}
+
+	/**
+	 * 获取推送列表
+	 */
+	public List<JPushBean> queryJPushList(int userId) {
+		List<JPushBean> jBeanList = new ArrayList<JPushBean>();
+		String sql = "SELECT * FROM " + HP_DBCommons.JPUSH_TABLENAME
+				+ " WHERE " + HP_DBCommons.USERID + " =" + userId;
+		Cursor cursor = database.rawQuery(sql, null);
+		try {
+
+			if (cursor != null && cursor.getCount() > 0) {
+				while (cursor.moveToNext()) {
+					String title = cursor.getString(2);
+					String content = cursor.getString(3);
+					String imgUrl = cursor.getString(4);
+					long time = cursor.getLong(5);
+					int readFlag = cursor.getInt(6);
+					JPushBean jBean = new JPushBean();
+					jBean.setTitle(title);
+					jBean.setContent(content);
+					jBean.setImgUrl(imgUrl);
+					jBean.setTime(time);
+					jBean.setReadFlag(readFlag);
+					jBeanList.add(jBean);
+				}
+				return jBeanList;
+			} else {
+
+				return null;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			cursor.close();
+			database.close();
+		}
+		return null;
+
+	}
+
+	/*
+	 * 添加新的JPush
+	 */
+
+	public void insertJPush(int userId, String title, String content,
+			String imgUrl, long time) {
+		try {
+			String insertJPush = "INSERT INTO " + HP_DBCommons.JPUSH_TABLENAME
+					+ " (" + HP_DBCommons.USERID + ","
+					+ HP_DBCommons.JPUSHTITLE + "," + HP_DBCommons.JPUSHCONTENT
+					+ "," + HP_DBCommons.JPUSHIMG + ","
+					+ HP_DBCommons.JPUSHTIME + "," + HP_DBCommons.JPUSHREADFLAG
+					+ ") VALUES (" + userId + ",'" + title + "','" + content
+					+ "','" + imgUrl + "','" + time + "'," + 1 + ")";
+			System.out.println("添加推送=" + insertJPush);
+			database.execSQL(insertJPush);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+	}
+
+	/*
+	 * 设置JPush为已读
+	 */
+
+	public void updateJPushReadFlag(int userId, String title, String content,
+			long time) {
+
+		try {
+			String sql = "update " + HP_DBCommons.JPUSH_TABLENAME + " set "
+					+ HP_DBCommons.JPUSHREADFLAG + "=?" + " WHERE "
+					+ HP_DBCommons.USERID + " =" + userId + " and "
+					+ HP_DBCommons.JPUSHTITLE + " ='" + title + "'" + " and "
+					+ HP_DBCommons.JPUSHCONTENT + " ='" + content + "'"
+					+ " and " + HP_DBCommons.JPUSHTIME + " =" + time;
+			Object[] params = new Object[1];
+			params[0] = 0;
+			database.execSQL(sql, params);
+			System.out.println("sql成功" + sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			database.close();
+		}
+
+	}
+
+	/*
+	 * 查询未读JPush数量
+	 */
+	public int queryUnReadJPushCount(int userId) {
+
+		try {
+
+			String sql = "SELECT * FROM " + HP_DBCommons.JPUSH_TABLENAME
+					+ " WHERE " + HP_DBCommons.USERID + " =" + userId + " and "
+					+ HP_DBCommons.JPUSHREADFLAG + " =" + 1;
+			Cursor cursor = database.rawQuery(sql, null);
+			int count = cursor.getCount();
+			System.out.println("queryUnReadJPushCount成功=" + count);
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			database.close();
+		}
+
+	}
+
 }

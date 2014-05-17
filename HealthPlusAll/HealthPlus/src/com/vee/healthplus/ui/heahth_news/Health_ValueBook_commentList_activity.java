@@ -182,6 +182,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				myAdapter.notifyDataSetChanged();
 				comment_listView.onRefreshComplete();
 			} else {
+				comment_listView.onRefreshComplete();
 				Toast.makeText(getApplication(), "没有评论", Toast.LENGTH_SHORT)
 						.show();
 			}

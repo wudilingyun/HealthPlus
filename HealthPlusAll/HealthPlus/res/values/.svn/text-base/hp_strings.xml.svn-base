@@ -168,7 +168,7 @@
     <string name="setting_feedback_contactserviceqq">也可以加Q群吐槽：</string>
     <string name="setting_feedback_contactserviceqq1">64616812</string>
     <string name="setting_feedback_copynumber">复制群号</string>
-    <string name="setting_feedback_questionhintcontent">请输入您的建议、问题感谢您对健康+的支持与关注</string>
+    <string name="setting_feedback_questionhintcontent">请输入您的建议、问题感谢您对云医生的支持与关注</string>
     <string name="wf_questioncontactway">联系方式：邮箱/电话</string>
     <string name="setting_feedback_sendbtn">提交</string>
     <string name="setting_feedback_wrong1">请选择问题类型!</string>
@@ -180,7 +180,7 @@
     <string name="settings_about">关于</string>
     <string name="setting_service">客服电话:</string>
     <string name="setting_servicenumber">400-810-1717 服务时间:9:00-17:30</string>
-    <string name="setting_gamecenter">健康+版权所有</string>
+    <string name="setting_gamecenter">云医生版权所有</string>
     <string name="setting_detail_version">版本：</string>
     <string name="hp_target_alarm_time_dialog_title">目标提醒时间设定</string>
     <string name="setting_unregist">未登录</string>
@@ -247,5 +247,8 @@
     <string name="doctor_user_friend">我的朋友</string>
     <string name="doctor_user_setting">设置</string>
     <string name="doctor_user_device">设备推荐</string>
+    
+        <!-- 登陆界面 -->
+    <string name="health_plus_login_marginbottom">180</string>
 
 </resources>

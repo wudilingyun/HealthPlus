@@ -152,7 +152,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/setting_feedback_edittextbg"
                     android:ems="200"
-                    android:hint="@string/setting_feedback_questionhintcontent"
+                    android:hint="请输入您的建议、问题感谢您对云医生的支持与关注"
                     android:inputType="textMultiLine"
                     android:maxLines="5"
                     android:minLines="5"

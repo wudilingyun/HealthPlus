@@ -24,6 +24,7 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 	private SaveProfileCallBack callBack;
 	private String hdpath;
 	private GeneralResponse generalResponse;
+	private UploadAvatarResponse uploadAvatarResponse;
 
 	public SaveProfileTask(Activity activity, HP_User user,
 			SaveProfileCallBack callBack, String hdpath) {
@@ -71,7 +72,7 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 		try {
 			generalResponse = SpringAndroidService.getInstance(
 					activity.getApplication()).saveProfile(formData);
-			UploadAvatarResponse uploadAvatarResponse = SpringAndroidService
+			uploadAvatarResponse = SpringAndroidService
 					.getInstance(activity.getApplication())
 					.uploadAvatar(hdpath);
 			return null;
@@ -88,12 +89,17 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 		if (generalResponse != null) {
 			callBack.onFinishSaveProfile(generalResponse.getReturncode());
 		}
+		if(uploadAvatarResponse!=null){
+			callBack.onFinishUploadAvatar(uploadAvatarResponse.getReturncode());
+		}
 	}
 
 	public interface SaveProfileCallBack {
 		public void onFinishSaveProfile(int reflag);
 
 		public void onErrorSaveProfile(Exception e);
+		
+		public void onFinishUploadAvatar(int reflag);
 	}
 
 }

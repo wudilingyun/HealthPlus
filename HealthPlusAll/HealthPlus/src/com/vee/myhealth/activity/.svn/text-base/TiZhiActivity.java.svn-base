@@ -88,7 +88,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 
 		progressBar = (ProgressBar) findViewById(R.id.exam_progressBar);
 
-		progressBar.setProgress(1);
+		progressBar.setProgress(0);
 	}
 
 	void getData() {
@@ -201,6 +201,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 			final ViewHolder v = (ViewHolder) view.getTag();
 			v.content.setText(newslist.get(position).getNum() + "."
 					+ newslist.get(position).getQuestion());
+			v.radioGroup.setOnCheckedChangeListener(null);
 			v.rb1.setTag(1);
 			v.rb2.setTag(2);
 			v.rb3.setTag(3);

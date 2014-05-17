@@ -106,7 +106,7 @@ public class SampleTabsWithIcons extends Fragment {
 
 			@Override
 			public void onPageScrollStateChanged(int i) {
-				Log.i("pager", "onPageScrollStateChanged");
+				
 			}
 		});
 		TabPageIndicator indicator = (TabPageIndicator) view
@@ -202,13 +202,10 @@ public class SampleTabsWithIcons extends Fragment {
 
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				Log.i("pager", "indicator.onPageScrolled()" + arg0 + "-" + arg1
-						+ "-" + arg2);
 			}
 
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
-				Log.i("pager", "indicator.onPageScrollStateChanged()" + arg0);
 			}
 		});
 		return view;

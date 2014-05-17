@@ -115,21 +115,21 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		 * GetNewsContactTask().execute(contentUrl, JsonCach); }
 		 */
 	}
-	
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		if(resultCode==RESULT_OK)
-		switch (requestCode) {
-		case 1:
-			new BooleanDoSupportAsync().execute(imgurl);
-			break;
-		case 2:
-			getCollect();
-			break;
-		default:
-			break;
-		}
+		if (resultCode == RESULT_OK)
+			switch (requestCode) {
+			case 1:
+				new BooleanDoSupportAsync().execute(imgurl);
+				break;
+			case 2:
+				getCollect();
+				break;
+			default:
+				break;
+			}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
@@ -157,7 +157,11 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		weburl = (String) intent.getStringExtra("weburl");
 		imgurl = (String) intent.getStringExtra("imgurl");
 		title = (String) intent.getStringExtra("title");
-		webView.loadUrl(weburl);
+		if (CheckNetWorkStatus.Status(this)) {
+			webView.loadUrl(weburl);
+		} else {
+			Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
+		}
 		all_news = new ArrayList<Doc>();
 		Boolean flag = HP_DBModel.getInstance(this)
 				.queryUserBooleanCollectInfor(userid, title, imgurl);
@@ -175,14 +179,21 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		switch (v.getId()) {
 
 		case R.id.support_img:
-			if (HP_User.getOnLineUserId(this) == 0) {
-				Intent intent = new Intent(this, HealthPlusLoginActivity.class);
-				this.startActivityForResult(intent, 1);
-				return;
+			if (CheckNetWorkStatus.Status(this)) {
+				if (HP_User.getOnLineUserId(this) == 0) {
+					Intent intent = new Intent(this,
+							HealthPlusLoginActivity.class);
+					this.startActivityForResult(intent, 1);
+					return;
+				}
+				new BooleanDoSupportAsync().execute(imgurl);
+			} else {
+				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 			}
-			new BooleanDoSupportAsync().execute(imgurl);
+
 			break;
 		case R.id.collect_img:
+
 			if (HP_User.getOnLineUserId(this) == 0) {
 				Intent intent = new Intent(this, HealthPlusLoginActivity.class);
 				this.startActivityForResult(intent, 2);
@@ -190,26 +201,37 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 
 			} else if (HP_User.getOnLineUserId(this) != 0) {
 				getCollect();
-				
+
 				return;
 			}
 
 			break;
 		case R.id.share_img:
-			String sendMsg = getResources().getString(R.string.hp_share_invite);
-			MyApplication.shareBySystem(this, title, imgurl, weburl, "", "");
+			if (CheckNetWorkStatus.Status(this)) {
+				String sendMsg = getResources().getString(
+						R.string.hp_share_invite);
+				MyApplication
+						.shareBySystem(this, title, imgurl, weburl, "", "");
+			} else {
+				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
+			}
 			break;
 		case R.id.comment_img:
 			// 判断用户是否登录
-			if (HP_User.getOnLineUserId(this) == 0) {
-				Intent intent = new Intent(this, HealthPlusLoginActivity.class);
-				Bundle extras = new Bundle();
-				extras.putParcelable(
-						"cn",
-						new ComponentName("com.vee.healthplus",
-								"com.vee.healthplus.ui.heahth_news.Health_ValueBook_commentList_activity"));
-				intent.putExtras(extras);
-				startActivity(intent);
+			if (CheckNetWorkStatus.Status(this)) {
+				if (HP_User.getOnLineUserId(this) == 0) {
+					Intent intent = new Intent(this,
+							HealthPlusLoginActivity.class);
+					Bundle extras = new Bundle();
+					extras.putParcelable(
+							"cn",
+							new ComponentName("com.vee.healthplus",
+									"com.vee.healthplus.ui.heahth_news.Health_ValueBook_commentList_activity"));
+					intent.putExtras(extras);
+					startActivity(intent);
+				} else {
+					Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
+				}
 				return;
 
 			} else if (HP_User.getOnLineUserId(this) != 0) {
@@ -226,23 +248,23 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 			break;
 		}
 	}
-	
-	void getCollect(){
-		Boolean bo = HP_DBModel.getInstance(this)
-				.queryUserBooleanCollectInfor(userid, title, imgurl);
+
+	void getCollect() {
+		Boolean bo = HP_DBModel.getInstance(this).queryUserBooleanCollectInfor(
+				userid, title, imgurl);
 		if (bo) {
 			// 清除数据
-			HP_DBModel.getInstance(this).deletUserCollect(userid,
-					title, imgurl, weburl);
-			Toast.makeText(getApplicationContext(), "取消收藏",
-					Toast.LENGTH_SHORT).show();
+			HP_DBModel.getInstance(this).deletUserCollect(userid, title,
+					imgurl, weburl);
+			Toast.makeText(getApplicationContext(), "取消收藏", Toast.LENGTH_SHORT)
+					.show();
 		} else {
 			// collect_img.setBackgroundResource(R.drawable.collect_select);
-			HP_DBModel.getInstance(this).insertUserCollect(userid,
-					title, imgurl, weburl);
+			HP_DBModel.getInstance(this).insertUserCollect(userid, title,
+					imgurl, weburl);
 
-			Toast.makeText(getApplicationContext(), "收藏成功",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "收藏成功", Toast.LENGTH_SHORT)
+					.show();
 		}
 
 	}

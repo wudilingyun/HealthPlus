@@ -22,15 +22,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
-import cn.sharesdk.evernote.l;
 
-import com.vee.easyting.activity.BaseActivity;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
@@ -39,14 +38,19 @@ import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
 
 public class WeightLossActivity extends BaseFragmentActivity implements
-		SqlDataCallBack<HealthQuestionEntity>, OnCheckedChangeListener,android.view.View.OnClickListener  {
+		SqlDataCallBack<HealthQuestionEntity>, OnCheckedChangeListener,
+		android.view.View.OnClickListener {
 
 	private SqlForTest sqlForTest;
 	private List<HealthQuestionEntity> heList;
 	private MyAdapter<HealthQuestionEntity> myAdapter;
 	private ListView myListView;
 	private Button submit_butt;
-private int i=0;
+	private TextView qid;
+	private ProgressBar progressBar;
+	private int progresscount;
+	private int i = 0;
+
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -71,6 +75,8 @@ private int i=0;
 		myAdapter.listaddAdapter(heList);
 		myListView.setAdapter(myAdapter);
 		myAdapter.notifyDataSetChanged();
+		qid.setText(0 + "/" + heList.size());
+		progressBar.setMax(heList.size());
 	}
 
 	void init() {
@@ -78,6 +84,11 @@ private int i=0;
 		myListView = (ListView) findViewById(R.id.tizhi_list);
 		submit_butt = (Button) findViewById(R.id.submit_butt);
 		submit_butt.setOnClickListener(this);
+		qid = (TextView) findViewById(R.id.examcount);
+
+		progressBar = (ProgressBar) findViewById(R.id.exam_progressBar);
+
+		progressBar.setProgress(0);
 	}
 
 	@Override
@@ -144,8 +155,7 @@ private int i=0;
 		@Override
 		public View getView(final int position, View convertView,
 				ViewGroup parent) {
-			
-			
+
 			final HealthQuestionEntity hqEntity = (HealthQuestionEntity) getItem(position);
 			View view = null;
 			if (convertView != null) {
@@ -166,9 +176,10 @@ private int i=0;
 				v.rb3 = (RadioButton) view.findViewById(R.id.ans3_rb);
 				view.setTag(v);
 			}
-			
+
 			final ViewHolder v = (ViewHolder) view.getTag();
 			v.content.setText(hqEntity.getId() + "." + hqEntity.getQuestion());
+			v.radioGroup.setOnCheckedChangeListener(null);
 			v.rb1.setText("是");
 			v.rb2.setText("不是");
 			v.rb3.setText("偶尔");
@@ -190,7 +201,7 @@ private int i=0;
 								v.radioGroup.check(R.id.ans1_rb);
 							} else if (cheMap.get(id) == R.id.ans2_rb) {
 								v.radioGroup.check(R.id.ans2_rb);
-							}else if(cheMap.get(id) == R.id.ans3_rb){
+							} else if (cheMap.get(id) == R.id.ans3_rb) {
 								v.radioGroup.check(R.id.ans3_rb);
 							}
 						}
@@ -209,6 +220,9 @@ private int i=0;
 								RadioButton tempButton = (RadioButton) findViewById(checkedId);
 								scoremMap.put(hqEntity,
 										(Integer) tempButton.getTag());
+								progresscount = scoremMap.values().size();
+								qid.setText(progresscount + "/" + heList.size());
+								progressBar.setProgress(progresscount);
 								System.out.println("选择的分数是"
 										+ tempButton.getTag());
 							}
@@ -229,7 +243,7 @@ private int i=0;
 						}
 
 					});
-			
+
 			return view;
 		}
 

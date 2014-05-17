@@ -238,11 +238,24 @@ public class UserMomentsActivity extends FragmentActivity implements OnClickList
 			}
 			TextView textViewMessage = (TextView) view.findViewById(R.id.tv_content);
 			ImageView ivPhoto = (ImageView) view.findViewById(R.id.iv_photo);
-			ivPhoto.setImageResource(R.drawable.myhealth_users_avatar);
 			Moments moments = momentsList.get(position);
+			String strImage1 = moments.getImage1();
+			if(strImage1 == null || strImage1.length() == 0)
+			{
+				ivPhoto.setVisibility(View.GONE);
+			}
+			else
+			{
+				ivPhoto.setVisibility(View.VISIBLE);
+				ivPhoto.setImageResource(R.drawable.myhealth_users_avatar);
+			}
 			textViewMessage.setText(moments.getMessage());
-			ImageLoader.getInstance(UserMomentsActivity.this).addTask(moments.getImage1(),
-					ivPhoto);
+			if(strImage1 != null && strImage1.length() > 0)
+			{
+				ImageLoader.getInstance(UserMomentsActivity.this).addTask(moments.getImage1(),
+						ivPhoto);
+			}
+			
 /*			ImageViewGet imageViewGet = new ImageViewGet();
 			imageViewGet.setImageurl(moments.getImage1());
 			imageViewGet.setImageViewMoments(ivPhoto);

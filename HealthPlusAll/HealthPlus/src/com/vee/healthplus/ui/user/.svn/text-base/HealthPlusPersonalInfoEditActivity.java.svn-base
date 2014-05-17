@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import org.springframework.social.greenhouse.api.Profile;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -28,6 +30,7 @@ import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.heahth_news_utils.ImageFileCache;
 import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
+import com.vee.healthplus.util.user.GetProfileTask;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
@@ -36,7 +39,8 @@ import com.vee.healthplus.widget.CustomProgressDialog;
 
 @SuppressLint("ResourceAsColor")
 public class HealthPlusPersonalInfoEditActivity extends Activity implements
-		View.OnClickListener, ICallBack, SaveProfileTask.SaveProfileCallBack {
+		View.OnClickListener, ICallBack, SaveProfileTask.SaveProfileCallBack,
+		GetProfileTask.GetProfileCallBack {
 
 	private ListView mListView;
 	private Button saveBtn;
@@ -374,16 +378,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	@Override
 	public void onFinishSaveProfile(int reflag) {
 		// TODO Auto-generated method stub
-		if (reflag == 200) {
-			dialog.dismiss();
-			Toast.makeText(
-					this,
-					getResources()
-							.getString(R.string.hp_userinfo_motifysuccess),
-					Toast.LENGTH_SHORT).show();
-
-			finish();
-		}
+		System.out.print("onFinishSaveProfile.reflag=" + reflag);
 	}
 
 	@Override
@@ -391,7 +386,34 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		// TODO Auto-generated method stub
 		dialog.dismiss();
 		Toast.makeText(this, "保存失败", Toast.LENGTH_SHORT).show();
-
 		finish();
+	}
+
+	@Override
+	public void onFinishUploadAvatar(int reflag) {
+		// TODO Auto-generated method stub
+		System.out.print("onFinishUploadAvatar.reflag=" + reflag);
+		if (reflag == 200) {
+			new GetProfileTask(this, this).execute();
+		}else{
+			dialog.dismiss();
+			Toast.makeText(this, "头像保存失败", Toast.LENGTH_SHORT).show();
+			finish();
+		}
+	}
+
+	@Override
+	public void onFinishGetProfile(Profile profile) {
+		// TODO Auto-generated method stub
+		user.photourl = profile.getRawavatarurl();
+		HP_DBModel.getInstance(this).updateUserInfo(user, true);
+		dialog.dismiss();
+		finish();
+	}
+
+	@Override
+	public void onErrorGetProfile(Exception e) {
+		// TODO Auto-generated method stub
+
 	}
 }

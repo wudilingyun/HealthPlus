@@ -2,8 +2,8 @@
     android:shape="oval" >
 
     <size
-        android:height="90dp"
-        android:width="90dp" />
+        android:height="100dp"
+        android:width="100dp" />
 
     <stroke
         android:dashGap="0.0dip"

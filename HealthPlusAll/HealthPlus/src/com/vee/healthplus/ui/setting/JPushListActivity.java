@@ -29,6 +29,7 @@ import com.vee.healthplus.heahth_news_http.Contact;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
+import com.vee.myhealth.bean.JPushBean;
 
 @SuppressLint("NewApi")
 public class JPushListActivity extends Activity implements 
@@ -41,6 +42,7 @@ public class JPushListActivity extends Activity implements
 	private boolean flag = true;
 	private TextView header_text, jpush_none_tv;
 	private ImageView header_lbtn_img, header_rbtn_img;
+	private List<JPushBean> list=null;
 
 	private String name;
 	public Context mContext;
@@ -57,9 +59,8 @@ public class JPushListActivity extends Activity implements
 		url = Contact.HealthNES_URL;
 		gettitle();
 		init(view);
-		List<NewsCollectinfor> list = null;
 		try {
-			// 列表获取函数
+			list=HP_DBModel.getInstance(this).queryJPushList(HP_User.getOnLineUserId(this));// 列表获取函数
 		} catch (Exception e) {
 			Toast.makeText(mContext, "资讯列表获取失败", Toast.LENGTH_SHORT).show();
 		}

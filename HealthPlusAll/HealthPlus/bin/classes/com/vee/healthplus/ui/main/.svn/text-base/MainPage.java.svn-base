@@ -1,5 +1,9 @@
 package com.vee.healthplus.ui.main;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +12,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 import cn.sharesdk.framework.ShareSDK;
 
 import com.vee.healthplus.R;
@@ -28,14 +34,15 @@ import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.widget.tabpage.SampleTabsWithIcons;
+import com.vee.myhealth.bean.TestCollectinfor;
 import com.vee.shop.http.GetCartTask;
 
-public class MainPage extends BaseFragmentActivity implements IFragmentMsg ,ICallBack{
+public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
+		ICallBack, TagAliasCallback {
 
 	private Fragment curFragment;// lingyun modify on github
+	Set<String> tags = new HashSet();
 
-	
-	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
@@ -56,6 +63,24 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg ,ICal
 			intent.putExtras(extras);
 			startActivity(intent);
 		}
+	}
+
+	void addTagForJPush() {
+		int userId = HP_User.getOnLineUserId(this);
+		if (userId != 0) {
+			List<TestCollectinfor> TagList = HP_DBModel.getInstance(this)
+					.queryUserTestList(userId);
+			if (TagList != null && TagList.size() > 0) {
+				for (int i = 0; i < TagList.size(); i++) {
+					String s = TagList.get(i).getName()
+							+ TagList.get(i).getResult();
+					System.err.println("测试结果"+s);
+					tags.add(s);
+				}
+				JPushInterface.setTags(getApplication(), tags, this);
+			}
+		}
+
 	}
 
 	private void initDefaultUserInfo() {
@@ -95,7 +120,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg ,ICal
 		}
 		curFragment = fMsg;
 		ft.add(R.id.container, fMsg);
-		
+
 		ft.commit();
 	}
 
@@ -140,16 +165,23 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg ,ICal
 	@Override
 	protected void onResume() {
 		super.onResume();
+		//addTagForJPush();
 	}
 
 	@Override
 	public void onChange() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onCancel() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void gotResult(int arg0, String arg1, Set<String> arg2) {
 		// TODO Auto-generated method stub
 		
 	}

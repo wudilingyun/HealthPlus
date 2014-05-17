@@ -15,10 +15,8 @@ public class UserPageAdapter extends BaseAdapter {
 	private Context mContext;
 	private String[] sTitles;
 	private int icons[] = { R.drawable.healthplus_wo_item_testdata_icon,
-			R.drawable.healthplus_wo_item_friends_icon,
 			R.drawable.healthplus_wo_item_setting_icon,
-			R.drawable.healthplus_wo_item_device_icon,
-			R.drawable.shop_search_order_icon };
+			R.drawable.healthplus_wo_item_device_icon,R.drawable.shop_search_order_icon};
 
 	protected LayoutInflater _mInflater;
 
@@ -27,6 +25,11 @@ public class UserPageAdapter extends BaseAdapter {
 		this.mContext = mContext;
 		this.sTitles = strings;
 		_mInflater = LayoutInflater.from(this.mContext);
+	}
+	
+	public void setTitle(String[] strings){
+		this.sTitles = strings;
+		notifyDataSetChanged();
 	}
 
 	@Override

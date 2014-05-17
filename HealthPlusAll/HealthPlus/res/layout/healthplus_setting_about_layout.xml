@@ -33,10 +33,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dip"
+            android:padding="5dp"
             android:gravity="center"
-            android:text="您的健康管理好帮手"
+            android:text="《云医生》由云狐时代有限公司权威发布 你的私人健康顾问！"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
     
     <View 

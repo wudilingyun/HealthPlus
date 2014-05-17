@@ -9,8 +9,8 @@
                 android:angle="270"
                 android:centerColor="#ff5a5d5a"
                 android:centerY="0.75"
-                android:endColor="#ff747674"
-                android:startColor="#ff9d9e9d" />
+                android:endColor="#ffffff"
+                android:startColor="#ffffff" />
         </shape>
     </item>
     <item android:id="@android:id/progress">
@@ -22,8 +22,8 @@
                     android:angle="270"
                     android:centerColor="#01d3ff"
                     android:centerY="0.75"
-                    android:endColor="#01d3ff"
-                    android:startColor="#01d3ff" />
+                    android:endColor="#ffffff"
+                    android:startColor="#ffffff" />
             </shape>
         </clip>
     </item>

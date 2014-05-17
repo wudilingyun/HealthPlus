@@ -1,5 +1,9 @@
 package com.vee.healthplus.util.user;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.social.connect.DuplicateConnectionException;
 import org.springframework.util.MultiValueMap;
@@ -7,9 +11,11 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 /**

@@ -18,19 +18,17 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,11 +36,15 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.ui.heahth_news.Health_news_detailsActivity.BooleanDoSupportAsync;
+import com.vee.healthplus.ui.heahth_news.Health_news_detailsActivity.SubmitSupportAsync;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
-import com.vee.healthplus.util.user.UserInfoUtil;
+import com.vee.healthplus.util.user.ICallBack;
+import com.vee.healthplus.widget.DrawableCenterTextView;
 import com.yunfox.s4aservicetest.response.GeneralResponse;
 import com.yunfox.s4aservicetest.response.Moments;
+import com.yunfox.s4aservicetest.response.MomentsComment;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class MomentsFragment extends Fragment {
@@ -68,12 +70,10 @@ public class MomentsFragment extends Fragment {
 				try {
 					head = MediaStore.Images.Media.getBitmap(this.getActivity()
 							.getContentResolver(), Uri.parse(cover));
-					if(imageViewCoverDefault != null)
-					{
+					if (imageViewCoverDefault != null) {
 						imageViewCoverDefault.setImageBitmap(head);
 					}
-					if(imageViewCoverList != null)
-					{
+					if (imageViewCoverList != null) {
 						imageViewCoverList.setImageBitmap(head);
 					}
 				} catch (FileNotFoundException e) {
@@ -124,25 +124,24 @@ public class MomentsFragment extends Fragment {
 		executorService = Executors.newCachedThreadPool();
 
 		imageViewCoverDefault = (ImageView) view.findViewById(R.id.cover);
-		imageViewMyMoments = (ImageView) view
-				.findViewById(R.id.mymoments);
+		imageViewMyMoments = (ImageView) view.findViewById(R.id.mymoments);
 		textViewMyName = (TextView) view.findViewById(R.id.myname);
-		/*int userid = HP_User.getOnLineUserId(getActivity());
-		if (userid != 0) {
-			HP_User user = HP_DBModel.getInstance(getActivity())
-					.queryUserInfoByUserId(
-							HP_User.getOnLineUserId(getActivity()), true);
-			textViewMyName.setText(user.userNick);
-
-			ImageLoader.getInstance(getActivity()).addTask(user.photourl,
-					imageViewMyMoments);
-		}*/
+		/*
+		 * int userid = HP_User.getOnLineUserId(getActivity()); if (userid != 0)
+		 * { HP_User user = HP_DBModel.getInstance(getActivity())
+		 * .queryUserInfoByUserId( HP_User.getOnLineUserId(getActivity()),
+		 * true); textViewMyName.setText(user.userNick);
+		 * 
+		 * ImageLoader.getInstance(getActivity()).addTask(user.photourl,
+		 * imageViewMyMoments); }
+		 */
 
 		ImageView imageViewAddFriend = (ImageView) view
 				.findViewById(R.id.addfriend);
 		relativeLayoutNoMents = (RelativeLayout) view
 				.findViewById(R.id.nomoments);
-		relativeLayoutMomentsHeading = (RelativeLayout) view.findViewById(R.id.momentsheading);
+		relativeLayoutMomentsHeading = (RelativeLayout) view
+				.findViewById(R.id.momentsheading);
 		listViewMonentsList = (ListView) view
 				.findViewById(R.id.momentslistfragment);
 		momentsAdapter = new MomentsAdapter(getActivity());
@@ -238,23 +237,20 @@ public class MomentsFragment extends Fragment {
 				listViewMonentsList.setVisibility(View.VISIBLE);
 				momentsAdapter.addMomentsList(myMomentsList);
 				momentsAdapter.notifyDataSetChanged();
-			}
-			else
-			{
+			} else {
 				int userid = HP_User.getOnLineUserId(getActivity());
 				if (userid != 0) {
 					HP_User user = HP_DBModel.getInstance(getActivity())
 							.queryUserInfoByUserId(
-									HP_User.getOnLineUserId(getActivity()), true);
-					if(textViewMyName != null)
-					{
+									HP_User.getOnLineUserId(getActivity()),
+									true);
+					if (textViewMyName != null) {
 						textViewMyName.setText(user.userNick);
 					}
 
-					if(imageViewMyMoments != null)
-					{
-						ImageLoader.getInstance(getActivity()).addTask(user.photourl,
-								imageViewMyMoments);
+					if (imageViewMyMoments != null) {
+						ImageLoader.getInstance(getActivity()).addTask(
+								user.photourl, imageViewMyMoments);
 					}
 				}
 			}
@@ -294,8 +290,7 @@ public class MomentsFragment extends Fragment {
 
 		public void addMomentsList(List<Moments> addMomentsList) {
 			momentsList.clear();
-			if(addMomentsList != null)
-			{
+			if (addMomentsList != null) {
 				momentsList.addAll(addMomentsList);
 			}
 		}
@@ -338,7 +333,8 @@ public class MomentsFragment extends Fragment {
 					view = (View) inflater.inflate(R.layout.moments_list_item,
 							parent, false);
 					holder = new ViewHolder();
-					ImageView imageViewMomentsAvatar = (ImageView) view.findViewById(R.id.momentsavatar);
+					ImageView imageViewMomentsAvatar = (ImageView) view
+							.findViewById(R.id.momentsavatar);
 					holder.setImageViewMomentsAvatar(imageViewMomentsAvatar);
 					TextView textViewUsername = (TextView) view
 							.findViewById(R.id.momentsusername);
@@ -355,77 +351,136 @@ public class MomentsFragment extends Fragment {
 			}
 			switch (type) {
 			case TYPE_ITEM:
-/*				ImageView imageViewMomentsAvatar = (ImageView) view.findViewById(R.id.momentsavatar);
-				TextView textViewUsername = (TextView) view
-						.findViewById(R.id.momentsusername);
-				TextView textViewMessage = (TextView) view
-						.findViewById(R.id.momentsmessage);
-				ImageView imageViewMoments = (ImageView) view
-						.findViewById(R.id.momentsimage);*/
-				Moments moments = momentsList.get(position - 1);
-				System.out.println("position" + position);
-				System.out.println("moments" + moments);
-				System.out.println("***********image1************"
-						+ moments.getImage1() + "---");
-				System.out.println("***********image2************"
-						+ moments.getImage2() + "---");
-				System.out.println("***********image3************"
-						+ moments.getImage3() + "---");
-				System.out.println("***********image4************"
-						+ moments.getImage4() + "---");
-				System.out.println("***********image5************"
-						+ moments.getImage5() + "---");
-				System.out.println("***********image6************"
-						+ moments.getImage6() + "---");
-				System.out.println("***********image7************"
-						+ moments.getImage7() + "---");
-				System.out.println("***********image8************"
-						+ moments.getImage8() + "---");
-				System.out.println("***********image9************"
-						+ moments.getImage9() + "---");
+				/*
+				 * ImageView imageViewMomentsAvatar = (ImageView)
+				 * view.findViewById(R.id.momentsavatar); TextView
+				 * textViewUsername = (TextView) view
+				 * .findViewById(R.id.momentsusername); TextView textViewMessage
+				 * = (TextView) view .findViewById(R.id.momentsmessage);
+				 * ImageView imageViewMoments = (ImageView) view
+				 * .findViewById(R.id.momentsimage);
+				 */
+				final Moments moments = momentsList.get(position - 1);
+				/*
+				 * System.out.println("position" + position);
+				 * System.out.println("moments" + moments);
+				 * System.out.println("***********image1************" +
+				 * moments.getImage1() + "---");
+				 * System.out.println("***********image2************" +
+				 * moments.getImage2() + "---");
+				 * System.out.println("***********image3************" +
+				 * moments.getImage3() + "---");
+				 * System.out.println("***********image4************" +
+				 * moments.getImage4() + "---");
+				 * System.out.println("***********image5************" +
+				 * moments.getImage5() + "---");
+				 * System.out.println("***********image6************" +
+				 * moments.getImage6() + "---");
+				 * System.out.println("***********image7************" +
+				 * moments.getImage7() + "---");
+				 * System.out.println("***********image8************" +
+				 * moments.getImage8() + "---");
+				 * System.out.println("***********image9************" +
+				 * moments.getImage9() + "---");
+				 */
 				holder.getTextViewUsername().setText(moments.getPostername());
 				holder.getTextViewMessage().setText(moments.getMessage());
-				
+
 				String posterAvatarUrl = moments.getPosteravatar();
-				holder.getImageViewMoments().setImageResource(R.drawable.myhealth_users_avatar);
-				
-				if( posterAvatarUrl != null && posterAvatarUrl.length() > 0 )
-				{
-					imageLoader.addTask(posterAvatarUrl, holder.getImageViewMomentsAvatar()); 
+				String strImage1 = moments.getImage1();
+				if (strImage1 == null || strImage1.length() == 0) {
+					holder.getImageViewMoments().setVisibility(View.GONE);
+				} else {
+					holder.getImageViewMoments().setVisibility(View.VISIBLE);
+					holder.getImageViewMoments().setImageResource(
+							R.drawable.myhealth_users_avatar);
 				}
 
-/*				ImageViewGet imageViewGet = new ImageViewGet();
-				imageViewGet.setImageurl(moments.getImage1());
-				imageViewGet.setImageViewMoments(holder.getImageViewMoments());*/
-				imageLoader.addTask(moments.getImage1(), holder.getImageViewMoments());
+				DrawableCenterTextView comment_img = (DrawableCenterTextView) view
+						.findViewById(R.id.comment_img);
+				DrawableCenterTextView support_img = (DrawableCenterTextView) view
+						.findViewById(R.id.support_img);
+				final LinearLayout comments_layout = (LinearLayout) view
+						.findViewById(R.id.comments_layout);
+				comments_layout.removeAllViews();
+				for (MomentsComment momentsComment : moments
+						.getMomentsComments()) {
+					comments_layout.addView(createView(momentsComment
+							.getComment()));
+				}
+				comment_img.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Bundle extras = new Bundle();
+						extras.putInt("momentsid", moments.getMomentsid());
+						extras.putInt("replytoid", moments.getPosterid());
+						// extras.("commentlist", moments.getMomentsComments());
+						Intent intent = new Intent();
+						intent.putExtras(extras);
+						intent.putExtra("list",
+								(Serializable) moments.getMomentsComments());
+						intent.setClass(MomentsFragment.this.getActivity(),
+								MomentsCommentEditActivity.class);
+						startActivityForResult(intent, 20);
+					}
+				});
+
+				support_img.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						new BooleanDoSupportAsync().execute(moments.getMomentsid());
+					}
+				});
+
+				if (posterAvatarUrl != null && posterAvatarUrl.length() > 0) {
+					imageLoader.addTask(posterAvatarUrl,
+							holder.getImageViewMomentsAvatar());
+				}
+
+				/*
+				 * ImageViewGet imageViewGet = new ImageViewGet();
+				 * imageViewGet.setImageurl(moments.getImage1());
+				 * imageViewGet.setImageViewMoments
+				 * (holder.getImageViewMoments());
+				 */
+				if (strImage1 != null && strImage1.length() > 0) {
+					imageLoader.addTask(moments.getImage1(),
+							holder.getImageViewMoments());
+				}
 				break;
 			case TYPE_COVER:
 				imageViewCoverList = (ImageView) view.findViewById(R.id.cover);
 				imageViewCoverList.setOnClickListener(new OnClickListener() {
-					
+
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						Intent intent = new Intent(MomentsFragment.this.getActivity(),
-								CoverEditActivity.class);
+						Intent intent = new Intent(MomentsFragment.this
+								.getActivity(), CoverEditActivity.class);
 						startActivityForResult(intent, 12);
 					}
 				});
-				
+
 				ImageView imageViewMyMoments = (ImageView) view
 						.findViewById(R.id.mymoments);
-				TextView textViewMyName = (TextView) view.findViewById(R.id.myname);
+				TextView textViewMyName = (TextView) view
+						.findViewById(R.id.myname);
 				int userid = HP_User.getOnLineUserId(getActivity());
 				if (userid != 0) {
 					HP_User user = HP_DBModel.getInstance(getActivity())
 							.queryUserInfoByUserId(
-									HP_User.getOnLineUserId(getActivity()), true);
+									HP_User.getOnLineUserId(getActivity()),
+									true);
 					textViewMyName.setText(user.userNick);
 
-					ImageLoader.getInstance(getActivity()).addTask(user.photourl,
-							imageViewMyMoments);
+					ImageLoader.getInstance(getActivity()).addTask(
+							user.photourl, imageViewMyMoments);
 				}
-				
+
 				imageViewMyMoments.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -442,112 +497,124 @@ public class MomentsFragment extends Fragment {
 			return view;
 		}
 	}
-	
-	private class ViewHolder{
+
+	private class ViewHolder {
 		private ImageView imageViewMomentsAvatar;
 		private TextView textViewUsername;
 		private TextView textViewMessage;
 		private ImageView imageViewMoments;
+
 		public ImageView getImageViewMomentsAvatar() {
 			return imageViewMomentsAvatar;
 		}
+
 		public void setImageViewMomentsAvatar(ImageView imageViewMomentsAvatar) {
 			this.imageViewMomentsAvatar = imageViewMomentsAvatar;
 		}
+
 		public TextView getTextViewUsername() {
 			return textViewUsername;
 		}
+
 		public void setTextViewUsername(TextView textViewUsername) {
 			this.textViewUsername = textViewUsername;
 		}
+
 		public TextView getTextViewMessage() {
 			return textViewMessage;
 		}
+
 		public void setTextViewMessage(TextView textViewMessage) {
 			this.textViewMessage = textViewMessage;
 		}
+
 		public ImageView getImageViewMoments() {
 			return imageViewMoments;
 		}
+
 		public void setImageViewMoments(ImageView imageViewMoments) {
 			this.imageViewMoments = imageViewMoments;
 		}
 	}
 
-/*	private class ImageViewGet implements Serializable {
-		private ImageView imageViewMoments;
-		private String imageurl;
+	private View createView(String txt) {
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		// View view =LayoutInflater.from(this).inflate(R.layout.view_item,
+		// null);//也可以从XML中加载布局
+		LinearLayout view = new LinearLayout(MomentsFragment.this.getActivity());
+		view.setLayoutParams(lp);// 设置布局参数
+		view.setOrientation(LinearLayout.HORIZONTAL);// 设置子View的Linearlayout//
+														// 为垂直方向布局
 
-		public ImageView getImageViewMoments() {
-			return imageViewMoments;
-		}
+		// 定义子View中两个元素的布局
+		ViewGroup.LayoutParams vlp = new ViewGroup.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+		ViewGroup.LayoutParams vlp2 = new ViewGroup.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
 
-		public void setImageViewMoments(ImageView imageViewMoments) {
-			this.imageViewMoments = imageViewMoments;
-		}
+		TextView tv1 = new TextView(MomentsFragment.this.getActivity());
+		TextView tv2 = new TextView(MomentsFragment.this.getActivity());
+		tv1.setLayoutParams(vlp);// 设置TextView的布局
+		tv2.setLayoutParams(vlp2);
+		tv1.setText("姓名: ");
+		tv2.setText(txt);
+		tv2.setPadding(50, 0, 0, 0);// 设置边距
+		view.addView(tv1);// 将TextView 添加到子View 中
+		view.addView(tv2);// 将TextView 添加到子View 中
+		return view;
+	}
 
-		public String getImageurl() {
-			return imageurl;
-		}
+	/*
+	 * private class ImageViewGet implements Serializable { private ImageView
+	 * imageViewMoments; private String imageurl;
+	 * 
+	 * public ImageView getImageViewMoments() { return imageViewMoments; }
+	 * 
+	 * public void setImageViewMoments(ImageView imageViewMoments) {
+	 * this.imageViewMoments = imageViewMoments; }
+	 * 
+	 * public String getImageurl() { return imageurl; }
+	 * 
+	 * public void setImageurl(String imageurl) { this.imageurl = imageurl; } }
+	 */
 
-		public void setImageurl(String imageurl) {
-			this.imageurl = imageurl;
-		}
-	}*/
-
-/*	// ***************************************
-	// Private classes
-	// ***************************************
-	private class GetImageTask extends AsyncTask<ImageViewGet, Void, byte[]> {
-
-		private Exception exception;
-		ImageViewGet imageViewGet;
-
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-		}
-
-		@Override
-		protected byte[] doInBackground(ImageViewGet... params) {
-			// TODO Auto-generated method stub
-			imageViewGet = params[0];
-			String imageUrl = imageViewGet.getImageurl();
-			// String imageUrl =
-			// "http://ww2.sinaimg.cn/bmiddle/66a36aa8jw1efbpnrdo04j20hs0hsmyj.jpg";
-			System.out
-					.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-			System.out.println("imageViewGet = " + imageViewGet.getImageurl());
-
-			try {
-				byte[] response = SpringAndroidService.getInstance(
-						getActivity().getApplication()).downloadImageByUrl(
-						imageUrl);
-				return response;
-			} catch (Exception e) {
-				this.exception = e;
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(byte[] image) {
-			// TODO Auto-generated method stub
-			if (exception != null) {
-				System.out.println("-------------");
-				System.out.println(exception.getMessage());
-			} else {
-				
-				 * System.out.println("------image size-------" + image.length);
-				 * Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,
-				 * image.length);
-				 * imageViewGet.getImageViewMoments().setImageBitmap(bitmap);
-				 
-			}
-		}
-	}*/
+	/*
+	 * // *************************************** // Private classes //
+	 * *************************************** private class GetImageTask
+	 * extends AsyncTask<ImageViewGet, Void, byte[]> {
+	 * 
+	 * private Exception exception; ImageViewGet imageViewGet;
+	 * 
+	 * @Override protected void onPreExecute() { // TODO Auto-generated method
+	 * stub super.onPreExecute(); }
+	 * 
+	 * @Override protected byte[] doInBackground(ImageViewGet... params) { //
+	 * TODO Auto-generated method stub imageViewGet = params[0]; String imageUrl
+	 * = imageViewGet.getImageurl(); // String imageUrl = //
+	 * "http://ww2.sinaimg.cn/bmiddle/66a36aa8jw1efbpnrdo04j20hs0hsmyj.jpg";
+	 * System.out .println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+	 * System.out.println("imageViewGet = " + imageViewGet.getImageurl());
+	 * 
+	 * try { byte[] response = SpringAndroidService.getInstance(
+	 * getActivity().getApplication()).downloadImageByUrl( imageUrl); return
+	 * response; } catch (Exception e) { this.exception = e; }
+	 * 
+	 * return null; }
+	 * 
+	 * @Override protected void onPostExecute(byte[] image) { // TODO
+	 * Auto-generated method stub if (exception != null) {
+	 * System.out.println("-------------");
+	 * System.out.println(exception.getMessage()); } else {
+	 * 
+	 * System.out.println("------image size-------" + image.length); Bitmap
+	 * bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+	 * imageViewGet.getImageViewMoments().setImageBitmap(bitmap);
+	 * 
+	 * } } }
+	 */
 
 	// ***************************************
 	// Private classes
@@ -597,5 +664,65 @@ public class MomentsFragment extends Fragment {
 				}
 			}
 		}
+	}
+
+	public class BooleanDoSupportAsync extends
+			AsyncTask<Integer, String, Boolean> {
+		int momentsid = 0;
+
+		@Override
+		protected void onPostExecute(Boolean result) {
+			super.onPostExecute(result);
+			if (!result) {
+				new SubmitSupportAsync().execute(momentsid);
+			} else {
+				Toast.makeText(getActivity().getApplication(), "已经赞过啦", Toast.LENGTH_SHORT)
+						.show();
+			}
+		}
+
+		@Override
+		protected Boolean doInBackground(Integer... params) {
+			// 点击赞当前评论
+			try {
+				momentsid = params[0];
+				Boolean flag = SpringAndroidService.getInstance(
+						getActivity().getApplication()).doISupportTheMoments(momentsid);
+				return flag;
+			} catch (Exception e) {
+				System.out.println("异常是" + e.getMessage());
+			}
+			return true;
+
+		}
+
+	}
+	
+	public class SubmitSupportAsync extends AsyncTask<Integer, String, Integer> {
+		private ICallBack iCallBack;
+
+		@Override
+		protected void onPostExecute(Integer result) {
+			super.onPostExecute(result);
+			int currtCount = 0;
+			if (result == 200) {
+				Toast.makeText(getActivity().getApplication(), "赞成功", Toast.LENGTH_SHORT)
+						.show();
+			} else {
+
+				Toast.makeText(getActivity().getApplication(), "赞失败" + result,
+						Toast.LENGTH_SHORT).show();
+			}
+		}
+
+		@Override
+		protected Integer doInBackground(Integer... params) {
+			// 点击赞当前评论
+			GeneralResponse gre = SpringAndroidService.getInstance(
+					getActivity().getApplication()).addsupporttomoments(params[0]);
+			return gre.getReturncode();
+
+		}
+
 	}
 }

@@ -13,7 +13,7 @@
         android:layout_marginLeft="10dp"
         android:contentDescription="@string/avatar"
         android:scaleType="fitXY"
-        android:src="@drawable/u93"
+        android:src="@drawable/myhealth_users_avatar"
         imagecontrol:border_outside_color="#eaeaea"
         imagecontrol:border_thickness="1dp" />
 

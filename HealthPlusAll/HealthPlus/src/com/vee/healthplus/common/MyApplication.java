@@ -28,6 +28,7 @@ import com.vee.healthplus.ui.main.LoginMain;
 import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.ui.setting.SettingShare;
 import com.vee.healthplus.util.ImageLoader;
+import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.shop.bean.CartItemBean;
 import com.vee.shop.util.ApplicationUtils;
 
@@ -68,7 +69,6 @@ public class MyApplication extends Application implements TagAliasCallback  {
          JPushInterface.init(this);
          
          //
-        
 	}
 
 	public void initEngineManager(Context context) {

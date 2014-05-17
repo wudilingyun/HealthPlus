@@ -18,6 +18,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -40,7 +41,9 @@ public class MentalityActivity extends BaseFragmentActivity implements
 	private MyAdapter myAdapter;
 	private ListView myListView;
 	private Button submit_butt;
-
+	private TextView qid;
+	private ProgressBar progressBar;
+	private int progresscount;
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -65,6 +68,8 @@ public class MentalityActivity extends BaseFragmentActivity implements
 		myAdapter.listaddAdapter(heList);
 		myListView.setAdapter(myAdapter);
 		myAdapter.notifyDataSetChanged();
+		qid.setText(0 + "/" + heList.size());
+		progressBar.setMax(heList.size());
 	}
 
 	void init() {
@@ -73,6 +78,10 @@ public class MentalityActivity extends BaseFragmentActivity implements
 		submit_butt = (Button) findViewById(R.id.submit_butt);
 		submit_butt.setOnClickListener(this);
 		myListView.setOnItemClickListener(this);
+		qid = (TextView) findViewById(R.id.examcount);
+		progressBar = (ProgressBar) findViewById(R.id.exam_progressBar);
+		progressBar.setProgress(0);
+		
 	}
 
 	@Override
@@ -164,6 +173,7 @@ public class MentalityActivity extends BaseFragmentActivity implements
 
 			final ViewHolder v = (ViewHolder) view.getTag();
 			v.content.setText(hqEntity.getId() + "." + hqEntity.getQuestion());
+			v.radioGroup.setOnCheckedChangeListener(null);
 			v.rb1.setText("没有");
 			v.rb2.setText("轻度");
 			v.rb3.setText("中度");
@@ -211,6 +221,9 @@ public class MentalityActivity extends BaseFragmentActivity implements
 								RadioButton tempButton = (RadioButton) findViewById(checkedId);
 								scoremMap.put(hqEntity,
 										(Integer) tempButton.getTag());
+								progresscount = scoremMap.values().size();
+								qid.setText(progresscount + "/" + heList.size());
+								progressBar.setProgress(progresscount);
 								System.out.println("选择的分数是"
 										+ tempButton.getTag());
 							}
@@ -272,7 +285,7 @@ public class MentalityActivity extends BaseFragmentActivity implements
 				startActivity(intent);
 				this.finish();
 			} else {
-				Toast.makeText(this, "没做完", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "没做完亲", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

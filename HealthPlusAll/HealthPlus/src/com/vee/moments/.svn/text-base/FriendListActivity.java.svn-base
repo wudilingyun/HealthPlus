@@ -29,6 +29,20 @@ public class FriendListActivity extends FragmentActivity implements
 	private ListView listViewFriendlist;
 	private Button buttonSearchFriend;
 	private String searchcontent;
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if (requestCode == 1)
+		{
+			if (resultCode == RESULT_OK)
+			{
+				new GetAllFriendsTask().execute();
+			}
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +66,7 @@ public class FriendListActivity extends FragmentActivity implements
 				searchcontent = editTextSearchContent.getText().toString();
 				if (searchcontent == null || searchcontent.length() == 0) {
 					Toast.makeText(FriendListActivity.this,
-							"Please type something", Toast.LENGTH_SHORT).show();
+							"输入为空", Toast.LENGTH_SHORT).show();
 				} else {
 					new SearchUserTask().execute();
 				}
@@ -85,7 +99,7 @@ public class FriendListActivity extends FragmentActivity implements
 			break;
 		case R.id.header_rbtn_img:
 			Intent intent = new Intent(this, AddFriendActivity.class);
-			startActivity(intent);
+			startActivityForResult(intent, 1);
 			break;
 
 		default:

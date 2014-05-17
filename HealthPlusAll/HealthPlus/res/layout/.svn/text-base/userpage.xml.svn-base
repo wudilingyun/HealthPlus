@@ -148,29 +148,35 @@
         android:orientation="horizontal" >
 
         <LinearLayout
+            android:id="@+id/user_jpush_ll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center"
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/user_jpush_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="0"
                 android:textColor="#ffffff"
                 android:textSize="32sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="资讯"
+                android:text="健康贴士"
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <!--
+        LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
@@ -191,7 +197,8 @@
                 android:text="消息"
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
-        </LinearLayout>
+        </LinearLayout
+        -->
 
         <LinearLayout
             android:id="@+id/user_favorite_ll"
@@ -209,7 +216,7 @@
                 android:id="@+id/user_favorite_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6"
+                android:text="0"
                 android:textColor="#ffffff"
                 android:textSize="32sp" />
 
@@ -225,7 +232,8 @@
     <ListView
         android:id="@+id/user_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_height="match_parent"
         android:layout_marginLeft="16dip"
         android:layout_marginRight="16dip"
         android:cacheColorHint="#00000000"

@@ -3,6 +3,8 @@ package com.vee.healthplus.ui.setting;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
@@ -18,35 +20,36 @@ import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.RoundImageView;
+import com.vee.myhealth.bean.JPushBean;
 
 public class JPushListAdapter extends BaseAdapter {
 
 	LayoutInflater inflater;
-	List<NewsCollectinfor> newslist;
+	List<JPushBean> jlist;
 	private ImageLoader imageLoader;
 	List<Bitmap> bitmaps;
 
 	public JPushListAdapter(Context context, ImageLoader imageLoader) {
 		super();
 		inflater = LayoutInflater.from(context);
-		newslist = new ArrayList<NewsCollectinfor>();
+		jlist = new ArrayList<JPushBean>();
 		this.imageLoader = imageLoader;
 	}
 
-	public void listaddAdapter(List<NewsCollectinfor> newslist) {
-		this.newslist.addAll(newslist);
+	public void listaddAdapter(List<JPushBean> jlist) {
+		this.jlist.addAll(jlist);
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return newslist.size();
+		return jlist.size();
 	}
 
 	@Override
-	public NewsCollectinfor getItem(int position) {
+	public JPushBean getItem(int position) {
 		// TODO Auto-generated method stub
-		return newslist.get(position);
+		return jlist.get(position);
 	}
 
 	@Override
@@ -64,36 +67,31 @@ public class JPushListAdapter extends BaseAdapter {
 
 		} else {
 
-			view = (View) inflater.inflate(R.layout.health_valuablebook_item,
+			view = (View) inflater.inflate(R.layout.jpush_list_item,
 					parent, false);
 
 			ViewHolder v = new ViewHolder();
 
-			v.newstitle = (TextView) view.findViewById(R.id.newstitle);
+			v.jpushTitle = (TextView) view.findViewById(R.id.jpush_list_title_tv);
 			// v.newsbrief = (TextView) view.findViewById(R.id.newsbrief);
-			v.imageView_healthnews = (RoundImageView) view
-					.findViewById(R.id.imageView_healthnews);
+			v.jpushContent = (TextView) view
+					.findViewById(R.id.jpush_list_content_tv);
+			v.jpushIndex = (TextView) view
+					.findViewById(R.id.jpush_list_index_tv);
 			view.setTag(v);
 		}
 
 		ViewHolder v = (ViewHolder) view.getTag();
-		v.newstitle.setText(newslist.get(position).getTitle());
-		v.newstitle.setTag(newslist.get(position).getWeburl());
-		v.imageView_healthnews.setImageResource(R.drawable.header);
-		String imgurl = newslist.get(position).getImgurl();
-		imageLoader.addTask(imgurl, v.imageView_healthnews);
-		Log.i("lingyun", "getTitle=" + newslist.get(position).getTitle()
-				+ "getWeburl=" + newslist.get(position).getWeburl()
-				+ "getImgurl=" + newslist.get(position).getImgurl());
+		v.jpushIndex.setText(position+".");
+		v.jpushTitle.setText(jlist.get(position).getTitle());
+		v.jpushContent.setText(jlist.get(position).getContent());
 		return view;
 	}
 
 	public class ViewHolder {
 
 		private int position;
-		private TextView newstitle, newsbrief;
-		private ImageView imageView_top;
-		private RoundImageView imageView_healthnews;
+		private TextView jpushTitle, jpushContent,jpushIndex;
 	}
 
 }

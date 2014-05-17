@@ -127,7 +127,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="线条和底：整个线条用色，和白色，透明到25，底部颜色偏白的都用，其他底部背景用图片。\n文字：字体，微软雅黑。字体颜色有"
+                    android:text="绑定手机号用户只能通过手机号找回 请输入您绑定的手机号,找回密码: 看不清楚?请点击! 电子邮箱 未绑定手机号用户可以通过邮箱找回 输入您注册的电子邮箱"
                     android:textColor="#9d9d9d"
                     android:textSize="12sp" />
             </LinearLayout>

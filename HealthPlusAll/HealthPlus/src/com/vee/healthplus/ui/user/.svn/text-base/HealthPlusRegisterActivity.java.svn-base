@@ -368,9 +368,9 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			break;
 		case R.id.health_plus_register_nick_input_et:
 			if (hasFocus) {
-				nick_iv.setImageResource(R.drawable.health_plus_uname_focus);
+				nick_iv.setImageResource(R.drawable.health_plus_nick_focus);
 			} else {
-				nick_iv.setImageResource(R.drawable.health_plus_uname_normal);
+				nick_iv.setImageResource(R.drawable.health_plus_nick_normal);
 			}
 			break;
 		}

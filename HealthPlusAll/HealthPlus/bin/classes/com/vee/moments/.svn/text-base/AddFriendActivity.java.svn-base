@@ -22,6 +22,21 @@ public class AddFriendActivity extends FragmentActivity implements OnClickListen
 	private ImageView header_lbtn_img, header_rbtn_img;
 	private static String[] mTitles;
 	private AddFriendAdapter mAdapter;
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult( requestCode, resultCode, data);
+		
+		if (requestCode == 1)
+		{
+			if (resultCode == RESULT_OK)
+			{
+				setResult(RESULT_OK);
+				AddFriendActivity.this.finish();
+			}
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +57,11 @@ public class AddFriendActivity extends FragmentActivity implements OnClickListen
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				// TODO Auto-generated method stub
-				Toast.makeText(AddFriendActivity.this, position + "is clicked", Toast.LENGTH_SHORT).show();
 				if(position == 0)
 				{
 					Intent intent = new Intent(AddFriendActivity.this,
 							SearchPhoneActivity.class);
-					startActivity(intent);
+					startActivityForResult(intent, 1);
 				}
 				else if(position == 1)
 				{
@@ -71,12 +85,12 @@ public class AddFriendActivity extends FragmentActivity implements OnClickListen
 		header_rbtn_img.setOnClickListener(this);
 	}
 
-	@Override
+/*	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.add_friend, menu);
 		return true;
-	}
+	}*/
 
 	@Override
 	public void onClick(View view) {

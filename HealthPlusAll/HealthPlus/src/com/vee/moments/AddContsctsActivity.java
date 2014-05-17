@@ -29,12 +29,11 @@ import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView.OnQueryTextListener;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
@@ -59,6 +58,7 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 	private List<PhoneContactsResponse> mContactsList;
 	private HashMap<String, String> data;
 	private Animation news_loadAaAnimation;
+	private TextView contactNone;
 
 	private Handler handler = new Handler() {
 
@@ -70,7 +70,12 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 			switch (msg.what) {
 
 			case LOAD:
-				setAdapter(mContactsList, data);
+				if (mContactsList != null && mContactsList.size() != 0
+						&& data != null && data.size() != 0) {
+					setAdapter(mContactsList, data);
+				} else {
+					contactNone.setVisibility(View.VISIBLE);
+				}
 				loadImageView.clearAnimation();
 				loFrameLayout.setVisibility(View.GONE);
 				break;
@@ -84,7 +89,7 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 		super.onCreate(savedInstanceState);
 		View view = View.inflate(this, R.layout.activity_contacts_list, null);
 		setContainer(view);
-
+		contactNone = (TextView) findViewById(R.id.contacts_list_none);
 		loFrameLayout = (LinearLayout) findViewById(R.id.loading_frame);
 		mContactsListview = (ListView) findViewById(R.id.contacts_list);
 		news_loadAaAnimation = AnimationUtils.loadAnimation(this,
@@ -234,17 +239,26 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 						getApplication()).queryPhoneContacts(contactArry);
 			} catch (Exception exception) {
 				if (exception != null) {
-					String message;
-
+					String message = "";
 					if (exception instanceof DuplicateConnectionException) {
 						message = "The connection already exists.";
+						Log.e("lingyun", "queryPhoneContacts.error=" + message);
 					} else if (exception instanceof ResourceAccessException
 							&& exception.getCause() instanceof ConnectTimeoutException) {
 						message = "connect time out";
+						Log.e("lingyun", "queryPhoneContacts.error=" + message);
 					} else if (exception instanceof MissingAuthorizationException) {
 						message = "please login first";
+						Log.e("lingyun", "queryPhoneContacts.error=" + message);
+						SpringAndroidService.getInstance(getApplication())
+								.signOut();
+						startActivity(new Intent(AddContsctsActivity.this,
+								HealthPlusLoginActivity.class));
+						finish();
+
 					} else if (exception instanceof ExpiredAuthorizationException) {
 						message = "authorization expired";
+						Log.e("lingyun", "queryPhoneContacts.error=" + message);
 						SpringAndroidService.getInstance(getApplication())
 								.signOut();
 						startActivity(new Intent(AddContsctsActivity.this,
@@ -252,8 +266,9 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 						finish();
 					} else {
 						message = "A problem occurred with the network connection. Please try again in a few minutes.";
+						Log.e("lingyun", "queryPhoneContacts.error=" + message);
 					}
-					displayError(message);
+					System.out.println(message);
 				}
 
 			}
@@ -275,10 +290,6 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 		//
 		// startActivity(intent);
 
-	}
-
-	private void displayError(String message) {
-		Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 	}
 
 }

@@ -12,7 +12,10 @@ public class HP_DBCommons {
     public static final String USERINFO_TABLENAME = "USER_HP";
     public static final String USERWEIGHT_TABLENAME = "USERWEIGHT_HP";
     public static final String USERCOLLECT_TABLENAME ="USERCOLLECT_NEWS";//收藏宝典内容
-    public static final String USERTEST_TABLENAME ="USERTEST";//测试列表
+    public static final String USERTEST_TABLENAME ="USERTEST";//测试列表 ---可重复的
+    public static final String USERTEST_TABLENAME_COVER ="USERTEST_COVER";//测试列表 ---可重复的
+    public static final String JPUSH_TABLENAME ="JPUSH";//激光推送
+    
     //字段名
     public static final String USERID = "USER_ID";
     public static final String USERNAME = "USER_NAME";
@@ -41,4 +44,14 @@ public class HP_DBCommons {
     public static final String TESTNAME = "TESTNAME";
     public static final String TESTRESULT ="TESTRESULT";
     public static final String TESTTIME = "TESTTIME";
+    
+    /*
+     * 极光推送
+     */
+    public static final String JPUSHTITLE = "JPUSHTITLE";
+    public static final String JPUSHCONTENT ="JPUSHCONTENT";
+    public static final String JPUSHIMG ="JPUSHIMG";
+    public static final String JPUSHTIME = "JPUSHTIME";
+    public static final String JPUSHREADFLAG = "JPUSHREADFLAG";
+    
 }

@@ -9,5 +9,5 @@
 
 # Project target.
 target=android-17
-android.library.reference.1=../../MainLibs
-android.library.reference.2=../wheel
+android.library.reference.1=..\\..\\MainLibs
+android.library.reference.2=../../yunhu/wheel

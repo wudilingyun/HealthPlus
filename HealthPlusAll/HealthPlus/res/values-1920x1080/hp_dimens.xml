@@ -1,57 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="hp_personaledit_widgetmargin">3dp</dimen>
-    <!-- 目标计划 start -->
-    <dimen name="hp_target_main_title_size">32sp</dimen>
-    <dimen name="hp_target_main_content_size">24sp</dimen>
-    <dimen name="hp_target_main_text_size">26sp</dimen>
-    <!-- wjfadd  start -->
-    <dimen name="hp_sportstrack_line_v_height">50dp</dimen>
-    <dimen name="hp_sportstrack_distance_height">150dp</dimen>
-    <!-- wjfadd  end -->
-
-
-    <!-- font size -->
-    <dimen name="hp_font_small">11sp</dimen>
-    <dimen name="hp_font_middle">20sp</dimen>
-    <dimen name="hp_font_large">26sp</dimen>
-    <dimen name="hp_font_result_1">32sp</dimen>
-    <dimen name="hp_font_result_2">18sp</dimen>
-    <dimen name="hp_font_result_3">12sp</dimen>
-
-    <!-- padding -->
-    <dimen name="hp_main_padding_large">30dp</dimen>
-    <dimen name="hp_main_padding_small">15dp</dimen>
-    <dimen name="hp_main_padding_few">5dp</dimen>
-    <dimen name="hp_main_padding_bit">5dp</dimen>
-
-    <!-- 运动中宽度-->
-    <dimen name="hp_sporttrack_wid">260dp</dimen>
-
-    <dimen name="userinfoedittext_wid">200dp</dimen>
-    <dimen name="userinfoedittext_hei">40dp</dimen>
-
-    <dimen name="userinfochartheight">260dp</dimen>
-
-    <dimen name="achievement_shorcut_top">26dp</dimen>
-    <dimen name="achievement_shorcut_bottom">26dp</dimen>
-    <dimen name="achievement_shorcut_left">20dp</dimen>
-    <dimen name="achievement_shorcut_right">20dp</dimen>
-    <dimen name="sport_mode_selector_height">35dp</dimen>
-    <dimen name="sport_mode_selector_value_size">16sp</dimen>
-    
-    <!-- 运动结果 margin -->
-    <dimen name="sport_result_margin_top">20dp</dimen>
-    <dimen name="sport_result_margin_bottom">20dp</dimen>
-    <dimen name="sport_result_time_margin_right">18dp</dimen>
-    <dimen name="sport_result_distance_margin_right">8dp</dimen>
-    <dimen name="sport_result_icons_margin_top">12dp</dimen>
-    <dimen name="sport_result_unit_margin_top">5dp</dimen>
-    <dimen name="sport_result_dotted_line_margin_left">5dp</dimen>
-    <dimen name="sport_result_dotted_line_margin_right">5dp</dimen>
-    <dimen name="sport_result_dotted_line_margin_top">8dp</dimen>
-    
     <!-- 登陆注册界面 -->
     <dimen name="health_plus_logo_margin_bottom">180dip</dimen>
     <dimen name="health_plus_agree_margin_left">15dip</dimen>

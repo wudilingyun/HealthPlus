@@ -29,7 +29,7 @@ import com.vee.healthplus.util.user.ICallBack;
  */
 public class MomentsPhotoEditActivity extends Activity implements
 		View.OnClickListener {
-	private Button cancelBtn, takeBtn, pickBtn;
+	private Button cancelBtn, takeBtn, pickBtn, textBtn;
 	private HP_User user;
 	private ICallBack callBack;
 	private static final int PHOTO_PICKED_WITH_DATA = 1020;
@@ -139,13 +139,15 @@ public class MomentsPhotoEditActivity extends Activity implements
 		Window window = getWindow();
 		window.setGravity(Gravity.BOTTOM);
 		window.setWindowAnimations(R.style.dialog_updown);
-		setContentView(R.layout.personal_info_photo_edit_layout);
+		setContentView(R.layout.moments_photo_edit_layout);
 		cancelBtn = (Button) findViewById(R.id.photo_edit_cancel_btn);
 		takeBtn = (Button) findViewById(R.id.photo_edit_take_btn);
 		pickBtn = (Button) findViewById(R.id.photo_edit_pick_btn);
+		textBtn = (Button) findViewById(R.id.photo_edit_text_btn);
 		cancelBtn.setOnClickListener(this);
 		takeBtn.setOnClickListener(this);
 		pickBtn.setOnClickListener(this);
+		textBtn.setOnClickListener(this);
 		userId = getIntent().getIntExtra("id", -1);
 		hdFileName = "photo_temp" + "/" + "hd" + userId + ".jpg";
 		File temp = new File(Environment.getExternalStorageDirectory(),
@@ -176,6 +178,13 @@ public class MomentsPhotoEditActivity extends Activity implements
 			Log.i("lingyun", "ugetPath=" + u.getPath());
 			intent.putExtra(MediaStore.EXTRA_OUTPUT, u);
 			startActivityForResult(intent, CAMERA_WITH_DATA);
+			break;
+		case R.id.photo_edit_text_btn:
+			Intent intentText = new Intent(MomentsPhotoEditActivity.this,
+					NewMomentsActivity.class);
+			intentText.putExtra("text", "on");
+			startActivity(intentText);
+			finish();
 			break;
 		case R.id.photo_edit_pick_btn:
 			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT);

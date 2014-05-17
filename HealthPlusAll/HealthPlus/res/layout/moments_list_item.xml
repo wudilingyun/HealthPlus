@@ -4,7 +4,7 @@
     xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,9 +19,9 @@
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
             android:contentDescription="@string/avatar"
+            android:focusable="false"
             android:scaleType="fitXY"
             android:src="@drawable/myhealth_users_avatar"
-            android:focusable="false"
             imagecontrol:border_outside_color="#eaeaea"
             imagecontrol:border_thickness="2dp" />
 
@@ -55,10 +55,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:maxHeight="150dp"
                 android:focusable="false"
+                android:maxHeight="150dp"
                 android:minWidth="150dp" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/comments_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/valuebook_webview_bottom"
+        android:orientation="horizontal"
+        android:padding="14dp" >
+
+        <com.vee.healthplus.widget.DrawableCenterTextView
+            android:id="@+id/support_img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/support_icon_normal"
+            android:focusable="false"
+            android:padding="5dp"
+            android:text="赞"
+            android:textColor="#9d9d9d"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view_divider_1"
+            style="@style/view_divider" />
+
+        <com.vee.healthplus.widget.DrawableCenterTextView
+            android:id="@+id/comment_img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/comment_normal"
+            android:focusable="false"
+            android:padding="5dp"
+            android:text="评论"
+            android:textColor="#9d9d9d"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

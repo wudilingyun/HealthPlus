@@ -230,7 +230,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		displayLoginResult(getResources().getString(
 				R.string.hp_userlogin_success));
 		new GetProfileTask(this, this).execute();
-		new QueryAllDayRecordByType(this, "weight", this).execute();
+		//new QueryAllDayRecordByType(this, "weight", this).execute();
 	}
 
 	@Override

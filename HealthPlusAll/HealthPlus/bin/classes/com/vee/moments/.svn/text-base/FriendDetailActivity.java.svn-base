@@ -108,7 +108,8 @@ public class FriendDetailActivity extends BaseFragmentActivity {
 			if (generalResponse != null) {
 				if (generalResponse.getReturncode() == 200) {
 					Toast.makeText(FriendDetailActivity.this,
-							"add friend success", Toast.LENGTH_SHORT).show();
+							"添加好友成功", Toast.LENGTH_SHORT).show();
+					setResult(RESULT_OK);
 					FriendDetailActivity.this.finish();
 				} else {
 					Toast.makeText(FriendDetailActivity.this,

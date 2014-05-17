@@ -173,23 +173,29 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view, int arg2,
 					long arg3) {
+				if (CheckNetWorkStatus.Status(getApplicationContext())) {
+					ImageView img = (ImageView) view
+							.findViewById(R.id.imageView_healthnews);
+					TextView tvView = (TextView) view
+							.findViewById(R.id.newstitle);
+					System.out.println("传过来web" + tvView.getTag().toString());
+					String imgurlString = (String) img.getTag();
+					// 跳转后显示内容
+					Intent intent = new Intent(
+							Health_ValuableBookActivity.this,
+							Health_news_detailsActivity.class);
+					intent.putExtra("title", tvView.getText().toString());
+					intent.putExtra("weburl", tvView.getTag().toString());
+					intent.putExtra("imgurl", imgurlString);
+					intent.putExtra("name", name);
+					Bundle bundle = new Bundle();
+					intent.putExtra("bundle", bundle);
+					startActivity(intent);
 
-				ImageView img = (ImageView) view
-						.findViewById(R.id.imageView_healthnews);
-				TextView tvView = (TextView) view.findViewById(R.id.newstitle);
-				System.out.println("传过来web" + tvView.getTag().toString());
-				String imgurlString = (String) img.getTag();
-				// 跳转后显示内容
-				Intent intent = new Intent(Health_ValuableBookActivity.this,
-						Health_news_detailsActivity.class);
-				intent.putExtra("title", tvView.getText().toString());
-				intent.putExtra("weburl", tvView.getTag().toString());
-				intent.putExtra("imgurl", imgurlString);
-				intent.putExtra("name", name);
-				Bundle bundle = new Bundle();
-				intent.putExtra("bundle", bundle);
-				startActivity(intent);
-
+				} else {
+					Toast.makeText(getApplicationContext(), "请检查网络连接",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 	}
@@ -229,7 +235,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 					System.out.println("访问网络");
 					yysNewsResponseList = SpringAndroidService.getInstance(
 							getApplication()).firstGetNewsList(id, 0, 40);
-					System.out.println("id"+id);
+					System.out.println("id" + id);
 					if (yysNewsResponseList.size() > 0
 							&& yysNewsResponseList != null) {
 						jsonCache.saveObject(yysNewsResponseList, "cluddoctor"
@@ -264,7 +270,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 						+ "toString" + exception.toString() + "getCause"
 						+ exception.getCause() + "getLocalizedMessage"
 						+ exception.getLocalizedMessage());
-				
+
 			}
 			return null;
 
@@ -295,9 +301,9 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 				} else {
 					message = "网络连接异常。请重试";
 				}
-				Toast.makeText(getApplication(), message, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplication(), message, Toast.LENGTH_SHORT)
+						.show();
 				loadImageView.clearAnimation();
-				finish();
 			} else {
 				if (data != null && data.size() > 0) {
 					loFrameLayout.setVisibility(View.GONE);
@@ -309,8 +315,9 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 					listView_news.onRefreshComplete();
 				} else {
 
-					Toast.makeText(getApplication(), "空的", Toast.LENGTH_SHORT)
-							.show();
+					Toast.makeText(getApplication(), "没有最新数据",
+							Toast.LENGTH_SHORT).show();
+					listView_news.onRefreshComplete();
 				}
 			}
 		}

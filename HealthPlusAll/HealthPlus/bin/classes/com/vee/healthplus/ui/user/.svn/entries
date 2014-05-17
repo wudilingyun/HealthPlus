@@ -1,15 +1,15 @@
 10
 
 dir
-732
+742
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus/ui/user
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-14T06:23:19.511043Z
-732
-zhaoyouliang
+2014-05-16T06:22:26.061587Z
+742
+lingyun
 
 
 
@@ -32,10 +32,10 @@ file
 
 
 
-2014-05-04T08:07:48.734375Z
-3c365874ccc2eb0ca7207cc7d863db0c
-2014-05-04T09:17:09.244802Z
-704
+2014-05-14T06:42:48.250000Z
+6b47d7b3093a1c1060c6c133883bcaac
+2014-05-15T04:29:12.318814Z
+736
 lingyun
 
 
@@ -58,7 +58,7 @@ lingyun
 
 
 
-6389
+6498
 
 PersonalInfoAdapter.java
 file
@@ -270,10 +270,10 @@ file
 
 
 
-2014-05-06T04:56:28.671875Z
-97fa21899e9f767006f18d3667d82df5
-2014-05-06T04:52:47.003971Z
-709
+2014-05-14T07:19:12.093750Z
+f8d283a0711419133299cb8cc42ae199
+2014-05-15T04:29:12.318814Z
+736
 lingyun
 
 
@@ -296,7 +296,7 @@ lingyun
 
 
 
-12352
+13069
 
 UserWeightPickDialog.java
 file
@@ -409,10 +409,10 @@ file
 
 
 
-2014-05-14T06:40:45.421875Z
-363128c3794b43a3e2204e462f46251b
-2014-05-14T06:23:19.511043Z
-732
+2014-05-15T07:11:29.578125Z
+7da178c66bbd2ffd3d11f5e5de43bcb2
+2014-05-15T06:54:42.283930Z
+738
 zhaoyouliang
 
 
@@ -435,7 +435,7 @@ zhaoyouliang
 
 
 
-1635
+2938
 
 UserLogin_Activity.java
 file
@@ -613,10 +613,10 @@ file
 
 
 
-2014-05-14T02:46:30.296875Z
-cce6e35fc06c32c62fcc4b8b3a1cfc02
-2014-05-14T04:07:35.869928Z
-729
+2014-05-15T11:04:49.484375Z
+f1f0d552a4834e64c1c8b63dfca6d985
+2014-05-16T06:22:26.061587Z
+742
 lingyun
 
 
@@ -639,41 +639,7 @@ lingyun
 
 
 
-13754
-
-UserRegister_Activity.java
-file
-
-
-
-
-2014-05-14T02:43:53.250000Z
-f751f6b9e637e79f9c26d30f9c58ea66
-2014-05-14T04:07:35.869928Z
-729
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6129
+13752
 
 ResizeLayout.java
 file
@@ -709,6 +675,40 @@ lingyun
 
 1240
 
+UserRegister_Activity.java
+file
+
+
+
+
+2014-05-14T02:43:53.250000Z
+f751f6b9e637e79f9c26d30f9c58ea66
+2014-05-14T04:07:35.869928Z
+729
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6129
+
 PhotoEditActivity.java
 file
 
@@ -743,40 +743,6 @@ lingyun
 
 5036
 
-HealthPlusLoginActivity.java
-file
-
-
-
-
-2014-05-14T02:24:33.328125Z
-17f309283e76760b4d33f2f93bde8702
-2014-05-14T04:07:35.869928Z
-729
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-11641
-
 AgeEditActivity.java
 file
 
@@ -810,6 +776,40 @@ lingyun
 
 
 3329
+
+HealthPlusLoginActivity.java
+file
+
+
+
+
+2014-05-14T06:06:56.687500Z
+a3cfe15b52e9dafba8ac124928399a0a
+2014-05-15T04:29:12.318814Z
+736
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11643
 
 HP_PersonalEdit.java
 file

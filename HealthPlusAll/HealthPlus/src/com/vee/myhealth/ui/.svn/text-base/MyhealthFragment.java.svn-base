@@ -1,6 +1,9 @@
 ﻿package com.vee.myhealth.ui;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import android.R.string;
 import android.content.Intent;
@@ -23,6 +26,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.Contact;
@@ -53,9 +59,10 @@ import com.vee.myhealth.activity.SubHealthActivity;
 import com.vee.myhealth.activity.TestResultActivity;
 import com.vee.myhealth.activity.TiZhiActivity;
 import com.vee.myhealth.activity.WeightLossActivity;
+import com.vee.myhealth.bean.TestCollectinfor;
 
 public class MyhealthFragment extends Fragment implements ICallBack,
-		android.view.View.OnClickListener {
+		android.view.View.OnClickListener, TagAliasCallback {
 
 	private GridView gv;
 	private TextView username_txt, age_txt, city_txt, temperature_txt,
@@ -161,7 +168,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		} else {
 			HP_User user = HP_DBModel.getInstance(getActivity())
 					.queryUserInfoByUserId(userid, true);
-			username_txt.setText(user.userName);
+			username_txt.setText(user.userNick);
 			age_txt.setText(user.userAge + "岁");
 
 			if (user.userSex == -1) {
@@ -235,6 +242,28 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	public void onResume() {
 		super.onResume();
 		updateView(new TrackEntity(), true);
+		addTagForJPush();
+	}
+
+	void addTagForJPush() {
+		int userId = HP_User.getOnLineUserId(getActivity());
+		// if (userId != 0) {
+		// JPushInterface.setTags(getActivity(), null, this);
+		List<TestCollectinfor> TagList = HP_DBModel.getInstance(getActivity())
+				.queryUserTestList(userId);
+		Set<String> tags = new HashSet();
+		if (TagList != null && TagList.size() > 0) {
+			for (int i = 0; i < TagList.size(); i++) {
+				String s = TagList.get(i).getName()
+						+ TagList.get(i).getResult();
+				System.err.println("测试结果" + s);
+				tags.add(s);
+			}
+			JPushInterface.setTags(getActivity(), tags, this);
+
+		}
+		// }
+
 	}
 
 	@Override
@@ -261,9 +290,6 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		switch (v.getId()) {
 
 		case R.id.user_head_img:
-			Intent intent = new Intent(getActivity(),
-					TestResultActivity.class);
-			startActivity(intent);
 
 			break;
 
@@ -272,6 +298,12 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void gotResult(int arg0, String arg1, Set<String> arg2) {
+		// TODO Auto-generated method stub
+		System.err.println("状态吗" + arg0 + "tag" + arg2.toString());
 	}
 
 }

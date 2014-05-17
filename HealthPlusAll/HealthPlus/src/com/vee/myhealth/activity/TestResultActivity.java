@@ -41,8 +41,9 @@ public class TestResultActivity extends FragmentActivity implements
 	private int userid = 0;
 	private String testname;
 	private long currDate = System.currentTimeMillis();
-	private static String IMAPATH ="testresult_img";
+	private static String IMAPATH = "testresult_img";
 	private ImageView result_iv;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -67,12 +68,12 @@ public class TestResultActivity extends FragmentActivity implements
 			sqlForTest.getResultFromDB(result);
 			tips_tv.setVisibility(View.GONE);
 			result_iv.setVisibility(View.GONE);
-		} else if (flag.equals("111") || flag.equals("112")||flag.equals("113")) {
+		} else if (flag.equals("111") || flag.equals("112")
+				|| flag.equals("113")) {
 			scoremMap = (HashMap<HealthQuestionEntity, Integer>) data;
 			result = getScore(scoremMap);
 			sqlForTest.getHealthResult(flag, Integer.parseInt(result));
-		} 
-		
+		}
 
 	}
 
@@ -95,7 +96,6 @@ public class TestResultActivity extends FragmentActivity implements
 		content_tv = (TextView) findViewById(R.id.content_tv);
 		tips_tv = (TextView) findViewById(R.id.tips_tv);
 		result_iv = (ImageView) findViewById(R.id.result_iv);
-		
 
 	}
 
@@ -114,20 +114,31 @@ public class TestResultActivity extends FragmentActivity implements
 		 * hResultEntity.getType(), currDate);
 		 * content_tv.setText(hResultEntity.getResult()); }
 		 */
-		
-		
+
 		HealthResultEntity hResultEntity = (HealthResultEntity) c;
-		String img_id =hResultEntity.getImage_id();
-		getWeatherImage(img_id,result_iv);
+		String img_id = hResultEntity.getImage_id();
+		getWeatherImage(img_id, result_iv);
 		temp_text.setText(hResultEntity.getType());
 		HP_DBModel.getInstance(this).insertUserTest(userid, testname,
 				hResultEntity.getType(), currDate);
+		
 		content_tv.setText(hResultEntity.getResult());
 		if (hResultEntity.getTips() != null && hResultEntity.getTips() != "") {
 			tips_tv.setText(hResultEntity.getTips());
 		}
-		
+		addIgnorList(hResultEntity.getType());
+	}
 
+	void addIgnorList(String result) {
+		Boolean flag = HP_DBModel.getInstance(this).queryTestResultDate(userid,
+				testname);
+		if (flag) {
+			HP_DBModel.getInstance(this).updateTestResult(userid, testname,
+					result, currDate);
+		}else {
+			HP_DBModel.getInstance(this).insertUserTestByCover(userid, testname,
+					result, currDate);
+		}
 	}
 
 	String getScore(HashMap<HealthQuestionEntity, Integer> data) {
@@ -150,35 +161,30 @@ public class TestResultActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
-	
-	public void getWeatherImage(String name, final ImageView view){
-		
-		Bitmap weatherbt=getImageFromAssetsFile(IMAPATH+"/"+name+".png");  
+
+	public void getWeatherImage(String name, final ImageView view) {
+
+		Bitmap weatherbt = getImageFromAssetsFile(IMAPATH + "/" + name + ".png");
 		view.setImageBitmap(weatherbt);
-		
+
 	}
-	 /*
-	  * 从assets读取图片
-	  */
-	  private Bitmap getImageFromAssetsFile(String fileName)  
-	  {  
-	      Bitmap image = null;  
-	      AssetManager am = this.getResources().getAssets();  
-	      try  
-	      {  
-	          InputStream is = am.open(fileName);  
-	          image = BitmapFactory.decodeStream(is);  
-	          is.close();  
-	          return image;  
-	      }  
-	      catch (IOException e)  
-	      {  
-	    	   
-	          e.printStackTrace();  
-	          return null;  
-	      }  
-	  
-	   
-	  
-	  }  
+
+	/*
+	 * 从assets读取图片
+	 */
+	private Bitmap getImageFromAssetsFile(String fileName) {
+		Bitmap image = null;
+		AssetManager am = this.getResources().getAssets();
+		try {
+			InputStream is = am.open(fileName);
+			image = BitmapFactory.decodeStream(is);
+			is.close();
+			return image;
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }

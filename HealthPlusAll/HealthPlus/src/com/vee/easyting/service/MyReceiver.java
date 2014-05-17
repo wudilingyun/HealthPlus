@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.ui.main.FirstActivity;
 import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.ui.setting.TestHistoryActivity;
@@ -59,11 +60,12 @@ public class MyReceiver extends BroadcastReceiver {
 							+ bundle.getString(JPushInterface.EXTRA_MESSAGE));
 			String content = bundle.getString(JPushInterface.EXTRA_MESSAGE);
 			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+
 			if (!ExampleUtil.isEmpty(extras)) {
 				try {
 					JSONObject extraJson = new JSONObject(extras);
 					if (null != extraJson && extraJson.length() > 0) {
-						
+
 					}
 				} catch (JSONException e) {
 
@@ -163,7 +165,8 @@ public class MyReceiver extends BroadcastReceiver {
 					System.currentTimeMillis());
 			n.setLatestEventInfo(context, "云医生", content, mPendingIntent);
 			n.defaults = Notification.DEFAULT_SOUND;
-			manager.notify(1, n);
+			n.flags = n.FLAG_AUTO_CANCEL;
+			manager.notify(id, n);
 
 		}
 

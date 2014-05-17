@@ -52,14 +52,14 @@
 	    <string name="user_name_toast">用户名格式不符合 </string>
 	    <string name="user_name_length_toast">用户名长度应大于5位</string>
 	    
-	    <string name="yundong">运动</string>
-	    <string name="jianya">减压</string>
-	    <string name="yingyang">营养</string>
-	    <string name="xiuxi">休息</string>
-	    <string name="yongyao">用药</string>
-	    <string name="shejiao">社交</string>
-	    <string name="baojian">保健</string>
-	    <string name="bingzheng">病症</string>
+	    <string name="yundong">健身减肥</string>
+	    <string name="jianya">疾病预防</string>
+	    <string name="yingyang">养生堂</string>
+	    <string name="xiuxi">轻松一刻</string>
+	    <string name="yongyao">育儿百科</string>
+	    <string name="shejiao">紧急救护</string>
+	    <string name="baojian">两性话题</string>
+	    <string name="bingzheng">真相大白</string>
 	    <string name="jijiu">急救</string>
 	    <string name="tizhi">体质</string>
 	    

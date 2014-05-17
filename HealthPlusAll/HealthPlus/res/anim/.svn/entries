@@ -1,7 +1,7 @@
 10
 
 dir
-732
+742
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/anim
 svn://192.168.23.204/mobileapp/mobilesafe
 
@@ -774,40 +774,6 @@ xujizhe
 
 348
 
-wait_heart_result.xml
-file
-
-
-
-
-2014-05-12T08:56:37.078125Z
-98343fafdb01d8cdcc03375307bde9fa
-2014-05-12T09:59:01.127461Z
-723
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-483
-
 shop_dialog_enter.xml
 file
 
@@ -841,6 +807,40 @@ wangfeng
 
 
 327
+
+wait_heart_result.xml
+file
+
+
+
+
+2014-05-12T08:56:37.078125Z
+98343fafdb01d8cdcc03375307bde9fa
+2014-05-12T09:59:01.127461Z
+723
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+483
 
 zoomin_l.xml
 file

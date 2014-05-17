@@ -50,9 +50,7 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		View view = View.inflate(this, R.layout.activity_new_moments, null);
 		setContainer(view);
 		// setContentView(R.layout.activity_new_moments);
-		Intent intent = getIntent();
-		bitmap1path = intent.getStringExtra("bitmap");
-		System.out.println("bitmap1path --- " + bitmap1path);
+
 		getHeaderView().setHeaderTitle("");
 		getHeaderView().setBackGroundColor(R.color.blue);
 		setRightBtnVisible(View.GONE);
@@ -80,8 +78,19 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 				new UploadMomentsPhotoTask().execute();
 			}
 		});
-
-		new CompressPhotoTask().execute();
+		Intent intent = getIntent();
+		String text = intent.getStringExtra("text");
+		if(text != null && text.length() > 0)
+		{
+			bitmap1path = null;
+			ImageView imageViewFirst = (ImageView)findViewById(R.id.imageViewFirst);
+			imageViewFirst.setVisibility(View.GONE);
+		}
+		else
+		{
+			bitmap1path = intent.getStringExtra("bitmap");
+			new CompressPhotoTask().execute();
+		}
 	}
 
 	public static int calculateInSampleSize(BitmapFactory.Options options,
@@ -173,13 +182,22 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		protected Void doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 			try {
-				UploadPhotoResponse uploadPhotoResponse = SpringAndroidService
+				if(bitmap1smallpath != null)
+				{				UploadPhotoResponse uploadPhotoResponse = SpringAndroidService
 						.getInstance(getApplication()).uploadMomentsPhoto(
 								bitmap1smallpath);
 				SpringAndroidService.getInstance(getApplication())
 						.insertMoments(message,
 								uploadPhotoResponse.getPhotourl(), null, null,
 								null, null, null, null, null, null);
+				}
+				else
+				{
+					SpringAndroidService.getInstance(getApplication())
+					.insertMoments(message,
+							null, null, null,
+							null, null, null, null, null, null);
+				}
 			} catch (Exception e) {
 				this.exception = e;
 			}

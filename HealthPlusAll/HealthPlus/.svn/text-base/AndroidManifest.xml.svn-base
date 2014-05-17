@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vee.healthplus"
-    android:versionCode="100"
+    android:versionCode="1"
     android:versionName="1.0.0" >
 
     <uses-sdk
@@ -581,6 +581,11 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Translucent_NoTitle" />
+        <activity
+            android:name="com.vee.healthplus.ui.setting.JPushListActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
         <!-- wo end -->
 
@@ -629,6 +634,18 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.vee.moments.MomentsPhotoEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/myDialog" />
+        <activity
+            android:name="com.vee.moments.CoverEditActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity 
+            android:name="com.vee.moments.MomentsCommentEditActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -755,6 +772,6 @@
             android:name="JPUSH_APPKEY"
             android:value="f600a54514351250cb3a7a39" />
         <!-- </>值来自开发者平台取得的AppKey -->
-    </application>
+    </application>
 
 </manifest>

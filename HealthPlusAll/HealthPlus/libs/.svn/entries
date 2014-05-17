@@ -1,15 +1,15 @@
 10
 
 dir
-733
+742
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/libs
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-14T07:14:27.311032Z
-733
-zhaoyouliang
+2014-05-15T08:44:14.067172Z
+740
+heda
 
 
 
@@ -25,6 +25,40 @@ zhaoyouliang
 
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
+
+spring-security-crypto-3.1.3.RELEASE.jar
+file
+
+
+
+
+2014-05-15T09:19:23.875000Z
+70c8de16697da9975b2ed1f8f76f5432
+2014-05-15T08:44:14.067172Z
+740
+heda
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+41435
 
 universal-image-loader-1.8.6.jar
 file
@@ -128,40 +162,6 @@ has-props
 
 229781
 
-jackson-mapper-asl-1.9.10.jar
-file
-
-
-
-
-2014-03-28T08:27:51.500000Z
-9f1bc166b3a0ad6e13df9d3e4b421f47
-2013-11-14T09:24:22.391490Z
-458
-wangjiafeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-780421
-
 spring-social-core-1.0.2.RELEASE.jar
 file
 
@@ -196,14 +196,14 @@ has-props
 
 116441
 
-spring-android-rest-template-1.0.0.RELEASE.jar
+jackson-mapper-asl-1.9.10.jar
 file
 
 
 
 
-2014-03-28T08:27:51.546875Z
-ff2aaa442ce44ebb4a2387839abf9040
+2014-03-28T08:27:51.500000Z
+9f1bc166b3a0ad6e13df9d3e4b421f47
 2013-11-14T09:24:22.391490Z
 458
 wangjiafeng
@@ -228,7 +228,41 @@ has-props
 
 
 
-183233
+780421
+
+spring-android-rest-template-1.0.1.RELEASE.jar
+file
+
+
+
+
+2014-05-15T09:19:23.937500Z
+da7b0b093426d6edd5b25d05257009f1
+2014-05-15T08:44:14.067172Z
+740
+heda
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+186247
 
 jackson-core-asl-1.9.10.jar
 file
@@ -264,17 +298,17 @@ has-props
 
 232119
 
-spring-android-core-1.0.0.RELEASE.jar
+spring-android-core-1.0.1.RELEASE.jar
 file
 
 
 
 
-2014-03-28T08:27:51.562500Z
-15f885ac1c4198bf8c728c6cf45d567e
-2013-11-14T09:24:22.391490Z
-458
-wangjiafeng
+2014-05-15T09:19:23.984375Z
+2c26e351b27c4b750ced976700ed5fe5
+2014-05-15T08:44:14.067172Z
+740
+heda
 has-props
 
 
@@ -296,7 +330,41 @@ has-props
 
 
 
-113140
+113156
+
+springandroid4healthplus.jar
+file
+
+
+
+
+2014-05-15T09:11:51.828125Z
+673da86d30ebc6a47bf9070a15a0714c
+2014-05-15T08:44:14.067172Z
+740
+heda
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+115143
 
 android-support-v4.jar
 file
@@ -332,17 +400,17 @@ has-props
 
 556198
 
-springandroid4healthplus.jar
+baidumapapi_v2_2_0.jar
 file
 
 
 
 
-2014-05-14T02:42:20.562500Z
-7bdd575346b4960a967392a69f88808b
-2014-05-14T01:57:16.760344Z
-728
-heda
+2014-03-28T08:27:51.625000Z
+87cdc8e6c655812e27c986287f996140
+2013-10-30T01:32:51.046476Z
+396
+xujizhe
 has-props
 
 
@@ -364,7 +432,7 @@ has-props
 
 
 
-114499
+856168
 
 android-query.jar
 file
@@ -400,76 +468,8 @@ has-props
 
 98859
 
-baidumapapi_v2_2_0.jar
-file
-
-
-
-
-2014-03-28T08:27:51.625000Z
-87cdc8e6c655812e27c986287f996140
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-856168
-
 armeabi
 dir
-
-spring-android-auth-1.0.0.RELEASE.jar
-file
-
-
-
-
-2014-03-28T08:27:51.640625Z
-170dfc1fe27ebd5a5965ad0df9e9dbac
-2013-11-14T09:24:22.391490Z
-458
-wangjiafeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-22245
 
 tempfile.tmp
 file
@@ -538,6 +538,40 @@ has-props
 
 
 108154
+
+spring-android-auth-1.0.1.RELEASE.jar
+file
+
+
+
+
+2014-05-15T09:19:24.015625Z
+9802a9e0ba62587410da93e0b7a99e4d
+2014-05-15T08:44:14.067172Z
+740
+heda
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22250
 
 tempfile.3.tmp
 file
@@ -640,38 +674,4 @@ has-props
 
 
 99119
-
-spring-security-crypto-3.1.2.RELEASE.jar
-file
-
-
-
-
-2014-03-28T08:27:51.671875Z
-e9ea87a58b270303743d7a5207491ff4
-2013-11-14T09:24:22.391490Z
-458
-wangjiafeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-41154
 

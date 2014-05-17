@@ -7,5 +7,5 @@ public class Common {
 			+ APPLICATION_ID + "/";
 	public static final String UPDATE_VERSION_JSON = "version.json";
 	public static final String UPDATE_APK_NAME = "CloudDoctor.apk";
-	public static final String DOWNLOADDIRNAME = "healthplus";
+	public static final String DOWNLOADDIRNAME = "CloudDoctor";
 }

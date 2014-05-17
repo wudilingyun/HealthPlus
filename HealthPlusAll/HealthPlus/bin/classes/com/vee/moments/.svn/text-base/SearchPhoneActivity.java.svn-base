@@ -20,6 +20,21 @@ import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class SearchPhoneActivity extends BaseFragmentActivity {
 	String searchcontent;
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if (requestCode == 1)
+		{
+			if (resultCode == RESULT_OK)
+			{
+				setResult(RESULT_OK);
+				SearchPhoneActivity.this.finish();
+			}
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +52,7 @@ public class SearchPhoneActivity extends BaseFragmentActivity {
 				searchcontent = editTextSearchContent.getText().toString();
 				if (searchcontent == null || searchcontent.length() == 0) {
 					Toast.makeText(SearchPhoneActivity.this,
-							"Please type something", Toast.LENGTH_SHORT).show();
+							"输入为空", Toast.LENGTH_SHORT).show();
 				} else {
 					new SearchUserTask().execute();
 				}
@@ -99,7 +114,7 @@ public class SearchPhoneActivity extends BaseFragmentActivity {
 					bundle.putSerializable("searchuserresponse",
 							searchUserResponse);
 					intent.putExtras(bundle);
-					startActivity(intent);
+					startActivityForResult(intent, 1);
 				}
 			}
 		}
