@@ -43,18 +43,27 @@ public class MomentsPhotoEditActivity extends Activity implements
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		switch (requestCode) {
+		case 10:
+		{
+			setResult(resultCode);
+			finish();
+			break;
+		}
 		case CAMERA_WITH_DATA:
 			if (resultCode == RESULT_OK) {
 				Intent intent = new Intent(MomentsPhotoEditActivity.this,
 						NewMomentsActivity.class);
 				intent.putExtra("bitmap", u.getPath());
-				startActivity(intent);
+				startActivityForResult(intent, 10);
 				/*
 				 * Intent intent = getIntent(); intent.putExtra("photopath",
 				 * u.getPath());
 				 */
 			}
-			finish();
+			else{
+				finish();
+			}
+			//finish();
 			break;
 		case PHOTO_PICKED_WITH_DATA:
 			if (resultCode == RESULT_OK) {
@@ -69,14 +78,17 @@ public class MomentsPhotoEditActivity extends Activity implements
 				String imgSize = cursor.getString(2); // 图片大小
 				String imgName = cursor.getString(3); // 图片文件名
 				intent.putExtra("bitmap", imgPath);
-				startActivity(intent);
+				startActivityForResult(intent,10);
 				/*
 				 * Intent intent = getIntent(); intent.putExtra("photopath",
 				 * imgPath);
 				 */
 			}
+			else{
+				finish();
+			}
 
-			finish();
+			//finish();
 			break;
 		case PHOTO_CROP:
 			if (resultCode == RESULT_OK) {

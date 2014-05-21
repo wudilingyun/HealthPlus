@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/home_background"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -33,34 +32,55 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dip"
-            android:padding="5dp"
             android:gravity="center"
-            android:text="《云医生》由云狐时代有限公司权威发布 你的私人健康顾问！"
+            android:padding="5dp"
+            android:text="您的健康管理好帮手"
             android:textColor="#ffffff"
             android:textSize="16sp" />
     </LinearLayout>
-    
-    <View 
+
+    <View
         android:layout_width="fill_parent"
         android:layout_height="1dip"
-        android:layout_marginRight="16dip"
         android:layout_marginLeft="16dip"
-        android:background="#44ffffff"/>
+        android:layout_marginRight="16dip"
+        android:background="#44ffffff" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="200dip"
         android:gravity="center_horizontal" >
 
+        <TextView
+            android:id="@+id/cloudDoctor_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="云医生由云狐时代公司权威发布"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cloudDoctor_tv1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            style="@style/textview_style_about"
+            android:text="您的私人健康顾问"
+            android:textColor="#99ff76"
+          />
+
         <RelativeLayout
             android:id="@+id/health_plus_setting_about_service_rl"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:layout_centerHorizontal="true" 
-            android:layout_alignParentTop="true"
-            android:visibility="gone">
+            android:visibility="gone" >
 
             <ImageView
                 android:id="@+id/health_plus_setting_about_service_iv"
@@ -76,10 +96,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/health_plus_setting_about_service_iv"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/health_plus_setting_about_service_iv"
                 android:text="@string/setting_service"
-                android:layout_centerHorizontal="true"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
@@ -99,23 +119,23 @@
             android:id="@+id/health_plus_setting_about_text4_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/health_plus_setting_about_text5_tv"
+            android:layout_centerHorizontal="true"
             android:text="@string/setting_gamecenter"
             android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/health_plus_setting_about_text5_tv" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@id/health_plus_setting_about_text5_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dip"
             android:layout_marginTop="10dip"
             android:text="@string/right_text_english"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" 
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="40dip"/>
+            android:textSize="15sp" />
     </RelativeLayout>
 
 </LinearLayout>

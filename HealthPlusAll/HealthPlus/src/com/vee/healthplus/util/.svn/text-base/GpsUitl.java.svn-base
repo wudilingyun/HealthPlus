@@ -14,7 +14,6 @@ import android.view.View;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.util.sporttrack.TrackEntity;
-import com.vee.healthplus.util.sporttrack.TrackUtil;
 import com.vee.healthplus.widget.CustomDialog;
 
 public class GpsUitl {
@@ -89,7 +88,7 @@ public class GpsUitl {
 		if (doubleStr == null || doubleStr.equals("")|| Double.parseDouble(doubleStr)==0)
 			buffer.append("0.00");
 		else {
-			if(TrackUtil.getInstance(context).isGpsSensor()){
+			if(true){
 			double doubleValue=(Math.round(Double.parseDouble(doubleStr)/1000*100)/100.0);
 			buffer.append(String.valueOf(doubleValue));
 			}

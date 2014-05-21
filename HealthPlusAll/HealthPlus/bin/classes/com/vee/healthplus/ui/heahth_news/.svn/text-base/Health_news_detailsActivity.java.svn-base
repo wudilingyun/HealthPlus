@@ -50,12 +50,9 @@ import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.Response;
-import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
-import com.vee.healthplus.ui.heahth_exam.HealthFragment;
 import com.vee.healthplus.ui.heahth_exam.ProgressDiaogdownload;
 import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
@@ -69,7 +66,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 	WebView webView;
 	String newscontent;
 	List<Doc> all_news;
-	String imgurl, weburl, title;
+	String imgurl, weburl, title,brief;
 	private String contentUrl;
 	private ProgressDiaogdownload ProgressDiaog = new ProgressDiaogdownload(
 			Health_news_detailsActivity.this);
@@ -157,6 +154,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		weburl = (String) intent.getStringExtra("weburl");
 		imgurl = (String) intent.getStringExtra("imgurl");
 		title = (String) intent.getStringExtra("title");
+		brief = (String )intent.getStringExtra("brief");
 		if (CheckNetWorkStatus.Status(this)) {
 			webView.loadUrl(weburl);
 		} else {
@@ -211,7 +209,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 				String sendMsg = getResources().getString(
 						R.string.hp_share_invite);
 				MyApplication
-						.shareBySystem(this, title, imgurl, weburl, "", "");
+						.shareBySystem(this, title, imgurl, weburl, "", "",brief);
 			} else {
 				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 			}
@@ -229,17 +227,18 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 									"com.vee.healthplus.ui.heahth_news.Health_ValueBook_commentList_activity"));
 					intent.putExtras(extras);
 					startActivity(intent);
-				} else {
-					Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
+				} else if (HP_User.getOnLineUserId(this) != 0) {
+					Intent intent3 = new Intent(
+							Health_news_detailsActivity.this,
+							Health_ValueBook_commentList_activity.class);
+					intent3.putExtra("imgurl", imgurl);
+					startActivity(intent3);
+					return;
 				}
 				return;
 
-			} else if (HP_User.getOnLineUserId(this) != 0) {
-				Intent intent3 = new Intent(Health_news_detailsActivity.this,
-						Health_ValueBook_commentList_activity.class);
-				intent3.putExtra("imgurl", imgurl);
-				startActivity(intent3);
-				return;
+			} else {
+				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 			}
 
 			break;
@@ -250,6 +249,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 	}
 
 	void getCollect() {
+		userid = HP_User.getOnLineUserId(this);
 		Boolean bo = HP_DBModel.getInstance(this).queryUserBooleanCollectInfor(
 				userid, title, imgurl);
 		if (bo) {

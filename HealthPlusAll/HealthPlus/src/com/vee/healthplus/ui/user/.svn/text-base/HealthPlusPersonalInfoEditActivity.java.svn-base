@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -170,28 +169,6 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 	}
-
-	private Bitmap getBitmap(String url) {
-		Bitmap result = memoryCache.getBitmapFromCache(url);
-
-		if (result == null) {
-			result = fileCache.getImage(url);
-			/*
-			 * if (result == null) { result =
-			 * ImageGetFromHttp.downloadBitmap(url); if (result != null) {
-			 * fileCache.saveBitmap(result, url);
-			 * memoryCache.addBitmapToCache(url, result); } else {
-			 * memoryCache.addBitmapToCache(url, result); } }
-			 */
-		}
-		return result;
-	}
-
-	private Handler h = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-
-		};
-	};
 
 	private void initData() {
 		memoryCache = new ImageMemoryCache(this);
@@ -359,10 +336,6 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		super.onDestroy();
 	}
 
-	private void displayResult(String msg) {
-		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-	}
-
 	@Override
 	public void onChange() {
 		// TODO Auto-generated method stub
@@ -415,5 +388,10 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	public void onErrorGetProfile(Exception e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onErrorUploadAvatar() {
+		finish();
 	}
 }

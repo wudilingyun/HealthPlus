@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.HttpException;
 import com.vee.healthplus.http.Response;
-import com.vee.healthplus.receiver.AlermReceiver;
 
 import org.apache.http.message.BasicNameValuePair;
 
@@ -138,7 +137,7 @@ public class InstallSataUtil {
 		httpsendComment.start();
 	}
 
-	public void stopTimerRecord() {
+	/*public void stopTimerRecord() {
 		Intent intent = new Intent(mContext, AlermReceiver.class);
 		PendingIntent sender = PendingIntent.getBroadcast(mContext, 0, intent,
 				0);
@@ -162,7 +161,7 @@ public class InstallSataUtil {
 				.getSystemService(Context.ALARM_SERVICE);
 		am.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
 				60 * 60 * 1000, pi);
-	}
+	}*/
 
 	public void timerServerStat(String id) {
 		// TODO Auto-generated method stub

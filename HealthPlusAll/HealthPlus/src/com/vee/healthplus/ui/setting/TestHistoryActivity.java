@@ -54,6 +54,7 @@ public class TestHistoryActivity extends BaseFragmentActivity implements
 
 	private void initView(View view) {
 		mList = (ListView) view.findViewById(R.id.test_history_ll);
+		mList.setDividerHeight(0);
 		noneTv = (TextView) view.findViewById(R.id.test_history_none_tv);
 	}
 

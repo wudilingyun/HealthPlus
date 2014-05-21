@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.util.sporttrack.ISensorData;
 
 public class CustomDialog extends Dialog {
     private Context context;

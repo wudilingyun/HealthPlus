@@ -15,12 +15,21 @@
         android:background="@color/bg_alpha" />
 
     <TextView
-        android:id="@+id/tv_time"
+        android:id="@+id/tv_timed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/str_time"
-        android:textSize="12sp" />
+        android:textSize="24sp" 
+        android:textColor="#FFFFFF"/>
+    <TextView 
+        android:id="@+id/tv_timeym"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/str_time"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF"/>
     <LinearLayout
         android:layout_width="1dp"
         android:layout_height="0dp"

@@ -21,9 +21,7 @@ import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.common.FragmentMsg;
 import com.vee.healthplus.common.IFragmentMsg;
 import com.vee.healthplus.common.MyApplication;
-import com.vee.healthplus.service.AlarmService;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.ui.user.UserRegister_Activity;
 import com.vee.healthplus.util.AppPreferencesUtil;
 import com.vee.healthplus.util.InstallSataUtil;
@@ -74,23 +72,13 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 				for (int i = 0; i < TagList.size(); i++) {
 					String s = TagList.get(i).getName()
 							+ TagList.get(i).getResult();
-					System.err.println("测试结果"+s);
+					System.err.println("测试结果" + s);
 					tags.add(s);
 				}
 				JPushInterface.setTags(getApplication(), tags, this);
 			}
 		}
 
-	}
-
-	private void initDefaultUserInfo() {
-		new HP_DBHelper(this, HP_DBCommons.DBNAME, null, 1);
-		HP_User user = new HP_User();
-		user.userId = 0;
-		user.userName = "defaultUser";
-		HP_DBModel.getInstance(getApplicationContext()).insertUserInfo(user,
-				true);
-		HP_User.setOnLineUserId(this, 0);
 	}
 
 	private void updateFragmentToStack(FragmentMsg fMsg) {
@@ -125,7 +113,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 	}
 
 	private void startService() {
-		this.startService(new Intent(this, AlarmService.class));
+
 	}
 
 	@Override
@@ -165,7 +153,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 	@Override
 	protected void onResume() {
 		super.onResume();
-		//addTagForJPush();
+		// addTagForJPush();
 	}
 
 	@Override
@@ -183,7 +171,7 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 	@Override
 	public void gotResult(int arg0, String arg1, Set<String> arg2) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

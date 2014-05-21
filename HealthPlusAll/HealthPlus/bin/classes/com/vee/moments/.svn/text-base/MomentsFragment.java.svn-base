@@ -10,7 +10,6 @@ import java.util.concurrent.Executors;
 
 import org.springframework.util.MultiValueMap;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -25,8 +24,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,9 +35,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
-import com.vee.healthplus.ui.heahth_news.Health_news_detailsActivity.BooleanDoSupportAsync;
-import com.vee.healthplus.ui.heahth_news.Health_news_detailsActivity.SubmitSupportAsync;
+import com.vee.healthplus.util.SystemMethod;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
@@ -95,12 +95,9 @@ public class MomentsFragment extends Fragment {
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		new GetMomentsTimelineTask().execute();
+//		new GetMomentsTimelineTask().execute();
 	}
 
-	Dialog custom;
-	Button photographbtn;
-	Button selectfromalbumbtn;
 	// Uri u;
 	RelativeLayout relativeLayoutNoMents;
 	RelativeLayout relativeLayoutMomentsHeading;
@@ -112,6 +109,9 @@ public class MomentsFragment extends Fragment {
 	private ImageView imageViewCoverList = null;
 	private ImageView imageViewMyMoments = null;
 	private TextView textViewMyName = null;
+	
+	private static String[] mTitles;
+	private MomentsMainAdapter momentsMainAdapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -119,14 +119,63 @@ public class MomentsFragment extends Fragment {
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.moments_fragment, container,
 				false);
+		
+		ListView listViewMomentsMain = (ListView) view.findViewById(R.id.momentsmain);
+		mTitles = SystemMethod.getStringArray(this.getActivity(), R.array.momentsmain);
+		momentsMainAdapter = new MomentsMainAdapter(getActivity(), mTitles);
+		listViewMomentsMain.setAdapter(momentsMainAdapter);
+		
+		listViewMomentsMain.setOnItemClickListener(new OnItemClickListener() {
 
-		imageLoader = ImageLoader.getInstance(getActivity());
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				if(position == 0)
+				{
+					/*Bundle extras = new Bundle();
+					extras.putInt("id", HP_User.getOnLineUserId(MomentsFragment.this.getActivity()));
+					Intent intent = new Intent();
+					intent.putExtras(extras);
+					intent.setClass(MomentsFragment.this.getActivity(),
+							MomentsPhotoEditActivity.class);
+					startActivityForResult(intent, 10);*/
+					Intent intent = new Intent(MomentsFragment.this.getActivity(), MomentsMainActivity.class);
+					startActivity(intent);
+				}
+				else if(position == 1)
+				{
+					Intent intent = new Intent(MomentsFragment.this.getActivity(),
+							FriendListActivity.class);
+					startActivity(intent);					
+				}
+				else if(position == 2)
+				{
+					
+				}
+				else if(position == 3)
+				{
+					Intent intent = new Intent(MomentsFragment.this.getActivity(),
+							SearchPhoneActivity.class);
+					startActivityForResult(intent, 1);
+				}
+				else if(position == 4)
+				{
+					Intent intent = new Intent(MomentsFragment.this.getActivity(),
+							AddContsctsActivity.class);
+					startActivity(intent);		
+				}
+			}
+			
+		});
+
+		/*imageLoader = ImageLoader.getInstance(getActivity());
 		executorService = Executors.newCachedThreadPool();
 
 		imageViewCoverDefault = (ImageView) view.findViewById(R.id.cover);
 		imageViewMyMoments = (ImageView) view.findViewById(R.id.mymoments);
 		textViewMyName = (TextView) view.findViewById(R.id.myname);
-		/*
+		
 		 * int userid = HP_User.getOnLineUserId(getActivity()); if (userid != 0)
 		 * { HP_User user = HP_DBModel.getInstance(getActivity())
 		 * .queryUserInfoByUserId( HP_User.getOnLineUserId(getActivity()),
@@ -134,7 +183,7 @@ public class MomentsFragment extends Fragment {
 		 * 
 		 * ImageLoader.getInstance(getActivity()).addTask(user.photourl,
 		 * imageViewMyMoments); }
-		 */
+		 
 
 		ImageView imageViewAddFriend = (ImageView) view
 				.findViewById(R.id.addfriend);
@@ -182,7 +231,7 @@ public class MomentsFragment extends Fragment {
 				startActivity(intent);
 			}
 		});
-
+*/
 		return view;
 	}
 
@@ -724,5 +773,90 @@ public class MomentsFragment extends Fragment {
 
 		}
 
+	}
+	
+	private class MomentsMainAdapter extends BaseAdapter {
+		private Context mContext;
+		private String[] sTitles;
+		private int icons[] = { R.drawable.moments_main_moments,
+				R.drawable.moments_main_friendlist,
+				R.drawable.moments_main_newfriend,
+				R.drawable.moments_main_searchphone,
+				R.drawable.moments_main_addcontact };
+
+		protected LayoutInflater _mInflater;
+		
+		public MomentsMainAdapter(Context mContext, String[] strings) {
+			super();
+			this.mContext = mContext;
+			this.sTitles = strings;
+			_mInflater = LayoutInflater.from(this.mContext);
+		}
+		
+		@Override
+		public int getItemViewType(int position) {
+			// TODO Auto-generated method stub
+			if (position == 0) {
+				return 0;
+			}
+			return 1;
+		}
+
+		@Override
+		public int getViewTypeCount() {
+			// TODO Auto-generated method stub
+			return 2;
+		}
+		
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return sTitles.length;
+		}
+
+		@Override
+		public Object getItem(int arg0) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			int type = getItemViewType(position);
+			final ViewHolder holder;
+			if (convertView == null) {
+				if( type == 1)
+				{
+					convertView = _mInflater.inflate(R.layout.moments_fragment_listview_item, null);
+				}
+				else
+				{
+					convertView = _mInflater.inflate(R.layout.moments_fragment_listview_firstitem, null);
+				}
+				holder = new ViewHolder();
+				holder.icon = (ImageView) convertView
+						.findViewById(R.id.addfriendimage);
+				holder.title = (TextView) convertView
+						.findViewById(R.id.addfriendname);
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
+			}
+			holder.title.setText(sTitles[position]);
+			holder.icon.setImageResource(icons[position]);
+			return convertView;
+		}
+
+		class ViewHolder {
+			ImageView icon;
+			TextView title;
+		}
 	}
 }

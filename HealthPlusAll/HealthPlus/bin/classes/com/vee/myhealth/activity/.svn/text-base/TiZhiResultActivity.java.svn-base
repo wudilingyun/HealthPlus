@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AbsListView.OnScrollListener;
 
-import com.vee.easyting.activity.BaseActivity;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.util.user.HP_DBModel;
@@ -96,9 +95,9 @@ public class TiZhiResultActivity extends FragmentActivity implements
 		mStormGallery = (Gallery) findViewById(R.id.index_jingqiu_gallery);
 		// ======= 初始化ViewPager ========
 		
-		mStormListData.add(R.drawable.a);
+		/*mStormListData.add(R.drawable.a);
 		mStormListData.add( R.drawable.b);
-		mStormListData.add( R.drawable.c);
+		mStormListData.add( R.drawable.c);*/
 		mStormAdapter = new IndexGalleryAdapter(this,
 				R.layout.activity_index_gallery_item, mStormListData,
 				new int[] { R.id.index_gallery_item_image, });

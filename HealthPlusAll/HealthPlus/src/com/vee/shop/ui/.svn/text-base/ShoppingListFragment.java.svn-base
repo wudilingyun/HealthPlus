@@ -31,7 +31,7 @@ import android.widget.TextView;
 import com.androidquery.AQuery;
 import com.androidquery.util.AQUtility;
 import com.vee.healthplus.common.MyApplication;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
+
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.shop.bean.CartItemBean;
 import com.vee.shop.http.ProtectTask;
@@ -248,13 +248,11 @@ public class ShoppingListFragment extends BaseFragment implements ICallBack {
 					HttpClientErrorException httpError = (HttpClientErrorException) exception;
 					if (httpError.getStatusCode() == HttpStatus.UNAUTHORIZED) {
 						// go login
-						new UserLogin_Activity(ShoppingListFragment.this).show(
-								getActivity().getSupportFragmentManager(), "");
+
 					}
 				} else if (exception instanceof MissingAuthorizationException) {
 					// go login
-					new UserLogin_Activity(ShoppingListFragment.this).show(
-							getActivity().getSupportFragmentManager(), "");
+
 				}
 				MyApplication.setCartNum(0);
 			} else if (null != result) {

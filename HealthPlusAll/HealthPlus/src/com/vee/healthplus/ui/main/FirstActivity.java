@@ -3,7 +3,6 @@ package com.vee.healthplus.ui.main;
 import cn.sharesdk.framework.ShareSDK;
 
 import com.vee.healthplus.common.MyApplication;
-import com.vee.healthplus.service.AlarmService;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.util.AppPreferencesUtil;
 import com.vee.healthplus.util.InstallSataUtil;
@@ -15,12 +14,16 @@ import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.util.DBManager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 public class FirstActivity extends Activity {
-	private DBManager dbHelper;
-	
+	private SQLiteDatabase dbHelper;
+	private SQLiteDatabase database;
+	public static boolean isForeground = true;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -28,8 +31,8 @@ public class FirstActivity extends Activity {
 
 		ShareSDK.initSDK(this);
 		startService();
-		addTiZhiDB();
-		
+		addAllDB();
+
 		new InstallSataUtil(this).serverStat(MyApplication.CHANNEL_ID);
 		Intent intent = new Intent(this, MainPage.class);
 		startActivity(intent);
@@ -37,23 +40,36 @@ public class FirstActivity extends Activity {
 	}
 
 	private void startService() {
-		this.startService(new Intent(this, AlarmService.class));
-	}
-	
-	void addTiZhiDB() {
-		dbHelper = new DBManager(this);
-		dbHelper.openDatabase();
-		dbHelper.closeDatabase();
+		
 	}
 
-	
+	void addAllDB() {
+		dbHelper = new DBManager(this, DBManager.DB_NAME, null, 2)// 首页测试题数据库
+				.getWritableDatabase();
+		dbHelper.close();
+		HP_DBModel.getInstance(this);
+		// dbHelper.openDatabase();
+	}
 
-	/*
-	 * private void initDefaultUserInfo() { new HP_DBHelper(this,
-	 * HP_DBCommons.DBNAME, null, 1); HP_User user = new HP_User(); user.userId
-	 * = 0; user.userName = "defaultUser";
-	 * HP_DBModel.getInstance(getApplicationContext()).insertUserInfo(user,
-	 * true); HP_User.setOnLineUserId(this, 0); }
-	 */
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		isForeground = false;
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		isForeground = false;
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		isForeground = false;
+	}
 
 }

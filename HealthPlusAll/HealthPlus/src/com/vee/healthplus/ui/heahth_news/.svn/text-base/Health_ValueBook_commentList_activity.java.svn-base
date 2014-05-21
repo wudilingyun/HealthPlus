@@ -104,12 +104,12 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 						if (newscomment != null && newscomment.size() > 0)
 							if (comment_listView.isHeaderShown()) {
 								// 下
-
+									
 								new getCommentsAsync().execute(down,
-										commentlist.get(0) + "");
+										commentlist.get(0).getCommentid() + "");
 							} else if (comment_listView.isFooterShown()) {
 								new getCommentsAsync().execute(pull,
-										commentlist.get(commentlist.size() - 1)
+										commentlist.get(commentlist.size() - 1).getCommentid()
 												+ "");
 								// 上
 							}
@@ -182,7 +182,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				myAdapter.notifyDataSetChanged();
 				comment_listView.onRefreshComplete();
 			} else {
-				comment_listView.onRefreshComplete();
+				//comment_listView.onRefreshComplete();
 				Toast.makeText(getApplication(), "没有评论", Toast.LENGTH_SHORT)
 						.show();
 			}
@@ -238,6 +238,8 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 					new freshCommentsAsync().execute();
 
 				} else {
+					String s=data.getReturncode()+data.getDescription();
+					System.out.println("评论问题"+s);
 					Toast.makeText(getApplicationContext(), "评论失败",
 							Toast.LENGTH_SHORT).show();
 				}

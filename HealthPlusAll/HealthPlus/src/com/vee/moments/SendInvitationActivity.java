@@ -42,10 +42,12 @@ public class SendInvitationActivity extends Activity implements OnClickListener 
 			String phone = getIntent().getStringExtra("phone");
 			Uri uri = Uri.parse("smsto://" + phone);
 			Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-			intent.putExtra("sms_body", "send detail");
+			String content = "云医生是集用户健康检测、健康管理、健康追踪、健康资讯及用户健康交流平台于一体的健康管理软件。"
+					+ "挺方便、实用的，推荐你用一下。"
+					+ "下载地址：http://cdn.17vee.com/lmstation/shoujiweishi/700071/CloudDoctor.apk";
+			intent.putExtra("sms_body", content);
 			startActivity(intent);
 			break;
 		}
 	}
-
 }

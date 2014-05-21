@@ -37,7 +37,6 @@ import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.Response;
-import com.vee.healthplus.ui.heahth_exam.MyAdapter;
 import com.vee.healthplus.ui.heahth_exam.ProgressDiaogdownload;
 import com.vee.healthplus.ui.heahth_news.MyNewsPagerAdapter;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;

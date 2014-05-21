@@ -458,10 +458,10 @@ public class WheelView extends View {
 	 * Initializes resources
 	 */
 	private void initResourcesIfNecessary() {
-		if (centerDrawable == null) {
+		/*if (centerDrawable == null) {
 			centerDrawable = getContext().getResources().getDrawable(
 					R.drawable.hp_w_targetcountcurbg);
-		}
+		}*/
 
 		if (topShadow == null) {
 			topShadow = new GradientDrawable(Orientation.TOP_BOTTOM,

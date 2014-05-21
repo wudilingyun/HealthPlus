@@ -79,6 +79,7 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 		} catch (Exception e) {
 			this.exception = e;
 			e.printStackTrace();
+			callBack.onErrorUploadAvatar();
 		}
 
 		return null;
@@ -100,6 +101,8 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 		public void onErrorSaveProfile(Exception e);
 		
 		public void onFinishUploadAvatar(int reflag);
+		
+		public void onErrorUploadAvatar();
 	}
 
 }

@@ -1,7 +1,10 @@
 package com.vee.moments;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.util.MultiValueMap;
@@ -44,16 +47,7 @@ public class UserMomentsActivity extends FragmentActivity implements OnClickList
 
 		ImageView imageViewMyDetail = (ImageView) findViewById(R.id.mydetail);
 		TextView textViewMyName = (TextView) view.findViewById(R.id.textViewUsername);
-		int userid = HP_User.getOnLineUserId(this);
-		if (userid != 0) {
-			HP_User user = HP_DBModel.getInstance(this)
-					.queryUserInfoByUserId(
-							HP_User.getOnLineUserId(this), true);
-			textViewMyName.setText(user.userNick);
 
-			ImageLoader.getInstance(this).addTask(user.photourl,
-					imageViewMyDetail);
-		}
 		
 		ListView listViewMomentsList = (ListView) findViewById(R.id.momentslist);
 
@@ -62,10 +56,26 @@ public class UserMomentsActivity extends FragmentActivity implements OnClickList
 
 		Intent intent = getIntent();
 		int friendid = intent.getIntExtra("friendid", 0);
-		if (friendid == 0) {			
+		if (friendid == 0) {
+			int userid = HP_User.getOnLineUserId(this);
+			if (userid != 0) {
+				HP_User user = HP_DBModel.getInstance(this)
+						.queryUserInfoByUserId(
+								HP_User.getOnLineUserId(this), true);
+				textViewMyName.setText(user.userNick);
+
+				ImageLoader.getInstance(this).addTask(user.photourl,
+						imageViewMyDetail);
+			}
 			new GetMyMomentsTask().execute();
 		} else {
-			new GetFriendMomentsTask().execute();
+			String friendName = intent.getStringExtra("friendname");
+			String friendAvatar = intent.getStringExtra("friendavatar");
+			textViewMyName.setText(friendName);
+
+			ImageLoader.getInstance(this).addTask(friendAvatar,
+					imageViewMyDetail);
+			new GetFriendMomentsTask().execute(friendid);
 		}
 		
 		settitle();
@@ -228,7 +238,6 @@ public class UserMomentsActivity extends FragmentActivity implements OnClickList
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
-			System.out.println("---getView invoked");
 			View view = null;
 			if (convertView != null) {
 				view = convertView;
@@ -239,6 +248,19 @@ public class UserMomentsActivity extends FragmentActivity implements OnClickList
 			TextView textViewMessage = (TextView) view.findViewById(R.id.tv_content);
 			ImageView ivPhoto = (ImageView) view.findViewById(R.id.iv_photo);
 			Moments moments = momentsList.get(position);
+			Timestamp ts = moments.getCreatetime();
+			SimpleDateFormat formattimeym=new SimpleDateFormat("yyyy.MM");
+			Date date = new Date(ts.getTime());
+			String formatdateym = formattimeym.format(date);
+			SimpleDateFormat formattimed = new SimpleDateFormat("dd");
+			String formatdated = formattimed.format(date);
+			
+			TextView textViewYM = (TextView)view.findViewById(R.id.tv_timeym);
+			TextView textViewD = (TextView)view.findViewById(R.id.tv_timed);
+			
+			textViewYM.setText(formatdateym);
+			textViewD.setText(formatdated);
+			
 			String strImage1 = moments.getImage1();
 			if(strImage1 == null || strImage1.length() == 0)
 			{
@@ -247,7 +269,7 @@ public class UserMomentsActivity extends FragmentActivity implements OnClickList
 			else
 			{
 				ivPhoto.setVisibility(View.VISIBLE);
-				ivPhoto.setImageResource(R.drawable.myhealth_users_avatar);
+				//ivPhoto.setImageResource(R.drawable.myhealth_users_avatar);
 			}
 			textViewMessage.setText(moments.getMessage());
 			if(strImage1 != null && strImage1.length() > 0)

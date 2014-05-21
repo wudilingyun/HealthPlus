@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.yunfox.s4aservicetest.response.Friend;
 
 public class FriendAdapter extends BaseAdapter {
@@ -67,6 +68,8 @@ public class FriendAdapter extends BaseAdapter {
 		Friend friend = friendList.get(position);
 		
 		textViewFriendName.setText(friend.getFriendname());
+		
+		ImageLoader.getInstance(context).addTask(friend.getFriendavatarurl(), imageViewFriendAvatar);
 
 		return view;
 	}

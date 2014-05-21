@@ -228,7 +228,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dip"
-                                android:src="@drawable/health_plus_uname_normal" />
+                                android:src="@drawable/health_plus_nick_normal" />
 
                             <View
                                 android:layout_width="1dip"
@@ -258,7 +258,7 @@
                         android:layout_marginLeft="20.0dip"
                         android:layout_marginRight="20.0dip"
                         android:layout_marginTop="5.0dip"
-                        android:text="提示：昵称由1-12位英文字母、数字或符号组成。"
+                        android:text="提示：4-30个字符，支持中英文、数字。"
                         android:textColor="#C3C3C3"
                         android:textSize="12sp" />
 

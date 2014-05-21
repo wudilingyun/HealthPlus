@@ -9,6 +9,7 @@
     <string name="title_activity_friend_detail">FriendDetailActivity</string>
     <string name="title_activity_friend_moments">FriendMomentsActivity</string>
     <string name="title_activity_friend_list">FriendListActivity</string>
+    <string name="title_activity_moments_main">MomentsMainActivity</string>
     <string name="title_activity_cover_edit">CoverEditActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>

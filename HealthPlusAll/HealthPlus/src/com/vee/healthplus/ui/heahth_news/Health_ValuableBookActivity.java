@@ -141,6 +141,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 		listView_news.getRefreshableView().setSelector(
 				android.R.color.transparent);
 		listView_news.setMode(Mode.BOTH);
+		listView_news.setPullToRefreshOverScrollEnabled(false);
 		listView_news.getLoadingLayoutProxy(false, true).setPullLabel(
 				getString(R.string.pull_to_load));
 		listView_news.getLoadingLayoutProxy(false, true).setRefreshingLabel(
@@ -178,6 +179,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 							.findViewById(R.id.imageView_healthnews);
 					TextView tvView = (TextView) view
 							.findViewById(R.id.newstitle);
+					TextView timeView= (TextView)view.findViewById(R.id.data);
 					System.out.println("传过来web" + tvView.getTag().toString());
 					String imgurlString = (String) img.getTag();
 					// 跳转后显示内容
@@ -188,6 +190,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 					intent.putExtra("weburl", tvView.getTag().toString());
 					intent.putExtra("imgurl", imgurlString);
 					intent.putExtra("name", name);
+					intent.putExtra("brief", timeView.getTag().toString());
 					Bundle bundle = new Bundle();
 					intent.putExtra("bundle", bundle);
 					startActivity(intent);

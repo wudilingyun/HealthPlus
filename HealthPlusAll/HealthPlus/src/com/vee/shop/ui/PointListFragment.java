@@ -30,7 +30,7 @@ import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.androidquery.util.AQUtility;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
+
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.shop.http.GetCartTask;
 import com.vee.shop.http.ProtectTask;
@@ -204,13 +204,11 @@ public class PointListFragment extends BaseFragment implements ICallBack {
 					HttpClientErrorException httpError = (HttpClientErrorException) exception;
 					if (httpError.getStatusCode() == HttpStatus.UNAUTHORIZED) {
 						// go login
-						new UserLogin_Activity(PointListFragment.this).show(
-								getActivity().getSupportFragmentManager(), "");
+
 					}
 				} else if (exception instanceof MissingAuthorizationException) {
 					// go login
-					new UserLogin_Activity(PointListFragment.this).show(
-							getActivity().getSupportFragmentManager(), "");
+
 				}
 			}
 			if (null != totalPoint) {

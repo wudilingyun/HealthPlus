@@ -16,18 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.vee.askweakness.ui.AskWeaknessFragment;
-import com.vee.forum.ForumFragment;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.common.IFragmentMsg;
-import com.vee.healthplus.ui.analysis.AnalysisFragment;
-import com.vee.healthplus.ui.heahth_exam.HealthFragment;
 import com.vee.healthplus.ui.heahth_news.Health_ValuableBookActivity;
 import com.vee.healthplus.ui.heahth_news.Health_ValueBookListFragment;
-import com.vee.healthplus.ui.setting.SettingListActivity;
 import com.vee.healthplus.ui.setting.UserPageFragment;
-import com.vee.healthplus.ui.sportmode.SportModeFragment;
 import com.vee.healthplus.util.SystemMethod;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.HeaderView;
@@ -43,17 +37,15 @@ public class SampleTabsWithIcons extends Fragment {
 
 	private static String[] mIcon;
 
-	private static SampleTabsWithIcons stw;
+	private static int[] mIconId;
 
-	public static FragmentPagerAdapter adapter;
+	private static FragmentPagerAdapter adapter;
 
-	public static Fragment[] fragments = new Fragment[4];
+	private static Fragment[] fragments = new Fragment[4];
 
-	private IFragmentMsg mFragmentMsgCallBack;
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		mFragmentMsgCallBack = (IFragmentMsg) activity;
 	}
 
 	public static SampleTabsWithIcons newInstance() {
@@ -63,17 +55,24 @@ public class SampleTabsWithIcons extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.i(TAG, "SampleTabsWithIcons.onCreate");
 		mContent = SystemMethod.getStringArray(this.getActivity(),
 				R.array.doctor_tab_name);
 		mIcon = SystemMethod.getStringArray(this.getActivity(),
 				R.array.tab_icons);
+		/*fragments = new Fragment[] { MyhealthFragment.newInstance(),
+				MomentsFragment.newInstance(),
+				Health_ValueBookListFragment.newInstance(),
+				UserPageFragment.newInstance() };*/
+
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		 View view = inflater.inflate(R.layout.simple_tabs, container, false);
+		Log.i(TAG, "SampleTabsWithIcons.onCreateView");
+		View view = inflater.inflate(R.layout.simple_tabs, container, false);
 		adapter = new GoogleMusicAdapter(this.getFragmentManager());
 		ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
 		pager.removeAllViews();
@@ -102,11 +101,10 @@ public class SampleTabsWithIcons extends Fragment {
 					break;
 				}
 			}
-			
 
 			@Override
 			public void onPageScrollStateChanged(int i) {
-				
+
 			}
 		});
 		TabPageIndicator indicator = (TabPageIndicator) view
@@ -138,29 +136,17 @@ public class SampleTabsWithIcons extends Fragment {
 								.setRightBtnVisible(View.GONE);
 						((BaseFragmentActivity) getActivity())
 								.setRightTvVisible(View.GONE);
-						
+
 					}
 				} else if (position == 1) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
 						((BaseFragmentActivity) activity)
-								.setRightBtnVisible(View.VISIBLE);
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setRightRes(R.drawable.moments_camera);
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setLeftRes(R.drawable.moments_friends);
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setHeaderTitle(
-										getActivity().getString(
-												R.string.momentsfriendlist));
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setLeftOption(
-										HeaderView.HEADER_MOMENTS_FRIENDS);
-						((BaseFragmentActivity) activity).getHeaderView()
-								.setRightOption(
-										HeaderView.HEADER_MOMENTS_CAMERA);
+								.setRightBtnVisible(View.GONE);
+						((BaseFragmentActivity) getActivity())
+								.setRightTvVisible(View.GONE);
 					}
-					
+
 				} else if (position == 2) {
 					if ((getActivity()) instanceof BaseFragmentActivity) {
 						Activity activity = getActivity();
@@ -169,7 +155,7 @@ public class SampleTabsWithIcons extends Fragment {
 						((BaseFragmentActivity) getActivity())
 								.setRightTvVisible(View.GONE);
 					}
-					
+
 				}
 
 				else if (position == 3) {
@@ -177,13 +163,9 @@ public class SampleTabsWithIcons extends Fragment {
 						Activity activity = getActivity();
 						if (HP_User.getOnLineUserId(activity) != 0) {
 							((BaseFragmentActivity) activity)
-									.setRightBtnVisible(View.VISIBLE);
-							((BaseFragmentActivity) activity).getHeaderView()
-									.setRightRes(R.drawable.header_view_right_bt_history);
-							((BaseFragmentActivity) activity).getHeaderView()
-									.setRightOption(HeaderView.HEADER_EDIT);
-						}else{
-							
+									.setRightBtnVisible(View.GONE);
+						} else {
+
 						}
 					}
 
@@ -197,7 +179,7 @@ public class SampleTabsWithIcons extends Fragment {
 					}
 
 				}
-				
+
 			}
 
 			@Override
@@ -215,21 +197,23 @@ public class SampleTabsWithIcons extends Fragment {
 			IconPagerAdapter {
 		public GoogleMusicAdapter(FragmentManager fm) {
 			super(fm);
-			// FragmentTransaction fragmentTransaction = fm.beginTransaction();
-			// for (int i = 0; i < fragments.length; i++) {
-			// if (fragments[i] == null)
-			// continue;
-			// fragmentTransaction.remove(fragments[i]);
-			// Log.e("xuxuxu", fragments[i].getClass() + "");
-			// }
-			// fragmentTransaction.commit();
+			Log.i(TAG, "GoogleMusicAdapter.GoogleMusicAdapter=");
+			FragmentTransaction fragmentTransaction = fm.beginTransaction();
+			
+			for (int i = 0; i < fragments.length; i++) {
+				if (fragments[i] == null)
+					continue;
+				fragmentTransaction.remove(fragments[i]);
+				Log.e("xuxuxu", fragments[i].getClass() + "");
+			}
+			fragmentTransaction.commit();
 
 		}
-
+		
 		@Override
 		public Fragment getItem(int position) {
 			Fragment fragment = null;
-			Log.i("pager", "GoogleMusicAdapter.getItem=" + position);
+			Log.i(TAG, "GoogleMusicAdapter.getItem=" + position);
 			switch (position) {
 			case 0:
 
@@ -282,8 +266,6 @@ public class SampleTabsWithIcons extends Fragment {
 			return Integer.parseInt(oj.toString());
 		}
 	}
-	
-
 
 	@Override
 	public void onResume() {

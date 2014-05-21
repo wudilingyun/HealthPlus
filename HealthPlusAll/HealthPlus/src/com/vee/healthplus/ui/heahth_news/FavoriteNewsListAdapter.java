@@ -4,36 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
-import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.RoundImageView;
 
-public class FavoriteNewsListAdapter extends BaseAdapter {
+class FavoriteNewsListAdapter extends BaseAdapter {
 
-	LayoutInflater inflater;
-	List<NewsCollectinfor> newslist;
+	private LayoutInflater inflater;
+	private List<NewsCollectinfor> newslist;
 	private ImageLoader imageLoader;
-	List<Bitmap> bitmaps;
 
-	public FavoriteNewsListAdapter(Context context, ImageLoader imageLoader) {
+	FavoriteNewsListAdapter(Context context, ImageLoader imageLoader) {
 		super();
 		inflater = LayoutInflater.from(context);
 		newslist = new ArrayList<NewsCollectinfor>();
 		this.imageLoader = imageLoader;
 	}
 
-	public void listaddAdapter(List<NewsCollectinfor> newslist) {
+	void listaddAdapter(List<NewsCollectinfor> newslist) {
 		this.newslist.addAll(newslist);
 	}
 
@@ -90,9 +86,7 @@ public class FavoriteNewsListAdapter extends BaseAdapter {
 
 	public class ViewHolder {
 
-		private int position;
-		private TextView newstitle, newsbrief;
-		private ImageView imageView_top;
+		private TextView newstitle;
 		private RoundImageView imageView_healthnews;
 	}
 

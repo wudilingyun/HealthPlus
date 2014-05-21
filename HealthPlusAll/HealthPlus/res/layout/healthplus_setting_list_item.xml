@@ -7,7 +7,9 @@
         android:layout_width="fill_parent"
         android:layout_height="60dip"
         android:gravity="left|center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/btn_setting_selector" >
 
         <ImageView
             android:id="@+id/health_plus_setting_list_item_icon_iv"

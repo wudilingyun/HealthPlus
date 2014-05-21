@@ -87,6 +87,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Void> {
             if (registerResponse.getReturncode() == 8) {
                 HP_User user = new HP_User();
                 user.userName = username;
+                user.userNick = nick;
                 user.userId = Integer.valueOf(String.valueOf(registerResponse.getMemberid()));
                 HP_DBModel.getInstance(activity).insertUserInfo(user, true);
                 if (signInCallBack != null) {

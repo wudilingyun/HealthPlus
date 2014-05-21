@@ -40,7 +40,13 @@
     <ListView
         android:id="@+id/friendlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@drawable/setting_list_selector"
+        android:divider="#66dfdfde"
+        android:dividerHeight="0.5dip" >
     </ListView>
 
 </LinearLayout>

@@ -4,7 +4,7 @@
     xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/white"
+    android:background="@drawable/home_background"
     android:orientation="vertical" >
     
     <include
@@ -20,8 +20,9 @@
             android:layout_width="80dip"
             android:layout_height="80dip"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dip"
+            android:layout_marginLeft="40dip"
             android:layout_marginTop="10dip"
+            android:layout_marginBottom="10dp"
             android:clickable="true"
             android:scaleType="fitXY"
             android:src="@drawable/myhealth_users_avatar"
@@ -34,6 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="26dp"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
             android:layout_toRightOf="@+id/mydetail"
             android:text="" />
 

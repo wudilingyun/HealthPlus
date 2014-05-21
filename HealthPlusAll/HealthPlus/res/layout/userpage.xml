@@ -35,7 +35,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/user_log_item_icon"
-                android:background="#33000000"
                 android:padding="5dip"
                 android:text="登陆"
                 android:textColor="#ffffff"
@@ -175,7 +174,8 @@
                     android:text="2"
                     android:textColor="#ffffff"
                     android:textSize="10dp" 
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/user_jpush_count_tv"

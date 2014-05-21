@@ -14,6 +14,6 @@
     <com.vee.healthplus.widget.tabpage.TabPageIndicator
         android:id="@+id/indicator"
         android:layout_width="fill_parent"
-        android:layout_height="46dp" />
+        android:layout_height="70dp" />
 
 </LinearLayout>

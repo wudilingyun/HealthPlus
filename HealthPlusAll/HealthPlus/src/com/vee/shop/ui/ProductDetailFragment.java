@@ -30,7 +30,7 @@ import com.androidquery.AQuery;
 import com.androidquery.util.AQUtility;
 import com.vee.healthplus.R;
 import com.vee.healthplus.common.MyApplication;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
+
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.shop.bean.CartItemBean;
 import com.vee.shop.bean.ImageBean;
@@ -243,17 +243,11 @@ public class ProductDetailFragment extends BaseFragment {
 					HttpClientErrorException httpError = (HttpClientErrorException) exception;
 					if (httpError.getStatusCode() == HttpStatus.UNAUTHORIZED) {
 						// go login
-						if (HP_User.getOnLineUserId(mContext) == 0) {
-							new UserLogin_Activity(null).show(getActivity()
-									.getSupportFragmentManager(), "");
-						}
+
 					}
 				} else if (exception instanceof MissingAuthorizationException) {
 					// go login
-					if (HP_User.getOnLineUserId(mContext) == 0) {
-						new UserLogin_Activity(null).show(getActivity()
-								.getSupportFragmentManager(), "");
-					}
+
 				}
 			} else if (exception == null) {
 				if ((!TextUtils.isEmpty(result.toString()))

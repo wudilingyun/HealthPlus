@@ -1,26 +1,28 @@
 package com.vee.moments;
 
-import java.util.concurrent.Executors;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
+import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.util.user.HP_DBModel;
+import com.vee.healthplus.util.user.HP_User;
 import com.yunfox.s4aservicetest.response.GeneralResponse;
 import com.yunfox.s4aservicetest.response.SearchUserResponse;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class FriendDetailActivity extends BaseFragmentActivity {
 	private SearchUserResponse searchUserResponse;
+	private String searchcontent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,66 @@ public class FriendDetailActivity extends BaseFragmentActivity {
 
 		searchUserResponse = (SearchUserResponse) getIntent().getExtras()
 				.getSerializable("searchuserresponse");
-		TextView textViewUsername = (TextView) findViewById(R.id.username);
-		textViewUsername.setText(searchUserResponse.getFriendname());
+		searchcontent = getIntent().getStringExtra("searchcontent");
+
+		ImageView friendIconImageView = (ImageView) findViewById(R.id.friend_icon);
+		String friendAvatar = searchUserResponse.getFriendavatar();
+		ImageLoader.getInstance(this)
+				.addTask(friendAvatar, friendIconImageView);
+
+		TextView friendNameTextView = (TextView) findViewById(R.id.friend_name);
+		friendNameTextView.setText(searchUserResponse.getFriendname());
+
+		ImageView frinedSexImageView = (ImageView) findViewById(R.id.friend_sex);
+		if (searchUserResponse.getGender() == -1) {
+			frinedSexImageView.setImageResource(R.drawable.boy_icon);
+		} else {
+			frinedSexImageView.setImageResource(R.drawable.girl_icon);
+		}
 
 		Button buttonAddFriend = (Button) findViewById(R.id.addfriend);
 		Button buttonBrowseMoments = (Button) findViewById(R.id.browsemoments);
-		if (searchUserResponse.getIaddfriend() == 0) {
+
+		int userid = HP_User.getOnLineUserId(FriendDetailActivity.this);
+		if (userid != 0) {
+			HP_User user = HP_DBModel.getInstance(FriendDetailActivity.this)
+					.queryUserInfoByUserId(
+							HP_User.getOnLineUserId(FriendDetailActivity.this),
+							true);
+			String username = user.userName;
+
+			if (searchcontent.compareTo(username) == 0 || searchUserResponse.getIaddfriend() != 0) {
+				buttonAddFriend.setVisibility(View.GONE);
+				buttonBrowseMoments.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent intent = new Intent(FriendDetailActivity.this,
+								UserMomentsActivity.class);
+						intent.putExtra("friendid",	searchUserResponse.getFriendid());
+						intent.putExtra("friendname", searchUserResponse.getFriendname());
+						intent.putExtra("friendavatar", searchUserResponse.getFriendavatar());
+						startActivity(intent);
+						setResult(RESULT_OK);
+						FriendDetailActivity.this.finish();
+					}
+				});
+			}
+			else{
+				buttonBrowseMoments.setVisibility(View.GONE);
+				buttonAddFriend.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						new AddFriendTask().execute();
+					}
+				});
+			}
+		}
+
+/*		if (searchUserResponse.getIaddfriend() == 0) {
 			buttonBrowseMoments.setVisibility(View.GONE);
 			buttonAddFriend.setOnClickListener(new OnClickListener() {
 
@@ -60,7 +116,7 @@ public class FriendDetailActivity extends BaseFragmentActivity {
 					FriendDetailActivity.this.finish();
 				}
 			});
-		}
+		}*/
 	}
 
 	// ***************************************
@@ -107,8 +163,8 @@ public class FriendDetailActivity extends BaseFragmentActivity {
 
 			if (generalResponse != null) {
 				if (generalResponse.getReturncode() == 200) {
-					Toast.makeText(FriendDetailActivity.this,
-							"添加好友成功", Toast.LENGTH_SHORT).show();
+					Toast.makeText(FriendDetailActivity.this, "添加好友成功",
+							Toast.LENGTH_SHORT).show();
 					setResult(RESULT_OK);
 					FriendDetailActivity.this.finish();
 				} else {

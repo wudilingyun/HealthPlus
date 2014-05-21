@@ -59,8 +59,10 @@ public class HealthPlusSettingActivity extends BaseFragmentActivity implements
 				case 2:
 					String sendMsg = getResources().getString(
 							R.string.hp_share_invite);
-					MyApplication.shareBySystem(mContext, sendMsg, "", "", "",
-							"");
+					String sendTitleUrl = getResources().getString(
+							R.string.hp_share_address);
+					MyApplication.shareBySystem(mContext, sendMsg, "", sendTitleUrl, "",
+							"",sendMsg);
 					break;
 				case 3:
 					intent = new Intent(HealthPlusSettingActivity.this,

@@ -31,37 +31,7 @@
             android:orientation="vertical" />
     </com.vee.healthplus.widget.MyRelativeLayout>
 
-    <com.vee.healthplus.widget.Panel
-        android:id="@+id/rightPanel"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_gravity="right"
-        panel:animationDuration="1000"
-        panel:closedHandle="@drawable/right_switcher_collapsed_background"
-        panel:content="@+id/panelContent"
-        panel:handle="@+id/panelHandle"
-        panel:openedHandle="@drawable/right_switcher_expanded_background"
-        panel:position="right"
-        panel:weight="75%p" >
 
-        <Button
-            android:id="@+id/panelHandle"
-            android:layout_width="33dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginTop="50dip"
-            android:visibility="gone" />
-
-        <ListView
-            android:id="@+id/panelContent"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:background="@android:color/black"
-            android:gravity="center"
-            android:padding="4dip"
-            android:textColor="#eee"
-            android:textStyle="bold" />
-    </com.vee.healthplus.widget.Panel>
 
     <TextView
         android:id="@+id/startNum"

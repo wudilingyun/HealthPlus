@@ -35,7 +35,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/user_log_item_icon"
-                android:background="#33000000"
                 android:padding="5dip"
                 android:text="登陆"
                 android:textColor="#ffffff"
@@ -159,46 +158,45 @@
             android:gravity="center"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/user_jpush_count_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="#ffffff"
-                android:textSize="32sp" />
+            <RelativeLayout
+                android:layout_width="80dip"
+                android:layout_height="wrap_content" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="健康贴士"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/user_jpush_unread_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="8dip"
+                    android:background="@drawable/jpush_unread_count_bg"
+                    android:text="2"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp" 
+                    android:gravity="center"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/user_jpush_count_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_jpush_count_tv"
+                    android:layout_centerHorizontal="true"
+                    android:text="健康贴士"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+            </RelativeLayout>
         </LinearLayout>
-
-        <!--
-        LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dip"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10"
-                android:textColor="#ffffff"
-                android:textSize="32sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="消息"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-        </LinearLayout
-        -->
 
         <LinearLayout
             android:id="@+id/user_favorite_ll"
@@ -232,10 +230,10 @@
     <ListView
         android:id="@+id/user_list_view"
         android:layout_width="match_parent"
-        android:layout_weight="1.0"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dip"
         android:layout_marginRight="16dip"
+        android:layout_weight="1.0"
         android:cacheColorHint="#00000000"
         android:divider="#66dfdfde"
         android:dividerHeight="0.5dip"

@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/white"
     android:padding="@dimen/news_padding" >
 
-    <TextView
-        android:id="@+id/test_history_index"
-        android:layout_width="20dip"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="5dp"
-        android:text="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:orientation="horizontal"
+        android:gravity="center_vertical" >
 
-    <TextView
-        android:id="@+id/test_history_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/test_history_index"
-        android:text="血样测试"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/health_textsize_4" />
+        <TextView
+            android:id="@+id/test_history_index"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#000000"
+            android:textSize="@dimen/health_textsize_4" />
 
-    <TextView
-        android:id="@+id/test_history_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/test_history_name"
-        android:text="正常"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/health_textsize_4"
-        android:textStyle="normal" />
+        <TextView
+            android:id="@+id/test_history_name"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="血样测试"
+            android:textColor="#000000"
+            android:textSize="@dimen/health_textsize_4" />
 
-    <TextView
-        android:id="@+id/test_history_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
-        android:text="2014-3-5"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/health_textsize_3" />
+        <TextView
+            android:id="@+id/test_history_time"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="2014-3-5"
+            android:textColor="#000000"
+            android:textSize="@dimen/health_textsize_4" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/test_history_result"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="正常"
+            android:textColor="#00ee00"
+            android:textSize="@dimen/health_textsize_4" />
+    </LinearLayout>
+
+</LinearLayout>

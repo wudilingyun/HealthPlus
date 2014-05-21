@@ -8,103 +8,114 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal" >
-
-        <com.vee.healthplus.widget.RoundImageView
-            android:id="@+id/momentsavatar"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="10dp"
-            android:contentDescription="@string/avatar"
-            android:focusable="false"
-            android:scaleType="fitXY"
-            android:src="@drawable/myhealth_users_avatar"
-            imagecontrol:border_outside_color="#eaeaea"
-            imagecontrol:border_thickness="2dp" />
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/momentsrealcontent"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:orientation="vertical" >
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <com.vee.healthplus.widget.RoundImageView
+                android:id="@+id/momentsavatar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/avatar"
+                android:focusable="false"
+                android:scaleType="fitXY"
+                android:src="@drawable/myhealth_users_avatar"
+                imagecontrol:border_outside_color="#eaeaea"
+                imagecontrol:border_thickness="2dp" />
+
+            <LinearLayout
+                android:id="@+id/momentsrealcontent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/momentsusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="username"
+                    android:textColor="#6fcc0b"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/momentsmessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#383838"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/momentsimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:focusable="false"
+                    android:maxHeight="150dp"
+                    android:minWidth="150dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="75dp" >
 
             <TextView
-                android:id="@+id/momentsusername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="username"
-                android:textColor="#6fcc0b"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/momentsmessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
-                android:layout_marginTop="6dp"
-                android:textColor="#383838"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:id="@+id/momentsimage"
+                android:id="@+id/upload_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
+                android:gravity="left|center_vertical"
+                android:text="@string/upload10minutues" />
+
+            <com.vee.healthplus.widget.DrawableCenterTextView
+                android:id="@+id/support_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/support_icon_normal"
                 android:focusable="false"
-                android:maxHeight="150dp"
-                android:minWidth="150dp" />
+                android:padding="5dp"
+                android:text="@string/moments_support"
+                android:textColor="#9d9d9d"
+                android:textSize="16sp" />
+
+
+
+            <com.vee.healthplus.widget.DrawableCenterTextView
+                android:id="@+id/comment_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/comment_normal"
+                android:focusable="false"
+                android:padding="5dp"
+                android:text="@string/moments_comment"
+                android:textColor="#9d9d9d"
+                android:textSize="16sp" />
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/comments_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lin_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/valuebook_webview_bottom"
-        android:orientation="horizontal"
-        android:padding="14dp" >
-
-        <com.vee.healthplus.widget.DrawableCenterTextView
-            android:id="@+id/support_img"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/comments_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/support_icon_normal"
-            android:focusable="false"
-            android:padding="5dp"
-            android:text="赞"
-            android:textColor="#9d9d9d"
-            android:textSize="16sp" />
-
-        <View
-            android:id="@+id/view_divider_1"
-            style="@style/view_divider" />
-
-        <com.vee.healthplus.widget.DrawableCenterTextView
-            android:id="@+id/comment_img"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/comment_normal"
-            android:focusable="false"
-            android:padding="5dp"
-            android:text="评论"
-            android:textColor="#9d9d9d"
-            android:textSize="16sp" />
+            android:layout_marginLeft="75dp"
+            android:orientation="vertical" >
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -14,16 +14,12 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.util.user.HP_User;
-import com.vee.healthplus.util.user.ICallBack;
 
 
 public class AgeEditActivity extends Activity implements View.OnClickListener {
 	private WheelView yearWv;
 	private WheelView monthWv;
 	private Button okBtn;
-	private HP_User user;
-	private ICallBack callBack;
 	private int currentYear;
 	private int currentMonth;
 	private int age;

@@ -3,9 +3,7 @@ package com.vee.healthplus.common;
 import java.util.Calendar;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 
-import com.vee.healthplus.ui.achievement.AchievementCalendarAdapter.DailyTrack;
 
 public class FragmentMsg {
 
@@ -25,7 +23,6 @@ public class FragmentMsg {
 
     private int animOut;
 
-    private DailyTrack dailyTrack;
 
     private Calendar pickCalen;
 
@@ -67,14 +64,6 @@ public class FragmentMsg {
 
     public void setAnimOut(int animOut) {
         this.animOut = animOut;
-    }
-
-    public DailyTrack getDailyTrack() {
-        return dailyTrack;
-    }
-
-    public void setDailyTrack(DailyTrack dailyTrack) {
-        this.dailyTrack = dailyTrack;
     }
 
     public Calendar getPickCalen() {

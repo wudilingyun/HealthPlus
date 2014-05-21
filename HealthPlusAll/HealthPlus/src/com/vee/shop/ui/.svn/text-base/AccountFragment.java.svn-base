@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.common.MyApplication;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
@@ -118,8 +117,7 @@ public class AccountFragment extends BaseFragment implements OnClickListener,
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == ApplicationUtils.getResId("id", "not_login")) {
-			new UserLogin_Activity(this).show(getActivity()
-					.getSupportFragmentManager(), "");
+
 		} else if (v.getId() == ApplicationUtils
 				.getResId("id", "already_login")) {
 			LogOutDialog ld = new LogOutDialog();

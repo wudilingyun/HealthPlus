@@ -39,7 +39,7 @@
             android:layout_toLeftOf="@+id/jpush_list_time_tv"
             android:maxLines="2"
             android:text="心理健康辅导"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="normal" />
 
@@ -51,8 +51,8 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:textStyle="bold|italic"
-            android:text="2014-3-5"
-            android:textColor="@color/gray"
+            android:text="3-5"
+            android:textColor="@color/black"
             android:textSize="@dimen/health_textsize_3" />
     </RelativeLayout>
 

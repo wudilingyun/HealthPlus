@@ -80,12 +80,12 @@ public class PopupMenu extends Dialog implements OnItemClickListener {
         public View getView(int position, View convertView, ViewGroup parent) {
             RelativeLayout view = (RelativeLayout)mLI.inflate(itemLayoutRes, null); //R.layout.custom_popupmenu_item
 
-            TextView title = (TextView)view.findViewById(R.id.popupmenu_item_title);
+           /* TextView title = (TextView)view.findViewById(R.id.popupmenu_item_title);
             title.setText(mList.get(position).toString());
             
             ImageView icon = (ImageView)view.findViewById(R.id.popupmenu_item_icon);
             if(icon!=null)
-            	icon.setImageResource(mIconList.get(position));
+            	icon.setImageResource(mIconList.get(position));*/
             return view;
         }
 

@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
-import com.vee.healthplus.ui.heahth_heart.DataForSQL;
-import com.vee.healthplus.util.analysis.AnalysisConst;
-import com.vee.healthplus.util.analysis.AnalysisUtil;
-import com.vee.healthplus.util.sporttrack.HealthDBConst;
 import com.vee.myhealth.bean.JPushBean;
 import com.vee.myhealth.bean.TestCollectinfor;
 
@@ -28,7 +24,7 @@ public class HP_DBModel {
 		if (model == null) {
 			model = new HP_DBModel();
 		}
-		database = new HP_DBHelper(mContext, HP_DBCommons.DBNAME, null, 1)
+		database = new HP_DBHelper(mContext, HP_DBCommons.DBNAME, null, 2)
 				.getWritableDatabase();
 		return model;
 	}
@@ -483,7 +479,6 @@ public class HP_DBModel {
 				+ " WHERE " + HP_DBCommons.USERID + " =" + userId;
 		Cursor cursor = database.rawQuery(sql, null);
 		try {
-
 			if (cursor != null && cursor.getCount() > 0) {
 				while (cursor.moveToNext()) {
 					String title = cursor.getString(2);
@@ -501,8 +496,7 @@ public class HP_DBModel {
 				}
 				return jBeanList;
 			} else {
-
-				return null;
+				return jBeanList;
 			}
 
 		} catch (Exception e) {
@@ -511,7 +505,7 @@ public class HP_DBModel {
 			cursor.close();
 			database.close();
 		}
-		return null;
+		return jBeanList;
 
 	}
 

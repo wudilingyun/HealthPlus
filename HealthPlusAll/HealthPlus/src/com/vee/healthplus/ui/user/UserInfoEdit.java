@@ -205,4 +205,10 @@ public class UserInfoEdit extends UserBaseActivity implements
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void onErrorUploadAvatar() {
+		// TODO Auto-generated method stub
+		
+	}
 }

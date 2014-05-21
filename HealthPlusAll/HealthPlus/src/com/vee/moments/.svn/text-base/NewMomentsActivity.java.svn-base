@@ -216,6 +216,7 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 			}
 			else
 			{
+				setResult(RESULT_OK);
 				NewMomentsActivity.this.finish();
 			}
 		}

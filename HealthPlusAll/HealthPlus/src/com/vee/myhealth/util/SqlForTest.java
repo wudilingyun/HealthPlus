@@ -8,8 +8,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.vee.askweakness.ui.PartEntity;
-import com.vee.healthplus.ui.sportmode.SportModeFragment;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
@@ -38,6 +36,7 @@ public class SqlForTest<T> {
 		answer = new Answer();
 		//health_Report = new Health_Report();
 		healthResultEntity = new HealthResultEntity();
+		
 		testList = new ArrayList<T>();
 		// TODO Auto-generated constructor stub
 	}

@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@drawable/dialog_btn_cancle" android:state_checked="false"/>
-    <item android:drawable="@drawable/dialog_btn_ok" android:state_checked="true"/>
-    <item android:drawable="@drawable/dialog_btn_cancle" />    
+    <item android:drawable="@drawable/btn_feedback_press" android:state_checked="true"/>
+    <item android:drawable="@drawable/btn_feedback_press" />    
     
 
 </selector>

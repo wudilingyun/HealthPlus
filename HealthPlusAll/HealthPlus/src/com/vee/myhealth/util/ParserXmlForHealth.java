@@ -17,7 +17,6 @@ import android.content.Context;
 import android.util.Log;
 
 
-import com.vee.askweakness.ui.PartEntity;
 import com.vee.myhealth.bean.Health;
 
 public class ParserXmlForHealth {

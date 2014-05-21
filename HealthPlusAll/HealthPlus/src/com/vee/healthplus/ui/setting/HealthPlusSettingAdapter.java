@@ -9,9 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.ui.achievement.Achievement;
-import com.vee.healthplus.util.alarm.AlarmOberver;
-import com.vee.healthplus.util.sportmode.HP_TargetConfig;
 
 public class HealthPlusSettingAdapter extends BaseAdapter {
 

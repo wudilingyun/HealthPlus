@@ -41,7 +41,6 @@ import com.baidu.platform.comapi.map.v;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
-import com.vee.healthplus.ui.heahth_exam.ExamResultActivity;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.bean.TZtest;

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,6 +31,7 @@ public class FriendListActivity extends FragmentActivity implements
 	private ListView listViewFriendlist;
 	private Button buttonSearchFriend;
 	private String searchcontent;
+	private List<Friend> friendList;
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -70,6 +73,23 @@ public class FriendListActivity extends FragmentActivity implements
 				} else {
 					new SearchUserTask().execute();
 				}
+			}
+		});
+		
+		listViewFriendlist.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				Friend friend = friendList.get(position);
+				Intent intent = new Intent(FriendListActivity.this,
+						UserMomentsActivity.class);
+				intent.putExtra("friendid",
+						friend.getFriendid());
+				intent.putExtra("friendname", friend.getFriendname());
+				intent.putExtra("friendavatar", friend.getFriendavatarurl());
+				startActivity(intent);
 			}
 		});
 
@@ -128,7 +148,7 @@ public class FriendListActivity extends FragmentActivity implements
 		protected List<Friend> doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 			try {
-				List<Friend> friendList = SpringAndroidService.getInstance(
+				friendList = SpringAndroidService.getInstance(
 						getApplication()).getAllFriend();
 
 				return friendList;
@@ -200,7 +220,7 @@ public class FriendListActivity extends FragmentActivity implements
 
 			if (searchUserResponse != null) {
 				if (searchUserResponse.getFriendid() == 0) {
-					Toast.makeText(FriendListActivity.this, "no user find",
+					Toast.makeText(FriendListActivity.this, "未搜索到用户",
 							Toast.LENGTH_SHORT).show();
 				} else {
 					Intent intent = new Intent(FriendListActivity.this,

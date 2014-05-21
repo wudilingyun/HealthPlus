@@ -1,36 +1,25 @@
 package com.vee.healthplus.activity;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.common.MyApplication;
-import com.vee.healthplus.ui.analysis.AnalysisFragment.OnAnalysisListener;
-import com.vee.healthplus.ui.analysis.AnalysisHistoryActivity;
-import com.vee.healthplus.ui.setting.Setting;
+import com.vee.healthplus.ui.setting.HealthPlusAboutActivity;
 import com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity;
-import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.widget.HeaderView;
 import com.vee.healthplus.widget.HeaderView.OnHeaderClickListener;
-import com.vee.moments.FriendListActivity;
-import com.vee.moments.MomentsPhotoEditActivity;
-import com.vee.moments.NewMomentsActivity;
 import com.vee.shop.activity.AccountActivity;
 
 /*
  * this blamed code is not written by zhaoyouliang,heda,linyun
  */
-public class BaseFragmentActivity extends FragmentActivity implements
-		OnAnalysisListener {
+public class BaseFragmentActivity extends FragmentActivity{
 
 	protected static final String TAG = "xuxuxu";
 
@@ -46,13 +35,6 @@ public class BaseFragmentActivity extends FragmentActivity implements
 
 	private int type = -1;
 
-	/*moments start*/
-	private Dialog custom;
-	private Button photographbtn;
-	private Button selectfromalbumbtn;
-	private Uri u;
-	/*moments end*/
-	
 /*	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -73,7 +55,6 @@ public class BaseFragmentActivity extends FragmentActivity implements
 			// TODO Auto-generated method stub
 			if (option == HeaderView.HEADER_MENU) {
 				Intent intent = new Intent();
-				intent.setClass(BaseFragmentActivity.this, Setting.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 			} else if (option == HeaderView.HEADER_BACK) {
@@ -88,67 +69,15 @@ public class BaseFragmentActivity extends FragmentActivity implements
 				String sendMsg = getResources().getString(
 						R.string.hp_share_invite);
 				MyApplication.shareBySystem(getApplication(), sendMsg, "", "",
-						"", "");
+						"", "","");
 			} else if (option == HeaderView.HEADER_MENU) {
 				//宝典分类
 				Intent intent = new Intent();
 				intent.setClass(BaseFragmentActivity.this,
-						AnalysisHistoryActivity.class);
+						HealthPlusAboutActivity.class);
 				intent.putExtra("weekbegintime", weekBeginTime);
 				intent.putExtra("type", type);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivity(intent);
-			}
-			else if (option == HeaderView.HEADER_MOMENTS_CAMERA) {
-				/*custom = new Dialog(BaseFragmentActivity.this,
-						R.style.NewMomentsDialog);
-				custom.setContentView(R.layout.moments_new_dialog);
-				photographbtn = (Button) custom
-						.findViewById(R.id.photographbtn);
-				selectfromalbumbtn = (Button) custom
-						.findViewById(R.id.selectfromalbumbtn);
-				photographbtn.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						Intent intent = new Intent();
-						intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-						u = Uri.fromFile(new File(Environment
-								.getExternalStorageDirectory(),
-								"photograph.jpg"));
-
-						intent.putExtra(MediaStore.EXTRA_OUTPUT, u);
-
-						startActivityForResult(intent, 10);
-						custom.dismiss();
-					}
-				});
-				selectfromalbumbtn.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						Intent pickIntent = new Intent();
-						pickIntent.setAction(Intent.ACTION_PICK);
-						pickIntent
-								.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-						startActivityForResult(pickIntent, 11);
-						custom.dismiss();
-					}
-				});
-				custom.show();*/
-				Bundle extras = new Bundle();
-				extras.putInt("id", HP_User.getOnLineUserId(BaseFragmentActivity.this));
-				Intent intent = new Intent();
-				intent.putExtras(extras);
-				intent.setClass(BaseFragmentActivity.this,
-						MomentsPhotoEditActivity.class);
-				startActivityForResult(intent, 10);
-			}
-			else if (option == HeaderView.HEADER_MOMENTS_FRIENDS) {
-				Intent intent = new Intent(BaseFragmentActivity.this,
-						FriendListActivity.class);
 				startActivity(intent);
 			}
 			else if (option == HeaderView.HEADER_EDIT) {
@@ -233,13 +162,5 @@ public class BaseFragmentActivity extends FragmentActivity implements
 		hv.setHeaderTitle(title);
 	}
 
-	@Override
-	public void OnWeekChange(long time) {
-		this.weekBeginTime = time;
-	}
 
-	@Override
-	public void onTypeChange(int type) {
-		this.type = type;
-	}
 }

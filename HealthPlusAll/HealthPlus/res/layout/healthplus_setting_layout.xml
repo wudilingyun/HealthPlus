@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/home_background">
+    android:background="@drawable/myhealth_test_bac"
+    android:orientation="vertical">
 
     <ListView
         android:id="@+id/health_plus_setting_lv"
@@ -15,7 +15,7 @@
         android:cacheColorHint="#00000000"
         android:dividerHeight="1dip"
         android:listSelector="@drawable/setting_list_selector"
-        android:divider="@drawable/health_plus_setting_white_divider"
+        android:divider="@null"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"/>
 

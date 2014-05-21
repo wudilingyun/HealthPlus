@@ -1,25 +1,14 @@
 package com.vee.healthplus.ui.user;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.http.conn.ConnectTimeoutException;
-import org.springframework.http.HttpStatus;
 import org.springframework.social.connect.DuplicateConnectionException;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.DigitsKeyListener;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,13 +18,12 @@ import com.vee.healthplus.util.user.RegisterTask;
 import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
 
-@SuppressLint("ResourceAsColor")
+@SuppressLint("ResourceAsColor") 
 public class HealthPlusFindPwdActivity extends BaseFragmentActivity implements
 		View.OnClickListener, RegisterTask.RegisterCallBack,
 		SignInTask.SignInCallBack {
 
 	private EditText userName_et, yz_et;
-	private CheckBox agreeBox;
 	private Button getBtn, submitBtn;
 
 	private CustomProgressDialog progressDialog = null;
@@ -65,16 +53,17 @@ public class HealthPlusFindPwdActivity extends BaseFragmentActivity implements
 		getBtn = (Button) view.findViewById(R.id.health_plus_find_get_btn);
 		submitBtn = (Button) view
 				.findViewById(R.id.health_plus_find_submit_btn);
-
-		String digits = getResources().getString(R.string.user_resgiter_edit);
-		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
-		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
+		getBtn.setOnClickListener(this);
+		submitBtn.setOnClickListener(this);
+		
 	}
 
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.health_plus_find_get_btn:
+			yz_et.getText().toString();
+			userName_et.getText().toString();
 			break;
 		case R.id.health_plus_find_submit_btn:
 			finish();
@@ -88,12 +77,6 @@ public class HealthPlusFindPwdActivity extends BaseFragmentActivity implements
 		progressDialog = CustomProgressDialog.createDialog(this);
 		progressDialog.setMessage(this.getString(R.string.registing));
 		progressDialog.setCanceledOnTouchOutside(false);
-	}
-
-	private void displayRegisterError(String message) {
-		// new
-		// AlertDialog.Builder(mContext).setMessage(message).setCancelable(false)
-		// .setPositiveButton("OK", null).create().show();
 	}
 
 	private void displayRegisterResult(String msg) {

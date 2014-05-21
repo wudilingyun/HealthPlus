@@ -5,29 +5,25 @@ import java.util.Random;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.vee.healthplus.R;
-import com.vee.healthplus.heahth_news_utils.JsonCache;
-import com.vee.healthplus.ui.main.FirstActivity;
-import com.vee.healthplus.ui.main.MainPage;
-import com.vee.healthplus.ui.setting.TestHistoryActivity;
-import com.vee.healthplus.ui.user.TempActivity;
-import com.vee.healthplus.util.sportmode.HP_TargetConfig;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.Notification.Builder;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Notification.Builder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import cn.jpush.android.api.JPushInterface;
+
+import com.vee.healthplus.R;
+import com.vee.healthplus.ui.main.MainPage;
+import com.vee.healthplus.ui.user.TempActivity;
+import com.vee.healthplus.util.user.HP_DBModel;
+import com.vee.healthplus.util.user.HP_User;
 
 /**
  * 自定义接收器
@@ -72,8 +68,15 @@ public class MyReceiver extends BroadcastReceiver {
 				}
 
 			}
+			
+			int userid =HP_User.getOnLineUserId(context);
+			long time =System.currentTimeMillis();
+			HP_DBModel.getInstance(context).insertJPush(userid, "健康贴士", content,
+					"",  time) ;
+
 			showNotification(context, content);
 			// processCustomMessage(context, bundle);
+			
 
 		} else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent
 				.getAction())) {
@@ -123,26 +126,26 @@ public class MyReceiver extends BroadcastReceiver {
 
 	// send msg to MainActivity
 	private void processCustomMessage(Context context, Bundle bundle) {
-		if (TempActivity.isForeground) {
-			String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
-			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-			Intent msgIntent = new Intent(TempActivity.MESSAGE_RECEIVED_ACTION);
-			msgIntent.putExtra(TempActivity.KEY_MESSAGE, message);
-			if (!ExampleUtil.isEmpty(extras)) {
-				try {
-					JSONObject extraJson = new JSONObject(extras);
-					if (null != extraJson && extraJson.length() > 0) {
-						msgIntent.putExtra(TempActivity.KEY_EXTRAS, extras);
-					}
-				} catch (JSONException e) {
 
+		String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+		String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+		Intent msgIntent = new Intent(TempActivity.MESSAGE_RECEIVED_ACTION);
+		msgIntent.putExtra(TempActivity.KEY_MESSAGE, message);
+		if (!ExampleUtil.isEmpty(extras)) {
+			try {
+				JSONObject extraJson = new JSONObject(extras);
+				if (null != extraJson && extraJson.length() > 0) {
+					msgIntent.putExtra(TempActivity.KEY_EXTRAS, extras);
 				}
+			} catch (JSONException e) {
 
 			}
-			context.sendBroadcast(msgIntent);
+
 		}
+		context.sendBroadcast(msgIntent);
 	}
 
+	@SuppressWarnings("deprecation")
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressLint("NewApi")
 	private void showNotification(Context context, String content) {
@@ -153,17 +156,23 @@ public class MyReceiver extends BroadcastReceiver {
 		NotificationManager manager = (NotificationManager) context
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 		Intent intent = new Intent(context, TempActivity.class);
+		intent.setClass(context, TempActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+				| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		// intent.setAction(Intent.ACTION_MAIN);
+		// intent.addCategory(Intent.CATEGORY_LAUNCHER);
 		intent.putExtra("title", title);
 		intent.putExtra("content", content);
-		intent.putExtra("id", id);
+		System.out.println("通知栏的内容" + content);
 		PendingIntent mPendingIntent = PendingIntent.getActivity(context, 0,
-				intent, 0);
+				intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		if (content != null && !content.equals("")) {
-			Resources res = context.getResources();
 
 			n = new Notification(R.drawable.ic_launcher, title,
 					System.currentTimeMillis());
+
 			n.setLatestEventInfo(context, "云医生", content, mPendingIntent);
+
 			n.defaults = Notification.DEFAULT_SOUND;
 			n.flags = n.FLAG_AUTO_CANCEL;
 			manager.notify(id, n);

@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
-import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.util.user.GetVerifyCodeTask;
 import com.vee.healthplus.util.user.GetVerifyCodeTask.GetVerifyCodeCallBack;
 import com.vee.healthplus.util.user.RegisterTask;
@@ -32,17 +31,18 @@ import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
 import com.vee.healthplus.widget.HeaderView;
 
-@SuppressLint("ResourceAsColor")
+@SuppressLint("ResourceAsColor") 
 public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		View.OnClickListener, RegisterTask.RegisterCallBack,
 		SignInTask.SignInCallBack, OnFocusChangeListener, GetVerifyCodeCallBack {
 
-	private EditText userName_et, userPwd_et, userPwdConfirm_et, yz_et,nick_et;
+	private EditText userName_et, userPwd_et, userPwdConfirm_et, yz_et,
+			nick_et;
 	private CheckBox agreeBox;
 	private Button readBtn, register_btn, yzBtn;
 
 	private CustomProgressDialog progressDialog = null;
-	ImageView uname_img, pwd_img1, pwd_img2, yz_img,nick_iv;
+	private ImageView uname_img, pwd_img1, pwd_img2, yz_img, nick_iv;
 
 	public HealthPlusRegisterActivity() {
 		// TODO Auto-generated constructor stub
@@ -98,16 +98,15 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				.findViewById(R.id.health_plus_register_pwd_confirm_img);
 		yz_img = (ImageView) view
 				.findViewById(R.id.health_plus_register_yz_img);
-		nick_et=(EditText) view
+		nick_et = (EditText) view
 				.findViewById(R.id.health_plus_register_nick_input_et);
-		nick_iv=(ImageView) view
+		nick_iv = (ImageView) view
 				.findViewById(R.id.health_plus_register_nick_img);
 		userName_et.setOnFocusChangeListener(this);
 		userPwd_et.setOnFocusChangeListener(this);
 		userPwdConfirm_et.setOnFocusChangeListener(this);
 		yz_et.setOnFocusChangeListener(this);
 		nick_et.setOnFocusChangeListener(this);
-		
 
 		agreeBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -118,12 +117,9 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 
 			}
 		});
-		String digits = getResources().getString(R.string.user_resgiter_edit);
-		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
-		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 	}
 
-	public static boolean checkMobileNumber(String mobileNumber) {
+	private static boolean checkMobileNumber(String mobileNumber) {
 		boolean flag = false;
 		try {
 			Pattern regex = Pattern.compile("^1[3|5|8][0-9]{9}$");
@@ -159,8 +155,9 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			Matcher m = p.matcher(userPwd_et.getText().toString());
 			Pattern p1 = Pattern.compile("[a-zA-Z]*");
 			Matcher m1 = p1.matcher(userPwd_et.getText().toString());
+			Pattern p2 = Pattern.compile("[a-z0-9A-Z\\.\\_]*");
+			Matcher m2 = p2.matcher(userPwd_et.getText().toString());
 
-			int s1 = userName_et.getText().toString().length();
 			if (yz_et.getText().toString().length() == 0) {
 				Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
 				return;
@@ -170,32 +167,40 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				return;
 			}
 			if (checkMobileNumber(userName_et.getText().toString())) {
-				if (userPwd_et.getText().toString()
-						.equals(userPwdConfirm_et.getText().toString())) {
-					if (!m.matches() && !m1.matches()) {
-						if (s >= 6 && s <= 12) {
-							new RegisterTask(this, userName_et.getText()
-									.toString(), userPwd_et.getText()
-									.toString(), yz_et.getText().toString(),nick_et.getText().toString().trim(),
-									this, this).execute();
-							progressDialog.show();
+				if (nick_et.getText().toString().trim().length() >= 4
+						&& nick_et.getText().toString().trim().length() <= 30) {
+					if (userPwd_et.getText().toString()
+							.equals(userPwdConfirm_et.getText().toString())) {
+						if (!m.matches() && !m1.matches()&&m2.matches()) {
+							if (s >= 6 && s <= 12) {
+								new RegisterTask(this, userName_et.getText()
+										.toString(), userPwd_et.getText()
+										.toString(),
+										yz_et.getText().toString(), nick_et
+												.getText().toString().trim(),
+										this, this).execute();
+								progressDialog.show();
+							} else {
+								Toast.makeText(
+										this,
+										getResources()
+												.getString(
+														R.string.user_password_length_toast),
+										Toast.LENGTH_SHORT).show();
+							}
 						} else {
 							Toast.makeText(
 									this,
-									getResources()
-											.getString(
-													R.string.user_password_length_toast),
+									getResources().getString(
+											R.string.user_password_toast),
 									Toast.LENGTH_SHORT).show();
 						}
 					} else {
-						Toast.makeText(
-								this,
-								getResources().getString(
-										R.string.user_password_toast),
-								Toast.LENGTH_SHORT).show();
+						Toast.makeText(this, "两次密码不一致", Toast.LENGTH_SHORT)
+								.show();
 					}
 				} else {
-					Toast.makeText(this, "两次密码不一致", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, "昵称格式不正确", Toast.LENGTH_LONG).show();
 				}
 			} else {
 				Toast.makeText(this, "手机号码不正确", Toast.LENGTH_SHORT).show();
@@ -228,7 +233,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 
 	@Override
 	public void onFinishRegister(int reflag) {
-	
+
 		switch (reflag) {
 		case 103:
 			displayRegisterResult("authKey出错");
@@ -324,7 +329,7 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				R.string.hp_userlogin_success));
 		progressDialog.dismiss();
 		// startActivity(new Intent(this, MainPage.class));
-		startActivity(new Intent(this,HealthPlusPersonalInfoEditActivity.class));
+		startActivity(new Intent(this, HealthPlusPersonalInfoEditActivity.class));
 		finish();
 	}
 

@@ -27,7 +27,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.shop.bean.AddressBean;
 import com.vee.shop.http.GetCartTask;
@@ -257,14 +256,12 @@ public class AddressListFragment extends BaseFragment implements ICallBack {
 						// go login
 						address_add_containerLayout
 								.setVisibility(View.INVISIBLE);
-						new UserLogin_Activity(AddressListFragment.this).show(
-								getActivity().getSupportFragmentManager(), "");
+
 					}
 				} else if (exception instanceof MissingAuthorizationException) {
 					// go login
 					address_add_containerLayout.setVisibility(View.INVISIBLE);
-					new UserLogin_Activity(AddressListFragment.this).show(
-							getActivity().getSupportFragmentManager(), "");
+
 				}
 			}
 			String json;

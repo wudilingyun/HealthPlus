@@ -1,0 +1,2635 @@
+
+Scanning HealthPlus: ..............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+         - MainLibs: ....
+         - Wheel_Library: ...................
+Scanning HealthPlus (Phase 2): ................................................................................................................................................................................................................................................................
+         - MainLibs: ..
+         - Wheel_Library: ...
+res\values\analysis_color.xml:4: Warning: The resource R.color.analysis_text_colorful appears to be unused [UnusedResources]
+     <color name="analysis_text_colorful">#ff25acca</color>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_color.xml:5: Warning: The resource R.color.analysis_text_light appears to be unused [UnusedResources]
+      <color name="analysis_text_light">#ffacacac</color>
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\drawable-hdpi\analysis_next_bt.png: Warning: The resource R.drawable.analysis_next_bt appears to be unused [UnusedResources]
+res\drawable-hdpi\analysis_next_bt_disabled.png: Warning: The resource R.drawable.analysis_next_bt_disabled appears to be unused [UnusedResources]
+res\drawable-hdpi\analysis_next_bt_pressed.png: Warning: The resource R.drawable.analysis_next_bt_pressed appears to be unused [UnusedResources]
+res\drawable-hdpi\analysis_pre_bt.png: Warning: The resource R.drawable.analysis_pre_bt appears to be unused [UnusedResources]
+res\drawable-hdpi\analysis_pre_bt_disabled.png: Warning: The resource R.drawable.analysis_pre_bt_disabled appears to be unused [UnusedResources]
+res\drawable-hdpi\analysis_pre_bt_pressed.png: Warning: The resource R.drawable.analysis_pre_bt_pressed appears to be unused [UnusedResources]
+res\values\analysis_strings.xml:3: Warning: The resource R.string.analysis_year_ch appears to be unused [UnusedResources]
+    <string name="analysis_year_ch">年</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:4: Warning: The resource R.string.analysis_month_ch appears to be unused [UnusedResources]
+    <string name="analysis_month_ch">月</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:5: Warning: The resource R.string.analysis_day_ch appears to be unused [UnusedResources]
+    <string name="analysis_day_ch">日</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:6: Warning: The resource R.string.analysis_record_count appears to be unused [UnusedResources]
+    <string name="analysis_record_count">总计：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:7: Warning: The resource R.string.analysis_record_high appears to be unused [UnusedResources]
+    <string name="analysis_record_high">最高：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:8: Warning: The resource R.string.analysis_record_low appears to be unused [UnusedResources]
+    <string name="analysis_record_low">最低：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:9: Warning: The resource R.string.analysis_title_distance appears to be unused [UnusedResources]
+    <string name="analysis_title_distance">距离</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:10: Warning: The resource R.string.analysis_title_calory appears to be unused [UnusedResources]
+    <string name="analysis_title_calory">卡路里</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:11: Warning: The resource R.string.analysis_title_duration appears to be unused [UnusedResources]
+    <string name="analysis_title_duration">时间</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:12: Warning: The resource R.string.analysis_title_heart appears to be unused [UnusedResources]
+    <string name="analysis_title_heart">心率</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:13: Warning: The resource R.string.analysis_title_blood appears to be unused [UnusedResources]
+    <string name="analysis_title_blood">血氧</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\analysis_strings.xml:14: Warning: The resource R.string.analysis_history_note appears to be unused [UnusedResources]
+    <string name="analysis_history_note">您还没有测试记录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:6: Warning: The resource R.drawable.blue appears to be unused [UnusedResources]
+    <drawable name="blue">#FF0000FF</drawable>
+              ~~~~~~~~~~~
+res\values\chart_color.xml:8: Warning: The resource R.drawable.pink appears to be unused [UnusedResources]
+    <drawable name="pink">#FFFFC0Cb</drawable>
+              ~~~~~~~~~~~
+res\values\chart_color.xml:9: Warning: The resource R.drawable.red appears to be unused [UnusedResources]
+    <drawable name="red">#FFFF0000</drawable>
+              ~~~~~~~~~~
+res\values\chart_color.xml:10: Warning: The resource R.drawable.orange appears to be unused [UnusedResources]
+    <drawable name="orange">#FFFF8D00</drawable>
+              ~~~~~~~~~~~~~
+res\values\chart_color.xml:11: Warning: The resource R.drawable.yellow appears to be unused [UnusedResources]
+    <drawable name="yellow">#FFFFFF00</drawable>
+              ~~~~~~~~~~~~~
+res\values\chart_color.xml:13: Warning: The resource R.drawable.lightyellow appears to be unused [UnusedResources]
+    <drawable name="lightyellow">#FFFFFFE0</drawable>
+              ~~~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:14: Warning: The resource R.drawable.lightblue appears to be unused [UnusedResources]
+    <drawable name="lightblue">#FFE3EEFB</drawable>
+              ~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:15: Warning: The resource R.drawable.oceanblue appears to be unused [UnusedResources]
+    <drawable name="oceanblue">#FF5271A5</drawable>
+              ~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:16: Warning: The resource R.drawable.lightgreen appears to be unused [UnusedResources]
+    <drawable name="lightgreen">#FF96FF00</drawable>
+              ~~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:17: Warning: The resource R.drawable.grassgreen appears to be unused [UnusedResources]
+    <drawable name="grassgreen">#FF009600</drawable>
+              ~~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:18: Warning: The resource R.drawable.lightgray appears to be unused [UnusedResources]
+    <drawable name="lightgray">#FFD3D3D3</drawable>
+              ~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:19: Warning: The resource R.drawable.darkgray appears to be unused [UnusedResources]
+    <drawable name="darkgray">#00535252</drawable>
+              ~~~~~~~~~~~~~~~
+res\values\chart_color.xml:21: Warning: The resource R.color.hp_w_userstickchart_fill appears to be unused [UnusedResources]
+    <color name="hp_w_userstickchart_fill">#f4a33a</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:22: Warning: The resource R.color.hp_w_userstickchart_fill_less appears to be unused [UnusedResources]
+    <color name="hp_w_userstickchart_fill_less">#00c4ee</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:23: Warning: The resource R.color.hp_w_userweightchart_bg appears to be unused [UnusedResources]
+    <color name="hp_w_userweightchart_bg">#f6e2ae</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\chart_color.xml:25: Warning: The resource R.drawable.lightwhite appears to be unused [UnusedResources]
+    <drawable name="lightwhite">#f5f5f5</drawable>
+              ~~~~~~~~~~~~~~~~~
+res\values\chart_strings.xml:4: Warning: The resource R.string.gridchart appears to be unused [UnusedResources]
+    <string name="gridchart">GridChart</string>
+            ~~~~~~~~~~~~~~~~
+res\values\chart_strings.xml:5: Warning: The resource R.string.machart appears to be unused [UnusedResources]
+    <string name="machart">MAChart</string>
+            ~~~~~~~~~~~~~~
+res\values\chart_strings.xml:6: Warning: The resource R.string.stickchart appears to be unused [UnusedResources]
+    <string name="stickchart">StickChart</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\chart_strings.xml:7: Warning: The resource R.string.mastickchart appears to be unused [UnusedResources]
+    <string name="mastickchart">MAStickChart</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\chart_strings.xml:9: Warning: The resource R.string.candlestickchart appears to be unused [UnusedResources]
+    <string name="candlestickchart">CandleStickChart</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:5: Warning: The resource R.color.ivory appears to be unused [UnusedResources]
+    <color name="ivory">#FFFFF0</color><!--象牙色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:7: Warning: The resource R.color.lightyellow appears to be unused [UnusedResources]
+    <color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:9: Warning: The resource R.color.yellow appears to be unused [UnusedResources]
+    <color name="yellow">#FFFF00</color><!--黄色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:11: Warning: The resource R.color.snow appears to be unused [UnusedResources]
+    <color name="snow">#FFFAFA</color><!--雪白色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:13: Warning: The resource R.color.floralwhite appears to be unused [UnusedResources]
+    <color name="floralwhite">#FFFAF0</color><!--花白色 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:15: Warning: The resource R.color.lemonchiffon appears to be unused [UnusedResources]
+    <color name="lemonchiffon">#FFFACD</color><!--柠檬绸色 -->
+           ~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:17: Warning: The resource R.color.cornsilk appears to be unused [UnusedResources]
+    <color name="cornsilk">#FFF8DC</color><!--米绸色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:19: Warning: The resource R.color.seashell appears to be unused [UnusedResources]
+    <color name="seashell">#FFF5EE</color><!--海贝色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:21: Warning: The resource R.color.lavenderblush appears to be unused [UnusedResources]
+    <color name="lavenderblush">#FFF0F5</color><!--淡紫红 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:23: Warning: The resource R.color.papayawhip appears to be unused [UnusedResources]
+    <color name="papayawhip">#FFEFD5</color><!--番木色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:25: Warning: The resource R.color.blanchedalmond appears to be unused [UnusedResources]
+    <color name="blanchedalmond">#FFEBCD</color><!--白杏色 -->
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:27: Warning: The resource R.color.mistyrose appears to be unused [UnusedResources]
+    <color name="mistyrose">#FFE4E1</color><!--浅玫瑰色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:29: Warning: The resource R.color.text_color appears to be unused [UnusedResources]
+    <color name="text_color">#717171</color><!--浅玫瑰色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:31: Warning: The resource R.color.bisque appears to be unused [UnusedResources]
+    <color name="bisque">#FFE4C4</color><!--桔黄色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:33: Warning: The resource R.color.moccasin appears to be unused [UnusedResources]
+    <color name="moccasin">#FFE4B5</color><!--鹿皮色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:34: Warning: The resource R.color.navajowhite appears to be unused [UnusedResources]
+    <color name="navajowhite">#FFDEAD</color><!--纳瓦白 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:36: Warning: The resource R.color.peachpuff appears to be unused [UnusedResources]
+    <color name="peachpuff">#FFDAB9</color><!--桃色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:38: Warning: The resource R.color.gold appears to be unused [UnusedResources]
+    <color name="gold">#FFD700</color><!--金色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:40: Warning: The resource R.color.pink appears to be unused [UnusedResources]
+    <color name="pink">#FFC0CB</color><!--粉红色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:42: Warning: The resource R.color.lightpink appears to be unused [UnusedResources]
+    <color name="lightpink">#FFB6C1</color><!--亮粉红色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:44: Warning: The resource R.color.orange appears to be unused [UnusedResources]
+    <color name="orange">#FFA500</color><!--橙色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:46: Warning: The resource R.color.lightsalmon appears to be unused [UnusedResources]
+    <color name="lightsalmon">#FFA07A</color><!--亮肉色 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:48: Warning: The resource R.color.darkorange appears to be unused [UnusedResources]
+    <color name="darkorange">#FF8C00</color><!--暗桔黄色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:50: Warning: The resource R.color.coral appears to be unused [UnusedResources]
+    <color name="coral">#FF7F50</color><!--珊瑚色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:52: Warning: The resource R.color.hotpink appears to be unused [UnusedResources]
+    <color name="hotpink">#FF69B4</color><!--热粉红色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:54: Warning: The resource R.color.tomato appears to be unused [UnusedResources]
+    <color name="tomato">#FF6347</color><!--西红柿色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:56: Warning: The resource R.color.orangered appears to be unused [UnusedResources]
+    <color name="orangered">#FF4500</color><!--红橙色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:58: Warning: The resource R.color.deeppink appears to be unused [UnusedResources]
+    <color name="deeppink">#FF1493</color><!--深粉红色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:60: Warning: The resource R.color.fuchsia appears to be unused [UnusedResources]
+    <color name="fuchsia">#FF00FF</color><!--紫红色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:62: Warning: The resource R.color.magenta appears to be unused [UnusedResources]
+    <color name="magenta">#FF00FF</color><!--红紫色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:64: Warning: The resource R.color.red appears to be unused [UnusedResources]
+    <color name="red">#FF0000</color><!--红色 -->
+           ~~~~~~~~~~
+res\values\color.xml:66: Warning: The resource R.color.oldlace appears to be unused [UnusedResources]
+    <color name="oldlace">#FDF5E6</color><!--老花色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:68: Warning: The resource R.color.lightgoldenrodyellow appears to be unused [UnusedResources]
+    <color name="lightgoldenrodyellow">#FAFAD2</color><!--亮金黄色 -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:70: Warning: The resource R.color.linen appears to be unused [UnusedResources]
+    <color name="linen">#FAF0E6</color><!--亚麻色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:72: Warning: The resource R.color.antiquewhite appears to be unused [UnusedResources]
+    <color name="antiquewhite">#FAEBD7</color><!--古董白 -->
+           ~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:74: Warning: The resource R.color.salmon appears to be unused [UnusedResources]
+    <color name="salmon">#FA8072</color><!--鲜肉色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:76: Warning: The resource R.color.ghostwhite appears to be unused [UnusedResources]
+    <color name="ghostwhite">#F8F8FF</color><!--幽灵白 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:77: Warning: The resource R.color.mintcream appears to be unused [UnusedResources]
+    <color name="mintcream">#F5FFFA</color><!--薄荷色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:79: Warning: The resource R.color.whitesmoke appears to be unused [UnusedResources]
+    <color name="whitesmoke">#F5F5F5</color><!--烟白色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:81: Warning: The resource R.color.beige appears to be unused [UnusedResources]
+    <color name="beige">#F5F5DC</color><!--米色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:83: Warning: The resource R.color.wheat appears to be unused [UnusedResources]
+    <color name="wheat">#F5DEB3</color><!--浅黄色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:85: Warning: The resource R.color.sandybrown appears to be unused [UnusedResources]
+    <color name="sandybrown">#F4A460</color><!--沙褐色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:87: Warning: The resource R.color.azure appears to be unused [UnusedResources]
+    <color name="azure">#F0FFFF</color><!--天蓝色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:89: Warning: The resource R.color.honeydew appears to be unused [UnusedResources]
+    <color name="honeydew">#F0FFF0</color><!--蜜色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:91: Warning: The resource R.color.aliceblue appears to be unused [UnusedResources]
+    <color name="aliceblue">#F0F8FF</color><!--艾利斯兰 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:93: Warning: The resource R.color.khaki appears to be unused [UnusedResources]
+    <color name="khaki">#F0E68C</color><!--黄褐色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:95: Warning: The resource R.color.lightcoral appears to be unused [UnusedResources]
+    <color name="lightcoral">#F08080</color><!--亮珊瑚色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:97: Warning: The resource R.color.palegoldenrod appears to be unused [UnusedResources]
+    <color name="palegoldenrod">#EEE8AA</color><!--苍麒麟色 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:99: Warning: The resource R.color.violet appears to be unused [UnusedResources]
+    <color name="violet">#EE82EE</color><!--紫罗兰色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:101: Warning: The resource R.color.darksalmon appears to be unused [UnusedResources]
+    <color name="darksalmon">#E9967A</color><!--暗肉色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:103: Warning: The resource R.color.lavender appears to be unused [UnusedResources]
+    <color name="lavender">#E6E6FA</color><!--淡紫色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:105: Warning: The resource R.color.lightcyan appears to be unused [UnusedResources]
+    <color name="lightcyan">#E0FFFF</color><!--亮青色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:107: Warning: The resource R.color.burlywood appears to be unused [UnusedResources]
+    <color name="burlywood">#DEB887</color><!--实木色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:109: Warning: The resource R.color.plum appears to be unused [UnusedResources]
+    <color name="plum">#DDA0DD</color><!--洋李色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:111: Warning: The resource R.color.gainsboro appears to be unused [UnusedResources]
+    <color name="gainsboro">#DCDCDC</color><!--淡灰色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:113: Warning: The resource R.color.crimson appears to be unused [UnusedResources]
+    <color name="crimson">#DC143C</color><!--暗深红色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:115: Warning: The resource R.color.palevioletred appears to be unused [UnusedResources]
+    <color name="palevioletred">#DB7093</color><!--苍紫罗兰色
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:118: Warning: The resource R.color.goldenrod appears to be unused [UnusedResources]
+    <color name="goldenrod">#DAA520</color><!--金麒麟色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:119: Warning: The resource R.color.orchid appears to be unused [UnusedResources]
+    <color name="orchid">#DA70D6</color><!--淡紫色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:121: Warning: The resource R.color.thistle appears to be unused [UnusedResources]
+    <color name="thistle">#D8BFD8</color><!--蓟色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:123: Warning: The resource R.color.lightgray appears to be unused [UnusedResources]
+    <color name="lightgray">#D3D3D3</color><!--亮灰色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:125: Warning: The resource R.color.lightgrey appears to be unused [UnusedResources]
+    <color name="lightgrey">#D3D3D3</color><!--亮灰色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:127: Warning: The resource R.color.tan appears to be unused [UnusedResources]
+    <color name="tan">#D2B48C</color><!--茶色 -->
+           ~~~~~~~~~~
+res\values\color.xml:129: Warning: The resource R.color.chocolate appears to be unused [UnusedResources]
+    <color name="chocolate">#D2691E</color><!--巧可力色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:131: Warning: The resource R.color.peru appears to be unused [UnusedResources]
+    <color name="peru">#CD853F</color><!--秘鲁色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:133: Warning: The resource R.color.indianred appears to be unused [UnusedResources]
+    <color name="indianred">#CD5C5C</color><!--印第安红 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:135: Warning: The resource R.color.mediumvioletred appears to be unused [UnusedResources]
+    <color name="mediumvioletred">#C71585</color><!--中紫罗兰色 -->
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:137: Warning: The resource R.color.silver appears to be unused [UnusedResources]
+    <color name="silver">#C0C0C0</color><!--银色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:139: Warning: The resource R.color.darkkhaki appears to be unused [UnusedResources]
+    <color name="darkkhaki">#BDB76B</color><!-- 暗黄褐色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:140: Warning: The resource R.color.rosybrown appears to be unused [UnusedResources]
+    <color name="rosybrown">#BC8F8F</color><!--褐玫瑰红-->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:142: Warning: The resource R.color.mediumorchid appears to be unused [UnusedResources]
+    <color name="mediumorchid">#BA55D3</color><!--中粉紫色 -->
+           ~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:144: Warning: The resource R.color.darkgoldenrod appears to be unused [UnusedResources]
+    <color name="darkgoldenrod">#B8860B</color><!--暗金黄色 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:146: Warning: The resource R.color.firebrick appears to be unused [UnusedResources]
+    <color name="firebrick">#B22222</color><!--火砖色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:148: Warning: The resource R.color.powderblue appears to be unused [UnusedResources]
+    <color name="powderblue">#B0E0E6</color><!--粉蓝色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:150: Warning: The resource R.color.lightsteelblue appears to be unused [UnusedResources]
+    <color name="lightsteelblue">#B0C4DE</color><!--亮钢兰色 -->
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:152: Warning: The resource R.color.paleturquoise appears to be unused [UnusedResources]
+    <color name="paleturquoise">#AFEEEE</color><!--苍宝石绿 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:154: Warning: The resource R.color.greenyellow appears to be unused [UnusedResources]
+    <color name="greenyellow">#ADFF2F</color><!--黄绿色 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:156: Warning: The resource R.color.lightblue appears to be unused [UnusedResources]
+    <color name="lightblue">#ADD8E6</color><!--亮蓝色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:158: Warning: The resource R.color.darkgray appears to be unused [UnusedResources]
+    <color name="darkgray">#A9A9A9</color><!--暗灰色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:159: Warning: The resource R.color.darkgrey appears to be unused [UnusedResources]
+    <color name="darkgrey">#A9A9A9</color><!--暗灰色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:161: Warning: The resource R.color.brown appears to be unused [UnusedResources]
+    <color name="brown">#A52A2A</color><!--褐色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:163: Warning: The resource R.color.sienna appears to be unused [UnusedResources]
+    <color name="sienna">#A0522D</color><!--赭色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:165: Warning: The resource R.color.darkorchid appears to be unused [UnusedResources]
+    <color name="darkorchid">#9932CC</color><!--暗紫色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:167: Warning: The resource R.color.palegreen appears to be unused [UnusedResources]
+    <color name="palegreen">#98FB98</color><!--苍绿色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:169: Warning: The resource R.color.darkviolet appears to be unused [UnusedResources]
+    <color name="darkviolet">#9400D3</color><!--暗紫罗兰色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:171: Warning: The resource R.color.mediumpurple appears to be unused [UnusedResources]
+    <color name="mediumpurple">#9370DB</color><!--中紫色 -->
+           ~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:173: Warning: The resource R.color.lightgreen appears to be unused [UnusedResources]
+    <color name="lightgreen">#90EE90</color><!--亮绿色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:175: Warning: The resource R.color.darkseagreen appears to be unused [UnusedResources]
+    <color name="darkseagreen">#8FBC8F</color><!--暗海兰色 -->
+           ~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:177: Warning: The resource R.color.saddlebrown appears to be unused [UnusedResources]
+    <color name="saddlebrown">#8B4513</color><!--重褐色 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:179: Warning: The resource R.color.darkmagenta appears to be unused [UnusedResources]
+    <color name="darkmagenta">#8B008B</color><!--暗洋红 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:181: Warning: The resource R.color.darkred appears to be unused [UnusedResources]
+    <color name="darkred">#8B0000</color><!--暗红色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:183: Warning: The resource R.color.blueviolet appears to be unused [UnusedResources]
+    <color name="blueviolet">#8A2BE2</color><!-- 紫罗兰蓝色-->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:184: Warning: The resource R.color.lightskyblue appears to be unused [UnusedResources]
+    <color name="lightskyblue">#87CEFA</color><!--亮天蓝色-->
+           ~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:186: Warning: The resource R.color.skyblue appears to be unused [UnusedResources]
+    <color name="skyblue">#87CEEB</color><!--天蓝色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:190: Warning: The resource R.color.grey appears to be unused [UnusedResources]
+    <color name="grey">#808080</color><!--灰色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:192: Warning: The resource R.color.olive appears to be unused [UnusedResources]
+    <color name="olive">#808000</color><!--橄榄色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:194: Warning: The resource R.color.purple appears to be unused [UnusedResources]
+    <color name="purple">#800080</color><!--紫色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:196: Warning: The resource R.color.maroon appears to be unused [UnusedResources]
+    <color name="maroon">#800000</color><!--粟色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:198: Warning: The resource R.color.aquamarine appears to be unused [UnusedResources]
+    <color name="aquamarine">#7FFFD4</color><!--碧绿色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:200: Warning: The resource R.color.chartreuse appears to be unused [UnusedResources]
+    <color name="chartreuse">#7FFF00</color><!--黄绿色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:201: Warning: The resource R.color.lawngreen appears to be unused [UnusedResources]
+    <color name="lawngreen">#7CFC00</color><!--草绿色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:203: Warning: The resource R.color.mediumslateblue appears to be unused [UnusedResources]
+    <color name="mediumslateblue">#7B68EE</color><!--中暗蓝色 -->
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:205: Warning: The resource R.color.lightslategray appears to be unused [UnusedResources]
+    <color name="lightslategray">#778899</color><!--亮蓝灰 -->
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:207: Warning: The resource R.color.lightslategrey appears to be unused [UnusedResources]
+    <color name="lightslategrey">#778899</color><!--亮蓝灰 -->
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:209: Warning: The resource R.color.slategray appears to be unused [UnusedResources]
+    <color name="slategray">#708090</color><!--灰石色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:211: Warning: The resource R.color.slategrey appears to be unused [UnusedResources]
+    <color name="slategrey">#708090</color><!--灰石色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:213: Warning: The resource R.color.olivedrab appears to be unused [UnusedResources]
+    <color name="olivedrab">#6B8E23</color><!--深绿褐色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:215: Warning: The resource R.color.slateblue appears to be unused [UnusedResources]
+    <color name="slateblue">#6A5ACD</color><!--石蓝色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:217: Warning: The resource R.color.dimgray appears to be unused [UnusedResources]
+    <color name="dimgray">#696969</color><!--暗灰色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:219: Warning: The resource R.color.dimgrey appears to be unused [UnusedResources]
+    <color name="dimgrey">#696969</color><!--暗灰色 -->
+           ~~~~~~~~~~~~~~
+res\values\color.xml:221: Warning: The resource R.color.mediumaquamarine appears to be unused [UnusedResources]
+    <color name="mediumaquamarine">#66CDAA</color><!--中绿色
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:224: Warning: The resource R.color.cornflowerblue appears to be unused [UnusedResources]
+    <color name="cornflowerblue">#6495ED</color><!--菊兰色 -->
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:226: Warning: The resource R.color.cadetblue appears to be unused [UnusedResources]
+    <color name="cadetblue">#5F9EA0</color><!--军兰色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:228: Warning: The resource R.color.darkolivegreen appears to be unused [UnusedResources]
+    <color name="darkolivegreen">#556B2F</color>
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:230: Warning: The resource R.color.indigo appears to be unused [UnusedResources]
+    <color name="indigo">#4B0082</color><!--靛青色 -->
+           ~~~~~~~~~~~~~
+res\values\color.xml:232: Warning: The resource R.color.mediumturquoise appears to be unused [UnusedResources]
+    <color name="mediumturquoise">#48D1CC</color><!--中绿宝石-->
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:234: Warning: The resource R.color.darkslateblue appears to be unused [UnusedResources]
+    <color name="darkslateblue">#483D8B</color><!--暗灰蓝色 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:236: Warning: The resource R.color.steelblue appears to be unused [UnusedResources]
+    <color name="steelblue">#4682B4</color><!--钢兰色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:238: Warning: The resource R.color.royalblue appears to be unused [UnusedResources]
+    <color name="royalblue">#4169E1</color><!--皇家蓝 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:240: Warning: The resource R.color.turquoise appears to be unused [UnusedResources]
+    <color name="turquoise">#40E0D0</color><!--青绿色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:242: Warning: The resource R.color.mediumseagreen appears to be unused [UnusedResources]
+    <color name="mediumseagreen">#3CB371</color><!--中海蓝 -->
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:243: Warning: The resource R.color.limegreen appears to be unused [UnusedResources]
+    <color name="limegreen">#32CD32</color><!--橙绿色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:245: Warning: The resource R.color.darkslategray appears to be unused [UnusedResources]
+    <color name="darkslategray">#2F4F4F</color><!--暗瓦灰色 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:247: Warning: The resource R.color.darkslategrey appears to be unused [UnusedResources]
+    <color name="darkslategrey">#2F4F4F</color><!--暗瓦灰色 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:249: Warning: The resource R.color.seagreen appears to be unused [UnusedResources]
+    <color name="seagreen">#2E8B57</color><!--海绿色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:251: Warning: The resource R.color.forestgreen appears to be unused [UnusedResources]
+    <color name="forestgreen">#228B22</color><!--森林绿 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:253: Warning: The resource R.color.lightseagreen appears to be unused [UnusedResources]
+    <color name="lightseagreen">#20B2AA</color><!--亮海蓝色 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:255: Warning: The resource R.color.dodgerblue appears to be unused [UnusedResources]
+    <color name="dodgerblue">#1E90FF</color><!--闪兰色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:257: Warning: The resource R.color.midnightblue appears to be unused [UnusedResources]
+    <color name="midnightblue">#191970</color><!--中灰兰色 -->
+           ~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:259: Warning: The resource R.color.aqua appears to be unused [UnusedResources]
+    <color name="aqua">#00FFFF</color><!--浅绿色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:261: Warning: The resource R.color.cyan appears to be unused [UnusedResources]
+    <color name="cyan">#00FFFF</color><!--青色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:263: Warning: The resource R.color.springgreen appears to be unused [UnusedResources]
+    <color name="springgreen">#00FF7F</color><!--春绿色 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:265: Warning: The resource R.color.lime appears to be unused [UnusedResources]
+    <color name="lime">#00FF00</color><!--酸橙色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:267: Warning: The resource R.color.mediumspringgreen appears to be unused [UnusedResources]
+    <color name="mediumspringgreen">#00FA9A</color><!--中春绿色 -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:269: Warning: The resource R.color.darkturquoise appears to be unused [UnusedResources]
+    <color name="darkturquoise">#00CED1</color><!--暗宝石绿 -->
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\color.xml:271: Warning: The resource R.color.deepskyblue appears to be unused [UnusedResources]
+    <color name="deepskyblue">#00BFFF</color><!--深天蓝色 -->
+           ~~~~~~~~~~~~~~~~~~
+res\values\color.xml:273: Warning: The resource R.color.darkcyan appears to be unused [UnusedResources]
+    <color name="darkcyan">#008B8B</color><!--暗青色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:275: Warning: The resource R.color.teal appears to be unused [UnusedResources]
+    <color name="teal">#008080</color><!--水鸭色 -->
+           ~~~~~~~~~~~
+res\values\color.xml:277: Warning: The resource R.color.green appears to be unused [UnusedResources]
+    <color name="green">#008000</color><!--绿色 -->
+           ~~~~~~~~~~~~
+res\values\color.xml:279: Warning: The resource R.color.darkgreen appears to be unused [UnusedResources]
+    <color name="darkgreen">#006400</color><!--暗绿色 -->
+           ~~~~~~~~~~~~~~~~
+res\values\color.xml:283: Warning: The resource R.color.mediumblue appears to be unused [UnusedResources]
+    <color name="mediumblue">#0000CD</color><!--中兰色 -->
+           ~~~~~~~~~~~~~~~~~
+res\values\color.xml:285: Warning: The resource R.color.darkblue appears to be unused [UnusedResources]
+    <color name="darkblue">#00008B</color><!--暗蓝色 -->
+           ~~~~~~~~~~~~~~~
+res\values\color.xml:287: Warning: The resource R.color.navy appears to be unused [UnusedResources]
+    <color name="navy">#000080</color><!--海军色 -->
+           ~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:3: Warning: The resource R.dimen.tab_container_bg_leftmargin appears to be unused [UnusedResources]
+    <dimen name="tab_container_bg_leftmargin">-296.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\dimens.xml:4: Warning: The resource R.dimen.activity_horizontal_margin appears to be unused [UnusedResources]
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:4: Warning: The resource R.dimen.dialog_window_width appears to be unused [UnusedResources]
+    <dimen name="dialog_window_width">300.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:4: Warning: The resource R.dimen.shop_activity_horizontal_margin appears to be unused [UnusedResources]
+    <dimen name="shop_activity_horizontal_margin">16dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\dimens.xml:5: Warning: The resource R.dimen.activity_vertical_margin appears to be unused [UnusedResources]
+    <dimen name="activity_vertical_margin">16dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:5: Warning: The resource R.dimen.category_back_size appears to be unused [UnusedResources]
+    <dimen name="category_back_size">165.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:5: Warning: The resource R.dimen.shop_activity_vertical_margin appears to be unused [UnusedResources]
+    <dimen name="shop_activity_vertical_margin">16dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:6: Warning: The resource R.dimen.category_photo_size appears to be unused [UnusedResources]
+    <dimen name="category_photo_size">130.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:6: Warning: The resource R.dimen.shop_tab_container_bg_leftmargin appears to be unused [UnusedResources]
+    <dimen name="shop_tab_container_bg_leftmargin">-240.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:7: Warning: The resource R.dimen.micloud_login_progress_top appears to be unused [UnusedResources]
+    <dimen name="micloud_login_progress_top">0.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:8: Warning: The resource R.dimen.festival_description_margin_bottom appears to be unused [UnusedResources]
+    <dimen name="festival_description_margin_bottom">30.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:10: Warning: The resource R.dimen.account_item_height appears to be unused [UnusedResources]
+    <dimen name="account_item_height">120.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:10: Warning: The resource R.dimen.shop_home_cellspacing appears to be unused [UnusedResources]
+ <dimen name="shop_home_cellspacing">10.0dip</dimen>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:11: Warning: The resource R.dimen.account_login_text_top_padding appears to be unused [UnusedResources]
+    <dimen name="account_login_text_top_padding">65.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:11: Warning: The resource R.dimen.shop_home_photo_box_height appears to be unused [UnusedResources]
+ <dimen name="shop_home_photo_box_height">192.0dip</dimen>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:12: Warning: The resource R.dimen.account_logout_text_top_padding appears to be unused [UnusedResources]
+    <dimen name="account_logout_text_top_padding">40.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:12: Warning: The resource R.dimen.shop_home_text_box_padding appears to be unused [UnusedResources]
+ <dimen name="shop_home_text_box_padding">5.0dip</dimen>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:13: Warning: The resource R.dimen.account_logout_text_left_padding appears to be unused [UnusedResources]
+    <dimen name="account_logout_text_left_padding">176.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:13: Warning: The resource R.dimen.shop_home_text_padding appears to be unused [UnusedResources]
+ <dimen name="shop_home_text_padding">10.0dip</dimen>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:14: Warning: The resource R.dimen.cola_shake_width appears to be unused [UnusedResources]
+    <dimen name="cola_shake_width">360.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:15: Warning: The resource R.dimen.cola_shake_height appears to be unused [UnusedResources]
+    <dimen name="cola_shake_height">278.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:16: Warning: The resource R.dimen.cola_shake_margin_top appears to be unused [UnusedResources]
+    <dimen name="cola_shake_margin_top">35.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:17: Warning: The resource R.dimen.cola_process_margin_top appears to be unused [UnusedResources]
+    <dimen name="cola_process_margin_top">341.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:17: Warning: The resource R.dimen.shop_detail_text_size appears to be unused [UnusedResources]
+    <dimen name="shop_detail_text_size">10.0sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:18: Warning: The resource R.dimen.cola_process_margin_left appears to be unused [UnusedResources]
+    <dimen name="cola_process_margin_left">60.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-hdpi\dimens.xml:18: Warning: The resource R.dimen.shop_title_text_size appears to be unused [UnusedResources]
+    <dimen name="shop_title_text_size">14.0sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:19: Warning: The resource R.dimen.scan_text_prompt_bottom appears to be unused [UnusedResources]
+    <dimen name="scan_text_prompt_bottom">80.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:20: Warning: The resource R.dimen.scan_text_prompt_left appears to be unused [UnusedResources]
+    <dimen name="scan_text_prompt_left">75.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:21: Warning: The resource R.dimen.mihome_info_text_bottom appears to be unused [UnusedResources]
+    <dimen name="mihome_info_text_bottom">60.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:22: Warning: The resource R.dimen.michat_michat_activity_horizontal_margin appears to be unused [UnusedResources]
+    <dimen name="michat_michat_activity_horizontal_margin">128.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:24: Warning: The resource R.dimen.layout_padding appears to be unused [UnusedResources]
+    <dimen name="layout_padding">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:25: Warning: The resource R.dimen.button_height appears to be unused [UnusedResources]
+    <dimen name="button_height">52.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:26: Warning: The resource R.dimen.button_padding_size appears to be unused [UnusedResources]
+    <dimen name="button_padding_size">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:29: Warning: The resource R.dimen.view_pager_page_margin appears to be unused [UnusedResources]
+    <dimen name="view_pager_page_margin">20.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:30: Warning: The resource R.dimen.browser_progressbar_height appears to be unused [UnusedResources]
+    <dimen name="browser_progressbar_height">4.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:33: Warning: The resource R.dimen.grid_item_padding appears to be unused [UnusedResources]
+    <dimen name="grid_item_padding">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:37: Warning: The resource R.dimen.list_item_height_label appears to be unused [UnusedResources]
+    <dimen name="list_item_height_label">40.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:38: Warning: The resource R.dimen.list_icon_size appears to be unused [UnusedResources]
+    <dimen name="list_icon_size">60.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:44: Warning: The resource R.dimen.product_photo_size appears to be unused [UnusedResources]
+    <dimen name="product_photo_size">110.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:45: Warning: The resource R.dimen.product_button_width appears to be unused [UnusedResources]
+    <dimen name="product_button_width">150.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:46: Warning: The resource R.dimen.product_button_height appears to be unused [UnusedResources]
+    <dimen name="product_button_height">50.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:47: Warning: The resource R.dimen.gridview_spacing appears to be unused [UnusedResources]
+    <dimen name="gridview_spacing">7.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:48: Warning: The resource R.dimen.gridview_padding appears to be unused [UnusedResources]
+    <dimen name="gridview_padding">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:50: Warning: The resource R.dimen.title_bar_padding appears to be unused [UnusedResources]
+    <dimen name="title_bar_padding">12.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:51: Warning: The resource R.dimen.layout_margin_top appears to be unused [UnusedResources]
+    <dimen name="layout_margin_top">8.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:52: Warning: The resource R.dimen.label_margin appears to be unused [UnusedResources]
+    <dimen name="label_margin">4.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:53: Warning: The resource R.dimen.button_padding appears to be unused [UnusedResources]
+    <dimen name="button_padding">13.299988dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:54: Warning: The resource R.dimen.account_user_photo_size appears to be unused [UnusedResources]
+    <dimen name="account_user_photo_size">42.5dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:55: Warning: The resource R.dimen.home_cellspacing appears to be unused [UnusedResources]
+    <dimen name="home_cellspacing">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:56: Warning: The resource R.dimen.home_text_box_padding appears to be unused [UnusedResources]
+    <dimen name="home_text_box_padding">5.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:57: Warning: The resource R.dimen.home_text_padding appears to be unused [UnusedResources]
+    <dimen name="home_text_padding">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:59: Warning: The resource R.dimen.phone_filter_icon_height appears to be unused [UnusedResources]
+    <dimen name="phone_filter_icon_height">18.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:60: Warning: The resource R.dimen.phone_filter_icon_width appears to be unused [UnusedResources]
+    <dimen name="phone_filter_icon_width">27.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:61: Warning: The resource R.dimen.shake_bottom_bar_height appears to be unused [UnusedResources]
+    <dimen name="shake_bottom_bar_height">81.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:62: Warning: The resource R.dimen.account_item_icon_top_padding appears to be unused [UnusedResources]
+    <dimen name="account_item_icon_top_padding">27.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:63: Warning: The resource R.dimen.account_item_text_top_padding appears to be unused [UnusedResources]
+    <dimen name="account_item_text_top_padding">5.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values-xhdpi\dimens.xml:64: Warning: The resource R.dimen.michat_msg_maxwidth appears to be unused [UnusedResources]
+    <dimen name="michat_msg_maxwidth">250.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:4: Warning: The resource R.drawable.SeaGreen1 appears to be unused [UnusedResources]
+    <drawable name="SeaGreen1">#54FF9F</drawable>
+              ~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:9: Warning: The resource R.drawable.vision_pub_color appears to be unused [UnusedResources]
+    <drawable name="vision_pub_color">#ff14a180</drawable>
+              ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:10: Warning: The resource R.drawable.heart_count appears to be unused [UnusedResources]
+    <drawable name="heart_count">#ff474747</drawable>
+              ~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:11: Warning: The resource R.drawable.normao_bac appears to be unused [UnusedResources]
+     <drawable name="normao_bac">#32494e</drawable>
+               ~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:12: Warning: The resource R.drawable.start_bac appears to be unused [UnusedResources]
+     <drawable name="start_bac">#25acca</drawable>
+               ~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:14: Warning: The resource R.color.statistics_total appears to be unused [UnusedResources]
+    <color name="statistics_total">#ff1a86f3</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:15: Warning: The resource R.color.heart_table appears to be unused [UnusedResources]
+    <color name="heart_table">#0b6376</color>
+           ~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:18: Warning: The resource R.color.statistics_right appears to be unused [UnusedResources]
+    <color name="statistics_right">#ff6fb41c</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:19: Warning: The resource R.color.statistics_wrong appears to be unused [UnusedResources]
+    <color name="statistics_wrong">#fffe519f</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:20: Warning: The resource R.color.normal_color appears to be unused [UnusedResources]
+      <color name="normal_color">#ff373737</color>
+             ~~~~~~~~~~~~~~~~~~~
+res\values\exam_color.xml:23: Warning: The resource R.color.loading_bac appears to be unused [UnusedResources]
+         <color name="loading_bac">#b5b5b5</color>
+                ~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:5: Warning: The resource R.dimen.health_padding_Left appears to be unused [UnusedResources]
+    <dimen name="health_padding_Left">40.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:6: Warning: The resource R.dimen.health_padding_Top appears to be unused [UnusedResources]
+    <dimen name="health_padding_Top">20.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:7: Warning: The resource R.dimen.health_layout_marginBottom appears to be unused [UnusedResources]
+    <dimen name="health_layout_marginBottom">9.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:8: Warning: The resource R.dimen.health_layout_marginLeft appears to be unused [UnusedResources]
+    <dimen name="health_layout_marginLeft">12.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:10: Warning: The resource R.dimen.health_textsize_1 appears to be unused [UnusedResources]
+    <dimen name="health_textsize_1">16.0sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:14: Warning: The resource R.dimen.health_textsize_5 appears to be unused [UnusedResources]
+    <dimen name="health_textsize_5">9.0sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:16: Warning: The resource R.dimen.heart_padding_medium appears to be unused [UnusedResources]
+    <dimen name="heart_padding_medium">8.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:17: Warning: The resource R.dimen.heart_padding_little appears to be unused [UnusedResources]
+    <dimen name="heart_padding_little">2.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:18: Warning: The resource R.dimen.heart_count_txt appears to be unused [UnusedResources]
+    <dimen name="heart_count_txt">45.0sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:19: Warning: The resource R.dimen.heart_count_unit appears to be unused [UnusedResources]
+    <dimen name="heart_count_unit">16.0sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:23: Warning: The resource R.dimen.heart_chart_height appears to be unused [UnusedResources]
+    <dimen name="heart_chart_height">130.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:24: Warning: The resource R.dimen.heart_button_height appears to be unused [UnusedResources]
+    <dimen name="heart_button_height">68.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:25: Warning: The resource R.dimen.heart_resultchart_height appears to be unused [UnusedResources]
+  <dimen name="heart_resultchart_height">70.0dip</dimen>
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:28: Warning: The resource R.dimen.health_exam_result_marging appears to be unused [UnusedResources]
+    <dimen name="health_exam_result_marging">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:29: Warning: The resource R.dimen.health_exam_marging appears to be unused [UnusedResources]
+    <dimen name="health_exam_marging">15.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:32: Warning: The resource R.dimen.hp_font_large_1 appears to be unused [UnusedResources]
+    <dimen name="hp_font_large_1">30sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:33: Warning: The resource R.dimen.hp_main_padding_big appears to be unused [UnusedResources]
+    <dimen name="hp_main_padding_big">30dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:39: Warning: The resource R.dimen.news_marging_top appears to be unused [UnusedResources]
+    <dimen name="news_marging_top">5.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:40: Warning: The resource R.dimen.heart_marging appears to be unused [UnusedResources]
+    <dimen name="heart_marging">8.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\exam_dimens.xml:41: Warning: The resource R.dimen.heart_padding appears to be unused [UnusedResources]
+    <dimen name="heart_padding">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:5: Warning: The resource R.string.heartbeat_txt appears to be unused [UnusedResources]
+    <string name="heartbeat_txt">0</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:6: Warning: The resource R.string.heartbeat_init_unit appears to be unused [UnusedResources]
+    <string name="heartbeat_init_unit">心跳/分钟</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:9: Warning: The resource R.string.healthexam_title appears to be unused [UnusedResources]
+    <string name="healthexam_title">全面关注您的健康状况</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:10: Warning: The resource R.string.toast_exam appears to be unused [UnusedResources]
+    <string name="toast_exam">请将所有测试题回答完毕</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:11: Warning: The resource R.string.toast_data appears to be unused [UnusedResources]
+    <string name="toast_data">数据加载异常</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:12: Warning: The resource R.string.split_string appears to be unused [UnusedResources]
+    <string name="split_string">|测试</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:13: Warning: The resource R.string.title appears to be unused [UnusedResources]
+    <string name="title">健康测试</string>
+            ~~~~~~~~~~~~
+res\values\exam_strings.xml:15: Warning: The resource R.string.next_button appears to be unused [UnusedResources]
+    <string name="next_button">下一题</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:16: Warning: The resource R.string.last_button appears to be unused [UnusedResources]
+    <string name="last_button">上一题</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:17: Warning: The resource R.string.putin appears to be unused [UnusedResources]
+    <string name="putin">提交</string>
+            ~~~~~~~~~~~~
+res\values\exam_strings.xml:18: Warning: The resource R.string.toast_first appears to be unused [UnusedResources]
+    <string name="toast_first">已到第一题</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:19: Warning: The resource R.string.result_title appears to be unused [UnusedResources]
+    <string name="result_title">测试结果</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:20: Warning: The resource R.string.currt_position appears to be unused [UnusedResources]
+    <string name="currt_position">你在这里</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:21: Warning: The resource R.string.score_rule appears to be unused [UnusedResources]
+    <string name="score_rule">评分标准</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:22: Warning: The resource R.string.you_score appears to be unused [UnusedResources]
+    <string name="you_score">您的得分 :</string>
+            ~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:23: Warning: The resource R.string.you_content appears to be unused [UnusedResources]
+    <string name="you_content">|测试报告</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:24: Warning: The resource R.string.foot_hint appears to be unused [UnusedResources]
+    <string name="foot_hint">温馨提示：请根据最近三个月的感受和体验回答一下问题，测试结果仅供参考 ！</string>
+            ~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:25: Warning: The resource R.string.exam_list_title appears to be unused [UnusedResources]
+    <string name="exam_list_title">全面关注您的健康状况</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:26: Warning: The resource R.string.tiwen appears to be unused [UnusedResources]
+    <string name="tiwen">体温</string>
+            ~~~~~~~~~~~~
+res\values\exam_strings.xml:27: Warning: The resource R.string.xinlv appears to be unused [UnusedResources]
+    <string name="xinlv">心率</string>
+            ~~~~~~~~~~~~
+res\values\exam_strings.xml:28: Warning: The resource R.string.xueyang appears to be unused [UnusedResources]
+    <string name="xueyang">血氧</string>
+            ~~~~~~~~~~~~~~
+res\values\exam_strings.xml:29: Warning: The resource R.string.zhifang appears to be unused [UnusedResources]
+    <string name="zhifang">脂肪</string>
+            ~~~~~~~~~~~~~~
+res\values\exam_strings.xml:30: Warning: The resource R.string.ceshi appears to be unused [UnusedResources]
+    <string name="ceshi">测试</string>
+            ~~~~~~~~~~~~
+res\values\exam_strings.xml:31: Warning: The resource R.string.zixun appears to be unused [UnusedResources]
+    <string name="zixun">资讯</string>
+            ~~~~~~~~~~~~
+res\values\exam_strings.xml:38: Warning: The resource R.string.heart_hint_1 appears to be unused [UnusedResources]
+    <string name="heart_hint_1">请将食指按住摄像头，点击开始测试</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:39: Warning: The resource R.string.heart_select_title appears to be unused [UnusedResources]
+    <string name="heart_select_title">选择你要测试的设备</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:40: Warning: The resource R.string.heart_select_1 appears to be unused [UnusedResources]
+    <string name="heart_select_1">手环</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:41: Warning: The resource R.string.heart_select_2 appears to be unused [UnusedResources]
+    <string name="heart_select_2">手表</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:42: Warning: The resource R.string.heart_select_3 appears to be unused [UnusedResources]
+    <string name="heart_select_3">手机</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:43: Warning: The resource R.string.heart_result_title appears to be unused [UnusedResources]
+    <string name="heart_result_title">你的心率 ： </string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:44: Warning: The resource R.string.heart_result_1 appears to be unused [UnusedResources]
+    <string name="heart_result_1">偏低 </string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:45: Warning: The resource R.string.heart_result_2 appears to be unused [UnusedResources]
+    <string name="heart_result_2">正常 </string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:46: Warning: The resource R.string.heart_result_3 appears to be unused [UnusedResources]
+    <string name="heart_result_3">偏高 </string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:47: Warning: The resource R.string.heart_txt_hint appears to be unused [UnusedResources]
+    <string name="heart_txt_hint">检测示意图 </string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:48: Warning: The resource R.string.heart_count_unit appears to be unused [UnusedResources]
+    <string name="heart_count_unit">BPM </string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:52: Warning: The resource R.string.user_name_toast appears to be unused [UnusedResources]
+     <string name="user_name_toast">用户名格式不符合 </string>
+             ~~~~~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:63: Warning: The resource R.string.jijiu appears to be unused [UnusedResources]
+     <string name="jijiu">急救</string>
+             ~~~~~~~~~~~~
+res\values\exam_strings.xml:64: Warning: The resource R.string.tizhi appears to be unused [UnusedResources]
+     <string name="tizhi">体质</string>
+             ~~~~~~~~~~~~
+res\values\exam_strings.xml:67: Warning: The resource R.string.egyundong appears to be unused [UnusedResources]
+        <string name="egyundong">sport</string>
+                ~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:68: Warning: The resource R.string.egjianya appears to be unused [UnusedResources]
+     <string name="egjianya">decompression</string>
+             ~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:69: Warning: The resource R.string.egyingyang appears to be unused [UnusedResources]
+     <string name="egyingyang">nutrition</string>
+             ~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:70: Warning: The resource R.string.egxiuxi appears to be unused [UnusedResources]
+     <string name="egxiuxi">rest</string>
+             ~~~~~~~~~~~~~~
+res\values\exam_strings.xml:71: Warning: The resource R.string.egyongyao appears to be unused [UnusedResources]
+     <string name="egyongyao">medication</string>
+             ~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:72: Warning: The resource R.string.egshejiao appears to be unused [UnusedResources]
+     <string name="egshejiao">commerce</string>
+             ~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:73: Warning: The resource R.string.egbaojian appears to be unused [UnusedResources]
+     <string name="egbaojian">healthcare</string>
+             ~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:74: Warning: The resource R.string.egbingzheng appears to be unused [UnusedResources]
+     <string name="egbingzheng">disease</string>
+             ~~~~~~~~~~~~~~~~~~
+res\values\exam_strings.xml:75: Warning: The resource R.string.egjijiu appears to be unused [UnusedResources]
+     <string name="egjijiu">firstaid</string>
+             ~~~~~~~~~~~~~~
+res\values\exam_strings.xml:76: Warning: The resource R.string.egtizhi appears to be unused [UnusedResources]
+     <string name="egtizhi">physique</string>
+             ~~~~~~~~~~~~~~
+res\values\forum_colors.xml:6: Warning: The resource R.color.bg_gray appears to be unused [UnusedResources]
+    <color name="bg_gray">#ffecedef</color>
+           ~~~~~~~~~~~~~~
+res\values\forum_colors.xml:7: Warning: The resource R.color.listview_bg_gray appears to be unused [UnusedResources]
+    <color name="listview_bg_gray">#ffecedef</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_colors.xml:8: Warning: The resource R.color.listview_txt_gray appears to be unused [UnusedResources]
+    <color name="listview_txt_gray">#ff8a8a8a</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_colors.xml:9: Warning: The resource R.color.checkbox_fg_gray appears to be unused [UnusedResources]
+    <color name="checkbox_fg_gray">#ff8a8a8a</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_dimens.xml:5: Warning: The resource R.dimen.updatebar_height appears to be unused [UnusedResources]
+    <dimen name="updatebar_height">62.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_dimens.xml:6: Warning: The resource R.dimen.updatebar_content_height appears to be unused [UnusedResources]
+    <dimen name="updatebar_content_height">60.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_dimens.xml:7: Warning: The resource R.dimen.updatebar_padding appears to be unused [UnusedResources]
+    <dimen name="updatebar_padding">10.0dip</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:5: Warning: The resource R.string.hello_world appears to be unused [UnusedResources]
+    <string name="hello_world">Hello world!</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:6: Warning: The resource R.string.register appears to be unused [UnusedResources]
+    <string name="register">register</string>
+            ~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:7: Warning: The resource R.string.signin appears to be unused [UnusedResources]
+    <string name="signin">signin</string>
+            ~~~~~~~~~~~~~
+res\values\forum_strings.xml:8: Warning: The resource R.string.title_activity_sign_in appears to be unused [UnusedResources]
+    <string name="title_activity_sign_in">SignInActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:9: Warning: The resource R.string.title_activity_register appears to be unused [UnusedResources]
+    <string name="title_activity_register">RegisterActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:10: Warning: The resource R.string.signin_signin appears to be unused [UnusedResources]
+    <string name="signin_signin">signin</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:11: Warning: The resource R.string.signin_cancel appears to be unused [UnusedResources]
+    <string name="signin_cancel">Cancel</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:12: Warning: The resource R.string.register_cancel appears to be unused [UnusedResources]
+    <string name="register_cancel">Cancel</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:13: Warning: The resource R.string.register_register appears to be unused [UnusedResources]
+    <string name="register_register">Register</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:14: Warning: The resource R.string.title_activity_profile appears to be unused [UnusedResources]
+    <string name="title_activity_profile">ProfileActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:15: Warning: The resource R.string.username appears to be unused [UnusedResources]
+    <string name="username">用户名</string>
+            ~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:16: Warning: The resource R.string.userid appears to be unused [UnusedResources]
+    <string name="userid">用户ID</string>
+            ~~~~~~~~~~~~~
+res\values\forum_strings.xml:17: Warning: The resource R.string.nickname appears to be unused [UnusedResources]
+    <string name="nickname">昵称</string>
+            ~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:19: Warning: The resource R.string.phone appears to be unused [UnusedResources]
+    <string name="phone">电话</string>
+            ~~~~~~~~~~~~
+res\values\forum_strings.xml:20: Warning: The resource R.string.gender appears to be unused [UnusedResources]
+    <string name="gender">性别</string>
+            ~~~~~~~~~~~~~
+res\values\forum_strings.xml:21: Warning: The resource R.string.radiobuttonmale appears to be unused [UnusedResources]
+    <string name="radiobuttonmale">男</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:22: Warning: The resource R.string.radiobuttonfemale appears to be unused [UnusedResources]
+    <string name="radiobuttonfemale">女</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:23: Warning: The resource R.string.weight appears to be unused [UnusedResources]
+    <string name="weight">体重</string>
+            ~~~~~~~~~~~~~
+res\values\forum_strings.xml:24: Warning: The resource R.string.height appears to be unused [UnusedResources]
+    <string name="height">身高</string>
+            ~~~~~~~~~~~~~
+res\values\forum_strings.xml:25: Warning: The resource R.string.age appears to be unused [UnusedResources]
+    <string name="age">年龄</string>
+            ~~~~~~~~~~
+res\values\forum_strings.xml:26: Warning: The resource R.string.channel appears to be unused [UnusedResources]
+    <string name="channel">渠道号</string>
+            ~~~~~~~~~~~~~~
+res\values\forum_strings.xml:27: Warning: The resource R.string.version appears to be unused [UnusedResources]
+    <string name="version">版本号</string>
+            ~~~~~~~~~~~~~~
+res\values\forum_strings.xml:28: Warning: The resource R.string.remark appears to be unused [UnusedResources]
+    <string name="remark">备注</string>
+            ~~~~~~~~~~~~~
+res\values\forum_strings.xml:29: Warning: The resource R.string.createtime appears to be unused [UnusedResources]
+    <string name="createtime">创建时间</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:30: Warning: The resource R.string.lastlogin appears to be unused [UnusedResources]
+    <string name="lastlogin">最后登录时间</string>
+            ~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:31: Warning: The resource R.string.saveprofile appears to be unused [UnusedResources]
+    <string name="saveprofile">保存用户信息</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:32: Warning: The resource R.string.savechannelandversion appears to be unused [UnusedResources]
+    <string name="savechannelandversion">保存渠道号和版本号</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:33: Warning: The resource R.string.signout appears to be unused [UnusedResources]
+    <string name="signout">注销</string>
+            ~~~~~~~~~~~~~~
+res\values\forum_strings.xml:34: Warning: The resource R.string.bindemail appears to be unused [UnusedResources]
+    <string name="bindemail">绑定邮箱</string>
+            ~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:35: Warning: The resource R.string.bindemaildesc appears to be unused [UnusedResources]
+    <string name="bindemaildesc">如果已设置邮箱，点击下面按钮绑定邮箱到用户</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:36: Warning: The resource R.string.title_activity_main_tab_widget appears to be unused [UnusedResources]
+    <string name="title_activity_main_tab_widget">MainTabWidget</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:37: Warning: The resource R.string.title_activity_password appears to be unused [UnusedResources]
+    <string name="title_activity_password">PasswordActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:38: Warning: The resource R.string.oldpassword appears to be unused [UnusedResources]
+    <string name="oldpassword">旧密码</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:39: Warning: The resource R.string.newpassword appears to be unused [UnusedResources]
+    <string name="newpassword">新密码</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:40: Warning: The resource R.string.updatepwd appears to be unused [UnusedResources]
+    <string name="updatepwd">修改密码</string>
+            ~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:41: Warning: The resource R.string.resetpassword appears to be unused [UnusedResources]
+    <string name="resetpassword">点击下面按钮重置密码</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:42: Warning: The resource R.string.resetpwd appears to be unused [UnusedResources]
+    <string name="resetpwd">重置密码</string>
+            ~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:43: Warning: The resource R.string.title_activity_sports appears to be unused [UnusedResources]
+    <string name="title_activity_sports">SportsActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:44: Warning: The resource R.string.getsportstype appears to be unused [UnusedResources]
+    <string name="getsportstype">取得运动类型</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:45: Warning: The resource R.string.getsportscalory appears to be unused [UnusedResources]
+    <string name="getsportscalory">取得运动卡洛里</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:46: Warning: The resource R.string.getlatestid appears to be unused [UnusedResources]
+    <string name="getlatestid">用户最新运动ID(latestid)</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:47: Warning: The resource R.string.sendsportsrecord appears to be unused [UnusedResources]
+    <string name="sendsportsrecord">发送运动记录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:48: Warning: The resource R.string.getmysportlist appears to be unused [UnusedResources]
+    <string name="getmysportlist">取得我的运动列表</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:49: Warning: The resource R.string.textViewSportid appears to be unused [UnusedResources]
+    <string name="textViewSportid">运动号(latestid)</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:50: Warning: The resource R.string.getsportsrecord appears to be unused [UnusedResources]
+    <string name="getsportsrecord">取得运动记录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:51: Warning: The resource R.string.textViewPassword appears to be unused [UnusedResources]
+    <string name="textViewPassword">密码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:52: Warning: The resource R.string.textViewUsername appears to be unused [UnusedResources]
+    <string name="textViewUsername">用户名</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:53: Warning: The resource R.string.textViewNickname appears to be unused [UnusedResources]
+    <string name="textViewNickname">昵称(可选)</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:54: Warning: The resource R.string.textViewDayRecordDate appears to be unused [UnusedResources]
+    <string name="textViewDayRecordDate">每日记录日期</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:55: Warning: The resource R.string.textViewDayRecordType appears to be unused [UnusedResources]
+    <string name="textViewDayRecordType">每日记录类型</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:56: Warning: The resource R.string.textViewDayRecordValue appears to be unused [UnusedResources]
+    <string name="textViewDayRecordValue">每日记录值</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:57: Warning: The resource R.string.savedayrecord appears to be unused [UnusedResources]
+    <string name="savedayrecord">保存每日记录</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:58: Warning: The resource R.string.openCamera appears to be unused [UnusedResources]
+    <string name="openCamera">打开相机</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:59: Warning: The resource R.string.openPic appears to be unused [UnusedResources]
+    <string name="openPic">打开图库</string>
+            ~~~~~~~~~~~~~~
+res\values\forum_strings.xml:60: Warning: The resource R.string.textViewFromDate appears to be unused [UnusedResources]
+    <string name="textViewFromDate">开始日期</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:61: Warning: The resource R.string.textViewToDate appears to be unused [UnusedResources]
+    <string name="textViewToDate">结束日期</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:62: Warning: The resource R.string.textViewQueryType appears to be unused [UnusedResources]
+    <string name="textViewQueryType">查询类型</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:63: Warning: The resource R.string.querydayrecordbytypeandscope appears to be unused [UnusedResources]
+    <string name="querydayrecordbytypeandscope">根据类型和范围查询</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:64: Warning: The resource R.string.queryalldayrecordbytype appears to be unused [UnusedResources]
+    <string name="queryalldayrecordbytype">查询某类型所有记录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:65: Warning: The resource R.string.getexamreportlist appears to be unused [UnusedResources]
+    <string name="getexamreportlist">取得综合体检报告</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:66: Warning: The resource R.string.getweather appears to be unused [UnusedResources]
+    <string name="getweather">获取天气</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:67: Warning: The resource R.string.textViewCityname appears to be unused [UnusedResources]
+    <string name="textViewCityname">城市名(市名)</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:68: Warning: The resource R.string.textViewDistrict appears to be unused [UnusedResources]
+    <string name="textViewDistrict">区(县)</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:69: Warning: The resource R.string.title_activity_camera appears to be unused [UnusedResources]
+    <string name="title_activity_camera">CameraActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:71: Warning: The resource R.string.title_activity_forum appears to be unused [UnusedResources]
+    <string name="title_activity_forum">ForumActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:75: Warning: The resource R.string.topic_id appears to be unused [UnusedResources]
+    <string name="topic_id">-1</string>
+            ~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:76: Warning: The resource R.string.topic_title appears to be unused [UnusedResources]
+    <string name="topic_title">没有标题</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:77: Warning: The resource R.string.topic_content appears to be unused [UnusedResources]
+    <string name="topic_content">内容前20个字符&#8230;</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:78: Warning: The resource R.string.topic_author appears to be unused [UnusedResources]
+    <string name="topic_author">匿名</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:79: Warning: The resource R.string.topic_visits_replies appears to be unused [UnusedResources]
+    <string name="topic_visits_replies">回复/浏览:%1$s/%2$s</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:80: Warning: The resource R.string.topic_detail_show_pic appears to be unused [UnusedResources]
+    <string name="topic_detail_show_pic">查看所有图片，共%1$s张</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:81: Warning: The resource R.string.topic_pic_info appears to be unused [UnusedResources]
+    <string name="topic_pic_info">第%1$s张，共%2$s张</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:84: Warning: The resource R.string.topic_pubtime appears to be unused [UnusedResources]
+    <string name="topic_pubtime">1分钟前</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:85: Warning: The resource R.string.minutes_before appears to be unused [UnusedResources]
+    <string name="minutes_before">%1$d分钟前</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:86: Warning: The resource R.string.hours_before appears to be unused [UnusedResources]
+    <string name="hours_before">%1$d小时前</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:87: Warning: The resource R.string.day_before_yesterday appears to be unused [UnusedResources]
+    <string name="day_before_yesterday">前天 %1$s</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:88: Warning: The resource R.string.yesterday appears to be unused [UnusedResources]
+    <string name="yesterday">昨天 %1$s</string>
+            ~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:89: Warning: The resource R.string.days_before appears to be unused [UnusedResources]
+    <string name="days_before">%1$d天前</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:90: Warning: The resource R.string.months_before appears to be unused [UnusedResources]
+    <string name="months_before">%1$d个月前</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:91: Warning: The resource R.string.years_before appears to be unused [UnusedResources]
+    <string name="years_before">%1$d年前</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:92: Warning: The resource R.string.post appears to be unused [UnusedResources]
+    <string name="post">发帖</string>
+            ~~~~~~~~~~~
+res\values\forum_strings.xml:93: Warning: The resource R.string.topic_send_title appears to be unused [UnusedResources]
+    <string name="topic_send_title">标题：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:94: Warning: The resource R.string.topic_send_title_hint appears to be unused [UnusedResources]
+    <string name="topic_send_title_hint">请输入标题</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:95: Warning: The resource R.string.newpost appears to be unused [UnusedResources]
+    <string name="newpost">发布帖子</string>
+            ~~~~~~~~~~~~~~
+res\values\forum_strings.xml:96: Warning: The resource R.string.ReplyPost appears to be unused [UnusedResources]
+    <string name="ReplyPost">回复</string>
+            ~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:97: Warning: The resource R.string.topic_send_type appears to be unused [UnusedResources]
+    <string name="topic_send_type">分类：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:98: Warning: The resource R.string.topic_send_content_hint appears to be unused [UnusedResources]
+    <string name="topic_send_content_hint">说点什么吧&#8230;&#8230;</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:103: Warning: The resource R.string.pull_to_refresh_pull appears to be unused [UnusedResources]
+    <string name="pull_to_refresh_pull">下拉可刷新</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:104: Warning: The resource R.string.pull_to_refresh_release appears to be unused [UnusedResources]
+    <string name="pull_to_refresh_release">释放开始刷新</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:105: Warning: The resource R.string.pull_to_refresh_refreshing appears to be unused [UnusedResources]
+    <string name="pull_to_refresh_refreshing">加载中&#8230;</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:106: Warning: The resource R.string.pull_to_refresh_at appears to be unused [UnusedResources]
+    <string name="pull_to_refresh_at">更新于:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:111: Warning: The resource R.string.nomoreloaded appears to be unused [UnusedResources]
+    <string name="nomoreloaded">没有更多可以加载了</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:112: Warning: The resource R.string.noTextDown appears to be unused [UnusedResources]
+    <string name="noTextDown">暂时没有取得数据，下拉刷新</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\forum_strings.xml:113: Warning: The resource R.string.noTextUp appears to be unused [UnusedResources]
+    <string name="noTextUp">暂时没有取得数据 ，上拉加载</string>
+            ~~~~~~~~~~~~~~~
+res\drawable-hdpi\header_view_right_bt_history.png: Warning: The resource R.drawable.header_view_right_bt_history appears to be unused [UnusedResources]
+res\values\hp_dimens.xml:6: Warning: The resource R.dimen.hp_target_main_title_size appears to be unused [UnusedResources]
+    <dimen name="hp_target_main_title_size">32sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:7: Warning: The resource R.dimen.hp_target_main_content_size appears to be unused [UnusedResources]
+    <dimen name="hp_target_main_content_size">24sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:8: Warning: The resource R.dimen.hp_target_main_text_size appears to be unused [UnusedResources]
+    <dimen name="hp_target_main_text_size">26sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:10: Warning: The resource R.dimen.hp_sportstrack_line_v_height appears to be unused [UnusedResources]
+    <dimen name="hp_sportstrack_line_v_height">50dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:11: Warning: The resource R.dimen.hp_sportstrack_distance_height appears to be unused [UnusedResources]
+    <dimen name="hp_sportstrack_distance_height">150dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:18: Warning: The resource R.dimen.hp_font_large appears to be unused [UnusedResources]
+    <dimen name="hp_font_large">26sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:19: Warning: The resource R.dimen.hp_font_result_1 appears to be unused [UnusedResources]
+    <dimen name="hp_font_result_1">32sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:24: Warning: The resource R.dimen.hp_main_padding_large appears to be unused [UnusedResources]
+    <dimen name="hp_main_padding_large">30dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:27: Warning: The resource R.dimen.hp_main_padding_bit appears to be unused [UnusedResources]
+    <dimen name="hp_main_padding_bit">5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:30: Warning: The resource R.dimen.hp_sporttrack_wid appears to be unused [UnusedResources]
+    <dimen name="hp_sporttrack_wid">260dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:32: Warning: The resource R.dimen.userinfoedittext_wid appears to be unused [UnusedResources]
+    <dimen name="userinfoedittext_wid">200dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:33: Warning: The resource R.dimen.userinfoedittext_hei appears to be unused [UnusedResources]
+    <dimen name="userinfoedittext_hei">40dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:35: Warning: The resource R.dimen.userinfochartheight appears to be unused [UnusedResources]
+    <dimen name="userinfochartheight">260dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:37: Warning: The resource R.dimen.achievement_shorcut_top appears to be unused [UnusedResources]
+    <dimen name="achievement_shorcut_top">26dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:38: Warning: The resource R.dimen.achievement_shorcut_bottom appears to be unused [UnusedResources]
+    <dimen name="achievement_shorcut_bottom">26dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:39: Warning: The resource R.dimen.achievement_shorcut_left appears to be unused [UnusedResources]
+    <dimen name="achievement_shorcut_left">20dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:40: Warning: The resource R.dimen.achievement_shorcut_right appears to be unused [UnusedResources]
+    <dimen name="achievement_shorcut_right">20dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:41: Warning: The resource R.dimen.sport_mode_selector_height appears to be unused [UnusedResources]
+    <dimen name="sport_mode_selector_height">35dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:42: Warning: The resource R.dimen.sport_mode_selector_value_size appears to be unused [UnusedResources]
+    <dimen name="sport_mode_selector_value_size">16sp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:45: Warning: The resource R.dimen.sport_result_margin_top appears to be unused [UnusedResources]
+    <dimen name="sport_result_margin_top">20dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:46: Warning: The resource R.dimen.sport_result_margin_bottom appears to be unused [UnusedResources]
+    <dimen name="sport_result_margin_bottom">20dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:47: Warning: The resource R.dimen.sport_result_time_margin_right appears to be unused [UnusedResources]
+    <dimen name="sport_result_time_margin_right">18dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:48: Warning: The resource R.dimen.sport_result_distance_margin_right appears to be unused [UnusedResources]
+    <dimen name="sport_result_distance_margin_right">8dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:49: Warning: The resource R.dimen.sport_result_icons_margin_top appears to be unused [UnusedResources]
+    <dimen name="sport_result_icons_margin_top">12dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:50: Warning: The resource R.dimen.sport_result_unit_margin_top appears to be unused [UnusedResources]
+    <dimen name="sport_result_unit_margin_top">5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:51: Warning: The resource R.dimen.sport_result_dotted_line_margin_left appears to be unused [UnusedResources]
+    <dimen name="sport_result_dotted_line_margin_left">5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:52: Warning: The resource R.dimen.sport_result_dotted_line_margin_right appears to be unused [UnusedResources]
+    <dimen name="sport_result_dotted_line_margin_right">5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_dimens.xml:53: Warning: The resource R.dimen.sport_result_dotted_line_margin_top appears to be unused [UnusedResources]
+    <dimen name="sport_result_dotted_line_margin_top">8dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\drawable-w360dp\hp_main__middle_item_bg.9.png: Warning: The resource R.drawable.hp_main__middle_item_bg appears to be unused [UnusedResources]
+res\values\hp_strings.xml:5: Warning: The resource R.string.hp_main_mainpage appears to be unused [UnusedResources]
+    <string name="hp_main_mainpage">主页</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:6: Warning: The resource R.string.hp_main_description appears to be unused [UnusedResources]
+    <string name="hp_main_description">运动从今天开始</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:7: Warning: The resource R.string.hp_main_distance appears to be unused [UnusedResources]
+    <string name="hp_main_distance">距离</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:8: Warning: The resource R.string.hp_main_distance_unit appears to be unused [UnusedResources]
+    <string name="hp_main_distance_unit">公里</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:9: Warning: The resource R.string.hp_main_spend_time appears to be unused [UnusedResources]
+    <string name="hp_main_spend_time">时长</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:10: Warning: The resource R.string.hp_main_burning appears to be unused [UnusedResources]
+    <string name="hp_main_burning">燃烧</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:11: Warning: The resource R.string.hp_main_burning_unit appears to be unused [UnusedResources]
+    <string name="hp_main_burning_unit">卡路里</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:12: Warning: The resource R.string.hp_main_times appears to be unused [UnusedResources]
+    <string name="hp_main_times">次数</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:13: Warning: The resource R.string.hp_main_times_unit appears to be unused [UnusedResources]
+    <string name="hp_main_times_unit">次</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:14: Warning: The resource R.string.hp_main_sport_walking appears to be unused [UnusedResources]
+    <string name="hp_main_sport_walking">走路</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:15: Warning: The resource R.string.hp_main_mood_happy appears to be unused [UnusedResources]
+    <string name="hp_main_mood_happy">开心</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:16: Warning: The resource R.string.hp_main_usually_mode appears to be unused [UnusedResources]
+    <string name="hp_main_usually_mode">普通模式</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:17: Warning: The resource R.string.hp_main_start_sport appears to be unused [UnusedResources]
+    <string name="hp_main_start_sport">开始运动</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:18: Warning: The resource R.string.hp_main_tab1_mainpage appears to be unused [UnusedResources]
+    <string name="hp_main_tab1_mainpage">主页</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:19: Warning: The resource R.string.hp_main_tab2_race appears to be unused [UnusedResources]
+    <string name="hp_main_tab2_race">竞赛</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:20: Warning: The resource R.string.hp_main_tab3_date_run appears to be unused [UnusedResources]
+    <string name="hp_main_tab3_date_run">约跑</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:21: Warning: The resource R.string.hp_main_tab4_activity appears to be unused [UnusedResources]
+    <string name="hp_main_tab4_activity">活动</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:22: Warning: The resource R.string.hp_main_shop appears to be unused [UnusedResources]
+    <string name="hp_main_shop">运动商城</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:24: Warning: The resource R.string.hp_personaledit_username appears to be unused [UnusedResources]
+    <string name="hp_personaledit_username">昵称:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:29: Warning: The resource R.string.hp_personaledit_save appears to be unused [UnusedResources]
+    <string name="hp_personaledit_save">保存更改</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:32: Warning: The resource R.string.hp_personaledit_other appears to be unused [UnusedResources]
+    <string name="hp_personaledit_other">其他</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:33: Warning: The resource R.string.hp_personaledit_detail appears to be unused [UnusedResources]
+    <string name="hp_personaledit_detail">点击分析</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:34: Warning: The resource R.string.hp_personaledit_infoerror appears to be unused [UnusedResources]
+    <string name="hp_personaledit_infoerror">为了获得更好的体验,请完善个人信息.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:35: Warning: The resource R.string.hp_personaledit_result appears to be unused [UnusedResources]
+    <string name="hp_personaledit_result">%1$s的BMI为%2$s,BMR为%3$s.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:36: Warning: The resource R.string.hp_sportstrack_finishsport appears to be unused [UnusedResources]
+    <string name="hp_sportstrack_finishsport">结束运动</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:37: Warning: The resource R.string.hp_sportstrack_start appears to be unused [UnusedResources]
+    <string name="hp_sportstrack_start">开始</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:38: Warning: The resource R.string.hp_sportstrack_pause appears to be unused [UnusedResources]
+    <string name="hp_sportstrack_pause">暂停</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:43: Warning: The resource R.string.hp_target_main_default_mode appears to be unused [UnusedResources]
+    <string name="hp_target_main_default_mode">默认模式</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:44: Warning: The resource R.string.hp_target_main_custom_mode appears to be unused [UnusedResources]
+    <string name="hp_target_main_custom_mode">自定义模式</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:45: Warning: The resource R.string.hp_target_main_dialog_title_1 appears to be unused [UnusedResources]
+    <string name="hp_target_main_dialog_title_1">请选择计划目标</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:46: Warning: The resource R.string.hp_target_main_dialog_plan_day appears to be unused [UnusedResources]
+    <string name="hp_target_main_dialog_plan_day">日目标</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:47: Warning: The resource R.string.hp_target_main_dialog_plan_week appears to be unused [UnusedResources]
+    <string name="hp_target_main_dialog_plan_week">周目标</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:48: Warning: The resource R.string.hp_target_main_dialog_plan_time appears to be unused [UnusedResources]
+    <string name="hp_target_main_dialog_plan_time">运动计划时间</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:49: Warning: The resource R.string.hp_target_main_dialog_plan_calorie appears to be unused [UnusedResources]
+    <string name="hp_target_main_dialog_plan_calorie">运动计划消耗卡路里</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:52: Warning: The resource R.string.hour appears to be unused [UnusedResources]
+    <string name="hour">时</string>
+            ~~~~~~~~~~~
+res\values\hp_strings.xml:53: Warning: The resource R.string.minute appears to be unused [UnusedResources]
+    <string name="minute">分</string>
+            ~~~~~~~~~~~~~
+res\values\hp_strings.xml:54: Warning: The resource R.string.hour_simple appears to be unused [UnusedResources]
+    <string name="hour_simple">时</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:55: Warning: The resource R.string.minute_simple appears to be unused [UnusedResources]
+    <string name="minute_simple">分</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:56: Warning: The resource R.string.calorie appears to be unused [UnusedResources]
+    <string name="calorie">卡路里</string>
+            ~~~~~~~~~~~~~~
+res\values\hp_strings.xml:58: Warning: The resource R.string.hp_gps_ appears to be unused [UnusedResources]
+    <string name="hp_gps_">运动商城</string>
+            ~~~~~~~~~~~~~~
+res\values\hp_strings.xml:61: Warning: The resource R.string.sportmode_startmove appears to be unused [UnusedResources]
+    <string name="sportmode_startmove">开始运动</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:62: Warning: The resource R.string.sportmode_distance_sum appears to be unused [UnusedResources]
+    <string name="sportmode_distance_sum">总距离</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:63: Warning: The resource R.string.sportmode_kilometer appears to be unused [UnusedResources]
+    <string name="sportmode_kilometer">公里</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:64: Warning: The resource R.string.sportmode_calory_sum appears to be unused [UnusedResources]
+    <string name="sportmode_calory_sum">燃烧</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:65: Warning: The resource R.string.sportmode_duration_sum appears to be unused [UnusedResources]
+    <string name="sportmode_duration_sum">总时长</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:66: Warning: The resource R.string.sportmode_count_sum appears to be unused [UnusedResources]
+    <string name="sportmode_count_sum">次数</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:67: Warning: The resource R.string.sportmode_choosetype appears to be unused [UnusedResources]
+    <string name="sportmode_choosetype">选择运动类型</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:68: Warning: The resource R.string.sportmode_choosemode appears to be unused [UnusedResources]
+    <string name="sportmode_choosemode">选择运动模式</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:72: Warning: The resource R.string.user_txt appears to be unused [UnusedResources]
+    <string name="user_txt">用户</string>
+            ~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:76: Warning: The resource R.string.hp_target_modelchoose appears to be unused [UnusedResources]
+    <string name="hp_target_modelchoose">目标模式选择</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:77: Warning: The resource R.string.hp_target_modeldistance appears to be unused [UnusedResources]
+    <string name="hp_target_modeldistance">距离</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:78: Warning: The resource R.string.hp_target_modeldistancedes appears to be unused [UnusedResources]
+    <string name="hp_target_modeldistancedes">设定一个距离目标</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:79: Warning: The resource R.string.hp_target_modeltime appears to be unused [UnusedResources]
+    <string name="hp_target_modeltime">时间</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:80: Warning: The resource R.string.hp_target_modeltimedes appears to be unused [UnusedResources]
+    <string name="hp_target_modeltimedes">设定一个时间目标</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:81: Warning: The resource R.string.hp_target_modelcalorie appears to be unused [UnusedResources]
+    <string name="hp_target_modelcalorie">卡路里</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:82: Warning: The resource R.string.hp_target_modelcaloriedes appears to be unused [UnusedResources]
+    <string name="hp_target_modelcaloriedes">设定需要燃烧的卡路里数</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:83: Warning: The resource R.string.hp_target_modelsettarget appears to be unused [UnusedResources]
+    <string name="hp_target_modelsettarget">设定目标</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:84: Warning: The resource R.string.hp_gpsenable_title appears to be unused [UnusedResources]
+    <string name="hp_gpsenable_title">GPS检测</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:85: Warning: The resource R.string.hp_gpsenable_error appears to be unused [UnusedResources]
+    <string name="hp_gpsenable_error">GPS未开启,请设置.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:86: Warning: The resource R.string.hp_gpsenable_setting appears to be unused [UnusedResources]
+    <string name="hp_gpsenable_setting">设置</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:87: Warning: The resource R.string.hp_step appears to be unused [UnusedResources]
+    <string name="hp_step">步</string>
+            ~~~~~~~~~~~~~~
+res\values\hp_strings.xml:88: Warning: The resource R.string.hp_done appears to be unused [UnusedResources]
+    <string name="hp_done">距离目标还有</string>
+            ~~~~~~~~~~~~~~
+res\values\hp_strings.xml:89: Warning: The resource R.string.hp_setting appears to be unused [UnusedResources]
+    <string name="hp_setting">设置运动目标</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:90: Warning: The resource R.string.hp_normalmodel appears to be unused [UnusedResources]
+    <string name="hp_normalmodel">普通模式</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:91: Warning: The resource R.string.hp_targetmodel appears to be unused [UnusedResources]
+    <string name="hp_targetmodel">目标模式</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:92: Warning: The resource R.string.hp_sportmodel appears to be unused [UnusedResources]
+    <string name="hp_sportmodel">运动模式</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:102: Warning: The resource R.string.hp_userreg_login appears to be unused [UnusedResources]
+    <string name="hp_userreg_login">登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:103: Warning: The resource R.string.hp_userreg_loginbtn appears to be unused [UnusedResources]
+    <string name="hp_userreg_loginbtn">点击登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:106: Warning: The resource R.string.hp_userlogin_faild appears to be unused [UnusedResources]
+    <string name="hp_userlogin_faild">登录失败!</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:107: Warning: The resource R.string.hp_userreg_loginp appears to be unused [UnusedResources]
+    <string name="hp_userreg_loginp">请登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:108: Warning: The resource R.string.hp_userreg_registerp appears to be unused [UnusedResources]
+    <string name="hp_userreg_registerp">请注册</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:109: Warning: The resource R.string.hp_userreg_whsurface appears to be unused [UnusedResources]
+    <string name="hp_userreg_whsurface">身高体重比例表</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:110: Warning: The resource R.string.hp_userreg_whsurfacedes appears to be unused [UnusedResources]
+    <string name="hp_userreg_whsurfacedes">\t\t年龄、身高、体重、性别不能为空,请如实填写,以便我们正确分析您的健康状况.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:111: Warning: The resource R.string.hp_userinfo_daysport appears to be unused [UnusedResources]
+    <string name="hp_userinfo_daysport">日运动量</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:112: Warning: The resource R.string.hp_userinfo_daysportl appears to be unused [UnusedResources]
+    <string name="hp_userinfo_daysportl">轻度</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:113: Warning: The resource R.string.hp_userinfo_daysportm appears to be unused [UnusedResources]
+    <string name="hp_userinfo_daysportm">中度</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:114: Warning: The resource R.string.hp_userinfo_daysporth appears to be unused [UnusedResources]
+    <string name="hp_userinfo_daysporth">重度</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:115: Warning: The resource R.string.hp_userinfo_inputtodayweight appears to be unused [UnusedResources]
+    <string name="hp_userinfo_inputtodayweight">请输入今日体重\t:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:116: Warning: The resource R.string.hp_userreg_logout appears to be unused [UnusedResources]
+    <string name="hp_userreg_logout">注销</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:138: Warning: The resource R.string.achievement appears to be unused [UnusedResources]
+    <string name="achievement">成就</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:140: Warning: The resource R.string.setting_share appears to be unused [UnusedResources]
+    <string name="setting_share">分享中...</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:160: Warning: The resource R.string.update_installwrong appears to be unused [UnusedResources]
+    <string name="update_installwrong">安装包已被删除,请重新下载!</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:172: Warning: The resource R.string.setting_feedback_questionhintcontent appears to be unused [UnusedResources]
+    <string name="setting_feedback_questionhintcontent">请输入您的建议、问题感谢您对云医生的支持与关注</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:179: Warning: The resource R.string.setting_feedback_send_fail appears to be unused [UnusedResources]
+    <string name="setting_feedback_send_fail">提交失败</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:181: Warning: The resource R.string.settings_about appears to be unused [UnusedResources]
+    <string name="settings_about">关于</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:186: Warning: The resource R.string.hp_target_alarm_time_dialog_title appears to be unused [UnusedResources]
+    <string name="hp_target_alarm_time_dialog_title">目标提醒时间设定</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:187: Warning: The resource R.string.setting_unregist appears to be unused [UnusedResources]
+    <string name="setting_unregist">未登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:188: Warning: The resource R.string.setting_unset_alarm appears to be unused [UnusedResources]
+    <string name="setting_unset_alarm">暂未设置目标提醒</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:189: Warning: The resource R.string.setting_set_alarm appears to be unused [UnusedResources]
+    <string name="setting_set_alarm">设定提醒</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:191: Warning: The resource R.string.hp_userinfo_charttitle appears to be unused [UnusedResources]
+    <string name="hp_userinfo_charttitle">您的健康+轨迹图</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:192: Warning: The resource R.string.hp_userinfo_sporttarget appears to be unused [UnusedResources]
+    <string name="hp_userinfo_sporttarget">运动目标</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:193: Warning: The resource R.string.hp_userinfo_weightchange appears to be unused [UnusedResources]
+    <string name="hp_userinfo_weightchange">体重变化</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:194: Warning: The resource R.string.hp_userinfo_heartratechange appears to be unused [UnusedResources]
+    <string name="hp_userinfo_heartratechange">心率变化</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:195: Warning: The resource R.string.hp_userinfo_sportdistance appears to be unused [UnusedResources]
+    <string name="hp_userinfo_sportdistance">运动距离</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:197: Warning: The resource R.string.hp_userinfo_noreg appears to be unused [UnusedResources]
+    <string name="hp_userinfo_noreg">无账户</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:198: Warning: The resource R.string.hp_userinfo_nowreg appears to be unused [UnusedResources]
+    <string name="hp_userinfo_nowreg">立即注册!</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:199: Warning: The resource R.string.hp_userinfo_nologin appears to be unused [UnusedResources]
+    <string name="hp_userinfo_nologin">未登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:217: Warning: The resource R.string.logining appears to be unused [UnusedResources]
+    <string name="logining">努力登录中...</string>
+            ~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:224: Warning: The resource R.string.sport_result_time appears to be unused [UnusedResources]
+    <string name="sport_result_time">时长</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:225: Warning: The resource R.string.sport_result_distance appears to be unused [UnusedResources]
+    <string name="sport_result_distance">距离</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:226: Warning: The resource R.string.sport_result_burn appears to be unused [UnusedResources]
+    <string name="sport_result_burn">燃烧</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:227: Warning: The resource R.string.sport_result_count appears to be unused [UnusedResources]
+    <string name="sport_result_count">次数</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:228: Warning: The resource R.string.sport_result_heart appears to be unused [UnusedResources]
+    <string name="sport_result_heart">心率</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:229: Warning: The resource R.string.sport_result_speed appears to be unused [UnusedResources]
+    <string name="sport_result_speed">速度</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:230: Warning: The resource R.string.sport_result_burn_unit appears to be unused [UnusedResources]
+    <string name="sport_result_burn_unit">大卡</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:231: Warning: The resource R.string.sport_result_count_unit appears to be unused [UnusedResources]
+    <string name="sport_result_count_unit">次</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:232: Warning: The resource R.string.sport_result_heart_unit appears to be unused [UnusedResources]
+    <string name="sport_result_heart_unit">-bpm</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:233: Warning: The resource R.string.sport_result_speed_unit appears to be unused [UnusedResources]
+    <string name="sport_result_speed_unit">公里数/时</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:234: Warning: The resource R.string.function_not_develop appears to be unused [UnusedResources]
+    <string name="function_not_develop">功能暂时无法使用</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:235: Warning: The resource R.string.right_text appears to be unused [UnusedResources]
+    <string name="right_text">健康+版权所有</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:237: Warning: The resource R.string.loading_text appears to be unused [UnusedResources]
+    <string name="loading_text">加载中...</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:241: Warning: The resource R.string.doctor_test_txt appears to be unused [UnusedResources]
+    <string name="doctor_test_txt">测试</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:242: Warning: The resource R.string.doctor_ask_txt appears to be unused [UnusedResources]
+    <string name="doctor_ask_txt">问病</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:243: Warning: The resource R.string.doctor_exchange_txt appears to be unused [UnusedResources]
+    <string name="doctor_exchange_txt">交流</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:247: Warning: The resource R.string.doctor_user_topic appears to be unused [UnusedResources]
+    <string name="doctor_user_topic">我的话题</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_strings.xml:248: Warning: The resource R.string.doctor_user_friend appears to be unused [UnusedResources]
+    <string name="doctor_user_friend">我的朋友</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_array.xml:3: Warning: The resource R.array.sportmode appears to be unused [UnusedResources]
+    <string-array name="sportmode">
+                  ~~~~~~~~~~~~~~~~
+res\values\hp_w_array.xml:7: Warning: The resource R.array.sportresult appears to be unused [UnusedResources]
+    <string-array name="sportresult">
+                  ~~~~~~~~~~~~~~~~~~
+res\values\hp_w_array.xml:13: Warning: The resource R.array.tab_name appears to be unused [UnusedResources]
+    <string-array name="tab_name">
+                  ~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:4: Warning: The resource R.color.hp_view_bg appears to be unused [UnusedResources]
+    <color name="hp_view_bg">#f7f7f7</color>
+           ~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:6: Warning: The resource R.color.hp_font_darkblack appears to be unused [UnusedResources]
+    <color name="hp_font_darkblack">#5d5d5d</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:12: Warning: The resource R.color.little_little_gray appears to be unused [UnusedResources]
+    <color name="little_little_gray">#7e7e7e</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:18: Warning: The resource R.color.vpi__bright_foreground_disabled_holo_dark appears to be unused [UnusedResources]
+    <color name="vpi__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:19: Warning: The resource R.color.vpi__bright_foreground_disabled_holo_light appears to be unused [UnusedResources]
+    <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:20: Warning: The resource R.color.vpi__bright_foreground_inverse_holo_dark appears to be unused [UnusedResources]
+    <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:21: Warning: The resource R.color.vpi__bright_foreground_inverse_holo_light appears to be unused [UnusedResources]
+    <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:26: Warning: The resource R.color.hp_w_line_lv_50 appears to be unused [UnusedResources]
+    <color name="hp_w_line_lv_50">#32a2a2a2</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:27: Warning: The resource R.color.hp_w_line_lv_80 appears to be unused [UnusedResources]
+    <color name="hp_w_line_lv_80">#50a2a2a2</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:30: Warning: The resource R.color.hp_w_userweightchart_line appears to be unused [UnusedResources]
+    <color name="hp_w_userweightchart_line">#d83c2f</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:31: Warning: The resource R.color.hp_w_userweightchart_lonline appears to be unused [UnusedResources]
+    <color name="hp_w_userweightchart_lonline">#4c4c4c</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:32: Warning: The resource R.color.hp_w_userweightchart_xline appears to be unused [UnusedResources]
+    <color name="hp_w_userweightchart_xline">#6e6e6e</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:33: Warning: The resource R.color.hp_w_userweightchart_font appears to be unused [UnusedResources]
+    <color name="hp_w_userweightchart_font">#787878</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:34: Warning: The resource R.color.hp_popmenu_item_line appears to be unused [UnusedResources]
+    <color name="hp_popmenu_item_line">#a2a2a2</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:36: Warning: The resource R.color.feedback_mainbg appears to be unused [UnusedResources]
+    <color name="feedback_mainbg">#f2f2f2</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:37: Warning: The resource R.color.feedback_gray_hard appears to be unused [UnusedResources]
+    <color name="feedback_gray_hard">#373737</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:38: Warning: The resource R.color.feedback_gray_middle appears to be unused [UnusedResources]
+    <color name="feedback_gray_middle">#6d6d6d</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:39: Warning: The resource R.color.feedback_gray_light appears to be unused [UnusedResources]
+    <color name="feedback_gray_light">#a5a5a5</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:40: Warning: The resource R.color.about_listbackcolor appears to be unused [UnusedResources]
+    <color name="about_listbackcolor">#EFEFEF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:41: Warning: The resource R.color.about_line_dark appears to be unused [UnusedResources]
+    <color name="about_line_dark">#CACACA</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:45: Warning: The resource R.color.linec appears to be unused [UnusedResources]
+    <color name="linec">#bebebe</color>
+           ~~~~~~~~~~~~
+res\values\hp_w_color.xml:46: Warning: The resource R.color.select_background appears to be unused [UnusedResources]
+    <color name="select_background">#d9d9d9</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:48: Warning: The resource R.color.chart_line_yellow appears to be unused [UnusedResources]
+    <color name="chart_line_yellow">#f4a33a</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:49: Warning: The resource R.color.chart_circle_full_yellow appears to be unused [UnusedResources]
+    <color name="chart_circle_full_yellow">#ffc000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:50: Warning: The resource R.color.black_black appears to be unused [UnusedResources]
+    <color name="black_black">#404040</color>
+           ~~~~~~~~~~~~~~~~~~
+res\values\hp_w_color.xml:51: Warning: The resource R.color.gray_balck appears to be unused [UnusedResources]
+    <color name="gray_balck">#696969</color>
+           ~~~~~~~~~~~~~~~~~
+res\drawable\list_item_topic_normal.xml: Warning: The resource R.drawable.list_item_topic_normal appears to be unused [UnusedResources]
+res\drawable\list_item_topic_select.xml: Warning: The resource R.drawable.list_item_topic_select appears to be unused [UnusedResources]
+res\values\moments_strings.xml:8: Warning: The resource R.string.momentsphotograph appears to be unused [UnusedResources]
+    <string name="momentsphotograph">拍照</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\moments_strings.xml:9: Warning: The resource R.string.momentsselectfromalbum appears to be unused [UnusedResources]
+    <string name="momentsselectfromalbum">从相册中选择</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\moments_strings.xml:11: Warning: The resource R.string.searchphone appears to be unused [UnusedResources]
+    <string name="searchphone">搜号码</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\moments_strings.xml:12: Warning: The resource R.string.addcontacts appears to be unused [UnusedResources]
+    <string name="addcontacts">添加手机联系人</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\pay_strings.xml:25: Warning: The resource R.string.check_sign_failed appears to be unused [UnusedResources]
+ <string name="check_sign_failed">您的订单信息已被非法篡改。</string> 
+         ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\pay_strings.xml:30: Warning: The resource R.string.partner_error appears to be unused [UnusedResources]
+  <string name="partner_error">缺少partner或者seller</string>
+          ~~~~~~~~~~~~~~~~~~~~
+res\values\pay_strings.xml:33: Warning: The resource R.string.soapUtils appears to be unused [UnusedResources]
+  <string name="soapUtils">分析服务器返回数据错误,请检查Android_SoapUtils类,或者核实数据</string>
+          ~~~~~~~~~~~~~~~~
+res\values\pay_strings.xml:36: Warning: The resource R.string.unknownError appears to be unused [UnusedResources]
+ <string name="unknownError">出现未知错误</string>
+         ~~~~~~~~~~~~~~~~~~~
+res\values\pay_strings.xml:37: Warning: The resource R.string.accountError appears to be unused [UnusedResources]
+ <string name="accountError">请求服务器出现未知错误</string>
+         ~~~~~~~~~~~~~~~~~~~
+res\values\pay_strings.xml:38: Warning: The resource R.string.parserJsonError appears to be unused [UnusedResources]
+ <string name="parserJsonError">解析JSON异常</string> 
+         ~~~~~~~~~~~~~~~~~~~~~~
+res\drawable\perm_group_calendar.xml: Warning: The resource R.drawable.perm_group_calendar appears to be unused [UnusedResources]
+res\drawable\perm_group_device_alarms.xml: Warning: The resource R.drawable.perm_group_device_alarms appears to be unused [UnusedResources]
+res\drawable\perm_group_location.xml: Warning: The resource R.drawable.perm_group_location appears to be unused [UnusedResources]
+res\drawable\perm_group_more.xml: Warning: The resource R.drawable.perm_group_more appears to be unused [UnusedResources]
+res\drawable-hdpi\progressbar_background.png: Warning: The resource R.drawable.progressbar_background appears to be unused [UnusedResources]
+res\drawable-hdpi\progressbar_progress.png: Warning: The resource R.drawable.progressbar_progress appears to be unused [UnusedResources]
+res\drawable-hdpi\progressbar_secprogress.png: Warning: The resource R.drawable.progressbar_secprogress appears to be unused [UnusedResources]
+res\drawable-hdpi\sep.png: Warning: The resource R.drawable.sep appears to be unused [UnusedResources]
+res\values\shop_colors.xml:3: Warning: The resource R.color.main_background appears to be unused [UnusedResources]
+    <color name="main_background">#ffe3e3e3</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:10: Warning: The resource R.color.hyperlinks_text_color appears to be unused [UnusedResources]
+    <item type="color" name="hyperlinks_text_color">@*android:color/white</item>
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:14: Warning: The resource R.color.hyperlinks_text_color_inverse appears to be unused [UnusedResources]
+    <color name="hyperlinks_text_color_inverse">#ff87888c</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:16: Warning: The resource R.color.window_background appears to be unused [UnusedResources]
+    <color name="window_background">#ffebeced</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:17: Warning: The resource R.color.black_button_divider appears to be unused [UnusedResources]
+    <color name="black_button_divider">#ff222222</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:18: Warning: The resource R.color.phone_media_background appears to be unused [UnusedResources]
+    <color name="phone_media_background">#fff3f3f3</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:19: Warning: The resource R.color.miphone_sales_record_detail_color appears to be unused [UnusedResources]
+    <color name="miphone_sales_record_detail_color">#ff9acd32</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:20: Warning: The resource R.color.contents_text appears to be unused [UnusedResources]
+    <color name="contents_text">#ff000000</color>
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:21: Warning: The resource R.color.encode_view appears to be unused [UnusedResources]
+    <color name="encode_view">#ffffffff</color>
+           ~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:22: Warning: The resource R.color.possible_result_points appears to be unused [UnusedResources]
+    <color name="possible_result_points">#c0ffbd21</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:23: Warning: The resource R.color.result_minor_text appears to be unused [UnusedResources]
+    <color name="result_minor_text">#ffc0c0c0</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:24: Warning: The resource R.color.result_points appears to be unused [UnusedResources]
+    <color name="result_points">#c099cc00</color>
+           ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:25: Warning: The resource R.color.result_text appears to be unused [UnusedResources]
+    <color name="result_text">#ffffffff</color>
+           ~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:26: Warning: The resource R.color.result_view appears to be unused [UnusedResources]
+    <color name="result_view">#b0000000</color>
+           ~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:27: Warning: The resource R.color.status_text appears to be unused [UnusedResources]
+    <color name="status_text">#ffffffff</color>
+           ~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:28: Warning: The resource R.color.viewfinder_laser appears to be unused [UnusedResources]
+    <color name="viewfinder_laser">#ffcc0000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:29: Warning: The resource R.color.viewfinder_mask appears to be unused [UnusedResources]
+    <color name="viewfinder_mask">#60000000</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:30: Warning: The resource R.color.scan_bottom_background appears to be unused [UnusedResources]
+    <color name="scan_bottom_background">#ff37393d</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:31: Warning: The resource R.color.scan_frame appears to be unused [UnusedResources]
+    <color name="scan_frame">#ffff720a</color> 
+           ~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:36: Warning: The resource R.color.price_text appears to be unused [UnusedResources]
+    <color name="price_text">#ffffa500</color>
+           ~~~~~~~~~~~~~~~~~
+res\values\shop_colors.xml:37: Warning: The resource R.color.healthplus_text appears to be unused [UnusedResources]
+    <color name="healthplus_text">#ff24acc9</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+res\drawable-xhdpi\shop_rubbish_n.9.png: Warning: The resource R.drawable.shop_rubbish_n appears to be unused [UnusedResources]
+res\drawable-xhdpi\shop_rubbish_p.9.png: Warning: The resource R.drawable.shop_rubbish_p appears to be unused [UnusedResources]
+res\values\shop_strings.xml:4: Warning: The resource R.string.current_version_name_header appears to be unused [UnusedResources]
+    <string name="current_version_name_header">当前版本：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:5: Warning: The resource R.string.new_version_name_header appears to be unused [UnusedResources]
+    <string name="new_version_name_header">新版本：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:6: Warning: The resource R.string.shop_welcome_title appears to be unused [UnusedResources]
+    <string name="shop_welcome_title">尊敬的用户</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:7: Warning: The resource R.string.shop_welcome_title_header appears to be unused [UnusedResources]
+    <string name="shop_welcome_title_header">尊敬的</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:8: Warning: The resource R.string.shop_welcome appears to be unused [UnusedResources]
+    <string name="shop_welcome">欢迎来到商城！</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:9: Warning: The resource R.string.shop_exit appears to be unused [UnusedResources]
+    <string name="shop_exit">点击退出</string>
+            ~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:10: Warning: The resource R.string.shop_login_primary_text appears to be unused [UnusedResources]
+    <string name="shop_login_primary_text">点击登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:11: Warning: The resource R.string.shop_login_second_text appears to be unused [UnusedResources]
+    <string name="shop_login_second_text">享受更多贴心服务</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:13: Warning: The resource R.string.shop_tab_indicator_home appears to be unused [UnusedResources]
+    <string name="shop_tab_indicator_home">热门</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:14: Warning: The resource R.string.shop_tab_indicator_category appears to be unused [UnusedResources]
+    <string name="shop_tab_indicator_category">分类</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:15: Warning: The resource R.string.shop_tab_indicator_all appears to be unused [UnusedResources]
+    <string name="shop_tab_indicator_all">商品</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:16: Warning: The resource R.string.shop_tab_indicator_more appears to be unused [UnusedResources]
+    <string name="shop_tab_indicator_more">更多</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:17: Warning: The resource R.string.shop_tab_indicator_account appears to be unused [UnusedResources]
+    <string name="shop_tab_indicator_account">用户</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:21: Warning: The resource R.string.shop_addcart_run appears to be unused [UnusedResources]
+    <string name="shop_addcart_run">正在加入购物车</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:22: Warning: The resource R.string.shop_addcart_suc appears to be unused [UnusedResources]
+    <string name="shop_addcart_suc">已加入购物车</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:23: Warning: The resource R.string.shop_addcart_fail appears to be unused [UnusedResources]
+    <string name="shop_addcart_fail">加入购物车失败</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:24: Warning: The resource R.string.shop_addcart_toomany appears to be unused [UnusedResources]
+    <string name="shop_addcart_toomany">已超过允许购买数量</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:25: Warning: The resource R.string.shop_modcart_suc appears to be unused [UnusedResources]
+    <string name="shop_modcart_suc">修改购物车成功</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:26: Warning: The resource R.string.shop_modcart_fail appears to be unused [UnusedResources]
+    <string name="shop_modcart_fail">修改购物车失败</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:27: Warning: The resource R.string.shop_interested appears to be unused [UnusedResources]
+    <string name="shop_interested">您可能感兴趣</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:28: Warning: The resource R.string.shop_cart_button_checkout appears to be unused [UnusedResources]
+    <string name="shop_cart_button_checkout">去结算</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:31: Warning: The resource R.string.shop_address_no appears to be unused [UnusedResources]
+    <string name="shop_address_no">没有已保存地址，请添加</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:32: Warning: The resource R.string.shop_checkout_form_address_titie appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_address_titie">收货信息</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:34: Warning: The resource R.string.shop_hint_address_consignee appears to be unused [UnusedResources]
+    <string name="shop_hint_address_consignee">请填写真实姓名</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:35: Warning: The resource R.string.shop_hint_address_tel appears to be unused [UnusedResources]
+    <string name="shop_hint_address_tel">联系人电话，11位数字</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:36: Warning: The resource R.string.shop_checkout_form_payment_titie appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_payment_titie">支付与配送</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:37: Warning: The resource R.string.shop_checkout_form_delivertime_titie appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_delivertime_titie">送货时间</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:38: Warning: The resource R.string.shop_checkout_form_invoice_titie appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_invoice_titie">发票信息</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:39: Warning: The resource R.string.shop_checkout_next appears to be unused [UnusedResources]
+    <string name="shop_checkout_next">下一步</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:42: Warning: The resource R.string.shop_checkout_form_delivertime_nolimit appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_delivertime_nolimit">不限送货时间</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:43: Warning: The resource R.string.shop_checkout_form_delivertime_work appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_delivertime_work">工作日送货（适合于办公地址）</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:44: Warning: The resource R.string.shop_checkout_form_delivertime_holiday appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_delivertime_holiday">双休日、假日送货（适合于家庭地址）</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:45: Warning: The resource R.string.shop_checkout_form_invoice_no appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_invoice_no">不开发票</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:46: Warning: The resource R.string.shop_checkout_form_invoice_person appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_invoice_person">普通个人发票</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:47: Warning: The resource R.string.shop_checkout_form_invoice_company appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_invoice_company">单位发票</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:48: Warning: The resource R.string.shop_checkout_form_invoice_edit_title appears to be unused [UnusedResources]
+    <string name="shop_checkout_form_invoice_edit_title">单位名称</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:49: Warning: The resource R.string.shop_cart_button_list appears to be unused [UnusedResources]
+    <string name="shop_cart_button_list">购物清单</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:50: Warning: The resource R.string.shop_cart_total appears to be unused [UnusedResources]
+    <string name="shop_cart_total">金额合计</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:52: Warning: The resource R.string.shop_cart_list_price appears to be unused [UnusedResources]
+    <string name="shop_cart_list_price">售价：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:53: Warning: The resource R.string.shop_cart_list_num appears to be unused [UnusedResources]
+    <string name="shop_cart_list_num">数量：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:54: Warning: The resource R.string.shop_cart_list_total appears to be unused [UnusedResources]
+    <string name="shop_cart_list_total">合计：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:55: Warning: The resource R.string.category_name appears to be unused [UnusedResources]
+    <string name="category_name">分类名称：</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:56: Warning: The resource R.string.goods_num appears to be unused [UnusedResources]
+    <string name="goods_num">商品数量</string>
+            ~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:57: Warning: The resource R.string.goods_detail appears to be unused [UnusedResources]
+    <string name="goods_detail">商品详情</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:58: Warning: The resource R.string.goods_name appears to be unused [UnusedResources]
+    <string name="goods_name">商品名称：</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:59: Warning: The resource R.string.goods_price appears to be unused [UnusedResources]
+    <string name="goods_price">商品价格：</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:60: Warning: The resource R.string.shop_cart_del appears to be unused [UnusedResources]
+    <string name="shop_cart_del">删除</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:61: Warning: The resource R.string.shop_account_orderlist appears to be unused [UnusedResources]
+    <string name="shop_account_orderlist">查询订单</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:62: Warning: The resource R.string.shop_account_orderedit appears to be unused [UnusedResources]
+    <string name="shop_account_orderedit">修改订单</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:63: Warning: The resource R.string.shop_account_address appears to be unused [UnusedResources]
+    <string name="shop_account_address">地址管理</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:64: Warning: The resource R.string.shop_account_station appears to be unused [UnusedResources]
+    <string name="shop_account_station">维修网点</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:67: Warning: The resource R.string.shop_account_point_total appears to be unused [UnusedResources]
+    <string name="shop_account_point_total">您当前的积分：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:68: Warning: The resource R.string.shop_point_list_title appears to be unused [UnusedResources]
+    <string name="shop_point_list_title">积分：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:69: Warning: The resource R.string.shop_label_address_consignee appears to be unused [UnusedResources]
+    <string name="shop_label_address_consignee">收货人姓名</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:70: Warning: The resource R.string.shop_label_address appears to be unused [UnusedResources]
+    <string name="shop_label_address">收货地址</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:71: Warning: The resource R.string.shop_hint_address_location appears to be unused [UnusedResources]
+    <string name="shop_hint_address_location">路名或街道地址，门牌号，不少于5个字</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:72: Warning: The resource R.string.shop_label_address_zipcode appears to be unused [UnusedResources]
+    <string name="shop_label_address_zipcode">邮政编码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:73: Warning: The resource R.string.shop_hint_address_zipcode appears to be unused [UnusedResources]
+    <string name="shop_hint_address_zipcode">为6位数字</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:74: Warning: The resource R.string.shop_label_address_tel appears to be unused [UnusedResources]
+    <string name="shop_label_address_tel">手机号码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:75: Warning: The resource R.string.shop_submit appears to be unused [UnusedResources]
+    <string name="shop_submit">确认完成</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:76: Warning: The resource R.string.tips_address_consignee appears to be unused [UnusedResources]
+    <string name="tips_address_consignee">请输入正确的收货人姓名（只能为中文）</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:77: Warning: The resource R.string.tips_address_province appears to be unused [UnusedResources]
+    <string name="tips_address_province">请选择省份</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:78: Warning: The resource R.string.tips_address_city appears to be unused [UnusedResources]
+    <string name="tips_address_city">请选择城市</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:79: Warning: The resource R.string.tips_address_district appears to be unused [UnusedResources]
+    <string name="tips_address_district">请选择地区</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:80: Warning: The resource R.string.tips_address_location appears to be unused [UnusedResources]
+    <string name="tips_address_location">请输入街道地址</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:81: Warning: The resource R.string.tips_address_zipcode appears to be unused [UnusedResources]
+    <string name="tips_address_zipcode">请输入邮政编码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:82: Warning: The resource R.string.tips_address_zipcode_length appears to be unused [UnusedResources]
+    <string name="tips_address_zipcode_length">请输入正确的邮政编码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:83: Warning: The resource R.string.tips_address_tel appears to be unused [UnusedResources]
+    <string name="tips_address_tel">请输入手机号码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:84: Warning: The resource R.string.tips_address appears to be unused [UnusedResources]
+    <string name="tips_address">请选择或添加地址信息</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:85: Warning: The resource R.string.tips_address_invoice appears to be unused [UnusedResources]
+    <string name="tips_address_invoice">请输入单位名称</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:86: Warning: The resource R.string.address_province_select appears to be unused [UnusedResources]
+    <string name="address_province_select">选择省</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:87: Warning: The resource R.string.address_city_select appears to be unused [UnusedResources]
+    <string name="address_city_select">选择市</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:88: Warning: The resource R.string.address_district_select appears to be unused [UnusedResources]
+    <string name="address_district_select">选择区</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:89: Warning: The resource R.string.province appears to be unused [UnusedResources]
+    <string name="province">省</string>
+            ~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:90: Warning: The resource R.string.city appears to be unused [UnusedResources]
+    <string name="city">市</string>
+            ~~~~~~~~~~~
+res\values\shop_strings.xml:91: Warning: The resource R.string.district appears to be unused [UnusedResources]
+    <string name="district">区</string>
+            ~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:92: Warning: The resource R.string.shop_wait_message appears to be unused [UnusedResources]
+    <string name="shop_wait_message">请稍候</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:93: Warning: The resource R.string.order_submit_exception_send_data appears to be unused [UnusedResources]
+    <string name="order_submit_exception_send_data">发送请求失败，请检查网络设置</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:94: Warning: The resource R.string.shop_net_error_message appears to be unused [UnusedResources]
+    <string name="shop_net_error_message">无法获取数据，请检查网络设置</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:95: Warning: The resource R.string.exit_on_the_second_back_key_pressed appears to be unused [UnusedResources]
+    <string name="exit_on_the_second_back_key_pressed">再按一次退出手机商城</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:96: Warning: The resource R.string.order_list_rmb appears to be unused [UnusedResources]
+    <string name="order_list_rmb">?</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:98: Warning: The resource R.string.order_submit_count appears to be unused [UnusedResources]
+    <string name="order_submit_count">应付总额：?</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:99: Warning: The resource R.string.order_submit_count_deliver appears to be unused [UnusedResources]
+    <string name="order_submit_count_deliver">运费：?</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:100: Warning: The resource R.string.shop_order_suc_for_pay appears to be unused [UnusedResources]
+    <string name="shop_order_suc_for_pay">订单提交成功，请尽快支付</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:101: Warning: The resource R.string.shop_order_suc appears to be unused [UnusedResources]
+    <string name="shop_order_suc">订单提交成功</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:102: Warning: The resource R.string.shop_order_id appears to be unused [UnusedResources]
+    <string name="shop_order_id">订单编号：</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:103: Warning: The resource R.string.shop_order_recipient appears to be unused [UnusedResources]
+    <string name="shop_order_recipient">收货人员：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:104: Warning: The resource R.string.shop_order_recipient_phone appears to be unused [UnusedResources]
+    <string name="shop_order_recipient_phone">手机号码：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:105: Warning: The resource R.string.shop_order_detail_address appears to be unused [UnusedResources]
+    <string name="shop_order_detail_address">收货地址：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:106: Warning: The resource R.string.shop_order_delivery_time appears to be unused [UnusedResources]
+    <string name="shop_order_delivery_time">送货时间：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:107: Warning: The resource R.string.shop_order_invoice_info appears to be unused [UnusedResources]
+    <string name="shop_order_invoice_info">发票信息：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:108: Warning: The resource R.string.shop_order_fee appears to be unused [UnusedResources]
+    <string name="shop_order_fee">金额合计：</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:109: Warning: The resource R.string.shop_order_pyament_type appears to be unused [UnusedResources]
+    <string name="shop_order_pyament_type">在线支付方式</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:110: Warning: The resource R.string.shop_order_pay appears to be unused [UnusedResources]
+    <string name="shop_order_pay">立即付款</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:111: Warning: The resource R.string.shop_order_pyament_title appears to be unused [UnusedResources]
+    <string name="shop_order_pyament_title">在线支付</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:112: Warning: The resource R.string.order_list_time appears to be unused [UnusedResources]
+    <string name="order_list_time">订单日期</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:113: Warning: The resource R.string.order_list_fee appears to be unused [UnusedResources]
+    <string name="order_list_fee">总价:</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:114: Warning: The resource R.string.order_list_status appears to be unused [UnusedResources]
+    <string name="order_list_status">状态:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:115: Warning: The resource R.string.order_list_status_nopay appears to be unused [UnusedResources]
+    <string name="order_list_status_nopay">未付款</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:116: Warning: The resource R.string.order_list_status_wait_for_send appears to be unused [UnusedResources]
+    <string name="order_list_status_wait_for_send">等待发货</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:117: Warning: The resource R.string.order_list_status_wait_for_receive appears to be unused [UnusedResources]
+    <string name="order_list_status_wait_for_receive">待收货</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:118: Warning: The resource R.string.order_list_type_done appears to be unused [UnusedResources]
+    <string name="order_list_type_done">已完成</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:119: Warning: The resource R.string.order_list_type_undone appears to be unused [UnusedResources]
+    <string name="order_list_type_undone">未完成</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:120: Warning: The resource R.string.order_list_type_all appears to be unused [UnusedResources]
+    <string name="order_list_type_all">所有</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:122: Warning: The resource R.string.order_information appears to be unused [UnusedResources]
+    <string name="order_information">订单信息</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:123: Warning: The resource R.string.order_add_time appears to be unused [UnusedResources]
+    <string name="order_add_time">下单日期</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:124: Warning: The resource R.string.order_view_id appears to be unused [UnusedResources]
+    <string name="order_view_id">订单编号</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:125: Warning: The resource R.string.order_see_express appears to be unused [UnusedResources]
+    <string name="order_see_express">查看物流</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:126: Warning: The resource R.string.order_view_address_label appears to be unused [UnusedResources]
+    <string name="order_view_address_label">收货地址</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:127: Warning: The resource R.string.order_view_address_time_label appears to be unused [UnusedResources]
+    <string name="order_view_address_time_label">收货时间</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:128: Warning: The resource R.string.order_invoice_information appears to be unused [UnusedResources]
+    <string name="order_invoice_information">发票信息</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:129: Warning: The resource R.string.order_view_status appears to be unused [UnusedResources]
+    <string name="order_view_status">订单状态：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:130: Warning: The resource R.string.order_view_fee appears to be unused [UnusedResources]
+    <string name="order_view_fee">应付总额：?</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:131: Warning: The resource R.string.station_tel appears to be unused [UnusedResources]
+    <string name="station_tel">电话：</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:132: Warning: The resource R.string.station_adress appears to be unused [UnusedResources]
+    <string name="station_adress">地址：</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:134: Warning: The resource R.string.order_del_message appears to be unused [UnusedResources]
+    <string name="order_del_message">是否删除所选地址？</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:135: Warning: The resource R.string.edit_quit_message appears to be unused [UnusedResources]
+    <string name="edit_quit_message">数据还未保存，要退出吗？</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:136: Warning: The resource R.string.cartList_null appears to be unused [UnusedResources]
+    <string name="cartList_null">购物车为空</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:137: Warning: The resource R.string.shop_login_title appears to be unused [UnusedResources]
+    <string name="shop_login_title">登录用户帐户</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:138: Warning: The resource R.string.shop_login_account_hint_text appears to be unused [UnusedResources]
+    <string name="shop_login_account_hint_text">注册邮箱地址</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:139: Warning: The resource R.string.shop_login_password appears to be unused [UnusedResources]
+    <string name="shop_login_password">密码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:140: Warning: The resource R.string.shop_login_loginbutton appears to be unused [UnusedResources]
+    <string name="shop_login_loginbutton">登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:141: Warning: The resource R.string.shop_login_reg_new appears to be unused [UnusedResources]
+    <string name="shop_login_reg_new"><u>注册</u></string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:142: Warning: The resource R.string.shop_login_forget_password appears to be unused [UnusedResources]
+    <string name="shop_login_forget_password"><u>忘记密码</u></string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:143: Warning: The resource R.string.shop_register_title appears to be unused [UnusedResources]
+    <string name="shop_register_title">注册用户帐户</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:144: Warning: The resource R.string.shop_reg_email_prompt appears to be unused [UnusedResources]
+    <string name="shop_reg_email_prompt">请输入您的邮箱地址</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:145: Warning: The resource R.string.shop_reg__email_hint appears to be unused [UnusedResources]
+    <string name="shop_reg__email_hint">邮箱地址</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:146: Warning: The resource R.string.shop_reg_password_prompt appears to be unused [UnusedResources]
+    <string name="shop_reg_password_prompt">请设置账户密码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:147: Warning: The resource R.string.shop_reg_password_hint appears to be unused [UnusedResources]
+    <string name="shop_reg_password_hint">请输入账户密码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:148: Warning: The resource R.string.shop_reg_password_confirm_hint appears to be unused [UnusedResources]
+    <string name="shop_reg_password_confirm_hint">再次确认密码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:149: Warning: The resource R.string.shop_reg_password_req_notice appears to be unused [UnusedResources]
+    <string name="shop_reg_password_req_notice">密码为4－16位字符</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:150: Warning: The resource R.string.shop_reg_regbtn appears to be unused [UnusedResources]
+    <string name="shop_reg_regbtn">立即注册</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:151: Warning: The resource R.string.shop_email_format_error appears to be unused [UnusedResources]
+    <string name="shop_email_format_error">邮箱格式错误</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:152: Warning: The resource R.string.shop_email_empty_error appears to be unused [UnusedResources]
+    <string name="shop_email_empty_error">邮箱不能为空</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:153: Warning: The resource R.string.shop_pwd_format_error appears to be unused [UnusedResources]
+    <string name="shop_pwd_format_error">密码格式错误</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:154: Warning: The resource R.string.shop_pwd_empty_error appears to be unused [UnusedResources]
+    <string name="shop_pwd_empty_error">密码不能为空</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:155: Warning: The resource R.string.shop_pwd_confirm_error appears to be unused [UnusedResources]
+    <string name="shop_pwd_confirm_error">两次输入密码不同，请重新输入</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:156: Warning: The resource R.string.shop_reg_error_enter_incorrectly appears to be unused [UnusedResources]
+    <string name="shop_reg_error_enter_incorrectly">邮箱或密码输入不正确</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:157: Warning: The resource R.string.shop_reg_error_connect_exist appears to be unused [UnusedResources]
+    <string name="shop_reg_error_connect_exist">连接已存在</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:158: Warning: The resource R.string.shop_reg_error_timeout appears to be unused [UnusedResources]
+    <string name="shop_reg_error_timeout">连接超时</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:159: Warning: The resource R.string.shop_reg_error_network appears to be unused [UnusedResources]
+    <string name="shop_reg_error_network">网络错误，请检查网络设置稍后重试</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:160: Warning: The resource R.string.shop_reg_suc appears to be unused [UnusedResources]
+    <string name="shop_reg_suc">注册成功，请登录</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:161: Warning: The resource R.string.shop_reg_error_empty appears to be unused [UnusedResources]
+    <string name="shop_reg_error_empty">邮箱或密码为空</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:162: Warning: The resource R.string.shop_reg_error_duplicate_email appears to be unused [UnusedResources]
+    <string name="shop_reg_error_duplicate_email">此邮箱已被注册</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:163: Warning: The resource R.string.shop_log_error_authorized appears to be unused [UnusedResources]
+    <string name="shop_log_error_authorized">授权失败，请先登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:165: Warning: The resource R.string.shop_log_dialog_title appears to be unused [UnusedResources]
+    <string name="shop_log_dialog_title">使用商城账号登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:166: Warning: The resource R.string.shop_log_dialog_message appears to be unused [UnusedResources]
+    <string name="shop_log_dialog_message">当前操作需要登录后才能继续，是否跳转到登录页面？</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:169: Warning: The resource R.string.sud_title appears to be unused [UnusedResources]
+    <string name="sud_title">软件升级</string>
+            ~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:170: Warning: The resource R.string.sud_ok_btn_text appears to be unused [UnusedResources]
+    <string name="sud_ok_btn_text">现在升级</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:171: Warning: The resource R.string.sud_cancel_btn_text appears to be unused [UnusedResources]
+    <string name="sud_cancel_btn_text">下次再说</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:172: Warning: The resource R.string.upd_title appears to be unused [UnusedResources]
+    <string name="upd_title">正在下载</string>
+            ~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:173: Warning: The resource R.string.upd_message appears to be unused [UnusedResources]
+    <string name="upd_message">请稍候...</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:174: Warning: The resource R.string.update_fail appears to be unused [UnusedResources]
+    <string name="update_fail">更新失败！</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:175: Warning: The resource R.string.download_fail appears to be unused [UnusedResources]
+    <string name="download_fail">下载失败！请检查网络连接/SD卡剩余空间</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:176: Warning: The resource R.string.update_message_no_need appears to be unused [UnusedResources]
+    <string name="update_message_no_need">已经是最新版本！</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:179: Warning: The resource R.string.shop_product_marketprice appears to be unused [UnusedResources]
+    <string name="shop_product_marketprice">市场价： </string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\shop_strings.xml:186: Warning: The resource R.string.welcome appears to be unused [UnusedResources]
+    <string name="welcome">欢迎光临</string>
+            ~~~~~~~~~~~~~~
+res\drawable-hdpi\sportrack_finish.9.png: Warning: The resource R.drawable.sportrack_finish appears to be unused [UnusedResources]
+res\drawable-hdpi\sportrack_finish_pressed.9.png: Warning: The resource R.drawable.sportrack_finish_pressed appears to be unused [UnusedResources]
+res\drawable-hdpi\sportrack_pause.9.png: Warning: The resource R.drawable.sportrack_pause appears to be unused [UnusedResources]
+res\drawable-hdpi\sportrack_pause_pressed.9.png: Warning: The resource R.drawable.sportrack_pause_pressed appears to be unused [UnusedResources]
+res\drawable-w360dp\start_btn.png: Warning: The resource R.drawable.start_btn appears to be unused [UnusedResources]
+res\drawable-w360dp\start_btn_pressed.png: Warning: The resource R.drawable.start_btn_pressed appears to be unused [UnusedResources]
+res\values\strings.xml:10: Warning: The resource R.string.title_activity_friend_moments appears to be unused [UnusedResources]
+    <string name="title_activity_friend_moments">FriendMomentsActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\strings.xml:13: Warning: The resource R.string.title_activity_cover_edit appears to be unused [UnusedResources]
+    <string name="title_activity_cover_edit">CoverEditActivity</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\drawable-hdpi\tab_health_normal.png: Warning: The resource R.drawable.tab_health_normal appears to be unused [UnusedResources]
+res\drawable-hdpi\tab_health_selected.png: Warning: The resource R.drawable.tab_health_selected appears to be unused [UnusedResources]
+res\drawable\text_border_normal.xml: Warning: The resource R.drawable.text_border_normal appears to be unused [UnusedResources]
+res\drawable\text_border_select.xml: Warning: The resource R.drawable.text_border_select appears to be unused [UnusedResources]
+res\drawable-hdpi\time_grayiconsmall.png: Warning: The resource R.drawable.time_grayiconsmall appears to be unused [UnusedResources]
+res\values\ting_color.xml:4: Warning: The resource R.color.listbackcolor appears to be unused [UnusedResources]
+  <color name="listbackcolor">#EFEFEF</color>
+         ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:5: Warning: The resource R.color.frame appears to be unused [UnusedResources]
+  <color name="frame">#87af30</color>
+         ~~~~~~~~~~~~
+res\values\ting_color.xml:6: Warning: The resource R.color.text appears to be unused [UnusedResources]
+  <color name="text">#000000</color>
+         ~~~~~~~~~~~
+res\values\ting_color.xml:7: Warning: The resource R.color.textback appears to be unused [UnusedResources]
+  <color name="textback">#FFFFFF</color>
+         ~~~~~~~~~~~~~~~
+res\values\ting_color.xml:8: Warning: The resource R.color.listtext appears to be unused [UnusedResources]
+  <color name="listtext">#000000</color>
+         ~~~~~~~~~~~~~~~
+res\values\ting_color.xml:9: Warning: The resource R.color.listsubtext appears to be unused [UnusedResources]
+  <color name="listsubtext">#464646</color>
+         ~~~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:10: Warning: The resource R.color.listhiback appears to be unused [UnusedResources]
+  <color name="listhiback">#717171</color>
+         ~~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:11: Warning: The resource R.color.titleback appears to be unused [UnusedResources]
+  <color name="titleback">#3A3A3A</color>
+         ~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:12: Warning: The resource R.color.titlesubback appears to be unused [UnusedResources]
+  <color name="titlesubback">#CCCCCC</color>
+         ~~~~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:13: Warning: The resource R.color.titlesubback_local appears to be unused [UnusedResources]
+  <color name="titlesubback_local">#F6F6F6</color>
+         ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:14: Warning: The resource R.color.titletext appears to be unused [UnusedResources]
+  <color name="titletext">#FFFFFF</color>
+         ~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:15: Warning: The resource R.color.line_dark appears to be unused [UnusedResources]
+  <color name="line_dark">#CACACA</color>
+         ~~~~~~~~~~~~~~~~
+res\values\ting_color.xml:16: Warning: The resource R.color.line_light appears to be unused [UnusedResources]
+  <color name="line_light">#FFFFFF</color>
+         ~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:4: Warning: The resource R.string.mymusic appears to be unused [UnusedResources]
+    <string name="mymusic">我的音乐</string>
+            ~~~~~~~~~~~~~~
+res\values\ting_strings.xml:5: Warning: The resource R.string.yes appears to be unused [UnusedResources]
+    <string name="yes">是</string>
+            ~~~~~~~~~~
+res\values\ting_strings.xml:6: Warning: The resource R.string.no appears to be unused [UnusedResources]
+    <string name="no">否</string>
+            ~~~~~~~~~
+res\values\ting_strings.xml:7: Warning: The resource R.string.ok appears to be unused [UnusedResources]
+    <string name="ok">确定</string>
+            ~~~~~~~~~
+res\values\ting_strings.xml:8: Warning: The resource R.string.note appears to be unused [UnusedResources]
+    <string name="note">提示</string>
+            ~~~~~~~~~~~
+res\values\ting_strings.xml:9: Warning: The resource R.string.recommend appears to be unused [UnusedResources]
+    <string name="recommend">推荐</string>
+            ~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:10: Warning: The resource R.string.goback appears to be unused [UnusedResources]
+    <string name="goback">返回</string>
+            ~~~~~~~~~~~~~
+res\values\ting_strings.xml:11: Warning: The resource R.string.playall appears to be unused [UnusedResources]
+    <string name="playall">全部播放</string>
+            ~~~~~~~~~~~~~~
+res\values\ting_strings.xml:12: Warning: The resource R.string.songname appears to be unused [UnusedResources]
+    <string name="songname">歌曲名</string>
+            ~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:13: Warning: The resource R.string.singer appears to be unused [UnusedResources]
+    <string name="singer">歌手</string>
+            ~~~~~~~~~~~~~
+res\values\ting_strings.xml:14: Warning: The resource R.string.toplist_title appears to be unused [UnusedResources]
+    <string name="toplist_title">榜单定制中心</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:15: Warning: The resource R.string.toplist_detial appears to be unused [UnusedResources]
+    <string name="toplist_detial">榜单介绍</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:16: Warning: The resource R.string.menu_settings appears to be unused [UnusedResources]
+    <string name="menu_settings">设置</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:17: Warning: The resource R.string.menu_quit appears to be unused [UnusedResources]
+    <string name="menu_quit">退出程序</string>
+            ~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:19: Warning: The resource R.string.checking appears to be unused [UnusedResources]
+    <string name="checking">正在检查版本，请稍后...</string>
+            ~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:20: Warning: The resource R.string.nolrc appears to be unused [UnusedResources]
+    <string name="nolrc">无歌词文件</string>
+            ~~~~~~~~~~~~
+res\values\ting_strings.xml:21: Warning: The resource R.string.nolocalsongs appears to be unused [UnusedResources]
+    <string name="nolocalsongs">未发现音乐，快来添加几首吧 :)</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:23: Warning: The resource R.string.no_internet appears to be unused [UnusedResources]
+    <string name="no_internet">无可用网络</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:24: Warning: The resource R.string.settings_save appears to be unused [UnusedResources]
+    <string name="settings_save">边听边存</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:25: Warning: The resource R.string.settings_ear appears to be unused [UnusedResources]
+    <string name="settings_ear">拔出耳机暂停</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:26: Warning: The resource R.string.settings_update appears to be unused [UnusedResources]
+    <string name="settings_update">检查更新</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:28: Warning: The resource R.string.settings_quit appears to be unused [UnusedResources]
+    <string name="settings_quit">退出</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:29: Warning: The resource R.string.query_retry appears to be unused [UnusedResources]
+    <string name="query_retry">网络不给力哦，请重试</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:30: Warning: The resource R.string.query_nointernet appears to be unused [UnusedResources]
+    <string name="query_nointernet">无可用网络连接，去设置吗？</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:31: Warning: The resource R.string.query_quit appears to be unused [UnusedResources]
+    <string name="query_quit">确认要离开吗？</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:32: Warning: The resource R.string.current_song appears to be unused [UnusedResources]
+    <string name="current_song">易听 - 当前曲目</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:33: Warning: The resource R.string.current_version appears to be unused [UnusedResources]
+    <string name="current_version">当前版本号：</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:34: Warning: The resource R.string.new_version appears to be unused [UnusedResources]
+    <string name="new_version">最新版本号：</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:35: Warning: The resource R.string.update_notice appears to be unused [UnusedResources]
+    <string name="update_notice">发现新版本，是否升级？</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:36: Warning: The resource R.string.update_latest appears to be unused [UnusedResources]
+    <string name="update_latest">当前是最新版本</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:37: Warning: The resource R.string.download_start appears to be unused [UnusedResources]
+    <string name="download_start">开始下载</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:38: Warning: The resource R.string.download_success appears to be unused [UnusedResources]
+    <string name="download_success">下载成功</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:40: Warning: The resource R.string.download_progress appears to be unused [UnusedResources]
+    <string name="download_progress">下载进度</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:41: Warning: The resource R.string.download_file appears to be unused [UnusedResources]
+    <string name="download_file">正在下载文件</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:42: Warning: The resource R.string.refresh_list appears to be unused [UnusedResources]
+    <string name="refresh_list">正在刷新播放列表，请稍后...</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:43: Warning: The resource R.string.title_lrc appears to be unused [UnusedResources]
+    <string name="title_lrc">歌词播放</string>
+            ~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:44: Warning: The resource R.string.title_list appears to be unused [UnusedResources]
+    <string name="title_list">本地列表</string>
+            ~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:45: Warning: The resource R.string.title_playing_list appears to be unused [UnusedResources]
+    <string name="title_playing_list">当前播放列表</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:46: Warning: The resource R.string.note_circleall appears to be unused [UnusedResources]
+    <string name="note_circleall">全部循环</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:47: Warning: The resource R.string.note_circleone appears to be unused [UnusedResources]
+    <string name="note_circleone">单曲循环</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:48: Warning: The resource R.string.note_random appears to be unused [UnusedResources]
+    <string name="note_random">随机播放</string>
+            ~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:49: Warning: The resource R.string.sdcard_not_ready appears to be unused [UnusedResources]
+    <string name="sdcard_not_ready">未发现SD卡或SD正在被占用，请关闭USB存储模式或拔掉USB线再试。</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:52: Warning: The resource R.string.query_connect appears to be unused [UnusedResources]
+    <string name="query_connect">请联网检测是否有更新</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:53: Warning: The resource R.string.menu_connect appears to be unused [UnusedResources]
+    <string name="menu_connect">联网检测</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:54: Warning: The resource R.string.menu_exit appears to be unused [UnusedResources]
+    <string name="menu_exit">退出</string>
+            ~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:55: Warning: The resource R.string.Have_been_see appears to be unused [UnusedResources]
+    <string name="Have_been_see">已观看</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:56: Warning: The resource R.string.Download_again appears to be unused [UnusedResources]
+    <string name="Download_again">文件已被删除，请重新下载！</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:58: Warning: The resource R.string.loading_wait appears to be unused [UnusedResources]
+    <string name="loading_wait">载入中，请稍候...</string>
+            ~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:59: Warning: The resource R.string.app_installed appears to be unused [UnusedResources]
+    <string name="app_installed">已安装</string>
+            ~~~~~~~~~~~~~~~~~~~~
+res\values\ting_strings.xml:60: Warning: The resource R.string.hint appears to be unused [UnusedResources]
+    <string name="hint">提示</string>
+            ~~~~~~~~~~~
+res\values\vpi__defaults.xml:27: Warning: The resource R.dimen.default_line_indicator_line_width appears to be unused [UnusedResources]
+    <dimen name="default_line_indicator_line_width">12dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:28: Warning: The resource R.dimen.default_line_indicator_gap_width appears to be unused [UnusedResources]
+    <dimen name="default_line_indicator_gap_width">4dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:29: Warning: The resource R.dimen.default_line_indicator_stroke_width appears to be unused [UnusedResources]
+    <dimen name="default_line_indicator_stroke_width">1dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:30: Warning: The resource R.color.default_line_indicator_selected_color appears to be unused [UnusedResources]
+    <color name="default_line_indicator_selected_color">#FF33B5E5</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:31: Warning: The resource R.color.default_line_indicator_unselected_color appears to be unused [UnusedResources]
+    <color name="default_line_indicator_unselected_color">#FFBBBBBB</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:32: Warning: The resource R.bool.default_line_indicator_centered appears to be unused [UnusedResources]
+    <bool name="default_line_indicator_centered">true</bool>
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:34: Warning: The resource R.dimen.default_title_indicator_clip_padding appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_clip_padding">4dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:35: Warning: The resource R.color.default_title_indicator_footer_color appears to be unused [UnusedResources]
+    <color name="default_title_indicator_footer_color">#FF33B5E5</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:36: Warning: The resource R.dimen.default_title_indicator_footer_line_height appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_footer_line_height">2dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:37: Warning: The resource R.integer.default_title_indicator_footer_indicator_style appears to be unused [UnusedResources]
+    <integer name="default_title_indicator_footer_indicator_style">2</integer>
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:38: Warning: The resource R.dimen.default_title_indicator_footer_indicator_height appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_footer_indicator_height">4dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:39: Warning: The resource R.dimen.default_title_indicator_footer_indicator_underline_padding appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_footer_indicator_underline_padding">20dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:40: Warning: The resource R.dimen.default_title_indicator_footer_padding appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_footer_padding">7dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:41: Warning: The resource R.integer.default_title_indicator_line_position appears to be unused [UnusedResources]
+    <integer name="default_title_indicator_line_position">0</integer>
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:42: Warning: The resource R.color.default_title_indicator_selected_color appears to be unused [UnusedResources]
+    <color name="default_title_indicator_selected_color">#FFFFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:43: Warning: The resource R.bool.default_title_indicator_selected_bold appears to be unused [UnusedResources]
+    <bool name="default_title_indicator_selected_bold">true</bool>
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:44: Warning: The resource R.color.default_title_indicator_text_color appears to be unused [UnusedResources]
+    <color name="default_title_indicator_text_color">#BBFFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:45: Warning: The resource R.dimen.default_title_indicator_text_size appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_text_size">15dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:46: Warning: The resource R.dimen.default_title_indicator_title_padding appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_title_padding">5dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:47: Warning: The resource R.dimen.default_title_indicator_top_padding appears to be unused [UnusedResources]
+    <dimen name="default_title_indicator_top_padding">7dp</dimen>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:49: Warning: The resource R.bool.default_underline_indicator_fades appears to be unused [UnusedResources]
+    <bool name="default_underline_indicator_fades">true</bool>
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:50: Warning: The resource R.integer.default_underline_indicator_fade_delay appears to be unused [UnusedResources]
+    <integer name="default_underline_indicator_fade_delay">300</integer>
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:51: Warning: The resource R.integer.default_underline_indicator_fade_length appears to be unused [UnusedResources]
+    <integer name="default_underline_indicator_fade_length">400</integer>
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\values\vpi__defaults.xml:52: Warning: The resource R.color.default_underline_indicator_selected_color appears to be unused [UnusedResources]
+    <color name="default_underline_indicator_selected_color">#FF33B5E5</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res\drawable-w360dp\youjiantou.png: Warning: The resource R.drawable.youjiantou appears to be unused [UnusedResources]
+0 errors, 897 warnings

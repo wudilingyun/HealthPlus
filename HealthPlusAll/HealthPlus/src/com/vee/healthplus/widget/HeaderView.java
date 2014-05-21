@@ -25,8 +25,6 @@ public class HeaderView extends LinearLayout implements OnClickListener {
 	public static final int HEADER_CAMERA = 7;
 	public static final int HEADER_CLEAR = 8;
 	public static final int HEADER_MENU = 9;//新闻资讯下拉菜单
-	public static final int HEADER_MOMENTS_FRIENDS = 10;
-	public static final int HEADER_MOMENTS_CAMERA = 11;
 
 	private Integer mLOption;
 	private Integer mROption;

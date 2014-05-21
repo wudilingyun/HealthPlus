@@ -5,17 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import android.R.string;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,42 +20,22 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.heahth_news_http.Contact;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
-import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
-import com.vee.healthplus.heahth_news_utils.JsonCache;
-import com.vee.healthplus.ui.heahth_exam.ExamTypeActivity;
-import com.vee.healthplus.ui.heahth_heart.HeartRateActivity;
-import com.vee.healthplus.ui.heahth_news.Health_ValuableBookActivity;
-import com.vee.healthplus.ui.main.MainPage;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
-import com.vee.healthplus.util.GpsUitl;
-import com.vee.healthplus.util.HPConst;
+import com.vee.healthplus.ui.setting.HealthPlusAboutActivity;
 import com.vee.healthplus.util.sporttrack.TrackEntity;
 import com.vee.healthplus.util.sporttrack.weather.BMapCity;
 import com.vee.healthplus.util.sporttrack.weather.WeatherUtil;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
-import com.vee.healthplus.util.user.SignInTask.SignInCallBack;
 import com.vee.healthplus.util.user.UserIndexUtils;
-import com.vee.healthplus.util.user.UserInfoUtil;
 import com.vee.healthplus.widget.RoundImageView;
-import com.vee.healthplus.widget.tabpage.CirclePageIndicator;
-import com.vee.healthplus.widget.tabpage.PageIndicator;
-import com.vee.myhealth.activity.MentalityActivity;
-import com.vee.myhealth.activity.SubHealthActivity;
-import com.vee.myhealth.activity.TestResultActivity;
-import com.vee.myhealth.activity.TiZhiActivity;
-import com.vee.myhealth.activity.WeightLossActivity;
 import com.vee.myhealth.bean.TestCollectinfor;
 
 public class MyhealthFragment extends Fragment implements ICallBack,
@@ -158,9 +135,15 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		head_img.setOnClickListener(this);
 		weather_img = (ImageView) view.findViewById(R.id.weather_img);
 		gv.setSelector(new ColorDrawable(Color.TRANSPARENT));
+		updateLoginState();
+		updateView(new TrackEntity(), true);
+
+	}
+	
+	private void updateLoginState(){
 		int userid = HP_User.getOnLineUserId(getActivity());
 		if (userid == 0) {
-
+			username_txt.setGravity(Gravity.CENTER);
 			username_txt.setText("未登录");
 			age_txt.setVisibility(View.GONE);
 			sex_txt.setVisibility(View.GONE);
@@ -168,6 +151,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		} else {
 			HP_User user = HP_DBModel.getInstance(getActivity())
 					.queryUserInfoByUserId(userid, true);
+		//	username_txt.setGravity(Gravity.LEFT);
 			username_txt.setText(user.userNick);
 			age_txt.setText(user.userAge + "岁");
 
@@ -176,7 +160,6 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 			} else {
 				sex_txt.setImageResource(R.drawable.girl_icon);
 			}
-
 			ImageLoader.getInstance(getActivity()).addTask(user.photourl,
 					head_img);
 			if (user.userHeight != 0 && user.userWeight != 0) {
@@ -191,8 +174,6 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 			sex_txt.setVisibility(View.VISIBLE);
 
 		}
-		updateView(new TrackEntity(), true);
-
 	}
 
 	void initDate() {
@@ -243,6 +224,8 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		super.onResume();
 		updateView(new TrackEntity(), true);
 		addTagForJPush();
+		updateLoginState();
+		
 	}
 
 	void addTagForJPush() {
@@ -259,6 +242,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 				System.err.println("测试结果" + s);
 				tags.add(s);
 			}
+		/*tags.add("个人专享");*/
 			JPushInterface.setTags(getActivity(), tags, this);
 
 		}
@@ -273,7 +257,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 
 	@Override
 	public void onChange() {
-		Intent intent = new Intent(getActivity(), ExamTypeActivity.class);
+		Intent intent = new Intent(getActivity(), HealthPlusAboutActivity.class);
 		startActivity(intent);
 
 	}

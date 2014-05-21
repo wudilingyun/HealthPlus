@@ -1,5 +1,7 @@
 package com.vee.healthplus.ui.heahth_news;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 	}
 
 	public void listaddAdapter(List<YysNewsResponse> newslist) {
+		
 		this.newslist.addAll(newslist);
 	}
 
@@ -80,6 +83,8 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 			// v.newsbrief = (TextView) view.findViewById(R.id.newsbrief);
 			v.imageView_healthnews = (RoundImageView) view
 					.findViewById(R.id.imageView_healthnews);
+			v.newstime = (TextView)view.findViewById(R.id.data);
+		
 			view.setTag(v);
 		}
 
@@ -88,7 +93,12 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 		// v.newsbrief.setText(newslist.get(position).getSummary());
 		v.newstitle.setTag(newslist.get(position).getNewsurl());
 		System.out.println("webview的网址是"+newslist.get(position).getNewsurl());
+		long creattime = newslist.get(position).getCreatetime().getTime();
+		SimpleDateFormat sdf= new SimpleDateFormat("MM/dd");  
 		v.imageView_healthnews.setImageResource(R.drawable.header);
+		v.newstime.setText(sdf.format(creattime));
+		v.newstime.setTag(newslist.get(position).getDigest().toString());
+		
 		String imgurl = newslist.get(position).getThumbnailurl();
 		imageLoader.addTask(imgurl, v.imageView_healthnews);
 		return view;
@@ -97,7 +107,7 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 	public class ViewHolder {
 
 		private int position;
-		private TextView newstitle, newsbrief;
+		private TextView newstitle, newsbrief,newstime;
 		private ImageView imageView_top ;
 		private RoundImageView imageView_healthnews;
 	}

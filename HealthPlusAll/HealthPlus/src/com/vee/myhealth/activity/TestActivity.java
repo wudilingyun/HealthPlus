@@ -3,7 +3,6 @@ package com.vee.myhealth.activity;
 import java.util.List;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.ui.heahth_exam.ExamListAdapter;
 import com.vee.myhealth.bean.HealthQuestionEntity;
 import com.vee.myhealth.util.MyHealthAdapter;
 import com.vee.myhealth.util.SqlDataCallBack;

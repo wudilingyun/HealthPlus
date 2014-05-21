@@ -10,13 +10,10 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
@@ -24,11 +21,9 @@ import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.MKGeneralListener;
 import com.baidu.mapapi.map.MKEvent;
 import com.vee.healthplus.R;
-import com.vee.healthplus.ui.main.LoginMain;
-import com.vee.healthplus.ui.main.MainPage;
+import com.vee.healthplus.ui.main.FirstActivity;
 import com.vee.healthplus.ui.setting.SettingShare;
 import com.vee.healthplus.util.ImageLoader;
-import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.shop.bean.CartItemBean;
 import com.vee.shop.util.ApplicationUtils;
 
@@ -126,7 +121,7 @@ public class MyApplication extends Application implements TagAliasCallback  {
 	}
 
 	public static void shareBySystem(Context mContext, String sendMsg,
-			String imgUrl, String url, String id, String type) {
+			String imgUrl, String url, String id, String type,String brief) {
 		String imgPath = "";
 
 		try {
@@ -149,6 +144,7 @@ public class MyApplication extends Application implements TagAliasCallback  {
 		intent.putExtra("url", url);
 		intent.putExtra("id", id);
 		intent.putExtra("type", type);
+		intent.putExtra("brief", brief);
 		mContext.startActivity(intent);
 	}
 
@@ -164,7 +160,7 @@ public class MyApplication extends Application implements TagAliasCallback  {
 		shortcut.putExtra("duplicate", false); // 不允许重复创建
 
 		Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);
-		shortcutIntent.setClassName(context, LoginMain.class.getName());
+		shortcutIntent.setClassName(context, FirstActivity.class.getName());
 		shortcutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
 
@@ -187,8 +183,8 @@ public class MyApplication extends Application implements TagAliasCallback  {
 
 		// 指定当前的Activity为快捷方式启动的对象: 如 com.everest.video.VideoPlayer
 		// 注意: ComponentName的第二个参数必须是完整的类名（包名+类名），否则无法删除快捷方式
-		Log.e("xuxuxu", LoginMain.class.getName());
-		String appClass = LoginMain.class.getName();// "com.vee.healthplus.ui.main.LoginMain";
+		Log.e("xuxuxu", FirstActivity.class.getName());
+		String appClass = FirstActivity.class.getName();// "com.vee.healthplus.ui.main.LoginMain";
 		ComponentName comp = new ComponentName(context.getPackageName(),
 				appClass);
 		shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent(

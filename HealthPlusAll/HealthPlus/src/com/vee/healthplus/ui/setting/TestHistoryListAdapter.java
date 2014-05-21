@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +53,7 @@ public class TestHistoryListAdapter extends BaseAdapter {
 		return position;
 	}
 
+	@SuppressLint("ResourceAsColor")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -75,12 +78,17 @@ public class TestHistoryListAdapter extends BaseAdapter {
 		}
 
 		ViewHolder v = (ViewHolder) view.getTag();
+		if(position%2==0){
+			view.setBackgroundColor(0x55A5A5A5);
+		}else{
+			view.setBackgroundColor(Color.WHITE);
+		}
 		v.testIndex.setText(position + 1 + "");
 		v.testName.setText(testlist.get(position).getName());
 		v.testResult.setText(testlist.get(position).getResult());
 		long time = testlist.get(position).getCreattime();
 		Date date = new Date(time);
-		SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日  HH:mm");
+		SimpleDateFormat df = new SimpleDateFormat("MM.dd HH:mm");
 		String str = df.format(date);
 
 		v.testTime.setText(str);

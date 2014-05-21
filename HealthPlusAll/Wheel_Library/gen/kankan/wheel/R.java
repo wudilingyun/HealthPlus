@@ -11,9 +11,10 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static int hp_w_targetcountbg=0x7f020000;
-        public static int hp_w_targetcountcurbg=0x7f020001;
-        public static int wheel_bg=0x7f020002;
-        public static int wheel_val=0x7f020003;
+        public static int age_edit_wheel_bg=0x7f020000;
+        public static int hp_w_targetcountbg=0x7f020001;
+        public static int hp_w_targetcountcurbg=0x7f020002;
+        public static int wheel_bg=0x7f020003;
+        public static int wheel_val=0x7f020004;
     }
 }

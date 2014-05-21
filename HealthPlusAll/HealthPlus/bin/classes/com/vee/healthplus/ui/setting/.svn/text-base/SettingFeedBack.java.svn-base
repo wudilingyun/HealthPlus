@@ -106,10 +106,10 @@ public class SettingFeedBack extends Activity implements
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if(feedback_content.getText().toString().trim().length()>1){
-				content.append("OtherQuestion:"
-						+ feedback_content.getText().toString() + ";");
-				}else{
+				if (feedback_content.getText().toString().trim().length() > 1) {
+					content.append("OtherQuestion:"
+							+ feedback_content.getText().toString() + ";");
+				} else {
 					Toast.makeText(
 							mContext,
 							mContext.getResources().getString(
@@ -194,8 +194,7 @@ public class SettingFeedBack extends Activity implements
 	}
 
 	private static boolean isEmail(String strEmail) {
-		String strPattern = "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$";
-
+		String strPattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
 		Pattern p = Pattern.compile(strPattern);
 		Matcher m = p.matcher(strEmail);
 		return m.matches();

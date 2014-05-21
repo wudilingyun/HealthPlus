@@ -1,7 +1,5 @@
 package com.vee.healthplus.ui.heahth_exam;
 
-import com.yunfox.s4aservicetest.response.NewUserSportsIdResponse;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 

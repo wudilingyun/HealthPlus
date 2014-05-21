@@ -19,7 +19,7 @@
     <string name="invite">邀请</string>
     <string name="added">已添加</string>
     <string name="avatar">头像</string>
-    <string name="savemoments">添加</string>
+    <string name="savemoments">发送</string>
     <string name="changecover">更换相册封面</string>
     <string name="cameraonecover">拍一张</string>
     <string name="albumcover">从手机相册选择</string>
@@ -31,5 +31,8 @@
     <string name="str_content_icon">内容标志</string>
     <string name="str_time">13&#8211;07&#8211;15</string>
     <string name="mymoments">我的收藏</string>
+    <string name="upload10minutues">10分钟前上传</string>
+    <string name="moments_support">赞</string>
+    <string name="moments_comment">评论</string>
 
 </resources>

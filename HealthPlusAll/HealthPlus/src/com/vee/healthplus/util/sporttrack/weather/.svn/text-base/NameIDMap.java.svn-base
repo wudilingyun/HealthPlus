@@ -5,7 +5,6 @@ import java.util.Map;
 
 import android.content.Context;
 
-import com.vee.healthplus.util.sporttrack.TrackUtil;
 
 public class NameIDMap {
 	private static NameIDMap mInstance;

@@ -11,8 +11,8 @@
             android:id="@+id/imageView_healthnews"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp" />
 
         <TextView
@@ -23,10 +23,9 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/imageView_healthnews"
             android:lines="1"
-            android:maxEms="10"
             android:text="2013.4.20•正在进行"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/comment"
@@ -56,15 +55,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/imageView_icon"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/newstitle"
+            android:layout_marginRight="15dp"
             android:lines="1"
             android:maxEms="6"
             android:text=""
-            android:textColor="@color/gray"
-            android:textSize="@dimen/health_textsize_3"
-            android:visibility="gone" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/health_textsize_3" />
     </RelativeLayout>
 
 </RelativeLayout>

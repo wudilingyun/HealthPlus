@@ -105,7 +105,7 @@ public class SearchPhoneActivity extends BaseFragmentActivity {
 
 			if (searchUserResponse != null) {
 				if (searchUserResponse.getFriendid() == 0) {
-					Toast.makeText(SearchPhoneActivity.this, "no user find",
+					Toast.makeText(SearchPhoneActivity.this, "没有找到用户",
 							Toast.LENGTH_SHORT).show();
 				} else {
 					Intent intent = new Intent(SearchPhoneActivity.this,
@@ -113,6 +113,7 @@ public class SearchPhoneActivity extends BaseFragmentActivity {
 					Bundle bundle = new Bundle();
 					bundle.putSerializable("searchuserresponse",
 							searchUserResponse);
+					bundle.putString("searchcontent", searchcontent);
 					intent.putExtras(bundle);
 					startActivityForResult(intent, 1);
 				}

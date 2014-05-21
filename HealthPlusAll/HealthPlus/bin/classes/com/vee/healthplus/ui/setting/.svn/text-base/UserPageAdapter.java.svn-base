@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.vee.healthplus.R;
 
-public class UserPageAdapter extends BaseAdapter {
+class UserPageAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private String[] sTitles;
@@ -18,9 +18,9 @@ public class UserPageAdapter extends BaseAdapter {
 			R.drawable.healthplus_wo_item_setting_icon,
 			R.drawable.healthplus_wo_item_device_icon,R.drawable.shop_search_order_icon};
 
-	protected LayoutInflater _mInflater;
+	private LayoutInflater _mInflater;
 
-	public UserPageAdapter(Context mContext, String[] strings) {
+	UserPageAdapter(Context mContext, String[] strings) {
 		super();
 		this.mContext = mContext;
 		this.sTitles = strings;
@@ -57,8 +57,6 @@ public class UserPageAdapter extends BaseAdapter {
 					.findViewById(R.id.user_list_item_icon);
 			holder.title = (TextView) convertView
 					.findViewById(R.id.user_list_item_text);
-			holder.arrow = (ImageView) convertView
-					.findViewById(R.id.user_list_item_arrow);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -68,13 +66,11 @@ public class UserPageAdapter extends BaseAdapter {
 		return convertView;
 	}
 
-	class ViewHolder {
+	private class ViewHolder {
 
-		ImageView icon;
+		private ImageView icon;
 
-		TextView title;
-
-		ImageView arrow;
+		private TextView title;
 	}
 
 }

@@ -1,14 +1,14 @@
 10
 
 dir
-742
+766
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-16T06:22:26.061587Z
-742
+2014-05-21T10:03:06.599347Z
+766
 lingyun
 
 
@@ -26,13 +26,13 @@ lingyun
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
 
-load
+TaskCallBack
 dir
 
 http
 dir
 
-TaskCallBack
+load
 dir
 
 adapter
@@ -41,33 +41,38 @@ dir
 widget
 dir
 
-wxapi
+receiver
+dir
+
+
+
+delete
+
+heahth_news_beans
 dir
 
 common
 dir
 
-heahth_news_http
+wxapi
 dir
+
+
+
+delete
 
 activity
 dir
 
-service
+heahth_news_http
 dir
 
-receiver
-dir
-
-heahth_news_beans
-dir
-
-util
+heahth_news_utils
 dir
 
 ui
 dir
 
-heahth_news_utils
+util
 dir
 

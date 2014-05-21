@@ -44,7 +44,7 @@ public class Health_ValueBook_Comment_Adapter extends BaseAdapter {
 	}
 
 	public void listaddAdapter(List<NewsComment> newslist) {
-		this.newslist.clear();
+		//this.newslist.clear();
 		this.newslist.addAll(newslist);
 	}
 

@@ -11,7 +11,7 @@
         android:layout_height="140dip"
         android:background="@drawable/moments_cover_default"
         android:clickable="true"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:focusable="false" />
 
     <com.vee.healthplus.widget.RoundImageView

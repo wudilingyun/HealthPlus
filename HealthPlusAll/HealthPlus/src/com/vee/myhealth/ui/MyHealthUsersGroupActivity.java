@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.ui.heahth_exam.MyAdapter;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 

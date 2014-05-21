@@ -37,7 +37,6 @@ import com.androidquery.AQuery;
 import com.androidquery.util.AQUtility;
 import com.vee.healthplus.R;
 import com.vee.healthplus.common.MyApplication;
-import com.vee.healthplus.ui.user.UserLogin_Activity;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.shop.bean.CartItemBean;
@@ -229,8 +228,7 @@ public class NewProductDetailActivity extends BaseActivity implements
 			break;
 		case R.id.shop_productdetail_addcartBtn:
 			if (HP_User.getOnLineUserId(mContext) == 0) {
-				new UserLogin_Activity(this).show(getSupportFragmentManager(),
-						"");
+				
 			} else {
 				HashMap<String, CartItemBean> cartMap = MyApplication
 						.getCartMap();
@@ -373,16 +371,13 @@ public class NewProductDetailActivity extends BaseActivity implements
 					if (httpError.getStatusCode() == HttpStatus.UNAUTHORIZED) {
 						// go login
 						if (HP_User.getOnLineUserId(mContext) == 0) {
-							new UserLogin_Activity(
-									NewProductDetailActivity.this).show(
-									getSupportFragmentManager(), "");
+
 						}
 					}
 				} else if (exception instanceof MissingAuthorizationException) {
 					// go login
 					if (HP_User.getOnLineUserId(mContext) == 0) {
-						new UserLogin_Activity(NewProductDetailActivity.this)
-								.show(getSupportFragmentManager(), "");
+
 					}
 				}
 			} else if (exception == null) {

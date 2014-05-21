@@ -1,13 +1,19 @@
 package com.vee.healthplus.ui.user;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
+import com.vee.healthplus.ui.main.FirstActivity;
 import com.vee.healthplus.ui.main.MainPage;
+import com.vee.healthplus.util.user.HP_DBModel;
+import com.vee.healthplus.util.user.HP_User;
 
 import cn.jpush.android.api.JPushInterface;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,12 +23,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TempActivity extends Activity {
-	public static boolean isForeground = false;
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_EXTRAS = "extras";
 	public static final String MESSAGE_RECEIVED_ACTION = "com.vee.healthplus.MESSAGE_RECEIVED_ACTION";
 	private TextView header_text;
 	private ImageView header_lbtn_img, header_rbtn_img;
+	TextView contView, timView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,28 +37,29 @@ public class TempActivity extends Activity {
 
 		setContentView(R.layout.activity_notifi_jpush);
 		gettitle();
-		TextView contView = (TextView) findViewById(R.id.jpush_content);
-		TextView timView = (TextView) findViewById(R.id.jpush_time);
-
+		contView = (TextView) findViewById(R.id.jpush_content);
+		timView = (TextView) findViewById(R.id.jpush_time);
+		int userid =HP_User.getOnLineUserId(this);
+		long time =System.currentTimeMillis();
 		Intent intent = getIntent();
 		if (null != intent) {
 			Bundle bundle = getIntent().getExtras();
-			/*
-			 * String title =
-			 * bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE); String
-			 * content = bundle.getString(JPushInterface.EXTRA_ALERT);
-			 */
-		
 			String title = bundle.getString("title");
 			String content = bundle.getString("content");
-			System.out.println("内容提要"+content);
+			System.out.println("页面内容" + content);
 			contView.setText(content);
 			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 			String date = sdf.format(new java.util.Date());
 			timView.setText(date);
-
+			HP_DBModel.getInstance(this).updateJPushReadFlag(userid, title, content, time);
 		}
+	}
 
+	@Override
+	protected void onNewIntent(Intent intent) {
+		// TODO Auto-generated method stub
+		super.onNewIntent(intent);
+		System.out.println("newintent");
 	}
 
 	void gettitle() {
@@ -67,8 +74,10 @@ public class TempActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(TempActivity.this, MainPage.class);
-				startActivity(intent);
+				if (FirstActivity.isForeground) {
+					Intent intent = new Intent(TempActivity.this, FirstActivity.class);
+					startActivity(intent);
+				}
 				finish();
 			}
 		});
@@ -77,7 +86,6 @@ public class TempActivity extends Activity {
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		isForeground = true;
 		super.onResume();
 	}
 
@@ -85,15 +93,39 @@ public class TempActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		isForeground = false;
 	}
 
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
-		Intent intent = new Intent(TempActivity.this, MainPage.class);
-		startActivity(intent);
+		if (FirstActivity.isForeground) {
+			Intent intent = new Intent(TempActivity.this, FirstActivity.class);
+			startActivity(intent);
+		}
+
 		finish();
+	}
+
+	public static boolean isServiceStarted(Context context, String PackageName) {
+		boolean isStarted = false;
+		try {
+			ActivityManager mActivityManager = (ActivityManager) context
+					.getSystemService(Context.ACTIVITY_SERVICE);
+			int intGetTastCounter = 1000;
+			List<ActivityManager.RunningServiceInfo> mRunningService = mActivityManager
+					.getRunningServices(intGetTastCounter);
+			for (ActivityManager.RunningServiceInfo amService : mRunningService) {
+				if (0 == amService.service.getPackageName().compareTo(
+						PackageName)) {
+					isStarted = true;
+					System.out.println("情动了");
+					break;
+				}
+			}
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
+		return isStarted;
 	}
 }

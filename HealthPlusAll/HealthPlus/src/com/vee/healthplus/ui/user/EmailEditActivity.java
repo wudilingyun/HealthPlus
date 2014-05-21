@@ -16,7 +16,7 @@ import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.widget.HeaderView;
 import com.vee.healthplus.widget.HeaderView.OnHeaderClickListener;
 
-@SuppressLint("ResourceAsColor")
+@SuppressLint("ResourceAsColor") 
 public class EmailEditActivity extends BaseFragmentActivity implements
 		View.OnClickListener {
 
@@ -77,9 +77,6 @@ public class EmailEditActivity extends BaseFragmentActivity implements
 		clearBtn = (ImageView) view
 				.findViewById(R.id.personal_info_email_edit_clear_img);
 		clearBtn.setOnClickListener(this);
-		String digits = getResources().getString(R.string.user_resgiter_edit);
-		// userPwd_et.setKeyListener(DigitsKeyListener.getInstance(digits));
-		// userName_et.setKeyListener(DigitsKeyListener.getInstance(digits));
 	}
 
 	@Override
@@ -97,16 +94,6 @@ public class EmailEditActivity extends BaseFragmentActivity implements
 	@Override
 	public void onResume() {
 		super.onResume();
-	}
-
-	private void displayRegisterError(String message) {
-		// new
-		// AlertDialog.Builder(mContext).setMessage(message).setCancelable(false)
-		// .setPositiveButton("OK", null).create().show();
-	}
-
-	private void displayRegisterResult(String msg) {
-		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
 	}
 
 }

@@ -4,19 +4,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.springframework.http.HttpStatus;
 import org.springframework.social.connect.DuplicateConnectionException;
 import org.springframework.social.greenhouse.api.Profile;
-import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -31,7 +31,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.load.DownloadData;
 import com.vee.healthplus.util.user.GetProfileTask;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
@@ -41,6 +40,7 @@ import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
 import com.yunfox.s4aservicetest.response.DayRecord;
 
+@SuppressLint("HandlerLeak")
 public class HealthPlusLoginActivity extends Activity implements
 		View.OnClickListener, SignInTask.SignInCallBack,
 		GetProfileTask.GetProfileCallBack,
@@ -52,7 +52,7 @@ public class HealthPlusLoginActivity extends Activity implements
 	private ResizeLayout root_layout;
 	private Button register_btn;
 	private Button login_btn;
-	private Button forget_btn;
+	private Button forget_btn,enterWithoutLogin_btn;
 	private TextView register_tv;
 	private ImageView uname_img, pwd_img;
 
@@ -113,6 +113,9 @@ public class HealthPlusLoginActivity extends Activity implements
 		login_btn = (Button) findViewById(R.id.health_plus_login_btn);
 		register_tv = (TextView) findViewById(R.id.health_plus_register_text);
 		forget_btn = (Button) findViewById(R.id.health_plus_forgetPwd_btn);
+		enterWithoutLogin_btn = (Button) findViewById(R.id.health_plus_enterwithoutlogin_btn);
+		forget_btn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+		enterWithoutLogin_btn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 		uname_img = (ImageView) findViewById(R.id.health_plus_uname_img);
 		pwd_img = (ImageView) findViewById(R.id.health_plus_pwd_img);
 		userName_et.setOnFocusChangeListener(new OnFocusChangeListener() {
@@ -145,6 +148,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		forget_btn.setOnClickListener(this);
 		register_btn.setOnClickListener(this);
 		login_btn.setOnClickListener(this);
+		enterWithoutLogin_btn.setOnClickListener(this);
 	}
 
 	@Override
@@ -168,6 +172,10 @@ public class HealthPlusLoginActivity extends Activity implements
 			Intent intent2 = new Intent();
 			intent2.setClass(this, HealthPlusFindPwdActivity.class);
 			startActivity(intent2);
+			break;
+		case R.id.health_plus_enterwithoutlogin_btn:
+			finish();
+			break;
 		}
 	}
 
@@ -196,28 +204,6 @@ public class HealthPlusLoginActivity extends Activity implements
 
 	private void displayAppAuthorizationError(String message) {
 		Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-	}
-
-	private AccessGrant extractAccessGrant(Map<String, Object> result) {
-		return new AccessGrant((String) result.get("access_token"),
-				(String) result.get("scope"),
-				(String) result.get("refresh_token"), getIntegerValue(result,
-						"expires_in"));
-	}
-
-	// Retrieves object from map into an Integer, regardless of the object's
-	// actual type. Allows for flexibility in object type (eg, "3600" vs 3600).
-	private Integer getIntegerValue(Map<String, Object> map, String key) {
-		try {
-			return Integer.valueOf(String.valueOf(map.get(key))); // normalize
-																	// to String
-																	// before
-																	// creating
-																	// integer
-																	// value;
-		} catch (NumberFormatException e) {
-			return null;
-		}
 	}
 
 	private void displayLoginResult(String msg) {
@@ -284,7 +270,6 @@ public class HealthPlusLoginActivity extends Activity implements
 		HP_User.setOnLineUserId(this, profile.getMemberid());
 		displayLoginResult(this.getResources().getString(
 				R.string.hp_userlogin_success));
-		DownloadData.getInstance(this).downloadAllData();
 		Bundle b = getIntent().getExtras();
 		if (b != null) {
 			Intent i = new Intent();
@@ -314,7 +299,6 @@ public class HealthPlusLoginActivity extends Activity implements
 		finish();
 	}
 	
-
 	@Override
 	public void onFinishQueryAllDayRecordByTyp(List<DayRecord> dayrecordlist) {
 		progressDialog.dismiss();

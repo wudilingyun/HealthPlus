@@ -1,39 +1,33 @@
 package com.vee.healthplus.ui.setting;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonBackReference;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
-import com.vee.healthplus.heahth_news_http.ImageLoader;
-import com.vee.healthplus.util.user.HP_User;
-import com.vee.healthplus.widget.RoundImageView;
 import com.vee.myhealth.bean.JPushBean;
 
 public class JPushListAdapter extends BaseAdapter {
 
 	LayoutInflater inflater;
 	List<JPushBean> jlist;
-	private ImageLoader imageLoader;
 	List<Bitmap> bitmaps;
 
-	public JPushListAdapter(Context context, ImageLoader imageLoader) {
+	public JPushListAdapter(Context context) {
 		super();
 		inflater = LayoutInflater.from(context);
 		jlist = new ArrayList<JPushBean>();
-		this.imageLoader = imageLoader;
 	}
 
 	public void listaddAdapter(List<JPushBean> jlist) {
@@ -58,6 +52,7 @@ public class JPushListAdapter extends BaseAdapter {
 		return position;
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -78,20 +73,30 @@ public class JPushListAdapter extends BaseAdapter {
 					.findViewById(R.id.jpush_list_content_tv);
 			v.jpushIndex = (TextView) view
 					.findViewById(R.id.jpush_list_index_tv);
+			v.jpushTime = (TextView) view
+					.findViewById(R.id.jpush_list_time_tv);
 			view.setTag(v);
 		}
 
 		ViewHolder v = (ViewHolder) view.getTag();
-		v.jpushIndex.setText(position+".");
+		if(position%2==0){
+			view.setBackgroundColor(0x55A5A5A5);
+		}else{
+			view.setBackgroundColor(Color.WHITE);
+		}
+		v.jpushIndex.setText(position+1+".");
 		v.jpushTitle.setText(jlist.get(position).getTitle());
 		v.jpushContent.setText(jlist.get(position).getContent());
+		long time = jlist.get(position).getTime();
+		Date date = new Date(time);
+		SimpleDateFormat df = new SimpleDateFormat("MM月dd日");
+		String str = df.format(date);
+		v.jpushTime.setText(str);
 		return view;
 	}
 
 	public class ViewHolder {
-
-		private int position;
-		private TextView jpushTitle, jpushContent,jpushIndex;
+		private TextView jpushTitle, jpushContent,jpushIndex,jpushTime;
 	}
 
 }

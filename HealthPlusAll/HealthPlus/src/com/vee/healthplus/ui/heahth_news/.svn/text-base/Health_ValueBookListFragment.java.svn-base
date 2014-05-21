@@ -83,10 +83,10 @@ public class Health_ValueBookListFragment extends Fragment {
 		protected LayoutInflater _mInflater;
 		private Context ctx;
 
-		private int icon[] = { R.drawable.home_jiankang, R.drawable.home_tizhi,
-				R.drawable.home_heart, R.drawable.home_gaoxuezhi,
-				R.drawable.home_xuetang, R.drawable.home_jianfei,
-				R.drawable.home_jiankang, R.drawable.home_jiankang, };
+		private int icon[] = { R.drawable.news_jianfei, R.drawable.news_tizhi,
+				R.drawable.news_life, R.drawable.news_happy,
+				R.drawable.news_baby, R.drawable.news_rescue,
+				R.drawable.news_sexs, R.drawable.news_fact };
 
 		private int[] name = { R.string.yundong, R.string.jianya,
 				R.string.yingyang, R.string.xiuxi, R.string.yongyao,

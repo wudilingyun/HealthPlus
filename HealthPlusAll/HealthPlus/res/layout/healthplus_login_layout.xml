@@ -23,8 +23,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="55dip"
+                android:layout_marginBottom="8dip"
                 android:src="@drawable/health_plus_logo" />
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="55dip"
+                android:layout_gravity="center_horizontal"
+                android:textSize="16sp"
+                android:textColor="#95BF45"
+                android:text="云医生"/>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -111,18 +119,35 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/health_plus_forgetPwd_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="15.0dip"
-                android:layout_marginBottom="15.0dip"
-                android:background="#0000"
-                android:padding="10dip"
-                android:text="找回密码"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/health_plus_forgetPwd_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="#0000"
+                    android:padding="10dip"
+                    android:text="找回密码"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/health_plus_enterwithoutlogin_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="#0000"
+                    android:padding="10dip"
+                    android:text="直接体验"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
 

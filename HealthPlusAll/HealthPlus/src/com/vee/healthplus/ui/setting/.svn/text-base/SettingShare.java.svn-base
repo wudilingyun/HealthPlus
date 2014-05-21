@@ -31,7 +31,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		PlatformActionListener {
 
 	private Context mContext;
-	private String content;
+	private String content,brief;
 	private final int SUCCESS = 0;
 	private final int CANNEL = 1;
 	private final int ERROR = 2;
@@ -86,20 +86,12 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		imgPath = getIntent().getStringExtra("imgPath");
 		url = getIntent().getStringExtra("url");
 		id = getIntent().getStringExtra("id");
+		brief = getIntent().getStringExtra("brief");
 		// type = getIntent().getStringExtra("type");
 		loading = new LoadingDialogUtil(mContext);
 		ListView shareTo_lv = (ListView) findViewById(R.id.shareTo_lv);
 		ShareActivityAdapter adapter = new ShareActivityAdapter(mContext);
 		getWindow().setWindowAnimations(R.anim.dialog_enter_down2up);
-		share_edit_cancel_btn   = (Button)findViewById(R.id.share_edit_cancel_btn);
-		share_edit_cancel_btn.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
 		shareTo_lv.setAdapter(adapter);
 		shareTo_lv.setOnItemClickListener(this);
 	}
@@ -121,12 +113,13 @@ public class SettingShare extends Activity implements OnItemClickListener,
 	private void shareTo(int shareTo) {
 		String s = "我在使用【云医生】应用,这个新闻很不错啊,你也来看一下吧###[" + content + "]#### 地址是："
 				+ url;
-		int type = Platform.SHARE_TEXT;
-		if (imgPath.length() > 0 && url.length() > 0) {
+		int type = Platform.SHARE_WEBPAGE;
+	if (imgPath.length() > 0 && url.length() > 0) {
 			type = Platform.SHARE_WEBPAGE;
 		} else {
 			type = Platform.SHARE_TEXT;
 		}
+
 		switch (shareTo) {
 		case 0:
 			SinaWeibo.ShareParams sp = new SinaWeibo.ShareParams();
@@ -154,10 +147,12 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		case 2:
 			Wechat.ShareParams sp2 = new Wechat.ShareParams();
 			sp2.title = content;
-			sp2.text = content;
+		//	sp2.setTitleUrl(url);
+			sp2.text = brief;
 			sp2.shareType = type;
 			sp2.imageUrl = imgPath;
 			sp2.url = url;
+			
 			Platform p2 = ShareSDK.getPlatform(this, Wechat.NAME);
 			if (!p2.isValid()) {
 				loading.hide();
@@ -173,8 +168,9 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		case 3:
 			WechatMoments.ShareParams sp3 = new WechatMoments.ShareParams();
 			sp3.title = content;
-			sp3.text = content;
+			sp3.text = brief;
 			sp3.shareType = type;
+			sp3.setTitleUrl(url);
 			sp3.url = url;
 			sp3.imageUrl = imgPath;
 			Platform p3 = ShareSDK.getPlatform(this, WechatMoments.NAME);

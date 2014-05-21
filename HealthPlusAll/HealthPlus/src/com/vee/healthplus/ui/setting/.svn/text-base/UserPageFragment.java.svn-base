@@ -2,16 +2,12 @@ package com.vee.healthplus.ui.setting;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonBackReference;
-
+import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,10 +26,8 @@ import android.widget.Toast;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
-import com.vee.healthplus.heahth_news_http.ImageGetFromHttp;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.ui.heahth_news.FavoriteNewsActivity;
-import com.vee.healthplus.ui.main.QuitDialog;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.ui.user.HealthPlusPersonalInfoEditActivity;
 import com.vee.healthplus.util.SystemMethod;
@@ -42,8 +36,6 @@ import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.UserIndexUtils;
 import com.vee.healthplus.widget.CustomDialog;
-import com.vee.healthplus.widget.HeaderView;
-import com.vee.myhealth.bean.JPushBean;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class UserPageFragment extends Fragment implements OnClickListener,
@@ -51,18 +43,16 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 
 	private Context mContext;
 	private static String[] mTitles;
-	private LayoutInflater mInflater;
 	private UserPageAdapter mAdapter;
 	private ListView mListView;
 	private RelativeLayout rl_login_done;
 	private TextView tv_user_name, user_login_tv, user_login_age,
 			user_weight_tv;
-	private TextView favoriteCountTv, jpushCountTv;
+	private TextView favoriteCountTv, jpushCountTv, jpushUnReadCountTv;
 	private ImageView photoIv, user_login_sex;
 	private RelativeLayout rl_login_none;
 	private LinearLayout user_favorite_ll, user_info_ll, user_jpush_ll;
 	private HP_User user = null;
-	private View logoutView;
 
 	public static UserPageFragment newInstance() {
 		return new UserPageFragment();
@@ -72,13 +62,10 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		if (resultCode == getActivity().RESULT_OK) {
+		getActivity();
+		if (resultCode == Activity.RESULT_OK) {
 			((BaseFragmentActivity) getActivity())
-					.setRightBtnVisible(View.VISIBLE);
-			((BaseFragmentActivity) getActivity()).getHeaderView().setRightRes(
-					R.drawable.header_view_right_bt_history);
-			((BaseFragmentActivity) getActivity()).getHeaderView()
-					.setRightOption(HeaderView.HEADER_EDIT);
+					.setRightBtnVisible(View.GONE);
 		}
 	}
 
@@ -90,13 +77,9 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 		super.onCreate(savedInstanceState);
 	}
 
-	Exception exception;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mInflater = inflater;
-		logoutView = mInflater.inflate(R.layout.userpage_list_item, null);
 		View localView = inflater.inflate(R.layout.userpage, container, false);
 		mListView = (ListView) localView.findViewById(R.id.user_list_view);
 		mAdapter = new UserPageAdapter(mContext, mTitles);
@@ -119,7 +102,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 					break;
 				case 3:
 					if (HP_User.getOnLineUserId(getActivity()) == 0) {
-						Toast.makeText(getActivity(), "未登录", 0).show();
+						Toast.makeText(getActivity(), "未登陆", Toast.LENGTH_SHORT).show();
 					} else {
 						CustomDialog.Builder customBuilder = new CustomDialog.Builder(
 								getActivity());
@@ -146,7 +129,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 												}
 												updateLoginState();
 												Toast.makeText(getActivity(),
-														"已退出", 0).show();
+														"已退出", Toast.LENGTH_SHORT).show();
 
 											}
 										})
@@ -180,6 +163,8 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 				.findViewById(R.id.user_favorite_count_tv);
 		jpushCountTv = (TextView) localView
 				.findViewById(R.id.user_jpush_count_tv);
+		jpushUnReadCountTv = (TextView) localView
+				.findViewById(R.id.user_jpush_unread_count);
 		user_weight_tv = (TextView) localView
 				.findViewById(R.id.user_login_weight);
 
@@ -208,11 +193,20 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	}
 
 	private void updateLoginState() {
-		List<JPushBean> jlist=HP_DBModel.getInstance(mContext).queryJPushList(HP_User.getOnLineUserId(mContext));// 列表获取函数
-		if (jlist != null) {
-			favoriteCountTv.setText(jlist.size() + "");
+		int unReadCount = HP_DBModel.getInstance(mContext)
+				.queryUnReadJPushCount(HP_User.getOnLineUserId(mContext));
+		if (unReadCount != 0) {
+			jpushUnReadCountTv.setVisibility(View.VISIBLE);
+			jpushUnReadCountTv.setText(unReadCount + "");
 		} else {
-			favoriteCountTv.setText(0 + "");
+			jpushUnReadCountTv.setVisibility(View.GONE);
+		}
+		int jpushCount = HP_DBModel.getInstance(mContext)
+				.queryJPushList(HP_User.getOnLineUserId(mContext)).size();
+		if (jpushCount != 0) {
+			jpushCountTv.setText(jpushCount + "");
+		} else {
+			jpushCountTv.setText(0 + "");
 		}
 		int userid = HP_User.getOnLineUserId(getActivity());
 		if (userid != 0) {
@@ -241,7 +235,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			// }
 			List<NewsCollectinfor> list = HP_DBModel.getInstance(mContext)
 					.queryUserCollectInfor(user.userId);
-			
+
 			if (list != null) {
 				favoriteCountTv.setText(list.size() + "");
 			} else {
@@ -250,7 +244,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			user_favorite_ll.setEnabled(true);
 			mAdapter.setTitle(SystemMethod.getStringArray(mContext,
 					R.array.doctor_user_item_login));
-			
+
 		} else {
 			((BaseFragmentActivity) getActivity())
 					.setRightBtnVisible(View.GONE);
@@ -289,13 +283,11 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			startActivity(intent2);
 			break;
 		case R.id.user_list_item_icon:
-			if (user != null) {
-				Intent intent3 = new Intent(getActivity(),
-						ImageViewerDialogActivity.class);
-				intent3.putExtra("bigurl", user.photourl);
-				startActivity(intent3);
-			}
-			break;
+			/*
+			 * if (user != null) { Intent intent3 = new Intent(getActivity(),
+			 * ImageViewerDialogActivity.class); intent3.putExtra("bigurl",
+			 * user.photourl); startActivity(intent3); } break;
+			 */
 		case R.id.user_info_ll:
 			Intent intent4 = new Intent(getActivity(),
 					HealthPlusPersonalInfoEditActivity.class);

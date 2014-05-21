@@ -36,7 +36,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
     protected static final int NO_RESOURCE = 0;
     
     /** Default text color */
-    public static final int DEFAULT_TEXT_COLOR = 0xFF101010;
+    public static final int DEFAULT_TEXT_COLOR = 0xFFFFFFFF;
     
     /** Default text color */
     public static final int LABEL_COLOR = 0xFF700070;
@@ -223,6 +223,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
         view.setGravity(Gravity.CENTER);
         view.setTextSize(textSize);
         view.setLines(1);
+        view.setPadding(0, 20, 0, 20);
         view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
     }
     

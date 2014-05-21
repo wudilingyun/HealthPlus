@@ -60,8 +60,8 @@ public class CoverEditActivity extends Activity implements View.OnClickListener 
 		intent.putExtra("crop", "true");
 		intent.putExtra("aspectX", 1);
 		intent.putExtra("aspectY", 1);
-		intent.putExtra("outputX", 128);
-		intent.putExtra("outputY", 128);
+		intent.putExtra("outputX", 400);
+		intent.putExtra("outputY", 400);
 		intent.putExtra("return-data", false);
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, this.u);
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());

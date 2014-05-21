@@ -114,36 +114,32 @@ public class WeatherUtil {
 		return sb.toString();
 	}
 
-	
-	
-	public void getWeatherImage(String name, final ImageView view){
-	
-		Bitmap weatherbt=getImageFromAssetsFile("weatherPic/"+name);  
+	public void getWeatherImage(String name, final ImageView view) {
+
+		Bitmap weatherbt = getImageFromAssetsFile("weatherPic/" + name);
 		view.setImageBitmap(weatherbt);
-		
+
 	}
-	 /*
-	  * 从assets读取图片
-	  */
-	  private Bitmap getImageFromAssetsFile(String fileName)  
-	  {  
-	      Bitmap image = null;  
-	      AssetManager am = context.getResources().getAssets();  
-	      try  
-	      {  
-	          InputStream is = am.open(fileName);  
-	          image = BitmapFactory.decodeStream(is);  
-	          is.close();  
-	      }  
-	      catch (IOException e)  
-	      {  
-	          e.printStackTrace();  
-	      }  
-	  
-	      return image;  
-	  
-	  }  
-	
+
+	/*
+	 * 从assets读取图片
+	 */
+	private Bitmap getImageFromAssetsFile(String fileName) {
+		Bitmap image = null;
+		AssetManager am = context.getResources().getAssets();
+		try {
+			InputStream is = am.open(fileName);
+			is.available();
+			image = BitmapFactory.decodeStream(is);
+			is.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return image;
+
+	}
+
 	public void parseJsonAndShow(String jsonData, TextView textView,
 			ImageView view) {
 		StringBuffer stringBuffer = new StringBuffer();
@@ -188,8 +184,9 @@ public class WeatherUtil {
 			// weatherData.getString("weather1"));
 			stringBuffer.append(weatherData.getString("weather") + " ");
 			// weatherInfo1.append("\n温度:" + weatherData.getString("temp1"));
-			stringBuffer_temp.append(weatherData.getString("temp1") + " ");
-			stringBuffer_city.append(weatherData.getString("city")+"");
+			stringBuffer_temp.append(weatherData.getString("temp2") + "~"
+					+ weatherData.getString("temp1"));
+			stringBuffer_city.append(weatherData.getString("city") + "");
 			hashMap.put("txt", stringBuffer.toString());
 			hashMap.put("temp", stringBuffer_temp.toString());
 			hashMap.put("img", weatherData.getString("img1"));

@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res/com.vee.healthplus"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_background"
     android:orientation="vertical" >
 
     <com.vee.healthplus.widget.HeaderView
@@ -16,23 +15,23 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@drawable/home_background" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/setting_choicequestiontype"
@@ -45,8 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/textView1"
-                    android:layout_margin="15dp"
-                >
+                    android:layout_margin="15dp" >
 
                     <CheckBox
                         android:id="@+id/setting_feedback_question1"
@@ -134,116 +132,108 @@
                         android:textSize="12sp" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_below="@+id/setting_feedback_type"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/feedback_gray_light" />
-
-                <EditText
-                    android:id="@+id/setting_feedback_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/setting_feedback_type"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginRight="13dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/setting_feedback_edittextbg"
-                    android:ems="200"
-                    android:hint="请输入您的建议、问题感谢您对云医生的支持与关注"
-                    android:inputType="textMultiLine"
-                    android:maxLines="5"
-                    android:minLines="5"
-                    android:textColor="@color/gray"
-                    android:textSize="16sp" >
-                </EditText>
-
-                <EditText
-                    android:id="@+id/setting_feedback_contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/setting_feedback_content"
-                    android:layout_alignRight="@+id/setting_feedback_content"
-                    android:layout_below="@+id/setting_feedback_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/setting_feedback_edittextbg"
-                    android:ems="100"
-                    android:hint="@string/wf_questioncontactway"
-                    android:maxLines="2"
-                    android:textColor="@color/gray"
-                    android:textSize="16sp" />
-
-                <RelativeLayout
-                    android:id="@+id/setting_feedback_rl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/setting_feedback_contact"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="10dp" >
-
-                    <Button
-                        android:id="@+id/setting_feedback_send"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/health_plus_login_btn_bg_normal"
-                        android:text="@string/setting_feedback_sendbtn"
-                        android:textColor="@color/hp_w_header_view_white"
-                        android:textSize="16sp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_below="@+id/setting_feedback_rl"
-                    android:layout_centerHorizontal="true"
-                    android:background="@color/feedback_gray_light" />
-
                 <LinearLayout
-                    android:id="@+id/setting_feedback_ll"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/setting_feedback_rl"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal" >
+                    android:background="@drawable/setting_backfedd_summit_bac"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
 
-                    <TextView
-                        android:id="@+id/textView3"
+                    <EditText
+                        android:id="@+id/setting_feedback_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/setting_feedback_edittextbg"
+                        android:ems="200"
+                        android:hint="请输入您的建议、问题感谢您对云医生的支持与关注"
+                        android:inputType="textMultiLine"
+                        android:maxLines="5"
+                        android:minLines="5"
+                        android:textColor="@color/gray"
+                        android:textSize="16sp" >
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/setting_feedback_contact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setting_feedback_contactserviceqq"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/setting_feedback_edittextbg"
+                        android:ems="100"
+                        android:hint="@string/wf_questioncontactway"
+                        android:maxLines="2"
+                        android:textColor="@color/gray"
+                        android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/setting_feedback_qqnumber"
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:id="@+id/setting_feedback_rl"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/setting_feedback_contactserviceqq1"
-                        android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp" >
+
+                        <Button
+                            android:id="@+id/setting_feedback_send"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/button_feedback_selector"
+                            android:padding="10dp"
+                            android:text="@string/setting_feedback_sendbtn"
+                            android:textColor="@color/hp_w_header_view_white"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/setting_feedback_copynumber"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@+id/setting_feedback_ll"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/health_plus_login_btn_bg_normal"
-                    android:text="@string/setting_feedback_copynumber"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-            </RelativeLayout>
+                    android:layout_height="match_parent"
+                    android:background="@drawable/setting_backfeed_copy_bac"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/setting_feedback_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/setting_feedback_contactserviceqq"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/setting_feedback_qqnumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/setting_feedback_contactserviceqq1"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/setting_feedback_copynumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_feedback_selector"
+                        android:text="@string/setting_feedback_copynumber"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
