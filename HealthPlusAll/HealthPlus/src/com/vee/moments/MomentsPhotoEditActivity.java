@@ -195,12 +195,12 @@ public class MomentsPhotoEditActivity extends Activity implements
 			Intent intentText = new Intent(MomentsPhotoEditActivity.this,
 					NewMomentsActivity.class);
 			intentText.putExtra("text", "on");
-			startActivity(intentText);
-			finish();
+			startActivityForResult(intentText, 10);
+			
 			break;
 		case R.id.photo_edit_pick_btn:
 			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT);
-			innerIntent.setType("image/*");
+			innerIntent.setType("image/jpeg");
 			Intent wrapperIntent = Intent.createChooser(innerIntent, null);
 			startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);
 			break;

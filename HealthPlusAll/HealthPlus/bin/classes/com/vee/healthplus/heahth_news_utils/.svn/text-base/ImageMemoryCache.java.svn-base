@@ -78,7 +78,7 @@ public class ImageMemoryCache {
 			bitmap = mLruCache.get(url);
 			if (bitmap != null) {
 				// 如果有bitmap对象。则将这个对象从硬引用中先移除在添加。放到前面防止被逐出。
-				//System.out.println("！！！！-----》命中硬存");
+				System.out.println("！！！！-----》命中硬存mLrucache");
 				mLruCache.remove(url);
 				mLruCache.put(url, bitmap);
 				return bitmap;
@@ -91,7 +91,7 @@ public class ImageMemoryCache {
 				bitmap = bitmapReference.get();
 				if (bitmap != null) {
 					// 把存在的这个图片提升到硬缓存
-					System.out.println("！！！！命中软缓存");
+					System.out.println("！！！！命中软缓存mSoftCache");
 				} else {
 					mSoftCache.remove(url);
 				}

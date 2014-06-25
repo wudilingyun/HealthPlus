@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,9 +63,11 @@ public class ContactAdapter extends BaseAdapter {
 		return position;
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		PhoneContactsResponse mContactBean = list.get(position);
+		final int i=position;
 		ViewHolder mViewHolder = null;
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.contacts_list_item, null);
@@ -74,9 +77,11 @@ public class ContactAdapter extends BaseAdapter {
 			// mViewHolder.pic = (ImageView) convertView.findViewById(R.id.tx1);
 			mViewHolder.name = (TextView) convertView.findViewById(R.id.tx2);
 			mViewHolder.state = (TextView) convertView.findViewById(R.id.tx3);
+			
 			convertView.setTag(mViewHolder);
 		} else {
 			mViewHolder = (ViewHolder) convertView.getTag();
+			mViewHolder.state.setBackgroundDrawable(null);
 		}
 
 		mViewHolder.name.setText(data.get(mContactBean.getContactphone()));
@@ -87,10 +92,9 @@ public class ContactAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				if (v.getTag(R.string.contact_state).equals("add")) {
-					new AddFriendTask().execute((TextView) v);
-					Toast.makeText(context, "add", Toast.LENGTH_SHORT).show();
+					new AddFriendTask().execute((TextView) v,i);
 				} else if (v.getTag(R.string.contact_state).equals("added")) {
-					Toast.makeText(context, "added", Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, "已添加", Toast.LENGTH_SHORT).show();
 				} else if (v.getTag(R.string.contact_state).equals("invite")) {
 					Intent inviteIntent = new Intent(context,
 							SendInvitationActivity.class);
@@ -124,26 +128,39 @@ public class ContactAdapter extends BaseAdapter {
 		TextView state;
 	}
 
-	@SuppressLint("ResourceAsColor")
+	@SuppressLint({ "ResourceAsColor", "NewApi" })
 	private void setStateText(PhoneContactsResponse mContactBean, TextView tv) {
 		String text = "";
 		if (mContactBean.isIaddcontact()) {
+			//已添加
+			tv.setBackgroundDrawable(null);
 			text = context.getResources().getString(R.string.added);
-			tv.setTextColor(R.color.blue);
+			tv.setTextColor(Color.GRAY);
+			tv.setTextSize(px2sp(context.getResources().getDimension( R.dimen.health_plus_font_size_2)));
 			tv.setTag(R.string.contact_state, "added");
 		} else if (mContactBean.isRegistered()) {
+			//对方已经注册，添加
 			text = context.getResources().getString(R.string.add);
 			tv.setTextColor(Color.WHITE);
+			tv.setTextSize(px2sp(context.getResources().getDimension( R.dimen.health_plus_font_size_2)));
 			tv.setTag(R.string.contact_state, "add");
+			tv.setBackgroundResource(R.drawable.search_phone_btn_bg);
 		} else if (mContactBean.isContactaddi()) {
+			//添加
+			tv.setBackgroundResource(R.drawable.search_phone_btn_bg);
 			text = context.getResources().getString(R.string.add);
 			tv.setTextColor(Color.WHITE);
+			tv.setTextSize(px2sp(context.getResources().getDimension( R.dimen.health_plus_font_size_2)));
 			tv.setTag(R.string.contact_state, "add");
 		} else if (mContactBean.getContactyysid() == 0) {
+			
+			//邀请
 			text = context.getResources().getString(R.string.invite);
-			tv.setTextColor(Color.GRAY);
+			tv.setTextColor(Color.GREEN);
+			tv.setTextSize(px2sp(context.getResources().getDimension( R.dimen.health_plus_font_size_2)));
 			tv.setTag(R.string.contact_state, "invite");
 		}
+		
 		tv.setTag(R.string.contact_phone, mContactBean.getContactphone());
 		tv.setTag(R.string.contact_name,
 				data.get(mContactBean.getContactphone()));
@@ -156,12 +173,12 @@ public class ContactAdapter extends BaseAdapter {
 	// Private classes
 	// ***************************************
 	private class AddFriendTask extends
-			AsyncTask<TextView, Void, GeneralResponse> {
+			AsyncTask<Object, Void, GeneralResponse> {
 
 		private Exception exception;
 		ProgressDialog dialog;
 		TextView mTv;
-
+		int position;
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
@@ -172,13 +189,14 @@ public class ContactAdapter extends BaseAdapter {
 		}
 
 		@Override
-		protected GeneralResponse doInBackground(TextView... tv) {
+		protected GeneralResponse doInBackground(Object... obj) {
 			// TODO Auto-generated method stub
-			mTv=tv[0];
+			mTv=(TextView)obj[0];
+			position=(Integer)obj[1];
 			try {
 				GeneralResponse generalResponse = SpringAndroidService
 						.getInstance(MyApplication.getInstance()).addFriend(
-								(Integer) tv[0].getTag(R.string.contact_yysid));
+								(Integer) ((TextView)obj[0]).getTag(R.string.contact_yysid));
 
 				return generalResponse;
 
@@ -204,8 +222,11 @@ public class ContactAdapter extends BaseAdapter {
 				if (generalResponse.getReturncode() == 200) {
 					Toast.makeText(context,
 							"添加成功", Toast.LENGTH_SHORT).show();
+					mTv.setBackgroundDrawable(null);
 					mTv.setText(context.getResources().getString(R.string.added));
+					mTv.setTextColor(Color.GRAY);
 					mTv.setTag(R.string.contact_state, "added");
+					list.get(position).setIaddcontact(true);
 				} else {
 					Toast.makeText(context,
 							"添加失败",
@@ -213,6 +234,11 @@ public class ContactAdapter extends BaseAdapter {
 				}
 			}
 		}
+	}
+	
+	private float px2sp(float px){
+		float fontScale = context.getResources().getDisplayMetrics().scaledDensity; 
+		return px/fontScale + 0.5f;
 	}
 
 }

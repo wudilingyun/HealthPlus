@@ -5,10 +5,17 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -16,19 +23,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
+import com.vee.healthplus.ui.user.TempActivity;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.bean.JPushBean;
 
 @SuppressLint("NewApi")
-public class JPushListActivity extends Activity implements 
-		OnClickListener {
+public class JPushListActivity extends Activity implements OnClickListener {
 
 	private ListView jpushLv;
 	private JPushListAdapter adapter;
 	private TextView header_text, jpush_none_tv;
 	private ImageView header_lbtn_img, header_rbtn_img;
-	private List<JPushBean> list=null;
+	private List<JPushBean> list = null;
 	public Context mContext;
 
 	@SuppressLint("NewApi")
@@ -42,20 +50,22 @@ public class JPushListActivity extends Activity implements
 		setContentView(view);
 		gettitle();
 		init(view);
+	}
+
+	private void updateView() {
 		try {
-			list=HP_DBModel.getInstance(this).queryJPushList(HP_User.getOnLineUserId(this));// 列表获取函数
+			list = HP_DBModel.getInstance(this).queryJPushList(
+					HP_User.getOnLineUserId(this));// 列表获取函数
 		} catch (Exception e) {
-			Toast.makeText(mContext, "推送列表获取失败", Toast.LENGTH_SHORT).show();
+			// Toast.makeText(mContext, "推送列表获取失败", Toast.LENGTH_SHORT).show();
 		}
-		if (list != null) {
-			Toast.makeText(mContext, "推送列表获取完成", Toast.LENGTH_SHORT).show();
+		if (list != null && list.size() != 0) {
+			// Toast.makeText(mContext, "推送列表获取完成", Toast.LENGTH_SHORT).show();
 			adapter.listaddAdapter(list);
 			adapter.notifyDataSetChanged();
 		} else {
 			jpush_none_tv.setVisibility(View.VISIBLE);
 		}
-
-		// new GetFavoriteNewsListTask().execute(url, "");
 	}
 
 	void gettitle() {
@@ -79,26 +89,22 @@ public class JPushListActivity extends Activity implements
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view, int arg2,
 					long arg3) {
+				Intent intent = new Intent(JPushListActivity.this,
+						TempActivity.class);
+				intent.putExtra("title", "健康贴士");
+				intent.putExtra("content", list.get(arg2).getContent());
+				startActivity(intent);
+			}
+		});
+		jpushLv.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 
-				/*
-				 * ImageView img = (ImageView) view
-				 * .findViewById(R.id.imageView_healthnews);
-				 * img.setDrawingCacheEnabled(true); TextView tvView =
-				 * (TextView) view.findViewById(R.id.newstitle); if
-				 * (img.getTag() != null) { String imgurlString = (String)
-				 * img.getTag(); // 跳转后显示内容 Intent intent = new
-				 * Intent(JPushListActivity.this,
-				 * Health_news_detailsActivity.class); intent.putExtra("title",
-				 * tvView.getText().toString()); intent.putExtra("weburl",
-				 * tvView.getTag().toString()); intent.putExtra("imgurl",
-				 * imgurlString); intent.putExtra("name", name); Bundle bundle =
-				 * new Bundle(); intent.putExtra("bundle", bundle);
-				 * startActivity(intent);
-				 * 
-				 * }
-				 */
-				Toast.makeText(mContext, "item on click", Toast.LENGTH_SHORT)
-						.show();
+			@Override
+			public void onCreateContextMenu(ContextMenu menu, View v,
+					ContextMenuInfo menuInfo) {
+				// TODO Auto-generated method stub
+				menu.setHeaderTitle("提示");
+				menu.add(1, 1, 1, "删除此条贴士").setIcon(
+						android.R.drawable.stat_notify_error);
 			}
 		});
 	}
@@ -106,7 +112,7 @@ public class JPushListActivity extends Activity implements
 	@Override
 	public void onResume() {
 		super.onResume();
-
+		updateView();
 	}
 
 	@Override
@@ -115,7 +121,21 @@ public class JPushListActivity extends Activity implements
 
 	}
 
-
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		int position = ((AdapterContextMenuInfo) item.getMenuInfo()).position;
+		JPushBean nowJPushBean = list.get(position);
+		switch (item.getItemId()) {
+		case 1:
+			HP_DBModel.getInstance(this).deleteJPush(
+					HP_User.getOnLineUserId(mContext), nowJPushBean.getTitle(),
+					nowJPushBean.getContent(),nowJPushBean.getTime());
+			break;
+		}
+		updateView();
+		return super.onContextItemSelected(item);
+	}
 
 	@Override
 	public void onClick(View view) {

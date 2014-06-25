@@ -24,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.ui.heahth_news.FavoriteNewsActivity;
@@ -35,6 +34,7 @@ import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.UserIndexUtils;
+import com.vee.healthplus.util.user.UserInfoUtil;
 import com.vee.healthplus.widget.CustomDialog;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
@@ -53,6 +53,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 	private RelativeLayout rl_login_none;
 	private LinearLayout user_favorite_ll, user_info_ll, user_jpush_ll;
 	private HP_User user = null;
+	private boolean isLogin;
 
 	public static UserPageFragment newInstance() {
 		return new UserPageFragment();
@@ -64,8 +65,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 		super.onActivityResult(requestCode, resultCode, data);
 		getActivity();
 		if (resultCode == Activity.RESULT_OK) {
-			((BaseFragmentActivity) getActivity())
-					.setRightBtnVisible(View.GONE);
+
 		}
 	}
 
@@ -100,9 +100,13 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 					startActivity(new Intent(getActivity(),
 							HealthPlusSettingActivity.class));
 					break;
+				case 2:
+					Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
+					break;
 				case 3:
 					if (HP_User.getOnLineUserId(getActivity()) == 0) {
-						Toast.makeText(getActivity(), "未登陆", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getActivity(), "未登录", Toast.LENGTH_SHORT)
+								.show();
 					} else {
 						CustomDialog.Builder customBuilder = new CustomDialog.Builder(
 								getActivity());
@@ -127,9 +131,12 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 												} catch (Exception e) {
 													e.printStackTrace();
 												}
+												photoIv.setImageResource(R.drawable.healthplus_wo_default_photo);
 												updateLoginState();
 												Toast.makeText(getActivity(),
-														"已退出", Toast.LENGTH_SHORT).show();
+														"已退出",
+														Toast.LENGTH_SHORT)
+														.show();
 
 											}
 										})
@@ -188,28 +195,16 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 
 	@Override
 	public void onResume() {
+		Log.i("lingyun", "UserPageFragment.onResume");
 		updateLoginState();
 		super.onResume();
 	}
 
 	private void updateLoginState() {
-		int unReadCount = HP_DBModel.getInstance(mContext)
-				.queryUnReadJPushCount(HP_User.getOnLineUserId(mContext));
-		if (unReadCount != 0) {
-			jpushUnReadCountTv.setVisibility(View.VISIBLE);
-			jpushUnReadCountTv.setText(unReadCount + "");
-		} else {
-			jpushUnReadCountTv.setVisibility(View.GONE);
-		}
-		int jpushCount = HP_DBModel.getInstance(mContext)
-				.queryJPushList(HP_User.getOnLineUserId(mContext)).size();
-		if (jpushCount != 0) {
-			jpushCountTv.setText(jpushCount + "");
-		} else {
-			jpushCountTv.setText(0 + "");
-		}
+
 		int userid = HP_User.getOnLineUserId(getActivity());
 		if (userid != 0) {
+			isLogin=true;
 			user = HP_DBModel.getInstance(getActivity()).queryUserInfoByUserId(
 					userid, true);
 			rl_login_done.setVisibility(View.VISIBLE);
@@ -219,7 +214,7 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			} else {
 				user_login_sex.setImageResource(R.drawable.girl_icon);
 			}
-			user_login_age.setText("" + user.userAge + "岁");
+			user_login_age.setText("" + UserInfoUtil.getAgeFromBirthDay(user.userAge) + "岁");
 			if (user.userHeight != 0 && user.userWeight != 0) {
 				user_weight_tv.setText(UserIndexUtils.getResult(getActivity(),
 						user));
@@ -241,17 +236,31 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			} else {
 				favoriteCountTv.setText(0 + "");
 			}
-			user_favorite_ll.setEnabled(true);
+			int unReadCount = HP_DBModel.getInstance(mContext)
+					.queryUnReadJPushCount(HP_User.getOnLineUserId(mContext));
+			if (unReadCount != 0) {
+				jpushUnReadCountTv.setVisibility(View.VISIBLE);
+				jpushUnReadCountTv.setText(unReadCount + "");
+			} else {
+				jpushUnReadCountTv.setVisibility(View.GONE);
+			}
+			int jpushCount = HP_DBModel.getInstance(mContext)
+					.queryJPushList(HP_User.getOnLineUserId(mContext)).size();
+			if (jpushCount != 0) {
+				jpushCountTv.setText(jpushCount + "");
+			} else {
+				jpushCountTv.setText(0 + "");
+			}
 			mAdapter.setTitle(SystemMethod.getStringArray(mContext,
 					R.array.doctor_user_item_login));
 
 		} else {
-			((BaseFragmentActivity) getActivity())
-					.setRightBtnVisible(View.GONE);
+			isLogin=false;
 			rl_login_done.setVisibility(View.GONE);
 			rl_login_none.setVisibility(View.VISIBLE);
 			favoriteCountTv.setText(0 + "");
-			user_favorite_ll.setEnabled(false);
+			jpushUnReadCountTv.setVisibility(View.GONE);
+			jpushCountTv.setText(0 + "");
 			mAdapter.setTitle(SystemMethod.getStringArray(mContext,
 					R.array.doctor_user_item_logout));
 		}
@@ -278,9 +287,14 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			startActivityForResult(intent1, 55);
 			break;
 		case R.id.user_favorite_ll:
-			Intent intent2 = new Intent(getActivity(),
-					FavoriteNewsActivity.class);
-			startActivity(intent2);
+			if(isLogin){
+				Intent intent2 = new Intent(getActivity(),
+						FavoriteNewsActivity.class);
+				startActivity(intent2);
+			}else{
+				Toast.makeText(getActivity(), "请登录", Toast.LENGTH_SHORT).show();
+			}
+
 			break;
 		case R.id.user_list_item_icon:
 			/*
@@ -294,8 +308,13 @@ public class UserPageFragment extends Fragment implements OnClickListener,
 			startActivity(intent4);
 			break;
 		case R.id.user_jpush_ll:
-			Intent intent5 = new Intent(getActivity(), JPushListActivity.class);
-			startActivity(intent5);
+			if(isLogin){
+				Intent intent5 = new Intent(getActivity(), JPushListActivity.class);
+				startActivity(intent5);
+			}else{
+				Toast.makeText(getActivity(), "请登录", Toast.LENGTH_SHORT).show();
+			}
+			
 			break;
 		}
 

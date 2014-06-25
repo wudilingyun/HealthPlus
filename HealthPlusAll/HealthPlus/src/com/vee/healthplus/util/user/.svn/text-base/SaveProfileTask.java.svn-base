@@ -72,14 +72,11 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 		try {
 			generalResponse = SpringAndroidService.getInstance(
 					activity.getApplication()).saveProfile(formData);
-			uploadAvatarResponse = SpringAndroidService
-					.getInstance(activity.getApplication())
-					.uploadAvatar(hdpath);
-			return null;
+			uploadAvatarResponse = SpringAndroidService.getInstance(
+					activity.getApplication()).uploadAvatar(hdpath);
 		} catch (Exception e) {
 			this.exception = e;
 			e.printStackTrace();
-			callBack.onErrorUploadAvatar();
 		}
 
 		return null;
@@ -87,10 +84,13 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 
 	@Override
 	protected void onPostExecute(Void v) {
+		if (exception != null) {
+			callBack.onErrorSaveProfile(exception);
+		}
 		if (generalResponse != null) {
 			callBack.onFinishSaveProfile(generalResponse.getReturncode());
 		}
-		if(uploadAvatarResponse!=null){
+		if (uploadAvatarResponse != null) {
 			callBack.onFinishUploadAvatar(uploadAvatarResponse.getReturncode());
 		}
 	}
@@ -99,9 +99,9 @@ public class SaveProfileTask extends AsyncTask<Void, Void, Void> {
 		public void onFinishSaveProfile(int reflag);
 
 		public void onErrorSaveProfile(Exception e);
-		
+
 		public void onFinishUploadAvatar(int reflag);
-		
+
 		public void onErrorUploadAvatar();
 	}
 

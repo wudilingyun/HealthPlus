@@ -9,7 +9,7 @@
         android:id="@+id/header_progress"
         android:layout_alignParentTop="true"
         layout="@layout/include_header_progress"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:padding="10dp"
             android:text="提交"
             android:textColor="#ffffff"
-            android:textSize="16sp"
+            android:textSize="@dimen/health_plus_font_size_2"
             android:visibility="visible" />
     </RelativeLayout>
 

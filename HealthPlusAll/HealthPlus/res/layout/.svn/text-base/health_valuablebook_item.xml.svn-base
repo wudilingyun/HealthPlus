@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp" >
+        android:layout_height="@dimen/news_list_item_height" >
 
         <com.vee.healthplus.widget.RoundImageView
             android:id="@+id/imageView_healthnews"
@@ -13,6 +13,8 @@
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:paddingTop="50dip"
+            android:paddingBottom="50dip"
             android:layout_marginLeft="10dp" />
 
         <TextView
@@ -25,7 +27,7 @@
             android:lines="1"
             android:text="2013.4.20•正在进行"
             android:textColor="#ffffff"
-            android:textSize="14sp" />
+            android:textSize="@dimen/health_plus_font_size_2" />
 
         <TextView
             android:id="@+id/comment"
@@ -61,8 +63,8 @@
             android:lines="1"
             android:maxEms="6"
             android:text=""
-            android:textColor="@color/white"
-            android:textSize="@dimen/health_textsize_3" />
+            android:textColor="#55ffffff"
+            android:textSize="@dimen/health_plus_font_size_1" />
     </RelativeLayout>
 
 </RelativeLayout>

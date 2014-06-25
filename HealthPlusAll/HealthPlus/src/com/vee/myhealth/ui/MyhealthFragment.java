@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import cn.jpush.android.api.TagAliasCallback;
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.ui.setting.HealthPlusAboutActivity;
+import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
 import com.vee.healthplus.util.sporttrack.TrackEntity;
 import com.vee.healthplus.util.sporttrack.weather.BMapCity;
 import com.vee.healthplus.util.sporttrack.weather.WeatherUtil;
@@ -35,6 +37,7 @@ import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.UserIndexUtils;
+import com.vee.healthplus.util.user.UserInfoUtil;
 import com.vee.healthplus.widget.RoundImageView;
 import com.vee.myhealth.bean.TestCollectinfor;
 
@@ -139,8 +142,8 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		updateView(new TrackEntity(), true);
 
 	}
-	
-	private void updateLoginState(){
+
+	private void updateLoginState() {
 		int userid = HP_User.getOnLineUserId(getActivity());
 		if (userid == 0) {
 			username_txt.setGravity(Gravity.CENTER);
@@ -151,9 +154,9 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 		} else {
 			HP_User user = HP_DBModel.getInstance(getActivity())
 					.queryUserInfoByUserId(userid, true);
-		//	username_txt.setGravity(Gravity.LEFT);
+			// username_txt.setGravity(Gravity.LEFT);
 			username_txt.setText(user.userNick);
-			age_txt.setText(user.userAge + "岁");
+			age_txt.setText( UserInfoUtil.getAgeFromBirthDay(user.userAge) + "岁");
 
 			if (user.userSex == -1) {
 				sex_txt.setImageResource(R.drawable.boy_icon);
@@ -222,10 +225,11 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	@Override
 	public void onResume() {
 		super.onResume();
+		Log.i("lingyun", "MyhealthFragment.onResume");
 		updateView(new TrackEntity(), true);
 		addTagForJPush();
 		updateLoginState();
-		
+
 	}
 
 	void addTagForJPush() {
@@ -242,7 +246,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 				System.err.println("测试结果" + s);
 				tags.add(s);
 			}
-		/*tags.add("个人专享");*/
+			/* tags.add("个人专享"); */
 			JPushInterface.setTags(getActivity(), tags, this);
 
 		}
@@ -271,10 +275,15 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		int userid = HP_User.getOnLineUserId(getActivity());
 		switch (v.getId()) {
 
 		case R.id.user_head_img:
-
+			if (userid == 0) {
+				Intent intent = new Intent(getActivity(),
+						HealthPlusLoginActivity.class);
+				startActivity(intent);
+			}
 			break;
 
 		case R.id.close_bt:

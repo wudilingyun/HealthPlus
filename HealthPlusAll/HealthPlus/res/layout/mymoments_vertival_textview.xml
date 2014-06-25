@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/str_time"
-        android:textSize="24sp" 
+        android:textSize="@dimen/health_plus_font_size_3" 
         android:textColor="#FFFFFF"/>
     <TextView 
         android:id="@+id/tv_timeym"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/str_time"
-        android:textSize="12sp"
+        android:textSize="@dimen/health_plus_font_size_1"
         android:textColor="#FFFFFF"/>
     <LinearLayout
         android:layout_width="1dp"

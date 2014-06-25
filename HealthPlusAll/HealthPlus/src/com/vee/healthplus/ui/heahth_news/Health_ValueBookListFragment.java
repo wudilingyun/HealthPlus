@@ -1,7 +1,10 @@
 package com.vee.healthplus.ui.heahth_news;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.http.StatisticsUtils;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.activity.MentalityActivity;
+import com.vee.myhealth.activity.SleepActivity;
 import com.vee.myhealth.activity.SubHealthActivity;
 import com.vee.myhealth.activity.TiZhiActivity;
 import com.vee.myhealth.activity.WeightLossActivity;
@@ -15,6 +18,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +35,7 @@ public class Health_ValueBookListFragment extends Fragment {
 
 	private GridView health_news_gridview;
 	private MyGridViewAdapter gridViewAdapter;
+	private int userId;
 
 	public static Health_ValueBookListFragment newInstance() {
 		return new Health_ValueBookListFragment();
@@ -42,11 +47,19 @@ public class Health_ValueBookListFragment extends Fragment {
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.health_news_fragment, container,
 				false);
+		userId=HP_User.getOnLineUserId(getActivity());
 		init(view);
 		data();
 		return view;
 
 	}
+	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+	
 
 	void data() {
 		gridViewAdapter = new MyGridViewAdapter(getActivity());
@@ -65,6 +78,34 @@ public class Health_ValueBookListFragment extends Fragment {
 				Intent intent = new Intent(getActivity(),
 						Health_ValuableBookActivity.class);
 				intent.putExtra("id", id);
+				Log.i("lingyun","Health_ValueBookListFragment.id.onclick="+id);
+				switch (id) {
+				case 1:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_JSJF_ID);
+					break;
+				case 2:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_JBYF_ID);
+					break;
+				case 3:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_YST_ID);
+					break;
+				case 4:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_QSYK_ID);
+					break;
+				case 5:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_YEBK_ID);
+					break;
+				case 6:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_JJJH_ID);
+					break;
+				case 7:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_LXHT_ID);
+					break;
+				case 8:
+					StatisticsUtils.startFunction(StatisticsUtils.NEW_ZXDB_ID);
+					break;
+
+				}
 				intent.putExtra("name", name);
 				startActivity(intent);
 			}
@@ -99,7 +140,7 @@ public class Health_ValueBookListFragment extends Fragment {
 		 * R.string.egjijiu, R.string.egtizhi };
 		 */
 		private Class target[] = { SubHealthActivity.class,
-				TiZhiActivity.class, MentalityActivity.class, null, null,
+				SleepActivity.class, MentalityActivity.class, null, null,
 				WeightLossActivity.class };
 		private int selectItem = 0;
 

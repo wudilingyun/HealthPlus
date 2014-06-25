@@ -1,5 +1,12 @@
 package com.vee.healthplus.ui.user;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,10 +35,19 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 			if (option == HeaderView.HEADER_BACK) {
 				finish();
 			} else if (option == HeaderView.HEADER_OK) {
+				String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+				Pattern p3 = Pattern.compile(regEx);
+				Matcher m3 = p3.matcher(unameEt.getText().toString().trim());
+				boolean ok=(m3.replaceAll("").trim().length())==unameEt.getText().toString().trim().length();
 				if (unameEt.getText().toString().trim() == null
 						|| unameEt.getText().toString().trim().length() < 4
-						|| unameEt.getText().toString().trim().length() > 30) {
+						|| unameEt.getText().toString().trim().length() > 30||!ok) {
 					Toast.makeText(UsernameEditActivity.this, "格式不正确",
+							Toast.LENGTH_LONG).show();
+					return;
+				}
+				if(!checkNick(unameEt.getText().toString().trim())){
+					Toast.makeText(UsernameEditActivity.this, "请重新编辑昵称",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
@@ -105,6 +121,34 @@ public class UsernameEditActivity extends BaseFragmentActivity implements
 
 	private void displayRegisterResult(String msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+	}
+	
+	public boolean checkNick(String str) {
+		boolean flag = true;
+		InputStream in = null;
+		BufferedReader reader = null;
+		try {
+			in = getResources().getAssets().open("minganci.txt");
+			reader = new BufferedReader(new InputStreamReader(in));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				if (str.indexOf(line) != -1) {
+					System.err.println("名称非法，包含敏感词： " + line);
+					flag = false;
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return flag;
 	}
 
 }

@@ -1,15 +1,14 @@
 package com.vee.healthplus.ui.setting;
 
+
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,22 +16,22 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.vee.healthplus.R;
-import com.vee.myhealth.bean.TestCollectinfor;
+import com.yunfox.s4aservicetest.response.ExamHistory;
 
 public class TestHistoryListAdapter extends BaseAdapter {
 
 	LayoutInflater inflater;
-	List<TestCollectinfor> testlist;
+	List<ExamHistory> testlist;
 	List<Bitmap> bitmaps;
 
 	public TestHistoryListAdapter(Context context) {
 		super();
 		inflater = LayoutInflater.from(context);
-		testlist = new ArrayList<TestCollectinfor>();
+		testlist = new ArrayList<ExamHistory>();
 	}
 
-	public void listaddAdapter(List<TestCollectinfor> newslist) {
-		this.testlist.addAll(newslist);
+	public void listaddAdapter(List<ExamHistory> newslist) {
+		this.testlist=newslist;
 	}
 
 	@Override
@@ -42,7 +41,7 @@ public class TestHistoryListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public TestCollectinfor getItem(int position) {
+	public ExamHistory getItem(int position) {
 		// TODO Auto-generated method stub
 		return testlist.get(position);
 	}
@@ -79,22 +78,17 @@ public class TestHistoryListAdapter extends BaseAdapter {
 
 		ViewHolder v = (ViewHolder) view.getTag();
 		if(position%2==0){
-			view.setBackgroundColor(0x55A5A5A5);
+			view.setBackgroundColor(0xFFA5A5A5);
 		}else{
-			view.setBackgroundColor(Color.WHITE);
+			view.setBackgroundColor(0xFFEFEFEF);
 		}
 		v.testIndex.setText(position + 1 + "");
-		v.testName.setText(testlist.get(position).getName());
-		v.testResult.setText(testlist.get(position).getResult());
-		long time = testlist.get(position).getCreattime();
-		Date date = new Date(time);
+		v.testName.setText(testlist.get(position).getType());
+		v.testResult.setText(testlist.get(position).getTestresult());
+		Timestamp time = testlist.get(position).getTesttime();
 		SimpleDateFormat df = new SimpleDateFormat("MM.dd HH:mm");
-		String str = df.format(date);
-
+		String str = df.format(time);
 		v.testTime.setText(str);
-		Log.i("lingyun", "getName=" + testlist.get(position).getName()
-				+ "getResult=" + testlist.get(position).getResult()
-				+ "getCreattime=" + testlist.get(position).getCreattime());
 		return view;
 	}
 

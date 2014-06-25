@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.util.MultiValueMap;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -179,6 +180,7 @@ public class AccountFragment extends BaseFragment implements OnClickListener,
 
 	}
 
+	@SuppressLint("ValidFragment")
 	class LogOutDialog extends DialogFragment {
 
 		@Override

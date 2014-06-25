@@ -24,7 +24,7 @@
             android:gravity="center"
             android:text="运动"
             android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:textSize="@dimen/health_plus_font_size_2" />
 
         <TextView
             android:id="@+id/news_item_name_a"

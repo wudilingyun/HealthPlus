@@ -33,6 +33,8 @@ import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.JsonCache;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.Response;
+import com.vee.healthplus.http.StatisticsUtils;
+import com.vee.healthplus.util.user.HP_User;
 import com.yunfox.s4aservicetest.response.Answer;
 import com.yunfox.s4aservicetest.response.YysNewsResponse;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
@@ -48,8 +50,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -81,6 +85,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 			yysNewsResponseList_old;
 	private String name;
 	private int id;
+	private int userId;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -89,6 +94,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 		super.onCreate(arg0);
 		View view = View.inflate(this, R.layout.health_news_main, null);
 		setContentView(view);
+		userId = HP_User.getOnLineUserId(this);
 		url = Contact.HealthNES_URL;
 		jsonCache = JsonCache.getInstance();
 		getData();
@@ -169,6 +175,22 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 			}
 		});
 
+		/*
+		 * listView_news.setOnScrollListener(new OnScrollListener() {
+		 * 
+		 * @Override public void onScrollStateChanged(AbsListView arg0, int
+		 * scrollState) { // TODO Auto-generated method stub switch
+		 * (scrollState) { case OnScrollListener.SCROLL_STATE_FLING:
+		 * imageLoader.unlock(); break; case OnScrollListener.SCROLL_STATE_IDLE:
+		 * imageLoader.unlock(); break; case
+		 * OnScrollListener.SCROLL_STATE_TOUCH_SCROLL: imageLoader.unlock();
+		 * break; default: break; } }
+		 * 
+		 * @Override public void onScroll(AbsListView arg0, int arg1, int arg2,
+		 * int arg3) { // TODO Auto-generated method stub
+		 * 
+		 * } });
+		 */
 		listView_news.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -179,7 +201,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 							.findViewById(R.id.imageView_healthnews);
 					TextView tvView = (TextView) view
 							.findViewById(R.id.newstitle);
-					TextView timeView= (TextView)view.findViewById(R.id.data);
+					TextView timeView = (TextView) view.findViewById(R.id.data);
 					System.out.println("传过来web" + tvView.getTag().toString());
 					String imgurlString = (String) img.getTag();
 					// 跳转后显示内容
@@ -307,6 +329,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 				Toast.makeText(getApplication(), message, Toast.LENGTH_SHORT)
 						.show();
 				loadImageView.clearAnimation();
+				listView_news.onRefreshComplete();
 			} else {
 				if (data != null && data.size() > 0) {
 					loFrameLayout.setVisibility(View.GONE);
@@ -344,6 +367,54 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		switch (id) {
+		case 1:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_JSJF_ID, StatisticsUtils.NEW_JSJF);
+			break;
+		case 2:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_JBYF_ID, StatisticsUtils.NEW_JBYF);
+			break;
+		case 3:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_YST_ID, StatisticsUtils.NEW_YST);
+			break;
+		case 4:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_QSYK_ID, StatisticsUtils.NEW_QSYK);
+			break;
+		case 5:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_YEBK_ID, StatisticsUtils.NEW_YEBK);
+			break;
+		case 6:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_JJJH_ID, StatisticsUtils.NEW_JJJH);
+			break;
+		case 7:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_LXHT_ID, StatisticsUtils.NEW_LXHT);
+			break;
+		case 8:
+			StatisticsUtils.endFunction(this, userId + "",
+					StatisticsUtils.NEW_ZXDB_ID, StatisticsUtils.NEW_ZXDB);
+			break;
+		}
+
 	}
 
 }

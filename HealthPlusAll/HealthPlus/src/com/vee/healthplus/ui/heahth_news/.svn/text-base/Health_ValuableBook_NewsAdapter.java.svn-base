@@ -67,41 +67,42 @@ public class Health_ValuableBook_NewsAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
-		View view = null;
+		ViewHolder v;
+		//View view = null;
 		if (convertView != null) {
-			view = convertView;
+			v = (ViewHolder) convertView.getTag();
 
 		} else {
 
-			view = (View) inflater.inflate(R.layout.health_valuablebook_item,
+			convertView = (View) inflater.inflate(R.layout.health_valuablebook_item,
 					parent, false);
 
-			ViewHolder v = new ViewHolder();
+			v = new ViewHolder();
 
-			v.newstitle = (TextView) view.findViewById(R.id.newstitle);
+			v.newstitle = (TextView) convertView.findViewById(R.id.newstitle);
 			// v.newsbrief = (TextView) view.findViewById(R.id.newsbrief);
-			v.imageView_healthnews = (RoundImageView) view
+			v.imageView_healthnews = (RoundImageView) convertView
 					.findViewById(R.id.imageView_healthnews);
-			v.newstime = (TextView)view.findViewById(R.id.data);
+			v.newstime = (TextView)convertView.findViewById(R.id.data);
 		
-			view.setTag(v);
+			convertView.setTag(v);
 		}
 
-		ViewHolder v = (ViewHolder) view.getTag();
 		v.newstitle.setText(newslist.get(position).getSubject());
 		// v.newsbrief.setText(newslist.get(position).getSummary());
 		v.newstitle.setTag(newslist.get(position).getNewsurl());
 		System.out.println("webview的网址是"+newslist.get(position).getNewsurl());
 		long creattime = newslist.get(position).getCreatetime().getTime();
 		SimpleDateFormat sdf= new SimpleDateFormat("MM/dd");  
-		v.imageView_healthnews.setImageResource(R.drawable.header);
+		v.imageView_healthnews.setImageResource(R.drawable.news_img_default);
 		v.newstime.setText(sdf.format(creattime));
 		v.newstime.setTag(newslist.get(position).getDigest().toString());
-		
+	
 		String imgurl = newslist.get(position).getThumbnailurl();
-		imageLoader.addTask(imgurl, v.imageView_healthnews);
-		return view;
+		final String tmpImageUrl = imgurl;
+		System.out.println("final"+tmpImageUrl+"position"+imgurl);
+			imageLoader.addTask(imgurl, v.imageView_healthnews);
+		return convertView;
 	}
 
 	public class ViewHolder {

@@ -34,7 +34,7 @@ public class WeightEditActivity extends BaseFragmentActivity implements
 							R.string.hp_userinfoediterror_weight));
 					return;
 				}
-				if (Float.parseFloat(weightEt.getText().toString())<30||Float.parseFloat(weightEt.getText().toString())>100) {
+				if (Float.parseFloat(weightEt.getText().toString())<30||Float.parseFloat(weightEt.getText().toString())>260) {
 					displayResult(getResources().getString(
 							R.string.hp_userinfoediterror_weight));
 					return;

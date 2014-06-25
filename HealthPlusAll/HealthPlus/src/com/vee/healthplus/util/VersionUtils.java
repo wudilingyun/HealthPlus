@@ -36,7 +36,7 @@ public class VersionUtils {
 
 	private LoadingDialogUtil ldu;
 	public static JSONArray jsa = null;
-	public static String mServer = Common.UPDATE_SERVER;
+	public static String mServer = null;
 	private Context context;
 	private JSONArray mVersionJSONArray = null;
 	private boolean mHaveNewVersion = false;
@@ -116,13 +116,7 @@ public class VersionUtils {
 
 	private void getServerAddress() {
 		try {
-			// EasyPlayService eps = EasyPlayService
-			// .getEasyPlayService(MyApplication.CHANNEL_ID);
-			// mServer = eps.getUpdateAddress();
-			if (mServer == null) {
-				mServer = Common.UPDATE_SERVER;
-			}
-			// mServer = "http://192.168.23.81:8080/EasyPlay/";
+				mServer = Common.getUpdate_Server(context);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -196,7 +190,10 @@ public class VersionUtils {
 									dialog.dismiss();
 								}
 							}).setMessage(R.string.update_is_latest);
+			
+		
 		}
+		
 		Dialog dialog = customBuilder.create();
 		dialog.show();
 
@@ -247,14 +244,15 @@ public class VersionUtils {
 		try {
 
 			mVersionJSONArray = response.asJSONArray();
-			System.out.println("就要看看这个" + mVersionJSONArray.toString());
+			//System.out.println("就要看看这个" + mVersionJSONArray.toString());
 			if (mVersionJSONArray == null) {
 				return false;
+			}else {
+				return true;
 			}
 		} catch (ResponseException e) {
 			return false;
 		}
-		return true;
 	}
 
 	private boolean parseServerVer(Context context) {
@@ -326,7 +324,7 @@ public class VersionUtils {
 		Response response = null;
 		
 
-		HttpResponse httpResponse;
+		HttpResponse httpResponse =null; 
 		try {
 			HttpClient client = new DefaultHttpClient();
 			HttpGet get = new HttpGet(url);
@@ -334,8 +332,9 @@ public class VersionUtils {
 			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				response = new Response(httpResponse);
 			}
-		} catch (ClientProtocolException e) {
-		} catch (IOException e) {
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return response;
 	}

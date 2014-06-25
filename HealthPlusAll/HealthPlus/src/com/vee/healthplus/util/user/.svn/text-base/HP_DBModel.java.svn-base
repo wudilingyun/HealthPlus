@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.vee.healthplus.heahth_news_beans.NewsCollectinfor;
 import com.vee.myhealth.bean.JPushBean;
+import com.vee.myhealth.bean.NewFriendBean;
 import com.vee.myhealth.bean.TestCollectinfor;
 
 import android.content.ContentValues;
@@ -24,7 +25,7 @@ public class HP_DBModel {
 		if (model == null) {
 			model = new HP_DBModel();
 		}
-		database = new HP_DBHelper(mContext, HP_DBCommons.DBNAME, null, 2)
+		database = new HP_DBHelper(mContext, HP_DBCommons.DBNAME, null, 4)
 				.getWritableDatabase();
 		return model;
 	}
@@ -537,20 +538,18 @@ public class HP_DBModel {
 	 * 设置JPush为已读
 	 */
 
-	public void updateJPushReadFlag(int userId, String title, String content,
-			long time) {
+	public void updateJPushReadFlag(int userId, String title, String content) {
 
 		try {
 			String sql = "update " + HP_DBCommons.JPUSH_TABLENAME + " set "
 					+ HP_DBCommons.JPUSHREADFLAG + "=?" + " WHERE "
 					+ HP_DBCommons.USERID + " =" + userId + " and "
 					+ HP_DBCommons.JPUSHTITLE + " ='" + title + "'" + " and "
-					+ HP_DBCommons.JPUSHCONTENT + " ='" + content + "'"
-					+ " and " + HP_DBCommons.JPUSHTIME + " =" + time;
+					+ HP_DBCommons.JPUSHCONTENT + " ='" + content + "'";
 			Object[] params = new Object[1];
 			params[0] = 0;
 			database.execSQL(sql, params);
-			System.out.println("sql成功" + sql);
+			System.out.println("sql:updateJPushReadFlag=" + sql);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -571,7 +570,7 @@ public class HP_DBModel {
 					+ HP_DBCommons.JPUSHREADFLAG + " =" + 1;
 			Cursor cursor = database.rawQuery(sql, null);
 			int count = cursor.getCount();
-			System.out.println("queryUnReadJPushCount成功=" + count);
+			System.out.println("sql:queryUnReadJPushCount=" + count);
 			return count;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -582,4 +581,198 @@ public class HP_DBModel {
 
 	}
 
+	/*
+	 * 删除JPush
+	 */
+
+	public void deleteJPush(int userId, String title, String content,long time) {
+		try {
+			String delJPush = "DELETE FROM " + HP_DBCommons.JPUSH_TABLENAME
+					+ " WHERE " + HP_DBCommons.USERID + " =" + userId + " and "
+					+ HP_DBCommons.JPUSHTITLE + "='" + title + "' and "
+					+ HP_DBCommons.JPUSHCONTENT + "='" + content + "' and "
+					+ HP_DBCommons.JPUSHTIME + "='" + time + "'";
+			System.out.println("删除语句" + delJPush);
+			database.execSQL(delJPush);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+	}
+
+	/*
+	 * 添加新康友
+	 */
+	public void insertNewFriend(int userid, int accountid, String accountname,
+			String accountavatar, int friendaddi, int iaddfriend, long uptime,
+			int readflag) {
+		try {
+			String insertNewFriend = "INSERT INTO "
+					+ HP_DBCommons.NEWFRIEND_TABLENAME
+					+ " (USERID,ACCOUNTID,ACCOUNTNAME,ACCOUNTAVATAR,FRIENDADDI,IADDFRIEND,UPDATETIME,READFLAG)"
+					+ " VALUES ('" + userid + "','" + accountid + "','"
+					+ accountname + "','" + accountavatar + "','" + friendaddi
+					+ "','" + iaddfriend + "','" + uptime + "','" + 1 + "')";
+			System.out.println("添加新康友=" + insertNewFriend);
+			database.execSQL(insertNewFriend);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+	}
+
+	/*
+	 * 更新，我加了好友
+	 */
+	public void updateIAddFriend(int userid, int accountid) {
+		try {
+			String updateNewFriend = "UPDATE "
+					+ HP_DBCommons.NEWFRIEND_TABLENAME
+					+ " SET IADDFRIEND=1 WHERE USERID=" + userid
+					+ " AND ACCOUNTID=" + accountid;
+			database.execSQL(updateNewFriend);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			database.close();
+		}
+	}
+
+	/*
+	 * 更新，好友加了我
+	 */
+	public void updateFriendAddI(int userid, int accountid) {
+		try {
+			String updateNewFriend = "UPDATE "
+					+ HP_DBCommons.NEWFRIEND_TABLENAME
+					+ " SET FRIENDADDI=1 WHERE USERID=" + userid
+					+ " AND ACCOUNTID=" + accountid;
+			database.execSQL(updateNewFriend);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			database.close();
+		}
+	}
+
+	/*
+	 * 根据userid和朋友id查找用户
+	 */
+	public NewFriendBean getNewFriendByUseridAndFriendid(int userid,
+			int friendid) {
+		NewFriendBean jBean = null;
+		try {
+			String selectNewFriend = "SELECT * FROM "
+					+ HP_DBCommons.NEWFRIEND_TABLENAME + " WHERE USERID="
+					+ userid + " AND ACCOUNTID=" + friendid;
+			Cursor cursor = database.rawQuery(selectNewFriend, null);
+			if (cursor != null && cursor.getCount() > 0) {
+				cursor.moveToFirst();
+				int accountid = cursor.getInt(cursor
+						.getColumnIndex("ACCOUNTID"));
+				String accountname = cursor.getString(cursor
+						.getColumnIndex("ACCOUNTNAME"));
+				String accountavatar = cursor.getString(cursor
+						.getColumnIndex("ACCOUNTAVATAR"));
+				int friendaddi = cursor.getInt(cursor
+						.getColumnIndex("FRIENDADDI"));
+				int iaddfriend = cursor.getInt(cursor
+						.getColumnIndex("IADDFRIEND"));
+				long updatetime = cursor.getLong(cursor
+						.getColumnIndex("UPDATETIME"));
+				int readflag = cursor.getInt(cursor.getColumnIndex("READFLAG"));
+
+				jBean = new NewFriendBean();
+				jBean.setAccountid(accountid);
+				jBean.setAccountname(accountname);
+				jBean.setAccountavatar(accountavatar);
+				jBean.setFriendaddi(friendaddi);
+				jBean.setIaddfriend(iaddfriend);
+				jBean.setReadflag(readflag);
+				jBean.setUpdatetime(updatetime);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			database.close();
+		}
+
+		return jBean;
+	}
+
+	/*
+	 * 查询未读新康友数量
+	 */
+	public int queryUnReadNewFriendCount(int userid) {
+		try {
+
+			String sql = "SELECT * FROM " + HP_DBCommons.NEWFRIEND_TABLENAME
+					+ " WHERE USERID=" + userid + " AND READFLAG=1";
+			Cursor cursor = database.rawQuery(sql, null);
+			int count = cursor.getCount();
+			System.out.println("queryUnReadNewFriendCount成功=" + count);
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			database.close();
+		}
+	}
+
+	/**
+	 * 获取推送列表
+	 */
+	public List<NewFriendBean> queryNewFriendList(int userid) {
+		List<NewFriendBean> jBeanList = new ArrayList<NewFriendBean>();
+		String sql = "SELECT * FROM " + HP_DBCommons.NEWFRIEND_TABLENAME
+				+ " WHERE USERID=" + userid + " ORDER BY _ID DESC";
+		Cursor cursor = database.rawQuery(sql, null);
+		try {
+			if (cursor != null && cursor.getCount() > 0) {
+				while (cursor.moveToNext()) {
+					int accountid = cursor.getInt(cursor
+							.getColumnIndex("ACCOUNTID"));
+					String accountname = cursor.getString(cursor
+							.getColumnIndex("ACCOUNTNAME"));
+					String accountavatar = cursor.getString(cursor
+							.getColumnIndex("ACCOUNTAVATAR"));
+					int friendaddi = cursor.getInt(cursor
+							.getColumnIndex("FRIENDADDI"));
+					int iaddfriend = cursor.getInt(cursor
+							.getColumnIndex("IADDFRIEND"));
+					long updatetime = cursor.getLong(cursor
+							.getColumnIndex("UPDATETIME"));
+					int readflag = cursor.getInt(cursor
+							.getColumnIndex("READFLAG"));
+
+					NewFriendBean jBean = new NewFriendBean();
+					jBean.setAccountid(accountid);
+					jBean.setAccountname(accountname);
+					jBean.setAccountavatar(accountavatar);
+					jBean.setFriendaddi(friendaddi);
+					jBean.setIaddfriend(iaddfriend);
+					jBean.setReadflag(readflag);
+					jBean.setUpdatetime(updatetime);
+
+					jBeanList.add(jBean);
+				}
+				return jBeanList;
+			} else {
+				return jBeanList;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			cursor.close();
+			database.close();
+		}
+		return jBeanList;
+	}
 }

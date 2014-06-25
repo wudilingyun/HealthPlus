@@ -1,8 +1,11 @@
 package com.vee.healthplus.common;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import android.app.ActivityManager;
@@ -10,6 +13,8 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
@@ -35,7 +40,7 @@ public class MyApplication extends Application implements TagAliasCallback  {
 	public BMapManager mBMapManager = null;
 	// public LocationClient mLocationClient = null;
 	// public MyLocationListenner myListener = new MyLocationListenner();
-	public static final String CHANNEL_ID = "700071";
+	//public static final String CHANNEL_ID = "700071";
 
 	public static final String strKey = "zigTyzIrZBCivDexGNGNGDG7";
 
@@ -48,6 +53,12 @@ public class MyApplication extends Application implements TagAliasCallback  {
 	public static int cartNum;
 	public static HashMap<String, CartItemBean> cartMap;
 	 Set<String> tags = new HashSet();
+	 
+		private Bitmap mDefaultAvatar;
+		public static List<String> mEmoticons = new ArrayList<String>();
+		public static Map<String, Integer> mEmoticonsId = new HashMap<String, Integer>();
+		public static List<String> mEmoticons_Zem = new ArrayList<String>();
+		public static List<String> mEmoticons_Zemoji = new ArrayList<String>();
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -60,10 +71,33 @@ public class MyApplication extends Application implements TagAliasCallback  {
 
 		}
 		ApplicationUtils.setPackageName(getPackageName());
-		 JPushInterface.setDebugMode(true);
+		JPushInterface.setDebugMode(true);
          JPushInterface.init(this);
          
-         //
+         //表情
+         
+	}
+	
+	void  getIcon(){
+		mDefaultAvatar = BitmapFactory.decodeResource(getResources(),
+				R.drawable.ic_common_def_header);
+		for (int i = 1; i < 64; i++) {
+			String emoticonsName = "[zem" + i + "]";
+			int emoticonsId = getResources().getIdentifier("zem" + i,
+					"drawable", getPackageName());
+			mEmoticons.add(emoticonsName);
+			mEmoticons_Zem.add(emoticonsName);
+			mEmoticonsId.put(emoticonsName, emoticonsId);
+		}
+		for (int i = 1; i < 59; i++) {
+			String emoticonsName = "[zemoji" + i + "]";
+			int emoticonsId = getResources().getIdentifier("zemoji_e" + i,
+					"drawable", getPackageName());
+			mEmoticons.add(emoticonsName);
+			mEmoticons_Zemoji.add(emoticonsName);
+			mEmoticonsId.put(emoticonsName, emoticonsId);
+		}
+
 	}
 
 	public void initEngineManager(Context context) {

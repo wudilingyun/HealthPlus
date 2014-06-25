@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -125,12 +126,18 @@ public class CustomDialog extends Dialog {
         public void setTitleBG(int titlebg) {
             this.titlebg = titlebg;
         }
+        
+        public float px2sp(float px){
+    		float fontScale = context.getResources().getDisplayMetrics().scaledDensity; 
+    		return px/fontScale + 0.5f;
+    	}
 
         public Builder setMessage(int resId) {
             TextView contentView = new TextView(context);
-            //contentView.setTextColor(context.getResources().getColor(R.color.little_black));
+            contentView.setTextColor(context.getResources().getColor(R.drawable.gray));
             contentView.setPadding(5, 5, 5, 5);
-            contentView.setTextSize(12);
+            contentView.setTextSize(px2sp(context.getResources().getDimension( R.dimen.health_plus_font_size_1)));
+            //contentView.setGravity(Gravity.CENTER);
             contentView.setText(resId);
             this.contentView = contentView;
             return this;
@@ -138,9 +145,10 @@ public class CustomDialog extends Dialog {
 
         public Builder setMessage(String txt) {
             TextView contentView = new TextView(context);
-            //contentView.setTextColor(context.getResources().getColor(R.color.little_black));
+            contentView.setTextColor(context.getResources().getColor(R.drawable.gray));
             contentView.setPadding(30, 30,30, 40);
-            contentView.setTextSize(12);
+            //contentView.setGravity(Gravity.CENTER);
+            contentView.setTextSize(px2sp(context.getResources().getDimension( R.dimen.health_plus_font_size_1)));
             contentView.setText(txt);
             this.contentView = contentView;
             return this;
@@ -406,6 +414,7 @@ public class CustomDialog extends Dialog {
         }
 
     }
+    
 
 
 }

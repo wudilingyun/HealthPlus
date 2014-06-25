@@ -3,6 +3,7 @@ package com.vee.myhealth.activity;
 import java.util.List;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.ui.main.QuitDialog;
 import com.vee.myhealth.bean.HealthQuestionEntity;
 import com.vee.myhealth.util.MyHealthAdapter;
 import com.vee.myhealth.util.SqlDataCallBack;
@@ -50,6 +51,13 @@ public class TestActivity extends FragmentActivity implements
 		
 	}
 
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		//super.onBackPressed();
+		QuitDialog qd = new QuitDialog(true,"提示");
+		qd.show(this.getSupportFragmentManager(), "exam");
+	}
 	@Override
 	public void getData(List<HealthQuestionEntity> test) {
 		// TODO Auto-generated method stub

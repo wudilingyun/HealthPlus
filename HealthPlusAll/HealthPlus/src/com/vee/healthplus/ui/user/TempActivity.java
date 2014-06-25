@@ -40,7 +40,6 @@ public class TempActivity extends Activity {
 		contView = (TextView) findViewById(R.id.jpush_content);
 		timView = (TextView) findViewById(R.id.jpush_time);
 		int userid =HP_User.getOnLineUserId(this);
-		long time =System.currentTimeMillis();
 		Intent intent = getIntent();
 		if (null != intent) {
 			Bundle bundle = getIntent().getExtras();
@@ -51,7 +50,7 @@ public class TempActivity extends Activity {
 			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 			String date = sdf.format(new java.util.Date());
 			timView.setText(date);
-			HP_DBModel.getInstance(this).updateJPushReadFlag(userid, title, content, time);
+			HP_DBModel.getInstance(this).updateJPushReadFlag(userid, title, content);
 		}
 	}
 

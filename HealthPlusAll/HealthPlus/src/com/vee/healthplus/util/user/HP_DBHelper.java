@@ -77,6 +77,18 @@ public class HP_DBHelper extends SQLiteOpenHelper {
 			+ "test Title" + "','" + "test Content abcdefghijklmnopqrstuvwxyz!"
 			+ "','" + "test http://www.head.jpg" + "','"
 			+ System.currentTimeMillis() + "'," + 1 + ")";
+	
+	private final String CREATE_TABLE_NEWFRIEND = "CREATE TABLE IF NOT EXISTS "
+			+ HP_DBCommons.NEWFRIEND_TABLENAME
+			+ " ( _ID INTEGER PRIMARY KEY AUTOINCREMENT,"
+			+ "USERID INTEGER,"
+			+ "ACCOUNTID INTEGER,"
+			+ "ACCOUNTNAME VARCHAR,"
+			+ "ACCOUNTAVATAR VARCHAR,"
+			+ "IADDFRIEND INTEGER,"
+			+ "FRIENDADDI INTEGER,"
+			+ "UPDATETIME LONG,"
+			+ "READFLAG INTEGER)";
 
 	public HP_DBHelper(Context context, String name,
 			SQLiteDatabase.CursorFactory factory, int version) {
@@ -94,7 +106,10 @@ public class HP_DBHelper extends SQLiteOpenHelper {
 	
 		// ver2
 		sqLiteDatabase.execSQL(CREATE_TABLE_JPUSH);
-		sqLiteDatabase.execSQL(INSERT_ONE_TO_TABLE_JPUSH);
+		//sqLiteDatabase.execSQL(INSERT_ONE_TO_TABLE_JPUSH);
+		
+		// ver3
+		sqLiteDatabase.execSQL(CREATE_TABLE_NEWFRIEND);
 		Log.v("执行操作", "首次初始化数据库");
 	}
 
@@ -108,11 +123,12 @@ public class HP_DBHelper extends SQLiteOpenHelper {
 		if (currVersion == 1) {
 			System.out.println("升级数据库啦");
 			sqLiteDatabase.execSQL(CREATE_TABLE_JPUSH);
-			sqLiteDatabase.execSQL(INSERT_ONE_TO_TABLE_JPUSH);
+			//sqLiteDatabase.execSQL(INSERT_ONE_TO_TABLE_JPUSH);
 
 			currVersion = 2;
 		}if(currVersion==2){
 			System.out.println("准备升级到3");
+			sqLiteDatabase.execSQL(CREATE_TABLE_NEWFRIEND);
 			
 			currVersion =3;
 		}

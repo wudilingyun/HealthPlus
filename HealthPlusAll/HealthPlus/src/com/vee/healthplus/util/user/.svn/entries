@@ -1,14 +1,14 @@
 10
 
 dir
-766
+823
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/healthplus/util/user
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-21T10:03:06.599347Z
-766
+2014-06-09T11:56:55.564686Z
+811
 lingyun
 
 
@@ -28,14 +28,14 @@ lingyun
 
 SaveProfileTask.java
 file
+824
 
 
 
-
-2014-05-21T02:53:36.484375Z
-78fe0113cc31f86b9691dcc8fa38a5f9
-2014-05-19T09:40:54.595116Z
-745
+2014-06-24T07:39:21.625000Z
+0b900479403b0477b0197e3f57e5b6a1
+2014-06-25T03:57:38.843753Z
+824
 lingyun
 
 
@@ -58,7 +58,7 @@ lingyun
 
 
 
-3051
+3068
 
 ICallBack.java
 file
@@ -168,11 +168,11 @@ file
 
 
 
-2014-05-21T02:53:36.593750Z
-3af96d1cd4420d06eaa0da15a79e6c81
-2014-05-16T06:22:26.061587Z
-742
-lingyun
+2014-06-18T08:10:44.250000Z
+6a8b607674bfe05202084c2d238475a8
+2014-05-24T06:39:19.751183Z
+774
+heda
 
 
 
@@ -194,7 +194,7 @@ lingyun
 
 
 
-2215
+2293
 
 SignInTask.java
 file
@@ -236,11 +236,11 @@ file
 
 
 
-2014-05-21T02:53:36.640625Z
-9fbafc4637c7f8ed3b4ee406e17f5191
-2014-05-19T07:47:17.533047Z
-744
-zhaoyouliang
+2014-06-18T08:10:44.296875Z
+5c4a03b21a78a59e52f0165a0fe0e4f9
+2014-05-24T06:39:19.751183Z
+774
+heda
 
 
 
@@ -262,7 +262,7 @@ zhaoyouliang
 
 
 
-4513
+5024
 
 SaveDayRecordTask.java
 file
@@ -297,6 +297,40 @@ wangjiafeng
 
 
 2538
+
+SetNewPwdWithVerifyCodeTask.java
+file
+
+
+
+
+2014-05-29T08:01:34.140625Z
+d799f04d2b6d62a3028397e8655776f0
+2014-05-30T01:52:10.229781Z
+787
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2449
 
 UpdatePwdTask.java
 file
@@ -400,6 +434,40 @@ wangjiafeng
 
 2232
 
+GetFindVerifyCodeTask.java
+file
+
+
+
+
+2014-05-29T07:50:13.125000Z
+34414713ace105edabc1f6428d47e940
+2014-05-30T01:52:10.229781Z
+787
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1733
+
 UserIndexUtils.java
 file
 
@@ -433,40 +501,6 @@ lingyun
 
 
 4437
-
-UserInfoUtil.java
-file
-
-
-
-
-2014-05-21T02:53:36.609375Z
-0221e8843c03fcdd5914d561983a452b
-2014-05-06T06:54:55.594105Z
-710
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2627
 
 QueryAllDayRecordByType.java
 file
@@ -502,16 +536,16 @@ wangjiafeng
 
 2429
 
-HP_DBModel.java
+UserInfoUtil.java
 file
 
 
 
 
-2014-05-21T09:47:02.046875Z
-3490c2d178e365fbeef63d9bc430ce4d
-2014-05-21T10:03:06.599347Z
-766
+2014-06-09T11:56:00.859375Z
+9216d830c22a1dddffd818034b6a7c61
+2014-06-09T11:56:55.564686Z
+811
 lingyun
 
 
@@ -534,5 +568,39 @@ lingyun
 
 
 
-17598
+1232
+
+HP_DBModel.java
+file
+
+
+
+
+2014-06-18T08:10:44.203125Z
+3045f78d92b5f77900b0b3f2a9b3c5ae
+2014-06-09T08:49:03.651142Z
+808
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+23425
 

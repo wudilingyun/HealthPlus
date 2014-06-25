@@ -161,7 +161,8 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 		dir.mkdir();
 	}
 
-	public void doCropPhoto2(Uri uri) {
+	private void doCropPhoto2(Uri uri) {
+		Log.i("lingyun","doCropPhoto2");
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");

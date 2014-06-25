@@ -26,24 +26,24 @@
 
         <TextView
             android:id="@+id/feedcomment_item_etv_name"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/feedcomment_item_iv_avatar"
             android:singleLine="true"
-            android:textColor="@drawable/black"
-            android:textSize="14sp"
+            android:textColor="#383838"
+            android:textSize="@dimen/health_plus_font_size_2"
             android:text="这是测试用户" />
 
-        <TextView
+        <com.rockerhieu.emojicon.EmojiconTextView
             android:id="@+id/feedcomment_item_etv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/feedcomment_item_etv_name"
             android:layout_below="@id/feedcomment_item_etv_name"
             android:layout_marginBottom="5dip"
-            android:textColor="@drawable/black"
-            android:textSize="14sp" 
+            android:textColor="#9d9d9d"
+            android:textSize="@dimen/health_plus_font_size_2" 
             android:text="abcdefg"/>
 
         <TextView
@@ -53,8 +53,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignTop="@id/feedcomment_item_etv_name"
             android:drawablePadding="2dip"
-            android:textColor="@drawable/black"
-            android:textSize="12sp"
+            android:textColor="#9d9d9d"
+            android:textSize="@dimen/health_plus_font_size_2"
             android:text="2014.4" />
     </RelativeLayout>
 

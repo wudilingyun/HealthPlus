@@ -2,7 +2,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.vee.healthplus"
     xmlns:panel="http://schemas.android.com/apk/res/com.vee.healthplus"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:background="@drawable/home_background">
@@ -31,18 +30,5 @@
             android:orientation="vertical" />
     </com.vee.healthplus.widget.MyRelativeLayout>
 
-
-
-    <TextView
-        android:id="@+id/startNum"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:background="#df000000"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="100sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
 
 </FrameLayout>

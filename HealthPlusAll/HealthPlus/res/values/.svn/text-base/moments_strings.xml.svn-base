@@ -5,6 +5,7 @@
     <string name="straddfriend">加好友，扩大您的健康圈</string>
     <string name="momentstitle">健康圈</string>
     <string name="momentsfriendlist">好友列表</string>
+    <string name="momentsnewfriendlist">新康友</string>
     <string name="momentsphotograph">拍照</string>
     <string name="momentsselectfromalbum">从相册中选择</string>
     <string name="momentsthismomentsthinking">这一刻的想法&#8230;</string>
@@ -34,5 +35,6 @@
     <string name="upload10minutues">10分钟前上传</string>
     <string name="moments_support">赞</string>
     <string name="moments_comment">评论</string>
+    <string name="nonewfriend">没有新康友</string>
 
 </resources>

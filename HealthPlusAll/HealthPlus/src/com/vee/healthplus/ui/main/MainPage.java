@@ -1,5 +1,6 @@
 package com.vee.healthplus.ui.main;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,63 +9,105 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
-import cn.sharesdk.framework.ShareSDK;
 
 import com.vee.healthplus.R;
-import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.common.FragmentMsg;
 import com.vee.healthplus.common.IFragmentMsg;
-import com.vee.healthplus.common.MyApplication;
+import com.vee.healthplus.http.StatisticsUtils;
+import com.vee.healthplus.ui.heahth_news.Health_ValueBookListFragment;
+import com.vee.healthplus.ui.setting.UserPageFragment;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
-import com.vee.healthplus.ui.user.UserRegister_Activity;
 import com.vee.healthplus.util.AppPreferencesUtil;
-import com.vee.healthplus.util.InstallSataUtil;
 import com.vee.healthplus.util.VersionUtils;
-import com.vee.healthplus.util.user.HP_DBCommons;
-import com.vee.healthplus.util.user.HP_DBHelper;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
-import com.vee.healthplus.util.user.ICallBack;
-import com.vee.healthplus.widget.tabpage.SampleTabsWithIcons;
+import com.vee.healthplus.widget.HeaderView;
+import com.vee.moments.MomentsFragment;
 import com.vee.myhealth.bean.TestCollectinfor;
-import com.vee.shop.http.GetCartTask;
+import com.vee.myhealth.ui.MyhealthFragment;
 
-public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
-		ICallBack, TagAliasCallback {
-
-	private Fragment curFragment;// lingyun modify on github
-	Set<String> tags = new HashSet();
+public class MainPage extends FragmentActivity implements IFragmentMsg,
+		TagAliasCallback {
+	private final String TAG = "MainPage";
+	private Fragment curFragment;
+	private List<Fragment> fragments = new ArrayList<Fragment>();
+	private Set<String> tags = new HashSet();
+	private FragmentManager fragmentManager;
+	private ViewPager viewPager;// lingyun modify on github
+	private ImageView mTab1, mTab2, mTab3, mTab4;
+	private HeaderView hv;
+	private ImageView leftBtn;
+	private LinearLayout tab1ll, tab2ll, tab3ll, tab4ll;
+	private int userId;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
-		updateFragmentToStack(SampleTabsWithIcons.newInstance());
-		setLeftBtnVisible(View.VISIBLE);
-		setLeftBtnRes(R.drawable.healthplus_headview_logo_btn);
-		setLeftBtnType(2);
+		AppPreferencesUtil.setBooleanPref(this, "isFirstShowLogin", false);
+		setContentView(R.layout.main_fragment_activity);
+		Log.v("zyl","执行oncreate");
+		initView();
+		userId = HP_User.getOnLineUserId(this);
+		StatisticsUtils.startCounts(this);
 		VersionUtils.getInstance().checkVersion(MainPage.this);
-		// initDefaultUserInfo();
-		if (AppPreferencesUtil.getBooleanPref(this, "isFirst", true)
-				|| HP_User.getOnLineUserId(this) == 0) {
-			AppPreferencesUtil.setBooleanPref(this, "isFirst", false);
-			Intent intent = new Intent(this, HealthPlusLoginActivity.class);
-			Bundle extras = new Bundle();
-			extras.putParcelable("cn", new ComponentName("com.vee.healthplus",
-					"com.vee.healthplus.ui.main.MainPage"));
-			intent.putExtras(extras);
-			startActivity(intent);
-		}
+		Log.v("zyl","执行oncreate_1");
+	}
+
+	private void initView() {
+		fragments.add(MyhealthFragment.newInstance());
+		fragments.add(MomentsFragment.newInstance());
+		fragments.add(Health_ValueBookListFragment.newInstance());
+		fragments.add(UserPageFragment.newInstance());
+		fragmentManager = this.getSupportFragmentManager();
+		viewPager = (ViewPager) findViewById(R.id.viewPager);
+		viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
+		viewPager.setAdapter(new MyFragmentPageAdapter(fragmentManager));
+		viewPager.setOffscreenPageLimit(1);
+		mTab1 = (ImageView) findViewById(R.id.main_home);
+		mTab2 = (ImageView) findViewById(R.id.main_friends);
+		mTab3 = (ImageView) findViewById(R.id.main_news);
+		mTab4 = (ImageView) findViewById(R.id.main_wo);
+		tab1ll = (LinearLayout) findViewById(R.id.tab1Layout);
+		tab2ll = (LinearLayout) findViewById(R.id.tab2Layout);
+		tab3ll = (LinearLayout) findViewById(R.id.tab3Layout);
+		tab4ll = (LinearLayout) findViewById(R.id.tab4Layout);
+		mTab1.setImageDrawable(getResources().getDrawable(
+				R.drawable.tab_sport_selected));
+		mTab2.setImageDrawable(getResources().getDrawable(
+				R.drawable.tab_shop_normal));
+		mTab3.setImageDrawable(getResources().getDrawable(
+				R.drawable.tab_user_normal));
+		mTab4.setImageDrawable(getResources().getDrawable(
+				R.drawable.tab_more_normal));
+		tab1ll.setOnClickListener(new MyOnClickListener(0));
+		tab2ll.setOnClickListener(new MyOnClickListener(1));
+		tab3ll.setOnClickListener(new MyOnClickListener(2));
+		tab4ll.setOnClickListener(new MyOnClickListener(3));
+
+		// updateFragmentToStack(SampleTabsWithIcons.newInstance());
+		hv = (HeaderView) findViewById(R.id.header);
+		leftBtn = (ImageView) findViewById(R.id.header_lbtn_img);
+		leftBtn.setVisibility(View.VISIBLE);
+		hv.setLeftRes(R.drawable.healthplus_headview_logo_btn);
+		hv.setLeftOption(2);
 	}
 
 	void addTagForJPush() {
-		int userId = HP_User.getOnLineUserId(this);
 		if (userId != 0) {
 			List<TestCollectinfor> TagList = HP_DBModel.getInstance(this)
 					.queryUserTestList(userId);
@@ -96,26 +139,6 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 		ft.commit();
 	}
 
-	private void updateFragmentToStack(Fragment fMsg) {
-		android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager()
-				.beginTransaction();
-		ft.setCustomAnimations(android.R.anim.slide_in_left,
-				android.R.anim.slide_out_right);
-		Log.i(TAG, "curFragment is null?" + curFragment);
-		if (curFragment != null) {
-			Log.i(TAG, "remove curFragment!");
-			ft.remove(curFragment);
-		}
-		curFragment = fMsg;
-		ft.add(R.id.container, fMsg);
-
-		ft.commit();
-	}
-
-	private void startService() {
-
-	}
-
 	@Override
 	public void replaceFragment(FragmentMsg fMsg) {
 		// TODO Auto-generated method stub
@@ -131,10 +154,9 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		AppPreferencesUtil.setBooleanPref(
+				this, "isFirstShowLogin", true);
 		System.exit(0);
-		// SpringAndroidService.getInstance(getApplication())
-		// .signOut();
-		// HP_User.setOnLineUserId(this, 0);
 	}
 
 	@Override
@@ -143,28 +165,159 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 		qd.show(getSupportFragmentManager(), "");
 	}
 
-	// @Override
-	// public boolean onKeyDown(int keyCode, KeyEvent event) {
-	// QuitDialog qd = new QuitDialog();
-	// qd.show(getSupportFragmentManager(), "");
-	// return true;
-	// }
+	public class MyOnPageChangeListener implements OnPageChangeListener {
+		@Override
+		public void onPageSelected(int arg0) {
+			switch (arg0) {
+			case 0:
+				mTab1.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_sport_selected));
+				mTab2.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_shop_normal));
+				mTab3.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_user_normal));
+				mTab4.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_more_normal));
+				break;
+			case 1:
+				StatisticsUtils.moduleStatistics(MainPage.this, userId+"", StatisticsUtils.MODULE_HY_ID, StatisticsUtils.MODULE_HY);
+				mTab1.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_sport_normal));
+				mTab2.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_shop_selected));
+				mTab3.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_user_normal));
+				mTab4.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_more_normal));
+				break;
+			case 2:
+				StatisticsUtils.moduleStatistics(MainPage.this, userId+"", StatisticsUtils.MODULE_BD_ID, StatisticsUtils.MODULE_BD);
+				mTab1.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_sport_normal));
+				mTab2.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_shop_normal));
+				mTab3.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_user_selected));
+				mTab4.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_more_normal));
+				break;
+			case 3:
+				mTab1.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_sport_normal));
+				mTab2.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_shop_normal));
+				mTab3.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_user_normal));
+				mTab4.setImageDrawable(getResources().getDrawable(
+						R.drawable.tab_more_selected));
+				break;
+			}
+		}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		// addTagForJPush();
+		@Override
+		public void onPageScrolled(int arg0, float arg1, int arg2) {
+		}
+
+		@Override
+		public void onPageScrollStateChanged(int arg0) {
+		}
 	}
 
-	@Override
-	public void onChange() {
-		// TODO Auto-generated method stub
+	private class MyOnClickListener implements View.OnClickListener {
+		private int index = 0;
 
+		public MyOnClickListener(int i) {
+			index = i;
+		}
+
+		@Override
+		public void onClick(View v) {
+			viewPager.setCurrentItem(index);
+		}
+	};
+
+	private class MyPagerAdapter extends PagerAdapter {
+		@Override
+		public boolean isViewFromObject(View arg0, Object arg1) {
+			return arg0 == arg1;
+		}
+
+		@Override
+		public int getCount() {
+			return fragments.size();
+		}
+
+		@Override
+		public void destroyItem(View container, int position, Object object) {
+			((ViewPager) container).removeView(fragments.get(position)
+					.getView());
+		}
+
+		@Override
+		public Object instantiateItem(ViewGroup container, int position) {
+			Log.i(TAG, "MyPagerAdapter.instantiateItem.position=" + position);
+			Fragment fragment = fragments.get(position);
+			if (!fragment.isAdded()) {
+				FragmentTransaction ft = fragmentManager.beginTransaction();
+				ft.add(fragment, fragment.getClass().getSimpleName());
+				ft.commit();
+				/**
+				 * 在用FragmentTransaction.commit()方法提交FragmentTransaction对象后
+				 * 会在进程的主线程中,用异步的方式来执行。 如果想要立即执行这个等待中的操作,就要调用这个方法(只能在主线程中调用)。
+				 * 要注意的是,所有的回调和相关的行为都会在这个调用中被执行完成,因此要仔细确认这个方法的调用位置。
+				 */
+				fragmentManager.executePendingTransactions();
+			}
+
+			// if (fragment.getView().getParent() == null) {
+			container.addView(fragment.getView());
+			// }
+			return fragment.getView();
+		}
 	}
 
-	@Override
-	public void onCancel() {
-		// TODO Auto-generated method stub
+	class MyFragmentPageAdapter extends FragmentPagerAdapter {
+		public MyFragmentPageAdapter(FragmentManager fm) {
+			super(fm);
+			Log.i(TAG, "MyFragmentPageAdapter.MyFragmentPageAdapter=");
+
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			Fragment fragment = null;
+			Log.i(TAG, "MyFragmentPageAdapter.getItem=" + position);
+			switch (position) {
+			case 0:
+				// fragment = SportModeFragment.newInstance();
+				fragment = MyhealthFragment.newInstance();
+				break;
+			case 1:
+				// fragment = HealthFragment.newInstance();
+				// fragment = AskWeaknessFragment.NewInstance();
+				fragment = MomentsFragment.newInstance();
+				break;
+			case 2:
+				// fragment = Health_ValuableBook_Fragment.newInstance();
+				fragment = Health_ValueBookListFragment.newInstance();
+				break;
+			case 3:
+				fragment = UserPageFragment.newInstance();
+				break;
+			}
+			return fragment;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return "PageTitle" + position;
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return fragments.size();
+		}
 
 	}
 
@@ -173,5 +326,25 @@ public class MainPage extends BaseFragmentActivity implements IFragmentMsg,
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.v("zyl","执行onResume");
+	}
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		Log.v("zyl","执行onPause");
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Log.v("zyl","执行onStop");
+	}
+	
 
 }

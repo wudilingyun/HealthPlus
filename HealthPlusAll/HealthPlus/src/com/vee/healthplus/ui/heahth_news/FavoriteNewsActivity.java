@@ -6,12 +6,19 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +41,7 @@ public class FavoriteNewsActivity extends Activity implements TaskCallback,
 	private ImageLoader imageLoader;
 	private TextView header_text, favorite_none_tv;
 	private ImageView header_lbtn_img, header_rbtn_img;
-
+	private List<NewsCollectinfor> list = null;
 	private String name;
 	private Context mContext;
 
@@ -48,7 +55,9 @@ public class FavoriteNewsActivity extends Activity implements TaskCallback,
 		setContentView(view);
 		gettitle();
 		init(view);
-		List<NewsCollectinfor> list = null;
+	}
+
+	private void updateView() {
 		try {
 			list = HP_DBModel.getInstance(mContext).queryUserCollectInfor(
 					HP_User.getOnLineUserId(mContext));
@@ -57,14 +66,11 @@ public class FavoriteNewsActivity extends Activity implements TaskCallback,
 			Toast.makeText(mContext, "收藏列表获取失败", Toast.LENGTH_SHORT).show();
 		}
 		if (list != null) {
-			Toast.makeText(mContext, "收藏列表获取完成", Toast.LENGTH_SHORT).show();
 			adapter.listaddAdapter(list);
 			adapter.notifyDataSetChanged();
 		} else {
 			favorite_none_tv.setVisibility(View.VISIBLE);
 		}
-
-		//new GetFavoriteNewsListTask().execute(url, "");
 	}
 
 	private void gettitle() {
@@ -89,35 +95,47 @@ public class FavoriteNewsActivity extends Activity implements TaskCallback,
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view, int arg2,
 					long arg3) {
-
+				Log.i("lingyun", "FavoriteList.onItemClick=" + arg2);
+				Log.i("lingyun", "getTitle=" + list.get(arg2).getTitle()
+						+ "getWeburl=" + list.get(arg2).getWeburl()
+						+ "getImgurl=" + list.get(arg2).getImgurl());
 				ImageView img = (ImageView) view
 						.findViewById(R.id.imageView_healthnews);
 				img.setDrawingCacheEnabled(true);
 				TextView tvView = (TextView) view.findViewById(R.id.newstitle);
-				if (img.getTag() != null) {
-					Log.i("lingyun","FavoriteList.onItemClick");;
-					String imgurlString = (String) img.getTag();
-					// 跳转后显示内容
-					Intent intent = new Intent(FavoriteNewsActivity.this,
-							Health_news_detailsActivity.class);
-					intent.putExtra("title", tvView.getText().toString());
-					intent.putExtra("weburl", tvView.getTag().toString());
-					intent.putExtra("imgurl", imgurlString);
-					intent.putExtra("name", name);
-					Bundle bundle = new Bundle();
-					intent.putExtra("bundle", bundle);
-					startActivity(intent);
-
-				}
+				String imgurlString = list.get(arg2).getImgurl();
+				// 跳转后显示内容
+				Intent intent = new Intent(FavoriteNewsActivity.this,
+						Health_news_detailsActivity.class);
+				intent.putExtra("title", tvView.getText().toString());
+				intent.putExtra("weburl", tvView.getTag().toString());
+				intent.putExtra("imgurl", imgurlString);
+				intent.putExtra("name", name);
+				Bundle bundle = new Bundle();
+				intent.putExtra("bundle", bundle);
+				startActivity(intent);
 
 			}
 		});
+		listView_news
+				.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+
+					@Override
+					public void onCreateContextMenu(ContextMenu menu, View v,
+							ContextMenuInfo menuInfo) {
+						// TODO Auto-generated method stub
+						menu.setHeaderTitle("提示");
+						menu.add(1, 1, 1, "删除此收藏").setIcon(
+								android.R.drawable.stat_notify_error);
+					}
+				});
+
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-
+		updateView();
 	}
 
 	@Override
@@ -126,6 +144,23 @@ public class FavoriteNewsActivity extends Activity implements TaskCallback,
 
 	}
 
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		int position = ((AdapterContextMenuInfo) item.getMenuInfo()).position;
+		Log.i("lingyun", "onContextItemSelected.positon=" + position);
+		NewsCollectinfor nowCollectinfor = list.get(position);
+		switch (item.getItemId()) {
+		case 1:
+			HP_DBModel.getInstance(this).deletUserCollect(
+					HP_User.getOnLineUserId(mContext),
+					nowCollectinfor.getTitle(), nowCollectinfor.getImgurl(),
+					nowCollectinfor.getWeburl());
+			break;
+		}
+		updateView();
+		return super.onContextItemSelected(item);
+	}
 
 	@Override
 	public void taskCallback(TaskResult taskResult) {

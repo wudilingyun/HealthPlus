@@ -26,7 +26,7 @@
             android:singleLine="false"
             android:text="第一个问题是"
             android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:textSize="@dimen/health_plus_font_size_1" />
 
         <RadioGroup
             android:id="@+id/answer_radiogroup"

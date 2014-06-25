@@ -142,7 +142,7 @@ public class SqlForTest<T> {
 
 		try {
 			String sql = "select * from " + DBManager.HEALTH_QUESTIONS
-					+ " where h_id=" + h_id;
+					+ " where h_id=" + h_id ;
 			System.out.println("sql" + sql);
 			Cursor cursor = database.rawQuery(sql, null);
 

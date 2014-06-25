@@ -31,8 +31,9 @@
     <string name="zixun">资讯</string>
     <string name="yajiankang">亚健康测试</string>
     <string name="tizhiceshi">体质测试</string>
-    <string name="xuezhi">血脂测试</string>
-    <string name="tangniaobing">血糖测试</string>
+    <string name="shuimianceshi">睡眠测试</string>
+    <string name="xuezhi">血脂检测</string>
+    <string name="tangniaobing">血糖检测</string>
     <string name="jianfei">减肥测试</string>
     <string name="xinli">心理测试</string>
     <string name="heart_hint_1">请将食指按住摄像头，点击开始测试</string>

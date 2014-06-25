@@ -31,7 +31,7 @@ import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
 import com.vee.healthplus.widget.HeaderView;
 
-@SuppressLint("ResourceAsColor") 
+@SuppressLint("ResourceAsColor")
 public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		View.OnClickListener, RegisterTask.RegisterCallBack,
 		SignInTask.SignInCallBack, OnFocusChangeListener, GetVerifyCodeCallBack {
@@ -157,6 +157,11 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			Matcher m1 = p1.matcher(userPwd_et.getText().toString());
 			Pattern p2 = Pattern.compile("[a-z0-9A-Z\\.\\_]*");
 			Matcher m2 = p2.matcher(userPwd_et.getText().toString());
+			String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+			Pattern p3 = Pattern.compile(regEx);
+			Matcher m3 = p3.matcher(nick_et.getText().toString().trim());
+			boolean ok = (m3.replaceAll("").trim().length()) == nick_et
+					.getText().toString().trim().length();
 
 			if (yz_et.getText().toString().length() == 0) {
 				Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
@@ -166,12 +171,14 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				Toast.makeText(this, "昵称不能为空", Toast.LENGTH_SHORT).show();
 				return;
 			}
+
 			if (checkMobileNumber(userName_et.getText().toString())) {
 				if (nick_et.getText().toString().trim().length() >= 4
-						&& nick_et.getText().toString().trim().length() <= 30) {
+						&& nick_et.getText().toString().trim().length() <= 30
+						&& ok) {
 					if (userPwd_et.getText().toString()
 							.equals(userPwdConfirm_et.getText().toString())) {
-						if (!m.matches() && !m1.matches()&&m2.matches()) {
+						if (!m.matches() && !m1.matches() && m2.matches()) {
 							if (s >= 6 && s <= 12) {
 								new RegisterTask(this, userName_et.getText()
 										.toString(), userPwd_et.getText()
@@ -329,7 +336,13 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				R.string.hp_userlogin_success));
 		progressDialog.dismiss();
 		// startActivity(new Intent(this, MainPage.class));
-		startActivity(new Intent(this, HealthPlusPersonalInfoEditActivity.class));
+		Intent intent = new Intent();
+		intent.setClass(this, HealthPlusPersonalInfoEditActivity.class);
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			intent.putExtras(extras);
+		}
+		startActivity(intent);
 		finish();
 	}
 

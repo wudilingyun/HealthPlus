@@ -12,13 +12,17 @@
         layout="@layout/include_header" />
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/momentslistfragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="-0.6dp"
         android:cacheColorHint="#00000000"
         android:descendantFocusability="blocksDescendants"
-        android:divider="#aadfdfde"
-        android:dividerHeight="1dip" >
+        android:divider="#dddddd"
+        android:dividerHeight="0.6dip"
+        ptr:ptrHeaderBackground="#414141"
+        ptr:ptrHeaderTextColor="#ffffff" >
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
     <LinearLayout
@@ -35,10 +39,10 @@
             <ImageView
                 android:id="@+id/cover"
                 android:layout_width="match_parent"
-                android:layout_height="140dip"
-                android:background="@drawable/moments_cover_default"
+                android:layout_height="@dimen/moments_main_cover_height"
                 android:clickable="true"
-                android:scaleType="fitXY" />
+                android:background="@drawable/moments_cover_default"
+                android:scaleType="centerCrop" />
 
             <com.vee.healthplus.widget.RoundImageView
                 android:id="@+id/mymoments"
@@ -52,7 +56,8 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/myhealth_users_avatar"
                 imagecontrol:border_outside_color="#eaeaea"
-                imagecontrol:border_thickness="2dp" />
+                imagecontrol:border_thickness="2dp" 
+               android:visibility="visible" />
 
             <TextView
                 android:id="@+id/myname"
@@ -64,7 +69,7 @@
                 android:layout_toLeftOf="@id/mymoments"
                 android:text=""
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="@dimen/health_plus_font_size_2" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -87,7 +92,7 @@
                     android:layout_gravity="center"
                     android:text="@string/strnomoments"
                     android:textColor="#9d9d9d"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/health_plus_font_size_2" />
 
                 <TextView
                     android:id="@+id/straddfriend"
@@ -97,7 +102,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/straddfriend"
                     android:textColor="#9d9d9d"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/health_plus_font_size_2" />
 
                 <ImageView
                     android:id="@+id/addfriend"
@@ -106,6 +111,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:clickable="true"
+                    android:visibility="gone"
                     android:src="@drawable/moments_add_selector" />
             </LinearLayout>
         </RelativeLayout>

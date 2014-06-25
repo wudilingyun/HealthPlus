@@ -28,17 +28,17 @@
             
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="55dip"
+                android:layout_marginBottom="@dimen/health_plus_logo_name_margin_bottom"
                 android:layout_gravity="center_horizontal"
-                android:textSize="16sp"
+                android:textSize="@dimen/health_plus_font_size_2"
                 android:textColor="#95BF45"
                 android:text="云医生"/>
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="46dip"
-                android:layout_marginLeft="20.0dip"
-                android:layout_marginRight="20.0dip"
+                android:layout_height="@dimen/health_plus_et_height"
+                android:layout_marginLeft="@dimen/health_plus_et_margin_right_and_left"
+                android:layout_marginRight="@dimen/health_plus_et_margin_right_and_left"
                 android:background="@drawable/health_plus_input_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
@@ -62,20 +62,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dip"
                     android:background="@null"
-                    android:hint="登陆手机号码"
+                    android:hint="登录手机号码"
                     android:inputType="number"
                     android:singleLine="true"
                     android:textColor="#838383"
                     android:textColorHint="#C3C3C3"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/health_plus_font_size_2" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="46dip"
-                android:layout_marginLeft="20.0dip"
-                android:layout_marginRight="20.0dip"
-                android:layout_marginTop="7dip"
+                android:layout_height="@dimen/health_plus_et_height"
+                android:layout_marginLeft="@dimen/health_plus_et_margin_right_and_left"
+                android:layout_marginRight="@dimen/health_plus_et_margin_right_and_left"
+                android:layout_marginTop="@dimen/health_plus_et_between_et"
                 android:background="@drawable/health_plus_input_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
@@ -99,25 +99,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10.0dip"
                     android:background="@null"
-                    android:hint="登陆密码"
+                    android:hint="登录密码"
                     android:inputType="textPassword"
                     android:singleLine="true"
                     android:textColor="#838383"
                     android:textColorHint="#C3C3C3"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/health_plus_font_size_2" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/health_plus_login_btn"
                 android:layout_width="fill_parent"
-                android:layout_height="48dip"
-                android:layout_marginLeft="20.0dip"
-                android:layout_marginRight="20.0dip"
+                android:layout_height="@dimen/health_plus_btn_height"
+                android:layout_marginLeft="@dimen/health_plus_et_margin_right_and_left"
+                android:layout_marginRight="@dimen/health_plus_et_margin_right_and_left"
                 android:layout_marginTop="10.0dip"
                 android:background="@drawable/health_plus_login_btn_selector"
-                android:text="登陆"
+                android:text="登录"
                 android:textColor="#ffffff"
-                android:textSize="16sp" />
+                android:textSize="@dimen/health_plus_font_size_2" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -132,10 +132,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="#0000"
-                    android:padding="10dip"
+                    android:padding="@dimen/health_plus_find_btn_padding"
                     android:text="找回密码"
                     android:textColor="#ffffff"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/health_plus_font_size_1" />
 
                 <Button
                     android:id="@+id/health_plus_enterwithoutlogin_btn"
@@ -143,10 +143,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:background="#0000"
-                    android:padding="10dip"
+                    android:padding="@dimen/health_plus_find_btn_padding"
                     android:text="直接体验"
                     android:textColor="#ffffff"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/health_plus_font_size_1" />
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
@@ -157,37 +157,38 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="48dip"
+            android:layout_height="@dimen/health_plus_register_btn_height"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="13.329987dip"
-            android:layout_marginLeft="20.0dip"
-            android:layout_marginRight="20.0dip"
+            android:layout_marginBottom="@dimen/health_plus_register_btn_margin_bottom"
+            android:layout_marginLeft="@dimen/health_plus_et_margin_right_and_left"
+            android:layout_marginRight="@dimen/health_plus_et_margin_right_and_left"
             android:orientation="horizontal" >
 
             <TextView
                 android:id="@+id/health_plus_register_text"
                 android:layout_width="fill_parent"
                 android:layout_height="38.0dip"
-                android:layout_weight="0.35"
+                android:layout_weight="0.32"
                 android:gravity="center|left"
                 android:paddingRight="5dip"
                 android:singleLine="true"
                 android:text="我是新用户，没有云医生账号"
                 android:textColor="#ffffff"
-                android:textSize="12sp"
+                android:textSize="@dimen/health_plus_font_size_1"
                 android:textStyle="italic" />
 
             <Button
                 android:id="@+id/health_plus_goto_register_btn"
                 android:layout_width="fill_parent"
-                android:layout_height="48.0dip"
-                android:layout_weight="0.65"
+                android:layout_height="@dimen/health_plus_register_btn_height"
+                android:layout_weight="0.68"
                 android:background="@drawable/health_plus_goto_register_btn_selector"
                 android:paddingLeft="5dip"
                 android:paddingRight="5dip"
                 android:text="立即注册 "
                 android:textColor="#ffffff"
-                android:textSize="16sp" />
+                android:gravity="center"
+                android:textSize="@dimen/health_plus_font_size_2" />
         </LinearLayout>
     </RelativeLayout>
 

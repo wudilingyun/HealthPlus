@@ -1,22 +1,15 @@
 package com.vee.myhealth.activity;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
-import android.R.integer;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,22 +18,20 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.platform.comapi.map.r;
-import com.baidu.platform.comapi.map.v;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.http.StatisticsUtils;
+import com.vee.healthplus.ui.main.QuitDialog;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.bean.TZtest;
@@ -59,6 +50,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 	private TextView qid;
 	private ProgressBar progressBar;
 	private int progresscount;
+	private int userId;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -71,6 +63,7 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
 		setLeftBtnRes(R.drawable.hp_w_header_view_back);
+		userId = HP_User.getOnLineUserId(this);
 		init();
 		sqlForTest = new SqlForTest(this);
 		getData();
@@ -300,6 +293,15 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 	}
 
 	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		// super.onBackPressed();
+		QuitDialog qd = new QuitDialog(true, "提示");
+		qd.show(this.getSupportFragmentManager(), "exam");
+
+	}
+
+	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 	}
@@ -318,6 +320,8 @@ public class TiZhiActivity extends BaseFragmentActivity implements
 				intent.putExtras(bundle);
 				intent.putExtra("flag", "110");
 				intent.putExtra("testname", "体质测试");
+				StatisticsUtils.testStatistics(TiZhiActivity.this, userId + "",
+						StatisticsUtils.TEST_SM_ID, StatisticsUtils.TEST_SM);
 				startActivity(intent);
 				this.finish();
 			} else {

@@ -1,5 +1,9 @@
 package com.vee.healthplus.ui.user;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,7 +35,7 @@ import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
 import com.vee.healthplus.widget.HeaderView;
 
-@SuppressLint("ResourceAsColor") 
+@SuppressLint("ResourceAsColor")
 public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 		View.OnClickListener, RegisterTask.RegisterCallBack,
 		SignInTask.SignInCallBack, OnFocusChangeListener, GetVerifyCodeCallBack {
@@ -157,6 +161,11 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			Matcher m1 = p1.matcher(userPwd_et.getText().toString());
 			Pattern p2 = Pattern.compile("[a-z0-9A-Z\\.\\_]*");
 			Matcher m2 = p2.matcher(userPwd_et.getText().toString());
+			String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+			Pattern p3 = Pattern.compile(regEx);
+			Matcher m3 = p3.matcher(nick_et.getText().toString().trim());
+			boolean ok = (m3.replaceAll("").trim().length()) == nick_et
+					.getText().toString().trim().length();
 
 			if (yz_et.getText().toString().length() == 0) {
 				Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
@@ -166,41 +175,48 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				Toast.makeText(this, "昵称不能为空", Toast.LENGTH_SHORT).show();
 				return;
 			}
+
 			if (checkMobileNumber(userName_et.getText().toString())) {
 				if (nick_et.getText().toString().trim().length() >= 4
-						&& nick_et.getText().toString().trim().length() <= 30) {
-					if (userPwd_et.getText().toString()
-							.equals(userPwdConfirm_et.getText().toString())) {
-						if (!m.matches() && !m1.matches()&&m2.matches()) {
-							if (s >= 6 && s <= 12) {
-								new RegisterTask(this, userName_et.getText()
-										.toString(), userPwd_et.getText()
-										.toString(),
-										yz_et.getText().toString(), nick_et
-												.getText().toString().trim(),
-										this, this).execute();
-								progressDialog.show();
+						&& nick_et.getText().toString().trim().length() <= 30
+						&& ok) {
+					if (checkNick(nick_et.getText().toString().trim())) {
+						if (userPwd_et.getText().toString()
+								.equals(userPwdConfirm_et.getText().toString())) {
+							if (!m.matches() && !m1.matches() && m2.matches()) {
+								if (s >= 6 && s <= 12) {
+									new RegisterTask(this, userName_et
+											.getText().toString(), userPwd_et
+											.getText().toString(), yz_et
+											.getText().toString(), nick_et
+											.getText().toString().trim(), this,
+											this).execute();
+									progressDialog.show();
+								} else {
+									Toast.makeText(
+											this,
+											getResources()
+													.getString(
+															R.string.user_password_length_toast),
+											Toast.LENGTH_SHORT).show();
+								}
 							} else {
 								Toast.makeText(
 										this,
-										getResources()
-												.getString(
-														R.string.user_password_length_toast),
+										getResources().getString(
+												R.string.user_password_toast),
 										Toast.LENGTH_SHORT).show();
 							}
 						} else {
-							Toast.makeText(
-									this,
-									getResources().getString(
-											R.string.user_password_toast),
-									Toast.LENGTH_SHORT).show();
+							Toast.makeText(this, "两次密码不一致", Toast.LENGTH_SHORT)
+									.show();
 						}
 					} else {
-						Toast.makeText(this, "两次密码不一致", Toast.LENGTH_SHORT)
+						Toast.makeText(this, "请重新编辑昵称", Toast.LENGTH_SHORT)
 								.show();
 					}
 				} else {
-					Toast.makeText(this, "昵称格式不正确", Toast.LENGTH_LONG).show();
+					Toast.makeText(this, "昵称格式不正确", Toast.LENGTH_SHORT).show();
 				}
 			} else {
 				Toast.makeText(this, "手机号码不正确", Toast.LENGTH_SHORT).show();
@@ -329,7 +345,13 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 				R.string.hp_userlogin_success));
 		progressDialog.dismiss();
 		// startActivity(new Intent(this, MainPage.class));
-		startActivity(new Intent(this, HealthPlusPersonalInfoEditActivity.class));
+		Intent intent = new Intent();
+		intent.setClass(this, HealthPlusPersonalInfoEditActivity.class);
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			intent.putExtras(extras);
+		}
+		startActivity(intent);
 		finish();
 	}
 
@@ -442,4 +464,33 @@ public class HealthPlusRegisterActivity extends BaseFragmentActivity implements
 			yzBtn.setText("获取验证码");
 		}
 	};
+
+	public boolean checkNick(String str) {
+		boolean flag = true;
+		InputStream in = null;
+		BufferedReader reader = null;
+		try {
+			in = getResources().getAssets().open("minganci.txt");
+			reader = new BufferedReader(new InputStreamReader(in));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				if (str.indexOf(line) != -1) {
+					System.err.println("名称非法，包含敏感词： " + line);
+					flag = false;
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return flag;
+	}
+
 }

@@ -15,6 +15,7 @@ public class HP_DBCommons {
     public static final String USERTEST_TABLENAME ="USERTEST";//测试列表 ---可重复的
     public static final String USERTEST_TABLENAME_COVER ="USERTEST_COVER";//测试列表 ---可重复的
     public static final String JPUSH_TABLENAME ="JPUSH";//激光推送
+    public static final String NEWFRIEND_TABLENAME = "NEWFRIEND";//新康友
     
     //字段名
     public static final String USERID = "USER_ID";

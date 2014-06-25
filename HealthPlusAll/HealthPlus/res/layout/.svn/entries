@@ -1,15 +1,15 @@
 10
 
 dir
-766
+823
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/layout
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-21T07:24:39.492971Z
-765
-lingyun
+2014-06-23T03:06:28.359981Z
+822
+zhaoyouliang
 
 
 
@@ -32,10 +32,10 @@ file
 
 
 
-2014-05-20T08:17:21.687500Z
-aac599e0e6ac39449752cd86f8c91950
-2014-05-20T06:59:30.125780Z
-748
+2014-06-14T06:40:58.703125Z
+18a5ff305c169f45a134fd0a781128cd
+2014-06-14T01:20:23.983452Z
+814
 zhaoyouliang
 
 
@@ -58,75 +58,7 @@ zhaoyouliang
 
 
 
-3206
-
-shop_logout_dialog.xml
-file
-
-
-
-
-2014-05-19T08:35:21.734375Z
-807bbd5a0ed091a60e00062bbdc8237f
-2013-12-27T05:26:19.506572Z
-582
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-598
-
-setting_feedback.xml
-file
-
-
-
-
-2014-05-20T08:17:21.734375Z
-92e2badf34f96fafc331d834eb2a54ad
-2014-05-20T06:59:30.125780Z
-748
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-12144
+3249
 
 pickview.xml
 file
@@ -161,6 +93,74 @@ wangjiafeng
 
 
 1883
+
+setting_feedback.xml
+file
+
+
+
+
+2014-06-05T10:25:11.781250Z
+3d90a579ffc0226133817a5849a7aee6
+2014-06-05T10:24:22.023251Z
+799
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11862
+
+shop_logout_dialog.xml
+file
+
+
+
+
+2014-05-19T08:35:21.734375Z
+807bbd5a0ed091a60e00062bbdc8237f
+2013-12-27T05:26:19.506572Z
+582
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+598
 
 bodyfat_test_layout.xml
 file
@@ -236,10 +236,10 @@ file
 
 
 
-2014-05-19T08:35:22.906250Z
-591bf00364096f2fea99d1a03c599bd2
-2014-04-24T08:23:10.040540Z
-680
+2014-06-05T09:12:38.250000Z
+13419ac79141231b37758321c4be9010
+2014-06-05T10:11:06.802840Z
+798
 lingyun
 
 
@@ -262,7 +262,7 @@ lingyun
 
 
 
-1091
+1117
 
 temperature_test_layout.xml
 file
@@ -298,40 +298,6 @@ lingyun
 
 668
 
-ecg_test_layout.xml
-file
-
-
-
-
-2014-05-19T08:35:21.812500Z
-f3ab67ec061d20f3d4f47dce592e57c8
-2014-04-18T08:42:42.972857Z
-675
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1538
-
 health_myhealth_addusers.xml
 file
 
@@ -366,17 +332,17 @@ zhaoyouliang
 
 5790
 
-health_loading_data.xml
+ecg_test_layout.xml
 file
 
 
 
 
-2014-05-19T08:35:22.953125Z
-0ee00c522fb0e731dbe0e4ce13a72261
-2014-04-30T09:54:11.687227Z
-701
-zhaoyouliang
+2014-05-19T08:35:21.812500Z
+f3ab67ec061d20f3d4f47dce592e57c8
+2014-04-18T08:42:42.972857Z
+675
+lingyun
 
 
 
@@ -398,7 +364,7 @@ zhaoyouliang
 
 
 
-1636
+1538
 
 include_header.xml
 file
@@ -434,16 +400,16 @@ zhaoyouliang
 
 1466
 
-myhealth_testchild_item.xml
+health_loading_data.xml
 file
 
 
 
 
-2014-05-19T08:35:21.828125Z
-1fba692946c50c36c28a77746af20c07
-2014-05-06T06:54:55.594105Z
-710
+2014-05-24T05:41:26.609375Z
+d0905354a1262ede27bdff2235724790
+2014-05-24T01:38:20.999271Z
+772
 zhaoyouliang
 
 
@@ -466,7 +432,7 @@ zhaoyouliang
 
 
 
-1635
+1695
 
 moments_send_invitation_layout.xml
 file
@@ -501,6 +467,40 @@ lingyun
 
 
 3116
+
+myhealth_testchild_item.xml
+file
+
+
+
+
+2014-05-19T08:35:21.828125Z
+1fba692946c50c36c28a77746af20c07
+2014-05-06T06:54:55.594105Z
+710
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1635
 
 jpush_list_activity_layout.xml
 file
@@ -542,44 +542,10 @@ file
 
 
 
-2014-05-20T08:17:21.656250Z
-04929c9a4111924136325e39980a8e0b
-2014-05-20T06:59:30.125780Z
-748
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5877
-
-health_valuebook_comment.xml
-file
-
-
-
-
-2014-05-19T08:35:23.000000Z
-05e73d51b8efc18388f74bcabf8b2420
-2014-04-30T09:09:35.205182Z
-700
+2014-06-05T10:25:43.109375Z
+b788abd650d76fa8b6d3d035652de570
+2014-06-05T10:24:22.023251Z
+799
 lingyun
 
 
@@ -602,7 +568,41 @@ lingyun
 
 
 
-2301
+4956
+
+health_valuebook_comment.xml
+file
+
+
+
+
+2014-06-24T06:48:12.812500Z
+dc13a87bcf4faf81e3915511c000a37e
+2014-06-23T03:06:28.359981Z
+822
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2579
 
 health_item_examtype.xml
 file
@@ -644,10 +644,10 @@ file
 
 
 
-2014-05-19T08:35:23.015625Z
-1308f7e1900036da7c5e4c7682eb6fed
-2014-05-12T09:59:01.127461Z
-723
+2014-05-22T07:54:30.796875Z
+737a3d7f4ed25797249025500fc4186b
+2014-05-22T11:10:03.661617Z
+770
 lingyun
 
 
@@ -670,7 +670,7 @@ lingyun
 
 
 
-1998
+1990
 
 personal_info_edit_layout.xml
 file
@@ -678,10 +678,10 @@ file
 
 
 
-2014-05-19T08:35:21.859375Z
-c22e96afaba190d2b4ac0ca8c241a469
-2014-04-30T06:38:24.347068Z
-694
+2014-05-22T06:12:36.750000Z
+8bad5f7a57200cbe6635afa1f3db5538
+2014-05-22T11:10:03.661617Z
+770
 lingyun
 
 
@@ -704,7 +704,7 @@ lingyun
 
 
 
-1677
+1686
 
 mymoments_list_item.xml
 file
@@ -712,11 +712,11 @@ file
 
 
 
-2014-05-20T08:17:21.750000Z
-5dadad6775fe94aaf8910998e3d5a535
-2014-05-20T07:01:57.604270Z
-749
-heda
+2014-06-05T04:58:21.531250Z
+4adc6b7d0a3aa552a46d1b30c987deac
+2014-06-05T08:29:12.522135Z
+797
+lingyun
 
 
 
@@ -738,7 +738,7 @@ heda
 
 
 
-1517
+2463
 
 activity_moments_main.xml
 file
@@ -746,11 +746,11 @@ file
 
 
 
-2014-05-19T08:35:23.031250Z
-ab599d890ad2b25829c4f3c483c3e3f6
-2014-05-19T07:44:41.457350Z
-743
-heda
+2014-06-14T06:40:58.718750Z
+52f7460f1ad2811c6c4fff89095def40
+2014-06-14T01:20:23.983452Z
+814
+zhaoyouliang
 
 
 
@@ -772,7 +772,7 @@ heda
 
 
 
-4688
+5079
 
 healthplus_setting_layout.xml
 file
@@ -882,10 +882,10 @@ file
 
 
 
-2014-05-20T08:17:21.953125Z
-8203dbe7b3b990377d3067018d3e317e
-2014-05-20T07:01:57.604270Z
-749
+2014-06-09T07:54:58.500000Z
+7ee0558752f9adc921075d2a574fc350
+2014-06-09T05:59:00.113169Z
+807
 heda
 
 
@@ -908,7 +908,7 @@ heda
 
 
 
-1472
+2369
 
 health_valuablebook_item.xml
 file
@@ -916,44 +916,10 @@ file
 
 
 
-2014-05-19T08:35:23.093750Z
-011d8469b464b5581fc8067f5918f160
-2014-05-19T07:47:17.533047Z
-744
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2680
-
-userpage.xml
-file
-
-
-
-
-2014-05-21T07:23:58.437500Z
-84c1bb972861c63252ce28cb839f43f4
-2014-05-21T07:24:39.492971Z
-765
+2014-06-05T03:38:35.031250Z
+860c2cbe05a9179069a2ce3703157c26
+2014-06-05T08:29:12.522135Z
+797
 lingyun
 
 
@@ -976,7 +942,41 @@ lingyun
 
 
 
-10262
+2816
+
+userpage.xml
+file
+
+
+
+
+2014-06-09T10:44:44.578125Z
+bc360996b7ce6445cccfe122b84ccff2
+2014-06-09T11:56:55.564686Z
+811
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10305
 
 health_myhealth_list_users.xml
 file
@@ -1018,7 +1018,7 @@ file
 
 
 
-2014-05-19T08:35:23.140625Z
+2014-06-09T07:17:58.921875Z
 af81950b46149c707f4d3da87f2b6e07
 2014-04-25T05:13:58.990258Z
 685
@@ -1120,11 +1120,11 @@ file
 
 
 
-2014-05-19T08:35:23.156250Z
-28c7c3255c7508cfb5ec66173c11b5f6
-2014-05-15T06:54:42.283930Z
-738
-zhaoyouliang
+2014-06-06T02:12:11.187500Z
+422789f68ebf4d3feb4cbf0175bdeafb
+2014-06-06T05:10:39.875194Z
+802
+lingyun
 
 
 
@@ -1146,7 +1146,7 @@ zhaoyouliang
 
 
 
-2350
+2446
 
 activity_index_gallery_item.xml
 file
@@ -1188,78 +1188,10 @@ file
 
 
 
-2014-05-19T08:35:22.000000Z
-4310f1752cd0abe6bb0257464dd8988e
-2014-04-30T08:16:19.696414Z
-697
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5016
-
-health_news_fragment.xml
-file
-
-
-
-
-2014-05-19T08:35:22.015625Z
-c13f206db47b44246170924129957a24
-2014-04-25T06:04:30.251153Z
-686
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-796
-
-activity_contacts_list.xml
-file
-
-
-
-
-2014-05-19T08:35:22.031250Z
-17bcc060b3dd26aeb344de3828373c84
-2014-05-15T09:21:14.938469Z
-741
+2014-05-29T03:36:15.328125Z
+b3c3d85958d683472b159825c26c07ea
+2014-05-29T03:55:33.124937Z
+784
 lingyun
 
 
@@ -1282,7 +1214,41 @@ lingyun
 
 
 
-1019
+4993
+
+health_news_fragment.xml
+file
+
+
+
+
+2014-06-05T03:12:11.343750Z
+f801848aeddc947c695366f055408a37
+2014-06-05T08:29:12.522135Z
+797
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+901
 
 myhealth_expandablelistview.xml
 file
@@ -1318,6 +1284,40 @@ zhaoyouliang
 
 1805
 
+activity_contacts_list.xml
+file
+
+
+
+
+2014-06-10T09:23:27.437500Z
+e3f74b13123262f0b4eafe36a3e1def6
+2014-06-10T08:28:06.331143Z
+812
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1209
+
 shop_base_header_activity.xml
 file
 
@@ -1351,6 +1351,40 @@ zhaoyouliang
 
 
 1272
+
+activity_new_friend_list.xml
+file
+
+
+
+
+2014-05-24T06:47:23.406250Z
+2d8176a72b044962f56535cd756314e5
+2014-05-24T06:39:19.751183Z
+774
+heda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1027
 
 image_view_dialog_layout.xml
 file
@@ -1392,11 +1426,11 @@ file
 
 
 
-2014-05-19T08:35:22.062500Z
-b5805c897e6f9671acd997e0da05e72c
-2014-05-15T04:43:24.931899Z
-737
-heda
+2014-06-06T05:12:04.625000Z
+c2da0281bf42a59e1477ce402b64f3b7
+2014-06-06T04:45:00.850932Z
+801
+zhaoyouliang
 
 
 
@@ -1418,7 +1452,7 @@ heda
 
 
 
-1964
+1999
 
 healthplus_login_layout.xml
 file
@@ -1426,10 +1460,10 @@ file
 
 
 
-2014-05-19T10:42:46.234375Z
-cbacb6cd5e33485acdb9838cd66b6103
-2014-05-19T09:40:54.595116Z
-745
+2014-06-05T09:37:00.906250Z
+374724ada0148034fa55d745cbb6e4b5
+2014-06-05T10:11:06.802840Z
+798
 lingyun
 
 
@@ -1452,41 +1486,7 @@ lingyun
 
 
 
-8488
-
-hp_w_header_view.xml
-file
-
-
-
-
-2014-05-19T08:35:22.078125Z
-c8a771c1c5af8e028aa6c88059cff3ba
-2014-05-12T09:59:01.127461Z
-723
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1472
+9318
 
 activity_cover_edit.xml
 file
@@ -1522,16 +1522,84 @@ heda
 
 1259
 
+hp_w_header_view.xml
+file
+
+
+
+
+2014-05-19T08:35:22.078125Z
+c8a771c1c5af8e028aa6c88059cff3ba
+2014-05-12T09:59:01.127461Z
+723
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1472
+
 health_myhealth.xml
 file
 
 
 
 
-2014-05-21T05:59:58.312500Z
-17bc2fce1104c3c7b64522ff2421f01b
-2014-05-21T01:28:46.909775Z
-754
+2014-06-05T10:01:31.093750Z
+00590085dbb8f253b0d78493107e8c36
+2014-06-05T10:11:06.802840Z
+798
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4941
+
+welcome_page_activity.xml
+file
+
+
+
+
+2014-06-10T09:23:27.453125Z
+f8e821097a0afafc22af3ab9b8a5bc16
+2014-06-10T08:28:06.331143Z
+812
 zhaoyouliang
 
 
@@ -1554,7 +1622,7 @@ zhaoyouliang
 
 
 
-4482
+425
 
 mymoments_vertival_textview.xml
 file
@@ -1562,11 +1630,11 @@ file
 
 
 
-2014-05-20T08:17:21.984375Z
-42a09d93af46f58a3dc2310b2e5bf038
-2014-05-20T07:01:57.604270Z
-749
-heda
+2014-06-05T04:54:54.718750Z
+8d6511043f0341729410743e97880797
+2014-06-05T08:29:12.522135Z
+797
+lingyun
 
 
 
@@ -1588,7 +1656,7 @@ heda
 
 
 
-1312
+1364
 
 moments_fragment.xml
 file
@@ -1596,11 +1664,11 @@ file
 
 
 
-2014-05-20T08:17:22.000000Z
-76abca9612d2f788edd38b443744dd13
-2014-05-20T07:01:57.604270Z
-749
-heda
+2014-05-30T06:16:34.343750Z
+ebe6961269a22aa80bd08b833807ea7a
+2014-06-03T07:22:36.140332Z
+792
+lingyun
 
 
 
@@ -1622,7 +1690,7 @@ heda
 
 
 
-724
+737
 
 moments_comment_edit_layout.xml
 file
@@ -1658,6 +1726,40 @@ heda
 
 1416
 
+healthplus_regsiter_layout.xml
+file
+
+
+
+
+2014-06-04T11:14:28.093750Z
+a8ffba861a7e89dd565668cef041939e
+2014-06-05T08:29:12.522135Z
+797
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+18719
+
 health_tizhi_result.xml
 file
 
@@ -1692,17 +1794,17 @@ zhaoyouliang
 
 2172
 
-healthplus_regsiter_layout.xml
+custom_progress_dialog.xml
 file
 
 
 
 
-2014-05-20T10:14:36.093750Z
-5e6821912959eef54b98d6bab5921ca2
-2014-05-19T09:40:54.595116Z
-745
-lingyun
+2014-05-26T06:31:51.375000Z
+4676025fb85a5d77f7068dac1568d93e
+2014-05-26T04:39:08.733145Z
+778
+zhaoyouliang
 
 
 
@@ -1724,7 +1826,7 @@ lingyun
 
 
 
-17398
+1298
 
 section_list_item.xml
 file
@@ -1760,17 +1862,17 @@ zhaoyouliang
 
 1134
 
-custom_progress_dialog.xml
+switch_activity.xml
 file
 
 
 
 
-2014-05-19T08:35:23.265625Z
-829aec0dd53521d7ed2873a39efc7dc3
-2013-11-21T09:44:47.403575Z
-489
-xujizhe
+2014-06-16T03:42:43.796875Z
+21478d6c456d69be01e832a19d72a031
+2014-06-18T01:31:10.944499Z
+817
+lingyun
 
 
 
@@ -1792,41 +1894,7 @@ xujizhe
 
 
 
-1063
-
-activity_friend_list.xml
-file
-
-
-
-
-2014-05-20T08:17:21.812500Z
-35a44b0be1d57d07198a4652f2782c16
-2014-05-20T07:01:57.604270Z
-749
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1876
+921
 
 share_activity.xml
 file
@@ -1861,6 +1929,40 @@ zhaoyouliang
 
 
 814
+
+activity_friend_list.xml
+file
+
+
+
+
+2014-06-09T10:04:10.765625Z
+3e67834ae233340f4834d185ba02c049
+2014-06-09T08:49:03.651142Z
+808
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2317
 
 personal_info_sex_edit_layout.xml
 file
@@ -1930,16 +2032,16 @@ heda
 
 1150
 
-userpage_list_item.xml
+main_fragment_activity.xml
 file
 
 
 
 
-2014-05-19T08:35:22.390625Z
-7921beaab999bc4349af1d6ec017aadd
-2014-05-15T04:29:12.318814Z
-736
+2014-06-05T10:12:16.656250Z
+a4e3d08a1b765d72a15315d799e25fc1
+2014-06-05T10:11:06.802840Z
+798
 lingyun
 
 
@@ -1962,7 +2064,41 @@ lingyun
 
 
 
-1678
+7422
+
+custom_toast.xml
+file
+
+
+
+
+2014-05-19T08:35:22.406250Z
+6ce740edb997df68667426440759f30d
+2013-10-30T01:32:51.046476Z
+396
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+642
 
 shop_header_view_new.xml
 file
@@ -1998,17 +2134,17 @@ wangfeng
 
 1809
 
-custom_toast.xml
+userpage_list_item.xml
 file
 
 
 
 
-2014-05-19T08:35:22.406250Z
-6ce740edb997df68667426440759f30d
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
+2014-05-19T08:35:22.390625Z
+7921beaab999bc4349af1d6ec017aadd
+2014-05-15T04:29:12.318814Z
+736
+lingyun
 
 
 
@@ -2030,7 +2166,7 @@ xujizhe
 
 
 
-642
+1678
 
 healthplus_statement_webview.xml
 file
@@ -2106,11 +2242,11 @@ file
 
 
 
-2014-05-21T05:59:58.312500Z
-d35e6c149062583fac44478e8125f0a6
-2014-05-21T01:28:46.909775Z
-754
-zhaoyouliang
+2014-06-14T06:23:48.234375Z
+f862f25ac86f2ade965b8757f9cd2ade
+2014-06-14T06:43:12.627696Z
+815
+lingyun
 
 
 
@@ -2132,7 +2268,7 @@ zhaoyouliang
 
 
 
-3098
+3236
 
 health_valuablebook_comment_item.xml
 file
@@ -2140,10 +2276,10 @@ file
 
 
 
-2014-05-19T08:35:22.468750Z
-00c6b9899cabd9b6a9b95f11d264d39d
-2014-04-30T08:16:19.696414Z
-697
+2014-06-24T06:48:12.828125Z
+908a673e8193bbb1d5f95b3113baf1ef
+2014-06-23T03:06:28.359981Z
+822
 zhaoyouliang
 
 
@@ -2166,7 +2302,7 @@ zhaoyouliang
 
 
 
-2440
+2519
 
 moments_list_item.xml
 file
@@ -2174,11 +2310,11 @@ file
 
 
 
-2014-05-20T08:17:22.031250Z
-34af0210d51a4d59be7012fdada02c7b
-2014-05-20T07:42:47.307405Z
-750
-heda
+2014-06-10T09:23:27.453125Z
+6284565e86d9a7b3d5eda15bbfdf068d
+2014-06-10T08:28:06.331143Z
+812
+zhaoyouliang
 
 
 
@@ -2200,7 +2336,7 @@ heda
 
 
 
-4951
+8183
 
 healthplus_statement_textview.xml
 file
@@ -2242,10 +2378,10 @@ file
 
 
 
-2014-05-19T11:02:30.875000Z
-e489c2933787d385c92fbcb9a1617cc0
-2014-05-19T11:00:39.549511Z
-746
+2014-05-30T03:04:29.343750Z
+8052aab07c5dbfd50cd6498620aca800
+2014-05-30T03:41:11.695770Z
+788
 lingyun
 
 
@@ -2268,7 +2404,7 @@ lingyun
 
 
 
-1184
+1188
 
 shop_productparameter_fragment.xml
 file
@@ -2303,6 +2439,40 @@ wangfeng
 
 
 475
+
+moments_newfriendlist_item.xml
+file
+
+
+
+
+2014-06-14T06:40:58.750000Z
+a525930bb39c76767eb9587213a98c2b
+2014-06-14T01:20:23.983452Z
+814
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2198
 
 health_myhealth_users_item.xml
 file
@@ -2412,10 +2582,10 @@ file
 
 
 
-2014-05-20T04:12:50.609375Z
-6e2cafb74543c09cd1c6a4051cbfbadd
-2014-05-20T06:55:02.236438Z
-747
+2014-05-26T06:12:29.656250Z
+5daea5c3bc410408ee9f6d1fb751b2f0
+2014-05-26T06:47:12.381126Z
+779
 lingyun
 
 
@@ -2438,7 +2608,7 @@ lingyun
 
 
 
-2335
+2478
 
 health_news_fragment_item.xml
 file
@@ -2446,44 +2616,10 @@ file
 
 
 
-2014-05-20T08:17:22.062500Z
-c09dbaa58a80c872de7866b2429bf666
-2014-05-20T06:59:30.125780Z
-748
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1448
-
-healthplus_find_layout.xml
-file
-
-
-
-
-2014-05-19T08:35:23.390625Z
-d548973c7ab2f4a5d2ba4e987fa129b3
-2014-05-15T04:29:12.318814Z
-736
+2014-06-05T03:13:20.078125Z
+dffbbe02f7f899481c5b07201797b7bf
+2014-06-05T08:29:12.522135Z
+797
 lingyun
 
 
@@ -2506,7 +2642,41 @@ lingyun
 
 
 
-6228
+1474
+
+healthplus_find_layout.xml
+file
+
+
+
+
+2014-06-04T09:43:40.671875Z
+62df239033d46436f463d634d27d43c7
+2014-06-05T08:29:12.522135Z
+797
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11412
 
 personal_info_weight_edit_layout.xml
 file
@@ -2548,10 +2718,44 @@ file
 
 
 
-2014-05-20T08:17:21.906250Z
-8ccb6c7746934b7a0e61d4862582be95
-2014-05-20T06:59:30.125780Z
-748
+2014-06-06T02:15:06.890625Z
+90a6cb3f192a9a55aedf946233738f3f
+2014-06-06T05:10:39.875194Z
+802
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3108
+
+activity_new_moments.xml
+file
+
+
+
+
+2014-05-24T05:41:26.671875Z
+ea2ad5da3c93f5b5d4525adfbc8f52f2
+2014-05-24T01:38:20.999271Z
+772
 zhaoyouliang
 
 
@@ -2574,41 +2778,7 @@ zhaoyouliang
 
 
 
-3079
-
-activity_new_moments.xml
-file
-
-
-
-
-2014-05-19T08:35:23.390625Z
-5805d899bec17e04df7e293886781728
-2014-05-07T06:56:39.240248Z
-719
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4137
+4734
 
 personal_info_email_edit_layout.xml
 file
@@ -2650,44 +2820,10 @@ file
 
 
 
-2014-05-19T08:35:22.562500Z
-e022b6a0e03f6c08bff26d518802fa04
-2014-04-30T08:16:19.696414Z
-697
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1954
-
-base_fragment_activity.xml
-file
-
-
-
-
-2014-05-21T04:04:30.640625Z
-0496179fe4341281e070b40b211fb75f
-2014-05-21T05:45:22.444432Z
-755
+2014-05-29T03:36:15.281250Z
+4aeb34b65708bdf7f20266370290f7eb
+2014-05-29T03:55:33.124937Z
+784
 lingyun
 
 
@@ -2710,7 +2846,41 @@ lingyun
 
 
 
-1808
+1931
+
+base_fragment_activity.xml
+file
+
+
+
+
+2014-05-22T03:17:43.859375Z
+9bb0b312694774b9b0464f8783e314a6
+2014-05-22T05:46:35.486149Z
+767
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1366
 
 activity_search_phone.xml
 file
@@ -2718,11 +2888,11 @@ file
 
 
 
-2014-05-19T08:35:22.578125Z
-f660746f9ce52fa0043d46650bcc2b9d
-2014-05-07T06:56:39.240248Z
-719
-heda
+2014-05-30T09:39:02.015625Z
+683ef6d7f712610dfbdd8a09023f0f9c
+2014-06-03T07:22:36.140332Z
+792
+lingyun
 
 
 
@@ -2744,7 +2914,7 @@ heda
 
 
 
-1041
+1726
 
 hp_userregsiter.xml
 file
@@ -2984,6 +3154,40 @@ zhaoyouliang
 
 1764
 
+switch_item.xml
+file
+
+
+
+
+2014-05-28T07:36:23.250000Z
+7628bffbc760b6437ebef683a7bcbabd
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+796
+
 userpwdmotify.xml
 file
 
@@ -3024,11 +3228,11 @@ file
 
 
 
-2014-05-20T08:17:22.109375Z
-88f793bfe72e42977bb18711802f360b
-2014-05-20T07:01:57.604270Z
-749
-heda
+2014-05-22T06:49:10.250000Z
+ba2b2114904659c39bd11630b914036e
+2014-05-22T06:22:47.453627Z
+768
+zhaoyouliang
 
 
 
@@ -3050,7 +3254,7 @@ heda
 
 
 
-1472
+1463
 
 custom_popupmenu.xml
 file
@@ -3092,11 +3296,11 @@ file
 
 
 
-2014-05-19T08:35:23.500000Z
-15fe58e35edbe2be7815987d4009949d
-2014-05-15T03:26:45.835323Z
-734
-heda
+2014-06-09T10:04:10.812500Z
+2fa5a90fb6dd3c870c9669c7a95013bd
+2014-06-09T08:49:03.651142Z
+808
+zhaoyouliang
 
 
 
@@ -3118,7 +3322,7 @@ heda
 
 
 
-1071
+1493
 
 logout_dialog_layout.xml
 file
@@ -3160,11 +3364,11 @@ file
 
 
 
-2014-05-20T08:17:22.125000Z
-204fda706829eae36fffbf3e01e19ae5
-2014-05-20T06:59:30.125780Z
-748
-zhaoyouliang
+2014-06-06T02:12:11.250000Z
+f8e4139251989803834e0d8584a1d4c5
+2014-06-06T05:10:39.875194Z
+802
+lingyun
 
 
 
@@ -3186,7 +3390,7 @@ zhaoyouliang
 
 
 
-2647
+2673
 
 healthplus_modify_pwd_layout.xml
 file
@@ -3228,10 +3432,10 @@ file
 
 
 
-2014-05-19T08:35:23.546875Z
-4409360ff9a53b876d22c405f0c34ebc
-2014-05-13T08:59:14.856800Z
-726
+2014-06-06T05:06:59.578125Z
+be15cfa065d3c3e6ac155b18f0f88d48
+2014-06-06T05:10:39.875194Z
+802
 lingyun
 
 
@@ -3254,7 +3458,7 @@ lingyun
 
 
 
-1631
+1514
 
 personal_info_height_edit_layout.xml
 file
@@ -3296,10 +3500,10 @@ file
 
 
 
-2014-05-19T08:35:23.578125Z
-53a4f339d48106abf58c2c9c6e82d456
-2014-04-30T08:16:19.696414Z
-697
+2014-06-14T06:40:58.781250Z
+0dd2ce29e71a28c50c4333ff33fac3d9
+2014-06-14T01:20:23.983452Z
+814
 zhaoyouliang
 
 
@@ -3322,7 +3526,41 @@ zhaoyouliang
 
 
 
-3590
+3694
+
+moments_activity_publishtext.xml
+file
+
+
+
+
+2014-05-24T05:41:26.703125Z
+518d991c29a5a96ffa420e494682b40b
+2014-05-24T01:38:20.999271Z
+772
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1525
 
 activity_add_friend.xml
 file
@@ -3432,11 +3670,11 @@ file
 
 
 
-2014-05-20T10:28:09.187500Z
-3f1adce65615a64bcf0fb37ca6b2d6bb
-2014-05-20T09:43:17.721836Z
-752
-heda
+2014-06-14T06:40:58.796875Z
+dfbfa5774b2bce0bf72782b1c637020c
+2014-06-14T01:20:23.983452Z
+814
+zhaoyouliang
 
 
 
@@ -3458,7 +3696,7 @@ heda
 
 
 
-1655
+2056
 
 footer.xml
 file
@@ -3568,44 +3806,10 @@ file
 
 
 
-2014-05-20T08:17:21.921875Z
-0fbf51ff5c0f5bfcc6fe6c645ca2ffc1
-2014-05-20T07:01:57.604270Z
-749
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2030
-
-health_news_main.xml
-file
-
-
-
-
-2014-05-19T08:35:23.671875Z
-3954e1b2145c332a5f0ac255f351b010
-2014-05-04T09:17:09.244802Z
-704
+2014-06-05T04:51:55.593750Z
+3b99595c4c92cff951c4060c4535fb16
+2014-06-05T08:29:12.522135Z
+797
 lingyun
 
 
@@ -3628,7 +3832,41 @@ lingyun
 
 
 
-1465
+3322
+
+health_news_main.xml
+file
+
+
+
+
+2014-06-09T10:04:10.812500Z
+0ce34349c1de13ad58151c8ad691d81f
+2014-06-09T08:49:03.651142Z
+808
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1562
 
 activity_friend_detail.xml
 file
@@ -3738,10 +3976,10 @@ file
 
 
 
-2014-05-19T08:35:22.796875Z
-b96037a96b4dfe8ca13630dc50f2baf8
-2014-05-14T06:23:19.511043Z
-732
+2014-06-03T07:16:06.781250Z
+da532eefc901eb1bd95a0f4725c9612b
+2014-06-03T06:06:04.279821Z
+791
 zhaoyouliang
 
 
@@ -3764,7 +4002,7 @@ zhaoyouliang
 
 
 
-576
+610
 
 personal_info_photo_edit_layout.xml
 file
@@ -3840,10 +4078,10 @@ file
 
 
 
-2014-05-19T08:35:22.843750Z
-498507db3f5269141c8d201e2ceb0076
-2014-05-19T07:47:17.533047Z
-744
+2014-06-03T07:16:06.796875Z
+b28d55c1105dd30c989029fc3218dba2
+2014-06-03T06:06:04.279821Z
+791
 zhaoyouliang
 
 
@@ -3866,7 +4104,7 @@ zhaoyouliang
 
 
 
-1325
+2108
 
 setting_update.xml
 file

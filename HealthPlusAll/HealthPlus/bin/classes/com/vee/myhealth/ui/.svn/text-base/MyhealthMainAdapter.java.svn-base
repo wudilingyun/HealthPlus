@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.vee.healthplus.R;
 import com.vee.myhealth.activity.MentalityActivity;
+import com.vee.myhealth.activity.SleepActivity;
 import com.vee.myhealth.activity.SubHealthActivity;
 import com.vee.myhealth.activity.TestActivity;
 import com.vee.myhealth.activity.TiZhiActivity;
@@ -32,10 +33,10 @@ public class MyhealthMainAdapter extends BaseAdapter {
 			R.drawable.home_heart, R.drawable.home_gaoxuezhi,
 			R.drawable.home_xuetang, R.drawable.home_jianfei };
 
-	public static int[] name = { R.string.yajiankang, R.string.tizhiceshi,
+	public static int[] name = { R.string.yajiankang, R.string.shuimianceshi,
 			R.string.xinli, R.string.xuezhi, R.string.tangniaobing,
 			R.string.jianfei };
-	private Class target[] = { SubHealthActivity.class, TiZhiActivity.class,
+	private Class target[] = { SubHealthActivity.class, SleepActivity.class,
 			MentalityActivity.class, null, null, WeightLossActivity.class };
 	private int selectItem = 0;
 

@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="33dip"
+        android:layout_height="@dimen/myhealth_weather_bar_height"
         android:layout_gravity="bottom"
         android:background="@color/trans_gray"
         android:gravity="center_vertical"
@@ -19,34 +19,34 @@
             android:id="@+id/weather_img"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="25dp" />
+            android:layout_marginLeft="16dp" />
 
         <TextView
             android:id="@+id/city_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="8dp"
             android:text=""
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/health_plus_font_size_2" />
 
         <TextView
             android:id="@+id/temperature_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="8dp"
             android:text=""
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/health_plus_font_size_2" />
 
         <TextView
             android:id="@+id/weather_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="8dp"
             android:text=""
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="@dimen/health_plus_font_size_2" />
     </LinearLayout>
 
     <com.vee.healthplus.widget.RoundImageView
@@ -54,7 +54,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="@dimen/myhealth_photo_margin_top"
         android:background="@drawable/myhealth_users_avatar"
         imagecontrol:border_outside_color="#eaeaea"
         imagecontrol:border_thickness="1dp" />
@@ -63,7 +63,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="@dimen/myhealth_name_margin_top"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -74,7 +74,7 @@
             android:singleLine="true"
             android:text="都教授"
             android:textColor="#fff"
-            android:textSize="16sp" />
+            android:textSize="@dimen/health_plus_font_size_2" />
 
         <ImageView
             android:id="@+id/sex_txt"
@@ -89,7 +89,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -98,8 +98,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="22岁"
-            android:textColor="@drawable/Grey"
-            android:textSize="15sp" />
+            android:textColor="#ffffff"
+            android:textSize="@dimen/health_plus_font_size_1" />
 
         <TextView
             android:id="@+id/weight_txt"
@@ -107,18 +107,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="体重适中"
-            android:textColor="@drawable/Grey"
-            android:textSize="15sp" />
+            android:textColor="#ffffff"
+            android:textSize="@dimen/health_plus_font_size_1" />
     </LinearLayout>
 
     <GridView
         android:id="@+id/health_test_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/myhealth_gridview_margin_top"
+        android:layout_marginLeft="@dimen/myhealth_gridview_margin_left_and_right"
+        android:layout_marginRight="@dimen/myhealth_gridview_margin_left_and_right"
         android:horizontalSpacing="10dp"
         android:listSelector="@null"
         android:numColumns="3"
-        android:verticalSpacing="16dp" />
+        android:verticalSpacing="@dimen/myhealth_gridview_vertical_spacing" />
 
 </LinearLayout>

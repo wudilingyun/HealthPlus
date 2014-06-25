@@ -20,6 +20,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -66,7 +67,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 	WebView webView;
 	String newscontent;
 	List<Doc> all_news;
-	String imgurl, weburl, title,brief;
+	String imgurl, weburl, title, brief;
 	private String contentUrl;
 	private ProgressDiaogdownload ProgressDiaog = new ProgressDiaogdownload(
 			Health_news_detailsActivity.this);
@@ -86,6 +87,8 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 	private Bitmap shareimg_bitmap;
 	private ImageView img;
 	private int userid = 0;
+	Drawable drawableleft_cancle, drawableleft_ok;
+	private Boolean flag = false;
 
 	@SuppressLint("ResourceAsColor")
 	@Override
@@ -116,10 +119,10 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		if (resultCode == RESULT_OK)
+		if (resultCode == RESULT_OK||resultCode ==305)
 			switch (requestCode) {
 			case 1:
-				new BooleanDoSupportAsync().execute(imgurl);
+				clickSupport();
 				break;
 			case 2:
 				getCollect();
@@ -154,21 +157,52 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		weburl = (String) intent.getStringExtra("weburl");
 		imgurl = (String) intent.getStringExtra("imgurl");
 		title = (String) intent.getStringExtra("title");
-		brief = (String )intent.getStringExtra("brief");
+		brief = (String) intent.getStringExtra("brief");
 		if (CheckNetWorkStatus.Status(this)) {
 			webView.loadUrl(weburl);
 		} else {
 			Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 		}
-		all_news = new ArrayList<Doc>();
-		Boolean flag = HP_DBModel.getInstance(this)
-				.queryUserBooleanCollectInfor(userid, title, imgurl);
-		/*
-		 * if (flag) { // 已经收藏
-		 * collect_img.setBackgroundResource(R.drawable.collect_select); } else
-		 * { collect_img.setBackgroundResource(R.drawable.collect_normal); }
-		 */
 
+		all_news = new ArrayList<Doc>();
+	
+
+			Boolean flag = HP_DBModel.getInstance(this)
+					.queryUserBooleanCollectInfor(userid, title, imgurl);
+
+			drawableleft_cancle = getResources().getDrawable(
+					R.drawable.collect_cancle);
+
+			// / 这一步必须要做,否则不会显示.
+			drawableleft_cancle.setBounds(0, 0,
+					drawableleft_cancle.getMinimumWidth(),
+					drawableleft_cancle.getMinimumHeight());
+
+			drawableleft_ok = getResources().getDrawable(
+					R.drawable.collect_normal);
+
+			// / 这一步必须要做,否则不会显示.
+			drawableleft_ok.setBounds(0, 0, drawableleft_ok.getMinimumWidth(),
+					drawableleft_ok.getMinimumHeight());
+			if (HP_User.getOnLineUserId(this)!= 0) {
+			if (flag) { // 已经收藏
+				collect_img.setCompoundDrawables(drawableleft_ok, null, null,
+						null);
+			} else {
+				collect_img.setCompoundDrawables(drawableleft_cancle, null,
+						null, null);
+			}
+
+			new BooleanDoSupportAsync().execute(imgurl);
+		}
+	}
+
+	void clickSupport() {
+		if (support_img.getText().toString() == "赞") {
+			new SubmitSupportAsync().execute(imgurl);
+		} else {
+			new SubmitCancleSupportAsync().execute(imgurl);
+		}
 	}
 
 	@Override
@@ -182,9 +216,13 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 					Intent intent = new Intent(this,
 							HealthPlusLoginActivity.class);
 					this.startActivityForResult(intent, 1);
+
+					return;
+				} else {
+					clickSupport();
 					return;
 				}
-				new BooleanDoSupportAsync().execute(imgurl);
+
 			} else {
 				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 			}
@@ -208,8 +246,8 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 			if (CheckNetWorkStatus.Status(this)) {
 				String sendMsg = getResources().getString(
 						R.string.hp_share_invite);
-				MyApplication
-						.shareBySystem(this, title, imgurl, weburl, "", "",brief);
+				MyApplication.shareBySystem(this, title, imgurl, weburl, "",
+						"", brief);
 			} else {
 				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 			}
@@ -232,6 +270,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 							Health_news_detailsActivity.this,
 							Health_ValueBook_commentList_activity.class);
 					intent3.putExtra("imgurl", imgurl);
+					intent3.putExtra("weburl", weburl);
 					startActivity(intent3);
 					return;
 				}
@@ -256,13 +295,15 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 			// 清除数据
 			HP_DBModel.getInstance(this).deletUserCollect(userid, title,
 					imgurl, weburl);
+			collect_img.setCompoundDrawables(drawableleft_cancle, null, null,
+					null);
 			Toast.makeText(getApplicationContext(), "取消收藏", Toast.LENGTH_SHORT)
 					.show();
 		} else {
 			// collect_img.setBackgroundResource(R.drawable.collect_select);
 			HP_DBModel.getInstance(this).insertUserCollect(userid, title,
 					imgurl, weburl);
-
+			collect_img.setCompoundDrawables(drawableleft_ok, null, null, null);
 			Toast.makeText(getApplicationContext(), "收藏成功", Toast.LENGTH_SHORT)
 					.show();
 		}
@@ -318,6 +359,7 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 			super.onPostExecute(result);
 			int currtCount = 0;
 			if (result == 200) {
+				support_img.setText("取消");
 				Toast.makeText(getApplication(), "赞成功", Toast.LENGTH_SHORT)
 						.show();
 			} else {
@@ -338,6 +380,35 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 
 	}
 
+	public class SubmitCancleSupportAsync extends
+			AsyncTask<String, String, Integer> {
+		private ICallBack iCallBack;
+
+		@Override
+		protected void onPostExecute(Integer result) {
+			super.onPostExecute(result);
+			int currtCount = 0;
+			if (result == 200) {
+				support_img.setText("赞");
+				Toast.makeText(getApplication(), "取消赞", Toast.LENGTH_SHORT)
+						.show();
+			} else {
+				Toast.makeText(getApplication(), "取消失败" + result,
+						Toast.LENGTH_SHORT).show();
+			}
+		}
+
+		@Override
+		protected Integer doInBackground(String... params) {
+			// 点击赞当前评论
+			GeneralResponse gre = SpringAndroidService.getInstance(
+					getApplication()).cancelsupporttonews(params[0]);
+			return gre.getReturncode();
+
+		}
+
+	}
+
 	public class BooleanDoSupportAsync extends
 			AsyncTask<String, String, Boolean> {
 
@@ -345,10 +416,15 @@ public class Health_news_detailsActivity extends BaseFragmentActivity implements
 		protected void onPostExecute(Boolean result) {
 			super.onPostExecute(result);
 			if (!result) {
-				new SubmitSupportAsync().execute(imgurl);
+				support_img.setText("赞");
+
 			} else {
-				Toast.makeText(getApplication(), "已经赞过啦", Toast.LENGTH_SHORT)
-						.show();
+				support_img.setText("取消");
+				/*
+				 * Toast.makeText(getApplication(), "已经赞过啦", Toast.LENGTH_SHORT)
+				 * .show();
+				 */
+
 			}
 		}
 

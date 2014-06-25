@@ -28,6 +28,8 @@
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="15dip"
                 android:paddingRight="15dip"
+                android:textColor="@drawable/gray"
+                android:textSize="@dimen/health_plus_font_size_2"
                 android:paddingTop="10dp" />
         </LinearLayout>
 
@@ -58,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_dialog_ok"
+                android:background="@drawable/button_quite_ok_selector"
                 android:paddingBottom="9dp"
                 android:paddingTop="9dp"
                 android:singleLine="true"
@@ -71,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_dialog_cancle"
+                android:background="@drawable/button_quit_cancle_selector"
                 android:paddingBottom="9dp"
                 android:paddingTop="9dp"
                 android:singleLine="true"

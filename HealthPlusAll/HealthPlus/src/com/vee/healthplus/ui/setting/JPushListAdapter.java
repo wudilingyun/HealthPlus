@@ -31,7 +31,7 @@ public class JPushListAdapter extends BaseAdapter {
 	}
 
 	public void listaddAdapter(List<JPushBean> jlist) {
-		this.jlist.addAll(jlist);
+		this.jlist=jlist;
 	}
 
 	@Override

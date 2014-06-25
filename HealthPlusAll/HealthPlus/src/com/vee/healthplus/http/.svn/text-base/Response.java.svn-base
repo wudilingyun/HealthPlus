@@ -23,15 +23,22 @@ public class Response {
 	}
 
 	public InputStream asStream() throws ResponseException {
-		HttpEntity entity = mResponse.getEntity();
 
 		InputStream is = null;
 		try {
-			is = entity.getContent();
-			Header ceheader = entity.getContentEncoding();
-			if (ceheader != null
-					&& ceheader.getValue().equalsIgnoreCase("gzip")) {
-				is = new GZIPInputStream(is);
+			if(mResponse.getEntity()!=null){
+				
+			
+			HttpEntity entity = mResponse.getEntity();
+			if (entity != null) {
+				is = entity.getContent();
+				Header ceheader = entity.getContentEncoding();
+				if (ceheader != null
+						&& ceheader.getValue().equalsIgnoreCase("gzip")) {
+					is = new GZIPInputStream(is);
+				}
+
+			}
 			}
 		} catch (IllegalStateException e) {
 			throw new ResponseException(e.getMessage(), e);
@@ -47,13 +54,14 @@ public class Response {
 		// DebugTimer.betweenStart("AS STRING");
 
 		String str = null;
-		InputStream is = asStream();
-		if (null == is) {
-			return str;
-		}
+		InputStream is = null;
 
 		BufferedReader br = null;
 		try {
+			is = asStream();
+			if (null == is) {
+				return str;
+			}
 			br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 			StringBuffer buf = new StringBuffer();
 			char[] buffer = new char[1024];

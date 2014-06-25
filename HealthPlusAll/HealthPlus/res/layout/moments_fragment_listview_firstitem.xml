@@ -11,7 +11,7 @@
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
         android:layout_marginTop="54dp"
-        android:background="@drawable/moments_main_background_other_selector"
+        android:background="@drawable/dialog_cancel_button_selector"
         android:gravity="center"
         android:layout_gravity="center"
         android:paddingTop="10dp"

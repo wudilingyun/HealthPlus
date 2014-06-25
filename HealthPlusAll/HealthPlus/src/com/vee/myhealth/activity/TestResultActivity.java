@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.bean.HealthQuestionEntity;
@@ -16,11 +17,15 @@ import com.vee.myhealth.bean.Health_Report;
 import com.vee.myhealth.bean.TZtest;
 import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
+import com.yunfox.s4aservicetest.response.GeneralResponse;
+import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -28,6 +33,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TestResultActivity extends FragmentActivity implements
 		SqlDataCallBack<Health_Report> {
@@ -62,6 +68,8 @@ public class TestResultActivity extends FragmentActivity implements
 		@SuppressWarnings("rawtypes")
 		Serializable data = intent.getExtras().getSerializable("tzscore");
 		testname = intent.getStringExtra("testname");
+		
+		//110为原来“体质测试”，已经废弃
 		if (flag.equals("110")) {
 			tzscoremMap = (HashMap<TZtest, Integer>) data;
 			result = calculateScore.getScore(tzscoremMap);
@@ -69,7 +77,7 @@ public class TestResultActivity extends FragmentActivity implements
 			tips_tv.setVisibility(View.GONE);
 			result_iv.setVisibility(View.GONE);
 		} else if (flag.equals("111") || flag.equals("112")
-				|| flag.equals("113")) {
+				|| flag.equals("113")|| flag.equals("114")) {
 			scoremMap = (HashMap<HealthQuestionEntity, Integer>) data;
 			result = getScore(scoremMap);
 			sqlForTest.getHealthResult(flag, Integer.parseInt(result));
@@ -127,6 +135,12 @@ public class TestResultActivity extends FragmentActivity implements
 			tips_tv.setText(hResultEntity.getTips());
 		}
 		addIgnorList(hResultEntity.getType());
+		if(CheckNetWorkStatus.Status(this)){
+			new UpdateResult().execute(testname,currDate+"",hResultEntity.getType());
+		}else{
+			Toast.makeText(this, "未连接网络，测试数据无法保存", Toast.LENGTH_LONG).show();
+		}
+		
 	}
 
 	void addIgnorList(String result) {
@@ -186,5 +200,43 @@ public class TestResultActivity extends FragmentActivity implements
 			return null;
 		}
 
+	}
+	
+	
+	private class UpdateResult extends AsyncTask<String, Void, Boolean> {
+
+		private Exception exception;
+		ProgressDialog dialog;
+
+		@Override
+		protected Boolean doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			try {
+				GeneralResponse gen=	SpringAndroidService.getInstance(getApplication())
+						.newExamHistory(params[0], Long.parseLong(params[1]),
+								params[2]);
+				if(gen.getReturncode()==200){
+					return true;
+				}else {
+					return false;
+				}
+
+			} catch (Exception e) {
+				this.exception = e;
+			}
+
+			return false;
+		}
+
+		@Override
+		protected void onPostExecute(Boolean s) {
+			// TODO Auto-generated method stub
+			if (exception != null) {
+				System.out.println("exception"+exception.toString());
+			} else {
+				System.out.println("success");
+			}
+
+		}
 	}
 }

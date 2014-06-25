@@ -154,11 +154,11 @@
     <string name="update_yes">是</string>
     <string name="update_no">否</string>
     <string name="no_sdcard">未发现SD卡或SD正在被占用！</string>
-    <string name="update_is_latest">当前是最新版 本</string>
+    <string name="update_is_latest">当前是最新版本</string>
     <string name="update_current_version">当前版本号：</string>
     <string name="update_new_version">最新版本号：</string>
     <string name="update_installwrong">安装包已被删除,请重新下载!</string>
-    <string name="setting_feedback">一键反馈</string>
+    <string name="setting_feedback">建议反馈</string>
     <string name="setting_choicequestiontype">选择问题类型</string>
     <string name="setting_feedback_questiontype0">不能安装</string>
     <string name="setting_feedback_questiontype1">描述不符</string>
@@ -168,7 +168,7 @@
     <string name="setting_feedback_questiontype5">其他</string>
     <string name="setting_feedback_contactserviceqq">也可以加微信公众帐号：</string>
     <string name="setting_feedback_contactserviceqq1">yys_mfox</string>
-    <string name="setting_feedback_copynumber">复制帐号</string>
+    <string name="setting_feedback_copynumber_str">复制帐号</string>
     <string name="setting_feedback_questionhintcontent">请输入您的建议、问题感谢您对云医生的支持与关注</string>
     <string name="wf_questioncontactway">联系方式：邮箱/电话</string>
     <string name="setting_feedback_sendbtn">提交</string>

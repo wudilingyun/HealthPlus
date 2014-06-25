@@ -18,9 +18,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.ContactsContract;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -38,6 +40,7 @@ import android.widget.TextView;
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.moments.adapter.ContactAdapter;
 import com.yunfox.s4aservicetest.response.PhoneContactsResponse;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
@@ -46,8 +49,8 @@ import com.yunfox.springandroid4healthplus.SpringAndroidService;
  * @author wangdongsheng
  * 
  */
-public class AddContsctsActivity extends BaseFragmentActivity implements
-		OnQueryTextListener, OnItemClickListener {
+public class AddContsctsActivity extends FragmentActivity implements
+		OnQueryTextListener, OnItemClickListener, OnClickListener {
 	private static final String TAG = "AddContsctsActivity";
 	private ListView mContactsListview;
 	private ImageView loadImageView;
@@ -59,7 +62,8 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 	private HashMap<String, String> data;
 	private Animation news_loadAaAnimation;
 	private TextView contactNone;
-
+	private TextView header_text;
+	private ImageView header_lbtn_img, header_rbtn_img;
 	private Handler handler = new Handler() {
 
 		@Override
@@ -74,7 +78,8 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 						&& data != null && data.size() != 0) {
 					setAdapter(mContactsList, data);
 				} else {
-					contactNone.setVisibility(View.VISIBLE);
+					if (HP_User.getOnLineUserId(AddContsctsActivity.this) == 0)
+						contactNone.setVisibility(View.GONE);
 				}
 				loadImageView.clearAnimation();
 				loFrameLayout.setVisibility(View.GONE);
@@ -88,7 +93,9 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		View view = View.inflate(this, R.layout.activity_contacts_list, null);
-		setContainer(view);
+		setContentView(view);
+		gettitle();
+
 		contactNone = (TextView) findViewById(R.id.contacts_list_none);
 		loFrameLayout = (LinearLayout) findViewById(R.id.loading_frame);
 		mContactsListview = (ListView) findViewById(R.id.contacts_list);
@@ -102,6 +109,17 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 		mAsyncQueryHandler = new ContactsAsyncQueryHandler(getContentResolver());
 		startQuery();
 
+	}
+
+	void gettitle() {
+
+		header_text = (TextView) findViewById(R.id.header_text);
+		header_lbtn_img = (ImageView) findViewById(R.id.header_lbtn_img);
+		header_rbtn_img = (ImageView) findViewById(R.id.header_rbtn_img);
+		header_rbtn_img.setVisibility(View.GONE);
+		header_text.setText("添加手机联系人");
+		header_text.setOnClickListener(this);
+		header_lbtn_img.setOnClickListener(this);
 	}
 
 	private LayoutAnimationController creatAnimation() {
@@ -176,6 +194,7 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 		 */
 		@Override
 		protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
+			Log.i("lingyun", "AddContsctsActivity.onQueryComplete");
 			if (cursor != null && cursor.getCount() > 0) {
 
 				cursor.moveToFirst();
@@ -201,6 +220,7 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 
 					// }
 				}
+
 				if (contactArry.length > 0) {
 
 					Log.d(TAG, contactArry.length + "");
@@ -208,6 +228,10 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 					LoadThread mLoadThread = new LoadThread();
 					mLoadThread.start();
 				}
+			} else {
+				contactNone.setVisibility(View.VISIBLE);
+				loadImageView.clearAnimation();
+				loFrameLayout.setVisibility(View.GONE);
 			}
 		}
 	}
@@ -290,6 +314,12 @@ public class AddContsctsActivity extends BaseFragmentActivity implements
 		//
 		// startActivity(intent);
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		finish();
 	}
 
 }

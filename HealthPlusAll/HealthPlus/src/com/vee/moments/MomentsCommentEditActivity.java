@@ -110,7 +110,7 @@ public class MomentsCommentEditActivity extends Activity implements
 					momentsComment.setMomentsid(momentsid);
 					momentsComment.setPosterid(replytoid);
 					momentsCommentList.add(momentsComment);
-					
+					 
 					setResult(RESULT_OK);
 					MomentsCommentEditActivity.this.finish();
 				}

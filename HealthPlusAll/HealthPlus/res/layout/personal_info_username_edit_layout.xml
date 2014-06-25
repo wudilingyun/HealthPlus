@@ -44,6 +44,6 @@
         android:layout_marginRight="16.0dip"
         android:layout_marginTop="5dip"
         android:layout_below="@id/personal_info_uname_edit_input_ll"
-        android:text="4-30个字符，支持中英文、数字"/>
+        android:text="提示:4-30个中英文或数字"/>
 
 </RelativeLayout>

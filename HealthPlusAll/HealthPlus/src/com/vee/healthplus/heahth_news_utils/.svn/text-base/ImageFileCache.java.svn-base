@@ -25,7 +25,7 @@ public class ImageFileCache {
 	private static final String WHOLESALE_CONV = ".cach";// 扩展名
 
 	private static final int MB = 1024 * 1024;
-	private static final int MAX_SIZE = 10;
+	private static final int MAX_SIZE = 30;
 	private static final int FRRE_SD_SPACE_NEED_TO_CACHE = 10; // sd的最小可用于分配给缓存空间。
 
 	// 1 初始化缓存，首先移除原来的缓存。防止空间不够。
@@ -103,6 +103,7 @@ public class ImageFileCache {
 			if (path == null) {
 				file.delete();// 不存在删除这个目录
 			} else {
+				System.out.println("-------》+命中文件缓存文件");
 				updateFileTime(path);
 				return bitmap;
 			}
@@ -164,7 +165,7 @@ public class ImageFileCache {
 	public boolean removeCache(String dirPath) {
 		File dir = new File(dirPath);
 		File[] files = dir.listFiles();// 将文件夹内容放入到File数组当中
-		if (files == null) {
+		if (files == null||files.length<=0) {
 			return true;
 		}
 		if (!Environment.getExternalStorageState().equals(
@@ -172,11 +173,12 @@ public class ImageFileCache {
 			return false;
 		}
 		int dirSize = 0;
+		if(files.length>0)
 		for (int i = 0; i < files.length; i++) {
 			// 如果文件的名字已 .cach结尾
-			if (files[i].getName().endsWith(WHOLESALE_CONV)) {
+			//if (files[i].getName().endsWith(WHOLESALE_CONV)) {
 				dirSize += files[i].length();
-			}
+			//}
 		}
 		// 判断缓存当中的数据是否已经超过了最大值，或者SDcard空间不足
 		if (dirSize > MAX_SIZE * MB

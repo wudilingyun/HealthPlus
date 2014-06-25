@@ -31,10 +31,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vee.healthplus.R;
+import com.vee.healthplus.ui.main.MainPage;
+import com.vee.healthplus.util.AppPreferencesUtil;
 import com.vee.healthplus.util.user.GetProfileTask;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
-import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.QueryAllDayRecordByType;
 import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
@@ -46,16 +47,14 @@ public class HealthPlusLoginActivity extends Activity implements
 		GetProfileTask.GetProfileCallBack,
 		QueryAllDayRecordByType.QueryAllDayRecordByTypCallBack {
 	private EditText userName_et, userPwd_et;
-	private ICallBack callBack;
 	private CustomProgressDialog progressDialog = null;
 	private LinearLayout input_ll;
 	private ResizeLayout root_layout;
 	private Button register_btn;
 	private Button login_btn;
-	private Button forget_btn,enterWithoutLogin_btn;
+	private Button forget_btn, enterWithoutLogin_btn;
 	private TextView register_tv;
 	private ImageView uname_img, pwd_img;
-
 
 	Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -71,7 +70,12 @@ public class HealthPlusLoginActivity extends Activity implements
 				register_tv.setVisibility(View.GONE);
 				register_btn.setVisibility(View.GONE);
 			} else {
-				lp.setMargins(0, 0, 0, dip2px(Integer.valueOf(getResources().getString(R.string.health_plus_login_marginbottom))));
+				lp.setMargins(
+						0,
+						0,
+						0,
+						dip2px(Integer.valueOf(getResources().getString(
+								R.string.health_plus_login_marginbottom))));
 				lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,
 						RelativeLayout.TRUE);
 				input_ll.setLayoutParams(lp);
@@ -88,7 +92,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.healthplus_login_layout);
 		initView();
-		
+
 	}
 
 	@Override
@@ -99,7 +103,7 @@ public class HealthPlusLoginActivity extends Activity implements
 			finish();
 		}
 		progressDialog = CustomProgressDialog.createDialog(this);
-		progressDialog.setMessage("正在登陆...");
+		progressDialog.setMessage("正在登录...");
 		progressDialog.setCanceledOnTouchOutside(false);
 	}
 
@@ -157,6 +161,11 @@ public class HealthPlusLoginActivity extends Activity implements
 		case R.id.health_plus_goto_register_btn:
 			Intent intent = new Intent();
 			intent.setClass(this, HealthPlusRegisterActivity.class);
+			Bundle extras = getIntent().getExtras();
+			if (extras != null) {
+				intent.putExtras(extras);
+			}
+			setResult(305);
 			startActivity(intent);
 			break;
 		case R.id.health_plus_login_btn:
@@ -174,6 +183,14 @@ public class HealthPlusLoginActivity extends Activity implements
 			startActivity(intent2);
 			break;
 		case R.id.health_plus_enterwithoutlogin_btn:
+			if (AppPreferencesUtil.getBooleanPref(this, "isFirstShowLogin",
+					true)) {
+				Intent intent3 = new Intent();
+				intent3.setClass(this, MainPage.class);
+				startActivity(intent3);
+			} else {
+				setResult(RESULT_CANCELED);
+			}
 			finish();
 			break;
 		}
@@ -207,16 +224,13 @@ public class HealthPlusLoginActivity extends Activity implements
 	}
 
 	private void displayLoginResult(String msg) {
-		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void onFinishSignIn() {
 		progressDialog.dismiss();
-		displayLoginResult(getResources().getString(
-				R.string.hp_userlogin_success));
 		new GetProfileTask(this, this).execute();
-		//new QueryAllDayRecordByType(this, "weight", this).execute();
 	}
 
 	@Override
@@ -262,10 +276,15 @@ public class HealthPlusLoginActivity extends Activity implements
 		user.email = profile.getEmail();
 		user.phone = profile.getPhone();
 		user.remark = profile.getRemark();
-		user.photourl = profile.getRawavatarurl();
 		Log.i("lingyun",
 				"profile.getRawavatarurl()=" + profile.getRawavatarurl()
 						+ "profile.getRemark();=" + profile.getRemark());
+		if (profile.getRawavatarurl() == "") {
+			user.photourl ="http://www.mobifox.cn:12080/mm/default.jpg";
+		} else {
+			user.photourl = profile.getRawavatarurl();
+		}
+
 		HP_DBModel.getInstance(this).insertUserInfo(user, true);
 		HP_User.setOnLineUserId(this, profile.getMemberid());
 		displayLoginResult(this.getResources().getString(
@@ -274,31 +293,30 @@ public class HealthPlusLoginActivity extends Activity implements
 		if (b != null) {
 			Intent i = new Intent();
 			i.setComponent((ComponentName) b.getParcelable("cn"));
-			Log.i("lingyun",
-					"ComponentName="
-							+ ((ComponentName) b.getParcelable("cn"))
-									.toString());
+			Log.i("lingyun", "start LoginActivity ComponentName="
+					+ ((ComponentName) b.getParcelable("cn")).toString());
 			startActivity(i);
+		} else {
+			Log.i("lingyun", "start LoginActivity ComponentName=null");
+			setResult(RESULT_OK);
 		}
-		if (callBack != null) {
-			callBack.onChange();
-		}
-		setResult(RESULT_OK);
 		finish();
+
 	}
 
 	@Override
 	public void onErrorGetProfile(Exception e) {
 
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
+		setResult(RESULT_CANCELED);
 		finish();
 	}
-	
+
 	@Override
 	public void onFinishQueryAllDayRecordByTyp(List<DayRecord> dayrecordlist) {
 		progressDialog.dismiss();
@@ -330,5 +348,4 @@ public class HealthPlusLoginActivity extends Activity implements
 		return (int) (dpValue * scale + 0.5f);
 	}
 
-	
 }

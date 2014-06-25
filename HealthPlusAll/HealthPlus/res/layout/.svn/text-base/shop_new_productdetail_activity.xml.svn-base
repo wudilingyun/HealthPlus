@@ -28,7 +28,7 @@
             <ImageView
                 android:id="@+id/shop_productdetail_up_pic"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/home_photo_box_height"
+                android:layout_height="50dip"
                 android:layout_gravity="center_horizontal"
                 android:clickable="false"
                 android:contentDescription="@null"

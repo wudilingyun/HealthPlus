@@ -14,15 +14,13 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.vee.healthplus.R;
-
+import com.vee.healthplus.util.user.UserInfoUtil;
 
 public class AgeEditActivity extends Activity implements View.OnClickListener {
 	private WheelView yearWv;
 	private WheelView monthWv;
 	private Button okBtn;
-	private int currentYear;
-	private int currentMonth;
-	private int age;
+	private static int currentYear;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +33,14 @@ public class AgeEditActivity extends Activity implements View.OnClickListener {
 		Time t = new Time();
 		t.setToNow();
 		currentYear = t.year;
-		currentMonth = t.month;
 		yearWv = (WheelView) findViewById(R.id.age_edit_year_wv);
 		monthWv = (WheelView) findViewById(R.id.age_edit_month_wv);
 		yearWv.setViewAdapter(new Age_Year_Adapter(this));
 		monthWv.setViewAdapter(new Age_Month_Adapter(this));
-		String str=getIntent().getExtras().getString("age");
-		Log.i("lingyun","str="+str.substring(0,str.length()-1));
-		age = Integer.valueOf(str.substring(0,str.length()-1));
-		
-		yearWv.setCurrentItem(currentYear - age-1900);
-		monthWv.setCurrentItem(currentMonth);
+		int age = getIntent().getExtras().getInt("age");
+		yearWv.setCurrentItem(currentYear - 1900
+				- UserInfoUtil.getAgeFromBirthDay(age));
+		monthWv.setCurrentItem(UserInfoUtil.getMonthFromBirthDay(age) - 1);
 		okBtn = (Button) findViewById(R.id.age_edit_ok_btn);
 		okBtn.setOnClickListener(this);
 
@@ -65,9 +60,20 @@ public class AgeEditActivity extends Activity implements View.OnClickListener {
 		case R.id.age_edit_ok_btn:
 			Intent data = getIntent();
 			Bundle bundle = data.getExtras();
-			Log.i("lingyun","yearWv.getCurrentItem()="+yearWv.getCurrentItem());
-			age = currentYear - 1900-yearWv.getCurrentItem();
-			bundle.putString("age", age + "岁");
+			Log.i("lingyun",
+					"yearWv.getCurrentItem()=" + yearWv.getCurrentItem());
+			Log.i("lingyun",
+					"yearWv.getCurrentItem()=" + monthWv.getCurrentItem());
+			StringBuffer sb = new StringBuffer();
+			sb.append(1900 + yearWv.getCurrentItem() + "");
+			if (monthWv.getCurrentItem() < 9) {
+				sb.append("0" + (monthWv.getCurrentItem() + 1));
+			} else {
+				sb.append((monthWv.getCurrentItem() + 1));
+			}
+			sb.append("00");
+			Log.i("lingyun", "AgeEditActivity.sb=" + sb.toString());
+			bundle.putInt("age", Integer.valueOf(sb.toString()));
 			data.putExtras(bundle);
 			AgeEditActivity.this.setResult(RESULT_OK, data);
 			finish();
@@ -112,4 +118,5 @@ public class AgeEditActivity extends Activity implements View.OnClickListener {
 			return maxMonth;
 		}
 	}
+
 }

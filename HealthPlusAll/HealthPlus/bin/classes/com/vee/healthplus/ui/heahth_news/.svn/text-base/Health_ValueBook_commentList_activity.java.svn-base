@@ -3,6 +3,7 @@ package com.vee.healthplus.ui.heahth_news;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,9 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -42,6 +45,7 @@ import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.Response;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
+import com.vee.healthplus.widget.EmoticonsEditText;
 import com.yunfox.s4aservicetest.response.GeneralResponse;
 import com.yunfox.s4aservicetest.response.NewsComment;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
@@ -57,7 +61,6 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 	private Button submitButton;
 	private String normal = "1", pull = "2", down = "3";
 	private List<NewsComment> newscomment, newsComment_new, newsComment_old;
-
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -94,7 +97,27 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		submitButton.setOnClickListener(this);
 		myAdapter = new Health_ValueBook_Comment_Adapter(this, imageLoader);
 		comment_listView.setAdapter(myAdapter);
-
+		editText.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) {
+				// TODO Auto-generated method stub
+				/*content = s;*/
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		comment_listView
 				.setOnRefreshListener(new OnRefreshListener<ListView>() {
 					@Override
@@ -136,20 +159,20 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 							getApplication())
 							.getNewsCommentsByScope(url, 0, 10);
 					return newscomment;
-				case 2:
+				case 3:
 					newsComment_old = SpringAndroidService.getInstance(
 							getApplication())
 							.getNewsCommentsByMaxCommentidScope(url,
 									Integer.parseInt(params[1]));
-					newscomment.addAll(newsComment_old);
-					return newscomment;
-				case 3:
+					//newscomment.addAll(newsComment_old);
+					return newsComment_old;
+				case 2:
 					newsComment_new = SpringAndroidService.getInstance(
 							getApplication())
 							.getNewsCommentsByMinCommentidScope(url,
 									Integer.parseInt(params[1]), 10);
-					newscomment.addAll(newsComment_new);
-					return newscomment;
+					//newscomment.addAll(newsComment_new);
+					return newsComment_new;
 				default:
 					break;
 				}
@@ -185,6 +208,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				//comment_listView.onRefreshComplete();
 				Toast.makeText(getApplication(), "没有评论", Toast.LENGTH_SHORT)
 						.show();
+				comment_listView.onRefreshComplete();
 			}
 			// TODO 网络数据 adapter
 			// myAdapter.notifyDataSetChanged();
@@ -204,6 +228,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		protected GeneralResponse doInBackground(String... params) {
 			try {
 				String url = getIntent().getStringExtra("imgurl");
+				System.out.println("评论对应的url");
 				GeneralResponse grt = SpringAndroidService.getInstance(
 						getApplication()).insertNewsComment(url, params[0]);
 				return grt;
@@ -235,7 +260,9 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				if (data.getReturncode() == 200) {
 					Toast.makeText(getApplicationContext(), "评论成功",
 							Toast.LENGTH_SHORT).show();
-					new freshCommentsAsync().execute();
+				
+		
+						new freshCommentsAsync().execute();
 
 				} else {
 					String s=data.getReturncode()+data.getDescription();
@@ -291,7 +318,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				}
 			}
 			if (data != null && data.size() > 0) {
-				myAdapter.listaddAdapter(data);
+				myAdapter.listaddAllAdapter(data);
 				myAdapter.notifyDataSetChanged();
 			}
 			// TODO 网络数据 adapter
@@ -305,13 +332,15 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		switch (view.getId()) {
 		case R.id.dispatch_comment:
 			content = editText.getText().toString().trim();
+			// String strUTF8 = URLDecoder.decode(content, "UTF-8");
 			if (TextUtils.isEmpty(content)) {
 				showToast("请输入评论内容");
 			} else {
 				String reply = null;
 				content = TextUtils.isEmpty(reply) ? content : reply + content;
 				NewsComment nc = new NewsComment();
-				new submitCommentsAsync().execute(content);
+				System.out.println("输入的评论内容是"+content);
+				new submitCommentsAsync().execute(content.toString().trim());
 			}
 			editText.setText(null);
 			break;

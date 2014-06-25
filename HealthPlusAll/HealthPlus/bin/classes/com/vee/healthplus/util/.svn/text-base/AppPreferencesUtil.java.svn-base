@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 
 public class AppPreferencesUtil {
 
-	public static final String APPLICATION_NAME = "easygame_rom";
+	public static final String APPLICATION_NAME = "cludDoctor";
 
 	public static boolean getBooleanPref(Context context, String name,
 			boolean def) {

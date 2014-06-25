@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vee.healthplus"
-    android:versionCode="4"
-    android:versionName="1.0.3" >
+    android:versionCode="9"
+    android:versionName="1.1.1" 
+    android:installLocation="auto" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -76,7 +77,6 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" >
     </uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -87,8 +87,6 @@
     <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应�? -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.CAMERA" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" >
     </uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
     </uses-permission>
@@ -108,6 +106,7 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.autofocus" />
@@ -123,10 +122,18 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/hp_app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
+        <meta-data
+            android:name="APP_ID"
+            android:value="999999009" />
+        <meta-data
+            android:name="CHANNEL"
+            android:value="700071" />
+      
         <activity
-            android:name="com.vee.healthplus.ui.main.LoginMain"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait" >
+            android:name="com.vee.healthplus.ui.main.GuidePage"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators">
         </activity>
         <activity
             android:name="com.vee.healthplus.ui.main.MainPage"
@@ -138,40 +145,14 @@
             android:name="com.vee.healthplus.ui.main.FirstActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/StyledIndicators" >
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.vee.healthplus.ui.sportmode.HP_Target"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.vee.healthplus.ui.sporttrack.SportTrackMain"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.vee.healthplus.ui.achievement.Achievement"
-            android:configChanges="orientation"
-            android:label="BaiduMapSDKDemo"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.vee.healthplus.ui.setting.Setting"
-            android:configChanges="orientation"
-            android:label="BaiduMapSDKDemo"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.vee.healthplus.ui.sportmode.SportResultFragment"
-            android:configChanges="orientation"
-            android:label="BaiduMapSDKDemo"
-            android:screenOrientation="portrait" >
-        </activity>
-
+ 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -200,12 +181,7 @@
         </activity>
         <activity android:name="com.vee.healthplus.ui.user.UserInfoEdit" >
         </activity>
-        <activity
-            android:name="com.vee.healthplus.ui.setting.AboutActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name="com.vee.healthplus.ui.setting.SettingFeedBack"
             android:configChanges="orientation|keyboardHidden"
@@ -215,24 +191,6 @@
 
         <!-- Health -->
 
-        <activity
-            android:name="com.vee.healthplus.ui.heahth_exam.ExamTypeActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.vee.healthplus.ui.heahth_exam.StartExamActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.vee.healthplus.ui.heahth_exam.ExamResultActivity"
-            android:screenOrientation="portrait" />
-
-        <receiver android:name="com.vee.healthplus.util.alarm.AlarmReceiver" />
-
-        <service android:name="com.vee.healthplus.service.AlarmService" />
-        <service
-            android:name="com.vee.healthplus.service.SportEngine"
-            android:enabled="true" >
-        </service>
         <!-- for shop -->
         <activity
             android:name="com.vee.shop.activity.ProductDetailActivity"
@@ -295,34 +253,12 @@
 
 
         <!-- for analysis -->
-        <activity
-            android:name="com.vee.healthplus.ui.analysis.AnalysisHistoryActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+
         <!-- for analysis -->
 
 
         <!-- for forum -->
-        <activity
-            android:name="com.vee.forum.CategoryActivity"
-            android:label="@string/title_activity_category" >
-        </activity>
-        <activity
-            android:name="com.vee.forum.TopicActivity"
-            android:label="@string/title_activity_topic" >
-        </activity>
-        <activity
-            android:name="com.vee.forum.PostActivity"
-            android:label="@string/title_activity_post" >
-        </activity>
-        <activity
-            android:name="com.vee.forum.TopicDetailActivity"
-            android:label="@string/title_activity_topic_detail" >
-        </activity>
-        <activity
-            android:name="com.vee.forum.ReplyPostActivity"
-            android:label="@string/title_activity_reply_post" >
-        </activity>
+  
         <!-- for forum -->
 
 
@@ -343,40 +279,7 @@
         <!--  -->
 
 
-        <!-- health heart -->
 
-        <activity
-            android:name="com.vee.healthplus.ui.heahth_heart.HeartRateActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
-
-        <service android:name="com.vee.easyting.service.MusicService" >
-        </service>
-
-        <!-- music -->
-        <activity
-            android:name="com.vee.easyting.activity.LocalSongsActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.vee.easyting.activity.PlayerActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-
-        <receiver
-            android:name="com.vee.easyting.activity.BaseActivity$BaseBroadCastReceiver"
-            android:enabled="true" >
-            <intent-filter>
-                <action android:name="com.easyting.progress" />
-                <action android:name="com.easyting.button" />
-            </intent-filter>
-        </receiver>
         <receiver android:name="com.vee.healthplus.receiver.CompleteReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
@@ -391,18 +294,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name="com.vee.askweakness.ui.MyXmlActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name="com.vee.askweakness.ui.MySymptomActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+ 
         <activity
             android:name="com.vee.healthplus.ui.heahth_news.Health_ValueBook_commentList_activity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -472,6 +364,11 @@
         </activity>
         <activity
             android:name="com.vee.healthplus.ui.user.HealthPlusRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vee.healthplus.ui.user.HealthPlusRegisterTestActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
@@ -616,6 +513,13 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+          <activity
+            android:name="com.vee.myhealth.activity.SleepActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        
         <activity
             android:name="com.vee.moments.NewMomentsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -650,39 +554,44 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.vee.moments.AddFriendActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_add_friend" >
+            android:label="@string/title_activity_add_friend"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.vee.moments.SearchPhoneActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_search_phone" >
+            android:label="@string/title_activity_search_phone"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.vee.moments.AddContsctsActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_add_contscts" >
+            android:label="@string/title_activity_add_contscts"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.vee.moments.FriendDetailActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_friend_detail" >
+            android:label="@string/title_activity_friend_detail"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.vee.moments.FriendListActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_friend_list" >
+            android:label="@string/title_activity_friend_list"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity 
+        <activity
+            android:name="com.vee.moments.NewFriendListActivity"
+            android:label="@string/title_activity_new_friend_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="com.vee.moments.MomentsMainActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_moments_main" >
+            android:label="@string/title_activity_moments_main"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.vee.moments.SendInvitationActivity"
-            android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.vee.healthplus.ui.user.TempActivity"
@@ -724,6 +633,11 @@
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
+        <service
+            android:name="com.kyleduo.csclient.comet.ICometService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
 
         <!-- Required SDK核心功能 -->
         <receiver
@@ -746,7 +660,16 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name="com.kyleduo.csclient.comet.MessageReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter android:priority="1" >
+                <action android:name="com.kyleduo.csclient.action.MESSAGE_ARRIVED" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
         <!-- Required SDK核心功能 -->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
 

@@ -114,6 +114,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		String s = "我在使用【云医生】应用,这个新闻很不错啊,你也来看一下吧###[" + content + "]#### 地址是："
 				+ url;
 		int type = Platform.SHARE_WEBPAGE;
+		if(imgPath!=null)
 	if (imgPath.length() > 0 && url.length() > 0) {
 			type = Platform.SHARE_WEBPAGE;
 		} else {

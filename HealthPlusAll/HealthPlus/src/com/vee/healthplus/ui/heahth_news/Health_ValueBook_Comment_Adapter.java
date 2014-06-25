@@ -47,6 +47,11 @@ public class Health_ValueBook_Comment_Adapter extends BaseAdapter {
 		//this.newslist.clear();
 		this.newslist.addAll(newslist);
 	}
+	
+	public void listaddAllAdapter(List<NewsComment> newslist) {
+		this.newslist.clear();
+		this.newslist.addAll(newslist);
+	}
 
 	@Override
 	public int getCount() {

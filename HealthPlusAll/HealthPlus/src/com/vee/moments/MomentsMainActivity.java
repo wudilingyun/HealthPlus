@@ -7,8 +7,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.conn.ConnectTimeoutException;
+import org.springframework.http.HttpStatus;
+import org.springframework.social.MissingAuthorizationException;
+import org.springframework.social.connect.DuplicateConnectionException;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.ResourceAccessException;
 
+import android.R.integer;
+import android.R.string;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -37,20 +46,24 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.http.StatisticsUtils;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.widget.DrawableCenterTextView;
+import com.vee.healthplus.widget.RoundImageView;
 import com.yunfox.s4aservicetest.response.AccountCover;
 import com.yunfox.s4aservicetest.response.GeneralResponse;
 import com.yunfox.s4aservicetest.response.Moments;
 import com.yunfox.s4aservicetest.response.MomentsComment;
+import com.yunfox.s4aservicetest.response.MomentsSupport;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class MomentsMainActivity extends FragmentActivity implements
 		OnClickListener {
-	private TextView header_text;
+	private TextView header_text, supportpeople_tv;
 	private ImageView header_lbtn_img, header_rbtn_img;
+	boolean bFirstLaunch = true;
 
 	RelativeLayout relativeLayoutNoMents;
 	RelativeLayout relativeLayoutMomentsHeading;
@@ -61,6 +74,12 @@ public class MomentsMainActivity extends FragmentActivity implements
 	private ImageView imageViewCoverList = null;
 	private ImageView imageViewMyMoments = null;
 	private TextView textViewMyName = null;
+	private String pull = "3", down = "4";
+	private LinearLayout layout_support, layout_supportorcomment;
+	List<Moments> momentsList = new ArrayList<Moments>();
+	private int currposition;
+	ProgressDialog dialog;
+	private RoundImageView mymoments;
 
 	void settitle() {
 
@@ -119,6 +138,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 		} else if (requestCode == 20) {
 			if (resultCode == RESULT_OK) {
 				new GetMomentsTimelineTask().execute();
+
 			}
 		}
 	}
@@ -137,9 +157,19 @@ public class MomentsMainActivity extends FragmentActivity implements
 		ImageView imageViewAddFriend = (ImageView) findViewById(R.id.addfriend);
 		relativeLayoutNoMents = (RelativeLayout) findViewById(R.id.nomoments);
 		relativeLayoutMomentsHeading = (RelativeLayout) findViewById(R.id.momentsheading);
+		mymoments = (RoundImageView) findViewById(R.id.mymoments);
+		if (HP_User.getOnLineUserId(this) != 0) {
+			HP_User user = HP_DBModel.getInstance(MomentsMainActivity.this)
+					.queryUserInfoByUserId(
+							HP_User.getOnLineUserId(MomentsMainActivity.this),
+							true);
 
+			ImageLoader.getInstance(MomentsMainActivity.this).addTask(
+					user.photourl, mymoments);
+		}
 		listViewMonentsList = (PullToRefreshListView) findViewById(R.id.momentslistfragment);
 		listViewMonentsList.getRefreshableView().setDivider(null);
+		// listViewMonentsList.getRefreshableView().setHeaderDividersEnabled(false);
 		listViewMonentsList.getRefreshableView().setSelector(
 				android.R.color.transparent);
 		listViewMonentsList.setPullToRefreshOverScrollEnabled(false);
@@ -153,7 +183,6 @@ public class MomentsMainActivity extends FragmentActivity implements
 
 		momentsAdapter = new MomentsAdapter(MomentsMainActivity.this);
 		listViewMonentsList.setAdapter(momentsAdapter);
-
 		listViewMonentsList
 				.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
@@ -161,7 +190,27 @@ public class MomentsMainActivity extends FragmentActivity implements
 					public void onRefresh(
 							PullToRefreshBase<ListView> refreshView) {
 						// TODO Auto-generated method stub
-						new TestTask().execute();
+						if (momentsList != null && momentsList.size() > 0) {
+
+							if (listViewMonentsList.isHeaderShown()) {
+
+								// 下拉刷新接口
+								new TestTask().execute(down, momentsList.get(0)
+										.getMomentsid() + "");
+								System.out.println("最大Id"
+										+ momentsList.get(0).getMomentsid()
+										+ "");
+							} else if (listViewMonentsList.isFooterShown()) {
+								// 上拉刷新接口
+
+								new TestTask().execute(pull,
+										momentsList.get(momentsList.size() - 1)
+												.getMomentsid() + "");
+							}
+						} else {
+							listViewMonentsList.onRefreshComplete();
+						}
+
 					}
 				});
 
@@ -200,7 +249,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 		});
 
 		new GetMomentsTimelineTask().execute();
-		new GetCoverTask().execute();
+
 	}
 
 	@Override
@@ -226,35 +275,104 @@ public class MomentsMainActivity extends FragmentActivity implements
 		}
 	}
 
-	private class TestTask extends AsyncTask<Void, Void, Void> {
+	private class TestTask extends AsyncTask<String, Void, List<Moments>> {
+		private List<Moments> momentsList_new = new ArrayList<Moments>();
+		private Exception exception;
+		private int num;
 
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected List<Moments> doInBackground(String... params) {
 			// TODO Auto-generated method stub
+			num = Integer.parseInt(params[0]);
+			System.out.println("params" + params[1]);
 			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+				switch (Integer.parseInt(params[0])) {
+
+				case 4:
+
+					momentsList_new = SpringAndroidService.getInstance(
+							getApplication()).getNewestMomentsTimeline(
+							Integer.parseInt(params[1]));
+					return momentsList_new;
+				case 3:
+
+					momentsList_new = SpringAndroidService.getInstance(
+							getApplication()).getMoreMomentsTimeline(10,
+							Integer.parseInt(params[1]));
+					return momentsList_new;
+
+				}
+			} catch (Exception e) {
+				this.exception = e;
+				System.out.println("message" + exception.getMessage()
+						+ "toString" + exception.toString() + "getCause"
+						+ exception.getCause() + "getLocalizedMessage"
+						+ exception.getLocalizedMessage());
 			}
 			return null;
 		}
 
 		@Override
-		protected void onPostExecute(Void v) {
-			listViewMonentsList.onRefreshComplete();
+		protected void onPostExecute(List<Moments> data) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(data);
+			if (exception != null) {
+				String message;
+
+				if (exception instanceof HttpClientErrorException
+						&& ((((HttpClientErrorException) exception)
+								.getStatusCode() == HttpStatus.BAD_REQUEST) || ((HttpClientErrorException) exception)
+								.getStatusCode() == HttpStatus.UNAUTHORIZED)) {
+					message = "unauthorized,signout and signin again";
+
+					SpringAndroidService.getInstance(getApplication())
+							.signOut();
+
+				}
+				if (exception instanceof DuplicateConnectionException) {
+					message = "The connection already exists.";
+				} else if (exception instanceof ResourceAccessException
+						&& exception.getCause() instanceof ConnectTimeoutException) {
+					message = "connect time out";
+				} else if (exception instanceof MissingAuthorizationException) {
+					message = "please login first";
+				} else {
+					message = "未知错误。请重试";
+				}
+				listViewMonentsList.onRefreshComplete();
+				Toast.makeText(getApplication(), message, Toast.LENGTH_SHORT)
+						.show();
+			} else {
+				if (data != null && data.size() > 0) {
+					if (num == 4) {
+						data.addAll(momentsList);
+						momentsAdapter.addMomentsList(data, "下拉刷新");
+					} else {
+						momentsAdapter.addMomentsList(data, "刷新");
+					}
+
+					momentsAdapter.notifyDataSetChanged();
+					listViewMonentsList.onRefreshComplete();
+				} else {
+
+					Toast.makeText(getApplication(), "没有最新数据",
+							Toast.LENGTH_SHORT).show();
+					listViewMonentsList.onRefreshComplete();
+				}
+			}
 		}
+
 	}
 
 	// ***************************************
-	// Private classes
+	// Private classes 评论列表
 	// ***************************************
 	private class GetMomentsTimelineTask extends
 			AsyncTask<Void, Void, List<Moments>> {
 
 		private MultiValueMap<String, String> formData;
 		private Exception exception;
-		ProgressDialog dialog;
 
 		@Override
 		protected void onPreExecute() {
@@ -271,7 +389,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 			try {
 				List<Moments> myMomentsList = SpringAndroidService.getInstance(
 						MomentsMainActivity.this.getApplication())
-						.firstGetMomentsTimeline(20);
+						.firstGetMomentsTimeline(15);
 
 				return myMomentsList;
 
@@ -285,16 +403,20 @@ public class MomentsMainActivity extends FragmentActivity implements
 		@Override
 		protected void onPostExecute(List<Moments> myMomentsList) {
 			// TODO Auto-generated method stub
-			dialog.dismiss();
+			// dialog.dismiss();
 			if (exception != null) {
 				System.out.println("what a big problem");
 			}
 
 			if (myMomentsList != null && myMomentsList.size() > 0) {
-				momentsAdapter.addMomentsList(myMomentsList);
+				momentsAdapter.addMomentsList(myMomentsList, "增加评论");
 				momentsAdapter.notifyDataSetChanged();
+			} else {
+
+				dialog.dismiss();
+				listViewMonentsList.setEmptyView(findViewById(R.id.empty));
 			}
-			listViewMonentsList.setEmptyView(findViewById(R.id.empty));
+
 		}
 	}
 
@@ -319,7 +441,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 
 		Context context;
 		LayoutInflater inflater;
-		List<Moments> momentsList;
+
 		private Object lock = new Object();
 
 		public MomentsAdapter(Context context) {
@@ -329,9 +451,16 @@ public class MomentsMainActivity extends FragmentActivity implements
 			momentsList = new ArrayList<Moments>();
 		}
 
-		public void addMomentsList(List<Moments> addMomentsList) {
-			momentsList.clear();
+		public void addMomentsList(List<Moments> addMomentsList, String tag) {
+			// momentsList.clear();
+			System.out.println("评论大小"
+					+ addMomentsList.get(0).getMomentsComments().size());
+			System.out.println("别人评论的最大id"
+					+ addMomentsList.get(0).getMomentsid());
 			if (addMomentsList != null) {
+				if (tag == "增加评论" || tag == "增加赞" || tag == "下拉刷新") {
+					momentsList.clear();
+				}
 				momentsList.addAll(addMomentsList);
 			}
 		}
@@ -354,6 +483,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 			return position;
 		}
 
+		@SuppressLint("NewApi")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
@@ -393,11 +523,12 @@ public class MomentsMainActivity extends FragmentActivity implements
 			switch (type) {
 			case TYPE_ITEM:
 				final Moments moments = momentsList.get(position - 1);
-
+				currposition = position;
 				holder.getTextViewUsername().setText(moments.getPostername());
 				holder.getTextViewMessage().setText(moments.getMessage());
 
 				String posterAvatarUrl = moments.getPosteravatar();
+				System.out.println("朋友圈的用户头像url" + posterAvatarUrl);
 				String strImage1 = moments.getImage1();
 				if (strImage1 == null || strImage1.length() == 0) {
 					holder.getImageViewMoments().setVisibility(View.GONE);
@@ -427,14 +558,54 @@ public class MomentsMainActivity extends FragmentActivity implements
 						tvUploadTime.setText(elapseday + " 天前上传");
 					}
 				}
+
+				// 增加赞和评论布局
+				layout_supportorcomment = (LinearLayout) view
+						.findViewById(R.id.layout_supportorcomment);
+				layout_support = (LinearLayout) view
+						.findViewById(R.id.layout_support);
+				supportpeople_tv = (TextView) view
+						.findViewById(R.id.supportpeople_tv);
 				final LinearLayout comments_layout = (LinearLayout) view
 						.findViewById(R.id.comments_layout);
 				comments_layout.removeAllViews();
-				for (MomentsComment momentsComment : moments
-						.getMomentsComments()) {
-					comments_layout.addView(createView(
-							momentsComment.getPostername(),
-							momentsComment.getComment()));
+
+				// if("赞"||"评论"==null)
+
+				if (moments.getMomentsSupports().size() > 0
+						&& moments.getMomentsSupports() != null) {
+					layout_supportorcomment.setVisibility(View.VISIBLE);
+					layout_support.setVisibility(View.VISIBLE);
+					List<MomentsSupport> supportNameList = moments
+							.getMomentsSupports();
+
+					StringBuffer supportNameBuffer = new StringBuffer();
+					for (int i = 0; i < supportNameList.size(); i++) {
+						supportNameBuffer.append(supportNameList.get(i)
+								.getAccountname() + ",");
+						System.out.println("赞名字"
+								+ supportNameList.get(i).getAccountname());
+					}
+					supportpeople_tv.setText(supportNameBuffer.toString());
+					supportpeople_tv.setTag(supportNameBuffer.toString());
+				} else {
+					layout_supportorcomment.setVisibility(View.GONE);
+					layout_support.setVisibility(View.GONE);
+				}
+
+				if (moments.getMomentsComments() != null
+						&& moments.getMomentsComments().size() > 0) {
+					if (layout_supportorcomment.getVisibility() == View.GONE) {
+						layout_supportorcomment.setVisibility(View.VISIBLE);
+					}
+
+					for (MomentsComment momentsComment : moments
+							.getMomentsComments()) {
+						comments_layout.addView(createView(
+								momentsComment.getPostername(),
+								momentsComment.getComment()));
+					}
+
 				}
 				comment_img.setOnClickListener(new OnClickListener() {
 
@@ -460,6 +631,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
+						System.out.println("判断是否赞过");
 						new BooleanDoSupportAsync().execute(moments
 								.getMomentsid());
 					}
@@ -477,6 +649,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 				break;
 			case TYPE_COVER:
 				imageViewCoverList = (ImageView) view.findViewById(R.id.cover);
+
 				imageViewCoverList.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -488,12 +661,22 @@ public class MomentsMainActivity extends FragmentActivity implements
 					}
 				});
 
+				if (bFirstLaunch) {
+					new GetCoverTask().execute();
+					bFirstLaunch = false;
+				}
+
 				ImageView imageViewMyMoments = (ImageView) view
 						.findViewById(R.id.mymoments);
 				TextView textViewMyName = (TextView) view
 						.findViewById(R.id.myname);
 				int userid = HP_User.getOnLineUserId(MomentsMainActivity.this);
-				if (userid != 0) {
+				if (userid == 0) {
+					imageViewCoverList
+							.setBackgroundResource(R.drawable.moments_cover_default);
+
+				} else {
+					// imageViewCoverList.setBackgroundResource(R.drawable.moments_cover_default);
 					HP_User user = HP_DBModel.getInstance(
 							MomentsMainActivity.this).queryUserInfoByUserId(
 							HP_User.getOnLineUserId(MomentsMainActivity.this),
@@ -502,6 +685,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 
 					ImageLoader.getInstance(MomentsMainActivity.this).addTask(
 							user.photourl, imageViewMyMoments);
+					dialog.dismiss();
 				}
 
 				imageViewMyMoments.setOnClickListener(new OnClickListener() {
@@ -589,6 +773,28 @@ public class MomentsMainActivity extends FragmentActivity implements
 		view.addView(tv1);// 将TextView 添加到子View 中
 		view.addView(tv2);// 将TextView 添加到子View 中
 		return view;
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		StatisticsUtils.endFunction(this, HP_User.getOnLineUserId(this) + "",
+				StatisticsUtils.FRIEND_JKQ_ID, StatisticsUtils.FRIEND_JKQ);
 	}
 
 	// ***************************************
@@ -685,6 +891,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 		}
 	}
 
+	// 是否赞
 	public class BooleanDoSupportAsync extends
 			AsyncTask<Integer, String, Boolean> {
 		int momentsid = 0;
@@ -694,6 +901,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 			super.onPostExecute(result);
 			if (!result) {
 				new SubmitSupportAsync().execute(momentsid);
+
 			} else {
 				Toast.makeText(MomentsMainActivity.this.getApplication(),
 						"已经赞过啦", Toast.LENGTH_SHORT).show();
@@ -720,6 +928,18 @@ public class MomentsMainActivity extends FragmentActivity implements
 
 	public class SubmitSupportAsync extends AsyncTask<Integer, String, Integer> {
 		private ICallBack iCallBack;
+		private int id;
+
+		@Override
+		protected Integer doInBackground(Integer... params) {
+			// 点击赞当前评论
+			GeneralResponse gre = SpringAndroidService.getInstance(
+					MomentsMainActivity.this.getApplication())
+					.addsupporttomoments(params[0]);
+			id = params[0];
+			return gre.getReturncode();
+
+		}
 
 		@Override
 		protected void onPostExecute(Integer result) {
@@ -728,21 +948,35 @@ public class MomentsMainActivity extends FragmentActivity implements
 			if (result == 200) {
 				Toast.makeText(MomentsMainActivity.this.getApplication(),
 						"赞成功", Toast.LENGTH_SHORT).show();
+				// 获得列表
+
+				new GetMomentsTimelineTask().execute();
+				/*
+				 * int userid
+				 * =HP_User.getOnLineUserId(MomentsMainActivity.this); HP_User
+				 * user = HP_DBModel .getInstance(MomentsMainActivity.this)
+				 * .queryUserInfoByUserId( userid, true);
+				 * 
+				 * String name = user.userNick;
+				 * layout_supportorcomment.setVisibility(View.VISIBLE);
+				 * layout_support.setVisibility(View.VISIBLE);
+				 * 
+				 * MomentsSupport momentsSupport = new MomentsSupport();
+				 * momentsSupport.setAccountname(name);
+				 * momentsSupport.setAccountid(userid);
+				 * momentsSupport.setMomentsid(id);
+				 * momentsList.get(currposition)
+				 * .getMomentsSupports().add(momentsSupport);
+				 * momentsAdapter.addMomentsList(momentsList, "a");
+				 * momentsAdapter.notifyDataSetChanged();
+				 */
+
 			} else {
+				layout_support.setVisibility(View.GONE);
 
 				Toast.makeText(MomentsMainActivity.this.getApplication(),
 						"赞失败" + result, Toast.LENGTH_SHORT).show();
 			}
-		}
-
-		@Override
-		protected Integer doInBackground(Integer... params) {
-			// 点击赞当前评论
-			GeneralResponse gre = SpringAndroidService.getInstance(
-					MomentsMainActivity.this.getApplication())
-					.addsupporttomoments(params[0]);
-			return gre.getReturncode();
-
 		}
 
 	}

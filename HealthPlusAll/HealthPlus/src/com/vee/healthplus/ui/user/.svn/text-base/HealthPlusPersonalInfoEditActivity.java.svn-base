@@ -10,6 +10,7 @@ import org.springframework.social.greenhouse.api.Profile;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.ImageFileCache;
 import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
 import com.vee.healthplus.util.user.GetProfileTask;
@@ -34,6 +36,7 @@ import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.util.user.SaveProfileTask;
+import com.vee.healthplus.util.user.UserInfoUtil;
 import com.vee.healthplus.widget.CustomProgressDialog;
 
 @SuppressLint("ResourceAsColor")
@@ -47,6 +50,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	private PersonalInfoAdapter mAdapter;
 	private HP_User user;
 	private Bitmap head = null;
+	private int mAge;
 	private ImageFileCache fileCache;
 	private ImageMemoryCache memoryCache;
 	private TextView header_text;
@@ -60,6 +64,9 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
+		Log.i("lingyun", "hppie.onActivityResult,requestCode=" + requestCode
+				+ ",resultCode=" + resultCode);
+
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
 			case 0:
@@ -96,10 +103,8 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				break;
 			case 4:
 				Bundle b4 = data.getExtras();
-				String age = b4.getString("age");
-				if (age != null && !age.equals("")) {
-					infoList.get(4).setValue(age);
-				}
+				mAge = b4.getInt("age");
+				infoList.get(4).setValue(UserInfoUtil.getAgeFromBirthDay(mAge) + "岁");
 				break;
 			case 5:
 				Bundle b5 = data.getExtras();
@@ -185,7 +190,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		infoList.get(1).setText("昵称").setValue(user.userNick);
 		infoList.get(2).setText("密码").setValue("点击修改密码");
 		infoList.get(3).setText("性别").setValue(user.userSex == -1 ? "男" : "女");
-		infoList.get(4).setText("年龄").setValue("" + user.userAge + "岁");
+		infoList.get(4).setText("年龄").setValue(UserInfoUtil.getAgeFromBirthDay(user.userAge) + "岁");
 		infoList.get(5).setText("邮箱").setValue(user.email);
 		infoList.get(6).setText("身高").setValue(user.userHeight + "cm");
 		DecimalFormat format2 = new DecimalFormat("0");
@@ -239,7 +244,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				case 4:
 					Bundle extras4 = new Bundle();
 					Intent intent4 = new Intent();
-					extras4.putString("age", infoList.get(4).getValue());
+					extras4.putInt("age", user.userAge);
 					intent4.putExtras(extras4);
 					intent4.setClass(HealthPlusPersonalInfoEditActivity.this,
 							AgeEditActivity.class);
@@ -286,6 +291,10 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.health_plus_personal_info_edit_sava_btn:
+			if(!CheckNetWorkStatus.Status(this)){
+				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
+				return;
+			}
 			user.userNick = infoList.get(1).getValue();
 			user.email = infoList.get(5).getValue();
 			String str = infoList.get(6).getValue();
@@ -294,7 +303,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 			str = infoList.get(7).getValue();
 			user.userWeight = Float.valueOf(str.substring(0, str.length() - 2));
 			str = infoList.get(4).getValue();
-			user.userAge = Integer.valueOf(str.substring(0, str.length() - 1));
+			user.userAge =mAge;
 			str = infoList.get(3).getValue();
 			Log.i("lingyun", "str=" + str);
 			user.userSex = str.equals("男") ? -1 : 0;
@@ -316,7 +325,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 			dialog.show();
 			break;
 		case R.id.header_lbtn_img:
-			finish();
+			onBackPressed();
 			break;
 		}
 	}
@@ -358,8 +367,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	public void onErrorSaveProfile(Exception e) {
 		// TODO Auto-generated method stub
 		dialog.dismiss();
-		Toast.makeText(this, "保存失败", Toast.LENGTH_SHORT).show();
-		finish();
+		finishSelf();
 	}
 
 	@Override
@@ -368,10 +376,10 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		System.out.print("onFinishUploadAvatar.reflag=" + reflag);
 		if (reflag == 200) {
 			new GetProfileTask(this, this).execute();
-		}else{
+		} else {
 			dialog.dismiss();
 			Toast.makeText(this, "头像保存失败", Toast.LENGTH_SHORT).show();
-			finish();
+			finishSelf();
 		}
 	}
 
@@ -381,7 +389,14 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		user.photourl = profile.getRawavatarurl();
 		HP_DBModel.getInstance(this).updateUserInfo(user, true);
 		dialog.dismiss();
-		finish();
+		finishSelf();
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		finishSelf();
 	}
 
 	@Override
@@ -392,6 +407,23 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 
 	@Override
 	public void onErrorUploadAvatar() {
+		finishSelf();
+	}
+
+	private void finishSelf() {
+		Bundle b = getIntent().getExtras();
+		if (b != null) {
+			Intent i = new Intent();
+			i.setComponent((ComponentName) b.getParcelable("cn"));
+			Log.i("lingyun", "start infoedit ComponentName="
+					+ ((ComponentName) b.getParcelable("cn")).toString());
+			startActivity(i);
+		} else {
+			Log.i("lingyun", "start infoedit ComponentName=null");
+		}
 		finish();
 	}
+
+
+
 }

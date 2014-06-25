@@ -30,7 +30,7 @@ class FavoriteNewsListAdapter extends BaseAdapter {
 	}
 
 	void listaddAdapter(List<NewsCollectinfor> newslist) {
-		this.newslist.addAll(newslist);
+		this.newslist = newslist;
 	}
 
 	@Override
@@ -78,9 +78,6 @@ class FavoriteNewsListAdapter extends BaseAdapter {
 		v.imageView_healthnews.setImageResource(R.drawable.header);
 		String imgurl = newslist.get(position).getImgurl();
 		imageLoader.addTask(imgurl, v.imageView_healthnews);
-		Log.i("lingyun", "getTitle=" + newslist.get(position).getTitle()
-				+ "getWeburl=" + newslist.get(position).getWeburl()
-				+ "getImgurl=" + newslist.get(position).getImgurl());
 		return view;
 	}
 

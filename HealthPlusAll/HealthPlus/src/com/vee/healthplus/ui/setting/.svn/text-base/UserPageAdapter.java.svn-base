@@ -16,7 +16,7 @@ class UserPageAdapter extends BaseAdapter {
 	private String[] sTitles;
 	private int icons[] = { R.drawable.healthplus_wo_item_testdata_icon,
 			R.drawable.healthplus_wo_item_setting_icon,
-			R.drawable.healthplus_wo_item_device_icon,R.drawable.shop_search_order_icon};
+			R.drawable.healthplus_wo_item_device_icon,R.drawable.healthplus_wo_item_logout_icon};
 
 	private LayoutInflater _mInflater;
 

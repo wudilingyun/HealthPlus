@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,14 +22,16 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.http.StatisticsUtils;
+import com.vee.healthplus.ui.main.QuitDialog;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.bean.HealthQuestionEntity;
 import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
@@ -44,6 +47,8 @@ public class MentalityActivity extends BaseFragmentActivity implements
 	private TextView qid;
 	private ProgressBar progressBar;
 	private int progresscount;
+	private int userId;
+
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -56,6 +61,7 @@ public class MentalityActivity extends BaseFragmentActivity implements
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
 		setLeftBtnRes(R.drawable.hp_w_header_view_back);
+		userId = HP_User.getOnLineUserId(this);
 		init();
 		sqlForTest = new SqlForTest(this);
 		sqlForTest.getHealthContent("112");
@@ -81,7 +87,15 @@ public class MentalityActivity extends BaseFragmentActivity implements
 		qid = (TextView) findViewById(R.id.examcount);
 		progressBar = (ProgressBar) findViewById(R.id.exam_progressBar);
 		progressBar.setProgress(0);
-		
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		// super.onBackPressed();
+		QuitDialog qd = new QuitDialog(true, "提示");
+		qd.show(this.getSupportFragmentManager(), "exam");
 	}
 
 	@Override
@@ -282,6 +296,9 @@ public class MentalityActivity extends BaseFragmentActivity implements
 				intent.putExtras(bundle);
 				intent.putExtra("flag", "112");
 				intent.putExtra("testname", "心理测试");
+				StatisticsUtils.testStatistics(MentalityActivity.this, userId
+						+ "", StatisticsUtils.TEST_XL_ID,
+						StatisticsUtils.TEST_XL);
 				startActivity(intent);
 				this.finish();
 			} else {

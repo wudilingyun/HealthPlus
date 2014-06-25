@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import android.R.integer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +12,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,14 +20,16 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.http.StatisticsUtils;
+import com.vee.healthplus.ui.main.QuitDialog;
+import com.vee.healthplus.util.user.HP_User;
 import com.vee.myhealth.bean.HealthQuestionEntity;
 import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
@@ -50,6 +47,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 	private ProgressBar progressBar;
 	private int progresscount;
 	private int i = 0;
+	private int userId;
 
 	@SuppressLint("ResourceAsColor")
 	@Override
@@ -63,6 +61,7 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
 		setLeftBtnRes(R.drawable.hp_w_header_view_back);
+		userId = HP_User.getOnLineUserId(this);
 		init();
 		sqlForTest = new SqlForTest(this);
 		sqlForTest.getHealthContent("113");
@@ -95,6 +94,14 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 	public void getResult(Object c) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		// super.onBackPressed();
+		QuitDialog qd = new QuitDialog(true, "提示");
+		qd.show(this.getSupportFragmentManager(), "exam");
 	}
 
 	private class MyAdapter<T> extends BaseAdapter {
@@ -184,9 +191,9 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 			v.rb2.setText("不是");
 			v.rb3.setText("偶尔");
 			v.rb2.setVisibility(View.VISIBLE);
-			v.rb1.setTag(3);
+			v.rb1.setTag(5);
 			v.rb2.setTag(1);
-			v.rb3.setTag(2);
+			v.rb3.setTag(3);
 			v.radioGroup.setId(position);
 			if (cheMap.size() > 0) {
 				Iterator<Integer> it = cheMap.keySet().iterator();
@@ -278,6 +285,9 @@ public class WeightLossActivity extends BaseFragmentActivity implements
 				intent.putExtras(bundle);
 				intent.putExtra("flag", "113");
 				intent.putExtra("testname", "减肥测试");
+				StatisticsUtils.testStatistics(WeightLossActivity.this, userId
+						+ "", StatisticsUtils.TEST_JF_ID,
+						StatisticsUtils.TEST_JF);
 				startActivity(intent);
 				this.finish();
 			} else {

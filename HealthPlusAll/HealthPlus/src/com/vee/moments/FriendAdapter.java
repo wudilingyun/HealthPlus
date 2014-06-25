@@ -13,18 +13,21 @@ import android.widget.TextView;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.ui.heahth_news.Health_ValuableBook_NewsAdapter.ViewHolder;
+import com.vee.healthplus.widget.RoundImageView;
 import com.yunfox.s4aservicetest.response.Friend;
 
 public class FriendAdapter extends BaseAdapter {
 	Context context;
 	LayoutInflater inflater;
 	List<Friend> friendList;
-	
-	public FriendAdapter(Context context) {
+	private ImageLoader imageLoader;
+	public FriendAdapter(Context context,ImageLoader imageLoader) {
 		super();
 		this.context = context;
 		inflater = LayoutInflater.from(context);
 		friendList = new ArrayList<Friend>();
+		this.imageLoader = imageLoader;
 	}
 
 	public void addFriendList(List<Friend> addFriendList) {
@@ -41,7 +44,7 @@ public class FriendAdapter extends BaseAdapter {
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return null;
+		return friendList.get(position);
 	}
 
 	@Override
@@ -53,25 +56,33 @@ public class FriendAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		View view = null;
+		ViewHolder v = null;
 		if (convertView != null) {
-			view = convertView;
+			v = (ViewHolder)convertView.getTag();
 		} else {
-			view = (View) inflater.inflate(R.layout.moments_friendlist_item,
+			convertView = (View) inflater.inflate(R.layout.moments_friendlist_item,
 					parent, false);
-
+			v = new ViewHolder();
+			v.textViewFriendName = (TextView) convertView.findViewById(R.id.friendname);
+			// v.newsbrief = (TextView) view.findViewById(R.id.newsbrief);
+			v.imageViewFriendAvatar = (RoundImageView) convertView
+					.findViewById(R.id.friendavatar);
+		
+			convertView.setTag(v);
 		}
-		TextView textViewFriendName = (TextView) view
-				.findViewById(R.id.friendname);
-		ImageView imageViewFriendAvatar = (ImageView) view
-				.findViewById(R.id.friendavatar);
 		Friend friend = friendList.get(position);
-		
-		textViewFriendName.setText(friend.getFriendname());
-		
-		ImageLoader.getInstance(context).addTask(friend.getFriendavatarurl(), imageViewFriendAvatar);
+		v.imageViewFriendAvatar.setImageResource(R.drawable.myhealth_users_avatar);
+		v.textViewFriendName.setText(friend.getFriendname());
+		String imgurl= friend.getFriendavatarurl();
+		System.out.println("用户列表的头像url"+imgurl);
+		imageLoader.addTask(imgurl, v.imageViewFriendAvatar);
 
-		return view;
+		return convertView;
+	}
+	public class ViewHolder {
+
+		private TextView textViewFriendName ;
+		private ImageView imageViewFriendAvatar;
 	}
 
 }

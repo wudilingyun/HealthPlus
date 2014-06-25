@@ -1,14 +1,14 @@
 10
 
 dir
-766
+823
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/drawable-hdpi
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-21T10:03:06.599347Z
-766
+2014-06-18T01:31:10.944499Z
+817
 lingyun
 
 
@@ -168,7 +168,7 @@ file
 
 
 
-2014-05-21T03:29:03.609375Z
+2014-05-21T10:07:26.203125Z
 c06a5522a406847cad568ce312099f5b
 2014-04-22T09:10:52.459308Z
 678
@@ -1114,6 +1114,40 @@ has-props
 
 162
 
+support_icon.png
+file
+
+
+
+
+2014-05-22T06:49:08.734375Z
+d83203c89246033889e85b6a6f458d45
+2014-05-22T06:22:47.453627Z
+768
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+19435
+
 myhealth_test_listview_item.9.png
 file
 
@@ -1420,6 +1454,40 @@ has-props
 
 579
 
+healthplus_wo_item_logout_icon.png
+file
+
+
+
+
+2014-06-03T09:55:44.562500Z
+74c147cc002c7c0485099855891e70be
+2014-06-03T09:52:33.284721Z
+794
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+891
+
 health_plus_find_get_bg_normal.9.png
 file
 
@@ -1521,6 +1589,40 @@ has-props
 
 
 3473
+
+navigation_one.png
+file
+
+
+
+
+2014-05-28T07:36:22.875000Z
+2d0e710a554f6942a9f13d7b33cc0a0a
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+394014
 
 hp_w_target_setbtn_normal.9.png
 file
@@ -1930,6 +2032,40 @@ has-props
 
 612
 
+test_progress_bac.png
+file
+
+
+
+
+2014-06-03T07:16:07.359375Z
+1a1f5db04e2a62b90d0c2d0e5997bbf4
+2014-06-03T06:06:04.279821Z
+791
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2848
+
 shop_productdetail_count_down_p.png
 file
 
@@ -2066,17 +2202,17 @@ has-props
 
 18161
 
-u93.png
+moments_edittext_input_bac.png
 file
 
 
 
 
-2014-05-19T08:35:15.109375Z
-9b800f52f9009d8b78b118704ba4b970
-2014-04-17T01:46:39.182565Z
-665
-heda
+2014-05-24T05:41:26.031250Z
+ef87d62d51a60c6366276394f4e49786
+2014-06-18T01:31:10.944499Z
+817
+lingyun
 has-props
 
 
@@ -2098,7 +2234,75 @@ has-props
 
 
 
-10604
+384
+
+search_phone_btn_bg.9.png
+file
+
+
+
+
+2014-05-30T09:38:15.671875Z
+3089f7e2ebb08219941551a5fc1aee7e
+2014-06-03T07:22:36.140332Z
+792
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+179
+
+u93.png
+file
+
+
+
+
+2014-06-17T10:47:00.812500Z
+b8508cbbb70f71bf4a04921654e683c4
+2014-06-18T01:31:10.944499Z
+817
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6952
 
 setting_update_btnbg1.9.png
 file
@@ -2236,6 +2440,74 @@ has-props
 
 266576
 
+friendactivity_comment_detail_list_.9.png
+file
+
+
+
+
+2014-05-22T06:49:08.765625Z
+e28234e12c288e7956c698aeb2a57eb7
+2014-05-22T06:22:47.453627Z
+768
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+915
+
+moments_mainback_other_pressed.png
+file
+
+
+
+
+2014-05-22T06:49:08.843750Z
+19d4b5c9debc7add29ebb3b2ac4878d2
+2014-06-18T01:31:10.944499Z
+817
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4048
+
 ecg_background.png
 file
 
@@ -2269,40 +2541,6 @@ has-props
 
 
 5263
-
-moments_mainback_other_pressed.png
-file
-
-
-
-
-2014-05-20T08:17:27.156250Z
-a234f0e1196ab5b03f63d6c461699feb
-2014-05-20T07:01:57.604270Z
-749
-heda
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9137
 
 healthplus_wo_item_testdata_icon.png
 file
@@ -2507,6 +2745,40 @@ has-props
 
 
 3527
+
+join_apk_press.png
+file
+
+
+
+
+2014-05-28T07:36:22.890625Z
+90e216234d4e9546d785a1fc0e130198
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6710
 
 test_result_call_btn_prs.9.png
 file
@@ -2848,6 +3120,74 @@ has-props
 
 829
 
+healthnews_default_bac.png
+file
+
+
+
+
+2014-05-22T06:49:08.796875Z
+453b0f04a0499a230aace2dcdd0d02d2
+2014-05-22T06:22:47.453627Z
+768
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+38670
+
+news_img_default.png
+file
+
+
+
+
+2014-05-24T05:41:26.046875Z
+453b0f04a0499a230aace2dcdd0d02d2
+2014-05-24T01:38:20.999271Z
+772
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+38670
+
 test_result_background.png
 file
 
@@ -2984,6 +3324,40 @@ has-props
 
 541
 
+navigation_three.png
+file
+
+
+
+
+2014-05-28T07:36:22.906250Z
+04635384040a00c8303e769b2f46267b
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+362161
+
 health_plus_input_bg0.9.png
 file
 
@@ -3051,6 +3425,74 @@ has-props
 
 
 47689
+
+welcome_page.png
+file
+
+
+
+
+2014-06-18T01:15:36.593750Z
+7db6e863e914908aea50e49c32a997dc
+2014-06-16T03:40:32.586591Z
+816
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+363250
+
+quit_dialog_press_bac.9.png
+file
+
+
+
+
+2014-06-06T05:12:04.406250Z
+1c0d31ebba8adc2922d3b85c23438ab0
+2014-06-06T04:45:00.850932Z
+801
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+260
 
 setting_share_wechat.png
 file
@@ -3596,40 +4038,6 @@ has-props
 
 1261
 
-moments_mainback_other_normal.png
-file
-
-
-
-
-2014-05-20T08:17:26.593750Z
-69bef93070ea15fcc5dd60da0830b7c8
-2014-05-20T07:01:57.604270Z
-749
-heda
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4647
-
 personal_info_edit_save_btn_pressed.9.png
 file
 
@@ -3663,6 +4071,40 @@ has-props
 
 
 220
+
+moments_mainback_other_normal.png
+file
+
+
+
+
+2014-05-22T06:49:08.812500Z
+a4ff013a584379da3d9ac087ab2b2774
+2014-06-18T01:31:10.944499Z
+817
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1313
 
 test_result_btn_stat_pre.png
 file
@@ -3698,6 +4140,40 @@ has-props
 
 29145
 
+welcom_page.png
+file
+
+
+
+
+2014-05-29T10:09:53.328125Z
+7db6e863e914908aea50e49c32a997dc
+2014-05-29T07:14:41.922426Z
+786
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+363250
+
 health_plus_setting_share_icon.png.png
 file
 
@@ -3732,40 +4208,6 @@ has-props
 
 22864
 
-shop_prodoctpara_tabbg_n.png
-file
-
-
-
-
-2014-05-19T08:35:13.796875Z
-ab24a6cc207e4ee8ea2b5c9a67edc6aa
-2013-12-19T08:04:38.957872Z
-559
-wangfeng
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3302
-
 setting_backfedd_summit_bac.png
 file
 
@@ -3799,6 +4241,40 @@ has-props
 
 
 4379
+
+shop_prodoctpara_tabbg_n.png
+file
+
+
+
+
+2014-05-19T08:35:13.796875Z
+ab24a6cc207e4ee8ea2b5c9a67edc6aa
+2013-12-19T08:04:38.957872Z
+559
+wangfeng
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3302
 
 moments_cover_default.png
 file
@@ -4146,7 +4622,7 @@ file
 
 
 
-2014-05-21T03:29:03.625000Z
+2014-05-21T10:07:26.171875Z
 008dcf36a701fe4be42cc45381d63282
 2014-04-22T09:10:52.459308Z
 678
@@ -4248,10 +4724,10 @@ file
 
 
 
-2014-05-20T08:17:27.250000Z
-3da1e4e96e72947f925041961a1af15a
-2014-05-20T06:59:30.125780Z
-748
+2014-06-03T07:16:07.375000Z
+713c7536a5a69bbb19a04ffc4e75dc4b
+2014-05-30T06:51:44.179954Z
+790
 zhaoyouliang
 has-props
 
@@ -4274,7 +4750,7 @@ has-props
 
 
 
-4663
+5862
 
 personal_info_item_bg_normal.9.png
 file
@@ -4956,6 +5432,40 @@ has-props
 
 3412
 
+friendactivity_comment_list_normal.9.png
+file
+
+
+
+
+2014-05-22T06:49:08.859375Z
+8f79a02b1840fabeb7ebaf1e815ab45b
+2014-05-22T06:22:47.453627Z
+768
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+266
+
 wait_dialog_round_8.png
 file
 
@@ -5261,6 +5771,40 @@ has-props
 
 
 3411
+
+navigation_two.png
+file
+
+
+
+
+2014-05-28T07:36:22.921875Z
+2c166860925b4926af3ad365e939d6dc
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+401839
 
 health_plus_pwd_normal.png
 file
@@ -5772,6 +6316,40 @@ has-props
 
 4778
 
+guide_dot_green.png
+file
+
+
+
+
+2014-05-28T07:36:22.937500Z
+b8c6fc19735d340dd0db54cc17793c7c
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3193
+
 health_plus_nick_normal.png
 file
 
@@ -5839,6 +6417,40 @@ has-props
 
 
 581
+
+collect_cancle.png
+file
+
+
+
+
+2014-05-24T05:41:26.078125Z
+dff430f7d6dd34caa47b878765e9e269
+2014-05-24T01:38:20.999271Z
+772
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20363
 
 shop_title_bar_shopping_cart_n.png
 file
@@ -6016,10 +6628,10 @@ file
 
 
 
-2014-05-19T08:35:16.000000Z
-e1ad51bb1afb46241bf723eb0fea06d6
-2014-05-06T06:54:55.594105Z
-710
+2014-06-03T07:16:07.390625Z
+0b713d890e8ff855fff870061a59351f
+2014-06-03T06:06:04.279821Z
+791
 zhaoyouliang
 has-props
 
@@ -6042,7 +6654,7 @@ has-props
 
 
 
-3146
+2980
 
 setting_update_btnbg.9.png
 file
@@ -6860,6 +7472,40 @@ has-props
 
 4154
 
+moments_commentsorsupport_bac.png
+file
+
+
+
+
+2014-05-22T06:49:08.921875Z
+040ef8864e255071f6075d38a5085d33
+2014-05-22T06:22:47.453627Z
+768
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20226
+
 test_result_comment_btn_prs.9.png
 file
 
@@ -6996,6 +7642,40 @@ has-props
 
 3493
 
+join_apk_normal.png
+file
+
+
+
+
+2014-05-28T07:36:22.953125Z
+4e308d591922a406ae175ecd7b981508
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6670
+
 personal_info_edit_save_btn_normal.9.png
 file
 
@@ -7029,6 +7709,40 @@ has-props
 
 
 210
+
+guide_dot_white.png
+file
+
+
+
+
+2014-05-28T07:36:22.968750Z
+a0c3f3b375260896abaa820ae82b4b7e
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3295
 
 health_plus_login_btn_bg_pressed.9.png
 file

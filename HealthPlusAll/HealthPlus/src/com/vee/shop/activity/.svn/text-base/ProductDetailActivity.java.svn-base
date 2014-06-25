@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,7 +48,7 @@ public class ProductDetailActivity extends BaseActivity implements
 	private ImageView ivUp;
 	private ImageView leftBtn;
 	private TextView cartCount;
-	private LinearLayout rightBtn;
+	private ImageView rightBtn;
 	private ViewPager viewPager;
 	private RadioButton product_tab_detail, product_tab_parameter;
 
@@ -86,6 +87,7 @@ public class ProductDetailActivity extends BaseActivity implements
 
 	}
 
+	@SuppressLint("WrongViewCast")
 	private void initView() {
 		ivUp = (ImageView) findViewById(R.id.shop_productdetail_up_pic);
 		hv = (ShopHeaderView) findViewById(R.id.header);
@@ -93,7 +95,7 @@ public class ProductDetailActivity extends BaseActivity implements
 		leftBtn = (ImageView) findViewById(R.id.header_lbtn_img);
 		leftBtn.setVisibility(View.VISIBLE);
 		leftBtn.setOnClickListener(this);
-		rightBtn = (LinearLayout) findViewById(R.id.header_rbtn_img);
+		rightBtn = (ImageView) findViewById(R.id.header_rbtn_img);
 		rightBtn.setVisibility(View.VISIBLE);
 		rightBtn.setOnClickListener(this);
 		cartCount = (TextView) findViewById(R.id.shop_title_bar_shopping_count);

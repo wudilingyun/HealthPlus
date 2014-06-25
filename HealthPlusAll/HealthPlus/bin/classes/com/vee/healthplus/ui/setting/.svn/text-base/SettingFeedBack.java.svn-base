@@ -158,7 +158,7 @@ public class SettingFeedBack extends Activity implements
 				// MyEasyGameConstant.ReportComments(mContext,
 				// content.toString());
 				new InstallSataUtil(mContext).ReportComments(
-						content.toString(), Common.APPLICATION_ID);
+						content.toString(), Common.getAppId(mContext));
 				Toast.makeText(
 						mContext,
 						getResources().getString(

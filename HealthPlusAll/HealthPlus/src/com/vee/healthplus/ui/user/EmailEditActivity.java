@@ -31,7 +31,7 @@ public class EmailEditActivity extends BaseFragmentActivity implements
 				finish();
 			} else if (option == HeaderView.HEADER_OK) {
 				Pattern p = Pattern
-						.compile("^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\\.([a-zA-Z0-9_-])+)+$");
+						.compile("^([a-zA-Z0-9\\._-])+@([a-zA-Z0-9_-])+(\\.([a-zA-Z0-9_-])+)+$");
 				Matcher m = p.matcher(emailEt.getText().toString().trim());
 				if(!m.matches()){
 					Toast.makeText(EmailEditActivity.this, "请输入正确的邮箱地址", Toast.LENGTH_LONG).show();

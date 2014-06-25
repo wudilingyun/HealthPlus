@@ -33,7 +33,7 @@ import com.yunfox.s4aservicetest.response.UploadPhotoResponse;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 public class NewMomentsActivity extends BaseFragmentActivity {
-
+	
 	private byte[] Bitmap2Bytes(Bitmap bm) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -42,17 +42,28 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 
 	String bitmap1path = null;
 	String bitmap1smallpath = null;
-
+	private 	EditText textMessage;
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View view = View.inflate(this, R.layout.activity_new_moments, null);
+		
+		View view = null;
+		Intent intent = getIntent();
+		String text = intent.getStringExtra("text");
+		if (text != null && text.length() > 0) {
+			view = View.inflate(this, R.layout.moments_activity_publishtext,
+					null);
+			getHeaderView().setHeaderTitle("发表文字");
+		} else {
+			view = View.inflate(this, R.layout.activity_new_moments, null);
+			getHeaderView().setHeaderTitle("发表图片");
+		}
+
 		setContainer(view);
 		// setContentView(R.layout.activity_new_moments);
 
-		getHeaderView().setHeaderTitle("");
-		getHeaderView().setBackGroundColor(R.color.blue);
+		
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(HeaderView.HEADER_BACK);
@@ -63,34 +74,37 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 			@Override
 			public void OnHeaderClick(View v, int option) {
 				// TODO Auto-generated method stub
-					if (option == HeaderView.HEADER_BACK) {
-						NewMomentsActivity.this.finish();
-					}
+				if (option == HeaderView.HEADER_BACK) {
+					NewMomentsActivity.this.finish();
+				}
 			}
 		});
-		
-		Button saveMomentsButton = (Button)findViewById(R.id.SaveMomentsButton);
+		 textMessage = (EditText) findViewById(R.id.editTextThisMoment);
+		Button saveMomentsButton = (Button) findViewById(R.id.SaveMomentsButton);
 		saveMomentsButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				new UploadMomentsPhotoTask().execute();
+				if(textMessage!=null&&textMessage.length()>0){
+					new UploadMomentsPhotoTask().execute();
+				}else {
+					Toast.makeText(getApplication(), "内容不能为空", Toast.LENGTH_SHORT).show();
+				}
+				
 			}
 		});
-		Intent intent = getIntent();
-		String text = intent.getStringExtra("text");
-		if(text != null && text.length() > 0)
-		{
+
+		if (text != null && text.length() > 0) {
 			bitmap1path = null;
-			ImageView imageViewFirst = (ImageView)findViewById(R.id.imageViewFirst);
-			imageViewFirst.setVisibility(View.GONE);
-		}
-		else
-		{
+			/*ImageView imageViewFirst = (ImageView) findViewById(R.id.imageViewFirst);
+			imageViewFirst.setVisibility(View.GONE);*/
+		} else {
 			bitmap1path = intent.getStringExtra("bitmap");
 			new CompressPhotoTask().execute();
+			
 		}
+		
 	}
 
 	public static int calculateInSampleSize(BitmapFactory.Options options,
@@ -171,9 +185,9 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
-			EditText textMessage = (EditText) findViewById(R.id.editTextThisMoment);
+			
 			message = textMessage.getText().toString();
-
+			System.out.println("message"+message);
 			dialog = new ProgressDialog(NewMomentsActivity.this);
 			dialog.show();
 		}
@@ -182,21 +196,20 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		protected Void doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 			try {
-				if(bitmap1smallpath != null)
-				{				UploadPhotoResponse uploadPhotoResponse = SpringAndroidService
-						.getInstance(getApplication()).uploadMomentsPhoto(
-								bitmap1smallpath);
-				SpringAndroidService.getInstance(getApplication())
-						.insertMoments(message,
-								uploadPhotoResponse.getPhotourl(), null, null,
-								null, null, null, null, null, null);
-				}
-				else
-				{
+				if (bitmap1smallpath != null) {
+					UploadPhotoResponse uploadPhotoResponse = SpringAndroidService
+							.getInstance(getApplication()).uploadMomentsPhoto(
+									bitmap1smallpath);
 					SpringAndroidService.getInstance(getApplication())
-					.insertMoments(message,
-							null, null, null,
-							null, null, null, null, null, null);
+							.insertMoments(message,
+									uploadPhotoResponse.getPhotourl(), null,
+									null, null, null, null, null, null, null);
+				} else {
+					SpringAndroidService.getInstance(getApplication())
+							.insertMoments(message, null, null, null, null,
+									null, null, null, null, null);
+					System.out.println("发送文字");
+					
 				}
 			} catch (Exception e) {
 				this.exception = e;
@@ -209,13 +222,11 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			dialog.dismiss();
-			if(exception != null)
-			{
+			if (exception != null) {
 				System.out.println(exception.getMessage());
-				Toast.makeText(NewMomentsActivity.this, "保存失败，请重试", Toast.LENGTH_LONG).show();
-			}
-			else
-			{
+				Toast.makeText(NewMomentsActivity.this, "保存失败，请重试",
+						Toast.LENGTH_LONG).show();
+			} else {
 				setResult(RESULT_OK);
 				NewMomentsActivity.this.finish();
 			}
@@ -244,16 +255,16 @@ public class NewMomentsActivity extends BaseFragmentActivity {
 			}
 
 			bitmap1smallpath = bitmap1path.replace(".jpg", "_small.jpg");
-			//File file = new File(bitmap1smallpath);
-			File file = new File(Environment
-					.getExternalStorageDirectory(),
+			// File file = new File(bitmap1smallpath);
+			File file = new File(Environment.getExternalStorageDirectory(),
 					"photograph_small.jpg");
 			bitmap1smallpath = file.getAbsolutePath();
 			try {
 				file.createNewFile();
 				OutputStream out = new FileOutputStream(file);
 				// 声明写入的格式 ，质量 ，写入到哪里
-				System.out.println("bm+" + bm + "file" + file.getAbsolutePath());
+				System.out
+						.println("bm+" + bm + "file" + file.getAbsolutePath());
 				bm.compress(Bitmap.CompressFormat.JPEG, 30, out);
 				out.flush();
 				out.close();

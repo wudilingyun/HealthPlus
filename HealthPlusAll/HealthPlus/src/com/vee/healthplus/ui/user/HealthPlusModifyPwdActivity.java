@@ -75,7 +75,7 @@ public class HealthPlusModifyPwdActivity extends BaseFragmentActivity implements
 			break;
 		case 1:
 		case 103:
-			Toast.makeText(this, "密码修改失败！", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "旧密码不正确！", Toast.LENGTH_SHORT).show();
 			break;
 		}
 	}
@@ -101,10 +101,12 @@ public class HealthPlusModifyPwdActivity extends BaseFragmentActivity implements
 		Matcher m = p.matcher(newPwd_et.getText().toString());
 		Pattern p1 = Pattern.compile("[a-zA-Z]*");
 		Matcher m1 = p1.matcher(newPwd_et.getText().toString());
+		Pattern p2 = Pattern.compile("[a-z0-9A-Z\\.\\_]*");
+		Matcher m2 = p2.matcher(newPwd_et.getText().toString());
 		int s=newPwd_et.getText().toString().length();
 		if (newPwd_et.getText().toString()
 				.equals(confirm_et.getText().toString())) {
-			if(!m.matches()&&!m1.matches()){
+			if(!m.matches() && !m1.matches() && m2.matches()){
 				if (s >= 6 && s <= 12) {
 					new UpdatePwdTask(HealthPlusModifyPwdActivity.this, oldPwd_et
 							.getText().toString().trim(), newPwd_et.getText()
@@ -115,7 +117,7 @@ public class HealthPlusModifyPwdActivity extends BaseFragmentActivity implements
 					Toast.makeText(this, "新密码长度不符", Toast.LENGTH_SHORT).show();
 				}
 			}else{
-				Toast.makeText(this, "新密码格式不符", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "密码必须是由英文字母、数字或符号组成", Toast.LENGTH_SHORT).show();
 			}
 		
 		}else{

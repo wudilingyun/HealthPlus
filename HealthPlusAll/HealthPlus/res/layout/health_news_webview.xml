@@ -40,7 +40,7 @@
                 android:padding="5dp"
                 android:text="评论"
                 android:textColor="#9d9d9d"
-                android:textSize="16sp" />
+                android:textSize="@dimen/health_plus_font_size_2" />
 
             <View
                 android:id="@+id/view_divider_1"
@@ -51,11 +51,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/collect_normal"
+                android:drawableLeft="@drawable/collect_cancle"
                 android:padding="5dp"
                 android:text="收藏"
                 android:textColor="#9d9d9d"
-                android:textSize="16sp" />
+                android:textSize="@dimen/health_plus_font_size_2" />
 
             <View
                 android:id="@+id/view_divider_1"
@@ -70,7 +70,7 @@
                 android:padding="5dp"
                 android:text="分享"
                 android:textColor="#9d9d9d"
-                android:textSize="16sp" />
+                android:textSize="@dimen/health_plus_font_size_2" />
 
             <View
                 android:id="@+id/view_divider_1"
@@ -85,7 +85,7 @@
                 android:padding="5dp"
                 android:text="赞"
                 android:textColor="#9d9d9d"
-                android:textSize="16sp" />
+                android:textSize="@dimen/health_plus_font_size_2" />
         </LinearLayout>
     </RelativeLayout>
 

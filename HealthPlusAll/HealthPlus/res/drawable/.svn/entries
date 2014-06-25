@@ -1,15 +1,15 @@
 10
 
 dir
-766
+823
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/drawable
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-21T10:03:06.599347Z
-766
-lingyun
+2014-06-06T04:45:00.850932Z
+801
+zhaoyouliang
 
 
 
@@ -372,7 +372,7 @@ file
 
 
 
-2014-05-21T03:29:11.265625Z
+2014-06-18T01:15:33.281250Z
 7520b785d1af61e0dec32426c2ddd2f1
 2013-12-20T01:32:59.617565Z
 569
@@ -508,7 +508,7 @@ file
 
 
 
-2014-05-21T03:29:11.281250Z
+2014-06-18T01:15:33.328125Z
 5cd55ef38960531813a92ce19915b146
 2013-11-08T02:07:27.589344Z
 424
@@ -569,6 +569,40 @@ wangfeng
 
 
 390
+
+button_quit_cancle_selector.xml
+file
+
+
+
+
+2014-06-06T05:12:04.218750Z
+cdf705ea95dfe275dfc54e084414a9c9
+2014-06-06T04:45:00.850932Z
+801
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+383
 
 shop_btn_primary_bg.xml
 file
@@ -780,10 +814,10 @@ file
 
 
 
-2014-05-19T08:34:51.703125Z
-960e25e1350d2acf2abff961e2a56a40
-2014-04-25T06:04:30.251153Z
-686
+2014-05-24T05:41:25.640625Z
+1e391b0352be72ecb8dd2f801093ca5e
+2014-05-24T01:38:20.999271Z
+772
 zhaoyouliang
 
 
@@ -806,7 +840,7 @@ zhaoyouliang
 
 
 
-497
+490
 
 health_plus_login_btn_selector.xml
 file
@@ -848,10 +882,10 @@ file
 
 
 
-2014-05-20T08:17:22.734375Z
-48743de94e581ddd3180e77187248bee
-2014-05-20T06:59:30.125780Z
-748
+2014-06-06T05:12:04.234375Z
+21be3adde2bc8b1d08f337d8aee86b21
+2014-06-06T04:45:00.850932Z
+801
 zhaoyouliang
 
 
@@ -874,7 +908,7 @@ zhaoyouliang
 
 
 
-508
+407
 
 test_result_btn_reminder.xml
 file
@@ -977,6 +1011,40 @@ lingyun
 
 
 322
+
+button_quite_ok_selector.xml
+file
+
+
+
+
+2014-06-06T05:12:04.250000Z
+5d6005ad0b573773f916de7c5eb74532
+2014-06-06T04:45:00.850932Z
+801
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+405
 
 button_feedback_selector.xml
 file
@@ -1698,7 +1766,7 @@ file
 
 
 
-2014-05-21T03:29:11.281250Z
+2014-06-18T01:15:33.406250Z
 5ec31d37b3acb1990b5a43cfd97add12
 2013-11-08T02:07:27.589344Z
 424
@@ -1800,10 +1868,10 @@ file
 
 
 
-2014-05-20T08:17:22.812500Z
-00470ac7166db5abcdb7adb37f0ec8e7
-2014-05-20T06:59:30.125780Z
-748
+2014-05-22T06:49:08.187500Z
+74a9bff633f820b02210d0e495a84704
+2014-05-22T06:22:47.453627Z
+768
 zhaoyouliang
 
 
@@ -1826,7 +1894,7 @@ zhaoyouliang
 
 
 
-378
+377
 
 shop_input_bg.xml
 file
@@ -1861,6 +1929,40 @@ wangfeng
 
 
 272
+
+button_viewpager_guide_selector.xml
+file
+
+
+
+
+2014-05-28T07:36:22.406250Z
+89788281da2d5e814beeffbb13bdc714
+2014-05-28T07:29:06.876558Z
+783
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+381
 
 test_result_btn_share.xml
 file
@@ -2106,7 +2208,7 @@ file
 
 
 
-2014-05-21T03:29:11.281250Z
+2014-06-18T01:15:33.468750Z
 68f15124c4218ea073f896bb809cd240
 2013-11-08T02:07:27.589344Z
 424
@@ -2208,10 +2310,10 @@ file
 
 
 
-2014-05-19T08:34:52.296875Z
-36a8bbad0ce36c135fc7d849f863634a
-2014-05-15T06:54:42.283930Z
-738
+2014-06-06T05:12:04.265625Z
+77878b74fbc7ff00dc83876f3170149d
+2014-06-06T04:45:00.850932Z
+801
 zhaoyouliang
 
 

@@ -1,15 +1,15 @@
 10
 
 dir
-766
+823
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/src/com/vee/myhealth/bean
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-16T06:22:26.061587Z
-742
-lingyun
+2014-05-24T06:39:19.751183Z
+774
+heda
 
 
 
@@ -229,6 +229,40 @@ zhaoyouliang
 
 
 357
+
+NewFriendBean.java
+file
+
+
+
+
+2014-05-24T06:47:22.625000Z
+74e43c53a6053beadc113650bd35ea3c
+2014-05-24T06:39:19.751183Z
+774
+heda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1410
 
 HealthQuestionEntity.java
 file
