@@ -114,7 +114,7 @@ public class SettingShare extends Activity implements OnItemClickListener,
 		String s = "我在使用【云医生】应用,这个新闻很不错啊,你也来看一下吧###[" + content + "]#### 地址是："
 				+ url;
 		int type = Platform.SHARE_WEBPAGE;
-		if(imgPath!=null)
+		//if(imgPath!=null)
 	if (imgPath.length() > 0 && url.length() > 0) {
 			type = Platform.SHARE_WEBPAGE;
 		} else {
@@ -131,17 +131,20 @@ public class SettingShare extends Activity implements OnItemClickListener,
 				sp.imageUrl = imgPath;
 			}
 			Platform p = ShareSDK.getPlatform(this, SinaWeibo.NAME);
-			p.setPlatformActionListener(this);
+			
 			p.share(sp);
+			p.setPlatformActionListener(this);
+			
 			break;
 		case 1:
 			TencentWeibo.ShareParams sp1 = new TencentWeibo.ShareParams();
-			sp1.text = s + content + "#### " + url;
-			;
-			if (imgPath.length() > 0) {
-				sp1.imageUrl = imgPath;
-			}
+			sp1.text = s + content ;
+		
+			/*if (imgPath.length() > 0) {
+				sp1.imagePath = imgPath;
+			}*/
 			Platform p1 = ShareSDK.getPlatform(this, TencentWeibo.NAME);
+			//p1.authorize();
 			p1.setPlatformActionListener(this);
 			p1.share(sp1);
 			break;
@@ -205,6 +208,9 @@ public class SettingShare extends Activity implements OnItemClickListener,
 	@Override
 	public void onError(Platform arg0, int arg1, Throwable arg2) {
 		// TODO Auto-generated method stub
+		System.out.println("arg0"+arg0+"arg1"+arg1+"arg2"+arg2);
+		System.out.println(arg2.getStackTrace());
+		arg2.printStackTrace();
 		handler.sendEmptyMessage(ERROR);
 	}
 }

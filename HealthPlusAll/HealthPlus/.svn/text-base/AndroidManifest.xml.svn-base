@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vee.healthplus"
-    android:versionCode="9"
-    android:versionName="1.1.1" 
-    android:installLocation="auto" >
+    android:installLocation="auto"
+    android:versionCode="12"
+    android:versionName="1.1.4" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -128,12 +128,12 @@
         <meta-data
             android:name="CHANNEL"
             android:value="700071" />
-      
+
         <activity
             android:name="com.vee.healthplus.ui.main.GuidePage"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/StyledIndicators">
+            android:theme="@style/StyledIndicators" >
         </activity>
         <activity
             android:name="com.vee.healthplus.ui.main.MainPage"
@@ -145,14 +145,14 @@
             android:name="com.vee.healthplus.ui.main.FirstActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
- 
+
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -181,7 +181,6 @@
         </activity>
         <activity android:name="com.vee.healthplus.ui.user.UserInfoEdit" >
         </activity>
-
         <activity
             android:name="com.vee.healthplus.ui.setting.SettingFeedBack"
             android:configChanges="orientation|keyboardHidden"
@@ -190,6 +189,7 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
         <!-- Health -->
+
 
         <!-- for shop -->
         <activity
@@ -254,11 +254,13 @@
 
         <!-- for analysis -->
 
+
         <!-- for analysis -->
 
 
         <!-- for forum -->
-  
+
+
         <!-- for forum -->
 
 
@@ -278,8 +280,6 @@
 
         <!--  -->
 
-
-
         <receiver android:name="com.vee.healthplus.receiver.CompleteReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
@@ -294,7 +294,6 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
- 
         <activity
             android:name="com.vee.healthplus.ui.heahth_news.Health_ValueBook_commentList_activity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -477,6 +476,15 @@
 
         <!-- wo end -->
 
+
+        <!-- mqtt start -->
+        <service
+            android:name="com.vee.mqtt.MqttService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        <!-- mqtt end -->
+
         <activity
             android:name="com.vee.myhealth.activity.TiZhiActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -513,13 +521,12 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-          <activity
+        <activity
             android:name="com.vee.myhealth.activity.SleepActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        
         <activity
             android:name="com.vee.moments.NewMomentsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -633,11 +640,6 @@
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
-        <service
-            android:name="com.kyleduo.csclient.comet.ICometService"
-            android:enabled="true"
-            android:exported="false" >
-        </service>
 
         <!-- Required SDK核心功能 -->
         <receiver
@@ -658,16 +660,6 @@
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
 
                 <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="com.kyleduo.csclient.comet.MessageReceiver"
-            android:enabled="true"
-            android:exported="false" >
-            <intent-filter android:priority="1" >
-                <action android:name="com.kyleduo.csclient.action.MESSAGE_ARRIVED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
         <!-- Required SDK核心功能 -->
@@ -700,6 +692,41 @@
             android:name="JPUSH_APPKEY"
             android:value="f600a54514351250cb3a7a39" />
         <!-- </>值来自开发者平台取得的AppKey -->
+
+
+        <!-- QQ登陆 -->
+        <activity
+            android:name="com.tencent.open.yyb.AppbarActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.tencent.connect.avatar.ImageActivity" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1101615333" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.tencent.sample.AppRegister"
+            android:permission="com.tencent.mm.plugin.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -46,6 +46,6 @@
         android:layout_marginLeft="18.0dip"
         android:layout_marginRight="16.0dip"
         android:layout_marginTop="5dip"
-        android:text="请添写身高，单位厘米" />
+        android:text="请添写身高，单位厘米。范围:140~274" />
 
 </RelativeLayout>

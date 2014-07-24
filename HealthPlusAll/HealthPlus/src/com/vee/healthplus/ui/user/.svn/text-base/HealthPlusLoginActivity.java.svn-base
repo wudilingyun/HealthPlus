@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.apache.http.conn.ConnectTimeoutException;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.social.connect.DuplicateConnectionException;
 import org.springframework.social.greenhouse.api.Profile;
@@ -17,8 +19,10 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -30,6 +34,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tencent.connect.UserInfo;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 import com.vee.healthplus.R;
 import com.vee.healthplus.ui.main.MainPage;
 import com.vee.healthplus.util.AppPreferencesUtil;
@@ -40,21 +48,27 @@ import com.vee.healthplus.util.user.QueryAllDayRecordByType;
 import com.vee.healthplus.util.user.SignInTask;
 import com.vee.healthplus.widget.CustomProgressDialog;
 import com.yunfox.s4aservicetest.response.DayRecord;
+import com.yunfox.s4aservicetest.response.RegisterResponse;
+import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 @SuppressLint("HandlerLeak")
 public class HealthPlusLoginActivity extends Activity implements
 		View.OnClickListener, SignInTask.SignInCallBack,
-		GetProfileTask.GetProfileCallBack,
-		QueryAllDayRecordByType.QueryAllDayRecordByTypCallBack {
+		GetProfileTask.GetProfileCallBack {
 	private EditText userName_et, userPwd_et;
 	private CustomProgressDialog progressDialog = null;
 	private LinearLayout input_ll;
 	private ResizeLayout root_layout;
 	private Button register_btn;
 	private Button login_btn;
-	private Button forget_btn, enterWithoutLogin_btn;
+	private Button forget_btn, enterWithoutLogin_btn, qqLogin_btn;
 	private TextView register_tv;
 	private ImageView uname_img, pwd_img;
+	public static Tencent mTencent;
+	private UserInfo mInfo;
+	private String qqNick;
+	private static boolean qqFirstLogin;
+	public static final String QQappid = "1101615333";
 
 	Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -69,6 +83,7 @@ public class HealthPlusLoginActivity extends Activity implements
 				input_ll.setLayoutParams(lp);
 				register_tv.setVisibility(View.GONE);
 				register_btn.setVisibility(View.GONE);
+				qqLogin_btn.setVisibility(View.GONE);
 			} else {
 				lp.setMargins(
 						0,
@@ -81,6 +96,7 @@ public class HealthPlusLoginActivity extends Activity implements
 				input_ll.setLayoutParams(lp);
 				register_tv.setVisibility(View.VISIBLE);
 				register_btn.setVisibility(View.VISIBLE);
+				qqLogin_btn.setVisibility(View.VISIBLE);
 			}
 
 		};
@@ -91,8 +107,8 @@ public class HealthPlusLoginActivity extends Activity implements
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.healthplus_login_layout);
+		mTencent = Tencent.createInstance(QQappid, this);
 		initView();
-
 	}
 
 	@Override
@@ -118,6 +134,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		register_tv = (TextView) findViewById(R.id.health_plus_register_text);
 		forget_btn = (Button) findViewById(R.id.health_plus_forgetPwd_btn);
 		enterWithoutLogin_btn = (Button) findViewById(R.id.health_plus_enterwithoutlogin_btn);
+		qqLogin_btn = (Button) findViewById(R.id.health_plus_qqlogin_btn);
 		forget_btn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 		enterWithoutLogin_btn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 		uname_img = (ImageView) findViewById(R.id.health_plus_uname_img);
@@ -153,6 +170,7 @@ public class HealthPlusLoginActivity extends Activity implements
 		register_btn.setOnClickListener(this);
 		login_btn.setOnClickListener(this);
 		enterWithoutLogin_btn.setOnClickListener(this);
+		qqLogin_btn.setOnClickListener(this);
 	}
 
 	@Override
@@ -193,6 +211,100 @@ public class HealthPlusLoginActivity extends Activity implements
 			}
 			finish();
 			break;
+		case R.id.health_plus_qqlogin_btn:
+			setResult(305);
+			onClickLogin();
+			break;
+		}
+	}
+
+	private void onClickLogin() {
+		if (mTencent == null) {
+			Log.e("lingyun", "mTencent=null");
+			return;
+		}
+		if (!mTencent.isSessionValid()) {
+			IUiListener listener = new BaseUiListener() {
+				@Override
+				protected void doComplete(JSONObject values) {
+
+					if (mTencent != null && mTencent.isSessionValid()
+							&& mTencent.getOpenId() != null) {
+						Log.i("lingyun",
+								"mTencent.getOpenId():" + mTencent.getOpenId());
+						getUserInfo();
+					}
+				}
+			};
+			mTencent.login(this, "all", listener);
+			Log.i("lingyun", "FirstLaunch_SDK:" + SystemClock.elapsedRealtime());
+		} else {
+			Log.i("lingyun", "mTencent:logout");
+			mTencent.logout(this);
+		}
+	}
+
+	private void getUserInfo() {
+
+		IUiListener listener = new IUiListener() {
+			@Override
+			public void onError(UiError e) {
+
+			}
+
+			@Override
+			public void onComplete(final Object response) {
+				if (((JSONObject) response).has("nickname")) {
+					try {
+						qqNick = ((JSONObject) response).getString("nickname");
+						Log.i("lingyun", "qqNick=" + qqNick);
+						if (qqNick != null) {
+							new QQSignInTask(HealthPlusLoginActivity.this,
+									mTencent.getOpenId()).execute();
+
+						} else {
+							Log.i("lingyun", "qqNick=null");
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+
+			@Override
+			public void onCancel() {
+
+			}
+		};
+		mInfo = new UserInfo(this, mTencent.getQQToken());
+		mInfo.getUserInfo(listener);
+
+	}
+
+	private class BaseUiListener implements IUiListener {
+
+		@Override
+		public void onComplete(Object response) {
+			Log.i("lingyun", "qq login response= \n" + response.toString());
+			progressDialog.show();
+			doComplete((JSONObject) response);
+		}
+
+		protected void doComplete(JSONObject values) {
+
+		}
+
+		@Override
+		public void onError(UiError e) {
+			Log.e("lingyun", "e.errorDetail=" + e.errorDetail
+					+ "\n e.errorCode=" + e.errorCode);
+			displayLoginResult("网络异常");
+		}
+
+		@Override
+		public void onCancel() {
+			//displayLoginResult("onCancel: ");
 		}
 	}
 
@@ -264,7 +376,6 @@ public class HealthPlusLoginActivity extends Activity implements
 
 	@Override
 	public void onFinishGetProfile(Profile profile) {
-		progressDialog.dismiss();
 		HP_User user = new HP_User();
 		user.userId = profile.getMemberid();
 		user.userAge = profile.getAge();
@@ -280,15 +391,15 @@ public class HealthPlusLoginActivity extends Activity implements
 				"profile.getRawavatarurl()=" + profile.getRawavatarurl()
 						+ "profile.getRemark();=" + profile.getRemark());
 		if (profile.getRawavatarurl() == "") {
-			user.photourl ="http://www.mobifox.cn:12080/mm/default.jpg";
+			user.photourl = "http://www.mobifox.cn:12080/mm/default.jpg";
 		} else {
 			user.photourl = profile.getRawavatarurl();
 		}
-
 		HP_DBModel.getInstance(this).insertUserInfo(user, true);
 		HP_User.setOnLineUserId(this, profile.getMemberid());
 		displayLoginResult(this.getResources().getString(
 				R.string.hp_userlogin_success));
+		progressDialog.dismiss();
 		Bundle b = getIntent().getExtras();
 		if (b != null) {
 			Intent i = new Intent();
@@ -306,7 +417,7 @@ public class HealthPlusLoginActivity extends Activity implements
 
 	@Override
 	public void onErrorGetProfile(Exception e) {
-
+		progressDialog.dismiss();
 	}
 
 	@Override
@@ -317,35 +428,165 @@ public class HealthPlusLoginActivity extends Activity implements
 		finish();
 	}
 
-	@Override
-	public void onFinishQueryAllDayRecordByTyp(List<DayRecord> dayrecordlist) {
-		progressDialog.dismiss();
-		if (dayrecordlist != null) {
-			for (DayRecord item : dayrecordlist) {
-				Calendar c = Calendar.getInstance();
-				try {
-					c.setTime(new SimpleDateFormat("yyyyMMdd").parse(item
-							.getRecorddate()));
-					HP_DBModel.getInstance(this).insertUserWeightInfo(
-							item.getMemberid(),
-							Float.valueOf(item.getRecordvalue()),
-							c.getTimeInMillis(), true);
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-	@Override
-	public void onErrorQueryAllDayRecordByTyp(Exception e) {
-
-	}
-
 	private int dip2px(float dpValue) {
 		final float scale = getResources().getDisplayMetrics().density;
 		return (int) (dpValue * scale + 0.5f);
+	}
+
+	class QQRegisterTask extends AsyncTask<Void, Void, Void> {
+		private Exception exception;
+		private RegisterResponse registerResponse;
+		private String openId;
+		private String nick;
+		private Activity activity;
+
+		public QQRegisterTask(Activity activity, String openId, String nick) {
+			this.activity = activity;
+			this.openId = openId;
+			this.nick = nick;
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+		}
+
+		@Override
+		@SuppressWarnings("unchecked")
+		protected Void doInBackground(Void... params) {
+			Log.i("lingyun", "QQRegisterTask doInBackground");
+			try {
+				registerResponse = SpringAndroidService.getInstance(
+						activity.getApplication()).registerqq(openId,
+						"a123456", nick);
+				Log.i("lingyun", "QQRegisterTask registerResponse="
+						+ registerResponse.getReturncode());
+			} catch (Exception e) {
+				this.exception = e;
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void v) {
+			if (exception != null) {
+				Log.i("lingyun", "onPostExecute QQRegisterTask exception");
+				String message;
+				if (exception instanceof HttpClientErrorException) {
+				}
+				if (exception instanceof HttpClientErrorException
+						&& ((((HttpClientErrorException) exception)
+								.getStatusCode() == HttpStatus.BAD_REQUEST) || ((HttpClientErrorException) exception)
+								.getStatusCode() == HttpStatus.UNAUTHORIZED)) {
+					message = "Your email or password was entered incorrectly.";
+				} else if (exception instanceof DuplicateConnectionException) {
+					message = "The connection already exists.";
+				} else if (exception instanceof ResourceAccessException
+						&& exception.getCause() instanceof ConnectTimeoutException) {
+					message = "connect time out";
+				} else {
+					message = "A problem occurred with the network connection. Please try again in a few minutes.";
+				}
+				registerResponse = null;
+			}
+
+			if (registerResponse != null) {
+				if (registerResponse.getReturncode() == 8) {
+					Log.i("lingyun", "QQregister ok");
+					HP_User user = new HP_User();
+					user.userName = openId;
+					user.userNick = nick;
+					user.userId = Integer.valueOf(String
+							.valueOf(registerResponse.getMemberid()));
+					HP_DBModel.getInstance(activity).insertUserInfo(user, true);
+					HP_User.setOnLineUserId(activity, Integer.valueOf(String
+							.valueOf(registerResponse.getMemberid())));
+					new QQSignInTask(activity, openId).execute();
+				}
+			}
+		}
+
+	}
+
+	class QQSignInTask extends AsyncTask<Void, Void, Boolean> {
+		private Exception exception;
+		private String openId;
+		private Activity activity;
+
+		public QQSignInTask(Activity activity, String openId) {
+			Log.i("lingyun", "QQSignInTask:");
+			this.activity = activity;
+			this.openId = openId;
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+		}
+
+		protected Boolean doInBackground(Void... params) {
+			boolean result = false;
+			try {
+				Log.i("lingyun", "QQSignInTask.doInBackground:");
+				result = SpringAndroidService.getInstance(
+						activity.getApplication()).signinqq(openId, "a123456");
+			} catch (Exception e) {
+				this.exception = e;
+				e.printStackTrace();
+			}
+			return result;
+		}
+
+		@Override
+		protected void onPostExecute(Boolean v) {
+			if (exception != null) {
+				Log.i("lingyun", "onPostExecute.exception");
+				if (exception instanceof HttpClientErrorException
+						&& ((((HttpClientErrorException) exception)
+								.getStatusCode() == HttpStatus.BAD_REQUEST) || ((HttpClientErrorException) exception)
+								.getStatusCode() == HttpStatus.UNAUTHORIZED)) {
+					Log.e("lingyun", "QQSignInTask.HttpClientErrorException");
+					qqFirstLogin = true;
+					new QQRegisterTask(activity, openId, qqNick).execute();
+				} else if (exception instanceof ResourceAccessException
+						&& exception.getCause() instanceof ConnectTimeoutException) {
+					// message = "连接超时";
+				} else if (exception instanceof DuplicateConnectionException) {
+					// message = "连接已存在";
+				} else {
+					// message = "网络连接错误";
+				}
+
+			} else {
+				if (v) {
+					AppPreferencesUtil.setBooleanPref(
+							HealthPlusLoginActivity.this, "isQQLogin", true);
+					Log.i("lingyun", "qqFirstLogin=" + qqFirstLogin);
+					if (qqFirstLogin) {
+						progressDialog.dismiss();
+						Intent intent = new Intent();
+						intent.setClass(activity,
+								HealthPlusPersonalInfoEditActivity.class);
+						Bundle extras = getIntent().getExtras();
+						if (extras != null) {
+							intent.putExtras(extras);
+						}
+						startActivity(intent);
+						finish();
+						qqFirstLogin = false;
+					} else {
+						new GetProfileTask(activity,
+								(GetProfileTask.GetProfileCallBack) activity)
+
+						.execute();
+					}
+
+				} else {
+
+				}
+			}
+		}
+
 	}
 
 }

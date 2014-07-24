@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:padding="20dp" >
 
-        <EditText
+        <com.rockerhieu.emojicon.EmojiconEditText
             android:id="@+id/editTextThisMoment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

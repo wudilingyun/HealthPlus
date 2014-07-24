@@ -156,7 +156,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 					.queryUserInfoByUserId(userid, true);
 			// username_txt.setGravity(Gravity.LEFT);
 			username_txt.setText(user.userNick);
-			age_txt.setText( UserInfoUtil.getAgeFromBirthDay(user.userAge) + "岁");
+			age_txt.setText(UserInfoUtil.getAgeFromBirthDay(user.userAge) + "岁");
 
 			if (user.userSex == -1) {
 				sex_txt.setImageResource(R.drawable.boy_icon);
@@ -246,7 +246,7 @@ public class MyhealthFragment extends Fragment implements ICallBack,
 				System.err.println("测试结果" + s);
 				tags.add(s);
 			}
-			/* tags.add("个人专享"); */
+			// tags.add("个人专享");
 			JPushInterface.setTags(getActivity(), tags, this);
 
 		}

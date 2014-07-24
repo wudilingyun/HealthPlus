@@ -142,16 +142,20 @@ public class MomentsFragment extends Fragment {
 							Intent intent = new Intent(MomentsFragment.this
 									.getActivity(), FriendListActivity.class);
 							startActivity(intent);
-						} else if (position == 2) {
+						} 
+						
+						/*else if (position == 2) {
 							textViewNewFriendUnread.setVisibility(View.GONE);
 							Intent intent = new Intent(MomentsFragment.this
 									.getActivity(), NewFriendListActivity.class);
 							startActivity(intent);
-						} else if (position == 3) {
+						} */
+						
+						else if (position == 2) {
 							Intent intent = new Intent(MomentsFragment.this
 									.getActivity(), SearchPhoneActivity.class);
 							startActivityForResult(intent, 1);
-						} else if (position == 4) {
+						} else if (position == 3) {
 							Intent intent = new Intent(MomentsFragment.this
 									.getActivity(), AddContsctsActivity.class);
 							startActivity(intent);
@@ -174,7 +178,7 @@ public class MomentsFragment extends Fragment {
 		private String[] sTitles;
 		private int icons[] = { R.drawable.moments_main_moments,
 				R.drawable.moments_main_friendlist,
-				R.drawable.moments_main_newfriend,
+				//R.drawable.moments_main_newfriend,
 				R.drawable.moments_main_searchphone,
 				R.drawable.moments_main_addcontact };
 

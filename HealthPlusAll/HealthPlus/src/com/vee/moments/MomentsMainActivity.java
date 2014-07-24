@@ -15,8 +15,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 
-import android.R.integer;
-import android.R.string;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -32,6 +30,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,6 +46,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_http.ImageLoader;
+import com.vee.healthplus.heahth_news_utils.ImageFileCache;
+import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
 import com.vee.healthplus.http.StatisticsUtils;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
@@ -78,9 +80,13 @@ public class MomentsMainActivity extends FragmentActivity implements
 	private LinearLayout layout_support, layout_supportorcomment;
 	List<Moments> momentsList = new ArrayList<Moments>();
 	private int currposition;
+	private AccountCover accountCover;
 	ProgressDialog dialog;
 	private RoundImageView mymoments;
-
+	private HP_User user;
+	private ImageMemoryCache memoryCache;
+	private ImageFileCache fileCache;
+	private Bitmap head;
 	void settitle() {
 
 		header_text = (TextView) findViewById(R.id.header_text);
@@ -93,6 +99,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 		header_text.setOnClickListener(this);
 		header_lbtn_img.setOnClickListener(this);
 		header_rbtn_img.setOnClickListener(this);
+
 	}
 
 	@Override
@@ -117,16 +124,20 @@ public class MomentsMainActivity extends FragmentActivity implements
 				String cover = bundle.getString("cover");
 				String coverpath2 = Uri.parse(cover).getPath();
 				new SaveCoverTask().execute(coverpath);
-				Bitmap head;
+				System.out.println("coverpath"+coverpath);
+				
 				try {
 					head = MediaStore.Images.Media.getBitmap(
 							this.getContentResolver(), Uri.parse(cover));
 					if (imageViewCoverDefault != null) {
 						imageViewCoverDefault.setImageBitmap(head);
+						
 					}
 					if (imageViewCoverList != null) {
 						imageViewCoverList.setImageBitmap(head);
+						
 					}
+					
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -149,7 +160,8 @@ public class MomentsMainActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_moments_main);
 		settitle();
-
+		memoryCache = new ImageMemoryCache(this);
+		fileCache = new ImageFileCache();
 		imageLoader = ImageLoader.getInstance(MomentsMainActivity.this);
 		imageViewCoverDefault = (ImageView) findViewById(R.id.cover);
 		imageViewMyMoments = (ImageView) findViewById(R.id.mymoments);
@@ -183,6 +195,33 @@ public class MomentsMainActivity extends FragmentActivity implements
 
 		momentsAdapter = new MomentsAdapter(MomentsMainActivity.this);
 		listViewMonentsList.setAdapter(momentsAdapter);
+		
+		listViewMonentsList.setOnScrollListener(new OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView arg0, int scrollState) {
+				// TODO Auto-generated method stub
+				switch (scrollState) {
+				case OnScrollListener.SCROLL_STATE_FLING:
+					imageLoader.lock();
+					break;
+				case OnScrollListener.SCROLL_STATE_IDLE:
+					imageLoader.unlock();
+					break;
+				case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+					imageLoader.lock();
+					break;
+				default:
+					break;
+				}
+			}
+			
+			@Override
+			public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		listViewMonentsList
 				.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
@@ -257,6 +296,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		switch (view.getId()) {
 		case R.id.header_lbtn_img:
+			onBackPressed();
 			this.finish();
 			break;
 		case R.id.header_rbtn_img:
@@ -389,8 +429,10 @@ public class MomentsMainActivity extends FragmentActivity implements
 			try {
 				List<Moments> myMomentsList = SpringAndroidService.getInstance(
 						MomentsMainActivity.this.getApplication())
-						.firstGetMomentsTimeline(15);
-
+						.firstGetMomentsTimeline(30);
+				accountCover = SpringAndroidService.getInstance(
+						MomentsMainActivity.this.getApplication())
+						.getmyaccountcover();
 				return myMomentsList;
 
 			} catch (Exception e) {
@@ -411,10 +453,17 @@ public class MomentsMainActivity extends FragmentActivity implements
 			if (myMomentsList != null && myMomentsList.size() > 0) {
 				momentsAdapter.addMomentsList(myMomentsList, "增加评论");
 				momentsAdapter.notifyDataSetChanged();
+				dialog.dismiss();
 			} else {
 
 				dialog.dismiss();
+
 				listViewMonentsList.setEmptyView(findViewById(R.id.empty));
+				ImageView bac_iv = (ImageView) findViewById(R.id.cover);
+				if (accountCover != null)
+					ImageLoader.getInstance(MomentsMainActivity.this).addTask(
+							accountCover.getCoverurl(), bac_iv);
+
 			}
 
 		}
@@ -515,6 +564,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 					holder.setTextViewMessage(textViewMessage);
 					ImageView imageViewMoments = (ImageView) view
 							.findViewById(R.id.momentsimage);
+
 					holder.setImageViewMoments(imageViewMoments);
 					view.setTag(holder);
 					break;
@@ -522,6 +572,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 			}
 			switch (type) {
 			case TYPE_ITEM:
+
 				final Moments moments = momentsList.get(position - 1);
 				currposition = position;
 				holder.getTextViewUsername().setText(moments.getPostername());
@@ -537,8 +588,7 @@ public class MomentsMainActivity extends FragmentActivity implements
 					holder.getImageViewMoments().setImageResource(
 							R.drawable.myhealth_users_avatar);
 				}
-
-				DrawableCenterTextView comment_img = (DrawableCenterTextView) view
+				TextView comment_img = (TextView) view
 						.findViewById(R.id.comment_img);
 				DrawableCenterTextView support_img = (DrawableCenterTextView) view
 						.findViewById(R.id.support_img);
@@ -581,16 +631,24 @@ public class MomentsMainActivity extends FragmentActivity implements
 
 					StringBuffer supportNameBuffer = new StringBuffer();
 					for (int i = 0; i < supportNameList.size(); i++) {
+
 						supportNameBuffer.append(supportNameList.get(i)
 								.getAccountname() + ",");
 						System.out.println("赞名字"
 								+ supportNameList.get(i).getAccountname());
 					}
 					supportpeople_tv.setText(supportNameBuffer.toString());
+					if (supportpeople_tv.getText().toString()
+							.contains(user.userNick)) {
+						support_img.setText("取消");
+					} else {
+						support_img.setText("赞");
+					}
 					supportpeople_tv.setTag(supportNameBuffer.toString());
 				} else {
 					layout_supportorcomment.setVisibility(View.GONE);
 					layout_support.setVisibility(View.GONE);
+					support_img.setText("赞");
 				}
 
 				if (moments.getMomentsComments() != null
@@ -636,16 +694,36 @@ public class MomentsMainActivity extends FragmentActivity implements
 								.getMomentsid());
 					}
 				});
-
 				if (posterAvatarUrl != null && posterAvatarUrl.length() > 0) {
 					imageLoader.addTask(posterAvatarUrl,
 							holder.getImageViewMomentsAvatar());
+					System.out.println("头像url" + posterAvatarUrl);
+				} else {
+					holder.getImageViewMomentsAvatar().setImageResource(
+							R.drawable.healthplus_wo_default_photo);
+					System.out.println("默认头像url" + posterAvatarUrl);
 				}
 
 				if (strImage1 != null && strImage1.length() > 0) {
-					imageLoader.addTask(moments.getImage1(),
-							holder.getImageViewMoments());
+					// holder.getImageViewMoments().setVisibility(View.VISIBLE);
+					System.out.println("发布的图片" + strImage1);
+					imageLoader
+							.addTask(strImage1, holder.getImageViewMoments());
+
+					/*
+					 * holder.getImageViewMoments().setImageResource(
+					 * R.drawable.myhealth_users_avatar);
+					 */
+
 				}
+				/*
+				 * else {
+				 * 
+				 * holder.getImageViewMoments().setVisibility(View.GONE);
+				 * holder.getImageViewMoments().setImageResource(
+				 * R.drawable.myhealth_users_avatar); }
+				 */
+
 				break;
 			case TYPE_COVER:
 				imageViewCoverList = (ImageView) view.findViewById(R.id.cover);
@@ -662,7 +740,16 @@ public class MomentsMainActivity extends FragmentActivity implements
 				});
 
 				if (bFirstLaunch) {
-					new GetCoverTask().execute();
+					if (accountCover != null
+							&& accountCover.getCoverurl() != null
+							&& accountCover.getCoverurl().length() != 0) {
+						ImageLoader.getInstance(MomentsMainActivity.this)
+								.addTask(accountCover.getCoverurl(),
+										imageViewCoverList);
+					}else {
+						imageViewCoverList
+						.setBackgroundResource(R.drawable.moments_cover_default);
+					}
 					bFirstLaunch = false;
 				}
 
@@ -677,15 +764,16 @@ public class MomentsMainActivity extends FragmentActivity implements
 
 				} else {
 					// imageViewCoverList.setBackgroundResource(R.drawable.moments_cover_default);
-					HP_User user = HP_DBModel.getInstance(
-							MomentsMainActivity.this).queryUserInfoByUserId(
-							HP_User.getOnLineUserId(MomentsMainActivity.this),
-							true);
+					user = HP_DBModel
+							.getInstance(MomentsMainActivity.this)
+							.queryUserInfoByUserId(
+									HP_User.getOnLineUserId(MomentsMainActivity.this),
+									true);
 					textViewMyName.setText(user.userNick);
 
 					ImageLoader.getInstance(MomentsMainActivity.this).addTask(
 							user.photourl, imageViewMyMoments);
-					dialog.dismiss();
+
 				}
 
 				imageViewMyMoments.setOnClickListener(new OnClickListener() {
@@ -763,7 +851,8 @@ public class MomentsMainActivity extends FragmentActivity implements
 				ViewGroup.LayoutParams.WRAP_CONTENT);
 
 		TextView tv1 = new TextView(MomentsMainActivity.this);
-		TextView tv2 = new TextView(MomentsMainActivity.this);
+		com.rockerhieu.emojicon.EmojiconTextView tv2 = new com.rockerhieu.emojicon.EmojiconTextView(
+				MomentsMainActivity.this);
 		tv1.setLayoutParams(vlp);// 设置TextView的布局
 		tv2.setLayoutParams(vlp2);
 		tv1.setText(username);
@@ -842,6 +931,10 @@ public class MomentsMainActivity extends FragmentActivity implements
 				} else {
 					Toast.makeText(MomentsMainActivity.this, "保存封面成功",
 							Toast.LENGTH_SHORT).show();
+					String coverUrl =  generalResponse.getDescription();
+					fileCache.saveBitmap(head, coverUrl);
+					memoryCache.addBitmapToCache(
+							coverUrl, head);
 				}
 			}
 		}
@@ -850,46 +943,6 @@ public class MomentsMainActivity extends FragmentActivity implements
 	// ***************************************
 	// Private classes
 	// ***************************************
-	private class GetCoverTask extends AsyncTask<Void, Void, AccountCover> {
-
-		private Exception exception;
-		String coverpath;
-
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-		}
-
-		@Override
-		protected AccountCover doInBackground(Void... params) {
-			// TODO Auto-generated method stub
-
-			try {
-				AccountCover accountCover = SpringAndroidService.getInstance(
-						MomentsMainActivity.this.getApplication())
-						.getmyaccountcover();
-				return accountCover;
-			} catch (Exception e) {
-				this.exception = e;
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(AccountCover accountCover) {
-			// TODO Auto-generated method stub
-			if (exception != null) {
-			} else {
-				if (accountCover != null && accountCover.getCoverurl() != null
-						&& accountCover.getCoverurl().length() != 0) {
-					ImageLoader.getInstance(MomentsMainActivity.this).addTask(
-							accountCover.getCoverurl(), imageViewCoverList);
-				}
-			}
-		}
-	}
 
 	// 是否赞
 	public class BooleanDoSupportAsync extends
@@ -903,8 +956,12 @@ public class MomentsMainActivity extends FragmentActivity implements
 				new SubmitSupportAsync().execute(momentsid);
 
 			} else {
-				Toast.makeText(MomentsMainActivity.this.getApplication(),
-						"已经赞过啦", Toast.LENGTH_SHORT).show();
+				/*
+				 * Toast.makeText(MomentsMainActivity.this.getApplication(),
+				 * "已经赞过啦", Toast.LENGTH_SHORT).show();
+				 */
+
+				new CannleSupportAsync().execute(momentsid);
 			}
 		}
 
@@ -951,25 +1008,6 @@ public class MomentsMainActivity extends FragmentActivity implements
 				// 获得列表
 
 				new GetMomentsTimelineTask().execute();
-				/*
-				 * int userid
-				 * =HP_User.getOnLineUserId(MomentsMainActivity.this); HP_User
-				 * user = HP_DBModel .getInstance(MomentsMainActivity.this)
-				 * .queryUserInfoByUserId( userid, true);
-				 * 
-				 * String name = user.userNick;
-				 * layout_supportorcomment.setVisibility(View.VISIBLE);
-				 * layout_support.setVisibility(View.VISIBLE);
-				 * 
-				 * MomentsSupport momentsSupport = new MomentsSupport();
-				 * momentsSupport.setAccountname(name);
-				 * momentsSupport.setAccountid(userid);
-				 * momentsSupport.setMomentsid(id);
-				 * momentsList.get(currposition)
-				 * .getMomentsSupports().add(momentsSupport);
-				 * momentsAdapter.addMomentsList(momentsList, "a");
-				 * momentsAdapter.notifyDataSetChanged();
-				 */
 
 			} else {
 				layout_support.setVisibility(View.GONE);
@@ -980,4 +1018,40 @@ public class MomentsMainActivity extends FragmentActivity implements
 		}
 
 	}
+
+	public class CannleSupportAsync extends AsyncTask<Integer, String, Integer> {
+		private ICallBack iCallBack;
+		private int id;
+
+		@Override
+		protected Integer doInBackground(Integer... params) {
+			// 点击赞当前评论
+			GeneralResponse gre = SpringAndroidService.getInstance(
+					MomentsMainActivity.this.getApplication())
+					.cancelsupporttomoments(params[0]);
+			return gre.getReturncode();
+
+		}
+
+		@Override
+		protected void onPostExecute(Integer result) {
+			super.onPostExecute(result);
+			int currtCount = 0;
+			if (result == 200) {
+				Toast.makeText(MomentsMainActivity.this.getApplication(),
+						"取消赞", Toast.LENGTH_SHORT).show();
+				// 获得列表
+
+				new GetMomentsTimelineTask().execute();
+
+			} else {
+				layout_support.setVisibility(View.GONE);
+
+				Toast.makeText(MomentsMainActivity.this.getApplication(),
+						"取消失败" + result, Toast.LENGTH_SHORT).show();
+			}
+		}
+
+	}
+
 }

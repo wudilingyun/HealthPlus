@@ -6,8 +6,17 @@
     android:orientation="vertical" >
 
     <include
-        android:id="@+id/header_progress"
+        android:id="@+id/health_title"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
         android:layout_alignParentTop="true"
+        layout="@layout/include_header" />
+
+    <include
+        android:id="@+id/header_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/health_title"
         layout="@layout/include_header_progress"
         android:visibility="visible" />
 
@@ -58,10 +67,10 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/myhealth_test_bac_submmit"
         android:orientation="vertical"
-        android:paddingLeft="42dp"
-        android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:paddingRight="42dp" >
+        android:paddingLeft="42dp"
+        android:paddingRight="42dp"
+        android:paddingTop="10dp" >
 
         <Button
             android:id="@+id/submit_butt"

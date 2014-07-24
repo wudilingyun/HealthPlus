@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +36,10 @@ import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
 import com.vee.shop.ui.BaseFragment;
 
-public class SleepActivity extends BaseFragmentActivity implements
+public class SleepActivity extends FragmentActivity implements
 		SqlDataCallBack<HealthQuestionEntity>, OnCheckedChangeListener,
 		android.view.View.OnClickListener {
-	
+
 	private SqlForTest sqlForTest;
 	private List<HealthQuestionEntity> heList;
 	private MyAdapter<HealthQuestionEntity> myAdapter;
@@ -49,25 +50,40 @@ public class SleepActivity extends BaseFragmentActivity implements
 	private int progresscount;
 	private int i = 0;
 	private int userId;
-	
-	
+
+	private TextView header_text;
+	private ImageView header_lbtn_img, header_rbtn_img;
+
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		View view = View.inflate(this, R.layout.health_tizhi_list, null);
-		setContainer(view);
-		getHeaderView().setHeaderTitle("睡眠测试");
-		setRightBtnVisible(View.GONE);
-		setLeftBtnVisible(View.VISIBLE);
-		setLeftBtnType(1);
-		setLeftBtnRes(R.drawable.hp_w_header_view_back);
+		setContentView(view);
+		/*
+		 * getHeaderView().setHeaderTitle("睡眠测试");
+		 * setRightBtnVisible(View.GONE); setLeftBtnVisible(View.VISIBLE);
+		 * setLeftBtnType(1); setLeftBtnRes(R.drawable.hp_w_header_view_back);
+		 */
 		userId = HP_User.getOnLineUserId(this);
 		init();
+		gettitle();
 		sqlForTest = new SqlForTest(this);
 		sqlForTest.getHealthContent("114");
 	}
-	
+
+	void gettitle() {
+
+		header_text = (TextView) findViewById(R.id.header_text);
+		header_lbtn_img = (ImageView) findViewById(R.id.header_lbtn_img);
+		header_rbtn_img = (ImageView) findViewById(R.id.header_rbtn_img);
+		header_rbtn_img.setVisibility(View.GONE);
+		header_text.setText("睡眠测试");
+		header_text.setOnClickListener(this);
+		header_lbtn_img.setOnClickListener(this);
+		header_rbtn_img.setOnClickListener(this);
+	}
+
 	void init() {
 		myAdapter = new MyAdapter<HealthQuestionEntity>(this);
 		myListView = (ListView) findViewById(R.id.tizhi_list);
@@ -79,12 +95,12 @@ public class SleepActivity extends BaseFragmentActivity implements
 
 		progressBar.setProgress(0);
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		//super.onBackPressed();
-		QuitDialog qd = new QuitDialog(true,"提示");
+		// super.onBackPressed();
+		QuitDialog qd = new QuitDialog(true, "提示");
 		qd.show(this.getSupportFragmentManager(), "exam");
 	}
 
@@ -101,14 +117,18 @@ public class SleepActivity extends BaseFragmentActivity implements
 				intent.putExtras(bundle);
 				intent.putExtra("flag", "114");
 				intent.putExtra("testname", "睡眠测试");
-				StatisticsUtils.testStatistics(SleepActivity.this, userId
-						+ "", StatisticsUtils.TEST_SM_ID,
-						StatisticsUtils.TEST_SM);
+				StatisticsUtils.testStatistics(SleepActivity.this, userId + "",
+						StatisticsUtils.TEST_SM_ID, StatisticsUtils.TEST_SM);
 				startActivity(intent);
 				this.finish();
 			} else {
 				Toast.makeText(this, "没答完亲", Toast.LENGTH_SHORT).show();
 			}
+			break;
+		case R.id.header_lbtn_img:
+			QuitDialog qd = new QuitDialog(true, "提示");
+			qd.show(this.getSupportFragmentManager(), "exam");
+			break;
 		}
 	}
 
@@ -134,7 +154,7 @@ public class SleepActivity extends BaseFragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	private class MyAdapter<T> extends BaseAdapter {
 
 		LayoutInflater inflater;
@@ -297,7 +317,7 @@ public class SleepActivity extends BaseFragmentActivity implements
 			private int position;
 			private TextView content;
 			private RadioGroup radioGroup;
-			public RadioButton rb1, rb2, rb3,rb4;
+			public RadioButton rb1, rb2, rb3, rb4;
 			private ImageView imghead;
 		}
 

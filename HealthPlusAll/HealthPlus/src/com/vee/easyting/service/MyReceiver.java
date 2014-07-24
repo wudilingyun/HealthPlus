@@ -36,6 +36,7 @@ public class MyReceiver extends BroadcastReceiver {
 	private static final String TAG = "JPush";
 	private Builder builder = null;
 	private Notification n = null;
+	private long time;
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -70,7 +71,7 @@ public class MyReceiver extends BroadcastReceiver {
 			}
 			
 			int userid =HP_User.getOnLineUserId(context);
-			long time =System.currentTimeMillis();
+			time =System.currentTimeMillis();
 			HP_DBModel.getInstance(context).insertJPush(userid, "健康贴士", content,
 					"",  time) ;
 
@@ -163,6 +164,7 @@ public class MyReceiver extends BroadcastReceiver {
 		// intent.addCategory(Intent.CATEGORY_LAUNCHER);
 		intent.putExtra("title", title);
 		intent.putExtra("content", content);
+		intent.putExtra("time", time);
 		System.out.println("通知栏的内容" + content);
 		PendingIntent mPendingIntent = PendingIntent.getActivity(context, 0,
 				intent, PendingIntent.FLAG_UPDATE_CURRENT);

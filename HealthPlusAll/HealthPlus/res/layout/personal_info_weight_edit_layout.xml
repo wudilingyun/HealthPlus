@@ -46,6 +46,6 @@
         android:layout_marginLeft="18.0dip"
         android:layout_marginRight="16.0dip"
         android:layout_marginTop="5dip"
-        android:text="请添写体重，单位公斤" />
+        android:text="请添写体重，单位公斤。范围:30~260" />
 
 </RelativeLayout>

@@ -1,14 +1,14 @@
 10
 
 dir
-823
+853
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/.settings
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-05-22T06:22:47.453627Z
-768
+2014-07-21T07:26:12.540654Z
+846
 zhaoyouliang
 
 
@@ -32,11 +32,11 @@ file
 
 
 
-2014-05-19T08:35:27.531250Z
-dedfa1639b1ef42bffad86ae405d2396
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
+2014-07-21T07:34:03.828125Z
+ef561c8a6f314527ba85565c7b496f01
+2014-07-21T07:26:12.540654Z
+846
+zhaoyouliang
 
 
 
@@ -58,7 +58,7 @@ xujizhe
 
 
 
-177
+598
 
 org.eclipse.core.resources.prefs
 file
@@ -93,4 +93,38 @@ zhaoyouliang
 
 
 57
+
+org.eclipse.ltk.core.refactoring.prefs
+file
+
+
+
+
+2014-07-03T08:53:49.953125Z
+f6e0799a0cdf97d821bd63799dbb1bf7
+2014-07-10T07:43:39.261251Z
+834
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+106
 

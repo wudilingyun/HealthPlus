@@ -953,7 +953,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:emojiconSize
+          @attr name com.rockerhieu.emojicon:emojiconSize
         */
         public static final int Emojicon_emojiconSize = 0;
     };

@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.common.Common;
+import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.util.InstallSataUtil;
 import com.vee.healthplus.widget.HeaderView;
 
@@ -157,14 +158,19 @@ public class SettingFeedBack extends Activity implements
 						+ feedback_contact.getText().toString() + ";");
 				// MyEasyGameConstant.ReportComments(mContext,
 				// content.toString());
-				new InstallSataUtil(mContext).ReportComments(
-						content.toString(), Common.getAppId(mContext));
-				Toast.makeText(
-						mContext,
-						getResources().getString(
-								R.string.setting_feedback_send_success),
-						Toast.LENGTH_SHORT).show();
-				SettingFeedBack.this.finish();
+				if(CheckNetWorkStatus.Status(getApplication())){
+					new InstallSataUtil(mContext).ReportComments(
+							content.toString(), Common.getAppId(mContext));
+					Toast.makeText(
+							mContext,
+							getResources().getString(
+									R.string.setting_feedback_send_success),
+							Toast.LENGTH_SHORT).show();
+					SettingFeedBack.this.finish();
+				}else {
+					Toast.makeText(getApplication(), "请检查网络连接", Toast.LENGTH_SHORT).show();
+				}
+				
 			}
 		});
 

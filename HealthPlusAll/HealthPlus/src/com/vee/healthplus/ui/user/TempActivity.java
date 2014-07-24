@@ -1,16 +1,9 @@
 package com.vee.healthplus.ui.user;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-import com.vee.healthplus.R;
-import com.vee.healthplus.heahth_news_utils.JsonCache;
-import com.vee.healthplus.ui.main.FirstActivity;
-import com.vee.healthplus.ui.main.MainPage;
-import com.vee.healthplus.util.user.HP_DBModel;
-import com.vee.healthplus.util.user.HP_User;
-
-import cn.jpush.android.api.JPushInterface;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -18,9 +11,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.vee.healthplus.R;
+import com.vee.healthplus.ui.main.FirstActivity;
+import com.vee.healthplus.util.user.HP_DBModel;
+import com.vee.healthplus.util.user.HP_User;
 
 public class TempActivity extends Activity {
 	public static final String KEY_MESSAGE = "message";
@@ -45,10 +42,11 @@ public class TempActivity extends Activity {
 			Bundle bundle = getIntent().getExtras();
 			String title = bundle.getString("title");
 			String content = bundle.getString("content");
+			long time=bundle.getLong("time");
 			System.out.println("页面内容" + content);
 			contView.setText(content);
-			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
-			String date = sdf.format(new java.util.Date());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			String date = sdf.format(new Date(time));
 			timView.setText(date);
 			HP_DBModel.getInstance(this).updateJPushReadFlag(userid, title, content);
 		}

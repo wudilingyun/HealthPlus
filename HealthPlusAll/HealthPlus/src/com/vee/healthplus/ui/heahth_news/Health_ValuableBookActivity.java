@@ -175,22 +175,50 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 			}
 		});
 
-		/*
-		 * listView_news.setOnScrollListener(new OnScrollListener() {
-		 * 
-		 * @Override public void onScrollStateChanged(AbsListView arg0, int
-		 * scrollState) { // TODO Auto-generated method stub switch
-		 * (scrollState) { case OnScrollListener.SCROLL_STATE_FLING:
-		 * imageLoader.unlock(); break; case OnScrollListener.SCROLL_STATE_IDLE:
-		 * imageLoader.unlock(); break; case
-		 * OnScrollListener.SCROLL_STATE_TOUCH_SCROLL: imageLoader.unlock();
-		 * break; default: break; } }
-		 * 
-		 * @Override public void onScroll(AbsListView arg0, int arg1, int arg2,
-		 * int arg3) { // TODO Auto-generated method stub
-		 * 
-		 * } });
-		 */
+		
+		/*  listView_news.setOnScrollListener(new OnScrollListener() {
+		  
+		  @Override 
+		  public void onScrollStateChanged(AbsListView arg0, intscrollState) {
+			  // TODO Auto-generated method stub switch
+		  (scrollState) { case OnScrollListener.SCROLL_STATE_FLING:
+		  imageLoader.unlock(); break; case OnScrollListener.SCROLL_STATE_IDLE:
+		  imageLoader.unlock(); break; case
+		  OnScrollListener.SCROLL_STATE_TOUCH_SCROLL: imageLoader.unlock();
+		  break; default: break; } }
+		  
+		  @Override public void onScroll(AbsListView arg0, int arg1, int arg2,
+		  int arg3) { // TODO Auto-generated method stub
+		  
+		  } });*/
+		
+		listView_news.setOnScrollListener(new OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView arg0, int scrollState) {
+				// TODO Auto-generated method stub
+				switch (scrollState) {
+				case OnScrollListener.SCROLL_STATE_FLING:
+					imageLoader.lock();
+					break;
+				case OnScrollListener.SCROLL_STATE_IDLE:
+					imageLoader.unlock();
+					break;
+				case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+					imageLoader.lock();
+					break;
+				default:
+					break;
+				}
+			}
+			
+			@Override
+			public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		listView_news.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -358,6 +386,7 @@ public class Health_ValuableBookActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		switch (view.getId()) {
 		case R.id.header_lbtn_img:
+			onBackPressed();
 			this.finish();
 			break;
 		case R.id.header_rbtn_img:

@@ -31,7 +31,7 @@
     <string name="str_vertical">竖线</string>
     <string name="str_content_icon">内容标志</string>
     <string name="str_time">13&#8211;07&#8211;15</string>
-    <string name="mymoments">我的收藏</string>
+    <string name="mymoments">好友详情</string>
     <string name="upload10minutues">10分钟前上传</string>
     <string name="moments_support">赞</string>
     <string name="moments_comment">评论</string>

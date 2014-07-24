@@ -1,15 +1,15 @@
 10
 
 dir
-823
+853
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/values
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-06-18T01:31:10.944499Z
-817
-lingyun
+2014-07-17T05:54:41.536204Z
+844
+zhaoyouliang
 
 
 
@@ -32,11 +32,11 @@ file
 
 
 
-2014-06-05T06:40:44.359375Z
-a25230c249bb5d47c82744a951d59f02
-2014-06-05T08:29:12.522135Z
-797
-lingyun
+2014-07-18T03:54:14.375000Z
+548f6eb4cbded1d4db6f432c63948e8f
+2014-07-17T05:54:41.536204Z
+844
+zhaoyouliang
 
 
 
@@ -58,7 +58,7 @@ lingyun
 
 
 
-15929
+15908
 
 vpi__defaults.xml
 file
@@ -570,40 +570,6 @@ xujizhe
 
 113
 
-ting_strings.xml
-file
-
-
-
-
-2014-05-19T08:34:55.703125Z
-93792df8024eeaa4c537fc4b4c9a1ed8
-2014-04-30T09:09:35.205182Z
-700
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3041
-
 hp_w_attrs.xml
 file
 
@@ -637,6 +603,40 @@ zhaoyouliang
 
 
 8006
+
+ting_strings.xml
+file
+
+
+
+
+2014-05-19T08:34:55.703125Z
+93792df8024eeaa4c537fc4b4c9a1ed8
+2014-04-30T09:09:35.205182Z
+700
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3041
 
 attrs_pulltorefresh.xml
 file
@@ -678,11 +678,11 @@ file
 
 
 
-2014-05-19T08:34:55.718750Z
-1dfbacc892799d1df730f7ccb0867f2b
-2014-05-19T07:44:41.457350Z
-743
-heda
+2014-07-10T10:07:34.765625Z
+7e48e6b584e7436eb102b7a2619de1ae
+2014-07-10T08:15:03.410837Z
+835
+zhaoyouliang
 
 
 
@@ -704,7 +704,7 @@ heda
 
 
 
-465
+474
 
 analysis_color.xml
 file
@@ -876,40 +876,6 @@ lingyun
 
 763
 
-strings.xml
-file
-
-
-
-
-2014-06-16T03:43:40.328125Z
-442ec8503d0b2d181d90408ee714418b
-2014-06-18T01:31:10.944499Z
-817
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-913
-
 exam_dimens.xml
 file
 
@@ -943,6 +909,40 @@ zhaoyouliang
 
 
 1744
+
+strings.xml
+file
+
+
+
+
+2014-06-16T03:43:40.328125Z
+442ec8503d0b2d181d90408ee714418b
+2014-06-18T01:31:10.944499Z
+817
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+913
 
 shop_colors.xml
 file
@@ -978,6 +978,40 @@ lingyun
 
 2055
 
+moments_strings.xml
+file
+
+
+
+
+2014-07-07T01:27:31.125000Z
+eb0fa70bf8bf5640c62ab441158cdff6
+2014-06-25T07:54:13.127279Z
+826
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2065
+
 hp_w_array.xml
 file
 
@@ -1011,40 +1045,6 @@ lingyun
 
 
 1608
-
-moments_strings.xml
-file
-
-
-
-
-2014-05-24T06:47:23.281250Z
-c697b348d67bcbba18bb49dbd0a2484c
-2014-05-24T06:39:19.751183Z
-774
-heda
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2065
 
 ids_pulltorefresh.xml
 file

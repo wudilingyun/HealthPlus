@@ -24,6 +24,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -110,7 +111,7 @@ public class StatisticsUtils {
 
 	public static void startFunction(String funId) {
 		currentFunc = funId;
-		currentFuncStartTimestamp = System.currentTimeMillis();
+		currentFuncStartTimestamp = SystemClock.elapsedRealtime();
 	}
 
 	public static void endFunction(Context context, String userid,
@@ -119,7 +120,7 @@ public class StatisticsUtils {
 			Log.e("lingyun", "endFunction:functionid != currentFunc");
 			return;
 		}
-		String time = (System.currentTimeMillis() / 1000 - currentFuncStartTimestamp / 1000)
+		String time = (SystemClock.elapsedRealtime() / 1000 - currentFuncStartTimestamp / 1000)
 				+ "";
 		timeStatistics(context, userid, functionid, function_name, time);
 	}
@@ -515,6 +516,45 @@ public class StatisticsUtils {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if (channel.equals("700071")) {
+			channel = channel + "-360";
+		} else if (channel.equals("700072")) {
+			channel = channel + "-htc";
+		} else if (channel.equals("700073")) {
+			channel = channel + "-米赚";
+		} else if (channel.equals("700074")) {
+			channel = channel + "-华为";
+		} else if (channel.equals("700075")) {
+			channel = channel + "-小米";
+		} else if (channel.equals("700076")) {
+			channel = channel + "-联想";
+		} else if (channel.equals("700077")) {
+			channel = channel + "-oppo";
+		} else if (channel.equals("700078")) {
+			channel = channel + "-通用";
+		} else if (channel.equals("700079")) {
+			channel = channel + "-魅族";
+		} else if (channel.equals("700080")) {
+			channel = channel + "-安智市场";
+		} else if (channel.equals("700081")) {
+			channel = channel + "-搜狗市场";
+		} else if (channel.equals("700082")) {
+			channel = channel + "-美美相机";
+		} else if (channel.equals("700083")) {
+			channel = channel + "-应用宝";
+		} else if (channel.equals("700084")) {
+			channel = channel + "-百度助手";
+		}else if (channel.equals("700085")) {
+			channel = channel + "-淘宝";
+		}else if (channel.equals("700086")) {
+			channel = channel + "-豌豆荚";
+		}else if (channel.equals("700087")) {
+			channel = channel + "-金立";
+		}else if (channel.equals("700088")) {
+			channel = channel + "-应用汇";
+		}else if (channel.equals("700089")) {
+			channel = channel + "-TV大厅";
 		}
 		return channel;
 	}

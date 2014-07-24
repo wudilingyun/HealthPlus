@@ -57,7 +57,7 @@ public class FirstActivity extends Activity {
 
 	private View view1, view2, view3; // 图片View
 	int version;
-	Handler handler = new Handler();
+	Handler handler = new Handler(); 
 	Runnable runnable = new Runnable() {
 
 		@Override

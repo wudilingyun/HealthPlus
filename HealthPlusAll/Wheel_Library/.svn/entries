@@ -1,14 +1,14 @@
 10
 
 dir
-823
+853
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/Wheel_Library
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-06-20T03:30:17.920951Z
-820
+2014-07-10T07:43:39.261251Z
+834
 lingyun
 has-props
 
@@ -93,6 +93,9 @@ lingyun
 
 
 669
+
+assets
+dir
 
 .project
 file

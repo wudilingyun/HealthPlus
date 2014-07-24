@@ -9,7 +9,7 @@
     android:minHeight="30dp"
     android:padding="6dp" >
 
-    <EditText
+    <com.rockerhieu.emojicon.EmojiconEditText
         android:id="@+id/moments_comment_edittext"
         android:layout_width="match_parent"
         android:layout_height="40dip"

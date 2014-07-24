@@ -10,19 +10,21 @@ import android.widget.TextView;
 import com.vee.healthplus.R;
 
 public class TextListViewItem implements ListElement {
-	
+
 	private String name;
 	private String value;
 	private TextView textView;
 	private TextView valueView;
+	private RelativeLayout layout;
+	private Object tag;
 
 	public ListElement setText(String text) {
-		this.name=text;
+		this.name = text;
 		return this;
 	}
 
 	public ListElement setValue(String value) {
-		this.value=value;
+		this.value = value;
 		return this;
 	}
 
@@ -38,8 +40,8 @@ public class TextListViewItem implements ListElement {
 			Context context, View view) {
 		// TODO Auto-generated method stub
 
-		RelativeLayout layout = (RelativeLayout) layoutInflater.inflate(
-				getLayoutId(), null);
+		layout = (RelativeLayout) layoutInflater.inflate(getLayoutId(), null);
+		layout.setTag(tag);
 		textView = (TextView) layout
 				.findViewById(R.id.health_plus_personal_info_edit_text_item_name_tv);
 		valueView = (TextView) layout
@@ -72,6 +74,11 @@ public class TextListViewItem implements ListElement {
 	public Bitmap getPhoto() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public ListElement setTag(Object tag) {
+		this.tag=tag;
+		return this;
 	}
 
 }

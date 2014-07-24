@@ -93,6 +93,7 @@ public class JPushListActivity extends Activity implements OnClickListener {
 						TempActivity.class);
 				intent.putExtra("title", "健康贴士");
 				intent.putExtra("content", list.get(arg2).getContent());
+				intent.putExtra("time", list.get(arg2).getTime());
 				startActivity(intent);
 			}
 		});
@@ -145,9 +146,7 @@ public class JPushListActivity extends Activity implements OnClickListener {
 			this.finish();
 			break;
 		case R.id.header_rbtn_img:
-
 			break;
-
 		default:
 			break;
 		}

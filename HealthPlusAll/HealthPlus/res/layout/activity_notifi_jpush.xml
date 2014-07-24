@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/jpush_title_rl"
             android:layout_centerHorizontal="true"
+            android:textColor="#353535"
             android:text="2014-5-26" />
 
     </RelativeLayout>

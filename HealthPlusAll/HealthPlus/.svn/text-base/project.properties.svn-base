@@ -8,6 +8,8 @@
 # project structure.
 
 # Project target.
-target=android-17
-android.library.reference.1=../MainLibs
-android.library.reference.2=../Wheel_Library
+target=android-20
+android.library.reference.1=..\\MainLibs
+android.library.reference.2=..\\Wheel_Library
+android.library.reference.3=../Emojicon
+	

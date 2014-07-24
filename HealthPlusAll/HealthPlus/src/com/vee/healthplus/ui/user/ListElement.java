@@ -15,5 +15,6 @@ public interface ListElement {
 	public String getText();
 	public String getValue();
 	public Bitmap getPhoto();
+	public ListElement setTag(Object tag);
 
 }

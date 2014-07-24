@@ -1,15 +1,15 @@
 10
 
 dir
-823
+853
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-06-24T06:40:43.910502Z
-823
-heda
+2014-07-23T10:14:51.195225Z
+853
+zhaoyouliang
 has-props
 
 
@@ -100,11 +100,39 @@ xujizhe
 src
 dir
 
-libs
-dir
-
-res
-dir
+hs_err_pid8964.log
+file
+
+
+
+
+2014-05-19T08:35:27.578125Z
+56a49d3b0fd75827003141110b81f47c
+2013-12-23T07:05:53.477154Z
+575
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4662
 
 HealthPlus.iml
 file
@@ -140,16 +168,56 @@ xujizhe
 
 1985
 
-hs_err_pid8964.log
+res
+dir
+
+libs
+dir
+
+.classpath
 file
 
 
 
 
-2014-05-19T08:35:27.578125Z
-56a49d3b0fd75827003141110b81f47c
-2013-12-23T07:05:53.477154Z
-575
+2014-07-08T10:14:49.187500Z
+94db0b87c133c075762fd2977bcaa6ed
+2014-07-10T07:43:39.261251Z
+834
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+756
+
+project.properties
+file
+
+
+
+
+2014-07-23T10:12:00.125000Z
+fd3c5d943a59baf335c0ba614751d883
+2014-07-23T10:05:13.645843Z
+852
 zhaoyouliang
 
 
@@ -172,112 +240,10 @@ zhaoyouliang
 
 
 
-4662
-
-.classpath
-file
-
-
-
-
-2014-05-19T08:35:27.578125Z
-eb0d618f4c69fad9aef7ab6dd81cf357
-2014-04-18T08:42:42.972857Z
-675
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-547
-
-project.properties
-file
-
-
-
-
-2014-05-19T08:46:00.546875Z
-eeba5bf66a065d05e1db014fd07c52be
-2014-06-20T03:30:17.920951Z
-820
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-446
+489
 
 assets
 dir
-
-lint.xml
-file
-
-
-
-
-2014-06-17T08:14:02.312500Z
-be793471a63265fd45fe15deaff57f4e
-2014-06-20T03:30:17.920951Z
-820
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-184
 
 proguard-project.txt
 file
@@ -313,16 +279,16 @@ zhaoyouliang
 
 799
 
-AndroidManifest.xml
+lint.xml
 file
 
 
 
 
-2014-06-19T11:11:46.265625Z
-ed93baae5ee311e8b6eca4f5cede9421
-2014-06-18T07:40:44.035671Z
-818
+2014-07-18T03:54:14.531250Z
+9c1125b56721ce18ac70486801f5f13b
+2014-07-17T03:16:02.223640Z
+843
 zhaoyouliang
 
 
@@ -345,7 +311,41 @@ zhaoyouliang
 
 
 
-34281
+8010
+
+AndroidManifest.xml
+file
+
+
+
+
+2014-07-21T07:34:03.875000Z
+89a045cf14e2cfbb26d73da66e150a1a
+2014-07-21T07:26:12.540654Z
+846
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+35399
 
 out
 dir

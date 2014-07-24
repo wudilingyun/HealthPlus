@@ -55,12 +55,15 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 	private PullToRefreshListView comment_listView;
 	private Health_ValueBook_Comment_Adapter myAdapter;
 	private ImageLoader imageLoader;
-	private List<NewsComment> commentlist;
+	private List<NewsComment> commentlist = new ArrayList<NewsComment>();
 	private EditText editText;
 	private String content;
 	private Button submitButton;
 	private String normal = "1", pull = "2", down = "3";
-	private List<NewsComment> newscomment, newsComment_new, newsComment_old;
+	private List<NewsComment> newsComment_new, newsComment_old;
+	private List<NewsComment> newcomment_top = new ArrayList<NewsComment>();
+	private List<NewsComment> newscomment = new ArrayList<NewsComment>();
+
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -74,6 +77,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
+
 		init();
 		new getCommentsAsync().execute(normal);
 	}
@@ -81,9 +85,10 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 	void init() {
 		imageLoader = ImageLoader.getInstance(this);
 		comment_listView = (PullToRefreshListView) findViewById(R.id.allcomment_listview);
-
+		comment_listView.getRefreshableView().setDivider(null);
 		comment_listView.getRefreshableView().setSelector(
 				android.R.color.transparent);
+		comment_listView.setPullToRefreshOverScrollEnabled(false);
 		comment_listView.setMode(Mode.BOTH);
 		comment_listView.getLoadingLayoutProxy(false, true).setPullLabel(
 				getString(R.string.pull_to_load));
@@ -98,24 +103,25 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		myAdapter = new Health_ValueBook_Comment_Adapter(this, imageLoader);
 		comment_listView.setAdapter(myAdapter);
 		editText.addTextChangedListener(new TextWatcher() {
-			
+
 			@Override
-			public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) {
-				// TODO Auto-generated method stub
-				/*content = s;*/
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+			public void onTextChanged(CharSequence s, int arg1, int arg2,
 					int arg3) {
 				// TODO Auto-generated method stub
-				
+				/* content = s; */
 			}
-			
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+				// TODO Auto-generated method stub
+
+			}
+
 			@Override
 			public void afterTextChanged(Editable arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		comment_listView
@@ -124,18 +130,43 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 					public void onRefresh(
 							PullToRefreshBase<ListView> refreshView) {
 						// Do work to refresh the list here.
-						if (newscomment != null && newscomment.size() > 0)
+						System.out.println("评论个数" + newscomment.size());
+						/*if ((newscomment != null && newscomment.size() >0)
+								|| (newcomment_top.size() > 0 && newcomment_top != null)){*/
+							
+						
+
 							if (comment_listView.isHeaderShown()) {
 								// 下
-									
+								String max_idString = null;
+								if (newcomment_top.size() > 0
+										&& newcomment_top != null) {
+									max_idString = newcomment_top.get(0)
+											.getCommentid() + "";
+								} else if(commentlist.size()>0){
+									max_idString = commentlist.get(0)
+											.getCommentid() + "";
+								}else{
+									max_idString = 0+"";
+								}
+
 								new getCommentsAsync().execute(down,
-										commentlist.get(0).getCommentid() + "");
+										max_idString);
 							} else if (comment_listView.isFooterShown()) {
+								if(commentlist.size()>10){
+									
+								
 								new getCommentsAsync().execute(pull,
-										commentlist.get(commentlist.size() - 1).getCommentid()
-												+ "");
+										commentlist.get(commentlist.size() - 1)
+												.getCommentid() + "");
+								}else {
+									comment_listView.onRefreshComplete();
+								}
 								// 上
 							}
+						/*}else {
+							comment_listView.onRefreshComplete();
+						}*/
 					}
 				});
 	}
@@ -153,25 +184,27 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 		protected List<NewsComment> doInBackground(String... params) {
 			try {
 				String url = getIntent().getStringExtra("imgurl");
+				System.out.println("评论url" + url);
 				switch (Integer.parseInt(params[0])) {
 				case 1:
 					newscomment = SpringAndroidService.getInstance(
 							getApplication())
 							.getNewsCommentsByScope(url, 0, 10);
+					System.out.println("newcomment" + newscomment.size());
 					return newscomment;
 				case 3:
 					newsComment_old = SpringAndroidService.getInstance(
 							getApplication())
 							.getNewsCommentsByMaxCommentidScope(url,
 									Integer.parseInt(params[1]));
-					//newscomment.addAll(newsComment_old);
+					// newscomment.addAll(newsComment_old);
 					return newsComment_old;
 				case 2:
 					newsComment_new = SpringAndroidService.getInstance(
 							getApplication())
 							.getNewsCommentsByMinCommentidScope(url,
 									Integer.parseInt(params[1]), 10);
-					//newscomment.addAll(newsComment_new);
+					// newscomment.addAll(newsComment_new);
 					return newsComment_new;
 				default:
 					break;
@@ -205,8 +238,8 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				myAdapter.notifyDataSetChanged();
 				comment_listView.onRefreshComplete();
 			} else {
-				//comment_listView.onRefreshComplete();
-				Toast.makeText(getApplication(), "没有评论", Toast.LENGTH_SHORT)
+				// comment_listView.onRefreshComplete();
+				Toast.makeText(getApplication(), "没有更多评论", Toast.LENGTH_SHORT)
 						.show();
 				comment_listView.onRefreshComplete();
 			}
@@ -260,13 +293,12 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				if (data.getReturncode() == 200) {
 					Toast.makeText(getApplicationContext(), "评论成功",
 							Toast.LENGTH_SHORT).show();
-				
-		
-						new freshCommentsAsync().execute();
+
+					new freshCommentsAsync().execute();
 
 				} else {
-					String s=data.getReturncode()+data.getDescription();
-					System.out.println("评论问题"+s);
+					String s = data.getReturncode() + data.getDescription();
+					System.out.println("评论问题" + s);
 					Toast.makeText(getApplicationContext(), "评论失败",
 							Toast.LENGTH_SHORT).show();
 				}
@@ -318,6 +350,7 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				}
 			}
 			if (data != null && data.size() > 0) {
+				newcomment_top = data;
 				myAdapter.listaddAllAdapter(data);
 				myAdapter.notifyDataSetChanged();
 			}
@@ -339,9 +372,16 @@ public class Health_ValueBook_commentList_activity extends BaseFragmentActivity
 				String reply = null;
 				content = TextUtils.isEmpty(reply) ? content : reply + content;
 				NewsComment nc = new NewsComment();
-				System.out.println("输入的评论内容是"+content);
+				// System.out.println("输入的评论内容是" + content);
 				new submitCommentsAsync().execute(content.toString().trim());
 			}
+			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+			inputMethodManager.hideSoftInputFromWindow(
+					Health_ValueBook_commentList_activity.this
+							.getCurrentFocus().getWindowToken(),
+
+					InputMethodManager.HIDE_NOT_ALWAYS);
 			editText.setText(null);
 			break;
 		default:

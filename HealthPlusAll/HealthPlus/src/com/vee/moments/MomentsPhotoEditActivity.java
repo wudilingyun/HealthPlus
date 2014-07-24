@@ -34,7 +34,11 @@ public class MomentsPhotoEditActivity extends Activity implements
 	private ICallBack callBack;
 	private static final int PHOTO_PICKED_WITH_DATA = 1020;
 	private static final int CAMERA_WITH_DATA = 1021;
+
 	private static final int PHOTO_CROP = 1022;
+
+	private static final int SELECT_PIC_KITKAT = 1025;
+	private static final int SELECT_PIC = 1026;
 	private int userId;
 	private String hdFileName;
 	private Uri u;
@@ -43,8 +47,7 @@ public class MomentsPhotoEditActivity extends Activity implements
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		switch (requestCode) {
-		case 10:
-		{
+		case 10: {
 			setResult(resultCode);
 			finish();
 			break;
@@ -59,11 +62,10 @@ public class MomentsPhotoEditActivity extends Activity implements
 				 * Intent intent = getIntent(); intent.putExtra("photopath",
 				 * u.getPath());
 				 */
-			}
-			else{
+			} else {
 				finish();
 			}
-			//finish();
+			// finish();
 			break;
 		case PHOTO_PICKED_WITH_DATA:
 			if (resultCode == RESULT_OK) {
@@ -78,17 +80,16 @@ public class MomentsPhotoEditActivity extends Activity implements
 				String imgSize = cursor.getString(2); // 图片大小
 				String imgName = cursor.getString(3); // 图片文件名
 				intent.putExtra("bitmap", imgPath);
-				startActivityForResult(intent,10);
+				startActivityForResult(intent, 10);
 				/*
 				 * Intent intent = getIntent(); intent.putExtra("photopath",
 				 * imgPath);
 				 */
-			}
-			else{
+			} else {
 				finish();
 			}
 
-			//finish();
+			// finish();
 			break;
 		case PHOTO_CROP:
 			if (resultCode == RESULT_OK) {
@@ -196,12 +197,29 @@ public class MomentsPhotoEditActivity extends Activity implements
 					NewMomentsActivity.class);
 			intentText.putExtra("text", "on");
 			startActivityForResult(intentText, 10);
-			
+
 			break;
 		case R.id.photo_edit_pick_btn:
-			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT);
-			innerIntent.setType("image/jpeg");
+			Intent innerIntent;
+			/*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+				innerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+			} else {
+				innerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+			}*/
+			
+			
+			innerIntent = new Intent(Intent.ACTION_PICK,
+					android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+			//innerIntent.addCategory(Intent.CATEGORY_OPENABLE);
+			innerIntent.setType("image/*");
 			Intent wrapperIntent = Intent.createChooser(innerIntent, null);
+			// startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);
+			/*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+				startActivityForResult(wrapperIntent, CAMERA_WITH_DATA);
+			} else {
+				startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);
+			}*/
+			
 			startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);
 			break;
 		}

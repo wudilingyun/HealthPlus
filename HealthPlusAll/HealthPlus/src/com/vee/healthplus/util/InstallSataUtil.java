@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.widget.Toast;
 
+import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.http.HttpClient;
 import com.vee.healthplus.http.HttpException;
 import com.vee.healthplus.http.Response;
@@ -83,7 +85,6 @@ public class InstallSataUtil {
 
 		@Override
 		public void run() {
-
 			HttpClient hc = new HttpClient();
 			ArrayList<BasicNameValuePair> params = getCommonParams(mContext);
 

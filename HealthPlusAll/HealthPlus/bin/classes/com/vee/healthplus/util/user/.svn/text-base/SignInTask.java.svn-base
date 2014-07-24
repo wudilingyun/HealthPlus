@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
+import com.vee.healthplus.ui.user.HealthPlusLoginActivity;
+import com.vee.healthplus.util.AppPreferencesUtil;
 import com.yunfox.springandroid4healthplus.SpringAndroidService;
 
 /**
@@ -66,6 +68,8 @@ public class SignInTask extends AsyncTask<Void, Void, Boolean> {
 			}
 			callBack.onErrorSignIn(exception);
 		} else {
+			AppPreferencesUtil.setBooleanPref(activity,
+					"isQQLogin", false);
 			if (v) {
 				callBack.onFinishSignIn();
 			} else {

@@ -1,15 +1,15 @@
 10
 
 dir
-823
+853
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus_Library
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-01-23T08:09:12.995772Z
-636
-wangfeng
+2014-07-10T07:43:39.261251Z
+834
+lingyun
 has-props
 
 
@@ -66,6 +66,9 @@ xujizhe
 src
 dir
 
+res
+dir
+
 healthplus.iml
 file
 
@@ -100,20 +103,17 @@ xujizhe
 
 747
 
-res
-dir
-
 .classpath
 file
 
 
 
 
-2014-05-19T08:35:38.578125Z
-e43b9e994685d1055e421f721677fe94
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
+2014-07-03T10:43:54.906250Z
+325a7c6ac16e1ed73a2f16f19b367319
+2014-07-10T07:43:39.261251Z
+834
+lingyun
 
 
 
@@ -143,11 +143,11 @@ file
 
 
 
-2014-05-19T08:35:38.593750Z
-05d6acfd11d6b9f3bfb2890d38946865
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
+2014-07-03T10:43:54.906250Z
+c0fba1618c944698acea0f69be4a8cf2
+2014-07-10T07:43:39.261251Z
+834
+lingyun
 
 
 
@@ -169,44 +169,10 @@ xujizhe
 
 
 
-583
+584
 
 assets
 dir
-
-proguard-project.txt
-file
-
-
-
-
-2014-05-19T08:35:38.593750Z
-18bfe77c342b4698f1cef19cf8d918e2
-2013-10-30T01:32:51.046476Z
-396
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-781
 
 lint.xml
 file
@@ -242,14 +208,14 @@ xujizhe
 
 53
 
-javadoc.xml
+proguard-project.txt
 file
 
 
 
 
-2014-05-19T08:35:38.609375Z
-58c16db4a0bc7ab558a3d473dd740da5
+2014-05-19T08:35:38.593750Z
+18bfe77c342b4698f1cef19cf8d918e2
 2013-10-30T01:32:51.046476Z
 396
 xujizhe
@@ -274,7 +240,7 @@ xujizhe
 
 
 
-910
+781
 
 AndroidManifest.xml
 file
@@ -309,6 +275,40 @@ xujizhe
 
 
 844
+
+javadoc.xml
+file
+
+
+
+
+2014-05-19T08:35:38.609375Z
+58c16db4a0bc7ab558a3d473dd740da5
+2013-10-30T01:32:51.046476Z
+396
+xujizhe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+910
 
 out
 dir

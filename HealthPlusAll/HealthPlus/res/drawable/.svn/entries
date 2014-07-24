@@ -1,7 +1,7 @@
 10
 
 dir
-823
+853
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/res/drawable
 svn://192.168.23.204/mobileapp/mobilesafe
 
@@ -264,40 +264,6 @@ lingyun
 
 300
 
-shop_productdetail_count_down_selector.xml
-file
-
-
-
-
-2014-05-19T08:34:51.375000Z
-792a0e9426411fbbd98334e79a9ff357
-2013-12-19T08:21:49.843455Z
-560
-wangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-405
-
 btn_dialog_ok_selector.xml
 file
 
@@ -331,6 +297,40 @@ zhaoyouliang
 
 
 706
+
+shop_productdetail_count_down_selector.xml
+file
+
+
+
+
+2014-05-19T08:34:51.375000Z
+792a0e9426411fbbd98334e79a9ff357
+2013-12-19T08:21:49.843455Z
+560
+wangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+405
 
 setting_listitem_bg.xml
 file
@@ -366,40 +366,6 @@ xujizhe
 
 391
 
-perm_group_more.xml
-file
-
-
-
-
-2014-06-18T01:15:33.281250Z
-7520b785d1af61e0dec32426c2ddd2f1
-2013-12-20T01:32:59.617565Z
-569
-xujizhe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-270
-
 radio_btn_selector.xml
 file
 
@@ -434,17 +400,17 @@ zhaoyouliang
 
 380
 
-hr_beat_animation.xml
+perm_group_more.xml
 file
 
 
 
 
-2014-05-19T08:34:51.468750Z
-a5a2f835ef7fe2e6f221fedb180d689c
-2014-04-18T08:42:42.972857Z
-675
-lingyun
+2014-06-18T01:15:33.281250Z
+7520b785d1af61e0dec32426c2ddd2f1
+2013-12-20T01:32:59.617565Z
+569
+xujizhe
 
 
 
@@ -466,7 +432,7 @@ lingyun
 
 
 
-465
+270
 
 shop_productpara_tab_selector.xml
 file
@@ -501,6 +467,40 @@ wangfeng
 
 
 384
+
+hr_beat_animation.xml
+file
+
+
+
+
+2014-05-19T08:34:51.468750Z
+a5a2f835ef7fe2e6f221fedb180d689c
+2014-04-18T08:42:42.972857Z
+675
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+465
 
 perm_group_location.xml
 file
@@ -1080,40 +1080,6 @@ zhaoyouliang
 
 417
 
-btn_setting_selector.xml
-file
-
-
-
-
-2014-05-20T08:17:22.765625Z
-7b8ce949a0a4472308fc73a45e405ef3
-2014-05-20T06:59:30.125780Z
-748
-zhaoyouliang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-418
-
 userregbtn_selector.xml
 file
 
@@ -1147,6 +1113,40 @@ wangjiafeng
 
 
 461
+
+btn_setting_selector.xml
+file
+
+
+
+
+2014-05-20T08:17:22.765625Z
+7b8ce949a0a4472308fc73a45e405ef3
+2014-05-20T06:59:30.125780Z
+748
+zhaoyouliang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+418
 
 setting_update_btn_selector.xml
 file
@@ -1522,14 +1522,14 @@ wangjiafeng
 
 361
 
-test_result_btn_stat.xml
+test_result_btn_call.xml
 file
 
 
 
 
 2014-05-19T08:34:51.968750Z
-6e36649da0fa8c8a3ba0d17f31142ee0
+aa267496859280776f9314cb420ef37d
 2014-04-18T08:42:42.972857Z
 675
 lingyun
@@ -1556,14 +1556,14 @@ lingyun
 
 290
 
-test_result_btn_call.xml
+test_result_btn_stat.xml
 file
 
 
 
 
 2014-05-19T08:34:51.968750Z
-aa267496859280776f9314cb420ef37d
+6e36649da0fa8c8a3ba0d17f31142ee0
 2014-04-18T08:42:42.972857Z
 675
 lingyun
@@ -1726,40 +1726,6 @@ zhaoyouliang
 
 706
 
-age_edit_wheel_bg.xml
-file
-
-
-
-
-2014-05-19T08:34:52.125000Z
-99400a166ad8bb724d0836d11e3c6db8
-2014-04-24T08:23:10.040540Z
-680
-lingyun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-317
-
 perm_group_device_alarms.xml
 file
 
@@ -1794,16 +1760,16 @@ xujizhe
 
 270
 
-health_plus_find_submit_btn_selector.xml
+age_edit_wheel_bg.xml
 file
 
 
 
 
-2014-05-19T08:34:52.140625Z
-4a4fe02b24b4e10ac3a7ebe617c8f3ab
-2014-04-25T05:13:58.990258Z
-685
+2014-05-19T08:34:52.125000Z
+99400a166ad8bb724d0836d11e3c6db8
+2014-04-24T08:23:10.040540Z
+680
 lingyun
 
 
@@ -1826,7 +1792,7 @@ lingyun
 
 
 
-430
+317
 
 shop_headview_cart.xml
 file
@@ -1861,6 +1827,40 @@ wangfeng
 
 
 302
+
+health_plus_find_submit_btn_selector.xml
+file
+
+
+
+
+2014-05-19T08:34:52.140625Z
+4a4fe02b24b4e10ac3a7ebe617c8f3ab
+2014-04-25T05:13:58.990258Z
+685
+lingyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+430
 
 dialog_cancel_button_selector.xml
 file
@@ -1998,17 +1998,17 @@ lingyun
 
 292
 
-shop_hyperlink_bg.xml
+indicator_bg_top.xml
 file
 
 
 
 
 2014-05-19T08:34:52.187500Z
-39fcf5c5dbc726ea8f39761b9688b5d2
-2013-12-17T10:16:36.499243Z
-554
-wangfeng
+447460073ce024b2de6618479afc45b8
+2014-04-01T08:59:04.939837Z
+663
+heda
 
 
 
@@ -2030,7 +2030,7 @@ wangfeng
 
 
 
-363
+595
 
 shop_img_defaultbg.png
 file
@@ -2066,17 +2066,17 @@ has-props
 
 5224
 
-indicator_bg_top.xml
+shop_hyperlink_bg.xml
 file
 
 
 
 
 2014-05-19T08:34:52.187500Z
-447460073ce024b2de6618479afc45b8
-2014-04-01T08:59:04.939837Z
-663
-heda
+39fcf5c5dbc726ea8f39761b9688b5d2
+2013-12-17T10:16:36.499243Z
+554
+wangfeng
 
 
 
@@ -2098,7 +2098,7 @@ heda
 
 
 
-595
+363
 
 jpush_unread_count_bg.xml
 file

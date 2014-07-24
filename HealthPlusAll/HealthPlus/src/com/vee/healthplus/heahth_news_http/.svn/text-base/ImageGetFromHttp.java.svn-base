@@ -28,9 +28,14 @@ public class ImageGetFromHttp {
 			HttpResponse response = httpClient.execute(httpGet);
 			if (response.getStatusLine().getStatusCode() == 200) {
 				inputStream = response.getEntity().getContent();
+				
 				bitmap = BitmapFactory.decodeStream(inputStream);
-
-				return bitmap;
+				
+				/*if(!bitmap.isRecycled()){
+					bitmap.recycle();
+					System.gc();
+				}*/
+				//return bitmap;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -38,7 +43,7 @@ public class ImageGetFromHttp {
 		}
 
 		// return compressImage(bitmap);
-		return null;
+		return bitmap;
 	}
 
 	public static Bitmap compressImage(Bitmap image) {

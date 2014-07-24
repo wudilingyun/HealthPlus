@@ -8,12 +8,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.vee.healthplus.R;
 import com.vee.healthplus.activity.BaseFragmentActivity;
 import com.vee.healthplus.common.MyApplication;
+import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.util.VersionUtils;
 import com.vee.healthplus.util.user.ICallBack;
 import com.vee.healthplus.widget.HeaderView;
@@ -61,8 +63,13 @@ public class HealthPlusSettingActivity extends BaseFragmentActivity implements
 							R.string.hp_share_invite);
 					String sendTitleUrl = getResources().getString(
 							R.string.hp_share_address);
-					MyApplication.shareBySystem(mContext, sendMsg, "", sendTitleUrl, "",
-							"",sendMsg);
+					if(CheckNetWorkStatus.Status(getApplication())){
+						MyApplication.shareBySystem(mContext, sendMsg, "", sendTitleUrl, "",
+								"",sendMsg);
+					}else {
+						Toast.makeText(getApplication(), "请检查网络连接", Toast.LENGTH_SHORT).show();
+					}
+					
 					break;
 				case 3:
 					intent = new Intent(HealthPlusSettingActivity.this,

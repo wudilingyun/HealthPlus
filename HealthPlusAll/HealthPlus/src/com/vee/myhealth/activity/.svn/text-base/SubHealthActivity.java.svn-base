@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ import com.vee.myhealth.bean.HealthQuestionEntity;
 import com.vee.myhealth.util.SqlDataCallBack;
 import com.vee.myhealth.util.SqlForTest;
 
-public class SubHealthActivity extends BaseFragmentActivity implements
+public class SubHealthActivity extends FragmentActivity implements
 		SqlDataCallBack<HealthQuestionEntity>, OnItemClickListener,
 		android.view.View.OnClickListener {
 	private SqlForTest sqlForTest;
@@ -48,23 +49,37 @@ public class SubHealthActivity extends BaseFragmentActivity implements
 	private ProgressBar progressBar;
 	private int progresscount;
 	private int userId;
-
+	private TextView header_text;
+	private ImageView header_lbtn_img, header_rbtn_img;
 	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		View view = View.inflate(this, R.layout.health_tizhi_list, null);
-		setContainer(view);
-		getHeaderView().setHeaderTitle("亚健康测试");
+		setContentView(view);
+		/*getHeaderView().setHeaderTitle("亚健康测试");
 		setRightBtnVisible(View.GONE);
 		setLeftBtnVisible(View.VISIBLE);
 		setLeftBtnType(1);
-		setLeftBtnRes(R.drawable.hp_w_header_view_back);
+		setLeftBtnRes(R.drawable.hp_w_header_view_back);*/
 		userId = HP_User.getOnLineUserId(this);
 		init();
+		gettitle();
 		sqlForTest = new SqlForTest(this);
 		sqlForTest.getHealthContent("111");
+	}
+	
+	void gettitle() {
+
+		header_text = (TextView) findViewById(R.id.header_text);
+		header_lbtn_img = (ImageView) findViewById(R.id.header_lbtn_img);
+		header_rbtn_img = (ImageView) findViewById(R.id.header_rbtn_img);
+		header_rbtn_img.setVisibility(View.GONE);
+		header_text.setText("亚健康测试");
+		header_text.setOnClickListener(this);
+		header_lbtn_img.setOnClickListener(this);
+		header_rbtn_img.setOnClickListener(this);
 	}
 
 	@Override
@@ -297,6 +312,11 @@ public class SubHealthActivity extends BaseFragmentActivity implements
 			} else {
 				Toast.makeText(this, "没答完亲", Toast.LENGTH_SHORT).show();
 			}
+			break;
+		case R.id.header_lbtn_img:
+			QuitDialog qd = new QuitDialog(true, "提示");
+			qd.show(this.getSupportFragmentManager(), "exam");
+			break;
 		}
 	}
 

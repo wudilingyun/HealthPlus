@@ -121,7 +121,8 @@ public class CoverEditActivity extends Activity implements View.OnClickListener 
 			startActivityForResult(intent, CAMERA_WITH_DATA);
 			break;
 		case R.id.albumcover_btn:
-			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); 
+			Intent innerIntent = new Intent(Intent.ACTION_PICK,
+					android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			innerIntent.setType("image/*"); 
 			Intent wrapperIntent = Intent.createChooser(innerIntent, null);
 			startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);

@@ -83,6 +83,7 @@ public class ImageLoader {
 		Bitmap bitmap = memoryCache.getBitmapFromCache(url);
 		if (bitmap != null) {
 			img.setImageBitmap(bitmap);
+			img.setTag(url);
 		} else {
 			synchronized (taskMap) {
 				// 将图片的url设置给img对象的tag属性

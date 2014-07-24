@@ -164,36 +164,36 @@ public class RegisterActivity extends AbstractGreenhouseActivity {
 			if (registerResponse != null) {
 				switch (registerResponse.getReturncode()) {
 				case 8:
-					// 注册成功
-					displayRegisterError("注册成功，新用户ID："
+					// 娉ㄥ唽鎴愬姛
+					displayRegisterError(""
 							+ registerResponse.getMemberid());
 					break;
 				case 102:
-					// 注册帐号长度非法
+					// 娉ㄥ唽甯愬彿闀垮害闈炴硶
 					displayRegisterError(registerResponse.getDescription());
 					break;
 				case 103:
-					// 通信密钥不正确
+					// 閫氫俊瀵嗛挜涓嶆纭�
 					displayRegisterError(registerResponse.getDescription());
 					break;
 				case 104:
-					// 注册帐号非法，注册帐号必须是数字和字母组合，不能包含非法字符,@除外
+					// 娉ㄥ唽甯愬彿闈炴硶锛屾敞鍐屽笎鍙峰繀椤绘槸鏁板瓧鍜屽瓧姣嶇粍鍚堬紝涓嶈兘鍖呭惈闈炴硶瀛楃,@闄ゅ
 					displayRegisterError(registerResponse.getDescription());
 					break;
 				case 1:
-					// 用户名或邮箱存在，无法注册
+					// 鐢ㄦ埛鍚嶆垨閭瀛樺湪锛屾棤娉曟敞鍐�
 					displayRegisterError(registerResponse.getDescription());
 					break;
 				case 5:
-					// 用户基本信息写入失败
+					// 鐢ㄦ埛鍩烘湰淇℃伅鍐欏叆澶辫触
 					displayRegisterError(registerResponse.getDescription());
 					break;
 				case 7:
-					// 用户扩展信息写入失败
+					// 鐢ㄦ埛鎵╁睍淇℃伅鍐欏叆澶辫触
 					displayRegisterError(registerResponse.getDescription());
 					break;
 				default:
-					// 服务器内部错误
+					// 鏈嶅姟鍣ㄥ唴閮ㄩ敊璇�
 					displayRegisterError(registerResponse.getDescription());
 					break;
 				}

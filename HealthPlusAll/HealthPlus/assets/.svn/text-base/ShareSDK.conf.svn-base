@@ -59,7 +59,6 @@
         AppKey="801188211"
         AppSecret="abe4651a85b7ac8818300b6c7e02c7d8"
         RedirectUri="http://cdn.17vee.com/lmstation/easyplay/easyPlay.apk"
-        ShortLinkConversationEnable="true" 
          Enable="true"/>
 
     <QZone

@@ -1,15 +1,15 @@
 10
 
 dir
-823
+853
 svn://192.168.23.204/mobileapp/mobilesafe/trunk/HealthPlus/HealthPlus/libs
 svn://192.168.23.204/mobileapp/mobilesafe
 
 
 
-2014-06-24T06:40:43.910502Z
-823
-heda
+2014-07-10T07:43:39.261251Z
+834
+lingyun
 
 
 
@@ -25,6 +25,40 @@ heda
 
 
 73ffb375-b3dc-4891-aa82-bc0e46b602ab
+
+open_sdk_r3806.jar
+file
+
+
+
+
+2014-07-07T08:03:26.625000Z
+6d4ada3486a0c7c565cef746e6872358
+2014-07-10T07:43:39.261251Z
+834
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+468053
 
 universal-image-loader-1.8.6.jar
 file
@@ -406,10 +440,10 @@ file
 
 
 
-2014-06-03T07:16:07.562500Z
-375c3d300207d2542fd89d417b7a457c
-2014-05-30T05:31:21.452876Z
-789
+2014-07-09T07:19:43.953125Z
+49bd6f492bced85b7ec73d378ae4bfd1
+2014-07-09T06:30:20.236761Z
+833
 heda
 has-props
 
@@ -432,7 +466,7 @@ has-props
 
 
 
-118896
+119265
 
 android-query.jar
 file
@@ -640,4 +674,38 @@ has-props
 
 
 99119
+
+mta-sdk-1.6.2.jar
+file
+
+
+
+
+2014-06-16T11:47:37.271000Z
+58a10f81d4cb1141972fcd451e3575a4
+2014-07-10T07:43:39.261251Z
+834
+lingyun
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+76732
 

@@ -147,8 +147,8 @@
     <string name="setting_share_wx">微信</string>
     <string name="setting_share_wxpy">微信朋友圈</string>
     <string name="setting_wechat_client_inavailable">目前您的微信版本过低或未安装微信，需要安装微信才能使用</string>
-    <string name="hp_share_invite">云医生是集用户健康检测、健康管理、健康追踪、健康资讯及用户健康交流平台于一体的健康管理软件。挺方便、实用的，推荐你用一下。下载地址：http://cdn.17vee.com/lmstation/shoujiweishi/700071/CloudDoctor.apk</string>
-    <string name="hp_share_address">http://cdn.17vee.com/lmstation/shoujiweishi/700071/CloudDoctor.apk</string>
+    <string name="hp_share_invite">云医生是集用户健康检测、健康管理、健康追踪、健康资讯及用户健康交流平台于一体的健康管理软件。挺方便、实用的，推荐你用一下。下载地址：http://a.app.qq.com/o/simple.jsp?pkgname=com.vee.healthplus</string>
+    <string name="hp_share_address">http://a.app.qq.com/o/simple.jsp?pkgname=com.vee.healthplus</string>
     <string name="update_checking">正在检查版本，请稍后...</string>
     <string name="update_note">发现新版本，是否升级 ？</string>
     <string name="update_yes">是</string>
@@ -167,9 +167,9 @@
     <string name="setting_feedback_questiontype4">恶意信息</string>
     <string name="setting_feedback_questiontype5">其他</string>
     <string name="setting_feedback_contactserviceqq">也可以加微信公众帐号：</string>
-    <string name="setting_feedback_contactserviceqq1">yys_mfox</string>
+    <string name="setting_feedback_contactserviceqq1">yhmfox</string>
     <string name="setting_feedback_copynumber_str">复制帐号</string>
-    <string name="setting_feedback_questionhintcontent">请输入您的建议、问题感谢您对云医生的支持与关注</string>
+    <string name="setting_feedback_questionhintcontent">请输入您的建议、问题，感谢您对云医生的支持与关注</string>
     <string name="wf_questioncontactway">联系方式：邮箱/电话</string>
     <string name="setting_feedback_sendbtn">提交</string>
     <string name="setting_feedback_wrong1">请选择问题类型!</string>
@@ -248,8 +248,8 @@
     <string name="doctor_user_friend">我的朋友</string>
     <string name="doctor_user_setting">设置</string>
     <string name="doctor_user_device">设备推荐</string>
-    
-        <!-- 登陆界面 -->
+
+    <!-- 登陆界面 -->
     <string name="health_plus_login_marginbottom">180</string>
 
 </resources>

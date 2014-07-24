@@ -66,7 +66,7 @@ public class FriendDetailActivity extends BaseFragmentActivity {
 			String username = user.userName;
 
 			if (searchcontent.compareTo(username) == 0
-					|| searchUserResponse.getIaddfriend() != 0) {
+					|| searchUserResponse.getIaddfriend() != 0||searchcontent.compareTo(user.userNick)==0) {
 				buttonAddFriend.setVisibility(View.GONE);
 				buttonBrowseMoments.setOnClickListener(new OnClickListener() {
 

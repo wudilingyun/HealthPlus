@@ -31,6 +31,7 @@ import com.vee.healthplus.heahth_news_http.ImageLoader;
 import com.vee.healthplus.heahth_news_utils.CheckNetWorkStatus;
 import com.vee.healthplus.heahth_news_utils.ImageFileCache;
 import com.vee.healthplus.heahth_news_utils.ImageMemoryCache;
+import com.vee.healthplus.util.AppPreferencesUtil;
 import com.vee.healthplus.util.user.GetProfileTask;
 import com.vee.healthplus.util.user.HP_DBModel;
 import com.vee.healthplus.util.user.HP_User;
@@ -58,6 +59,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	private ImageLoader imageLoader;
 	private String hdpath;
 	private ProgressDialog dialog;
+	private int offset;
 
 	private CustomProgressDialog progressDialog = null;
 
@@ -98,33 +100,34 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				Bundle b3 = data.getExtras();
 				String sex = b3.getString("sex");
 				if (sex != null && !sex.equals("")) {
-					infoList.get(3).setValue(sex);
+					infoList.get(3 - offset).setValue(sex);
 				}
 				break;
 			case 4:
 				Bundle b4 = data.getExtras();
 				mAge = b4.getInt("age");
-				infoList.get(4).setValue(UserInfoUtil.getAgeFromBirthDay(mAge) + "岁");
+				infoList.get(4 - offset).setValue(
+						UserInfoUtil.getAgeFromBirthDay(mAge) + "岁");
 				break;
 			case 5:
 				Bundle b5 = data.getExtras();
 				String email = b5.getString("email");
 				if (email != null && !email.equals("")) {
-					infoList.get(5).setValue(email);
+					infoList.get(5 - offset).setValue(email);
 				}
 				break;
 			case 6:
 				Bundle b6 = data.getExtras();
 				String height = b6.getString("height");
 				if (height != null && !height.equals("")) {
-					infoList.get(6).setValue(height + "cm");
+					infoList.get(6 - offset).setValue(height + "cm");
 				}
 				break;
 			case 7:
 				Bundle b7 = data.getExtras();
 				String weight = b7.getString("weight");
 				if (weight != null && !weight.equals("")) {
-					infoList.get(7).setValue(weight + "kg");
+					infoList.get(7 - offset).setValue(weight + "kg");
 				}
 				break;
 
@@ -186,20 +189,31 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 			infoList.add(new TextListViewItem());
 		}
 
-		infoList.get(0).setText("头像");
-		infoList.get(1).setText("昵称").setValue(user.userNick);
-		infoList.get(2).setText("密码").setValue("点击修改密码");
-		infoList.get(3).setText("性别").setValue(user.userSex == -1 ? "男" : "女");
-		infoList.get(4).setText("年龄").setValue(UserInfoUtil.getAgeFromBirthDay(user.userAge) + "岁");
-		infoList.get(5).setText("邮箱").setValue(user.email);
-		infoList.get(6).setText("身高").setValue(user.userHeight + "cm");
+		infoList.get(0).setText("头像").setTag(0);
+		infoList.get(1).setText("昵称").setValue(user.userNick).setTag(1);
+		infoList.get(2).setText("密码").setValue("点击修改密码").setTag(2);
+		infoList.get(3).setText("性别").setValue(user.userSex == -1 ? "男" : "女")
+				.setTag(3);
+		infoList.get(4).setText("年龄")
+				.setValue(UserInfoUtil.getAgeFromBirthDay(user.userAge) + "岁")
+				.setTag(4);
+		infoList.get(5).setText("邮箱").setValue(user.email).setTag(5);
+		infoList.get(6).setText("身高").setValue(user.userHeight + "cm")
+				.setTag(6);
 		DecimalFormat format2 = new DecimalFormat("0");
 		infoList.get(7)
 				.setText("体重")
 				.setValue(
 						Float.parseFloat(format2.format(user.userWeight))
-								+ "kg");
-
+								+ "kg").setTag(7);
+		Log.i("lingyun",
+				"AppPreferencesUtil.getBooleanPref(context,isQQLogin, false)="
+						+ AppPreferencesUtil.getBooleanPref(this, "isQQLogin",
+								false));
+		if (AppPreferencesUtil.getBooleanPref(this, "isQQLogin", false)) {
+			infoList.remove(2);
+			offset = 1;
+		}
 		mAdapter.setList(infoList);
 		mListView.setAdapter(mAdapter);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -208,7 +222,7 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				switch (position) {
+				switch ((Integer) view.getTag()) {
 				case 0:
 					Bundle extras0 = new Bundle();
 					extras0.putInt("id", user.userId);
@@ -235,7 +249,8 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				case 3:
 					Bundle extras3 = new Bundle();
 					Intent intent3 = new Intent();
-					extras3.putString("sex", infoList.get(3).getValue());
+					extras3.putString("sex", infoList.get(3 - offset)
+							.getValue());
 					intent3.putExtras(extras3);
 					intent3.setClass(HealthPlusPersonalInfoEditActivity.this,
 							SexEditActivity.class);
@@ -253,7 +268,8 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				case 5:
 					Bundle extras5 = new Bundle();
 					Intent intent5 = new Intent();
-					extras5.putString("email", infoList.get(5).getValue());
+					extras5.putString("email", infoList.get(5 - offset)
+							.getValue());
 					intent5.putExtras(extras5);
 					intent5.setClass(HealthPlusPersonalInfoEditActivity.this,
 							EmailEditActivity.class);
@@ -262,7 +278,8 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				case 6:
 					Bundle extras6 = new Bundle();
 					Intent intent6 = new Intent();
-					extras6.putString("height", infoList.get(6).getValue());
+					extras6.putString("height", infoList.get(6 - offset)
+							.getValue());
 					intent6.putExtras(extras6);
 					intent6.setClass(HealthPlusPersonalInfoEditActivity.this,
 							HeightEditActivity.class);
@@ -271,7 +288,8 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 				case 7:
 					Bundle extras7 = new Bundle();
 					Intent intent7 = new Intent();
-					extras7.putString("weight", infoList.get(7).getValue());
+					extras7.putString("weight", infoList.get(7 - offset)
+							.getValue());
 					intent7.putExtras(extras7);
 					intent7.setClass(HealthPlusPersonalInfoEditActivity.this,
 							WeightEditActivity.class);
@@ -291,26 +309,21 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.health_plus_personal_info_edit_sava_btn:
-			if(!CheckNetWorkStatus.Status(this)){
+			if (!CheckNetWorkStatus.Status(this)) {
 				Toast.makeText(this, "请检查网络连接", Toast.LENGTH_SHORT).show();
 				return;
 			}
 			user.userNick = infoList.get(1).getValue();
-			user.email = infoList.get(5).getValue();
-			String str = infoList.get(6).getValue();
+			user.email = infoList.get(5 - offset).getValue();
+			String str = infoList.get(6 - offset).getValue();
 			user.userHeight = Integer
 					.valueOf(str.substring(0, str.length() - 2));
-			str = infoList.get(7).getValue();
+			str = infoList.get(7 - offset).getValue();
 			user.userWeight = Float.valueOf(str.substring(0, str.length() - 2));
-			str = infoList.get(4).getValue();
-			user.userAge =mAge;
-			str = infoList.get(3).getValue();
-			Log.i("lingyun", "str=" + str);
+			str = infoList.get(4 - offset).getValue();
+			user.userAge = mAge;
+			str = infoList.get(3 - offset).getValue();
 			user.userSex = str.equals("男") ? -1 : 0;
-			if (head != null) {
-				fileCache.saveBitmap(head, user.photourl);
-				memoryCache.addBitmapToCache(user.photourl, head);
-			}
 			if (HP_User.getOnLineUserId(this) != 0) {
 				try {
 					new SaveProfileTask(
@@ -388,6 +401,11 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		// TODO Auto-generated method stub
 		user.photourl = profile.getRawavatarurl();
 		HP_DBModel.getInstance(this).updateUserInfo(user, true);
+		if (head != null) {
+			fileCache.saveBitmap(head, user.photourl);
+			memoryCache.addBitmapToCache(user.photourl, head);
+		}
+
 		dialog.dismiss();
 		finishSelf();
 	}
@@ -423,7 +441,5 @@ public class HealthPlusPersonalInfoEditActivity extends Activity implements
 		}
 		finish();
 	}
-
-
 
 }

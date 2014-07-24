@@ -20,6 +20,8 @@ public class ImageListViewItem implements ListElement {
 	private ImageView ivPhoto;
 	private ImageLoader imageLoader;
 	private HP_User user;
+	private RelativeLayout layout;
+	private Object tag;
 
 	public ImageListViewItem(HP_User user, ImageLoader imageLoader) {
 		this.user = user;
@@ -47,10 +49,11 @@ public class ImageListViewItem implements ListElement {
 			Context context, View view) {
 		// TODO Auto-generated method stub
 
-		RelativeLayout layout = (RelativeLayout) layoutInflater.inflate(
+		layout = (RelativeLayout) layoutInflater.inflate(
 				getLayoutId(), null);
 		textView = (TextView) layout
 				.findViewById(R.id.health_plus_personal_info_edit_image_item_name_tv);
+		layout.setTag(tag);
 		textView.setText(name);
 		ivPhoto = (ImageView) layout
 				.findViewById(R.id.health_plus_personal_info_edit_image_item_photo_iv);
@@ -87,6 +90,12 @@ public class ImageListViewItem implements ListElement {
 	public Bitmap getPhoto() {
 		// TODO Auto-generated method stub
 		return photo;
+	}
+
+	@Override
+	public ListElement setTag(Object tag) {
+		this.tag=tag;
+		return this;
 	}
 
 }

@@ -58,7 +58,7 @@
                         android:textColor="#6fcc0b"
                         android:textSize="@dimen/health_plus_font_size_2" />
 
-                    <TextView
+                    <com.rockerhieu.emojicon.EmojiconTextView
                         android:id="@+id/momentsmessage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
 
                     <ImageView
                         android:id="@+id/momentsimage"
-                        android:layout_width="wrap_content"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
                         android:focusable="false"

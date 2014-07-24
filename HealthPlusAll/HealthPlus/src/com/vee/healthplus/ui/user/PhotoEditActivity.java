@@ -22,7 +22,6 @@ import com.vee.healthplus.R;
 import com.vee.healthplus.util.user.HP_User;
 import com.vee.healthplus.util.user.ICallBack;
 
-
 public class PhotoEditActivity extends Activity implements View.OnClickListener {
 	private Button cancelBtn, takeBtn, pickBtn;
 	private HP_User user;
@@ -33,6 +32,7 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 	private int userId;
 	private String hdFileName;
 	private Uri u;
+	private Uri tempUri;
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -40,7 +40,7 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 		switch (requestCode) {
 		case CAMERA_WITH_DATA:
 			if (resultCode == RESULT_OK) {
-				doCropPhoto2(u);
+				doCropPhoto2(tempUri);
 			}
 			break;
 		case PHOTO_PICKED_WITH_DATA:
@@ -53,20 +53,26 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 				Intent result = new Intent();
 				result.putExtra("hd", u.toString());
 				setResult(RESULT_OK, result);
-				finish();
 			} else {
-				File temp = new File(Environment.getExternalStorageDirectory(),
+
+				File hf = new File(Environment.getExternalStorageDirectory(),
 						hdFileName);
-				if (temp.exists()) {
-					temp.delete();
+				if (hf.exists()) {
+					hf.delete();
 				}
 				setResult(RESULT_CANCELED);
-				finish();
+
 			}
+			File temp = new File(Environment.getExternalStorageDirectory(),
+					"hp_temp_head.jpg");
+			if (temp.exists()) {
+				temp.delete();
+			}
+			finish();
 			break;
 		}
 	}
-	
+
 	public static int readPictureDegree(String path) {
 		int degree = 0;
 		try {
@@ -118,18 +124,24 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 		pickBtn.setOnClickListener(this);
 		userId = getIntent().getIntExtra("id", -1);
 		hdFileName = "photo_temp" + "/" + "hd" + userId + ".jpg";
-		File temp = new File(Environment.getExternalStorageDirectory(),
+		File hf = new File(Environment.getExternalStorageDirectory(),
 				hdFileName);
-		if (!temp.exists()) {
-			makeDir(temp.getParentFile());
+		File temp = new File(Environment.getExternalStorageDirectory(),
+				"hp_temp_head.jpg");
+		if (!hf.exists()) {
+			makeDir(hf.getParentFile());
+		}
+		if (temp.exists()) {
+			temp.delete();
 		}
 		try {
 			temp.createNewFile();
+			hf.createNewFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		u = Uri.fromFile(temp);
+		u = Uri.fromFile(hf);
+		tempUri = Uri.fromFile(temp);
 	}
 
 	@Override
@@ -141,13 +153,18 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 			break;
 		case R.id.photo_edit_take_btn:
 			intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			Log.i("lingyun", "ugetPath=" + u.getPath());
-			intent.putExtra(MediaStore.EXTRA_OUTPUT, u);
+			Log.i("lingyun", "ugetPath=" + tempUri.getPath());
+			intent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
 			startActivityForResult(intent, CAMERA_WITH_DATA);
 			break;
 		case R.id.photo_edit_pick_btn:
-			Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); 
-			innerIntent.setType("image/*"); 
+			Intent innerIntent = new Intent(
+					Intent.ACTION_PICK,
+					android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+			// Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+			// innerIntent.addCategory(Intent.CATEGORY_OPENABLE);
+			// innerIntent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+			innerIntent.setType("image/*");
 			Intent wrapperIntent = Intent.createChooser(innerIntent, null);
 			startActivityForResult(wrapperIntent, PHOTO_PICKED_WITH_DATA);
 			break;
@@ -162,7 +179,7 @@ public class PhotoEditActivity extends Activity implements View.OnClickListener 
 	}
 
 	private void doCropPhoto2(Uri uri) {
-		Log.i("lingyun","doCropPhoto2");
+		Log.i("lingyun", "doCropPhoto2");
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");
